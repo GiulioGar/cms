@@ -459,7 +459,7 @@ $contapagati20euro=0;
 					
 					
 					
-					$header = "MIME-Version: 1.0\r\n";
+					$header = "MIME-Version: 1.0\r\n ";
 					$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
 					$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
 					$destinatario = $row['email'];
