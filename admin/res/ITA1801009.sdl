@@ -1,0 +1,1324 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int rev;
+int selint;
+int conta;
+string item;
+int index;
+int reCod;
+int countAree;
+
+	system.setProperty("env", "debug:false");
+	//system.setProperty("env", "browser:full");
+	system.setProperty("env", "stylesheet:mod.css");
+	
+	/*
+	string autotest=system.getProperty("test");
+	if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+	*/
+	
+qst = new question("choice", 10);
+qst.setProperty("text", "Usted es ¿...?");
+qst.setProperty("code", "q1");
+vector q10_opts = new vector {
+"Hombre",
+"Mujer"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+
+
+qst = new question("open", 20);
+qst.setProperty("text", "¿Qué edad tiene?");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q2");
+send qst;
+
+int eta=(int)system.getProperty("ans20");
+	if (eta<20 || eta >65){return 4;}
+	
+	if(eta>19 && eta<35) { reCod=0;}
+	if(eta>34 && eta<45) { reCod=1;}
+	if(eta>44 && eta<55) { reCod=2;}
+	if(eta>54 ) { reCod=3;}
+
+qst = new question("choice", 30);
+qst.setProperty("text", "Ricodifica et&agrave;");
+qst.setProperty("code", "recage");
+vector q30_opts = new vector {
+"20-34 anni",
+"35-44 anni",
+"45-54 anni",
+"55-65 anni"
+};
+qst.setProperty("options", q30_opts);
+    qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+    qst.setProperty("hidden", true);
+send qst;
+
+	cmd=q30_opts.get(reCod);
+	system.out("<div>Fascia di età: "+cmd+"</div>");
+
+qst = new question("choice", 40);
+qst.setProperty("text", "¿En qué provincia vive en la actualidad?");
+qst.setProperty("code", "q3");
+vector q40_opts = new vector {
+"Andalucía",
+"Aragón",
+"Asturias",
+"Baleares",
+"Canarias",
+"Cantabria",
+"Castilla y Leon",
+"Castilla-La Mancha",
+"Cataluña",
+"Comunidad Valenciana",
+"Extremadura",
+"Galicia",
+"La Rioja",
+"Madrid",
+"Murcia",
+"Navarra",
+"País Vasco",
+"Plazas de soberanía (Ceuta y Melilla)"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+
+
+
+	
+	
+	
+	
+qst = new question("choice", 60);
+qst.setProperty("text", "¿Cuántos habitantes tiene la ciudad en la que vive?");
+qst.setProperty("code", "q4");
+vector q60_opts = new vector {
+"Menos de 10 000 habitantes	",
+"10 000 - 30 000 habitantes	",
+"30 000 - 100 000 habitantes	",
+"Más de 100 000 habitantes	"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+
+
+
+
+qst = new question("choice", 70);
+qst.setProperty("text", "¿Trabaja usted o alguien de su familia en alguno de estos sectores?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q5");
+vector q70_opts = new vector {
+"Marketing",
+"Estudios de mercado",
+"Relaciones públicas",
+"Publicidad",
+"Periodismo",
+"Producción o distribución de automóviles o accesorios",
+"Producción o distribución de neumáticos",
+"Turismo /Tour operador",
+"Productos para el cuidado personal",
+"Sector textil",
+"Ninguno de los anteriores#se#sf"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+count=0;
+for(int i=7,10)
+{
+sel=system.getProperty("ans70_"+i);
+if (sel==true) { count=count+1; }
+}
+//if (count==0) { return 4; }
+
+
+
+qst = new question("choice", 80);
+qst.setProperty("text", "¿Ha participado en alguna encuesta en los últimos 6 meses?");
+qst.setProperty("code", "q6");
+vector q80_opts = new vector {
+"Sí",
+"No"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+ansId=system.getProperty("ans80");
+
+
+
+
+if (ansId==0)
+{
+qst = new question("choice", 90);
+qst.setProperty("text", "¿Sobre qué producto/s se le ha preguntado?");
+qst.setProperty("code", "q7");
+vector q90_opts = new vector {
+"Automóviles / Accessorios de automóviles/ Neumáticos",
+"Otros productos"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+ansId=system.getProperty("ans90");
+//if (ansId==0) { return 4; }
+}
+
+
+qst = new question("choice", 100);
+qst.setProperty("text", "¿Quién se encarga del mantenimiento del automóvil en su familia? Es decir, del mantenimiento del motor (cambio de aceite, filtros, etc), el mantenimiento de los neumáticos (compra, sustitución, calibración, etc.), de la carrocería, del pago del seguro y de los impuestos, etc <div class='info'>Seleccione una única respuesta</div>");
+qst.setProperty("code", "q8");
+vector q100_opts = new vector {
+"Solo yo",
+"Sobre todo yo y, de forma ocasional, otra persona",
+"Yo y otro miembro de la familia a partes iguales",
+"Sobre todo otra persona de la familia y, de forma ocasional, yo mismo",
+"Otra persona de forma exclusiva",
+"No tengo coche/no conduzco"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+ansId=system.getProperty("ans100");
+if (ansId>3){ return 4; }
+
+
+
+
+
+qst = new question("choice", 110);
+qst.setProperty("text", "En cuanto al coche que usa de forma habitual, ¿cuáles de los siguientes tipos de mantenimiento suele realizar?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q9");
+vector q110_opts = new vector {
+"Mantenimiento y compra de los neumáticos",
+"Renovación del seguro RC Auto",
+"Lavado y abrillantado",
+"Impuesto de vehículos",
+"Control de los niveles de agua y aceite",
+"Inspección e intervenciones de mantenimiento ordinarias",
+"Reparación extraordinaria en caso de accidentes o averías"
+};
+qst.setProperty("options", q110_opts);
+send qst;
+
+sel=system.getProperty("ans110_0");
+if (sel==false) {return 4;}
+
+
+
+
+qst = new question("scale", 120);
+qst.setProperty("text", "¿Cuándo fue la última vez que hizo la revisión (equilibrado, convergencia, control general, permutación de los neumáticos anterior/posterior) o sustitución de los neumáticos?");
+qst.setProperty("code", "q10");
+vector q120_rows = new vector {
+"Manutención",
+"Sustitución Invernales",
+"Compra nuevos"
+};
+qst.setProperty("rows", q120_rows);
+vector q120_cols = new vector {
+"Hace menos de 1 año",
+"Hace 1-2 años",
+"Hace 3-4 años",
+"Hace más de 4 años"
+};
+qst.setProperty("cols", q120_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("choice", 130);
+qst.setProperty("text", "¿Dónde compró los neumáticos la última vez que los cambió?");
+qst.setProperty("code", "q12");
+vector q130_opts = new vector {
+"Supermercado/Hipermercado/Centro comercial",
+"Taller de cambio de neumáticos (dedicación exclusiva)",
+"Gasolinera con servicio de cambio de neumáticos",
+"Taller de mecánica rápida (cambio de filtros, aceite, mecánico, neumáticos…)",
+"Online",
+"Otro, especificar#so#sf"
+};
+qst.setProperty("options", q130_opts);
+send qst;
+
+qst = new question("choice", 140);
+qst.setProperty("text", "¿Cuál de las siguientes frases describe mejor su forma de actuar a la hora de sustituir o hacer el mantenimiento de los neumáticos?");
+qst.setProperty("code", "q13");
+vector q140_opts = new vector {
+"Ya sé a dónde ir y qué neumáticos pedir",
+"Ya sé a dónde ir pero no sé bien qué neumáticos elegir",
+"No sé bien a dónde ir pero voy con la idea clara de qué neumáticos quiero",
+"No sé bien a dónde ir y no tengo claro qué neumáticos elegir"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+qst = new question("choice", 150);
+qst.setProperty("text", "¿Qué medios de comunicación consulta cuando necesita información sobre neumáticos?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q14");
+vector q150_opts = new vector {
+"Carteles (por la calle)/póster",
+"Periódicos",
+"Prensa especializada (por ej. Autobild)",
+"Radio",
+"TV (programas generales)",
+"TV (programas o canales especializados)",
+"Blogs/foros especializados",
+"Internet: web del taller de neumáticos/página FB",
+"Internet: web del productor de neumáticos/página FB",
+"Internet (otras páginas webs, YouTube, Facebook…)",
+"Google u otras páginas de búsqueda",
+"Folletos recibidos en casa",
+"Amigos, familiares, compañeros ",
+"Consejo del taller de neumáticos/recepcionista ",
+"Ninguno de los anteriores#se#sf"
+};
+qst.setProperty("options", q150_opts);
+send qst;
+
+qst = new question("choice", 160);
+qst.setProperty("text", "Hablemos de su coche, ¿qué coche tiene en la actualidad? Si tiene más de uno, indique el que utilice con más frecuencia.");
+qst.setProperty("code", "q10b");
+vector q160_opts = new vector {
+"Fiat",
+"Ford",
+"Opel",
+"Volkswagen",
+"Citroen",
+"Toyota",
+"Renault",
+"Peugeot",
+"Lancia",
+"Mercedes",
+"BMW",
+"Audi",
+"Alfa Romeo",
+"Chevrolet/Daewo",
+"Nissan",
+"Smart",
+"Suzuki",
+"Otra marca, especificar#so"
+};
+qst.setProperty("options", q160_opts);
+send qst;
+
+qst = new question("choice", 170);
+qst.setProperty("text", "¿Qué tipo de coche tiene?");
+qst.setProperty("code", "q20");
+vector q170_opts = new vector {
+"Clase B – Utilitario (p. ej. Clio, Fiesta, Corsa, Punto)",
+"Clase C - Pequeño coche familiar (p. ej. Peugeot 308, Hyundai i30..)",
+"Clase D - Coche familiar (p. ej. Audi A4, Peugeot 407/508…)",
+"Clase E – Coche mediano (p. ej. Audi A6, etc.)",
+"MVP (p. ej. Ford C max, Fiat 500L, etc.)",
+"SUV Compacto (p. ej. Citroen CXR, Opel Mokka, etc.)",
+"SUV de grandes dimensiones (p. ej. BMW X5, Audi Q5)",
+"Otro tipo (especificar)#so"
+};
+qst.setProperty("options", q170_opts);
+send qst;
+
+qst = new question("choice", 180);
+qst.setProperty("text", "¿Podría indicar el año de matriculación del coche?");
+qst.setProperty("view", "menu");
+qst.setProperty("code", "q30");
+vector q180_opts = new vector {
+"Antes del 2005",
+"2006",
+"2007",
+"2008",
+"2009",
+"2010",
+"2011",
+"2012",
+"2013",
+"2014",
+"2015",
+"2016",
+"2017",
+"2018"
+};
+qst.setProperty("options", q180_opts);
+send qst;
+
+
+qst = new question("choice", 190);
+qst.setProperty("text", "Cuando compró este coche, se trataba de...");
+qst.setProperty("code", "q40");
+vector q190_opts = new vector {
+"un coche nuevo",
+"un coche de km cero",
+"un coche de segunda mano"
+};
+qst.setProperty("options", q190_opts);
+send qst;
+
+
+
+qst = new question("choice", 200);
+qst.setProperty("text", "Es un coche …");
+qst.setProperty("code", "q50");
+vector q200_opts = new vector {
+"privado",
+"de empresa"
+};
+qst.setProperty("options", q200_opts);
+send qst;
+
+
+
+
+qst = new question("choice", 210);
+qst.setProperty("text", "¿Con qué frecuencia lo utiliza?");
+qst.setProperty("code", "q60");
+vector q210_opts = new vector {
+"Varias veces al día",
+"Una vez al día",
+"3/4 veces en semana",
+"1/2 veces en semana",
+"1 vez en semana",
+"Una vez cada dos semanas",
+"Ocasionalmente"
+};
+qst.setProperty("options", q210_opts);
+send qst;
+
+qst = new question("choice", 220);
+qst.setProperty("text", "¿Cuántos km recorre de media en un año?");
+qst.setProperty("code", "q70");
+vector q220_opts = new vector {
+"Menos de 4 000 km al año",
+"Entre 4 000 y 6 000 km al año",
+"Entre 6 000 y 8 000 km al año",
+"Entre 8 000 y 10 000 km al año",
+"Entre 10 000 y 12 000 km al año",
+"Entre 12 000 y 14 000 km al año",
+"Entre 14 000 y 16 000 km al año",
+"Entre 16 000 y 18 000 km al año",
+"Ente 18 000 y 20 000 km al año",
+"Más de 20 000 km al año"
+};
+qst.setProperty("options", q220_opts);
+send qst;
+
+qst = new question("choice", 230);
+qst.setProperty("text", "Los neumático que tiene su coche en la actualidad son…");
+qst.setProperty("code", "q80");
+vector q230_opts = new vector {
+"Normales/de verano",
+"De invierno",
+"Todo Tiempo",
+"No lo sé"
+};
+qst.setProperty("options", q230_opts);
+send qst;
+
+qst = new question("choice", 240);
+qst.setProperty("text", "¿Se trata de los neumáticos originales que venían con el coche o los ha cambiado ya?");
+qst.setProperty("code", "q90");
+vector q240_opts = new vector {
+"Son los originales que venían cuando compré el coche",
+"Ya los he cambiado",
+"No lo recuerdo"
+};
+qst.setProperty("options", q240_opts);
+send qst;
+
+
+qst = new question("open", 250);
+qst.setProperty("text", "¿Sabría decirnos aproximadamente cuántos km han recorrido ya los neumáticos de su coche?");
+qst.setProperty("view", "numeric");
+qst.setProperty("validation_rule", "^[0-9]|[1-9][0-9]{1,4}$");
+qst.setProperty("validation_error", "Introduzca un valor entre 0 y 99.999");
+qst.setProperty("code", "q95");
+qst.setProperty("left_label", "km.");
+qst.setProperty("alt", "1:No lo sé, no lo recuerdo");
+send qst;
+
+
+
+
+qst = new question("open", 260);
+qst.setProperty("text", "<p>A continuación le haremos algunas preguntas sobre marcas de neumáticos para coches.</p>"+
+"¿Cuál es la primera marca de neumáticos para coche que le viene a la cabeza, aunque solo sea de oídas?");
+qst.setProperty("code", "q100");
+send qst;
+
+
+ string ctrlFirst="<script type='text/javascript'>"+
+        "$(document).ready(function() {"+
+        "for ( var i = 1; i < 6; i++ ) { $('.choice-option_'+i).hide();}"+
+        "$('#comp0').keyup( function() {"+
+        "var ct=$('#comp0').val();"+
+        "if (ct==''){for ( var i = 1; i < 6; i++ ) { $('.choice-option_'+i).hide(); $('#comp'+i).val(''); $('input[type=\"checkbox\"]').attr('checked', false);  }}"+
+        "else {for ( var y = 1; y < 6; y++ ) { $('.choice-option_'+y).fadeIn('slow');} } })"+
+        "});</script>";
+
+qst = new question("choice", 270);
+qst.setProperty("text", ctrlFirst+"¿Qué otras marcas de neumáticos le vienen a la cabeza aunque solo sea de oídas?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q110");
+vector q270_opts = new vector {
+"1)#so",
+"2)#so",
+"3)#so",
+"4)#so",
+"5)#so",
+"6)#so",
+"Ninguna#se#sf"
+};
+qst.setProperty("options", q270_opts);
+send qst;
+
+
+
+qst = new question("choice", 280);
+qst.setProperty("text", "Seleccione todas las marcas de neumáticos que conoce, aunque solo sea por el nombre. Le rogamos que seleccione también las marcas que ya había indicado en la pregunta anterior.");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q120");
+qst.setProperty("show_rand", true);
+vector q280_opts = new vector {
+"Bridgestone",
+"Firestone",
+"Michelin",
+"Pirelli",
+"Goodyear",
+"Continental",
+"Dunlop",
+"Yokohama",
+"Hankook",
+"Toyo",
+"GT Radial",
+"Uniroyal",
+"Nexen",
+"Kumho",
+"Apollo",
+"Riken",
+"Otras marcas (especificar)#sh#sf",
+"Ninguna de las anteriores#sh#se#sf"
+};
+qst.setProperty("options", q280_opts);
+send qst;
+
+for(int i=0,16)
+{
+sel=system.getProperty("ans280_"+i);
+if (sel==false)
+{ opt="#shopt"+i; q280_opts.set(i,opt);}
+}
+
+q280_opts.set(16,"Otras marcas (especificar)#so#sf");
+
+qst = new question("choice", 290);
+qst.setProperty("text", "¿Cuáles de las siguientes marcas de neumático ha adquirido alguna vez?  <div class='info'>Se permiten varias respuestas</div>");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q130");
+qst.setProperty("show_rand", true);
+qst.setProperty("options", q280_opts);
+send qst;
+
+
+
+count=0;
+for(int i=0,17)
+{
+sel=system.getProperty("ans290_"+i);
+if (sel==true){ count=count+1; reCod=i;}
+}
+
+if (count>0)
+{
+		qst = new question("choice", 300);
+		qst.setProperty("text", "¿Qué marcas de neumáticos compró la última vez para su actual vehículo?"+
+		"<div class='info'><div class='info'>Seleccione una única respuesta.</div></div>");
+		qst.setProperty("code", "q145");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("controller", 290);
+		if (count==1)
+		{
+		qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+		qst.setProperty("hidden", true);
+		}
+		send qst;
+}
+
+
+q280_opts.set(17,"Ninguna de las anteriores#se#sf");
+
+count=0;
+for(int i=0,16)
+{
+sel=system.getProperty("ans280_"+i);
+if (sel==false)
+		{
+		opt="#shopt"+i;
+		q280_opts.set(i,opt);
+		}
+else {count=count+1;}		
+
+sel=system.getProperty("ans290_"+i);
+if (sel==true)
+		{
+		opt="#shopt"+i;
+		q280_opts.set(i,opt);
+		if (i!=16) {count=count-1; }
+		}	
+}
+
+
+if (count>0)
+{
+qst = new question("choice", 310);
+qst.setProperty("text", "Entre todas las marcas de neumático que NO ha comprado nunca, ¿cuáles piensa tener en cuenta para una futura compra? "+
+" <div class='info'>Se permiten varias respuestas.</div>");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q160");
+qst.setProperty("show_rand", true);
+qst.setProperty("options", q280_opts);
+send qst;
+}
+
+vector q320_opts = new vector { "Bridgestone", "Firestone", "Michelin", "Pirelli", "Goodyear", "Continental", "Dunlop", "Yokohama", "Hankook", "Toyo", "GT Radial", "Uniroyal", "Nexen", "Kumho", "Apollo", "Riken", "Otras marcas  especificar#so#sf", "Ninguna de las anteriores#se#sf" }; 
+
+qst = new question("choice", 320);
+qst.setProperty("text", "¿Qué marcas de neumático piensa <u>NO</u> tener en cuenta para una futura compra?  <div class='info'>Se permiten varias respuestas.</div>");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q165");
+qst.setProperty("show_rand", true);
+qst.setProperty("options", q320_opts);
+send qst;
+
+
+
+string all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,20,90,150);});</script>";
+string allinea=all+mozCode;    
+
+qst = new question("choice", 330);
+qst.setProperty("text", allinea+"¿Cuáles de estas marcas de neumático, de las que le mostramos el logo, reconoce aunque solo sea de haberlas visto en coches o en publicidad?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q200");
+qst.setProperty("show_rand", true);
+vector q330_opts = new vector {
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/brid.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/fire.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/mich.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/pirel.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/good.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/cont.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/dun.jpg'/>",
+"Ninguna de las anteriores#se#sf"
+};
+qst.setProperty("options", q330_opts);
+send qst;
+
+qst = new question("choice", 340);
+qst.setProperty("text", allinea+"¿Cuáles de estas otras marcas de neumático, de las que le mostramos el logo, reconoce aunque solo sea de haberlas visto en coches o en publicidad?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q205");
+qst.setProperty("show_rand", true);
+vector q340_opts = new vector {
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/joko.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/hank.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/toy.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/gt.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/uni.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/nex.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/kum.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/apo.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/rik.jpg'/>",
+"Ninguna marca#se#sf"
+};
+qst.setProperty("options", q340_opts);
+send qst;
+
+vector allbrands = new vector {
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/brid.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/fire.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/mich.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/pirel.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/good.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/cont.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/dun.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/joko.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/hank.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/toy.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/gt.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/uni.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/nex.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/kum.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/apo.jpg'/>",
+"<img src='http://www.primisoft.com/fields/GSI/ITA1412154/resources/rik.jpg'/>",
+"Ninguna marca#se#sf"
+};
+
+
+count=0;
+int pos; 
+
+for(int i=0,15)
+{
+if (i<7) { sel=system.getProperty("ans330_"+i);}
+else { pos=(i-7); sel=system.getProperty("ans340_"+pos);}
+
+if (sel==false)
+	{
+		opt="#shoption"+i; allbrands.set(i,opt);
+	}
+else { count=count+1; }
+
+}
+
+
+
+if (count>0)
+{
+
+
+allbrands.set(16,"Nessuna di queste#sh");
+
+qst = new question("scale", 350);
+qst.setProperty("text", "Piense en las marcas de neumáticos que conoce aunque no las haya utilizado. ¿Cómo valora de forma global cada una de las marcas?"+
+" <div class='info'>Para responder, use una escala del 1 al 9, teniendo en cuenta que 1 significa que no le gusta nada la marca y 9 significa que le gusta mucho. Seleccione una respuesta por línea</div>");
+qst.setProperty("code", "q210");
+qst.setProperty("show_rand", true);
+vector q350_cols = new vector {
+"Me gusta mucho<br/>9",
+"</br>8",
+"</br>7",
+"</br>6",
+"</br>5",
+"</br>4",
+"</br>3",
+"</br>2",
+"No me gusta nada</br>1"
+};
+qst.setProperty("cols", q350_cols);
+qst.setProperty("rows", allbrands);
+send qst;
+
+allbrands.set(16,"Ninguna#se#sf");
+
+
+qst = new question("scale", 360);
+qst.setProperty("text", "Asocie cada una de las frases siguientes a las marcas de neumáticos que conoce."+
+" <div class='info'>Puede indicar una, más de una, todas o ninguna de las marcas de la lista.</div>");
+qst.setProperty("code", "q220");
+qst.setProperty("show_rand", true);
+vector q360_rows = new vector {
+"Innovadora",
+"Con grandes inversiones en tecnología",
+"Famosa/que hace mucha publicidad",
+"Con productos excelentes",
+"Con una gama de productos completa",
+"Comprometida con la defensa del medio ambiente",
+"Preocupada por la seguridad",
+"Sólida/presente en todo el mundo",
+"Dinámica/en crecimiento",
+"Con una buena relación calidad/precio",
+"Hace neumáticos adaptados a todos",
+"Con productos de larga duración",
+"Muy presente en el mundo de las carreras",
+"Hace neumáticos para todo tipo de coches"
+};
+qst.setProperty("rows", q360_rows);
+qst.setProperty("cols", allbrands);
+qst.setProperty("selection", "multiple");
+qst.setProperty("extras","{rand_cols:true;min:1}");
+send qst;
+}
+
+
+qst = new question("choice", 370);
+qst.setProperty("text", "<p>Hablemos de los nuevos neumáticos que tiene actualmente en su coche</p>¿A través de cuál de los siguientes canales de ventas hizo la compra de sus neumáticos actuales?");
+qst.setProperty("code", "q300");
+qst.setProperty("show_rand", true);
+vector q370_opts = new vector {
+"Taller de neumáticos independiente",
+"Taller de neumáticos perteneciente a una cadena",
+"Gasolinera",
+"Concesionario",
+"Taller mecánico",
+"Hipermercado/supermercado",
+"Centros especializados en mantenimiento de coches (como Midas o Norauto)",
+"Internet",
+"Otro, especificar:#so#sf"
+};
+qst.setProperty("options", q370_opts);
+send qst;
+
+ansId=system.getProperty("ans370");
+
+if (ansId==1)
+{
+
+qst = new question("choice", 380);
+qst.setProperty("text", "¿A cuál de las siguientes cadenas pertenecía el especialista en neumáticos donde hizo la compra de sus neumáticos actuales?");
+qst.setProperty("code", "q310");
+qst.setProperty("show_rand", true);
+vector q380_opts = new vector {
+"Confortauto / Hankook Masters",
+"First Stop",
+"Euromaster",
+"Vialider",
+"Vulco",
+"Driver",
+"Eurotyre",
+"Rodi",
+"Midas",
+"Center's Auto",
+"Aurgi",
+"Otro, especificar:#so#sf"
+};
+qst.setProperty("options", q380_opts);
+send qst;
+}
+
+if (ansId==3)
+{
+qst = new question("open", 390);
+qst.setProperty("text", ". ¿Podría indicar la marca del fabricante de vehículos al que pertenecía el concesionario donde ha comprado los neumáticos que está usando?");
+qst.setProperty("code", "q320");
+qst.setProperty("alt", "1:No lo sé, no lo recuerdo");
+send qst;
+}
+
+qst = new question("choice", 400);
+qst.setProperty("text", "¿Por cuáles de los siguientes motivos ha escogido este punto de venta para los neumáticos?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q330");
+qst.setProperty("show_rand", true);
+vector q400_opts = new vector {
+"Comodidad",
+"Competencia/capacidad de asesoramiento del especialista en neumáticos",
+"Conveniencia de los precios",
+"Disponibilidad de la marca/modelo del neumático deseado",
+"Promoción en los precios (tipo 4x2 o similar)",
+"Promociones con regalo, concurso, etc",
+"Otro, especificar:#so#sf"
+};
+qst.setProperty("options", q400_opts);
+send qst;
+
+qst = new question("open", 410);
+qst.setProperty("text", "¿Cuáles son las características más importantes para usted a la hora de elegir los neumáticos que está usando?");
+qst.setProperty("code", "q340");
+send qst;
+
+qst = new question("scale", 420);
+qst.setProperty("text", "¿Cuál es el grado de importancia de las siguientes características de un neumático a la hora de comprarlo: muy importante, bastante importante, más o menos importante, poco o para nada importante?");
+qst.setProperty("code", "q350");
+qst.setProperty("show_rand", true);
+vector q420_rows = new vector {
+"Precio competitivo",
+"Descuento ",
+"Promoción con regalos o concursos",
+"Marca reconocida/seria/fiable",
+"Publicidad del producto",
+"Consejo del especialista en neumáticos",
+"Producto tecnológico/innovador",
+"Duración",
+"Agarre en suelo seco",
+"Agarre en suelo mojado",
+"Agarre en nieve o hielo",
+"Ahorro de combustible",
+"Ruidos",
+"Conducción cómoda",
+"Grip/agarre/capacidad de transferir potencia",
+"Seguridad/confianza/solidez",
+"Estética/diseño del dibujo del neumático",
+"Relación calidad/precio"
+};
+qst.setProperty("rows", q420_rows);
+vector q420_cols = new vector {
+"Muy importante",
+"Bastante importante",
+"Más o menos importante",
+"Poco importante",
+"Para nada importante",
+"No lo sé"
+};
+qst.setProperty("cols", q420_cols);
+send qst;
+
+
+qst = new question("choice", 430);
+qst.setProperty("text", "Cuando compró los neumáticos que está usando, ¿pidió alguna marca en concreto o se dejó aconsejar por el especialista en neumáticos?");
+qst.setProperty("code", "q360");
+vector q430_opts = new vector {
+"SÍ, pedí marca/modelo",
+"NO, me dejé aconsejar por el especialista en neumáticos",
+"NO, eran los originales del coche"
+};
+qst.setProperty("options", q430_opts);
+send qst;
+
+ansId=system.getProperty("ans430");
+if (ansId==0)
+{
+qst = new question("choice", 440);
+qst.setProperty("text", "¿Compró la marca/modelo que pidió o al final escogió otra solución?");
+qst.setProperty("code", "q370");
+vector q440_opts = new vector {
+"Compré la marca/modelo que quería",
+"Compré otra marca/modelo"
+};
+qst.setProperty("options", q440_opts);
+send qst;
+
+qst = new question("choice", 450);
+qst.setProperty("text", "Siempre haciendo referencia a la compra de los neumáticos que está usando, ¿qué factor decisivo fue más relevante de entre los siguientes? ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q375");
+//qst.setProperty("show_rand", true);
+vector q450_opts = new vector {
+"La marca del neumático",
+"El modelo de neumático (características técnicas)",
+"Ninguno de los anteriores#se#sf"
+};
+qst.setProperty("options", q450_opts);
+send qst;
+
+}
+
+qst = new question("choice", 460);
+qst.setProperty("text", "¿Cuántos neumáticos compró la última vez?");
+qst.setProperty("code", "q380");
+vector q460_opts = new vector {
+"2",
+"4",
+"Otro, especificar:#so"
+};
+qst.setProperty("options", q460_opts);
+send qst;
+
+qst = new question("open", 470);
+qst.setProperty("text", "¿Recuerda el precio aproximado de los neumáticos que compró la última vez?");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q390");
+qst.setProperty("validation_rule", "^[0-9]|[1-9][0-9]{1,3}$");
+qst.setProperty("validation_error", "Introduzca un valor entre 0 y 99.999");
+qst.setProperty("code", "q390");
+qst.setProperty("left_label", "€");
+qst.setProperty("alt", "1:No lo sé, no lo recuerdo");
+send qst;
+
+
+
+qst = new question("open", 480);
+qst.setProperty("text", "¿Recuerda la medida del neumático que está utilizando? En caso afirmativo, ¿podría indicar poner la medida correspondiente?");
+qst.setProperty("code", "q395");
+qst.setProperty("alt", "1:No lo sé, no lo recuerdo");
+send qst;
+
+
+
+qst = new question("open", 490);
+qst.setProperty("text", "Hablemos del uso habitual que hace de sus neumáticos. ¿Sabría decirnos aproximadamente cuántos km duran normalmente sus neumáticos?");
+qst.setProperty("view", "numeric");
+qst.setProperty("validation_rule", "^[0-9]|[1-9][0-9]{1,4}$");
+qst.setProperty("validation_error", "Introduzca un valor entre 0 y 99.999");
+qst.setProperty("left_label", "km.");
+qst.setProperty("code", "q400");
+qst.setProperty("alt", "1:No lo sé, no lo recuerdo");
+send qst;
+
+qst = new question("choice", 500);
+qst.setProperty("text", "Cuando cambia los neumáticos, ¿cambia los 4 a la vez o 2 cada vez?");
+qst.setProperty("code", "q410");
+vector q500_opts = new vector {
+"Cambio los 4",
+"Cambio 2 por vez"
+};
+qst.setProperty("options", q500_opts);
+send qst;
+
+qst = new question("choice", 510);
+qst.setProperty("text", "¿Le hace usted una revisión periódica a sus neumáticos?");
+qst.setProperty("code", "q420");
+vector q510_opts = new vector {
+"SI",
+"NO"
+};
+qst.setProperty("options", q510_opts);
+send qst;
+
+ansId=system.getProperty("ans510");
+if (ansId==0)
+{
+qst = new question("choice", 520);
+qst.setProperty("text", "¿Cuáles de los siguientes aspectos pide que le revisen cuando hace el mantenimiento de los neumáticos?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q430");
+//qst.setProperty("show_rand", true);
+vector q520_opts = new vector {
+"Equilibrado",
+"Convergencia",
+"Permutación de los neumáticos",
+"Sustitución de los neumáticos de invierno / verano",
+"Otro (especificar):#so#sf"
+};
+qst.setProperty("options", q520_opts);
+send qst;
+
+qst = new question("open", 530);
+qst.setProperty("text", "Aproximadamente, ¿cada cuántos km revisa sus neumáticos?");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q440");
+qst.setProperty("validation_rule", "^[0-9]|[1-9][0-9]{1,4}$");
+qst.setProperty("validation_error", "Introduzca un valor entre 0 y 99.999");
+qst.setProperty("alt", "1:No lo sé, no lo recuerdo");
+qst.setProperty("left_label", "km.");
+send qst;
+}
+
+qst = new question("choice", 540);
+qst.setProperty("text", "¿Con qué frecuencia controla o lleva a controlar la presión de sus neumáticos?");
+qst.setProperty("code", "q460");
+vector q540_opts = new vector {
+"Varias veces al mes",
+"Una vez al mes",
+"Una vez cada 2 meses",
+"3-4 veces al año",
+"1 ó 2 veces al año",
+"Solo cuando voy a hacer un viaje largo",
+"Nunca"
+};
+qst.setProperty("options", q540_opts);
+send qst;
+
+qst = new question("choice", 550);
+qst.setProperty("text", "¿Hasta qué punto está SATISFECHO con los neumáticos que está utilizando?");
+qst.setProperty("code", "q600");
+vector q550_opts = new vector {
+"Muy satisfecho",
+"Bastante satisfecho",
+"Más o menos satisfecho ",
+"Poco satisfecho",
+"Para nada satisfecho"
+};
+qst.setProperty("options", q550_opts);
+send qst;
+
+qst = new question("choice", 560);
+qst.setProperty("text", "¿RECOMENDARÍA a un amigo/familiar los neumáticos que usa actualmente?");
+qst.setProperty("code", "q610");
+vector q560_opts = new vector {
+"Seguramente sí",
+"Probablemente sí",
+"Quizás sí o quizás no",
+"Probablemente no",
+"Seguramente no"
+};
+qst.setProperty("options", q560_opts);
+send qst;
+
+qst = new question("choice", 570);
+qst.setProperty("text", "Cuando tenga que cambiar los neumáticos, ¿piensa COMPRAR los mismos neumáticos que utiliza actualmente?");
+qst.setProperty("code", "q620");
+vector q570_opts = new vector {
+"Seguramente sí",
+"Probablemente sí",
+"Quizás sí o quizás no",
+"Probablemente no",
+"Seguramente no"
+};
+qst.setProperty("options", q570_opts);
+send qst;
+
+qst = new question("choice", 580);
+qst.setProperty("text", "Por lo que sabe, ¿hasta qué punto es PROVECHOSO seguir utilizando la marca de los neumáticos que lleva actualmente comparado con los de la competencia?");
+qst.setProperty("code", "q630");
+vector q580_opts = new vector {
+"Muy provechoso",
+"Bastante provechoso",
+"Más o menos provechoso",
+"Poco provechoso",
+"Para nada provechoso"
+};
+qst.setProperty("options", q580_opts);
+send qst;
+
+qst = new question("scale", 590);
+qst.setProperty("text", "¿Hasta qué punto está satisfecho, según las siguientes características, con los neumáticos que utiliza actualmente: muy satisfecho, bastante satisfecho, más o menos satisfecho, poco satisfecho o para nada satisfecho?");
+qst.setProperty("code", "q640");
+qst.setProperty("show_rand", true);
+vector q590_rows = new vector {
+"Duración",
+"Agarre en suelo seco",
+"Agarre en suelo mojado",
+"Agarre en nieve o hielo",
+"Ahorro de combustible",
+"Ruidos",
+"Conducción cómoda",
+"Grip/agarre/capacidad de transferir potencia",
+"Seguridad/confianza/solidez",
+"Estética/diseño del dibujo del neumático",
+"Relación calidad/precio"
+};
+qst.setProperty("rows", q590_rows);
+vector q590_cols = new vector {
+"Muy satisfecho",
+"Bastante satisfecho",
+"Más o menos satisfecho",
+"Poco satisfecho",
+"Para nada satisfecho",
+"No lo sé"
+};
+qst.setProperty("cols", q590_cols);
+send qst;
+
+qst = new question("choice", 600);
+qst.setProperty("text", "¿Qué marcas recuerda haber visto recientemente en la televisión o haber escuchado en la radio o visto en algún cartel publicitario?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q700");
+qst.setProperty("show_rand", true);
+vector q600_opts = new vector {
+"Bridgestone",
+"Firestone",
+"Michelin",
+"Pirelli",
+"Goodyear",
+"Continental",
+"Dunlop",
+"Yokohama",
+"Hankook",
+"Toyo",
+"GT Radial",
+"Uniroyal",
+"Nexen",
+"Kumho",
+"Apollo",
+"Riken",
+"Otro (especificar)#so#sf",
+"No lo sé, no lo recuerdo#se#sf"
+};
+qst.setProperty("options", q600_opts);
+send qst;
+
+baseQid=1000;
+
+for(int i=0,16)
+{
+qid=baseQid+i;
+sel=system.getProperty("ans600_"+i);
+if (sel==true)
+		{
+		label=q600_opts.get(i);
+		if (i==16) { comp=system.getProperty("ans600_"+i+"_comp"); label=comp;}
+
+		qst = new question("choice", qid);
+		qst.setProperty("text", "¿Podría indicar si recuerda haber visto la publicidad de <b>"+label+"</b>?");
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("code", "q710br"+i);
+		qst.setProperty("show_rand", true);
+		vector q610_opts = new vector {
+		"En internet",
+		"En la página web de la marca de neumáticos",
+		"Mensajes publicitarios por correo electrónico",
+		"Publicidad impresa (diarios y periódicos)",
+		"Publicidad en la televisión",
+		"Publicidad en la radio",
+		"Publicidad en soportes publicitarios (póster, carteles, …)",
+		"Publicidad por correo postal",
+		"Otro, especificar:#so#sf"
+		};
+		qst.setProperty("options", q610_opts);
+		send qst;
+
+		}
+}
+
+
+
+
+
+qst = new question("choice", 710);
+qst.setProperty("text", "<p>Hemos llegado al final de la entrevista. Ahora le haremos preguntas con fines puramente estadísticos. </p>"+
+"¿Cuántas personas forman su familia, incluido usted mismo/a? <div class='info'>Seleccione una única respuesta</div>");
+qst.setProperty("code", "q1000");
+vector q710_opts = new vector {
+"1 persona",
+"2 personas",
+"3 personas",
+"4 personas",
+"5 personas o más"
+};
+qst.setProperty("options", q710_opts);
+send qst;
+
+ansId=system.getProperty("ans710");
+if (ansId!=0)
+{
+
+qst = new question("choice", 720);
+qst.setProperty("text", "¿Tiene hijos menores de 18 años que vivan en su casa? ");
+qst.setProperty("code", "q1010");
+vector q720_opts = new vector {
+"S&igrave;",
+"No"
+};
+qst.setProperty("options", q720_opts);
+send qst;
+
+ansId=system.getProperty("ans720");
+if (ansId==0)
+		{
+
+			qst = new question("open", 730);
+			qst.setProperty("text", "Y ¿cuántos hijos menores de edad viven en su casa?");
+			qst.setProperty("view", "numeric");
+			qst.setProperty("code", "q1020");
+			qst.setProperty("validation_rule", "^[1-6]$");
+			send qst;
+			
+			n=(int)system.getProperty("ans730");
+			
+			vector q740_rows = new vector {
+			"#sh1° Figlio",
+			"#sh2° Figlio",
+			"#sh3° Figlio",
+			"#sh4° Figlio",
+			"#sh5° Figlio",
+			"#sh6° Figlio"
+			};			
+			vector q740_copy = new vector { 			"1er Hijo", 			"2° Hijo", 			"3er Hijo", 			"4º Hijo", 			"5° Hijo", 			"6° Hijo" 			};
+			
+			count=0;
+			for(int i=0,5)
+			{
+				count=count+1;
+				
+				if (count<=n)
+				{ opt=q740_copy.get(i);  q740_rows.set(i,opt); }
+			
+			}
+
+			qst = new question("scale", 740);
+			qst.setProperty("text", "¿Cuántos años tienen los niños menores de edad que viven en su casa?");
+			qst.setProperty("code", "q1030");
+			qst.setProperty("rows", q740_rows);
+			vector q740_cols = new vector {
+			"De 0 a 6 años",
+			"De 7 a 12 años",
+			"De 13 a 17 años"
+			};
+			qst.setProperty("cols", q740_cols);
+			send qst;
+		}
+}
+
+
+qst = new question("choice", 750);
+qst.setProperty("text", "¿Cuál es su nivel de formación? <div class='info'>sólo una respuesta</div>");
+qst.setProperty("code", "q1040");
+vector q750_opts = new vector {
+"Especialización/máster post grado",
+"Universidad - con obtención de título",
+"Universidad - sin obtención de título",
+"Bachillerato",
+"Graduado escolar",
+"Ningún título"
+};
+qst.setProperty("options", q750_opts);
+send qst;
+
+qst = new question("choice", 760);
+qst.setProperty("text", "¿Cuál es su estado civil? Seleccione una única respuesta");
+qst.setProperty("code", "q1050");
+vector q760_opts = new vector {
+"Casado/a, en convivencia",
+"Soltero/a",
+"Separado/a, divorciado/a, viudo/a "
+};
+qst.setProperty("options", q760_opts);
+send qst;
+
+qst = new question("choice", 770);
+qst.setProperty("text", "¿Podría indicar su actual condición laboral?");
+qst.setProperty("code", "q1060");
+vector q770_opts = new vector {
+"Empleado/a a tiempo completo",
+"Empleado/a a tiempo parcial",
+"En permiso de maternidad/paternidad",
+"Otra condición laboral",
+"Desempleado/a",
+"Jubilado/a",
+"Amo/a de casa",
+"Estudiante",
+"Otra condición NO laboral"
+};
+qst.setProperty("options", q770_opts);
+send qst;
+
+ansId=system.getProperty("ans770");
+if (ansId<4)
+{
+qst = new question("choice", 780);
+qst.setProperty("text", "¿Podría indicar qué trabajo desempeña?");
+qst.setProperty("code", "q1070");
+vector q780_opts = new vector {
+"Emprendedor/a",
+"Profesional autónomo",
+"Dirigente",
+"Funcionario/a",
+"Artesano/a",
+"Comercial",
+"Trabajador/a autónomo/a",
+"Empleado/a - docente",
+"Obrero/a",
+"Otro"
+};
+qst.setProperty("options", q780_opts);
+send qst;
+}
+
+qst = new question("choice", 790);
+qst.setProperty("text", "¿Cuáles son los ingresos familiares brutos (sin tener en cuenta los impuestos) en su casa? Le rogamos incluya los ingresos de otras persnas que contribuyen a los ingresos familiares (por ejemplo, los ingresos de su pareja).");
+qst.setProperty("code", "q1080");
+vector q790_opts = new vector {
+"Por debajo de 10 000 €",
+"10.000€ – 14.999€",
+"15.000€ – 24.999€",
+"25.000€ – 34.999€",
+"35.000€ – 44.999 €",
+"45.000€ – 54.999€",
+"55.000€ – 64.999€",
+"65.000€ – 74.999€",
+"75.000€ – 84.999€",
+"85.000€ – 99.999€",
+"Más de 100 000 €",
+"Prefiero no responder"
+};
+qst.setProperty("options", q790_opts);
+send qst;
+
+
+
+}

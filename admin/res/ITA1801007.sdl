@@ -1,0 +1,2528 @@
+#export vars "r2"
+
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+string errMsg;
+
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "debug:true");
+//system.setProperty("env", "browser:full");
+
+string tabella="<p><div >&nbsp;</div>"+
+"<table class='formati' border='1' cellpadding='5'>"+
+"<tr><td><b>&nbsp;</b></td><td><b>FORMATO</b></td><td><b>PREZZO</b></td></tr>"+
+"<tr><td><span style='color:#1ab254'><b>Menta</b></span></td><td>2 x 125 gr</td><td> 1,69€</td></tr>"+
+"<tr><td><span style='color:#98d66f'><b>Lime</b></span></td><td>2 x 125 gr</td><td>1,69€</td></tr>"+
+"<tr><td><span style='color:#4e9cb2'><b>Bianco Dolce</b></span></td><td>2 x 125 gr</td><td>1,69€</td></tr>"+
+"<tr><td><span style='color:#ffc66b'><b>Mango</b></td><td>2 x 125 gr</td><td>1,69€</td></tr>"+
+"</table></p>";
+
+
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+//estrazione leg
+int leg;
+system.setProperty("r1", "rand:2000");
+r1=(int)system.getProperty("r1");
+
+if (r1<=1000) { leg=1;}
+if (r1>1000) { leg=2;}
+system.setProperty("leg",leg);
+
+
+system.out("<div>Cella: "+leg+"</div>"); 
+
+
+qst = new question("choice", 10);
+qst.setProperty("text", "La protezione di informazioni di carattere personale/confidenziale &egrave; molto importante per noi e a garanzia di ci&ograve;"+
+" ci atteniamo alla normativa in tutela della privacy .E’ allo stesso modo importante per noi proteggere le informazioni riservate delle aziende nostre clienti."+
+" <div id=''>Pertanto nel partecipare a questo studio le chiediamo di:</div>  <p><div id=''>1. <u>Non Divulgare Le Informazioni</u> riservate e proprietarie presenti in questo studio inerenti a: concetti, prodotti e / o confezioni, oppure di non usarle a suo vantaggio o a vantaggio di terze persone</div>"+
+" <div id=''>2. <u>NON fotografare, registrare, pubblicare su Internet</u>, copiare o in qualsiasi altro modo riprodurre alcuna delle informazioni riservate contenute in questo studio</div></p> "+
+" <p>Se Lei <b>accetta</b>  significher&agrave; che Lei ha capito e accettato quanto detto. </p>");
+qst.setProperty("code", "s.5");
+vector q10_opts = new vector {
+"Accetto",
+"Non accetto"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+
+ansId=system.getProperty("ans10");
+if (ansId==1){ return 4; }
+
+
+qst = new question("choice", 20);
+qst.setProperty("text", "In quale regione vive attualmente?");
+qst.setProperty("code", "s.10");
+vector q20_opts = new vector {
+"Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia Romagna",
+"Friuli Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino Alto Adige",
+"Umbria",
+"Valle d'Aosta",
+"Veneto"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+ansId=system.getProperty("ans20");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+		case 6,9,15,17:{reCod=2;}
+	
+        }
+
+
+
+qst = new question("choice", 30);
+qst.setProperty("text", "RECODED REGION");
+qst.setProperty("code", "s.10a");
+vector q30_opts = new vector {
+"Nord ovest",
+"Nord est",
+"Centro",
+"Sud e Isole"
+};
+qst.setProperty("options", q30_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Lei &egrave;...");
+qst.setProperty("code", "s.15");
+vector q40_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+qst = new question("open", 50);
+qst.setProperty("text", "Potrebbe dirmi la Sua et&agrave;?");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "s.20");
+send qst;
+
+int eta=(int)system.getProperty("ans50");
+if (eta<18 || eta >65) { return 4;}
+
+	if(eta<18) { reCod=0;}
+	if(eta>=18 && eta<=24) { reCod=1;}
+	if(eta>=25 && eta<=34) { reCod=2;}
+	if(eta>=35 && eta<=44) { reCod=3;}
+	if(eta>=45 && eta<=54) { reCod=4;}
+	if(eta>=55 && eta<=65) { reCod=5;}
+	if(eta>65 ) { reCod=6;}
+
+qst = new question("choice", 60);
+qst.setProperty("text", "INSERIRE L’ETA’ ESATTA");
+qst.setProperty("code", "s.20rec");
+vector q60_opts = new vector {
+"Meno di 18",
+"18 –24",
+"25 – 34",
+"35- 44",
+"45- 54",
+"55-65",
+"Pi&ugrave; di 65"
+};
+qst.setProperty("options", q60_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Per questa indagine, siamo interessati ad intervistare persone che lavorano in alcuni settori o attivit&agrave;. <div id=''>Lei o un membro della Sua famiglia lavora in uno dei seguenti….?</div>");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.25");
+vector q70_opts = new vector {
+"Agenzia di pubblicit&agrave;/promozioni/design",
+"Aziende che producono o vendono prodotti alimentari",
+"Grossisti o cash & carry",
+"Giornalismo",
+"Marketing/ricerche di mercato",
+"Sviluppo nuovi prodotti",
+"Pubbliche relazioni",
+"Supermercati o negozi di alimentari",
+"TV/Radio/Stampa",
+"Aziende automobilistiche",
+"Aziende di prodotti elettronici",
+"Aziende che producono prodotti per la cura personale",
+"Aziende d’ingegneria",
+"Insegnamento",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+
+count=0;
+for(int i=0,8)
+{
+sel=system.getProperty("ans70_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if (count>0) { return 4; }
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Pensando agli acquisti di prodotti alimentari destinati alla sua famiglia, quanti sono fatti personalmente da lei?");
+qst.setProperty("code", "s.30");
+vector q80_opts = new vector {
+"Tutti",
+"Quasi tutti",
+"Circa la met&agrave; di essi",
+"Meno della met&agrave; di essi",
+"Nessuno di essi"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+ansId=system.getProperty("ans80");
+if (ansId>3) { return 4; }
+
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Quali dei seguenti prodotti non consumerebbe mai perché proprio non le piace?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s.31");
+vector q90_opts = new vector {
+"Prodotti a base di/fatti con/ che contengono soia",
+"Prodotti a base di/fatti con/ che contengono cocco",
+"Prodotti a base di/fatti con/ che contengono riso",
+"Prodotti a base di/fatti con/ che contengono mandorla",
+"Prodotti vegetali (bevande vegetali, gastronomia vegetali, yogurt vegetale)",
+"Prodotti al sapore di cioccolato",
+"Prodotti con cereali",
+"Nessuno di essi#se#sf"
+};
+qst.setProperty("options", q90_opts);
+qst.setProperty("show_rand",true);
+send qst;
+
+sel=system.getProperty("ans90_1");
+if (sel==true) {return 4;}
+
+sel=system.getProperty("ans90_4");
+if (sel==true) {return 4;}
+
+qst = new question("choice", 100);
+qst.setProperty("text", "Quali dei seguenti prodotti Lei solitamente acquista (o ha chiesto di acquistare) negli ultimi <b>12 mesi</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand",true);
+qst.setProperty("code", "s.40");
+vector q100_opts = new vector {
+"Yogurt per adulti al cucchiaio (intero/magro/ altro tipo)",
+"Dessert al cucchiaio",
+"Gelati",
+"Biscotti",
+"Succhi di frutta",
+"Bevande vegetali (ad esempio di soia, di riso)",
+"Th&egrave;",
+"Caff&egrave;",
+"Orzo",
+"Tisane",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+sel=system.getProperty("ans100_0");
+if (sel==false) {return 4;}
+
+qst = new question("choice", 103);
+qst.setProperty("text", "Lei ha mai consumato YOGURT DI SOIA/VEGETALE  ?");
+qst.setProperty("code", "s.45bis");
+vector q103_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q103_opts);
+send qst;
+
+ansId=system.getProperty("ans103");
+
+qtext="E quale TIPO DI YOGURT Le è capitato di <b>ACQUISTARE</b> (o ha chiesto di acquistare)<b> NEGLI ULTIMI 12 MESI</b>?";
+qst = new question("choice", 110);
+qst.setProperty("text", qtext);
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.45a");
+vector q110_opts = new vector {
+"<b>YOGURT INTERO</b> (con un tenore di grassi superiore a 1,5% di grassi - Bianco, alla frutta (frullata), con pezzi di frutta, con cereali, etc…)",
+"<b>YOGURT MAGRO</b> (con un tenore di grassi inferiore a 1% di grassi - Bianco, alla frutta (frullata), con pezzi di frutta, con cereali, etc…)",
+"<b>YOGURT BI - COMPARTIMENTO</b> (yogurt con un compartimento mixabile (es. confettini, fiocchi di cioccolato, granella, etc.)",
+"<b>YOGURT GRECO</b> (bianco, alla frutta (frullata o in pezzi), bi-strato, etc…,es. Fage, Mevgal, Delta by Yomo, OIKOS, Zymil alla greca, Vitasnella alla Greca…)",
+"<b>YOGURT SENZA LATTOSIO IN VASETTO</b>  (bianco, alla frutta (frullata o in pezzi), etc.. es. Zymil, Bella Vita Merano)",
+"<b>YOGURT CHE AIUTA A FAVORIRE L'EQUILIBRIO DELLA FLORA INTESTINALE - IN VASETTO</b>  (bianco, alla frutta (frullata o in pezzi), etc.., es. Activia, Activia Zero Grassi)",
+"<b>YOGURT ANTICOLESTEROLO</b> (che riducono i livelli di colesterolo (es. Danacol)",
+"<b>YOGURT DI SOIA/VEGETALE</b> (es. Alpro, Valsoia, Granarolo 100% vegetale)",
+"<b>YOGURT PROBIOTICO</b>",
+"<b>YOGURT DI CAPRA</b>",
+"<b>YOGURT BIOLOGICO</b>",
+"NESSUNO DI QUESTI#se#sf"
+};
+qst.setProperty("options", q110_opts);
+qst.setProperty("show_rand",true);
+if (ansId==0) 
+{
+qst.setProperty("default_answer","{ 'selection': [7]}");
+}
+send qst;
+
+sel=system.getProperty("ans110_7");
+
+
+
+errMsg="<span style='color:red'><b>Attenzione selezionare YOGURT DI SOIA/VEGETALE !</b></span>";
+
+
+while (sel==false && ansId==0) 
+{
+    // elimina l'ultima risposta
+    system.setProperty("delete", "ans110");
+    // ripropone la domanda
+
+    qst.setProperty("text", errMsg);
+    send qst;
+}
+
+
+count=0;
+int otbrand;
+
+for(int i=0,10)
+{
+sel=system.getProperty("ans110_"+i);
+if (sel==true) 
+		{ 
+		count=count+1;  reCod=i;
+		if (i !=7  ) { otbrand=otbrand+1;}
+		}
+}
+
+if (count==0) { return 4; }
+
+
+
+
+qst = new question("choice", 120);
+qst.setProperty("text", "E quale TIPO DI YOGURT Lei solitamente <b>ACQUISTA E CONSUMA PIU’ SPESSO?</b>");
+qst.setProperty("code", "s.50a");
+qst.setProperty("controller", 110);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+int s50=system.getProperty("ans120");
+
+
+
+int targ;
+
+sel=system.getProperty("ans110_7");
+if (sel==true) { targ=1;}
+else { targ=2; }
+
+system.setProperty("targ",targ);
+
+if (leg==1 && targ==1) { reCod=0;}
+if (leg==2 && targ==1) { reCod=1;}
+if (leg==1 && targ==2) { reCod=2;}
+if (leg==2 && targ==2) { reCod=3;}
+
+vector q130_opts = new vector {
+"TARGET 1 - CELLA 1 ",
+"TARGET 1 - CELLA 2 ",
+"TARGET 2 - CELLA 1 ",
+"TARGET 2 - CELLA 2 "
+};
+
+
+
+qst = new question("choice", 130);
+qst.setProperty("text", "ALLOCATION TARGET CONDITION");
+qst.setProperty("code", "tar");
+qst.setProperty("options", q130_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+system.setProperty("rtrVar",reCod);
+
+cmd=q130_opts.get(reCod);
+system.out("<div>Target: "+cmd+"</div>"); 
+
+qst = new question("choice", 140);
+qst.setProperty("text", "Quale delle seguenti frasi descrive meglio il modo in cui Lei di solito si procura Yogurt?");
+qst.setProperty("code", "s.50");
+vector q140_opts = new vector {
+"Li compro io e scelgo la marca",
+"Li compro io  anche se non sempre scelgo la marca",
+"Scelgo la marca ma qualcun altro li compra per me",
+"Qualcun altro compra i prodotti e io non scelgo la marca",
+"Uso qualunque marca disponibile in casa"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+ansId=system.getProperty("ans140");
+if (ansId>3) { return 4; }
+
+vector q150_opts = new vector {
+"Yogurt per adulti al cucchiaio (intero/magro/ altro tipo)",
+"Dessert al cucchiaio",
+"Gelati",
+"Biscotti",
+"Succhi di frutta"
+};
+
+count=0;
+for(int i=1,4)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q150_opts.set(i,opt); }
+else { count=count+1;}
+}
+
+
+if (count>0)
+{
+qst = new question("fixed_sum", 150);
+qst.setProperty("text", "Pensi ai diversi tipi di prodotti che lei acquista abitualmente presso supermercati/ipermercati. <br/>"+
+" Pensando alle ultime 10 volte in cui lei ha acquistato questi prodotti, come li suddividerebbe tra questi prodotti? "+
+"<div class='info'>IL TOTALE DEVE ESSERE PARI A  10</div>");
+qst.setProperty("fields", q150_opts);
+qst.setProperty("code", "s.55");
+qst.setProperty("sum", 10); // set total value
+send qst;
+}
+
+
+vector q160_opts = new vector {
+"YOGURT INTERO (con un tenore di grassi superiore a 1,5% di grassi - Bianco, alla frutta (frullata), con pezzi di frutta, con cereali, etc…)",
+"YOGURT MAGRO (con un tenore di grassi inferiore a 1% di grassi - Bianco, alla frutta (frullata), con pezzi di frutta, con cereali, etc…)",
+"YOGURT BI - COMPARTIMENTO (yogurt con un compartimento mixabile (es. confettini, fiocchi di cioccolato, granella, etc.)",
+"YOGURT GRECO (bianco, alla frutta (frullata o in pezzi), bi-strato, etc…,es. Fage, Mevgal, Delta by Yomo, OIKOS, Zymil alla greca, Vitasnella alla Greca…)",
+"YOGURT SENZA LATTOSIO IN VASETTO  (bianco, alla frutta (frullata o in pezzi), etc.. es. Zymil, Bella Vita Merano)",
+"YOGURT CHE AIUTA A FAVORIRE L'EQUILIBRIO DELLA FLORA INTESTINALE - IN VASETTO  (bianco, alla frutta (frullata o in pezzi), etc.., es. Activia, Activia Zero Grassi)",
+"YOGURT ANTICOLESTEROLO (che riducono i livelli di colesterolo (es. Danacol)",
+"YOGURT DI SOIA/VEGETALE (es. Alpro, Valsoia, Granarolo 100% vegetale)",
+"YOGURT PROBIOTICO",
+"YOGURT DI CAPRA",
+"YOGURT BIOLOGICO",
+"ALTRO"
+};
+
+
+count=0;
+for(int i=0,10)
+{
+sel=system.getProperty("ans110_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q160_opts.set(i,opt); }
+else { count=count+1;}
+}
+
+
+if (count>1)
+{
+qst = new question("fixed_sum", 160);
+qst.setProperty("text", "Pensando alle ultime 10 volte in cui lei ha acquistato YOGURT, come li suddividerebbe tra questi prodotti?");
+qst.setProperty("code", "s.60");
+qst.setProperty("fields", q160_opts);
+qst.setProperty("sum", 10); // set total value
+send qst;
+}
+
+qst = new question("choice", 170);
+qst.setProperty("text", "Con che frequenza <u>ACQUISTA</u> <b>YOGURT</b> presso supermercati/ipermercati?  Pensi anche al periodo estivo.");
+qst.setProperty("code", "s.65");
+vector q170_opts = new vector {
+"1 volta alla settimana o pi&ugrave; spesso",
+"1 volta ogni 2-3 settimane",
+"Una volta al mese/ogni  4 settimane",
+"1 volta ogni 2-3 mesi",
+"1 volta ogni 4-6 mesi",
+"1 o 2 volte all'anno",
+"Meno spesso di 1 volta all'anno"
+};
+qst.setProperty("options", q170_opts);
+send qst;
+
+ansId=system.getProperty("ans170");
+if (ansId>5){ return 4; }
+
+
+qst = new question("choice", 180);
+qst.setProperty("text", "E quante confezioni di  YOGURT lei acquista di solito?");
+qst.setProperty("code", "s.75");
+vector q180_opts = new vector {
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9 o pi&ugrave;",
+"Non indica"
+};
+qst.setProperty("options", q180_opts);
+send qst;
+
+
+vector q190_rows = new vector {
+"YOGURT",
+"#shYOGURT VEGETALE"
+};
+
+
+qtext="<b>CONSUMA  YOGURT</b>";
+if (targ==1 && otbrand>0) { q190_rows.set(1,"YOGURT VEGETALE"); qtext="<b>CONSUMA  YOGURT/YOGURT VEGETALE</b>";}
+
+
+
+qst = new question("scale", 190);
+qst.setProperty("text", "E con che frequenza lei di solito "+qtext+" in generale?");
+qst.setProperty("code", "s.80");
+vector q190_opts = new vector {
+"Pi&ugrave; volte al giorno",
+"Una volta al giorno",
+"Da 4 a 6 volte la settimana",
+"Da 2 a 3 volte la settimana",
+"1 volta a settimana",
+"Ogni 2 o 3 settimane",
+"1 volta al mese / ogni 4 settimane",
+"1 volta ogni 2 o 3 mesi"
+};
+qst.setProperty("rows", q190_rows);
+qst.setProperty("cols", q190_opts);
+qst.setProperty("view", "columns");
+send qst;
+
+ansId=system.getProperty("ans190_0");
+//if (ansId==7) { return 4; }
+
+ansId=system.getProperty("ans190_1");
+//if (ansId==7) { return 4; }
+
+
+qst = new question("scale", 210);
+qst.setProperty("text", "Di solito in quale/i occasioni <b>"+qtext+"</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s.81");
+vector q210_opts = new vector {
+"La mattina a colazione",
+"Durante la mattinata come snack",
+"In sostituzione del pranzo",
+"Dopo pranzo come dessert",
+"Nel pomeriggio come merenda",
+"Dopo cena come dessert",
+"Dipende, quando capita o ne ha voglia",
+"Nessuno di questi#se",
+"Non indica#se"
+};
+qst.setProperty("rows", q190_rows);
+qst.setProperty("cols", q210_opts);
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("scale", 220);
+qst.setProperty("text", "Di solito dove <b>"+qtext+"</b>?");
+qst.setProperty("code", "s.82");
+vector q220_opts = new vector {
+"Prevalentemente  in casa",
+"Prevalentemente fuori casa",
+"Sia in casa che fuori casa nello stesso modo",
+"Altro"
+};
+qst.setProperty("rows", q190_rows);
+qst.setProperty("cols", q220_opts);
+qst.setProperty("view", "columns");
+send qst;
+
+int sc0=system.getProperty("ans220_0");
+int sc1=system.getProperty("ans220_1");
+
+
+if (sc0==3)
+{
+qst = new question("open", 222);
+qst.setProperty("text", "In quale altro luogo consuma YOGURT?");
+qst.setProperty("code", "s.82ax");
+send qst;
+}
+
+if (sc1==3)
+{
+qst = new question("open", 223);
+qst.setProperty("text", "In quale altro luogo consuma YOGURT VEGETALE?");
+qst.setProperty("code", "s.82Bx");
+send qst;
+}
+
+
+if ((sc0==1 || sc0==2) ||  (sc1==1 || sc1==2))
+{
+
+if (sc1==0 || sc1==3) { q190_rows.set(1,"#shYOGURT VEGETALE");  }
+if (sc0==0 || sc0==3) { q190_rows.set(0,"#shYOGURT ");  }
+
+qst = new question("scale", 230);
+qst.setProperty("text", "Mi ha detto che <b>"+qtext+"</b> fuori casa, pu&ograve; specificare dove?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s.83");
+vector q230_opts = new vector {
+"In ufficio",
+"A scuola",
+"In palestra",
+"In viaggio",
+"In altro luogo#sf"
+};
+qst.setProperty("cols", q230_opts);
+qst.setProperty("view", "columns");
+qst.setProperty("rows", q190_rows);
+send qst;
+
+	sel=system.getProperty("ans230_0_4");
+
+
+	if (sel==true)
+	{
+	qst = new question("open", 232);
+	qst.setProperty("text", "In quale altro luogo consuma YOGURT?");
+	qst.setProperty("code", "s.83ax");
+	send qst;
+	}
+
+	sel=system.getProperty("ans230_1_4");
+
+	if (sel==true)
+	{
+	qst = new question("open", 233);
+	qst.setProperty("text", "In quale altro luogo consuma YOGURT VEGETALE?");
+	qst.setProperty("code", "s.83Bx");
+	send qst;
+	}
+
+
+}
+
+q190_rows.set(0,"YOGURT");
+if (targ==1 && otbrand>0) { q190_rows.set(1,"YOGURT VEGETALE"); qtext="<b>CONSUMA  YOGURT/YOGURT VEGETALE</b>";}
+
+qst = new question("scale", 235);
+qst.setProperty("text", "Chi nella sua famiglia  <b>"+qtext+"</b> ?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s.84");
+vector q235_opts = new vector {
+"Io stessa/o, l’intervistata/o#se#sf",
+"marito/moglie/compagno/a",
+"figli in età inferiore ai 3 anni",
+"figli in età 3 / 5 anni",
+"figli in età 6 / 10 anni",
+"figli in età 11 / 14 anni",
+"figli in età 15 / 17 anni",
+"figli in età 18 anni e oltre",
+"altri adulti sino 40 anni",
+"altri adulti 41/50 anni",
+"altri adulti 51/60 anni",
+"altri adulti oltre 60 anni",
+"Nessuno #se#sf",
+"Non indica#se#sf"
+
+};
+qst.setProperty("cols", q235_opts);
+qst.setProperty("view", "columns");
+qst.setProperty("rows", q190_rows);
+send qst;
+
+
+
+vector q240_opts = new vector {
+"<span style='display:none'>Intero</span>Granarolo Alta Qualità Intero",
+"<span style='display:none'>Intero</span>Yomo Intero",
+"<span style='display:none'>Intero</span>Muller Intero",
+"<span style='display:none'>Intero</span>Parmalat Intero",
+"<span style='display:none'>Intero</span>Centrale del latte Roma intero",
+"<span style='display:none'>Intero</span>Sterzing Vipiteno Intero",
+"<span style='display:none'>Intero</span>Milchhof Meran/Latteria Sociale  Intero",
+"<span style='display:none'>Intero</span>Mila Intero",
+"<span style='display:none'>Intero</span>Marche del supermercato yogurt intero",
+"<span style='display:none'>Intero</span>Altra marca di yogurt intero",
+"<span style='display:none'>Magro</span>Yomo Zero Grassi",
+"<span style='display:none'>Magro</span>Muller Magro",
+"<span style='display:none'>Magro</span>Danone Vitasnella Magro",
+"<span style='display:none'>Magro</span>Sterzing Vipiteno Magro",
+"<span style='display:none'>Magro</span>Sveltesse Nestle Magro",
+"<span style='display:none'>Magro</span>Parmalat Magro",
+"<span style='display:none'>Magro</span>Cle Roma Magro",
+"<span style='display:none'>Magro</span>Milchhof Meran/Latteria Sociale Magro",
+"<span style='display:none'>Magro</span>Vivita Stuffer Magro",
+"<span style='display:none'>Magro</span>Mila Benessere Magro",
+"<span style='display:none'>Magro</span>Fattoria Scaldasole Magro",
+"<span style='display:none'>Magro</span>Marche del supermercato yogurt magro",
+"<span style='display:none'>Magro</span>Altra marca di yogurt magro",
+"<span style='display:none'>BI</span>Muller Bi-compartimento",
+"<span style='display:none'>BI</span>Nestle Bi-compartimento",
+"<span style='display:none'>BI</span>Milchoff Meran/Latteria Sociale Merano Bi-compartimento",
+"<span style='display:none'>BI</span>Latteria Sociale Vipiteno Bi-compartimento",
+"<span style='display:none'>BI</span>Marche del supermercato yogurt bi-compartimento",
+"<span style='display:none'>BI</span>Altra marca di yogurt bi-compartimento",
+"<span style='display:none'>Greco</span>Yomo Greco Colato",
+"<span style='display:none'>Greco</span>Fage Greco Colato Bianco",
+"<span style='display:none'>Greco</span>Fage Greco Colato Gusti",
+"<span style='display:none'>Greco</span>Mevgal Greco Colato Bianco",
+"<span style='display:none'>Greco</span>Mevgal Greco Colato Gusti",
+"<span style='display:none'>Greco</span>Muller Greco Colato",
+"<span style='display:none'>Greco</span>Danone Greco Colato Bianco",
+"<span style='display:none'>Greco</span>Danone Greco Colato Gusti",
+"<span style='display:none'>Greco</span>Stuffer Greco Colato",
+"<span style='display:none'>Greco</span>Zymil Parmalat Greco Colato",
+"<span style='display:none'>Greco</span>Sveltesse Nestle Greco Colato",
+"<span style='display:none'>Greco</span>Marche del supermercato yogurt greco",
+"<span style='display:none'>Greco</span>Altra marca di yogurt greco",
+"<span style='display:none'>Lattosio</span>GRANAROLO ACCADI",
+"<span style='display:none'>Lattosio</span>MILA SENZA LATTOSIO",
+"<span style='display:none'>Lattosio</span>ZYMIL",
+"<span style='display:none'>Lattosio</span>STUFFER LIBERI DAL LATTOSIO",
+"<span style='display:none'>Lattosio</span>BELLA VITA MERANO SENZA LATTOSIO",
+"<span style='display:none'>Lattosio</span>FATTORIE SCALDASOLE SENZA LATTOSIO",
+"<span style='display:none'>Lattosio</span>LATTERIA NOM",
+"<span style='display:none'>Lattosio</span>Muller SENZA LATTOSIO",
+"<span style='display:none'>Lattosio</span>Marche del supermercato yogurt senza lattosio",
+"<span style='display:none'>Lattosio</span>Altra marca di yogurt senza lattosio",
+"<span style='display:none'>Flora</span>ACTIVIA",
+"<span style='display:none'>Flora</span>KYR (PARMALAT)",
+"<span style='display:none'>Flora</span>BONTA' VIVA BIFIDUS",
+"<span style='display:none'>Flora</span>Marche del supermercato yogurt funzionale",
+"<span style='display:none'>Flora</span>Altra marca di yogurt funzionale",
+"<span style='display:none'>Anticol</span>Danone con ANTICOL",
+"<span style='display:none'>Anticol</span>Marche del supermercato yogurt anticolesterolo",
+"<span style='display:none'>Anticol</span>Altra marca di yogurt anticolesterolo",
+"<span style='display:none'>Vegetale</span>Granarolo yogurt vegetale",
+"<span style='display:none'>Vegetale</span>Valsoia Yogurt Vegetali",
+"<span style='display:none'>Vegetale</span>Alpro Yogurt Vegetali",
+"<span style='display:none'>Vegetale</span>Sojasun Yogurt Vegetali",
+"<span style='display:none'>Vegetale</span>Marche del supermercato yogurt vegetale",
+"<span style='display:none'>Vegetale</span>Altra marca di yogurt vegetale",
+"<span style='display:none'>Probiotico</span>Yomo Rinforzo",
+"<span style='display:none'>Probiotico</span>Actimel",
+"<span style='display:none'>Probiotico</span>Actimel 0,1",
+"<span style='display:none'>Probiotico</span>Yakult",
+"<span style='display:none'>Probiotico</span>Stuffer Bere",
+"<span style='display:none'>Probiotico</span>Meran Bella Vita",
+"<span style='display:none'>Probiotico</span>Nestl&egrave; LC1",
+"<span style='display:none'>Probiotico</span>ACTIVIA ",
+"<span style='display:none'>Probiotico</span>ACTIVIA 0,1",
+"<span style='display:none'>Probiotico</span>KYR (PARMALAT) ",
+"<span style='display:none'>Probiotico</span>BONTA' VIVA BIFIDUS ",
+"<span style='display:none'>Probiotico</span>Marche del supermercato yogurt probiotico",
+"<span style='display:none'>Probiotico</span>Altra marca di yogurt al probiotico",
+"<span style='display:none'>Capra</span>Triballat Vrai Capra ",
+"<span style='display:none'>Capra</span>Mila Capra ",
+"<span style='display:none'>Capra</span>Fattorie Girau ",
+"<span style='display:none'>Capra</span>Manuzzi Bianco ",
+"<span style='display:none'>Capra</span>Latteria Sociale Cooperativa Chiuro ",
+"<span style='display:none'>Capra</span>Marche del supermercato yogurt di capra ",
+"<span style='display:none'>Capra</span>Altra marca di yogurt di capra ",
+"<span style='display:none'>Bio</span>Fattoria Scaldasole Bio",
+"<span style='display:none'>Bio</span>Vipiteno Bio",
+"<span style='display:none'>Bio</span>C.le Roma Bio",
+"<span style='display:none'>Bio</span>Altre Centrali Bio",
+"<span style='display:none'>Bio</span>Danone Bio",
+"<span style='display:none'>Bio</span>Marche del supermercato yogurt biologico",
+"<span style='display:none'>Bio</span>Altra marca di yogurt biologico"
+};
+
+boolean sel0=system.getProperty("ans110_0");
+boolean sel1=system.getProperty("ans110_1");
+boolean sel2=system.getProperty("ans110_2");
+boolean sel3=system.getProperty("ans110_3");
+boolean sel4=system.getProperty("ans110_4");
+boolean sel5=system.getProperty("ans110_5");
+boolean sel6=system.getProperty("ans110_6");
+boolean sel7=system.getProperty("ans110_7");
+boolean sel8=system.getProperty("ans110_8");
+boolean sel9=system.getProperty("ans110_9");
+boolean sel10=system.getProperty("ans110_10");
+
+//intero
+if (sel0==false)
+{
+
+	for(int i=0,9)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//magro
+if (sel1==false)
+{
+
+	for(int i=10,22)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+
+//yogurt BI
+if (sel2==false)
+{
+
+	for(int i=23,28)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt greco
+if (sel3==false)
+{
+
+	for(int i=29,41)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt senza lattosio
+if (sel4==false)
+{
+
+	for(int i=42,51)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt senza lattosio
+if (sel4==false)
+{
+
+	for(int i=42,51)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt flora
+if (sel5==false)
+{
+
+	for(int i=52,56)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+
+//yogurt anticolesterolo
+if (sel6==false)
+{
+
+	for(int i=57,59)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt soia vegetale
+if (sel7==false)
+{
+
+	for(int i=60,65)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt probiotico
+if (sel8==false)
+{
+
+	for(int i=66,78)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt di capra
+if (sel9==false)
+{
+
+	for(int i=79,85)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+//yogurt biologico
+if (sel10==false)
+{
+
+	for(int i=86,92)
+	{
+	opt ="#shopt"+i; q240_opts.set(i,opt); 
+	}
+}
+
+
+
+	// script per etichette dinamiche
+	 // inserire nel for il numero di item iniziando da 0
+	 // creare e aggiungere una classe per ogni categoria
+	 // inserisco la label prima del primo item con la classe della categoria
+	 
+	cod="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+	"for (i = 0; i < 92; i++) {"+
+	"if (i<10){$('.choice-option_'+i).addClass('c1'); }"+
+	"if (i>=10 && i<=22){$('.choice-option_'+i).addClass('c2'); }"+
+	"if (i>=23 && i<=28){$('.choice-option_'+i).addClass('c3'); }"+
+	"if (i>=29 && i<=41){$('.choice-option_'+i).addClass('c4'); }"+
+	"if (i>=42 && i<=51){$('.choice-option_'+i).addClass('c5'); }"+
+	"if (i>=52 && i<=56){$('.choice-option_'+i).addClass('c6'); }"+
+	"if (i>=57 && i<=59){$('.choice-option_'+i).addClass('c7'); }"+
+	"if (i>=60 && i<=65){$('.choice-option_'+i).addClass('c8'); }"+
+	"if (i>=66 && i<=78){$('.choice-option_'+i).addClass('c9'); }"+
+	"if (i>=79 && i<=85){$('.choice-option_'+i).addClass('c10'); }"+
+	"if (i>85){$('.choice-option_'+i).addClass('c11'); }"+
+	"}"+
+	"$('div.c1:first').prepend('<div><b>YOGURT INTERO</b></div>');"+
+	"$('div.c2:first').prepend('<div><b>YOGURT MAGRO</b></div>');"+
+	"$('div.c3:first').prepend('<div><b>BI - COMPARTIMENTO</b></div>');"+
+	"$('div.c4:first').prepend('<div><b>YOGURT GRECO</b> &#40;bianco, alla frutta 	&#40;frullata o in pezzi&#41;, bi-strato, etc…,es. Fage, Mevgal, Delta by Yomo, OIKOS, Zymil alla greca, Vitasnella alla Greca…&#41;</div>');"+
+	"$('div.c5:first').prepend('<div><b>YOGURT SENZA LATTOSIO IN VASETTO</b></div>');"+
+	"$('div.c6:first').prepend('<div><b>YOGURT CHE AIUTA A FAVORIRE L&lsquo;EQUILIBRIO DELLA FLORA INTESTINALE - IN VASETTO/DA BERE</b> &#40;bianco, alla frutta &#40;frullata o in pezzi&#41;, etc.., es. Activia, Activia Zero Grassi&#41; </b></div>');"+
+	"$('div.c7:first').prepend('<div><b>YOGURT ANTICOLESTEROLO</b></div>');"+
+	"$('div.c8:first').prepend('<div><b>YOGURT DI SOIA/VEGETALE</b>  &#40;es. Alpro, Valsoia, Granarolo 100% vegetale&#41;</div>');"+
+	"$('div.c9:first').prepend('<div><b>YOGURT PROBIOTICO</div>');"+
+	"$('div.c10:first').prepend('<div><b>YOGURT DI CAPRA</div>');"+
+	"$('div.c11:first').prepend('<div><b>YOGURT BIOLOGICO</div>');"+
+	
+    "});</script>";	
+
+qtext="Quali delle seguenti marche di <b>YOGURT</b> Lei ha acquistato negli ultimi <b>6 mesi</b>?"+cod;
+qst = new question("choice", 240);
+qst.setProperty("text", qtext);
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s.85");
+qst.setProperty("options", q240_opts);
+send qst;
+
+int con0=0;
+int con1=0;
+int con2=0;
+int con3=0;
+int con4=0;
+int con5=0;
+int con6=0;
+int con7=0;
+int con8=0;
+int con9=0;
+int con10=0;
+
+int recon0;
+int recon1;
+int recon2;
+int recon3;
+int recon4;
+int recon5;
+int recon6;
+int recon7;
+int recon8;
+int recon9;
+int recon10;
+
+
+// una risposta per ogni categoria
+for(int i=0,92)
+{
+sel=system.getProperty("ans240_"+i);
+if (sel==true)
+		{ 
+		
+		if  (i<10)  { con0=con0+1; recon0=i;}
+		if (i>=10 && i<=22) { con1=con1+1; recon1=i;}
+		if (i>=23 && i<=28) { con2=con2+1; recon2=i;}
+		if (i>=29 && i<=41) { con3=con3+1; recon3=i;}
+		if (i>=42 && i<=51) { con4=con4+1; recon4=i;}
+		if (i>=52 && i<=56) { con5=con5+1; recon5=i;}
+		if (i>=57 && i<=59) { con6=con6+1; recon6=i;}
+		if (i>=60 && i<=65) { con7=con7+1; recon7=i;}
+		if (i>=66 && i<=78) { con8=con8+1; recon8=i;}
+		if (i>=79 && i<=85) { con9=con9+1; recon9=i;}
+		if (i>=85) { con10=con10+1; recon10=i;}
+	
+		}
+}
+
+
+
+system.out("<div>c0: "+con0+"</div>"); 
+system.out("<div>c1: "+con1+"</div>"); 
+system.out("<div>c2: "+con2+"</div>"); 
+system.out("<div>c3: "+con3+"</div>"); 
+system.out("<div>c4: "+con4+"</div>"); 
+system.out("<div>c5: "+con5+"</div>"); 
+system.out("<div>c6: "+con6+"</div>"); 
+system.out("<div>c7: "+con7+"</div>"); 
+system.out("<div>c8: "+con8+"</div>"); 
+system.out("<div>c9: "+con9+"</div>"); 
+system.out("<div>c10: "+con10+"</div>"); 
+
+
+errMsg="<p><span style='color:red'>ATTENZIONE: INSERIRE UNA RISPOSTA PER OGNI CATEGORIA!</span></p>";
+
+while ( (sel0==true && con0==0) || (sel1==true && con1==0) || (sel2==true && con2==0) || (sel3==true && con3==0) || (sel4==true && con4==0) || (sel5==true && con5==0) || (sel6==true && con6==0) || (sel7==true && con7==0) || (sel8==true && con8==0) || (sel9==true && con9==0) || (sel10==true && con10==0)) 
+	{
+		// elimina l'ultima risposta
+		system.setProperty("delete", "ans240");
+		// ripropone la domanda
+
+		qtext=errMsg+qtext;
+		qst.setProperty("text", qtext);
+		send qst;
+	}
+
+
+vector sele0 = new vector {
+"Granarolo Alta Qualità Intero",
+"Yomo Intero",
+"Muller Intero",
+"Parmalat Intero",
+"Centrale del latte Roma intero",
+"Sterzing Vipiteno Intero",
+"Milchhof Meran/Latteria Sociale  Intero",
+"Mila Intero",
+"Marche del supermercato yogurt intero",
+"Altra marca di yogurt intero"
+};
+
+vector sele1 = new vector {
+"Yomo Zero Grassi",
+"Muller Magro",
+"Danone Vitasnella Magro",
+"Sterzing Vipiteno Magro",
+"Sveltesse Nestle Magro",
+"Parmalat Magro",
+"Cle Roma Magro",
+"Milchhof Meran/Latteria Sociale Magro",
+"Vivita Stuffer Magro",
+"Mila Benessere Magro",
+"Fattoria Scaldasole Magro",
+"Marche del supermercato yogurt magro",
+"Altra marca di yogurt magro"
+};
+
+vector sele2 = new vector {
+"Muller Bi-compartimento",
+"Nestle Bi-compartimento",
+"Milchoff Meran/Latteria Sociale Merano Bi-compartimento",
+"Latteria Sociale Vipiteno Bi-compartimento",
+"Marche del supermercato yogurt bi-compartimento",
+"Altra marca di yogurt bi-compartimento"
+};
+
+vector sele3 = new vector {
+"Yomo Greco Colato",
+"Fage Greco Colato Bianco",
+"Fage Greco Colato Gusti",
+"Mevgal Greco Colato Bianco",
+"Mevgal Greco Colato Gusti",
+"Muller Greco Colato",
+"Danone Greco Colato Bianco",
+"Danone Greco Colato Gusti",
+"Stuffer Greco Colato",
+"Zymil Parmalat Greco Colato",
+"Sveltesse Nestle Greco Colato",
+"Marche del supermercato yogurt greco",
+"Altra marca di yogurt greco"
+};
+
+vector sele4 = new vector {
+"GRANAROLO ACCADI",
+"MILA SENZA LATTOSIO",
+"ZYMIL",
+"STUFFER LIBERI DAL LATTOSIO",
+"BELLA VITA MERANO SENZA LATTOSIO",
+"FATTORIE SCALDASOLE SENZA LATTOSIO",
+"LATTERIA NOM",
+"Muller SENZA LATTOSIO",
+"Marche del supermercato yogurt senza lattosio",
+"Altra marca di yogurt senza lattosio"
+};
+
+vector sele5 = new vector {
+"ACTIVIA",
+"KYR (PARMALAT)",
+"BONTA' VIVA BIFIDUS",
+"Marche del supermercato yogurt funzionale",
+"Altra marca di yogurt funzionale"
+};
+
+vector sele6 = new vector {
+"Danone con ANTICOL",
+"Marche del supermercato yogurt anticolesterolo",
+"Altra marca di yogurt anticolesterolo"
+};
+
+vector sele7 = new vector {
+"Granarolo yogurt vegetale",
+"Valsoia Yogurt Vegetali",
+"Alpro Yogurt Vegetali",
+"Sojasun Yogurt Vegetali",
+"Marche del supermercato yogurt vegetale",
+"Altra marca di yogurt vegetale"
+};
+
+vector sele8 = new vector {
+"Yomo Rinforzo",
+"Actimel",
+"Actimel 0,1",
+"Yakult",
+"Stuffer Bere",
+"Meran Bella Vita",
+"Nestl&egrave; LC1",
+"ACTIVIA  ",
+"ACTIVIA 0,1",
+"KYR (PARMALAT)  ",
+"BONTA' VIVA BIFIDUS  ",
+"Marche del supermercato yogurt probiotico",
+"Altra marca di yogurt al probiotico"
+};
+
+vector sele9 = new vector {
+"Triballat Vrai Capra",
+"Mila Capra",
+"Fattorie Girau",
+"Manuzzi Bianco",
+"Latteria Sociale Cooperativa Chiuro",
+"Marche del supermercato yogurt di capra",
+"Altra marca di yogurt di capra"
+};
+
+vector sele10 = new vector {
+"Fattoria Scaldasole Bio",
+"Vipiteno Bio",
+"C.le Roma Bio",
+"Altre Centrali Bio",
+"Danone Bio",
+"Marche del supermercato yogurt biologico",
+"Altra marca di yogurt biologico"
+};
+
+
+
+int index;
+for(int i=0,92)
+{
+sel=system.getProperty("ans240_"+i);
+ 
+		opt="#shopt"+i;
+		if  (i<10)  
+		{
+		if (sel==false) {sele0.set(index,opt); } 
+		
+		index=index+1;
+		}
+		
+		if (i>=10 && i<=22) 
+		{
+		if (i==10){index=0;} 
+		if (sel==false) {sele1.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		
+		if (i>=23 && i<=28) 
+		{
+		if (i==23){index=0;} 
+		if (sel==false) {sele2.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		
+		if (i>=29 && i<=41) 
+		{
+		if (i==29){index=0;} 
+		if (sel==false) {sele3.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		if (i>=42 && i<=51) 
+		{
+		if (i==42){index=0;} 
+		if (sel==false) { sele4.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		
+		if (i>=52 && i<=56) 
+		{
+		if (i==52){index=0;} 
+		if (sel==false) {  sele5.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		if (i>=57 && i<=59) 
+		{
+		if (i==57){index=0;} 
+		if (sel==false) { sele6.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		if (i>=60 && i<=65) 
+		{
+		if (i==60){index=0;} 
+		if (sel==false) { sele7.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		if (i>=66 && i<=78) 
+		{
+		if (i==66){index=0;} 
+		if (sel==false) { sele8.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		if (i>=79 && i<=85) 
+		{
+		if (i==79){index=0;}
+		if (sel==false) { sele9.set(index,opt); }
+		
+		index=index+1;
+		}
+		
+		
+		if (i>85) 
+		{
+		if (i==86){index=0;} 
+		if (sel==false) { sele10.set(index,opt);  }
+		
+		index=index+1;
+		}
+	
+		
+}
+
+
+
+
+vector brand = new vector {
+"#shOP1",
+"#shOP2",
+"#shOP3",
+"#shOP4",
+"#shOP5",
+"#shOP6",
+"#shOP7",
+"#shOP8",
+"#shOP9",
+"#shOP10",
+"#shOP11",
+"#shOP12",
+"#shOP13"
+};
+
+
+		//sostituisco i brand
+		if(s50==0) { for(int j=0,9) { opt=sele0.get(j); brand.set(j,opt); } reCod=recon0;}
+		if(s50==1) { for(int j=0,12){ opt=sele1.get(j); brand.set(j,opt); } reCod=recon1;}
+		if(s50==2) { for(int j=0,5) { opt=sele2.get(j); brand.set(j,opt); } reCod=recon2;}
+		if(s50==3) { for(int j=0,12){ opt=sele3.get(j); brand.set(j,opt); } reCod=recon3;}
+		if(s50==4) { for(int j=0,9) { opt=sele4.get(j); brand.set(j,opt); } reCod=recon4;}
+		if(s50==5) { for(int j=0,4) { opt=sele5.get(j); brand.set(j,opt); } reCod=recon5;}
+		if(s50==6) { for(int j=0,2) { opt=sele6.get(j); brand.set(j,opt); } reCod=recon6;}
+		if(s50==7) { for(int j=0,5) { opt=sele7.get(j); brand.set(j,opt); } reCod=recon7;}
+		if(s50==8) { for(int j=0,12){ opt=sele8.get(j); brand.set(j,opt); } reCod=recon8;}
+		if(s50==9) { for(int j=0,6) { opt=sele9.get(j); brand.set(j,opt); } reCod=recon9;}
+		if(s50==10) { for(int j=0,6){ opt=sele10.get(j); brand.set(j,opt); } reCod=recon10;}
+		
+		label=q110_opts.get(s50);
+
+
+qtext="Ricodifica Mostofte"+cod;
+qst = new question("choice", 258);
+qst.setProperty("text", qtext);
+qst.setProperty("code", "mofrec");
+qst.setProperty("options", q240_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;		
+		
+		
+//salvo variabile mostoften indicizzata a 92
+system.setProperty("mof",reCod);
+
+//la ricodfico
+	if(s50==1) { reCod=reCod-10;}	
+	if(s50==2) { reCod=reCod-23;}	
+	if(s50==3) { reCod=reCod-29;}	
+	if(s50==4) { reCod=reCod-42;}	
+	if(s50==5) { reCod=reCod-52;}	
+	if(s50==6) { reCod=reCod-57;}	
+	if(s50==7) { reCod=reCod-60;}	
+	if(s50==8) { reCod=reCod-66;}	
+	if(s50==9) { reCod=reCod-79;}	
+	if(s50==10) { reCod=reCod-86;}	
+	
+
+system.out("<div>Ricod: "+reCod+"</div>"); 
+
+
+
+
+qst = new question("choice", 255);
+qst.setProperty("text", "Quale delle seguenti marche di <b>"+label+"</b>  Lei acquista pi&ugrave; spesso?");
+qst.setProperty("code", "s.90");
+if  ( (s50==0 && con0==1) || (s50==1 && con1==1) || (s50==2 && con2==1) || (s50==3 && con3==1) || (s50==4 && con4==1) || (s50==5 && con1==5) || (s50==6 && con6==1) || (s50==7 && con7==1) || (s50==8 && con8==1) || (s50==9 && con9==1) || (s50==10 && con10==1))
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+qst.setProperty("options", brand);
+send qst;
+	
+ansId=system.getProperty("ans255");
+label=brand.get(ansId);
+		
+
+
+qst = new question("scale", 260);
+qst.setProperty("text", "Pensi a <b>"+label+"</b> che Lei acquista pi&ugrave; spesso. "+
+" <p>Secondo lei quanto ciascuna delle seguenti affermazioni si adatta a questo prodotto?</p>"+
+"<div class='info'>Per rispondere utilizzi un punteggio da 1 a 7, dove 1 significa “non si adatta per niente” e 7 “si adatta completamente”, pu&ograve; utilizzare i punteggi intermedi per graduare il suo giudizio .</div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s100");
+vector q260_rows = new vector {
+"Questo prodotto <b>&egrave; originale e veramente diverso</b> dagli altri prodotti di questo tipo",
+"Questo prodotto <b>&egrave; importante per me personalmente</b>"
+};
+qst.setProperty("rows", q260_rows);
+vector q260_cols = new vector {
+"1-Non si adatta per niente",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7-Si adatta completamente"
+};
+qst.setProperty("cols", q260_cols);
+send qst;
+
+qst = new question("choice", 270);
+qst.setProperty("text", "Pensi al prezzo che lei solitamente paga per <b>"+label+"</b>."+
+" <div id=''>Rispetto ad altri prodotti simili che Lei potrebbe acquistare, Lei direbbe che il prezzo di questo prodotto &egrave;…</div>");
+qst.setProperty("code", "s.110");
+vector q270_opts = new vector {
+"Molto caro",
+"Abbastanza caro",
+"Giusto",
+"Poco caro",
+"Per niente caro"
+};
+qst.setProperty("options", q270_opts);
+send qst;
+
+int r2;
+system.setProperty("r2", "rand:2");
+r2=(int)system.getProperty("r2");
+
+string delay="<script type='text/javascript'>"+
+"$(document).ready(function() {"+
+"$('#console').hide();"+
+"setTimeout(function() {  $('#console').show(); }, 8000);"+
+"});</script>";		
+
+
+baseQid=5000;
+
+for(int i=0,1)
+{
+
+if (r2==0) { if (leg==1) { nam="Pack A VEGETALE";} if (leg==2) { nam="Pack A GREEN";} }
+if (r2==1) { if (leg==1) { nam="Pack B VEGETALE";} if (leg==2) { nam="Pack B GREEN";} }
+
+
+system.out("<div>Pack "+i+": "+nam+"</div>"); 
+
+
+link="http://www.primisoft.com/fields/IPS/ITA1801007/resources/p"+r2+"l"+leg+".jpg";
+            
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='800px'  alt='' /></a>"+
+		 "<div class='info'>Clicchi per visualizzare i dettagli</div></p>";
+
+qid=baseQid+100*r2;
+
+if(i==0) { qtext="l’";}
+else { qtext="un'altra";}
+
+qst = new question("concept", qid);
+qst.setProperty("text", delay+"Adesso vedrà "+qtext+" immagine di una confezione di uno yogurt. "+
+"Per favore la osservi attentamente e dopo dovrà rispondere a qualche domanda."+
+"<p><img src='"+link+"' width='900px'/></p>");
+send qst;
+
+qid=baseQid+100*r2+20;
+
+qst = new question("choice", qid);
+qst.setProperty("text", " Legga le seguenti affermazioni che potrebbero essere utilizzate per descrivere il prodotto che ha visto nell’immagine."+
+" <br/>Per favore indichi quale meglio si adatta al prodotto di cui vede l’immagine.");
+qst.setProperty("code", "b.1pac"+r2);
+vector q275_opts = new vector {
+"è un prodotto a base di cocco",
+"è un prodotto al sapore di cocco",
+"è un prodotto a base di soia",
+"è un prodotto al sapore di soia",
+"è un prodotto a base di latte",
+"è un prodotto al sapore di latte",
+"è un prodotto vegetale",
+"è un prodotto senza soia",
+"NON SO#sf",
+"Nessuna di queste#sf"
+
+};
+qst.setProperty("options", q275_opts);
+qst.setProperty("show_rand",true);
+send qst;
+
+
+qid=baseQid+100*r2+30;
+
+if (leg==2)
+{
+
+if (r2==0) { cmd="FATTO CON COCCO";}
+if (r2==1) { cmd="A BASE DI COCCO";}
+
+qst = new question("choice", qid);
+qst.setProperty("text", " Per favore indichi cosa intende per: <b>‘"+cmd+"’</b>. <p>Secondo lei si intende ….</p> ");
+qst.setProperty("code", "b.2pac"+r2);
+vector q277_opts = new vector {
+"è un prodotto fatto di cocco ",
+"è un prodotto fatto di latte ",
+"è un prodotto fatto di soia ",
+"è un prodotto vegetale ",
+"è un prodotto a base di cocco, al gusto di cocco",
+"è un prodotto a base di soia, al gusto di cocco",
+"è un prodotto a base di latte, al gusto di cocco",
+"è un prodotto a vegetale al gusto di cocco",
+"NON SO#sf",
+"Nessuna di queste#sf"
+
+};
+qst.setProperty("options", q277_opts);
+qst.setProperty("show_rand",true);
+send qst;
+}
+
+
+if (r2==1) { r2=0;}	
+else { r2=r2+1;}
+	
+}
+
+
+
+
+
+
+
+if(leg==1) { nam="GRANAROLO VEGETALE";}
+if(leg==2) { nam="GUSTO GREEN";}
+
+
+link="http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc"+leg+".jpg";
+            
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='600px'  alt='' /></a>"+
+		 "<div class='info'>Clicchi per visualizzare nuovamente il concetto</div></p>";
+
+qst = new question("concept", 280);
+qst.setProperty("text", "“Ora vedr&agrave; una descrizione. Si prenda tutto il tempo necessario per leggerla”.<p><img src='"+link+"'/></p>");
+send qst;
+
+qst = new question("scale", 290);
+qst.setProperty("text", "Pensi alla gamma di prodotti che ha appena visto in questa descrizione. <div id=''>Secondo lei quanto ciascuna delle seguenti affermazioni si adatta alla gamma che ha appena visto?</div> <div class='info'>Per rispondere utilizzi un punteggio da 1 a 7, dove 1 significa “non si adatta per niente” e 7 “si adatta completamente”, pu&ograve; utilizzare i punteggi intermedi per graduare il suo giudizio .</div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "c10");
+vector q290_rows = new vector {
+"Questa gamma <b>&egrave; originale è veramente diversa</b> dagli altri prodotti di questo tipo",
+"Questa gamma <b>&egrave; importante per me personalmente</b>"
+};
+qst.setProperty("rows", q290_rows);
+vector q290_cols = new vector {
+"1-Non si adatta per niente",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7-Si adatta completamente"
+};
+qst.setProperty("cols", q290_cols);
+send qst;
+
+qst = new question("choice", 300);
+qst.setProperty("text", img+"Quale di queste frasi meglio descrive quanto Lei personalmente ritiene credibile la descrizione di questa gamma di prodotti che ha appena letto?");
+qst.setProperty("code", "c.20");
+vector q300_opts = new vector {
+"Completamente credibile",
+"Abbastanza credibile",
+"Né credibile né non credibile",
+"Abbastanza non credibile",
+"Completamente non credibile"
+};
+qst.setProperty("options", q300_opts);
+send qst;
+
+qst = new question("choice", 310);
+qst.setProperty("text", img+"Quale affermazione descrive meglio la sua intenzione di acquistare questa gamma?");
+qst.setProperty("code", "c.25");
+vector q310_opts = new vector {
+"Sicuramente l'acquisterei",
+"Probabilmente l'acquisterei",
+"Forse l'acquisterei o forse no",
+"Probabilmente non l'acquisterei",
+"Sicuramente non l'acquisterei"
+};
+qst.setProperty("options", q310_opts);
+send qst;
+
+int ansc25=system.getProperty("ans310");
+
+
+
+
+qst = new question("choice", 320);
+qst.setProperty("text", nam+" sarà disponibile nelle seguenti varianti e formati:<br/>"+tabella+"Rispetto ad altri prodotti simili che potrebbe acquistare, quale affermazione descrive meglio cosa pensa del prezzo di questi prodotti?");
+qst.setProperty("code", "c.35");
+vector q320_opts = new vector {
+"Molto caro",
+"Abbastanza caro",
+"Giusto",
+"Poco caro",
+"Per niente caro"
+};
+qst.setProperty("options", q320_opts);
+send qst;
+
+qst = new question("choice", 330);
+qst.setProperty("text", nam+" sarà disponibile nelle seguenti varianti e formati:<br/>"+tabella+"Considerando che questo prodotto sar&agrave;  disponibile nelle seguenti varianti e formati:<p>Direbbe che questo prodotto…</p>");
+qst.setProperty("code", "c.40");
+vector q330_opts = new vector {
+"Vale molto pi&ugrave; del suo prezzo",
+"Vale pi&ugrave; del suo prezzo",
+"Vale all’incirca il suo prezzo",
+"Vale meno del suo prezzo",
+"Vale molto meno del suo prezzo"
+};
+qst.setProperty("options", q330_opts);
+send qst;
+
+qst = new question("choice", 340);
+qst.setProperty("text", "Quale affermazione descrive meglio quanto <u>LE PIACE o NON LE PIACE</u> questa gamma di prodotti?");
+qst.setProperty("code", "c.45");
+vector q340_opts = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Mi piace cos&igrave; e cos&igrave;",
+"Mi piace poco",
+"Non mi piace per niente"
+};
+qst.setProperty("options", q340_opts);
+send qst;
+
+qst = new question("open", 350);
+qst.setProperty("text", "C’&egrave; qualcosa che <b>Le PIACE</b> particolarmente di questo prodotto?");
+qst.setProperty("code", "c50");
+send qst;
+
+qst = new question("open", 360);
+qst.setProperty("text", "C’&egrave; qualcosa che <b>NON Le PIACE</b> particolarmente di questo prodotto?");
+qst.setProperty("code", "c55");
+send qst;
+
+
+
+vector q370_opts = new vector {
+"Yogurt per adulti al cucchiaio (intero/magro/ altro tipo)",
+"Dessert al cucchiaio",
+"Gelati",
+"Biscotti",
+"Succhi di frutta",
+"Altro (specificare il tipo di prodotto) #so#sf",
+"Non comprerei nessun altro prodotto al suo posto#se#sf"
+};
+
+for(int i=1,4)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q370_opts.set(i,opt); }
+}
+
+qst = new question("choice", 370);
+qst.setProperty("text", "Se <b>"+nam+"</b> non fosse disponibile, quale prodotto acquisterebbe al suo posto?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "c.60");
+qst.setProperty("options", q370_opts);
+send qst;
+
+int ansc60=system.getProperty("ans370");
+
+
+if (ansc60==0)
+	{
+	vector q380_opts = new vector {
+	"#sh<span style='display:none'>Intero</span>Granarolo Alta Qualità Intero",
+	"#sh<span style='display:none'>Intero</span>Yomo Intero",
+	"#sh<span style='display:none'>Intero</span>Muller Intero",
+	"#sh<span style='display:none'>Intero</span>Parmalat Intero",
+	"#sh<span style='display:none'>Intero</span>Centrale del latte Roma intero",
+	"#sh<span style='display:none'>Intero</span>Sterzing Vipiteno Intero",
+	"#sh<span style='display:none'>Intero</span>Milchhof Meran/Latteria Sociale  Intero",
+	"#sh<span style='display:none'>Intero</span>Mila Intero",
+	"#sh<span style='display:none'>Intero</span>Marche del supermercato yogurt intero",
+	"#sh<span style='display:none'>Intero</span>Altra marca di yogurt intero",
+	"#sh<span style='display:none'>Magro</span>Yomo Zero Grassi",
+	"#sh<span style='display:none'>Magro</span>Muller Magro",
+	"#sh<span style='display:none'>Magro</span>Danone Vitasnella Magro",
+	"#sh<span style='display:none'>Magro</span>Sterzing Vipiteno Magro",
+	"#sh<span style='display:none'>Magro</span>Sveltesse Nestle Magro",
+	"#sh<span style='display:none'>Magro</span>Parmalat Magro",
+	"#sh<span style='display:none'>Magro</span>Cle Roma Magro",
+	"#sh<span style='display:none'>Magro</span>Milchhof Meran/Latteria Sociale Magro",
+	"#sh<span style='display:none'>Magro</span>Vivita Stuffer Magro",
+	"#sh<span style='display:none'>Magro</span>Mila Benessere Magro",
+	"#sh<span style='display:none'>Magro</span>Fattoria Scaldasole Magro",
+	"#sh<span style='display:none'>Magro</span>Marche del supermercato yogurt magro",
+	"#sh<span style='display:none'>Magro</span>Altra marca di yogurt magro",
+	"#sh<span style='display:none'>BI</span>Muller Bi-compartimento",
+	"#sh<span style='display:none'>BI</span>Nestle Bi-compartimento",
+	"#sh<span style='display:none'>BI</span>Milchoff Meran/Latteria Sociale Merano Bi-compartimento",
+	"#sh<span style='display:none'>BI</span>Latteria Sociale Vipiteno Bi-compartimento",
+	"#sh<span style='display:none'>BI</span>Marche del supermercato yogurt bi-compartimento",
+	"#sh<span style='display:none'>BI</span>Altra marca di yogurt bi-compartimento",
+	"#sh<span style='display:none'>Greco</span>Yomo Greco Colato",
+	"#sh<span style='display:none'>Greco</span>Fage Greco Colato Bianco",
+	"#sh<span style='display:none'>Greco</span>Fage Greco Colato Gusti",
+	"#sh<span style='display:none'>Greco</span>Mevgal Greco Colato Bianco",
+	"#sh<span style='display:none'>Greco</span>Mevgal Greco Colato Gusti",
+	"#sh<span style='display:none'>Greco</span>Muller Greco Colato",
+	"#sh<span style='display:none'>Greco</span>Danone Greco Colato Bianco",
+	"#sh<span style='display:none'>Greco</span>Danone Greco Colato Gusti",
+	"#sh<span style='display:none'>Greco</span>Stuffer Greco Colato",
+	"#sh<span style='display:none'>Greco</span>Zymil Parmalat Greco Colato",
+	"#sh<span style='display:none'>Greco</span>Sveltesse Nestle Greco Colato",
+	"#sh<span style='display:none'>Greco</span>Marche del supermercato yogurt greco",
+	"#sh<span style='display:none'>Greco</span>Altra marca di yogurt greco",
+	"#sh<span style='display:none'>Lattosio</span>GRANAROLO ACCADI",
+	"#sh<span style='display:none'>Lattosio</span>MILA SENZA LATTOSIO",
+	"#sh<span style='display:none'>Lattosio</span>ZYMIL",
+	"#sh<span style='display:none'>Lattosio</span>STUFFER LIBERI DAL LATTOSIO",
+	"#sh<span style='display:none'>Lattosio</span>BELLA VITA MERANO SENZA LATTOSIO",
+	"#sh<span style='display:none'>Lattosio</span>FATTORIE SCALDASOLE SENZA LATTOSIO",
+	"#sh<span style='display:none'>Lattosio</span>LATTERIA NOM",
+	"#sh<span style='display:none'>Lattosio</span>Muller SENZA LATTOSIO",
+	"#sh<span style='display:none'>Lattosio</span>Marche del supermercato yogurt senza lattosio",
+	"#sh<span style='display:none'>Lattosio</span>Altra marca di yogurt senza lattosio",
+	"#sh<span style='display:none'>Flora</span>ACTIVIA",
+	"#sh<span style='display:none'>Flora</span>KYR (PARMALAT)",
+	"#sh<span style='display:none'>Flora</span>BONTA' VIVA BIFIDUS",
+	"#sh<span style='display:none'>Flora</span>Marche del supermercato yogurt funzionale",
+	"#sh<span style='display:none'>Flora</span>Altra marca di yogurt funzionale",
+	"#sh<span style='display:none'>Anticol</span>Danone con ANTICOL",
+	"#sh<span style='display:none'>Anticol</span>Marche del supermercato yogurt anticolesterolo",
+	"#sh<span style='display:none'>Anticol</span>Altra marca di yogurt anticolesterolo",
+	"#sh<span style='display:none'>Vegetale</span>Granarolo yogurt vegetale",
+	"#sh<span style='display:none'>Vegetale</span>Valsoia Yogurt Vegetali",
+	"#sh<span style='display:none'>Vegetale</span>Alpro Yogurt Vegetali",
+	"#sh<span style='display:none'>Vegetale</span>Sojasun Yogurt Vegetali",
+	"#sh<span style='display:none'>Vegetale</span>Marche del supermercato yogurt vegetale",
+	"#sh<span style='display:none'>Vegetale</span>Altra marca di yogurt vegetale",
+	"#sh<span style='display:none'>Probiotico</span>Yomo Rinforzo",
+	"#sh<span style='display:none'>Probiotico</span>Actimel",
+	"#sh<span style='display:none'>Probiotico</span>Actimel 0,1",
+	"#sh<span style='display:none'>Probiotico</span>Yakult",
+	"#sh<span style='display:none'>Probiotico</span>Stuffer Bere",
+	"#sh<span style='display:none'>Probiotico</span>Meran Bella Vita",
+	"#sh<span style='display:none'>Probiotico</span>Nestl&egrave; LC1",
+	"#sh<span style='display:none'>Probiotico</span>ACTIVIA ",
+	"#sh<span style='display:none'>Probiotico</span>ACTIVIA 0,1",
+	"#sh<span style='display:none'>Probiotico</span>KYR (PARMALAT) ",
+	"#sh<span style='display:none'>Probiotico</span>BONTA' VIVA BIFIDUS ",
+	"#sh<span style='display:none'>Probiotico</span>Marche del supermercato yogurt probiotico",
+	"#sh<span style='display:none'>Probiotico</span>Altra marca di yogurt al probiotico",
+	"#sh<span style='display:none'>Capra</span>Triballat Vrai Capra ",
+	"#sh<span style='display:none'>Capra</span>Mila Capra ",
+	"#sh<span style='display:none'>Capra</span>Fattorie Girau ",
+	"#sh<span style='display:none'>Capra</span>Manuzzi Bianco ",
+	"#sh<span style='display:none'>Capra</span>Latteria Sociale Cooperativa Chiuro ",
+	"#sh<span style='display:none'>Capra</span>Marche del supermercato yogurt di capra ",
+	"#sh<span style='display:none'>Capra</span>Altra marca di yogurt di capra ",
+	"#sh<span style='display:none'>Bio</span>Fattoria Scaldasole Bio",
+	"#sh<span style='display:none'>Bio</span>Vipiteno Bio",
+	"#sh<span style='display:none'>Bio</span>C.le Roma Bio",
+	"#sh<span style='display:none'>Bio</span>Altre Centrali Bio",
+	"#sh<span style='display:none'>Bio</span>Danone Bio",
+	"#sh<span style='display:none'>Bio</span>Marche del supermercato yogurt biologico",
+	"#sh<span style='display:none'>Bio</span>Altra marca di yogurt biologico",
+	"Altro",
+	"Nessuno / Non lo sostituirei con nessun prodotto"
+	};
+
+	for(int i=0,92)
+	{
+	sel=system.getProperty("ans240_"+i);
+
+	if (sel==true)  {  opt=q240_opts.get(i); q380_opts.set(i,opt);  }
+	} 
+		
+		
+	qst = new question("choice", 380);
+	qst.setProperty("text", cod+"Se <b>"+nam+"</b>  non fosse disponibile, quale marca di YOGURT acquisterebbe al suo posto?");
+	qst.setProperty("code", "c.70");
+	qst.setProperty("options", q380_opts);
+	send qst;	
+
+}
+
+if (ansc25<3)
+{
+qst = new question("choice", 390);
+qst.setProperty("text", "Se questo prodotto fosse disponibile presso il suo negozio abituale, quale delle seguenti frasi meglio descriverebbe come potrebbero cambiare le sue abitudini d’acquisto?");
+qst.setProperty("code", "c.75");
+vector q390_opts = new vector {
+"Questo prodotto sostituirebbe completamente gli altri marchi o prodotti che io uso adesso",
+"Questo prodotto sostituirebbe parzialmente gli altri marchi o prodotti che io uso adesso",
+"Questo prodotto sarebbe una totale nuova aggiunta, che non interesserebbe marchi o prodotti che io uso adesso",
+"Nessuno di questi"
+};
+qst.setProperty("options", q390_opts);
+if (ansc60==6)
+{
+qst.setProperty("default_answer","{ 'selection': [3]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+}
+
+if (ansc25<3)
+{
+
+
+qst = new question("concept", 400);
+qst.setProperty("text", "Ecco la lista di gusti e formati nei quali sar&agrave; disponibile il prodotto. "+tabella+".");
+send qst;
+
+qst = new question("choice", 410);
+qst.setProperty("text", "Approssimativamente quante confezioni di questo nuovo prodotto acquisterebbe, se ne acquistasse, in occasione del <b>suo primo acquisto</b>?");
+qst.setProperty("code", "c.130");
+vector q410_opts = new vector {
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9 o pi&ugrave;",
+"Non lo acquisterei"
+};
+qst.setProperty("options", q410_opts);
+send qst;
+
+int ansc130=system.getProperty("ans410");
+
+if(ansc130 != 9)
+{
+qst = new question("choice", 420);
+qst.setProperty("text", "Quanto spesso Lei pensa che acquisterebbe <b>"+nam+"</b> se fosse in vendita nel suo negozio abituale?");
+qst.setProperty("code", "c.135");
+vector q420_opts = new vector {
+"1 volta alla settimana o pi&ugrave; spesso",
+"1 volta ogni 2-3 settimane",
+"1 volta al mese/ogni 4 settimane",
+"1 volta ogni 2-3 mesi",
+"1 volta ogni 4-6 mesi",
+"1 o 2 volte all'anno",
+"Meno spesso di 1 volta all'anno"
+};
+qst.setProperty("options", q420_opts);
+send qst;
+}
+
+qst = new question("choice", 430);
+qst.setProperty("text", "Con che frequenza Lei o la sua famiglia tipicamente consumerebbe questo prodotto?");
+qst.setProperty("code", "c.140");
+vector q430_opts = new vector {
+"Pi&ugrave; volte al giorno",
+"Una volta al giorno",
+"Da 4 a 6 volte la settimana",
+"Da 2 a 3 volte la settimana",
+"1 volta a settimana",
+"Ogni 2 o 3 settimane",
+"1 volta al mese / ogni 4 settimane",
+"1 volta ogni 2 o 3 mesi",
+"1 volta ogni 4 o 6 mesi",
+"1 o 2 volte l’anno",
+"Meno spesso"
+};
+qst.setProperty("options", q430_opts);
+send qst;
+
+if (ansc130!=9)
+{
+qst = new question("choice", 440);
+qst.setProperty("text", "E quale di queste variet&agrave; di prodotto acquisterebbe al suo primo acquisto di <b>"+nam+"</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "c.145");
+vector q440_opts = new vector {
+"Menta - 2 x 125 gr - 1,69€",
+"Lime - 2 x 125 gr - 1,69€",
+"Bianco Dolce - 2 x 125 gr - 1,69€",
+"Mango - 2 x 125 gr - 1,69€",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q440_opts);
+send qst;
+
+sel=system.getProperty("ans440_3");
+
+vector q450_opts = new vector {
+"Menta:#sc |0|1|2|3|4|5 o più",
+"Lime:#sc |0|1|2|3|4|5 o più",
+"Bianco Dolce:#sc |0|1|2|3|4|5 o più",
+"Mango:#sc |0|1|2|3|4|5 o più"
+};
+
+count=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans440_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q450_opts.set(i,opt); }
+else { count=count+1;}
+}
+
+if (count>0)
+{
+
+qst = new question("choice", 450);
+qst.setProperty("text", "E per ciascuna di queste variet&agrave;, quanti pezzi/unit&agrave; acquisterebbe al <b>suo primo acquisto?</b>");
+qst.setProperty("code", "c.150");
+qst.setProperty("options", q450_opts);
+qst.setProperty("selection", "multiple");
+send qst;
+}
+
+}
+
+}
+
+qst = new question("scale", 460);
+qst.setProperty("text", "Quale affermazione descrive meglio la sua intenzione di acquistare queste varianti?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "c.155");
+vector q460_cols = new vector {
+"Sicuramente l'acquisterei",
+"Probabilmente l'acquisterei",
+"Forse l'acquisterei o forse no",
+"Probabilmente non l'acquisterei",
+"Sicuramente non l'acquisterei"
+};
+vector q460_rows = new vector {
+"Menta",
+"Lime",
+"Bianco Dolce",
+"Mango"
+};
+qst.setProperty("cols", q460_cols);
+qst.setProperty("rows", q460_rows);
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("choice", 470);
+qst.setProperty("text", "Sia nel caso che lei sia intenzionata ad acquistarlo o meno <b>"+nam+"</b>, personalmente ritiene che questo prodotto risolva un problema o colmi un bisogno che lei ha?");
+qst.setProperty("code", "c.175");
+vector q470_opts = new vector {
+"SI meglio di altre opzioni attualmente disponibili",
+"SI, circa come altre opzioni attualmente disponibili",
+"NO, questo non incontra un bisogno che io ho"
+};
+qst.setProperty("options", q470_opts);
+send qst;
+
+if (ansc25<3)
+{
+qst = new question("choice", 480);
+qst.setProperty("text", "In <b>quali momenti/occasioni</b> della giornata Lei pensa che <b>"+nam+"</b> sar&agrave; tipicamente usato da lei o dalla Sua famiglia?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "c.160");
+vector q480_opts = new vector {
+"La mattina a colazione",
+"Durante la mattinata come snack",
+"In sostituzione del pranzo",
+"Dopo pranzo come dessert",
+"Nel pomeriggio come merenda",
+"Dopo cena come dessert",
+"Dipende, quando capita o ne ha voglia",
+"Nessuno di questi#se#sf",
+"Non indica#se#sf"
+};
+qst.setProperty("options", q480_opts);
+send qst;
+}
+
+
+qst = new question("choice", 490);
+qst.setProperty("text", "E <b>chi</b> lei pensa potrebbe essere l’utilizzatore/consumatore tipico di questo prodotto?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "c.180");
+vector q490_opts = new vector {
+"io stessa/o, l’intervistata/o",
+"marito/moglie/compagno/a",
+"figli in et&agrave; inferiore ai 3 anni",
+"figli in et&agrave; 3 / 5 anni",
+"figli in et&agrave; 6 / 10 anni",
+"figli in et&agrave; 11 / 14 anni",
+"figli in et&agrave; 15 / 17 anni",
+"figli in et&agrave; 18 anni e oltre",
+"altri adulti sino 40 anni",
+"altri adulti 41/50 anni",
+"altri adulti 51/60 anni",
+"altri adulti oltre 60 anni",
+"Nessuno#se#sf",
+"Non indica#se#sf"
+};
+qst.setProperty("options", q490_opts);
+send qst;
+
+qst = new question("choice", 500);
+qst.setProperty("text", "E dove lei pensa potrebbe consumare questo prodotto?");
+qst.setProperty("code", "c.181");
+vector q500_opts = new vector {
+"Prevalentemente  in casa",
+"Prevalentemente fuori casa",
+"Sia in casa che fuori casa nello stesso modo",
+"Altro#so#sf"
+};
+qst.setProperty("options", q500_opts);
+send qst;
+
+ansId=system.getProperty("ans500");
+if (ansId==1 || ansId==2)
+{
+
+qst = new question("choice", 510);
+qst.setProperty("text", "Dove potrebbe consumare questo yougurt fuori casa, pu&ograve; specificare dove?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "c.182");
+vector q510_opts = new vector {
+"In ufficio",
+"A scuola",
+"In palestra",
+"In viaggio",
+"In altro luogo Specificare dove#so"
+};
+qst.setProperty("options", q510_opts);
+send qst;
+}
+
+ /////// concept evaluetor /////
+ 
+
+qst = new question("concept", 520);
+qst.setProperty("text", "Rilegga attentamente la descrizione del nuovo prodotto.<p><img src='"+link+"'/></p>");
+send qst;
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/dinNone.js'></script>";
+
+
+string cpt1=cod+"<table style='border:1px dotted gray' id='Tabella_01' width='1281' height='720' border='0' cellpadding='0' cellspacing='0'>"+
+"<tr>"+
+"<td style='text-align:center; vertical-align:top; line-height: 280%;' colspan='8'>"+
+"<p>#asSeguo un’alimentazione#ae #asvaria ed#ae #asequilibrata,#ae #asmi piace alternare#ae #asi cibi#ae #asche mangio e#ae #asspesso scelgo#ae #asdi consumare#ae #asprodotti vegetali.#ae</p>"+
+"<p>#asAmo sperimentare#ae #asle novità e#ae #asricerco sempre#ae #asil gusto#ae #asin ogni mia scelta.#ae</p>"+
+"<p>#asSe penso#ae #asall’offerta di#ae #asyogurt vegetali#ae #asmi vengono in mente#ae #astanti yogurt#ae #asa base di#ae #assoia e#ae #asmi piacerebbe trovare#ae #asqualcosa di alternativo#ae #asche mi dia la possibilità#ae #asdi variare e#ae #asdi provare#ae #asnuovi#ae #assapori vegetali.#ae</p>"+
+"<p>#asGranarolo#ae #asti offre#ae #asuna nuova#ae #aslinea di yogurt#ae #as100% vegetali,#ae #asbuoni e#ae #asgustosi,#ae #asperché realizzati#ae #ascon tutta la bontà#ae #asdel cocco,#ae #asuna vera novità!#ae</p>"+
+"<p>#asSono yogurt vegetali#ae #asda gustare al cucchiaio,#ae #asfatti con#ae #asil cocco,#ae #asideali#ae #asper concederti#ae #asun momento#ae #asdi bontà e#ae #asdi piacere.#ae</p>"+
+"<p>#asDa oggi#ae #aspuoi provare#ae #asuna linea di yogurt#ae #asa base di#ae #ascocco,#ae #assenza lattosio,#ae #assenza glutine e#ae #assenza soia,#ae #asadatti proprio a tutti!#ae</p>"+
+"<p>#asLasciati avvolgere#ae #asdalla base#ae #ascocco e#ae #asscopri#ae #astutte le varianti#ae #asdi gusto:#ae #asBianco dolce,#ae #asLime,#ae #asMenta,#ae #asMango.#ae</p>"+
+"<p>#asDisponibili nella pratica confezione da 250gr #ae #as(due vasetti da 125g),#ae #asal prezzo di 1,69€.#ae</p>"+
+"</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/spaziatore.gif' width='1' height='517' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_02.gif' width='313' height='149' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_03.gif' width='26' height='203' alt=''></td>"+
+"<td rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_04.jpg' width='292' height='158' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_05.gif' width='24' height='203' alt=''></td>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_06.gif' width='290' height='149' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_07.gif' width='34' height='203' alt=''></td>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_08.gif' width='289' height='149' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_09.gif' width='12' height='203' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/spaziatore.gif' width='1' height='149' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_10.gif' width='313' height='54' alt=''></td>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_11.gif' width='290' height='54' alt=''></td>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_12.gif' width='289' height='54' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/spaziatore.gif' width='1' height='9' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc1_13.gif' width='292' height='45' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/spaziatore.gif' width='1' height='45' alt=''></td>"+
+"</tr>"+
+"</table>";
+
+string cpt2=cod+"<table style='border:1px dotted gray' id='Tabella_01' width='1280' height='720' border='0' cellpadding='0' cellspacing='0'>"+
+"<tr>"+
+"<td style='text-align:center; vertical-align:top; line-height: 280%;' colspan='8'>"+
+"<p>#asSeguo un’alimentazione#ae #asvaria ed#ae #asequilibrata,#ae #asmi piace alternare#ae #asi cibi#ae #asche mangio e#ae #asspesso scelgo#ae #asdi consumare#ae #asprodotti vegetali.#ae</p>"+
+"<p>#asAmo sperimentare#ae #asle novità e#ae #asricerco sempre#ae #asil gusto#ae #asin ogni mia scelta.#ae</p>"+
+"<p>#asSe penso#ae #asall’offerta di#ae #asyogurt vegetali#ae #asmi vengono in mente#ae #astanti yogurt#ae #asa base di#ae #assoia e#ae #asmi piacerebbe trovare#ae #asqualcosa di alternativo#ae #asche mi dia la possibilità#ae #asdi variare e#ae #asdi provare#ae #asnuovi#ae #assapori vegetali.#ae</p>"+
+"<p>#asGranarolo#ae #asti offre#ae #asuna nuova#ae #aslinea di yogurt#ae #as100% vegetali,#ae #asbuoni e#ae #asgustosi,#ae #asperché realizzati#ae #ascon tutta la bontà#ae #asdel cocco,#ae #asuna vera novità!#ae</p>"+
+"<p>#asSono yogurt vegetali#ae #asda gustare al cucchiaio,#ae #asfatti con#ae #asil cocco,#ae #asideali#ae #asper concederti#ae #asun momento#ae #asdi bontà e#ae #asdi piacere.#ae</p>"+
+"<p>#asDa oggi#ae #aspuoi provare#ae #asuna linea di yogurt#ae #asa base di#ae #ascocco,#ae #assenza lattosio,#ae #assenza glutine e#ae #assenza soia,#ae #asadatti proprio a tutti!#ae</p>"+
+"<p>#asLasciati avvolgere#ae #asdalla base#ae #ascocco e#ae #asscopri#ae #astutte le varianti#ae #asdi gusto:#ae #asBianco dolce,#ae #asLime,#ae #asMenta,#ae #asMango.#ae</p>"+
+"<p>#asDisponibili nella pratica confezione da 250gr #ae #as(due vasetti da 125g),#ae #asal prezzo di 1,69€.#ae</p>"+
+"</td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_02.jpg' width='305' height='163' alt=''>#ae</td>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_03.jpg' width='14' height='215' alt=''></td>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_04.jpg' width='307' height='163' alt=''>#ae</td>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_05.jpg' width='17' height='215' alt=''></td>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_06.jpg' width='317' height='163' alt=''>#ae</td>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_07.jpg' width='14' height='215' alt=''></td>"+
+"<td>"+
+"#as<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_08.jpg' width='298' height='163' alt=''>#ae</td>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_09.jpg' width='8' height='215' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_10.jpg' width='305' height='52' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_11.jpg' width='307' height='52' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_12.jpg' width='317' height='52' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/conc2_13.jpg' width='298' height='52' alt=''></td>"+
+"</tr>"+
+"</table>";
+
+if (leg==1) { cpt=cpt1;}
+else {cpt=cpt2;}
+
+qst = new question("concept_eval", 530);
+qst.setProperty("text", "Indichi  le parole o immagini in questa descrizione che ritiene personalmente<b> pi&ugrave; importanti</b>. Indichi tutte le risposte che ritiene opportune. Se per lei nessun elemento &egrave; importante, pu&ograve; dire &quot; Nessuna&quot;.");
+qst.setProperty("concept", cpt);
+qst.setProperty("allow_nosel", true);
+qst.setProperty("code", "c.200");
+send qst;
+
+qst = new question("concept_eval", 540);
+qst.setProperty("text", "Ora invece indichi le parole o immagini in questa descrizione che ritiene personalmente <b>meno importanti</b>. Indichi tutte le risposte che ritiene opportune. Se per lei nessun elemento &egrave; poco importante, pu&ograve; dire &quot; Nessuna&quot;.");
+qst.setProperty("concept", cpt);
+qst.setProperty("allow_nosel", true);
+qst.setProperty("code", "c.205");
+qst.setProperty("controller", 530);
+qst.setProperty("reverse_control", true);
+send qst;
+
+qst = new question("concept_eval", 550);
+qst.setProperty("text", "Indichi le parole o immagini in questa descrizione che considera <b>poco credibili</b>. Indichi tutte le risposte che ritiene opportune. Se nessuna parola od immagine &egrave; per Lei poco credibile, pu&ograve; dire “Nessuna”.");
+qst.setProperty("concept", cpt);
+qst.setProperty("allow_nosel", true);
+qst.setProperty("code", "c.210");
+send qst;
+
+qst = new question("concept_eval", 560);
+qst.setProperty("text", "Infine, comparato con altri prodotti di questo tipo, indichi le parole o immagini che ritiene che esprimano qualcosa di<b> veramente nuovo e differente</b>. Indichi tutte le risposte che ritiene opportune. Se nessuna parola od immagine &egrave; per Lei nuova e differente, pu&ograve; dire “Nessuna”.");
+qst.setProperty("concept", cpt);
+qst.setProperty("allow_nosel", true);
+qst.setProperty("code", "c.215");
+send qst;
+
+
+//fine concept evaluetor
+
+
+
+qst = new question("scale", 570);
+qst.setProperty("text", "Ora le legger&ograve; una serie di affermazioni che potrebbero essere utilizzate per descrivere il prodotto di cui ha letto la descrizione. Per ognuna delle affermazioni, utilizzi la scala seguente per definire in quale misura &egrave; d’accordo o in disaccordo con ciascuna affermazione in base alla descrizione.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "c.220");
+vector q570_rows = new vector {
+"Adatto per un uso quotidiano/da consumare tutti i giorni",
+"È un prodotto adatto a tutta la famiglia",
+"È un prodotto adatto a chi ha problemi di intolleranza/allergie",
+"Adatto per chi è attento alla salute",
+"Adatto ad un’alimentazione  varia ed equilibrata",
+"E’ prodotto garantito da una marca di fiducia ",
+"È un prodotto che ha un ridotto contenuto calorico",
+"E’ leggero/digeribile ",
+"E’ un prodotto a base di cocco",
+"E’ senza lattosio, senza glutine, senza soia ",
+"È un prodotto naturale",
+"E’ un prodotto vegetale",
+"Ideale per una pausa completa ed equilibrata",
+"La confezione rende il prodotto facilmente riconoscibile a scaffale",
+"La confezione mi invoglia a provare il prodotto",
+"E’ un prodotto dal sapore davvero unico/inimitabile",
+"E’ adatto a chi ama trattarsi bene ",
+"Soddisfa la voglia di qualcosa di dolce e goloso ",
+"E’ disponibile in varianti che invogliano ad acquistarlo",
+"E' un buon mix di cremosità e leggerezza",
+"E’ un prodotto di qualità elevata ",
+"Ha le stesse proprietà dello yogurt ",
+"E’ un prodotto dal gusto  avvolgente/appagante",
+"Ideale per una pausa golosa/di piacere",
+"E’ buono come un dessert",
+"E’ un prodotto naturalmente dolce",
+"E’ un prodotto adatto ai vegetariani",
+"E’ un prodotto innovativo",
+"E’ un prodotto artificiale",
+"È un prodotto nuovo",
+"È un prodotto fatto con il cocco",
+"È un prodotto diverso dagli altri sul mercato"
+
+};
+qst.setProperty("rows", q570_rows);
+vector q570_cols = new vector {
+"Completamente d'accordo",
+"Abbastanza d'accordo",
+"Né d’accordo né in disaccordo",
+"Abbastanza in disaccordo",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q570_cols);
+qst.setProperty("extras","{header_repeat:14}");
+send qst;
+
+
+qst = new question("choice", 572);
+qst.setProperty("text", "Rispetto agli altri prodotti vegetali in commercio Lei ritiene/giudica “questo prodotto?“");
+qst.setProperty("code", "C.230");
+vector q572_opts = new vector {
+"Più goloso degli altri",
+"Uguali agli altri",
+"Meno goloso degli altri"
+};
+qst.setProperty("options", q572_opts);
+send qst;
+
+
+qst = new question("scale", 574);
+qst.setProperty("text", "Per ognuna delle affermazioni, utilizzi la scala seguente per definire in quale misura è d’accordo o in disaccordo con ciascuna affermazione in base alla descrizione.<p>Pensando <b>AL SAPORE DI QUESTO PRODOTTO</b> lei direbbe che ….?</p>");
+qst.setProperty("code", "c231");
+qst.setProperty("show_rand", true);
+vector q574_rows = new vector {
+"Ha un buon equilibrio di sapori",
+"Le varianti di gusto si associano bene alla base di cocco",
+"Il gusto menta si associa bene alla base di cocco",
+"Il gusto Lime si associa bene alla base di cocco",
+"Il gusto Mango si associa bene alla base di cocco",
+"Il sapore delle specifiche varianti è ben identificabile",
+"La base cocco non altera la percezione dei specifici gusti",
+"La base cocco migliora il gusto dello yogurt"
+};
+qst.setProperty("rows", q574_rows);
+vector q574_cols = new vector {
+"Completamente d'accordo",
+"Abbastanza d'accordo",
+"N&egrave; d'accordo n&egrave; in disaccordo",
+"Abbastanza in disaccordo",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q574_cols);
+send qst;
+
+
+
+qst = new question("choice", 580);
+qst.setProperty("text", "Secondo lei, quanto <b>"+nam+"</b> si adatta alla marca GRANAROLO 100% VEGETALE?");
+qst.setProperty("code", "c.236");
+vector q580_opts = new vector {
+"Si adatta molto",
+"Si adatta abbastanza",
+"Si adatta cos&igrave; e cos&igrave;",
+"Si adatta poco",
+"Non si adatta per niente"
+};
+qst.setProperty("options", q580_opts);
+send qst;
+
+qst = new question("choice", 590);
+qst.setProperty("text", "Quale affermazione descrive meglio quanto LE PIACE o NON LE PIACE <b>il nome</b>  <b>"+nam+"</b> di questo prodotto?");
+qst.setProperty("code", "c.240");
+vector q590_opts = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Mi piace cos&igrave; e cos&igrave;",
+"Mi piace poco",
+"Non mi piace per niente"
+};
+qst.setProperty("options", q590_opts);
+send qst;
+
+qst = new question("choice", 600);
+qst.setProperty("text", "Quale affermazione descrive meglio quanto LE PIACE o NON LE PIACE <b>la confezione</b> di questo prodotto?");
+qst.setProperty("code", "c.245");
+vector q600_opts = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Mi piace cos&igrave; e cos&igrave;",
+"Mi piace poco",
+"Non mi piace per niente"
+};
+qst.setProperty("options", q600_opts);
+send qst;
+
+link="http://www.primisoft.com/fields/IPS/ITA1801007/resources/p0l"+leg+".jpg";
+            
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='600px'  alt='' /></a>"+
+		 "<div class='info'>Clicchi per visualizzare nuovamente il concetto</div></p>";
+
+qst = new question("concept", 610);
+qst.setProperty("text", "Vorrei che ora pensasse al pack di questo prodotto di cui ha letto la descrizione”<p><img src='"+link+"'/></p>");
+send qst;
+
+qst = new question("scale", 620);
+qst.setProperty("text", img+"E quanto le piace ciascuno dei seguenti elementi della confezione?<div class='info'> Usi un voto da 1 a 5</div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "c.182B");
+vector q620_rows = new vector {
+"La forma",
+"I colori/mix di colori",
+"Le scritte",
+"I disegni",
+"La chiarezza delle informazioni",
+"Il logo della marca"
+};
+qst.setProperty("rows", q620_rows);
+vector q620_cols = new vector {
+"1-Non mi piace per niente",
+"2",
+"3",
+"4",
+"5-Mi piace molto"
+};
+qst.setProperty("cols", q620_cols);
+send qst;
+
+
+
+qst = new question("scale", 625);
+qst.setProperty("text", img+"E quanto secondo lei la confezione è in grado di comunicare i seguenti aspetti ?"+
+"<p>LA CONFEZIONE BEN COMUNICA …</p> ");
+qst.setProperty("code", "C.183");
+qst.setProperty("show_rand", true);
+vector q625_rows = new vector {
+"…. che è uno yogurt a base di cocco",
+"… il gusto specifico della variante oltre la base cocco",
+"… che è adatto agli intolleranti",
+"… che è vegetale",
+"… che è senza lattosio",
+"… che è senza glutine",
+"… che è senza soia"
+};
+qst.setProperty("rows", q625_rows);
+vector q625_cols = new vector {
+"Completamente d'accordo",
+"Abbastanza d'accordo",
+"N&egrave; d'accordo n&egrave; in disaccordo",
+"Abbastanza in disaccordo",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q625_cols);
+send qst;
+
+
+
+qst = new question("choice", 626);
+qst.setProperty("text", "Ora che ha avuto modo di farsi un idea di questo prodotto e vederne l’immagine, vorrei sapere se Lei conosce oppure ha mai sentito parlare di altri yogurt vegetali con le stesse caratteristiche di quello che appena visto?");
+qst.setProperty("code", "c.184");
+vector q626_opts = new vector {
+"Si quale marca?: specificare#so",
+"no"
+};
+qst.setProperty("options", q626_opts);
+send qst;
+
+
+
+
+if (leg==2)
+{
+
+link="http://www.primisoft.com/fields/IPS/ITA1801007/resources/concNo"+leg+".jpg";
+            
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='600px'  alt='' /></a>"+
+		 "<div class='info'>Clicchi per visualizzare nuovamente il concetto</div></p>";
+
+
+qst = new question("concept", 627);
+qst.setProperty("text", "Per favore rilegga la descrizione di questo prodotto.<p><img src='"+link+"' /></p>");
+send qst;
+
+
+tabella=scriptzoom+"<p><table border='1' cellpadding='5'><tr>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/IPS/ITA1801007/resources/p0l2.jpg'><img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/p0l2.jpg'' width='500px'  alt='' /></a></td>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/IPS/ITA1801007/resources/p1l2.jpg'><img src='http://www.primisoft.com/fields/IPS/ITA1801007/resources/p1l2.jpg' width='500px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per ingrandire l'immagine</div></p>";	
+
+qst = new question("scale", 629);
+qst.setProperty("text", "Guardi queste due alternative di pack messe a punto per il prodotto di cui ha letto la descrizione”<br/>"+tabella+
+"Quale di queste <b>MEGLIO SI ADATTA AL PRODOTTO DI CUI HA LETTO LA DESCRIZIONE. </b> <br/>Quello in cui è specificato FATTO CON COCCO oppure A BASE DI COCCO?");
+qst.setProperty("code", "q2.10");
+vector q629_rows = new vector { "&nbsp;"  };
+qst.setProperty("rows", q629_rows);
+vector q629_cols = new vector {
+"Meglio si adatta il pack con la frase ‘FATTO CON COCCO’",
+"Meglio si adatta il pack con la frase ‘ A BASE DI COCCO’",
+"Si adattano entrambe allo stesso modo",
+"Nessuna delle due"
+};
+qst.setProperty("cols", q629_cols);
+qst.setProperty("view", "columns");
+send qst;
+}
+
+
+
+qst = new question("choice", 630);
+qst.setProperty("text", "In totale, quante persone, compreso Lei, vivono nella sua famiglia?");
+qst.setProperty("code", "d.10");
+vector q630_opts = new vector {
+"1",
+"2",
+"3",
+"4",
+"5 o pi&ugrave;"
+};
+qst.setProperty("options", q630_opts);
+send qst;
+
+ansId=system.getProperty("ans630");
+if (ansId!=0)
+{
+
+
+qst = new question("choice", 640);
+qst.setProperty("text", "Lei ha dei figli di 18 anni o meno che vivono a casa con Lei?");
+qst.setProperty("code", "d.15");
+vector q640_opts = new vector {
+"S&igrave;",
+"No"
+};
+qst.setProperty("options", q640_opts);
+send qst;
+
+ansId=system.getProperty("ans640");
+if (ansId==0)
+{
+
+qst = new question("fixed_sum", 650);
+qst.setProperty("text", "Quanti figli di et&agrave; … ci sono nella sua famiglia? <div class='info'>PER OGNI ETÀ INDICARE IL NUMERO  DI FIGLI </div>");
+qst.setProperty("code", "d.16");
+vector q650_opts = new vector {
+"Sotto i 2 anni",
+"2 anni",
+"3 anni",
+"4 anni",
+"5 anni",
+"6 anni",
+"7 anni",
+"8 anni",
+"9 anni",
+"10 anni",
+"11 anni",
+"12 anni",
+"13 anni",
+"14 anni",
+"15 anni",
+"16 anni",
+"17 anni",
+"18 anni"
+};
+qst.setProperty("fields", q650_opts);
+qst.setProperty("show_sum", false); //hide sum box
+qst.setProperty("sum", 1); // set total value
+qst.setProperty("operator", ">="); //set total value parameter
+send qst;
+}
+
+}
+qst = new question("choice", 660);
+qst.setProperty("text", "Quale &egrave; la sua attuale professione?");
+qst.setProperty("code", "d.25");
+vector q660_opts = new vector {
+"Dirigente/imprenditore/libero professionista",
+"Insegnante",
+"Impiegato/a",
+"Commerciante/esercente (in proprio)",
+"Commerciante/esercente (alle dipendenze di altri)",
+"Artigiano (in proprio)",
+"Artigiano (alle dipendenze di altri)",
+"Operaio/a",
+"Studente/essa",
+"Casalinga",
+"Pensionato/a",
+"In cerca di prima occupazione",
+"Disoccupato"
+};
+qst.setProperty("options", q660_opts);
+send qst;
+
+ansId=system.getProperty("ans630");
+if (ansId!=0)
+{
+
+
+qst = new question("choice", 670);
+qst.setProperty("text", "Quale &egrave; l’attuale professione del capofamiglia se non &egrave; Lei?");
+qst.setProperty("code", "d.30");
+vector q670_opts = new vector {
+"Dirigente/imprenditore/libero professionista",
+"Insegnante",
+"Impiegato/a",
+"Commerciante/esercente (in proprio)",
+"Commerciante/esercente (alle dipendenze di altri)",
+"Artigiano (in proprio)",
+"Artigiano (alle dipendenze di altri)",
+"Operaio/a",
+"Studente/essa",
+"Casalinga",
+"Pensionato/a",
+"In cerca di prima occupazione",
+"Disoccupato",
+"Sono io il capofamiglia"
+};
+qst.setProperty("options", q670_opts);
+send qst;
+}
+
+
+qst = new question("choice", 680);
+qst.setProperty("text", "Qual &egrave; il suo grado di istruzione?");
+qst.setProperty("code", "d.40");
+vector q680_opts = new vector {
+"Specializzazione/master post Laurea",
+"Universit&agrave; con laurea",
+"Universit&agrave; senza laurea",
+"Licenza Media superiore",
+"Licenza Media inferiore",
+"Licenza elementare",
+"Nessun titolo"
+};
+qst.setProperty("options", q680_opts);
+send qst;
+
+qst = new question("choice", 690);
+qst.setProperty("text", "Qual &egrave; il suo stato civile?");
+qst.setProperty("code", "d.45");
+vector q690_opts = new vector {
+"Sposato/a o Convivente",
+"Single e mai sposato/a",
+"Separato/a",
+"Divorziato/a",
+"Vedovo/a"
+};
+qst.setProperty("options", q690_opts);
+send qst;
+
+}

@@ -1,0 +1,26 @@
+{
+	"autoload" : {
+		"classmap" : [
+			"src/"
+		]
+	},
+	"name" : "interactivemr/cintapi-client",
+	"type" : "library",
+	"description" : "An API client for integrating the Interactive panel with Cint",
+	"require" : {
+		"php" : ">=7.2",
+		"guzzlehttp/guzzle" : "~6.0"
+	},
+	"authors" : [{
+			"name" : "Sal Borrelli",
+			"email" : "s.borrelli@interactive-mr.com",
+			"homepage" : "http://www.interactive-mr.com",
+			"role" : "developer"
+		}
+	],
+	"require-dev" : {
+		"phpunit/phpunit" : "8"
+	},
+	"homepage" : "https://bitbucket.org/salborrelli/cintapi-client",
+	"license" : "proprietary"
+}

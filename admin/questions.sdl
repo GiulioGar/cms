@@ -1,0 +1,102 @@
+#export vars "cel"
+void main() {
+
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;int reCod;
+int selint;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "debug:true");	
+
+	
+	qst = new question("choice", 3);
+	qst.setProperty("text", "Lei possiede un dispositivo Android?");
+	qst.setProperty("code", "Q1");
+	vector q3_opts = new vector { "pippo", "pluto"};
+	qst.setProperty("options", q3_opts);
+	
+	qst = new question("choice", 4);
+	qst.setProperty("text", "Il Club Millebyte sta per lanciare la sua app per dispositivi Android!<br/><br/>"+
+	"Grazie alla nuova app sarà possibile:"+
+	"<ul><li>Consultare in maniera rapida e veloce lo stato dell'account (livello attuale, prossimo livello obiettivo)</li>"+
+	"<li>Ricevere notifiche quando sono disponibili nuove ricerche. </li>"+
+	"<li>Rispondere ai sondaggi dal proprio dispositivo. </li></ul>"+
+	"<p>Per iniziare questa nuova avventura abbiamo bisogno del tuo aiuto, saresti disposto a testare la nuova App?</p>");
+	qst.setProperty("code", "Q2");
+	qst.setProperty("options", q3_opts);
+	
+	
+	
+	qst = new question("composed",10);
+	vector q10_comps = new vector { "3", "4"};
+	    vector q10_rules = new vector {
+        "{ action: { hide: [4] } }",
+        "{ event: { cid: 3, ans: [0] }, action: { show: [4], effect: 'fade' } }",
+        "{ event: { cid: 3, ans: [1] }, action: { hide: [4], effect: 'fade' } }"
+    };
+    qst.setProperty("rules", q10_rules);
+	qst.setProperty("components", q10_comps);
+	send qst;
+	
+	selint=system.getProperty("ans3");
+	if (selint==1){return 4;}
+	
+		selint=system.getProperty("ans4");
+	if (selint==1){return 4;}
+	
+	
+qst = new question("choice", 20);
+qst.setProperty("text", "<p>Grazie per il tuo aiuto!</p> Nei prossimi giorni ti invieremo un'e-mail con le istruzioni per scaricare la app dal Google Play Store."+
+"<p>Per partecipare abbiamo bisogno dell'indirizzo e-mail che utilizzi nel Google Play Store, se non è quello utilizzato per il Club per favore indicalo qui sotto. </p> ");
+qst.setProperty("code", "q1.1");
+vector q20_opts = new vector {
+"Indirizzo Play Store:#so",
+"Utilizzo l'indirizzo con cui sono iscritto al club"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+
+ansId=system.getProperty("ans20");
+if (ansId==0)
+{
+
+label = system.getProperty("ans20_comp");
+boolean testual=label.contains("@");
+
+qtext="<p>Grazie per il tuo aiuto!</p> Nei prossimi giorni ti invieremo un'e-mail con le istruzioni per scaricare la app."+
+"<p>Per partecipare abbiamo bisogno dell'indirizzo gmail che utilizzi nel Play Store, se non è quello utilizzato per il Club per favore indicalo qui sotto. </p> ";
+
+while (testual==false) 
+{
+    // elimina l'ultima risposta
+    system.setProperty("delete", "ans20");
+    // ripropone la domanda
+
+    qtext = "<p style='color: red'>Attenzione inserire un e-mail valida!<p>"+qtext;
+    qst.setProperty("text", qtext);
+    send qst;
+}
+
+}
+	
+	
+	
+
+}

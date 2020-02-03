@@ -1,0 +1,15 @@
+{
+    "name": "interactivemr/cintapi-demo",
+    "description": "An example application for the Cint API Client",
+    "type": "project",
+    "license": "proprietary",
+    "repositories" : [{
+        "type" : "path",
+        "url" : "opt/cintapi-client"
+    }
+],
+"require" : {
+    "php" : ">=7.3",
+    "interactivemr/cintapi-client": "dev-master"
+}
+}

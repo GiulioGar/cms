@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    
+<script src="js/jquery-1.9.1.min.js"></script>
+
+    
+</head>
+
+<body>
+        
+<div >
+    Sid:<input style="text-transform:uppercase;" id="res" name="sid" type="text">
+    Prj:<input style="text-transform:uppercase;" id="pro" name="prj" type="text">
+</div>
+
+<div>
+    Guest<input id="gst" name="guest" type="checkbox" onchange=" history.go(0);">
+    SSI<input id="ss" name="ss" type="checkbox">
+    Altro<input id="ot" name="ot" type="checkbox" onclick="viewOt()">
+</div>
+<div class="otVar" >Altre variabili: <input id="otVar" type="text"></div>
+<div>Link da creare<input id="nLink" type="text" value="0" onfocus="soloNum();" onchange="history.go(0);">&nbsp;&nbsp;<span class="alert"></span> </div>
+
+
+<input disabled="disabled" type="submit" id="crea" value="CREA" onclick="viewGuest(); viewLink();">
+<input type="submit" id="reset" value="RESET" onclick="reset();">
+
+<p>
+<table id="linTab" style="display:none">
+</table>    
+</p>
+
+
+<script src="js/genLink.js"></script>
+
+</body>
+</html>

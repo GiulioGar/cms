@@ -1,0 +1,1056 @@
+void main() {
+
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+//system.setProperty("env", "debug:true");
+//system.setProperty("env", "browser:full");
+string autotest=system.getProperty("test");
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+string codLeft="<script type='text/javascript' src='http://www.primisoft.com/fields/STR/ITA1805088/resources/leftImg.js'></script>";
+
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+qst = new question("concept", 2);
+qst.setProperty("text", "<p>Consigliamo l’uso di un computer fisso piuttosto che di un laptop, tablet o dispositivo mobile. </p>"+
+"  <p>Per vedere le immagini e le domande nella massima risoluzione possibile, consigliamo di visualizzare questa pagina in modalità schermo pieno. <div class='sizer'><u>Premere <b>F11</u></b></div></p>"+
+"  <p>Seguire le istruzioni per assicurarsi che il browser mostri il 100% di tutte le immagini:</p> <div id=''>Internet Explorer : CTRL 0 (numero zero sopra la «o» e la «p») poi <b>F11</b> </div> <div id=''> Firefox : CTRL 0 (numero zero sopra la «o» e la «p» o zero dalla tastiera numerica) poi <b>F11</b>   </div> <div id=''>Chrome : CTRL 0 (numero zero sopra la «o» e la «p» o zero dalla tastiera numerica) poi <b>F11</b></div>");
+send qst;
+
+string esempio="<p><img width='750px' oncontextmenu='return false;' src=http://www.primisoft.com/fields/STR/ITA1610144/resources/esempio.jpg alt=''></p>";
+//string esempio="<p><img oncontextmenu='return false;' src=http://www.primisoft.com/fields/STR/ITA1803062/resources/01_0.jpg alt=''></p>";
+
+
+
+
+
+	qst = new question("choice", 4);
+	qst.setProperty("text", esempio+"Qui sopra trova un'immagine. Per favore, la guardi attentamente ed indichi se riesce a vederla chiaramente");
+	qst.setProperty("code", "qfcheck");
+	vector q4_opts = new vector {
+"Sì",
+"No"
+	};
+	qst.setProperty("options", q4_opts);
+	send qst;
+
+	int selintb=system.getProperty("ans4");
+	int selint;
+
+	if (selintb==1)
+	{
+	qst = new question("choice", 6);
+	qst.setProperty("text", esempio+"Qui sopra trova un'immagine. Per favore, la guardi attentamente ed indichi se riesce a vederla chiaramente");
+	qst.setProperty("code", "qfcheckb");
+	vector q6_opts = new vector {
+"Sì",
+"No"
+	};
+	qst.setProperty("options", q6_opts);
+	send qst;
+
+	selint=system.getProperty("ans6");
+
+	//if (selint==1){return 4;}
+
+	}
+
+
+qst = new question("choice", 10);
+qst.setProperty("text", "Lei è… ");
+qst.setProperty("code", "qa");
+vector q10_opts = new vector {
+"Un uomo",
+"Una donna"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+
+
+int sex;
+ansId=system.getProperty("ans10");
+sex=ansId+1;
+
+cmd=q10_opts.get(ansId);
+system.out("<div>Sex: "+cmd+"</div>"); 
+
+
+qst = new question("open", 20);
+qst.setProperty("text", "Quanti anni ha?");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "qb");
+send qst;
+
+
+int eta=(int)system.getProperty("ans20");
+
+
+	if(eta<25) { reCod=0;}
+	if(eta>=25 && eta<=29) { reCod=1;}
+	if(eta>=30 && eta<=37) { reCod=2;}
+	if(eta>=38 && eta<=44) { reCod=3;}
+	if(eta>=45 && eta<=50) { reCod=4;}
+	if(eta>50 ) { reCod=5;}
+
+qst = new question("choice", 30);
+qst.setProperty("text", "NOTER EN CLAIR");
+qst.setProperty("code", "qbx");
+vector q30_opts = new vector {
+"Moins de 25 ans",
+"Entre 25 et 29 ans",
+"Entre 30 et 37 ans",
+"Entre 38 et 44 ans",
+"Entre 45 et 50 ans",
+"Plus de 50 ans"
+};
+qst.setProperty("options", q30_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+int age = system.getProperty("ans30");
+if (age==0 || age==5) { return 4; }
+
+if ((age==1 || age==4) && sex==1) { return 4; }
+
+
+if (sex==2)
+{
+
+if(age<3) { reCod=0;}
+else { reCod=1;}
+
+qst = new question("choice", 33);
+qst.setProperty("text", "DONNE + AGE");
+qst.setProperty("code", "donnAge");
+vector q33_opts = new vector {
+"Entre 25 et 37 ans",
+"Entre 38 et 50 ans"
+};
+qst.setProperty("options", q33_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+}
+
+qst = new question("choice", 40);
+qst.setProperty("text", "In quale delle seguenti categorie relative al reddito netto mensile rientra la sua famiglia? La invitiamo a tener conto, per quanto possibile, della totalità dei redditi: retribuzione di tutti i membri della famiglia.");
+qst.setProperty("code", "qc");
+vector q40_opts = new vector {
+"Meno di 1200€ al mese",
+"Da 1200 a meno di 1800€ al mese",
+"Da 1800 a meno di 2800€ al mese",
+"Da 2800 a meno di 4500€ al mese",
+"Più di 4500€ al mese",
+"Desidero non rispondere"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+ansId=system.getProperty("ans40");
+if (ansId<2) { reCod=0;}
+if (ansId==2) { reCod=1;}
+if (ansId>2 && ansId <5) { reCod=2;}
+if (ansId==5) { reCod=3;}
+
+
+qst = new question("choice", 44);
+qst.setProperty("text", "Fascia reddito");
+qst.setProperty("code", "reddito");
+vector q44_opts = new vector {
+"Fabile revenu",
+"Revenu money",
+"Revenu eleve",
+"Desidero non rispondere"
+};
+qst.setProperty("options", q44_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q44_opts.get(reCod);
+system.out("<div>Revenu: "+cmd+"</div>"); 
+
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Tra i seguenti prodotti, quali ha acquistato <b> per sé stesso/a</b> nel corso degli <b>ultimi 6 mesi</b>? ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "qd");
+vector q50_opts = new vector {
+"Un profumo",
+"Dei prodotti per la cura del viso  ",
+"Della biancheria intima (Boxer, slip,…)",
+"Delle scarpe",
+"Dei libri ",
+"#shDes collants [IF QA=2 WOMEN TARGET only ]"
+};
+
+if (sex==2)
+{
+q50_opts.set(2,"Della biancheria intima (reggiseno, slip, tanga ,..)");
+q50_opts.set(5,"Delle calze");
+}
+
+qst.setProperty("options", q50_opts);
+send qst;
+
+sel=system.getProperty("ans50_2");
+if (sel==false) {return 4;}
+
+if (sex==1)
+{
+
+qst = new question("choice", 60);
+qst.setProperty("text", "Chi è la persona incaricata della scelta e dell’acquisto di articoli di biancheria intima (boxer, slip)? ");
+qst.setProperty("code", "qd2");
+vector q60_opts = new vector {
+"Io stesso",
+"Insieme io e mia moglie/compagna ",
+"Solamente mia moglie/compagna ",
+"Un’altra persona"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+
+
+int ans60 = system.getProperty("ans60");
+if (ans60==2 || ans60==3) { return 4; }
+
+}
+
+if (sex==2) { label="o calze";}
+else { label=""; }
+
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Nel corso degli ultimi 6 mesi, in quali dei seguenti luoghi si è recato/a per l’acquisto di biancheria intima "+label+" ?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "qe");
+vector q70_opts = new vector {
+"Grandi magazzini (Coin, La Rinascente, Sorelle Ramonda, Dalben, Nico...) ",
+"Catena di negozi di intimo specializzati (Intimissimi, Yamamay, Oysho, Golden Point, Lovable, Tezenis……)",
+"Negozi di intimo indipendenti e multimarca ",
+"Catena di abbigliamento, produttrice anche di intimo (Zara, Benetton, H&M, Independent...)",
+"Catena di negozi sportivi specializzati (Cisalfa, Sport Specialist, Decathlon, Universo Sport, Wonderful...)",
+"Altri negozi di abbigliamento ",
+"Ipermercati (Carrefour, Auchan, IperCoop, ...) o Supermercati (Coop, Esselunga, Conad, ...)",
+"Su internet ",
+"Altro #sf"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+
+count=0;
+for(int i=0,5)
+{
+sel=system.getProperty("ans70_"+i);
+
+if (((i==1 || i==2) && sex==2) || sex==1 )
+
+if (sel==true) { count=count+1; }
+
+}
+
+if (count==0) { return 4; }
+
+
+
+
+
+
+
+
+
+
+boolean dim;
+
+if (sex==2)
+{
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Quali sono le marche di biancheria intima che ha acquistato per sé stessa, nel corso degli ultimi 12 mesi? ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "qf");
+vector q80_opts = new vector {
+"LOVABLE",
+"BENETTON",
+"CALVIN KLEIN",
+"CHANTELLE",
+"COTONELLA",
+"GOLDEN LADY",
+"H&M",
+"INFIORE",
+"INTIMISSIMI",
+"JADEA",
+"MAIDENFORM",
+"LEPEL BELSENO",
+"LA PERLA",
+"LIABEL",
+"OYSHO",
+"OVIESSE",
+"PLAYTEX",
+"POMPEA",
+"SLOGGI",
+"TEZENIS",
+"TRIUMPH",
+"VICTORIA SECRET",
+"WONDERBRA",
+"YAMAMAY",
+"Marche Commerciali/Sottomarche#sf",
+"Altre marche#sf"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+dim=system.getProperty("ans80_0");
+}
+
+if(sex==2 && dim==true) { reCod=0;}
+else {reCod=1; }
+
+qst = new question("choice", 88);
+qst.setProperty("text", "Boost");
+qst.setProperty("code", "boost");
+vector q88_opts = new vector {
+"Yes",
+"No"
+};
+qst.setProperty("options", q88_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q88_opts.get(reCod);
+system.out("<div>Eligible for boost: "+cmd+"</div>"); 
+
+
+if (sex==1) {qtext="Quali sono le marche di biancheria intima che ha acquistato <b>per sé stesso</b>, nel corso degli ultimi 12 mesi?";}
+else 		{qtext="Quali sono le marche di biancheria intima che ha acquistato <b>per un uomo</b>, nel corso degli ultimi 12 mesi?";}
+
+qst = new question("choice", 90);
+qst.setProperty("text", qtext);
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "qf2");
+vector q90_opts = new vector {
+"LOVABLE MAN",
+"FILA MAN",
+"INTIMISSIMI",
+"TEZENIS",
+"NAVIGARE",
+"CALVIN KLEIN",
+"LIABEL",
+"COTONELLA",
+"H&M",
+"COVERI",
+"SLOGGI",
+"DIADORA",
+"RAGNO",
+"YAMAMAY",
+"NOTTHINGAM",
+"POMPEA",
+"ARMANI",
+"CAGI",
+"BENETTON",
+"DECATHLON",
+"KAPPA",
+"ATHENA",
+"JULIPET",
+"PEROFIL",
+"DIESEL",
+"TOMMY HILFIGER",
+"ZARA",
+"Marche Commerciali/Sottomarche#sf",
+"Altre marche#sf",
+"#shNessuna, non ho acquistato prodotti di biancheria intima maschile nel corso dell’anno #se#sf"
+};
+if(sex==2)
+{
+q90_opts.set(29,"Nessuna, non ho acquistato prodotti di biancheria intima maschile nel corso dell’anno #se#sf");
+}
+
+qst.setProperty("options", q90_opts);
+send qst;
+
+if (sex==1)
+{
+
+qst = new question("choice", 100);
+qst.setProperty("text", "Le è mai capitato di acquistare dei prodotti di biancheria intima femminile come regalo?");
+qst.setProperty("code", "qg");
+vector q100_opts = new vector {
+"Molto spesso ",
+"Regolarmente ",
+"Occasionalmente",
+"Raramente ",
+"Mai "
+};
+qst.setProperty("options", q100_opts);
+send qst;
+}
+
+
+
+int leg;
+system.setProperty("r1", "rand:4000");
+r1=(int)system.getProperty("r1");
+
+if (r1<=1000) { leg=1;}
+if (r1>1000 && r1<=2000) { leg=2;}
+if (r1>2000 && r1<=3000) { leg=3;}
+if (r1>3000 ) { leg=4;}
+
+
+reCod=leg-1;
+
+qst = new question("choice", 109);
+qst.setProperty("text", "Please select the cell: (Only for test)");
+qst.setProperty("code", "cella");
+vector celles = new vector {
+"Cella 1",
+"Cella 2",
+"Cella 3",
+"Cella 4"
+};
+qst.setProperty("options", celles);
+//qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+//qst.setProperty("hidden", true);
+send qst;
+
+ansId=system.getProperty("ans109");
+
+leg=ansId+1;
+
+cmd=celles.get(ansId);
+system.out("<div>CELL: "+cmd+"</div>");
+
+system.setProperty("leg",leg);
+ 
+
+link="http://www.primisoft.com/fields/STR/ITALY05088/resources/win"+leg+".jpg";
+
+
+  string delay="<script type='text/javascript'>"+
+    "setTimeout(function() { $('#bnNext').click(); }, 6000);"+
+    "</script>";
+
+	
+	
+qst = new question("concept", 110);
+qst.setProperty("text", delay+"Ora le mostreremo la vetrina di un negozio di intimo maschile/femminile e di calze. <br/>"+
+" La preghiamo di guardare l’immagine con attenzione poiché sarà disponibile solamente per un lasso di tempo limitato.");
+send qst;
+
+
+qst = new question("concept", 111);
+qst.setProperty("text", delay+"<p><img src='"+link+"' '/></p>");
+send qst;
+
+link="http://www.primisoft.com/fields/STR/ITALY05088/resources/win"+leg+".jpg";
+            
+ img=scriptzoom+codLeft+"<p class='limg'><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='600px'  alt='' /><br/>Clicchi per visualizzare i dettagli</a></p>";
+
+qst = new question("choice", 120);
+qst.setProperty("text", "Di quale marca si tratta?");
+qst.setProperty("code", "q0");
+qst.setProperty("show_rand",true);
+vector q120_opts = new vector {
+"Lovable",
+"Intimissimi",
+"Tezenis",
+"Oysho",
+"Golden Point",
+"Yamamay",
+"Altre marche #sf",
+"Non lo so #se#sf"
+};
+qst.setProperty("options", q120_opts);
+send qst;
+
+////////INTESTAZIONI DOPPIE 
+ string intesta="<tr><th class='empty'>&nbsp;</th>"+
+                "<th colspan='3' class='odd'><span style='font-size:12px;'>Questa vetrina non è di suo gradimento, non attira la sua attenzione. </span></th>"+
+                "<th colspan='4' class='odd'>&nbsp;</th>"+
+                "<th colspan='3' class='odd'><span style='font-size:12px;'>Questa vetrina è di suo gradimento, attira la sua attenzione.</span></th>"+
+            "</tr>";
+   
+   cod="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('thead tr').before( $(\""+intesta+"\") );"+
+    "});</script>";
+
+qst = new question("scale", 130);
+qst.setProperty("text", cod+img+"Potrebbe esprimere una sua opinione, relativamente alla vetrina mostrata, utilizzando un numero/voto da 1 a 10? ");
+qst.setProperty("code", "q1");
+vector q130_cols = new vector {
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10"
+};
+vector q130_rows = new vector {
+"&nbsp;"
+};
+qst.setProperty("rows", q130_rows);
+qst.setProperty("cols", q130_cols);
+send qst;
+
+qst = new question("choice", 140);
+qst.setProperty("text", img+"Questa vetrina la invoglia a entrare nel negozio?");
+qst.setProperty("code", "q2");
+vector q140_opts = new vector {
+"Si, decisamente",
+"Si, abbastanza ",
+"Non molto",
+"No, per niente "
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+
+ansId=system.getProperty("ans140");
+if (ansId>1)
+{
+
+qst = new question("open", 150);
+qst.setProperty("text", img+"Perchè no ?");
+qst.setProperty("code", "q2b");
+send qst;
+
+}
+
+
+	  cod="<script type='text/javascript'>"+
+				"$(document).ready(function() {"+
+				"$('#console').before( $('div#fra') );"+
+				"});</script>";	
+
+  cmd="<script type='text/javascript'>"+
+  "$(document).ready(function() {"+
+	"$('#console').hide();"+
+	"$('#title img').hide();"+
+	"$('#title img').fadeIn('slow');"+
+	"});"+
+    "setTimeout(function() { $('#bnNext').click(); }, 3000);"+
+    "</script>";
+
+qst = new question("concept", 160);
+qst.setProperty("text", "Ora le mostreremo l’interno di un negozio di intimo maschile/femminile e di calze. La preghiamo di guardare le seguenti immagini con attenzione. "+
+"<p>Desidereremmo ottenere una sua opinione relativamente al negozio, indipendentemente dai prodotti esposti, i quali possono variare in funzione della collezione e della stagione. </p>");
+send qst;
+
+
+vector ele = new vector {"win", "Glo", "Men", "Women1", "Women2", "Cash", "Fit"  };
+
+n=6;
+
+if (leg>2) 
+{
+n=n-1;
+ele.remove(2);
+}
+
+baseQid=161;
+for (int i=0,n)
+{ 
+
+qid=baseQid+i;
+
+label=ele.get(i);
+opt=label+leg;
+
+qst = new question("concept", qid);
+qst.setProperty("text", cmd+"<img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/"+opt+".jpg'/>");
+send qst;
+
+}
+
+string tab;
+
+
+if (leg<3)
+{
+
+tab=scriptzoom+"<table class='vetri'><tr>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/win"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/win"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Glo"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Glo"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Men"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Men"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women1"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women1"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"</tr><tr>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women2"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women2"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Cash"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Cash"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per visualizzare i dettagli</div>";
+}
+
+else 
+{
+tab=scriptzoom+"<table class='vetri'><tr>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/win"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/win"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Glo"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Glo"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women1"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women1"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"</tr><tr>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women2"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women2"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Cash"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Cash"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit"+leg+".jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit"+leg+".jpg' width='200px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per visualizzare i dettagli</div>";
+}
+
+
+
+qst = new question("open", 170);
+qst.setProperty("text", tab+"<br/><p>Quali sono gli aggettivi o le parole che le vengono in mente spontaneamente per descrivere questo negozio? L’atmosfera, l’ambientazione… </p>");
+qst.setProperty("code", "q3");
+send qst;
+
+qst = new question("choice", 180);
+qst.setProperty("text", tab+"Potrebbe quindi affermare che questo negozio le piace...? ");
+qst.setProperty("code", "q4");
+vector q180_opts = new vector {
+"Moltissimo",
+"Molto",
+"Abbastanza",
+"Così così ",
+"Poco",
+"Per niente "
+};
+qst.setProperty("options", q180_opts);
+send qst;
+
+qst = new question("scale", 190);
+qst.setProperty("text", tab+"<br/><p>Potrebbe quindi affermare che questo negozio propone dei prodotti appartenenti a un mondo …</p>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5");
+vector q190_rows = new vector {
+"Femminile ",
+"Sia maschile che femminile ",
+"Moderno",
+"Di alta qualità",
+"Piacevole  ",
+"Giovane ",
+"Adeguatamente illuminato ",
+"Intimo ",
+"Freddo  ",
+"Nel quale ci si sente bene ",
+"Attraente",
+"Connesso",
+"Elegante  ",
+"Impersonale "
+};
+qst.setProperty("rows", q190_rows);
+vector q190_cols = new vector {
+"Completamente d’accordo	",
+"D’accordo",
+"In disaccordo	",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q190_cols);
+qst.setProperty("view", "rows");
+send qst;
+
+qst = new question("scale", 200);
+qst.setProperty("text", tab+"<br/><p>E potrebbe quindi affermare che questo negozio…</p>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5b");
+vector q200_rows = new vector {
+"È unico, diverso dagli altri negozi di intimo ",
+"Da voglia di trascorrervi del tempo per scoprire i prodotti proposti",
+"Da voglia di chiedere informazioni e consigli ",
+"Ha dei colori che attirano l’attenzione ",
+"Da voglia di fare acquisti ",
+"Attira l’attenzione ",
+"Da voglia di toccare i prodotti "
+};
+qst.setProperty("rows", q200_rows);
+vector q200_cols = new vector {
+"Completamente d’accordo	",
+"D’accordo",
+"In disaccordo	",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q200_cols);
+qst.setProperty("view", "rows");
+send qst;
+
+qst = new question("choice", 210);
+qst.setProperty("text", tab+"<br/><p>Questo negozio corrisponde all’immagine che lei ha della marca Lovable ?");
+qst.setProperty("code", "q6");
+vector q210_opts = new vector {
+"Si, decisamente",
+"Si, abbastanza ",
+"Non molto",
+"No, per niente "
+};
+qst.setProperty("options", q210_opts);
+send qst;
+
+ansId=system.getProperty("ans210");
+if (ansId>1)
+{
+
+
+qst = new question("choice", 220);
+qst.setProperty("text", tab+"<br/><p>Rispetto a tale immagine, direbbe che, attraverso questo negozio, l’immagine della marca Lovable ?</p>");
+qst.setProperty("code", "q6b");
+vector q220_opts = new vector {
+"Migliore ",
+"Meno positiva "
+};
+qst.setProperty("options", q220_opts);
+send qst;
+
+ansId=system.getProperty("ans220");
+if (ansId==1)
+{
+
+qst = new question("open", 230);
+qst.setProperty("text", tab+"<br/><p>Per quale motivo risulta essere meno positiva?</p>");
+qst.setProperty("code", "q6c");
+send qst;
+
+}
+
+}
+
+
+
+
+qst = new question("scale", 240);
+qst.setProperty("text", tab+"<br/><p>Attraverso questo negozio, Lovable appare come una marca …</p>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q7");
+vector q240_rows = new vector {
+"Che propone prodotti confortevoli ",
+"Che propone dei prodotti sexy ",
+"Che propone dei prodotti per tutti i giorni ",
+"Specializzata in biancheria intima ",
+"In cui aver fiducia ",
+"Con i cui prodotti ci si sente a proprio agio ",
+"Molto femminile ",
+"Che propone prodotti sia per uomo che per donna ",
+"Di alta qualità ",
+"Moderna, di tendenza ",
+"Elegante ",
+"Glamour",
+"Innovativa ",
+"Unica, diversa dalle altre marche di biancheria intima ",
+"Con la quale mi sento a mio agio e libera nei movimenti ",
+"Di qualità",
+"#shImpertinente (FRANCE ONLY)",
+"Che si rivolge a tutte le donne ",
+"Che mi permette di esprimere il mio stile  ",
+"Che mette in risalto l’unicità della mia bellezza ",
+"Che rispecchia il design italiano ",
+"#shA la mode (France ONLY)",
+"#shPleine de joie de vivre (France ONLY)",
+"#shDynamique (France ONLY)",
+"#shTransgénérationnelle (France ONLY)",
+"Accessible "
+};
+qst.setProperty("rows", q240_rows);
+vector q240_cols = new vector {
+"Completamente d’accordo",
+"D’accordo",
+"In disaccordo",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q240_cols);
+qst.setProperty("view", "rows");
+send qst;
+
+qst = new question("scale", 250);
+qst.setProperty("text", tab+"<br/><p>Sulla base delle fotografie che sta vedendo, ritiene che questo negozio… </p>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q8");
+vector q250_rows = new vector {
+"E' adatto per un'offerta di di biancheria intima maschile",
+"Propone un’ampia gamma di biancheria intima femminile ",
+"Mette adeguatamente in risalto i prodotti ",
+"Propone un’esposizione chiara e logica dei prodotti ",
+"Permette di distinguere chiaramente le diverse zone (uomo, donna, abbigliamento notte, calze)",
+"Offre dei prodotti che si adattano alle forme del mio corpo ",
+"Dispone di commesse affidabili ",
+"E' adatto per un'offerta di calze",
+"Permette al cliente di acquistare in autonomia (da solo, senza l’aiuto del commesso/a)",
+"Mi permette di trovare il prodotto di cui ho veramente bisogno "
+};
+qst.setProperty("rows", q250_rows);
+vector q250_cols = new vector {
+"Completamente d’accordo",
+"D’accordo",
+"In disaccordo",
+"Completamente in disaccordo"
+};
+qst.setProperty("cols", q250_cols);
+qst.setProperty("view", "rows");
+send qst;
+
+link="http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit"+leg+".jpg";
+
+ img=scriptzoom+codLeft+"<p class='limg'><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='600px'  alt='' /><br/>Clicchi per visualizzare i dettagli</a></p>";
+
+		 
+qst = new question("concept", 260);
+qst.setProperty("text", "La preghiamo ora di guardare attentamente l’immagine dei camerini.  <p><img src='"+link+"'/></p>");
+send qst;
+
+
+intesta="<tr><th class='empty'>&nbsp;</th>"+
+                "<th colspan='3' class='odd'><span style='font-size:12px;'>Questo camerino non è di suo gusto</span></th>"+
+                "<th colspan='4' class='odd'>&nbsp;</th>"+
+                "<th colspan='3' class='odd'><span style='font-size:12px;'>Questo camerino incontra totalmente il suo gusto</span></th>"+
+            "</tr>";
+   
+   cod="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('thead tr').before( $(\""+intesta+"\") );"+
+    "});</script>";
+
+qst = new question("scale", 270);
+qst.setProperty("text", cod+img+"Potrebbe esprimere una sua opinione, relativamente al camerino mostrato, utilizzando un voto da 1 a 10?");
+qst.setProperty("code", "q9");
+vector q270_cols = new vector {
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10"
+};
+vector q270_rows = new vector {
+"&nbsp;"
+};
+qst.setProperty("rows", q270_rows);
+qst.setProperty("cols", q270_cols);
+send qst;
+
+qst = new question("choice", 280);
+qst.setProperty("text", img+"Questo camerino le trasmette la voglia di provare uno dei capi proposti?");
+qst.setProperty("code", "q10");
+vector q280_opts = new vector {
+"Si, decisamente",
+"Si, abbastanza ",
+"Non molto",
+"No, per niente "
+};
+qst.setProperty("options", q280_opts);
+send qst;
+
+qst = new question("choice", 290);
+qst.setProperty("text", tab+"Se questo negozio fosse presente vicino al luogo in cui risiede, le piacerebbe visitarlo? ");
+qst.setProperty("code", "q11");
+vector q290_opts = new vector {
+"Assolutamente si ",
+"Probabilmente si ",
+"Probabilmente no ",
+"Certamente no" 
+};
+qst.setProperty("options", q290_opts);
+send qst;
+
+ansId=system.getProperty("ans290");
+if (ansId<2)
+{
+
+qst = new question("choice", 300);
+qst.setProperty("text", tab+"Con quale frequenza potrebbe recarvisi?");
+qst.setProperty("code", "q12");
+vector q300_opts = new vector {
+"Più volte al mese",
+"Una volta al mese ",
+"Una volta ogni 2-3 mesi",
+"Una volta ogni 4-6 mesi",
+"Una volta all’anno",
+"Meno spesso"
+};
+qst.setProperty("options", q300_opts);
+send qst;
+}
+
+
+qst = new question("choice", 310);
+qst.setProperty("text", tab+"Potrebbe quindi tenere in considerazione questo negozio per un prossimo ed eventuale acquisto di biancheria intima?");
+qst.setProperty("code", "q13");
+vector q310_opts = new vector {
+"Assolutamente si ",
+"Probabilmente si ",
+"Probabilmente no ",
+"Certamente no "
+};
+qst.setProperty("options", q310_opts);
+send qst;
+
+ansId=system.getProperty("ans310");
+if (ansId<2)
+{
+
+qst = new question("choice", 320);
+qst.setProperty("text", tab+"Per quale tipologia d’acquisto?");
+qst.setProperty("code", "q14");
+vector q320_opts = new vector {
+"Principalmente per lei stessa ",
+"Principalmente acquistare dei regali ",
+"Per entrambi gli acquisti "
+};
+qst.setProperty("options", q320_opts);
+send qst;
+}
+
+if (ansId>0)
+{
+qst = new question("open", 330);
+qst.setProperty("text", tab+"Che cosa bisognerebbe cambiare per far si che lei possa tenere in considerazione tale negozio?");
+qst.setProperty("code", "q15");
+send qst;
+}
+
+
+if (leg!=4)
+{
+
+qst = new question("concept", 340);
+qst.setProperty("text", "Per concludere, ora le mostreremo quella che sarà l’evoluzione prevista per questo negozio di biancheria intima maschile/femminile e di calze. "+
+" Si tratta di una rappresentazione grafica che le permetterà di avere un’idea della struttura futura del negozio Lovable."+
+" <p>La preghiamo di guardare le seguenti immagini con attenzione.  </p>");
+send qst;
+
+
+
+vector ele2 = new vector {"win", "Glo",  "Women1", "Women2", "Cash", "Fit"  };
+
+ cod="<script type='text/javascript'>"+
+				"$(document).ready(function() {"+
+				"$('#console').before( $('div#fra') );"+
+				"});</script>";	
+
+  cmd="<script type='text/javascript'>"+
+  "$(document).ready(function() {"+
+	"$('#console').hide();"+
+	"$('#title img').hide();"+
+	"$('#title img').fadeIn('slow');"+
+	"});"+
+    "setTimeout(function() { $('#bnNext').click(); }, 3000);"+
+    "</script>";
+	
+baseQid=341;
+for (int i=0,5)
+{ 
+
+qid=baseQid+i;
+
+label=ele2.get(i);
+opt=label+"4";
+
+qst = new question("concept", qid);
+qst.setProperty("text", cmd+"<img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/"+opt+".jpg'/>");
+send qst;
+
+}	
+
+
+tab=scriptzoom+"<table class='vetri'><tr>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/win4.jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/win4.jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Glo4.jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Glo4.jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women14.jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women14.jpg' width='200px'  alt='' /></a></td>"+
+"</tr><tr>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women24.jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Women24.jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Cash4.jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Cash4.jpg' width='200px'  alt='' /></a></td>"+
+"<td><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit4.jpg'><img src='http://www.primisoft.com/fields/STR/ITALY05088/resources/Fit4.jpg' width='200px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per visualizzare i dettagli</div>";
+
+qst = new question("choice", 350);
+qst.setProperty("text", tab+"Potrebbe quindi affermare che questo negozio le piace...? ");
+qst.setProperty("code", "q16");
+vector q350_opts = new vector {
+"Moltissimo",
+"Molto",
+"Abbastanza",
+"Così così ",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q350_opts);
+send qst;
+
+qst = new question("choice", 360);
+qst.setProperty("text", tab+"Rispetto al primo negozio che ha visto, questo negozio le sembra…");
+qst.setProperty("code", "q17");
+vector q360_opts = new vector {
+"Completamente nuovo e differente ",
+"Abbastanza nuovo e differente",
+"Nuovo e differente",
+"Non molto nuovo e differente",
+"Per niente nuovo e differente"
+};
+qst.setProperty("options", q360_opts);
+send qst;
+
+qst = new question("choice", 365);
+qst.setProperty("text", tab+"Rispetto al primo negozio che hai visto, questo negozio rappresenta...");
+qst.setProperty("code", "q17b");
+vector q365_opts = new vector {
+"Un'evoluzione molto positiva",
+"Un'evoluzione positiva",
+"Un'evoluzione negativa",
+"Un'evoluzione molto negativa",
+"Nessuna di queste proposte / Nessuna evoluzione"
+};
+qst.setProperty("options", q365_opts);
+send qst;
+
+qst = new question("choice", 370);
+qst.setProperty("text", tab+"Rispetto al primo negozio che ha visto, questo negozio le trasmette… ");
+qst.setProperty("code", "q18");
+vector q370_opts = new vector {
+"Maggior voglia di entrare ",
+"La stessa voglia di entrare ",
+"Minor voglia di entrare "
+};
+qst.setProperty("options", q370_opts);
+send qst;
+
+}
+
+
+
+}

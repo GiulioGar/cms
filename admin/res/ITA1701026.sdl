@@ -1,0 +1,774 @@
+void main() {
+	question qst;
+	
+	
+	int selint;
+	boolean sel;
+	int qid;
+	string item;
+	int reCod;
+	string cmd;
+	int conta;
+	string label;
+	string nascondi_item;
+	
+	
+	system.setProperty("env", "debug:false");
+	system.setProperty("env", "stylesheet:mod.css");
+	
+	
+	qst = new question("concept", 10);
+	qst.setProperty("text", "Questa ricerca ha l’obiettivo di descrivere se, come e quanto le persone che lavorano in ambito commerciale, utilizzano <u>Sales Content, ovvero tutti i materiali/contenuti strutturati predisposti dall’azienda, in qualsiasi formato (testo, video, presentazioni powerpoint, fogli di calcolo…) che supportano i venditori nelle varie fasi del processo di vendita</u>. Ne sono esempi:<ul><li>presentazioni dei prodotti e dell’azienda,</li><li>case studies di successo nella gestione dei clienti,</li><li>video-interviste a clienti soddisfatti da usare come testimonial per contattare nuovi clienti,</li><li>configuratori di soluzioni per i clienti,</li><li>strumenti di calcolo per quantificare al cliente il ritorno sull’investimento della soluzione propostagli,</li><li>format predefiniti per presentazioni ai clienti o per l’invio di mail ai clienti,</li><li>“copioni” per rispondere ad obiezioni dei clienti, etc.</li></ul><br>  In questa ricerca dunque non consideriamo sales content semplici dati grezzi o singole informazioni come ad esempio l’anagrafica di un cliente.<br>Nel rispondere alle domande faccia riferimento alla sua azienda oppure, nel caso di azienda multi-divisionale, alla Business Unit in cui lei lavora e che conosce meglio.<br> Non esistono risposte giuste o sbagliate! Ci interessa solo descrivere la situazione attuale nel modo pi&ugrave; realistico possibile, e raccogliere le sue opinioni sul tema.<br>GRAZIE PER LA COLLABORAZIONE!<br>Il team di ricerca<br><br>Per maggiori informazioni: <a href=\"http://www.sdabocconi.it/it/sito/cel-commercial-excellence-lab\" target=\"_blank\">http://www.sdabocconi.it/it/sito/cel-commercial-excellence-lab</a>");
+	send qst;
+	
+	
+	///estrazione inizio+casuale
+	system.setProperty("inizio", "rand:9");
+	system.setProperty("casuale", "rand:2");
+    int inizio = (int)system.getProperty("inizio");
+	int casuale = (int)system.getProperty("casuale");
+	casuale=casuale+2;
+    
+	
+	//inizio=4;
+	//casuale=2;
+	//random_scale(dimensione, inizio, casuale)
+	string rnd_scale="<script type='text/javascript' src='http://www.primisoft.com/fields/DEMO/RANDOM/resources/randItemScale.js'></script>";
+	string mozCode_scale="<script type='text/javascript'>$(window).load(function() {randomScale(9,"+inizio+","+casuale+");});</script>";
+	string random_scale=rnd_scale+mozCode_scale;
+	
+	
+	//inizio=4;
+	//casuale=2;
+	//random(dimensione, inizio, casuale)
+	string rnd="<script type='text/javascript' src='http://www.primisoft.com/fields/DEMO/RANDOM/resources/randItem.js'></script>";
+	string mozCode="<script type='text/javascript'>$(window).load(function() {random(9,"+inizio+","+casuale+");});</script>";
+	string random=rnd+mozCode;
+	
+	
+	//////////////DISABILITARE TOTALE SPESA IN FIXED SUM E CAMBIARE TESTO ETICHETTA
+	string disabilita_totale="<script type='text/javascript'>"+
+	"$(document).ready(function() {"+
+	"$('#status-label').html('Totale');"+
+	"$('#status').prop('disabled', true);"+
+	"});</script>";
+	
+	qst = new question("choice", 20);
+	qst.setProperty("text", "Nel suo lavoro, l’attivit&agrave; di vendita :");
+	qst.setProperty("code", "s0");
+	vector q20_opts = new vector {
+"E’ una parte rilevante del suo lavoro",
+"E’ una parte secondaria/marginale del suo lavoro",
+"Non fa parte del suo lavoro"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+	
+	selint=system.getProperty("ans20");
+	
+	if (selint==2){return 4;}
+	
+	vector q30_opts_c = new vector {
+"Contenuti organizzati e strutturati che permettano di <b>valutare l’attrattività dei clienti potenziali</b> (prospect) (esempi: analisi di mercato, di scenario, della concorrenza, del territorio) ",
+"Contenuti  organizzati e strutturati che permettano di <b>valutare l’attrattività e il potenziale di sviluppo dei clienti esistenti</b> (esempi: report su  solvibilità, potenziale di acquisto, storico, ordini, etc) ",
+"Contenuti organizzati e strutturati per <b>gestire obiezioni e conversazioni complesse con clienti difficili</b> (esempi: manuali per la gestione di dubbi, FAQ, check list di risposte a paure tipiche dei clienti)",
+"Contenuti utili per <b>spiegare al cliente come funziona il prodotto</b> (ad esempio demo) o il servizio (ad esempio flussi di processo)",
+"Contenuti utili per <b>comunicare al cliente che valore genera per lui la soluzione proposta</b> (esempi: strumenti per il calcolo del ritorno sull’investimento, strumenti per evidenziare risparmi di costi, storie di successo di altri clienti, best cases…)",
+"Contenuti utili per <b>comunicare la reputazione ed affidabilità dell’azienda/fornitore</b> (esempi: raccomandazioni da parte di altri clienti, ricerche fatte da soggetti terzi e fonti indipendenti)",
+"Contenuti utili per <b>mantenere il rapporto con il cliente dopo una vendita</b> (esempi: aggiornamenti, novità, informazioni utili per il cliente…)",
+"<span id='block'>Altro (specificare)#so</span>",
+"<span id='block'>Nessun sales content#se#sh</span>"
+	};
+	vector q30_opts_c2 = new vector {
+"Contenuti organizzati e strutturati che permettano di <b>valutare l’attrattività dei clienti potenziali</b> (prospect) (esempi: analisi di mercato, di scenario, della concorrenza, del territorio) ",
+"Contenuti  organizzati e strutturati che permettano di <b>valutare l’attrattività e il potenziale di sviluppo dei clienti esistenti</b> (esempi: report su  solvibilità, potenziale di acquisto, storico, ordini, etc) ",
+"Contenuti organizzati e strutturati per <b>gestire obiezioni e conversazioni complesse con clienti difficili</b> (esempi: manuali per la gestione di dubbi, FAQ, check list di risposte a paure tipiche dei clienti)",
+"Contenuti utili per <b>spiegare al cliente come funziona il prodotto</b> (ad esempio demo) o il servizio (ad esempio flussi di processo)",
+"Contenuti utili per <b>comunicare al cliente che valore genera per lui la soluzione proposta</b> (esempi: strumenti per il calcolo del ritorno sull’investimento, strumenti per evidenziare risparmi di costi, storie di successo di altri clienti, best cases…)",
+"Contenuti utili per <b>comunicare la reputazione ed affidabilità dell’azienda/fornitore</b> (esempi: raccomandazioni da parte di altri clienti, ricerche fatte da soggetti terzi e fonti indipendenti)",
+"Contenuti utili per <b>mantenere il rapporto con il cliente dopo una vendita</b> (esempi: aggiornamenti, novità, informazioni utili per il cliente…)",
+"<span id='block'>Altro (specificare)#so#sh</span>",
+"<span id='block'>Nessun sales content#se#sh<span>"
+	};	
+	
+	qst = new question("choice", 30);
+	qst.setProperty("text",random+"Quali dei seguenti tipi di sales content sono presenti nella sua azienda?");
+	qst.setProperty("selection", "multiple");
+	//qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1");
+	vector q30_opts = new vector {
+"Contenuti organizzati e strutturati che permettano di <b>valutare l’attrattività dei clienti potenziali</b> (prospect) (esempi: analisi di mercato, di scenario, della concorrenza, del territorio) ",
+"Contenuti  organizzati e strutturati che permettano di <b>valutare l’attrattività e il potenziale di sviluppo dei clienti esistenti</b> (esempi: report su  solvibilità, potenziale di acquisto, storico, ordini, etc) ",
+"Contenuti organizzati e strutturati per <b>gestire obiezioni e conversazioni complesse con clienti difficili</b> (esempi: manuali per la gestione di dubbi, FAQ, check list di risposte a paure tipiche dei clienti)",
+"Contenuti utili per <b>spiegare al cliente come funziona il prodotto</b> (ad esempio demo) o il servizio (ad esempio flussi di processo)",
+"Contenuti utili per <b>comunicare al cliente che valore genera per lui la soluzione proposta</b> (esempi: strumenti per il calcolo del ritorno sull’investimento, strumenti per evidenziare risparmi di costi, storie di successo di altri clienti, best cases…)",
+"Contenuti utili per <b>comunicare la reputazione ed affidabilità dell’azienda/fornitore</b> (esempi: raccomandazioni da parte di altri clienti, ricerche fatte da soggetti terzi e fonti indipendenti)",
+"Contenuti utili per <b>mantenere il rapporto con il cliente dopo una vendita</b> (esempi: aggiornamenti, novità, informazioni utili per il cliente…)",
+"<span id='block'>Altro sales content (specificare quale)#so</span>",
+"<span id='block'>Nessun sales content#se#sf</span>"
+	};
+	qst.setProperty("options", q30_opts);
+	send qst;
+	
+	conta=0;
+	
+	for (int i=0, 7)
+	{
+	sel=system.getProperty("ans30_"+i);
+	if (sel==true){
+				  conta=conta+1;
+				  nascondi_item="nascondi#sh"+i;
+				  q30_opts_c2.set(i, nascondi_item);
+				  
+				  if (i==7)
+						  {
+						  label=system.getProperty("ans30_7_comp");
+						  label=label+" (altro sales content)";
+						  q30_opts_c.set(7, label);
+						  }
+				  
+				  }
+	else
+	{
+	nascondi_item="nascondi#sh"+i;
+	q30_opts_c.set(i, nascondi_item);
+	}
+	}
+	
+	if (conta==0){return 4;}
+	
+	
+	qst = new question("scale", 40);
+	qst.setProperty("text", random_scale+"Quanto frequentemente usa i seguenti sales content?");
+	qst.setProperty("code", "q1.2");
+	qst.setProperty("rows", q30_opts_c);
+	//qst.setProperty("show_rand", true);
+	vector q40_cols = new vector {
+		"Mai<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Sempre<br>7"
+	};
+	qst.setProperty("cols", q40_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 50);
+	qst.setProperty("text", random_scale+"Quanto pensa che i contenuti da lei utilizzati siano ben gestiti dall’azienda/BU per permetterle di essere efficace nel suo lavoro?");
+	qst.setProperty("code", "q1.3");
+	qst.setProperty("rows", q30_opts_c);
+	//qst.setProperty("show_rand", true);
+	vector q50_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q50_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 60);
+	qst.setProperty("text", random_scale+"Quanto pensa di saper sfruttare al meglio delle loro potenzialità i seguenti sales content?");
+	qst.setProperty("code", "q1.4");
+	qst.setProperty("rows", q30_opts_c);
+	//qst.setProperty("show_rand", true);
+	vector q60_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q60_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 70);
+	qst.setProperty("text", random_scale+"Quanto pensa siano importanti per il suo successo i seguenti sales content?");
+	qst.setProperty("code", "q1.5");
+	qst.setProperty("rows", q30_opts_c);
+	//qst.setProperty("show_rand", true);
+	vector q70_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q70_cols);
+	send qst;
+	
+	
+	
+	if (conta<7)
+	{
+	qst = new question("scale", 80);
+	qst.setProperty("text", random_scale+"In riferimento ai contenuti non disponibili nella sua azienda/BU, quanto vorrebbe che ci fossero?");
+	qst.setProperty("code", "q2");
+	qst.setProperty("rows", q30_opts_c2);
+	//qst.setProperty("show_rand", true);
+	vector q80_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7"
+	};
+	qst.setProperty("cols", q80_cols);
+	send qst;
+	}
+	
+	
+	qst = new question("scale", 100);
+	qst.setProperty("text", "Pensando all’insieme dei sales content complessivamente presenti nella sua azienda/BU:<br><br>Quanto li conosce?");
+	qst.setProperty("code", "q3.1");
+	vector q100_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q100_rows);
+	vector q100_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q100_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 110);
+	qst.setProperty("text", "Pensando all’insieme dei sales content complessivamente presenti nella sua azienda/BU:<br><br>Come ne giudica la quantit&agrave;?");
+	qst.setProperty("code", "q3.2");
+	vector q110_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q110_rows);
+	vector q110_cols = new vector {
+		"Del tutto insufficiente<br>1",
+		"2",
+		"3",
+		"Adeguata<br>4",
+		"5",
+		"6",
+		"Assolutamente eccessiva<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q110_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 90);
+	qst.setProperty("text", "Pensando all’insieme dei sales content complessivamente presenti nella sua azienda/BU, quanto sono...");
+	qst.setProperty("code", "q4");
+	qst.setProperty("show_rand", true);
+	vector q90_rows = new vector {
+		"Completi /approfonditi",
+		"Attendibili/affidabili",
+		"Aggiornati",
+		"Resi disponibili nel momento in cui effettivamente servono",
+		"Personalizzabili/adattabili a specifici clienti o circostanze",
+		"Disponibili in formati adeguati (ad esempio video, audio, testo, etc.)",
+		"Integrati con altri strumenti di lavoro (ad esempio il CRM aziendale)",
+		"Facili da trovare",
+		"Facilmente accessibili (ad esempio da fuori ufficio, in qualsiasi orario, da vari strumenti di lavoro)",
+		"Semplici da utilizzare",
+		"Utili  per le sue esigenze lavorative"
+	};
+	qst.setProperty("rows", q90_rows);
+	vector q90_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q90_cols);
+	send qst;
+	
+	
+	
+
+	
+	
+	
+	qst = new question("scale", 120);
+	qst.setProperty("text", "Quanto ritiene che le tecnologie (cartelle/repository sulla intranet-Mobile App-piattaforme social-CRM, etc.) che la sua azienda/BU utilizza per rendere disponibili i sales content siano:");
+	qst.setProperty("code", "q5");
+	qst.setProperty("show_rand", true);
+	vector q120_rows = new vector {
+		"Facili da usare",
+		"Affidabili, ovvero capaci di operare con continuità e senza interruzioni dovute a guasti o a malfunzionamenti",
+		"Veloci, ovvero in grado di rispondere rapidamente ai comandi"
+	};
+	qst.setProperty("rows", q120_rows);
+	vector q120_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q120_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 130);
+	qst.setProperty("text", "Sempre in riferimento alle tecnologie (cartelle/repository in intranet-App-piattaforma social-CRM, etc.) che utilizza per accedere ai sales content e utilizzarli, quanto ritiene di essere capace di utilizzarle al meglio?");
+	qst.setProperty("code", "q6");
+	vector q130_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q130_rows);
+	vector q130_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q130_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 140);
+	qst.setProperty("text", "In generale, quanto pensa che i sales content messi a disposizione dalla sua azienda/BU la aiutino a…?");
+	qst.setProperty("code", "q7");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("extras", "{header_repeat: 8}");
+	vector q140_rows = new vector {
+		"Disporre delle competenze necessarie per svolgere al meglio il lavoro",
+		"Lavorare in modo pi&ugrave; produttivo",
+		"Generare pi&ugrave; contatti con clienti potenziali",
+		"Qualificare meglio le opportunit&agrave; sui clienti",
+		"Supportare le attivit&agrave; di preparazione della visita presso il cliente",
+		"Avere più capacità di adattamento e personalizzazione durante l’interazione con il cliente",
+		"Aumentare il tasso di conversione (da clienti potenziali a clienti effettivi)",
+		"Aumentare il tasso di successo delle proposte (closing)",
+		"Aumentare la dimensione media dei contratti/ordini",
+		"Aumentare il tasso di fidelizzazione dei clienti",
+		"Sviluppare nuovo business sui clienti gi&agrave; esistenti",
+		"Aumentare la profittabilit&agrave; delle vendite",
+		"Raggiungere gli obiettivi complessivi"
+	};
+	qst.setProperty("rows", q140_rows);
+	vector q140_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q140_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 150);
+	qst.setProperty("text", "Ritiene che i sales content messi a disposizione dalla sua azienda/BU le siano utili per altre ragioni oltre a quelle sopra elencate nella domanda precedente? Se s&igrave;, per favore specifichi quali.");
+	qst.setProperty("code", "q8");
+	vector q150_opts = new vector {
+		"Si (specificare)#so",
+		"No"
+	};
+	qst.setProperty("options", q150_opts);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 160);
+	qst.setProperty("text", "Indichi il suo grado di accordo con le seguenti affermazioni.<br>Nella sua azienda/BU…");
+	qst.setProperty("code", "q9");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("extras", "{header_repeat: 6}");
+	vector q160_rows = new vector {
+		"Riceve una adeguata comunicazione interna sui sales content disponibili",
+		"Viene formato su come usare i sales content nelle diverse attivit&agrave;",
+		"Viene formato su come utilizzare al meglio le tecnologie disponibili per utilizzare i sales content",
+		"Viene coinvolto nella progettazione e creazione dei sales content",
+		"Le viene richiesto di esprimere opinioni e dare feedback sull’adeguatezza dei sales content disponibili",
+		"Le vengono date chiare priorit&agrave; su quali sales content &egrave; pi&ugrave; importante utilizzare",
+		"I sales content disponibili sono coerenti rispetto agli obiettivi commerciali da raggiungere",
+		"Si analizza quanto e come lei utilizza effettivamente i sales content",
+		"Riceve un feedback sull’utilizzo che lei fa dei sales content",
+		"Si riesce a dimostrare che il suo utilizzo dei sales content migliora la sua performance commerciale",
+		"Riceve incentivi per utilizzare i sales content",
+		"E’ libero di decidere se, quanto e come utilizzare i sales content disponibili"
+	};
+	qst.setProperty("rows", q160_rows);
+	vector q160_cols = new vector {
+		"Per nulla d’accordo<br>1",
+		"2",
+		"3",
+		"Abbastanza d’accordo<br>4",
+		"5",
+		"6",
+		"Completamente d’accordo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q160_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 170);
+	qst.setProperty("text", "Pensando all’insieme dei sales content complessivamente presenti nella sua azienda/BU, quanto secondo lei …");
+	qst.setProperty("code", "q10");
+	qst.setProperty("show_rand", true);
+	vector q170_rows = new vector {
+		"I suoi colleghi utilizzano i sales content",
+		"I suoi capi diretti stimolano l’utilizzo dei sales content",
+		"Il Top Management promuove l’utilizzo dei sales content"
+	};
+	qst.setProperty("rows", q170_rows);
+	vector q170_cols = new vector {
+		"Per nulla<br>1",
+		"2",
+		"3",
+		"Abbastanza<br>4",
+		"5",
+		"6",
+		"Moltissimo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q170_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 180);
+	qst.setProperty("text", "Pensando in generale alla sua complessiva esperienza lavorativa, indichi il suo grado di accordo con le seguenti affermazioni.");
+	qst.setProperty("code", "q11");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("extras", "{header_repeat: 4}");
+	vector q180_rows = new vector {
+		"Chi utilizza i sales content ha risultati superiori alla media",
+		"L&#39;esistenza di sales content motiva i venditori a fare meglio il proprio mestiere",
+		"Gli investimenti di tempo e risorse fatti per i sales content sono uno spreco",
+		"I sales content sono uno strumento per controllare i venditori",
+		"I sales content limitano la libert&agrave; di azione dei venditori",
+		"I sales content vengono spesso usati impropriamente per alzare esageratamente gli obiettivi commerciali, con la scusa che rendono pi&ugrave; semplice il lavoro",
+		"I sales content diffondono l’impressione che il mestiere di vendita sia pi&ugrave; semplice, e in tal modo ridimensionano ingiustamente i reali meriti dei venditori",
+		"I sales content appiattiscono le differenze fra i venditori, perché mettendo tutti nelle stesse condizioni di lavorare bene tendono ad uniformare le performance"
+	};
+	qst.setProperty("rows", q180_rows);
+	vector q180_cols = new vector {
+		"Per nulla d’accordo<br>1",
+		"2",
+		"3",
+		"Abbastanza d’accordo<br>4",
+		"5",
+		"6",
+		"Completamente d’accordo<br>7",
+		"Non so<br>&nbsp;"
+	};
+	qst.setProperty("cols", q180_cols);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 190);
+	qst.setProperty("text", "In sintesi, quali suggerimenti darebbe per migliorare la gestione dei sales content nella sua azienda?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q12");
+	vector q190_opts = new vector {
+		"1#so",
+		"2#so",
+		"3#so",
+		"Non ho suggerimenti#se"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("open", 200);
+	qst.setProperty("text", "Quale &egrave; la sua et&agrave;?");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "q1");
+	send qst;
+	
+	
+	
+	qst = new question("open", 210);
+	qst.setProperty("text", "Da quanti anni lavora nel commerciale?");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "q2");
+	send qst;
+	
+	
+	
+	qst = new question("choice", 220);
+	qst.setProperty("text", "Lei &egrave;...");
+	qst.setProperty("code", "q3");
+	vector q220_opts = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", q220_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 230);
+	qst.setProperty("text", "Quale delle seguenti qualifiche meglio descrive il suo ruolo?");
+	qst.setProperty("code", "q4");
+	vector q230_opts = new vector {
+		"Agente/ Rappresentante mono mandatario",
+		"Agente / Rappresentante plurimandatario",
+		"Venditore dipendente di un’azienda (product specialist, account manager,  business development, etc.)",
+		"Key Account Manager",
+		"Supervisore di venditori in una specifica area di business: Area manager / Supervisore territoriale / responsabile di canale",
+		"Responsabile dell’intera struttura di vendita dell’azienda: Sales Manager / Direttore vendite / Direttore commerciale",
+		"Altro (specificare)#so"
+	};
+	qst.setProperty("options", q230_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 240);
+	qst.setProperty("text", "Settore della sua azienda (o divisione/Business Unit, in caso di azienda multi-divisionale):");
+	qst.setProperty("code", "q6");
+	vector q240_opts = new vector {
+		"Agricoltura, Allevamento, Foreste, Caccia e Pesca",
+		"Arte & Cultura",
+		"Assicurazioni",
+		"Chimica e Petrolchimica",
+		"Cibi & Bevande",
+		"Consulenza",
+		"Credito",
+		"Distribuzione & Commercio",
+		"E-business & Digital Services",
+		"Edilizia & Costruzioni",
+		"Energia & Acqua",
+		"Green Economy",
+		"Immobiliare & Real Estate",
+		"Industria Estrattiva",
+		"Information & Communication Technologies",
+		"Intrattenimento & Sport",
+		"Istruzione e Formazione",
+		"Media, Comunicazione e Editoria",
+		"Moda, Design & Luxury",
+		"Organizzazione Non-Profit",
+		"PA",
+		"Prodotti di Consumo",
+		"Prodotti e servizi per costruzioni e industrie",
+		"Prodotti Meccanici e Industriali",
+		"Prodotti sanitari, biomedicali e farmaceutici",
+		"PubblicitÃ  e Marketing Services",
+		"Revisione",
+		"Ricerca & Selezione del Personale",
+		"Ricerche di Mercato",
+		"Salute",
+		"Servizi finanziari",
+		"Servizi legali e tributari",
+		"Servizi professionali",
+		"Telecomunicazioni",
+		"Trasporto & Logistica",
+		"Turismo, Alberghiero, Ristorazione",
+		"Altri Servizi (alle Imprese e alle persone)"
+	};
+	qst.setProperty("options", q240_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("open", 250);
+	qst.setProperty("text", "Nome della sua azienda");
+	qst.setProperty("code", "q7");
+	qst.setProperty("alt", "1:Preferisco non rispondere");
+	send qst;
+	
+	
+	
+	qst = new question("fixed_sum", 260);
+	qst.setProperty("text", disabilita_totale+"Fatto 100 il totale del fatturato da lei generato, come si ripartisce fra: ");
+	qst.setProperty("code", "q8");
+	vector q260_opts = new vector {
+		"Consumatori finali (individui e famiglie)  %",
+		"Aziende / organizzazioni (imprese di produzione, distributori/dealer…) %"
+	};
+	qst.setProperty("fields", q260_opts);
+	qst.setProperty("sum", 100); // set total value
+	send qst;
+	
+	
+	
+	qst = new question("open", 270);
+	qst.setProperty("text", "Quanti clienti gestisce? (immettere un numero)");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "q10");
+	send qst;
+	
+	
+	
+	
+	
+	
+	
+	string cod280="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$( \".container_280\" ).append( \"<span style='display:none'>Inserisci numero di decimali: <input type='text' name='decimali' maxlength='2' size='2' value='2'/><br/></span>  <span style='display:none'>Inserisci separatore decimali: <input type='text' name='sep_d' maxlength='1' size='1' value=','/><br/></span>  <span style='display:none'>Inserisci separatore migliaia: <input type='text' name='sep_m' maxlength='1' size='1' value='.'/><br/></span><div id='responso'></div>\" );"+
+    "$('input#comp0').attr('type', 'number');"+
+	"$('input#comp0').attr('step', '.01');"+
+	"});</script>";
+	
+	
+	string txtatt23="<script type=\"text/javascript\" src='http://www.primisoft.com/fields/GPE/TEST/resources/number_format.js'></script><script type='text/javascript'>$(document).ready(function() {"+
+	"$('#comp0').keyup(function() {"+
+	"var val=document.getElementsByName('comp0')[0].value;"+
+	"var decimali=document.getElementsByName('decimali')[0].value;"+
+	"var sep_d=document.getElementsByName('sep_d')[0].value;"+
+	"var sep_m=document.getElementsByName('sep_m')[0].value;"+
+    "var formattato = number_format(val,decimali,sep_d,sep_m);"+
+    "document.getElementById('responso').innerHTML='Importo: '+formattato+' €'; "+              
+	"})"+
+	"});</script>";
+	
+	
+	
+	qst = new question("choice", 280);
+	qst.setProperty("text", cod280+txtatt23+"Quale &egrave; l’importo medio di un ordine di un suo cliente? (immettere l&#39;importo in euro) (N.B.: in caso di agenti si intende il fatturato generato dal cliente, non la commissione percepita dall’agente su tale fatturato)");
+	vector q280_opts = new vector {
+		"<span style='display:none'>1</span>#so"
+	};
+	qst.setProperty("options", q280_opts);
+	qst.setProperty("code", "q11");
+	send qst;
+	
+	
+	
+	qst = new question("choice", 290);
+	qst.setProperty("text", "Il focus del suo lavoro &egrave;:");
+	qst.setProperty("code", "q12");
+	vector q290_opts = new vector {
+		"Quasi esclusivamente vendere a clienti nuovi",
+		"Vendere soprattutto a clienti nuovi",
+		"Vendere in modo bilanciato sia ai clienti esistenti che a clienti nuovi",
+		"Vendere soprattutto a clienti esistenti",
+		"Quasi esclusivamente vendere a clienti esistenti"
+	};
+	qst.setProperty("options", q290_opts);
+	send qst;
+	
+	
+	//trasforma in numeric con min max con decimale
+
+	string txtatt="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input.form-control').attr('type', 'number');"+
+	"$('input.form-control').attr({"+
+    "'min' : 1,"+  
+    "'max' : 100,"+  
+    "});"+
+	"});</script>";
+	
+	
+	
+	
+	
+	qst = new question("open", 300);
+	qst.setProperty("text", txtatt+"Nella sua carriera quale &egrave; in media la sua percentuale di raggiungimento degli obiettivi di vendita?");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "q13");
+	send qst;
+	
+	
+	
+	
+	
+	qst = new question("choice", 310);
+	qst.setProperty("text", "Fra le seguenti descrizioni di possibili strategie aziendali, scelga quella che pi&ugrave; assomiglia alla strategia della sua impresa/Business Unit.  Selezionare UNA SOLA opzione.");
+	qst.setProperty("code", "q14");
+	vector q310_opts = new vector {
+		"Abbiamo i migliori prodotti/servizi presenti sul mercato, e i clienti sono in genere disposti ad acquistarli anche se costano un po’ pi&ugrave; di quelli dei nostri concorrenti",
+		"I prodotti/servizi da noi offerti sono molto simili a quelli della concorrenza, ma noi abbiamo il prezzo pi&ugrave; basso sul mercato",
+		"In confronto ai nostri concorrenti offriamo al mercato il miglior rapporto qualit&agrave;/prezzo",
+		"Siamo pi&ugrave; capaci dei nostri concorrenti di capire i bisogni dei clienti e di adattare di conseguenza la nostra offerta alle loro esigenze, offrendo loro soluzioni pi&ugrave; personalizzate",
+		"Proponiamo proattivamente ai clienti offerte innovative capaci di creare valore, a cui loro di solito non avevano mai pensato, mettendo in discussione l’idea stessa che essi hanno di valore"
+	};
+	qst.setProperty("options", q310_opts);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 320);
+	qst.setProperty("text", "Esprima il suo grado di accordo con la seguente affermazione:");
+	qst.setProperty("code", "q16");
+	vector q320_rows = new vector {
+		"Ho una conoscenza adeguata per rispondere alle domande di questa ricerca"
+	};
+	qst.setProperty("rows", q320_rows);
+	vector q320_cols = new vector {
+		"Per nulla d’accordo",
+		"Disaccordo",
+		"Abbastanza in disaccordo",
+		"Né d’accordo né in disaccordo",
+		"Abbastanza d’accordo",
+		"D’accordo",
+		"Completamente d’accordo"
+	};
+	qst.setProperty("cols", q320_cols);
+	send qst;
+	
+	
+	
+	qst = new question("open", 330);
+	qst.setProperty("text", "Se desidera ricevere il report di questa ricerca ci lasci un suo indirizzo e-mail:");
+	qst.setProperty("code", "q17");
+	qst.setProperty("alt", "1:Preferisco non rispondere");
+	send qst;
+	
+	label = system.getProperty("ans330_comp");
+    boolean testual=label.contains("@");
+	
+	while (testual==false && label!="1") 
+{
+    // elimina l'ultima risposta
+    system.setProperty("delete", "ans330");
+    // ripropone la domanda
+
+    qst.setProperty("text", "<p style='color: red'>Attenzione inserire un e-mail valida!<p>Se desidera ricevere il report di questa ricerca ci lasci un suo indirizzo e-mail:");
+    send qst;
+}
+	
+}

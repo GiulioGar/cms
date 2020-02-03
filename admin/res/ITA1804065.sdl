@@ -1,0 +1,1289 @@
+
+//http://www.primisoft.com/primis/run.do?sid=ITA1804065&prj=BRS&uid=GUEST
+
+void main() {
+
+
+// variabili comuni
+string cod;
+int ansId;
+int ansId1;
+int ansId2;
+int ansId5;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "debug:TRUE");
+
+	system.setProperty("env", "browser:full");
+
+
+
+	string autotest=system.getProperty("test");
+	if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}	
+
+	string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.js?v=2.1.5'></script>";
+	string altroscript="<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+	string fogliostile="<link rel='stylesheet' href='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.css?v=2.1.5' type='text/css' media='screen' />";
+	
+
+	
+	qst = new question("concept", 10);
+	qst.setProperty("text", "Buongiorno/Buon pomeriggio/Buonasera. </br>Benvenuto ad una nuova ricerca di Beyond Research sulle abitudini ed opinioni degli italiani. </br>Stiamo conducendo un’indagine sui piccoli elettrodomestici e ci interesserebbe conoscere la Sua opinione in merito.");
+
+
+	
+	qst = new question("open", 2);
+	qst.setProperty("text", "Numero intervista:");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "q0.1");
+
+	qst = new question("open", 4);
+	qst.setProperty("text", "Nome e cognome intervistato:");
+	qst.setProperty("code", "q0.2");
+	
+	qst = new question("open", 6);
+	qst.setProperty("text", "Cognome intervistatore:");
+	qst.setProperty("code", "q0.3");	
+	
+	qst = new question("composed", 8);
+	vector q8_comps = new vector { "10", "2", "4", "6" };
+	qst.setProperty("components", q8_comps);
+   send qst;	
+	
+	
+	qst = new question("choice", 946);
+	qst.setProperty("text", "Selezionare la LEG: ");
+	qst.setProperty("code", "q3.1");
+	vector q946_opts = new vector {
+		"LEG 1 - prototipo A",
+		"LEG 2 - prototipo B"
+	};
+	qst.setProperty("options", q946_opts);
+	send qst;	
+	
+	int lg=system.getProperty("ans946");
+	cmd=q946_opts.get(lg);
+	system.out("<div class='info'>LEG: "+cmd+"</div>");
+		
+		
+		
+		
+		
+//////xzx
+	///////////PRODOTTO
+
+
+
+	
+	qst = new question("concept", 160);
+	qst.setProperty("text", "<p>VALUTAZIONE DEL PRODOTTO  </br>  </br><div class='info'>MOSTRARE IL FERRO IN TUTTE LE SUE PARTI IN MODO CHE SI VEDA LA SCOCCA E ANCHE LA PIASTRA </br>L’INTERVISTATRICE MOSTRA IL FERRO IN TUTTE LE SUE PARTI E LO LASCIA VISIBILE MA LO MANEGGIA SOLO L’INTERVISTATRICE</div></p>");
+
+	
+	qst = new question("concept", 163);
+	qst.setProperty("text", "Le mostrer&ograve; ora un ferro da stiro a vapore.  </br>Lo guardi con attenzione in tutte le sue parti, tenga conto che si tratta di un prototipo, non &egrave; ancora la versione definitiva del prodotto che trover&agrave; nel negozio.");
+
+
+
+	qst = new question("composed", 165);
+	vector q165_comps = new vector { "160", "163" };
+	qst.setProperty("components", q165_comps);
+   send qst;		
+	
+	
+	qst = new question("choice", 170);
+	qst.setProperty("text", "Complessivamente, quanto le piace questo ferro da stiro? ");
+	qst.setProperty("code", "q3.1");
+	vector q170_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q170_opts);
+	send qst;
+
+	
+	qst = new question("open", 180);
+	qst.setProperty("text", "Quali sono gli aspetti, gli elementi che le piacciono di pi&ugrave;? <br>Cerchi di essere pi&ugrave; dettagliata possibile <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q3.2");
+
+	qst = new question("open", 190);
+	qst.setProperty("text", "Quali sono invece gli aspetti, gli elementi che le piacciono meno? <br>Cerchi di essere pi&ugrave; dettagliata possibile <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q3.3");
+
+	qst = new question("composed", 194);
+	vector q194_comps = new vector { "180", "190" };
+	qst.setProperty("components", q194_comps);
+   send qst;	
+   
+	
+	qst = new question("choice", 200);
+	qst.setProperty("text", "Quanto ritiene interessante per lei e le sue esigenze questo ferro da stiro?");
+	qst.setProperty("code", "q3.4");
+	vector q200_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q200_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 210);
+	qst.setProperty("text", "Quanto secondo lei questo ferro da stiro &egrave; originale e diverso rispetto a quanto pu&ograve; trovare sul mercato?");
+	qst.setProperty("code", "q3.5");
+	vector q210_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q210_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 220);
+	qst.setProperty("text", "Quanto sarebbe intenzionata ad acquistare questo prodotto se fosse intenzionata a sostituire il suo attuale ferro da stiro?");
+	qst.setProperty("code", "q3.6");
+	vector q220_opts = new vector {
+		"Sicuramente lo acquisterei",
+		"Probabilmente lo acquisterei",
+		"Non so se lo acquisterei",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q220_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 230);
+	qst.setProperty("text", "Concentriamoci adesso sulla piastra di questo ferro, quanto le piace questa piastra?");
+	qst.setProperty("code", "q3.6b ");
+	vector q230_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q230_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 240);
+	qst.setProperty("text", "E quanto una piastra come questa &egrave; interessante per lei e le sue esigenze?");
+	qst.setProperty("code", "q3.6c");
+	vector q240_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q240_opts);
+	send qst;
+	
+	
+	qst = new question("scale", 250);
+	qst.setProperty("text", "Le legger&ograve; ora alcune affermazioni che potrebbero essere riferite a questo ferro da stiro a vapore. <br>Per ciascuna di esse mi dica se &egrave; molto, abbastanza, cos&igrave; cos&igrave;, poco o per niente d’accordo.");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.7");
+	vector q250_rows = new vector {
+		"È adatto a tutti i tipi di tessuto",
+		"È un prodotto di qualit&agrave; elevata",
+		"È un prodotto tecnologicamente avanzato",
+		"E’ facile da usare",
+		"E’ maneggevole",
+		"È leggero",
+		"Garantisce un risultato perfetto",
+		"Ha un getto di vapore potente",
+		"Mi incuriosisce, viene voglia di provarlo",
+		"Il design/la forma &egrave; attraente",
+		"Ha un funzionamento chiaro",
+		"I colori sono belli",
+		"La piastra permette una stiratura pi&ugrave; scorrevole",
+		"La piastra permette una stiratura pi&ugrave; veloce",
+		"La piastra permette di stirare con minor sforzo/fatica",
+		"La piastra &egrave; davvero innovativa",
+		"La piastra ha un bel colore/design",
+		"La piastra attira l’attenzione",
+		"Mi fa sentire sicura del risultato",
+		"Mi fa pensare di scegliere il meglio fra i ferri da stiro",
+		"Mi fa pensare di aver scelto un prodotto innovativo",
+		"Mi semplifica la vita"
+	};
+	qst.setProperty("rows", q250_rows);
+	vector q250_cols = new vector {
+		"Completamente d’accordo",
+		"Abbastanza d’accordo",
+		"Né d’accordo né in disaccordo",
+		"Poco d’accordo",
+		"Per niente d’accordo"
+	};
+	qst.setProperty("extras","{header_repeat:11}");
+	qst.setProperty("cols", q250_cols);
+	send qst;
+	
+	
+	qst = new question("choice", 260);
+	qst.setProperty("text", "Secondo lei questo ferro da stiro &egrave;…");
+	qst.setProperty("code", "q3.8");
+	vector q260_opts = new vector {
+		"Molto meglio del suo attuale ferro da stiro",
+		"Un po’ meglio del suo attuale ferro da stiro",
+		"Equivalente al suo attuale ferro da stiro",
+		"Un po’ peggio del suo attuale ferro da stiro",
+		"Molto peggio del suo attuale ferro da stiro"
+	};
+	qst.setProperty("options", q260_opts);
+	send qst;
+	
+
+
+	
+//////xzx	
+	/////////////CONFRONTO CON BENCHMARK 
+	
+	
+	int r2;
+	system.setProperty("r2", "rand:2");
+	r2=(int)system.getProperty("r2");
+	
+		if (r2==0) {cmd="Competitor 1 - Competitor 2";}
+		if (r2==1) {cmd="Competitor 2 - Competitor 1";}
+	
+	system.out("<div class='info'>Estrazione: "+r2+"</div>");	
+	system.out("<div class='info'>Estrazione: "+cmd+"</div>");	
+	
+	
+
+	vector q280_cols = new vector {
+		"MAQUETTE",
+		"COMPETITOR 1",
+		"COMPETITOR 2",
+		"#sh "
+	};
+		
+	
+	string sortOrder;
+	
+	if (r2==0)
+		 {
+		 sortOrder="[0,1,2,3]";		 
+		 }	
+	
+	if (r2==1)
+		 {
+		 sortOrder="[0,2,1,3]";	 
+		 }
+
+		 
+	
+	qst = new question("concept", 270);
+	qst.setProperty("text", "<p>CONFRONTO CON BENCHMARK</p> </br>Le mostrer&ograve; adesso altri due ferri da stiro a vapore.<br> Li guardi attentamente. </br><div class='info'>MOSTRARE LA MAQUETTE A SECONDA DELLA LEG E I DUE PRODOTTI COMPETITOR, RUOTARE L’ORDINE DEI COMPETITOR TRA LE INTERVISTE</div>");
+	send qst;
+	
+	qst = new question("scale", 280);
+	qst.setProperty("text", "Complessivamente, quanto le piace ciascuno di questi ferri da stiro?");
+	qst.setProperty("code", "q4.0");
+	vector q280_rows = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q280_rows);
+	qst.setProperty("view", "columns");
+	qst.setProperty("rows", q280_cols);
+	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	
+	qst = new question("scale", 290);
+	qst.setProperty("text", "Quanto ritiene interessanti per lei e le sue esigenze ciascuno di questi ferri da stiro?");
+	qst.setProperty("code", "q4.1");
+	vector q290_rows = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q290_rows);
+	qst.setProperty("view", "columns");
+	qst.setProperty("rows", q280_cols);
+	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	
+	qst = new question("scale", 300);
+	qst.setProperty("text", "Se volesse sostituire il suo attuale ferro da stiro, quanto sarebbe intenzionata ad acquistare ciascuno di questi ferri da stiro?");
+	qst.setProperty("code", "q4.2");
+	vector q300_rows = new vector {
+		"Sicuramente l’acquisterei",
+		"Probabilmente l’acquisterei",
+		"Non so se l’acquisterei",
+		"Probabilmente non l’acquisterei",
+		"Sicuramente non l’acquisterei"
+	};
+	qst.setProperty("cols", q300_rows);
+	qst.setProperty("view", "columns");
+	qst.setProperty("rows", q280_cols);
+	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	
+	qst = new question("scale", 310);
+	qst.setProperty("text", "In particolare, quanto le piace la piastra di ciascuno di questi ferri da stiro?");
+	qst.setProperty("code", "q4.2b");
+	vector q310_rows = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q310_rows);
+	qst.setProperty("view", "columns");
+	qst.setProperty("rows", q280_cols);
+	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	
+	qst = new question("scale", 320);
+	qst.setProperty("text", "E quanto la piastra di ciascuno di questi ferri &egrave; interessante per lei e le sue esigenze?");
+	qst.setProperty("code", "q4.2c");
+	vector q320_rows = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q320_rows);
+	qst.setProperty("view", "columns");
+	qst.setProperty("rows", q280_cols);
+	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	
+	qst = new question("choice", 330);
+	qst.setProperty("text", "E se dovesse sceglierne uno, con quale di queste proposte potrebbe sostituirlo?");
+	qst.setProperty("code", "q4.3");
+	qst.setProperty("options", q280_cols);
+	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	int lectq330=system.getProperty("ans330");	
+	cmd=q280_cols.get(lectq330);
+	
+	qst = new question("open", 340);
+	qst.setProperty("text", "Per quali motivi ha scelto "+cmd+"? <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q4.3b");
+	send qst;
+
+	q280_cols.set(3,"NESSUNO#se");
+	
+	
+	qst = new question("scale", 350);
+	qst.setProperty("text", "Ora le legger&ograve; alcune affermazioni che potrebbero essere riferite a questi ferri da stiro. </br>Mi dica a quali di questi prodotti lei assocerebbe ciascuna di queste affermazioni: pu&ograve; indicare un prodotto, pi&ugrave; di uno o nessuno.");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4.4");
+	vector q350_rows = new vector {
+		"È un prodotto di qualit&agrave; elevata",
+		"E’ maneggevole",
+		"Garantisce un risultato perfetto",
+		"Ha un getto di vapore potente",
+		"Il design/la forma &egrave; attraente",
+		"I colori sono belli",
+		"La piastra permette una stiratura pi&ugrave; scorrevole",
+		"La piastra permette di stirare con minor sforzo/fatica",
+		"La piastra ha un bel colore/design",
+		"Mi fa sentire sicura del risultato"
+	};
+	qst.setProperty("rows", q350_rows);
+	qst.setProperty("cols", q280_cols);
+//	qst.setProperty("sortorder", sortOrder);	
+	send qst;
+	
+	
+	
+
+//////xzx
+	/////////////ASSOCIAZIONE ALLA MARCA
+	
+
+
+	
+	qst = new question("concept", 360);
+	qst.setProperty("text", "<p>ASSOCIAZIONE ALLA MARCA </p>    </br>Torniamo ora a concentrarci sul primo prodotto di cui abbiamo parlato </br><div class='info'>Mostrare maquette valutata in precedenza</div>");
+	send qst;
+	
+	
+	qst = new question("choice", 370);
+	qst.setProperty("text", "<p>Questo ferro da stiro a vapore sar&agrave; proposto dalla marca Imetec.</p>  Quanto secondo lei questo prodotto &egrave; adatto alla marca Imetec?");
+	qst.setProperty("code", "q5.1");
+	vector q370_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q370_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 380);
+	qst.setProperty("text", "Ora che sa che si tratta di un ferro da stiro Imetec, quanto sarebbe intenzionata ad acquistare questo ferro?");
+	qst.setProperty("code", "q5.2");
+	vector q380_opts = new vector {
+		"Sicuramente l’acquisterei",
+		"Probabilmente l’acquisterei",
+		"Non so se l’acquisterei",
+		"Probabilmente non l’acquisterei",
+		"Sicuramente non l’acquisterei"
+	};
+	qst.setProperty("options", q380_opts);
+	send qst;
+
+
+
+
+	
+//////xzx
+	/////////////VALUTAZIONE DEL CONCETTO
+
+	
+
+
+cmd="<div class='pluto'><img height='400px' src='http://www.primisoft.com/fields/BRS/ITA1804065/resources/Cncpt.JPG'></div>";		 
+
+
+	
+	qst = new question("concept", 390);
+	qst.setProperty("text", "<p>VALUTAZIONE DEL CONCETTO</p> <div class='info'>MOSTRARE CONCETTO UGUALE NELLE DUE LEG</div></br>Le chiedo ora di leggere con attenzione questa descrizione, che fa riferimento al ferro da stiro di cui stiamo parlando.<br><br><br>"+cmd);
+	send qst;
+	
+	
+	qst = new question("choice", 400);
+	qst.setProperty("text", "Complessivamente quanto le piace questa proposta?");
+	qst.setProperty("code", "q7.0");
+	vector q400_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q400_opts);
+	send qst;
+	
+	
+	qst = new question("open", 410);
+	qst.setProperty("text", "Che cosa le piace in particolare di questa proposta? <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q7.1");
+
+
+	qst = new question("open", 420);
+	qst.setProperty("text", "E quali aspetti invece non le piacciono? <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q7.1b");
+
+
+	qst = new question("composed", 424);
+	vector q424_comps = new vector { "410", "420" };
+	qst.setProperty("components", q424_comps);
+   send qst;
+   
+
+	qst = new question("choice", 430);
+	qst.setProperty("text", "Quale affermazione descrive meglio la sua intenzione di acquistare il prodotto di cui ha letto la descrizione, qualora volesse sostituire il suo attuale ferro da stiro?");
+	qst.setProperty("code", "q7.2");
+	vector q430_opts = new vector {
+		"Sicuramente lo acquisterei",
+		"Probabilmente lo acquisterei",
+		"Non so se lo acquisterei",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q430_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 440);
+	qst.setProperty("text", "Adesso che ha letto la descrizione delle caratteristiche e delle funzioni di questo ferro da stiro, tutto considerato quanto direbbe che questo prodotto &egrave; interessante per lei e le sue esigenze?");
+	qst.setProperty("code", "q7.3");
+	vector q440_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q440_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 450);
+	qst.setProperty("text", "Quanto questa proposta nel complesso &egrave; credibile secondo lei?");
+	qst.setProperty("code", "q7.4");
+	vector q450_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q450_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 460);
+	qst.setProperty("text", "E quanto le caratteristiche del ferro presentate in questa descrizione sono coerenti con quello che si aspettava solo guardando il prodotto?");
+	qst.setProperty("code", "q7.5");
+	vector q460_opts = new vector {
+		"Molto coerente",
+		"Abbastanza coerente",
+		"Cos&igrave; e cos&igrave;",
+		"Poco coerente",
+		"Per niente coerente"
+	};
+	qst.setProperty("options", q460_opts);
+	send qst;
+
+	int lectq460=system.getProperty("ans460");
+	
+	if (lectq460>1)	{
+	
+	qst = new question("open", 470);
+	qst.setProperty("text", "Per quali motivi la descrizione non le sembra coerente con il ferro che ha visto? <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q7.5b");
+	send qst;
+					}
+	
+	
+	qst = new question("choice", 480);
+	qst.setProperty("text", "E quanto questa proposta &egrave; innovativa, diversa da quanto attualmente pu&ograve; trovare sul mercato?");
+	qst.setProperty("code", "q7.6");
+	vector q480_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q480_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 490);
+	qst.setProperty("text", "E quanto secondo lei questo prodotto &egrave; adatto alla marca Imetec?");
+	qst.setProperty("code", "q7.7");
+	vector q490_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q490_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 500);
+	qst.setProperty("text", "Ora che ha letto la descrizione delle funzioni e delle caratteristiche di questo ferro da stiro, quanto direbbe che questa piastra &egrave; interessante per lei e le sue esigenze?");
+	qst.setProperty("code", "q7.7b");
+	vector q500_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q500_opts);
+	send qst;
+	
+	
+	qst = new question("scale", 510);
+	qst.setProperty("text", "Ora che ha letto anche la descrizione di questo ferro, le legger&ograve; di nuovo alcune affermazioni che potrebbero essere riferite a questo prodotto. <br>Per ciascuna di esse mi dica se &egrave; molto, abbastanza, cos&igrave; cos&igrave;, poco o per niente d’accordo.");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q7.8");
+	vector q510_rows = new vector {
+		"È adatto a tutti i tipi di tessuto",
+		"È un prodotto di qualit&agrave; elevata",
+		"È un prodotto tecnologicamente avanzato",
+		"E’ facile da usare",
+		"E’ maneggevole",
+		"È leggero",
+		"Garantisce un risultato perfetto",
+		"Ha un getto di vapore potente",
+		"Mi incuriosisce, viene voglia di provarlo",
+		"Il design/la forma &egrave; attraente",
+		"Ha un funzionamento chiaro",
+		"I colori sono belli",
+		"La piastra permette una stiratura pi&ugrave; scorrevole",
+		"La piastra permette una stiratura pi&ugrave; veloce",
+		"La piastra permette di stirare con minor sforzo/fatica",
+		"La piastra &egrave; davvero innovativa",
+		"La piastra ha un bel colore/design",
+		"La piastra attira l’attenzione",
+		"Mi fa sentire sicura del risultato",
+		"Mi fa pensare di scegliere il meglio fra i ferri da stiro",
+		"Mi fa pensare di aver scelto un prodotto innovativo",
+		"Mi semplifica la vita"
+	};
+	qst.setProperty("rows", q510_rows);
+	vector q510_cols = new vector {
+		"Completamente d’accordo",
+		"Abbastanza d’accordo",
+		"Né d’accordo né in disaccordo",
+		"Poco d’accordo",
+		"Per niente d’accordo"
+	};
+	qst.setProperty("extras","{header_repeat:11}");	
+	qst.setProperty("cols", q510_cols);
+	send qst;
+	
+	
+
+	
+	
+//////xzx
+	/////////// CLICK EXERCISE
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/dinNone.js'></script>";	
+	
+	string cptclkex="<div class='pippo'>"+
+	"<p><br>#asAvere capi ben stirati#ae #asper me e#ae #asper la mia famiglia#ae #asè importante,#ae #asma devo ammettere#ae #asche nella quotidianità#ae #asspesso#ae #asdiventa faticoso.#ae #asPer questo avrei bisogno#ae #asdi un ferro da stiro#ae #asin grado di darmi#ae #asottimi risultati#ae #asfacendomi fare meno fatica.#ae </p>"+
+	"<p>#asDalla tecnologia#ae #asImetec,#ae #asè nato#ae #asun ferro da stiro#ae #ascon una rivoluzionaria#ae #aspiastra#ae #as«ad onde»,#ae #asin grado di offrirti#ae #asuna stiratura perfetta,#ae#as con molta meno fatica#ae #asrispetto ad un ferro tradizionale#ae</p>"+ 
+	"<p>#asGrazie#ae #asalla sua superficie#ae #asondulata#ae #asquesta piastra#ae #asoffre un duplice#ae #asvantaggio:#ae <ul> <li>#asriduce la fatica,#ae #asconcentrando#ae #asla pressione#ae #asapplicata#ae #assulle sue «onde»#ae </li> <li>#aspermette di ottenere#ae #asuna stiratura più efficace,#ae #ascatturando#ae #asil vapore#ae #astra un’onda e l’altra#ae</li></ul></p>"+  
+	"<p>#asPer questo il nuovo#ae #asferro da stiro di Imetec,#ae #ascon la sua innovativa#ae #aspiastra#ae #as«ad onde»#ae #asgarantisce#ae #asla massima#ae #asscorrevolezza#ae #ased efficacia#ae #assu tutti i tuoi capi.#ae</p>"+  
+	"<p>#asNuovo ferro da stiro Imetec:#ae #asstiratura perfetta,#ae #ascon minor fatica!#ae</p><br></div>";	 	
+
+
+	qst = new question("concept", 520);
+	qst.setProperty("text", "<p>CLICK EXERCISE</p> </br>Ora le mostreremo di nuovo la descrizione del ferro da stiro che ha visto prima, per favore la guardi con attenzione. </br>Per rispondere alle prossime domande utilizzi il mouse e clicchi sulle parole della descrizione che vuole mettere in evidenza. </br>Vedr&agrave; che le parole su cui avr&agrave; cliccato diventeranno rosse. </br>Se cambia idea e vuole cambiare la sua risposta clicchi nuovamente sulle parole e torneranno grigie. </br><div class='info'>MOSTRARE IL CONCETTO, FAR USARE IL COMPUTER MOUSE ALL’INTERVISTATA PER RISPONDERE</div>");
+	send qst;
+	
+	
+	qst = new question("concept_eval", 530);
+	qst.setProperty("text", "Indichi cliccandoci sopra con il mouse quali parole/parti di questa descrizione trova <b><u>pi&ugrave; interessanti</u></b> per lei. </br><div class='info'>Se nessuna &egrave; particolarmente interessante clicchi sulla risposta “nessuna”</div>"+cod);
+	qst.setProperty("code", "q7.9");
+qst.setProperty("concept", cptclkex);
+qst.setProperty("allow_nosel", true);
+	send qst;
+	
+	
+	qst = new question("concept_eval", 540);
+	qst.setProperty("text", "Infine quali parole/parti di questa descrizione sono secondo lei particolarmente <b><u>nuove e diverse</u></b>. </br><div class='info'>Se nessuna &egrave; nuova e diversa clicchi sulla risposta “nessuna”</div>"+cod);
+	qst.setProperty("code", "q7.10");
+qst.setProperty("concept", cptclkex);
+qst.setProperty("allow_nosel", true);
+	send qst;
+	
+	
+	qst = new question("concept_eval", 550);
+	qst.setProperty("text", "E quali <b><u>non le piacciono</u></b>? </br><div class='info'>Se nessuna non le piace clicchi sulla risposta “nessuna”</div>"+cod);
+	qst.setProperty("code", "q7.11");
+qst.setProperty("concept", cptclkex);
+qst.setProperty("allow_nosel", true);
+	send qst;
+	
+	
+	qst = new question("concept_eval", 560);
+	qst.setProperty("text", "E quali sono <b><u>poco credibili</u></b>? </br><div class='info'>Se nessuna &egrave; poco credibile clicchi sulla risposta “nessuna”</div>"+cod);
+	qst.setProperty("code", "q7.12");
+qst.setProperty("concept", cptclkex);
+qst.setProperty("allow_nosel", true);
+	send qst;
+
+
+
+
+	
+//////xzx
+	/////////// VALUTAZIONE PREZZO - PSM
+	
+string nascondi_item;
+	
+
+	
+
+	qst = new question("concept", 570);
+	qst.setProperty("text", "<p>VALUTAZIONE PREZZO - PSM</p> </br>Parliamo ora del prezzo di questo prodotto. </br>Immagini che questo prodotto sia in vendita nel suo negozio abituale <div class='info'></br>MOSTRARE LO SCHERMO ALL’INTERVISTATA PER FARLE SCEGLIERE LE RISPOSTE </br>AIUTARE L’INTERVISTATA LEGGENDO CON LEI LE RISPOSTE</div>");
+	send qst;
+	
+	
+	qst = new question("choice", 580);
+	qst.setProperty("text", "A quale prezzo, fra quelli elencati sotto, comincerebbe a ritenere questo prodotto CONVENIENTE?");
+	qst.setProperty("code", "q7.13");
+	vector q580_opts = new vector {
+"89,90",
+"84,90",
+"79,90",
+"74,90",
+"69,90",
+"64,90",
+"59,90",
+"54,90",
+"49,90",
+"44,90",
+"39,90",
+"34,90",
+"29,90"
+	};
+	qst.setProperty("options", q580_opts);
+	send qst;
+	
+int s1 = system.getProperty("ans580");	
+	
+	qst = new question("choice", 590);
+	qst.setProperty("text", "A quale prezzo, fra quelli elencati sotto, comincerebbe a ritenere questo prodotto COSTOSO?");
+	qst.setProperty("code", "q7.14");
+	vector q590_opts = new vector {
+"29,90",
+"34,90",
+"39,90",
+"44,90",
+"49,90",
+"54,90",
+"59,90",
+"64,90",
+"69,90",
+"74,90",
+"79,90",
+"84,90",
+"89,90"
+	};
+	for (int i=0, 12)
+	{
+	n=12-s1;
+	if (i<n)
+				 {
+				 nascondi_item="nas#sh"+i;
+				 q590_opts.set(i,nascondi_item);
+				 }
+	}	
+	qst.setProperty("options", q590_opts);
+	send qst;
+	
+int s2 = system.getProperty("ans590");		
+	
+	qst = new question("choice", 600);
+	qst.setProperty("text", "A quale prezzo, fra quelli elencati sotto, comincerebbe a ritenere questo prodotto TROPPO COSTOSO, per pensare di poterlo acquistare?");
+	qst.setProperty("code", "q7.15");
+	vector q600_opts = new vector {
+"29,90",
+"34,90",
+"39,90",
+"44,90",
+"49,90",
+"54,90",
+"59,90",
+"64,90",
+"69,90",
+"74,90",
+"79,90",
+"84,90",
+"89,90"
+	};
+for (int i=0, 12)
+	{
+	if (i<s2)
+				 {
+				 nascondi_item="nas#sh"+i;
+				 q600_opts.set(i,nascondi_item);
+				 }
+	}	
+	qst.setProperty("options", q600_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 610);
+	qst.setProperty("text", "A quale prezzo, fra quelli elencati sotto, comincerebbe a ritenere questo prodotto TROPPO CONVENIENTE, al punto di dubitare della sua qualit&agrave;?");
+	qst.setProperty("code", "q7.16");
+	vector q610_opts = new vector {
+"89,90",
+"84,90",
+"79,90",
+"74,90",
+"69,90",
+"64,90",
+"59,90",
+"54,90",
+"49,90",
+"44,90",
+"39,90",
+"34,90",
+"29,90"
+	};
+for (int i=0, 12)
+	{
+	if (i<s1)
+				 {
+				 nascondi_item="nas#sh"+i;
+				 q610_opts.set(i,nascondi_item);
+				 }
+	}	
+	qst.setProperty("options", q610_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 620);
+	qst.setProperty("text", "Consideri ora che questo ferro da stiro sar&agrave; venduto al prezzo di €59,90. <br>Quale affermazione descrive meglio la sua intenzione di acquistare questo prodotto se volesse sostituire il suo attuale ferro?");
+	qst.setProperty("code", "q7.17");
+	vector q620_opts = new vector {
+		"Sicuramente lo acquisterei",
+		"Probabilmente lo acquisterei",
+		"Non so se lo acquisterei",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q620_opts);
+	send qst;
+	
+
+
+
+
+
+//////xzx
+	///////////CONFRONTO TRA MAQUETTE
+
+
+	
+	qst = new question("concept", 630);
+	qst.setProperty("text", "<p>CONFRONTO TRA MAQUETTE</p> </br>Per finire, le mostrer&ograve; adesso un’alternativa per questo ferro da stiro a vapore. </br>Li guardi entrambi con attenzione, come vede differiscono solo in alcuni dettagli estetici <div class='info'></br>MOSTRARE ENTRAMBE LE MAQUETTES</div>");
+	send qst;
+	
+	
+	
+	qst = new question("choice", 640);
+	qst.setProperty("text", "Quale tra queste due proposte le piace di pi&ugrave;?");
+	qst.setProperty("code", "q8.1");
+	vector q640_opts = new vector {
+		"A",
+		"B",
+		"Entrambe",
+		"Nessuna delle due"
+	};
+	qst.setProperty("options", q640_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 650);
+	qst.setProperty("text", "E quale tra queste due proposte acquisterebbe?");
+	qst.setProperty("code", "q8.2");
+	vector q650_opts = new vector {
+		"A",
+		"B",
+		"Entrambe",
+		"Nessuna delle due"
+	};
+	qst.setProperty("options", q650_opts);
+	send qst;
+	
+int lectq650=system.getProperty("ans650");	
+	cmd=q650_opts.get(lectq650);
+	
+	if (lectq650<2){
+	
+	qst = new question("open", 660);
+	qst.setProperty("text", "Per quali motivi ha scelto "+cmd+"? <div class='info'>(approfondire bene)</div>");
+	qst.setProperty("code", "q8.3");
+	send qst;
+	
+					}
+	
+	
+	
+
+
+//////xzx
+	///////////SOCIO DEMO
+
+	
+	
+	
+	
+	qst = new question("concept", 670);
+	qst.setProperty("text", "<p>DATI SOCIO-DEMOGRAFICI</p> </br>Per finire le chieder&ograve; alcuni dati personali.");
+	send qst;
+	
+	
+	qst = new question("choice", 680);
+	qst.setProperty("text", "Attualmente lei…");
+	qst.setProperty("code", "q9.1");
+	vector q680_opts = new vector {
+		"Vive con i genitori",
+		"Vive da solo/a",
+		"È parte di una coppia giovane senza figli",
+		"Vive con figli piccoli (il maggiore ha meno di 15 anni)",
+		"Vive con figli grandi (almeno uno con pi&ugrave; di 15 anni) conviventi",
+		"E’ parte di una coppia matura senza figli (mai avuti o non conviventi) ….",
+		"Vive con la famiglia del figlio/a",
+		"Vive con altre persone (amici, parenti)"
+	};
+	qst.setProperty("options", q680_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 690);
+	qst.setProperty("text", "Indichi la sua situazione professionale. Lei…");
+	qst.setProperty("code", "q9.2");
+	vector q690_opts = new vector {
+		"Lavora part time",
+		"Lavora full time",
+		"È in cerca di un’occupazione",
+		"Studia",
+		"Si occupa della casa/casalinga",
+		"Non lavora"
+	};
+	qst.setProperty("options", q690_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 700);
+	qst.setProperty("text", "Qual &egrave; il titolo di studio pi&ugrave; recente che ha conseguito?");
+	qst.setProperty("code", "q9.3");
+	vector q700_opts = new vector {
+		"Scuola elementare",
+		"Licenza media inferiore",
+		"Licenza media superiore",
+		"Laurea",
+		"Master post laurea"
+	};
+	qst.setProperty("options", q700_opts);
+	send qst;
+	
+	
+	
+	
+	
+	
+	
+//////xzx
+	///////////SCREENING	
+	
+	
+	
+	
+	
+
+	
+	qst = new question("choice", 20);
+	qst.setProperty("text", "<p>Le chieder&ograve; alcuni dati personali</p>  Registrare la citt&agrave;");
+	qst.setProperty("code", "q1.0");
+	vector q20_opts = new vector {
+		"Milano",
+		"Roma"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+
+	int lectq20=system.getProperty("ans20");
+	cmd=q20_opts.get(lectq20);
+	system.out("<div class='info'>Città: "+cmd+"</div>");
+		
+	
+	qst = new question("choice", 30);
+	qst.setProperty("text", "Registrare il sesso");
+	qst.setProperty("code", "q1.1");
+	vector q30_opts = new vector {
+		"Donna",
+		"Uomo"
+	};
+	qst.setProperty("options", q30_opts);
+	send qst;
+
+	int lectq30=system.getProperty("ans30");
+	if (lectq30==1)	 {return 4;}
+
+	cmd=q30_opts.get(lectq30);
+	system.out("<div class='info'>Genere: "+cmd+"</div>");
+	
+	qst = new question("open", 40);
+	qst.setProperty("text", "Mi pu&ograve; dire la sua et&agrave; precisa?");
+	qst.setProperty("view", "numeric");	
+	qst.setProperty("code", "q1.2");
+	send qst;
+
+	int eta=(int)system.getProperty("ans40");
+		if (eta<30 || eta>65) { return 4;}
+	
+		if(eta>=30 && eta<=47) { reCod=0;}
+		if(eta>=48 && eta<=65) { reCod=1;}
+		
+// nascondo la domanda:
+		
+	qst = new question("choice", 42);
+	qst.setProperty("text", "FASCE PER LA CODIFICA");
+	qst.setProperty("code", "s4rec");
+	vector q42_opts = new vector {
+	"30-47",
+	"48-65"
+	};
+	qst.setProperty("options", q42_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+	
+
+	qst = new question("choice", 50);
+	qst.setProperty("text", "Lei, qualcuno della sua famiglia lavora in uno dei seguenti settori?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.3");
+	vector q50_opts = new vector {
+		"Pubblicit&agrave;",
+		"Societ&agrave; di ricerche di mercato",
+		"Marketing",
+		"Giornalismo",
+		"Pubbliche relazioni",
+		"Produzione o vendita di elettrodomestici/apparecchi elettronici",
+		"Industria tessile o abbigliamento",
+		"Produzione o vendita di prodotti alimentari",
+		"Produzione o vendita di detergenti per la casa",
+		"Produzione o vendita di prodotti per l’igiene e cura della persona",
+		"Nessuna tra quelle menzionate sopra	#sf#se"
+	};
+	qst.setProperty("options", q50_opts);
+	send qst;
+
+	int lectq50=system.getProperty("ans50");
+	if (lectq50<=6) { return 4;}	
+	
+	qst = new question("choice", 60);
+	qst.setProperty("text", "Le &egrave; capitato negli ultimi 3 mesi di partecipare ad interviste su qualcuno dei seguenti prodotti?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q1.4");
+	vector q60_opts = new vector {
+		"Alimentari",
+		"Detergenti per la casa",
+		"Produzione o vendita di elettrodomestici/apparecchi elettronici",
+		"Non so/non ricordo#se ",
+		"No, nessuna intervista ultimi 3 mesi#se "
+	};
+	qst.setProperty("options", q60_opts);
+	send qst;
+	
+		
+	boolean lectq60a=system.getProperty("ans60_2");
+	boolean lectq60b=system.getProperty("ans60_3");
+	if (lectq60a==true||lectq60b==true)	 {return 4;}
+	
+	qst = new question("choice", 70);
+	qst.setProperty("text", "Chi si occupa principalmente degli acquisti di piccoli elettrodomestici nella sua famiglia? ");
+	qst.setProperty("code", "q1.5");
+	vector q70_opts = new vector {
+		"Lei personalmente",
+		"Lei con suo marito/compagno/altri",
+		"Altre persone"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+	
+	int lectq70=system.getProperty("ans70");
+	if (lectq70==2)	 {return 4;}	
+	
+	qst = new question("choice", 80);
+	qst.setProperty("text", "Chi si occupa di stirare nella sua famiglia?");
+	qst.setProperty("code", "q1.6");
+	vector q80_opts = new vector {
+		"Lei personalmente",
+		"In prevalenza lei, ma anche altre persone (marito/compagno/collaboratrice domestica)",
+		"In prevalenza/unicamente altre persone (marito/compagno/collaboratrice domestica…)"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+
+	int lectq80=system.getProperty("ans80");
+	if (lectq80==2)	 {return 4;}	
+	
+
+	
+	
+	qst = new question("choice", 90);
+	qst.setProperty("text", "<p>Parliamo ora di piccoli elettrodomestici</p>   Quali tra questi elettrodomestici possedete in famiglia?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.7");
+	vector q90_opts = new vector {
+		"Forno a microonde",
+		"Fornetto elettrico",
+		"Robot che cucina",
+		"Ferro da stiro a vapore",
+		"Ferro da stiro a caldaia",
+		"Macchina da cucire",
+		"Minipimer, frullatori ad immersione",
+		"Estrattori di succhi, centrifughe",
+		"Nessuno di questi#se#sf"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+	
+	count=0;
+	for(int i=0,7)
+	{
+	sel=system.getProperty("ans90_"+i);
+	if (sel==true) { count=count+1; reCod=i; }
+	}	
+	
+	boolean lectq90=system.getProperty("ans90_3");
+	if (lectq90==false)	 {return 4;}		
+	
+	qst = new question("choice", 100);
+	qst.setProperty("text", "E quali tra questi elettrodomestici lei o qualcuno nella sua famiglia utilizza abitualmente?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.8");
+	qst.setProperty("controller", 90);
+	vector q100_opts = new vector {
+		"Nessuno di questi#se#sf"
+	};	
+	qst.setProperty("options", q100_opts);		
+	if (count==1){
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	}
+	send qst;
+
+	boolean lectq100=system.getProperty("ans100_3");
+	if (lectq100==false)	 {return 4;}	
+	
+	qst = new question("choice", 110);
+	qst.setProperty("text", "E quali tra questi elettrodomestici pensa che non acquisterebbe mai o mai pi&ugrave;?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.9");
+	vector q110_opts = new vector {
+		"Forno a microonde",
+		"Fornetto elettrico",
+		"Robot che cucina",
+		"Ferro da stiro a vapore",
+		"Ferro da stiro a caldaia",
+		"Macchina da cucire",
+		"Minipimer, frullatori ad immersione",
+		"Estrattori di succhi, centrifughe",
+		"Nessuno di questi#se#sf"
+	};
+	qst.setProperty("options", q110_opts);
+	send qst;
+
+	boolean lectq110=system.getProperty("ans110_3");
+	if (lectq110==true)	 {return 4;}		
+
+
+	
+	qst = new question("choice", 120);
+	qst.setProperty("text", "Quali delle seguenti marche di ferri da stiro a vapore conosce, anche solo per averle sentite nominare?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.10");
+	vector q120_opts = new vector {
+		"Imetec",
+		"Philips",
+		"Rowenta",
+		"Bosch",
+		"Braun",
+		"Ariete",
+		"Termozeta",
+		"Ok",
+		"Altro (specificare)#sf#so",
+		"Nessuna di queste#sf#se"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+	
+
+	boolean lectq120=system.getProperty("ans120_0");
+	if (lectq120==false)	 {return 4;}			
+	
+	qst = new question("choice", 130);
+	qst.setProperty("text", "E qual &egrave; la marca del suo attuale ferro da stiro a vapore?");
+	qst.setProperty("code", "q1.11");
+	vector q130_opts = new vector {
+		"Imetec",
+		"Philips",
+		"Rowenta",
+		"Bosch",
+		"Braun",
+		"Ariete",
+		"Termozeta",
+		"Ok",
+		"Altro (specificare)#sf#so",
+		"Nessuna di queste#sf#se"
+	};
+	qst.setProperty("options", q130_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 140);
+	qst.setProperty("text", "E quali tra queste marche pensa che non acquisterebbe mai o mai pi&ugrave;?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.12");
+	vector q140_opts = new vector {
+		"Imetec",
+		"Philips",
+		"Rowenta",
+		"Bosch",
+		"Braun",
+		"Ariete",
+		"Termozeta",
+		"Ok",
+		"Altro (specificare)#sf#so",
+		"Nessuna di queste#sf#se"
+	};
+	qst.setProperty("options", q140_opts);
+	send qst;
+	
+	boolean lectq140=system.getProperty("ans140_0");
+	if (lectq140==true)	 {return 4;}		
+	
+	qst = new question("choice", 150);
+	qst.setProperty("text", "E quanto spesso utilizza il ferro da stiro a vapore? ");
+	qst.setProperty("code", "q1.13");
+	vector q150_opts = new vector {
+		"Tutti i giorni",
+		"4-5 volte a settimana",
+		"2-3 volte a settimana",
+		"Una volta a settimana",
+		"Meno spesso"
+	};
+	qst.setProperty("options", q150_opts);
+	send qst;
+	
+	int lectq150=system.getProperty("ans150");
+	if (lectq150==4)	 {return 4;}	
+	
+	
+
+
+	
+}

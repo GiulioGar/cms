@@ -1,0 +1,1119 @@
+void main() {
+	question qst;
+	
+	
+	int selint;
+	boolean sel;
+	boolean selb;
+	int qid;
+	string item;
+	int reCod;
+	string cmd;
+	int conta;
+	string label;
+	string nascondi_item;
+	int ansId;
+	int count;
+	int n;
+	
+string autotest=system.getProperty("test");
+	
+	//system.setProperty("env", "debug:true");
+	//system.setProperty("env", "browser:full");
+	if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+	system.setProperty("env", "stylesheet:mod.css");
+	
+	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+	string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(4,10,80,150);});</script>";
+	string allinea=all+mozCode;
+	
+	
+	
+	qst = new question("choice", 10);
+	qst.setProperty("text", "Lei &egrave;…?");
+	qst.setProperty("code", "s1");
+	vector q10_opts = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", q10_opts);
+	send qst;
+	
+	
+	
+	qst = new question("open", 20);
+	qst.setProperty("text", "Indichi la sua et&agrave;?");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s2");
+	send qst;
+	
+	int eta=(int)system.getProperty("ans20");
+	
+	if (eta<18){return 4;}
+	
+	
+	if(eta<18) { reCod=0;}
+	if(eta>=18 && eta<=24) { reCod=1;}
+	if(eta>=25 && eta<=34) { reCod=2;}
+	if(eta>=35 && eta<=44) { reCod=3;}
+	if(eta>=45 && eta<=54) { reCod=4;}
+	if(eta>=55 && eta<=64) { reCod=5;}
+	if(eta>=65) { reCod=6;}
+	
+	
+	
+
+	
+qst = new question("choice", 21);
+qst.setProperty("text", "RECODE IN TO:");
+qst.setProperty("code", "recAge");
+vector q21_opts = new vector {
+"<18",
+"18-24",
+"25-34",
+"35-44",
+"45-54",
+"55-64",
+"> 54"
+};
+qst.setProperty("options", q21_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+
+
+cmd=q21_opts.get(reCod);
+system.out("<div>Fascia di età: "+cmd+"</div>");
+	
+	
+	
+	vector c0 = new vector { "Aosta" };
+    vector c1 = new vector { "Alessandria", "Asti", "Biella", "Cuneo", "Novara", "Torino", "Verbano Cusio Ossola", "Vercelli" };
+    vector c2 = new vector { "Bergamo", "Brescia", "Como", "Cremona", "Lecco", "Lodi", "Mantova", "Milano", "MOnza e Brianza",  "Pavia", "Sondrio", "Varese" };
+    vector c3 = new vector { "Genova", "Imperia", "La Spezia", "Savona" };
+    vector c4 = new vector { "Belluno", "Padova", "Rovigo", "Treviso", "Venezia", "Verona", "Vicenza" };
+    vector c5 = new vector { "Gorizia", "Pordenone", "Trieste", "Udine" };
+    vector c6 = new vector { "Bolzano", "Trento" };
+    vector c7 = new vector { "Bologna", "Ferrara", "Forl&igrave; Cesena", "Modena", "Parma", "Piacenza", "Ravenna", "Reggio Emilia", "Rimini" };
+    vector c8 = new vector { "Arezzo", "Firenze", "Grosseto", "Livorno", "Lucca", "Massa e Carrara", "Pisa", "Pistoia", "Prato", "Siena" };
+    vector c9 = new vector { "Ancona", "Ascoli Piceno", "Fermo", "Macerata", "Pesaro e Urbino" };
+    vector c10 = new vector { "Perugia", "Terni" };
+    vector c11 = new vector { "Frosinone", "Latina", "Rieti", "Roma", "Viterbo" };
+    vector c12 = new vector { "Chieti", "L'Aquila", "Pescara", "Teramo" };
+    vector c13 = new vector { "Campobasso", "Isernia" };
+    vector c14 = new vector { "Avellino", "Benevento", "Caserta", "Napoli", "Salerno" };
+    vector c15 = new vector { "Bari", "Barletta Andria Trani", "Brindisi", "Foggia", "Lecce", "Taranto" };
+    vector c16 = new vector { "Matera", "Potenza" };
+    vector c17 = new vector { "Catanzaro", "Cosenza", "Crotone", "Reggio Calabria", "Vibo Valentia" };
+    vector c18 = new vector { "Agrigento", "Caltanissetta", "Catania", "Enna", "Messina", "Palermo", "Ragusa", "Siracusa", "Trapani" };
+    vector c19 = new vector { "Campidano", "Cagliari", "Carbonia Iglesias", "Nuoro", "Ogliastra", "Olbia Tempio", "Oristano", "Sassari" };
+	
+	
+	
+	
+	qst = new question("choice", 40);
+	qst.setProperty("text", "Indichi la regione in cui risiede");
+	qst.setProperty("code", "s3");
+	vector q40_opts = new vector {
+"Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia Romagna",
+"Friuli Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino Alto Adige",
+"Umbria",
+"Valle d'Aosta",
+"Veneto"
+	};
+	qst.setProperty("options", q40_opts);
+	send qst;
+	int regione=system.getProperty("ans40");
+	
+
+	
+	
+	qst = new question("choice", 50);
+	qst.setProperty("text", "Indichi la provincia in cui risiede");
+	qst.setProperty("code", "s3a");
+	qst.setProperty("options", c0);
+    switch(regione) {
+        case 0: { qst.setProperty("options", c12); }
+        case 1: { qst.setProperty("options", c16); }
+        case 2: { qst.setProperty("options", c17); }
+        case 3: { qst.setProperty("options", c14); }
+        case 4: { qst.setProperty("options", c7); }
+        case 5: { qst.setProperty("options", c5); }
+        case 6: { qst.setProperty("options", c11); }
+        case 7: { qst.setProperty("options", c3); }
+        case 8: { qst.setProperty("options", c2); }
+        case 9: { qst.setProperty("options", c9); }
+        case 10: { qst.setProperty("options", c13); }
+        case 11: { qst.setProperty("options", c1); }
+        case 12: { qst.setProperty("options", c15); }
+        case 13: { qst.setProperty("options", c19); }
+        case 14: { qst.setProperty("options", c18); }
+        case 15: { qst.setProperty("options", c8); }
+        case 16: { qst.setProperty("options", c6); }
+        case 17: { qst.setProperty("options", c10); }
+        case 18: { qst.setProperty("options", c0); }
+        case 19: { qst.setProperty("options", c4); }
+    }
+	send qst;
+	
+	
+	
+	int s3=system.getProperty("ans40");
+	int s3a=system.getProperty("ans50");
+	
+	
+	
+	
+
+	qst = new question("choice", 70);
+	qst.setProperty("text", "<p>Queste prime domande riguardano il sistema sanitario del nostro Paese</p>Come giudica il Sistema Sanitario Nazionale italiano <b>nel suo complesso</b>?");
+	qst.setProperty("code", "h1");
+	vector q70_opts = new vector {
+		"Molto buono",
+		"Buono",
+		"Cosi cosi",
+		"Cattivo",
+		"Molto cattivo"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 80);
+	qst.setProperty("text", "Qual’&egrave; la sua preoccupazione principale riguardante il Servizio Sanitario Nazionale italiano al momento?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "h4");
+	vector q80_opts = new vector {
+		"Servizi sanitari non a disposizione di tutti",
+		"L’alto costo dei medicinali",
+		"L’eccessiva burocrazia",
+		"Personale medico poco qualificato",
+		"La malasanit&agrave;",
+		"Strutture ospedaliere inadeguate",
+		"Limitato accesso ai servizi sanitari",
+		"L’emergere di nuove malattie",
+		"Stili di vita pi&ugrave; insalubri",
+		"L’abuso e la dipendenza dalle droghe",
+		"Scarsa qualit&agrave; delle cure",
+		"Tempi di attesa lunghi per le prestazioni sanitarie",
+		"Altro (specificare)#sf#so",
+		"Non so#sf"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 90);
+	qst.setProperty("text", "Lei direbbe che oggi lo stato della sua salute rispetto a 5 anni fa &egrave;….?");
+	qst.setProperty("code", "h5");
+	vector q90_opts = new vector {
+		"Migliore",
+		"Uguale",
+		"Peggiore"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 100);
+	qst.setProperty("text", "In che maniera lei si prende cura della sua salute? Selezioni tutte le voci che le si adattano");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "h6");
+	vector q100_opts = new vector {
+		"Faccio esercizio fisico",
+		"Mangio cibi salutari",
+		"Dormo a sufficienza",
+		"Evito lo stress",
+		"Assumo integratori/vitamine",
+		"Non fumo",
+		"Faccio una dieta restrittiva (ad es. Vegetariana o vegana o senza glutine/ senza OGM/ senza lattosio etc.)",
+		"Prego/faccio meditazione",
+		"Altro (specificare)#so#sf",
+		"Nulla/ non mi prendo cura della mia salute#se#sf"
+	};
+	qst.setProperty("options", q100_opts);
+	send qst;
+	
+	sel=system.getProperty("ans100_0");
+	
+	
+	
+	
+	if (sel==true)
+	{
+	qst = new question("choice", 110);
+	qst.setProperty("text", "Quanto spesso fa esercizio fisico?");
+	qst.setProperty("code", "h7");
+	vector q110_opts = new vector {
+		"Ogni giorno",
+		"6 volte a settimana",
+		"5 volte a settimana",
+		"4 volte a settimana",
+		"3 volte a settimana",
+		"2 volte a settimana",
+		"Una volta a settimana",
+		"Meno spesso"
+	};
+	qst.setProperty("options", q110_opts);
+	send qst;
+	}
+	
+	
+	qst = new question("choice", 120);
+	qst.setProperty("text", "C’&egrave; qualche tipo di alimentazione specifica che lei cerca di seguire? Selezioni tutte le voci che le si adattano");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "h8");
+	vector q120_opts = new vector {
+		"Dieta povera di zuccheri",
+		"Dieta povera di grassi",
+		"Dieta povera di sale",
+		"Dieta povera di glutine / gluten-free",
+		"Poche purine (mantenere l’item ma nasconderlo)#sh",
+		"Dieta povera di sodio",
+		"Dieta povera di caffeine/ niente caffeina",
+		"Dieta organica",
+		"Dieta Paleo (mantenere l’item ma nasconderlo)#sh",
+		"Evitare alimenti trasformati",
+		"Dieta povera di OGM / Senza OGM",
+		"Dieta povera di latte / senza lattosio",
+		"Dieta ricca di fibre",
+		"Altro (specificare)#so#sf",
+		"Nulla di specifico, provo solo a mangiare in maniera corretta#se#sf",
+		"Nulla affatto#se#sf"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 130);
+	qst.setProperty("text", "Quanto spesso lei beve alcolici?");
+	qst.setProperty("code", "h9");
+	vector q130_opts = new vector {
+		"Ogni giorno",
+		"Qualche volta a settimana",
+		"Una volta a settimana",
+		"Qualche volta al mese",
+		"Una volta al mese",
+		"Meno di una volta al mese",
+		"Mai"
+	};
+	qst.setProperty("options", q130_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 140);
+	qst.setProperty("text", "Lei fuma sigarette, oppure fuma la pipa, oppure mastica tabacco?");
+	qst.setProperty("code", "h10");
+	vector q140_opts = new vector {
+		"Si",
+		"Si in passato ma ho smesso",
+		"No mai"
+	};
+	qst.setProperty("options", q140_opts);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 150);
+	qst.setProperty("text", "Indichi quanto &egrave; soddisfatto/a per ciascuno dei seguenti aspetti:");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "w1");
+	vector q150_rows = new vector {
+		"La mia vita in generale",
+		"La mia salute in generale",
+		"La mia felicit&agrave; in generale",
+		"I risultati delle mie azioni in generale (l’impatto sulla mia vita)"
+	};
+	qst.setProperty("rows", q150_rows);
+	vector q150_cols = new vector {
+		"Completamente soddisfatto/a",
+		"Soddisfatto/a",
+		"N&egrave; soddisfatto/a n&egrave; insoddisfatto/s",
+		"Insoddisfatto/a",
+		"Completamente insoddisfatto/a"
+	};
+	qst.setProperty("cols", q150_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 160);
+	qst.setProperty("text", "Questa sezione riguarda la sua vita e l’Italia in generale:<br><br>In generale, rispetto a 5 anni fa, direbbe che la sua vita oggi &egrave; migliore, &egrave; uguale o &egrave; peggiore?");
+	qst.setProperty("code", "l1");
+	vector q160_opts = new vector {
+		"E’ migliore",
+		"È uguale",
+		"È peggiore"
+	};
+	qst.setProperty("options", q160_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("scale", 170);
+	qst.setProperty("text", "Indichi quanto &egrave; d’accordo con ciascuna delle seguenti affermazioni");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "l2");
+	vector q170_rows = new vector {
+		"La diseguaglianza tra etnie &egrave; un grave problema nel nostro paese",
+		"Il divario tra ricchi e poveri &egrave; un grave problema nel nostro paese",
+		"Per la nostra società è auspicabile un orientamento sessuale tradizionale per i ragazzi e le ragazze",
+		"Alle donne non dovrebbe essere permesso l’accesso al mondo del lavoro",
+		"Mi offende vedere un individuo transgender",
+		"Coppie omosessuali dovrebbero potersi sposare",
+		"E’ giusto che sia uomini che donne portino la gonna",
+		"Credo che le nuove generazioni avranno una vita migliore di quelli della mia generazione",
+		"Temo per il benessere delle generazioni che verranno",
+		"I Millenials (persone con meno di 35 anni) sono troppo presi in se stessi e poco interessati al benessere collettivo",
+		"La tecnologia sta rovinando le nostre relazioni personali",
+		"Gli anziani sono un peso per le generazioni pi&ugrave; giovani"
+	};
+	qst.setProperty("rows", q170_rows);
+	vector q170_cols = new vector {
+		"Completamente d’accordo",
+		"D’accordo",
+		"N&egrave; d’accordo n&egrave; in disaccordo",
+		"In disaccordo",
+		"Completamente in disaccordo"
+	};
+	qst.setProperty("cols", q170_cols);
+	send qst;
+	
+	
+		qst = new question("scale", 175);
+	qst.setProperty("text", "Indichi quanto &egrave; d’accordo con ciascuna delle seguenti affermazioni");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "l2b");
+	vector q175_rows = new vector {
+"L’immagine della donna mostrata nelle pubblicità non è realistica",
+"L’immagine dell’uomo mostrata nelle pubblicità non è realistica",
+"Più donne dovrebbero essere presenti nei consigli di amministrazione delle aziende e delle organizzazioni",
+"Più uomini dovrebbero essere presenti nei consigli di amministrazione delle aziende e delle organizzazioni",
+"Nel nostro paese lo stipendio è mediamente lo stesso per gli uomini e le donne ",
+"A parità di lavoro un uomo ed una donna guadagnano la stessa cifra"
+	};
+	qst.setProperty("rows", q175_rows);
+	qst.setProperty("cols", q170_cols);
+	send qst;
+	
+	
+	
+	
+	
+	qst = new question("choice", 180);
+	qst.setProperty("text", "Per lei &egrave; pi&ugrave; importante la sua carriera o la sua famiglia?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "l3");
+	vector q180_opts = new vector {
+		"La mia carriera",
+		"La mia famiglia"
+	};
+	qst.setProperty("options", q180_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 190);
+	qst.setProperty("text", "Questa sezione riguarda la tecnologia<br><br>Quali tecnologie tra le seguenti lei possiede o ne ha accesso per uso personale nella sua casa?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "t1");
+	vector q190_opts = new vector {
+		"Smartphone",
+		"Telefono cellulare (non smartphone)",
+		"Tablet",
+		"Hotspot o aircard",
+		"Connessione ad internet veloce a casa",
+		"Wi-Fi router / rete wireless a casa",
+		"PC",
+		"Laptop",
+		"Lettore e-book",
+		"TV satellitare o via cavo",
+		"Abbonamento Streaming video (es. Netflix, Amazon Prime streaming, etc.)",
+		"Telefono fisso",
+		"Smart TV",
+		"Sistemi di domotica (allarme, frigorifero, termostato, con cui potersi interfacciare a distanza)",
+		"Automobile intelligente (Smart Car)",
+		"Smart watch",
+		"Nessuno di questi#se"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 200);
+	qst.setProperty("text", "Lei utilizza/salva o ha mai utilizzato/salvato qualcosa in un cloud?");
+	qst.setProperty("code", "t2");
+	vector q200_opts = new vector {
+		"Si",
+		"No",
+		"Non so rispondere"
+	};
+	qst.setProperty("options", q200_opts);
+	send qst;
+	
+	
+	
+	
+	
+	qst = new question("scale", 210);
+	qst.setProperty("text", "Considerato il progresso tecnologico, come pensa che sar&agrave; <b>un robot tra 10 anni</b>…?");
+	qst.setProperty("code", "t3");
+	vector q210_rows = new vector {
+"Servirà cibo al ristorante",
+"Pulirà la Sua casa",
+"Guiderà un’automobile",
+"Guiderà un aereoplano",
+"Sarà la segretaria/receptionist nella Sua azienda",
+"Sarà l’insegnante dei suoi figli a scuola",
+"Sarà un Suo collega di lavoro/collaboratore",
+"Opererà le persone in ospedale",
+"Sarà il Suo capo",
+"Sarà un partner con cui fare sesso"
+	};
+	qst.setProperty("rows", q210_rows);
+	vector q210_cols = new vector {
+		"Molto probabile",
+		"probabile",
+		"Neutrale",
+		"improbabile",
+		"Molto improbabile"
+	};
+	qst.setProperty("cols", q210_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("scale", 220);
+	qst.setProperty("text", "E lei quanto si sentir&agrave; a Suo agio con un robot che…");
+	//qst.setProperty("show_rand", true);
+	qst.setProperty("code", "t4");
+	vector q220_rows = new vector {
+"Servirà cibo al ristorante",
+"Pulirà la Sua casa",
+"Guiderà un’automobile",
+"Guiderà un aereoplano",
+"Sarà la segretaria/receptionist nella Sua azienda",
+"Sarà l’insegnante dei suoi figli a scuola",
+"Sarà un Suo collega di lavoro/collaboratore",
+"Opererà le persone in ospedale",
+"Sarà il Suo capo",
+"Sarà un partner con cui fare sesso"
+	};
+	qst.setProperty("rows", q220_rows);
+	vector q220_cols = new vector {
+		"Molto a mio agio",
+		"A mio agio",
+		"Neutrale",
+		"Non a mio agio",
+		"Per niente a mio agio"
+	};
+	qst.setProperty("cols", q220_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 225);
+	qst.setProperty("text", "Indichi per cortesia in che misura è d’accordo con ciascuna delle seguenti affermazioni. ");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "t5");
+	vector q225_rows = new vector {
+		"Il mio lavoro sarà svolto da una macchina/robot/computer nel giro di 5 anni "
+	};
+	qst.setProperty("rows", q225_rows);
+	vector q225_cols = new vector {
+		"Completamente d’accordo",
+		"D’accordo",
+		"N&egrave; d’accordo n&egrave; in disaccordo",
+		"In disaccordo",
+		"Completamente in disaccordo"
+	};
+	qst.setProperty("cols", q225_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("scale", 230);
+	qst.setProperty("text", "Questa sezione riguarda le tendenze globali del nostro mondo<br><br>Indichi per favore in che misura &egrave; d’accordo con ciascuna delle seguenti affermazioni");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "g1");
+	vector q230_rows = new vector {
+		"I Musulmani dovrebbero fare di pi&ugrave; per fornire sostegno  finanziario e supporto agli altri musulmani bisognosi sparsi per il mondo",
+		"Ci sarebbe bisogno di un pi&ugrave; stretto controllo sull’immigrazione illegale nel nostro paese",
+		"Se l’economia cinese dovesse andare male sarebbe un male per tutte le altre economie mondiali",
+		"Molti dei nostri problemi principali si potrebbero risolvere solo se ci fosse la cooperazione dei principali leader mondiali",
+		"Vorrei la pace nel mondo",
+		"La diffusione della armi &egrave; un problema enorme per gli stati Uniti",
+		"L’ ONU (Organizzazione delle Nazioni Unite) dovrebbe essere pi&ugrave; attiva nel mondo"
+	};
+	qst.setProperty("rows", q230_rows);
+	vector q230_cols = new vector {
+		"Completamente d’accordo",
+		"D’accordo",
+		"N&egrave; d’accordo n&egrave; in disaccordo",
+		"In disaccordo",
+		"Completamente in disaccordo",
+		"Non so rispondere"
+	};
+	qst.setProperty("cols", q230_cols);
+	send qst;
+	
+	
+	
+	
+	
+	qst = new question("scale", 240);
+	qst.setProperty("text", "Pensando in generale al Presidente del Consiglio Italiano, indichi quanto &egrave; stata efficace la sua azione in ciascuno dei seguenti ambiti:");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "g2");
+	vector q240_rows = new vector {
+		"Combattere la disoccupazione",
+		"Migliorare l’economia",
+		"Risolvere la questione dei rifugiati",
+		"Migliorare la scuola",
+		"Rendere il paese sicuro dagli attacchi terroristici",
+		"Proteggere l’ambiente",
+		"Sviluppo sostenibile",
+		"Servizio sanitario",
+		"Migliorare la qualit&agrave; della vita nel paese",
+		"Fornire assistenza ai poveri /affamati / senzatetto",
+		"Combattere la corruzione"
+	};
+	qst.setProperty("rows", q240_rows);
+	vector q240_cols = new vector {
+		"Molto efficace",
+		"Efficace",
+		"Né molto né poco efficace",
+		"Poco efficace",
+		"Per niente efficace",
+		"Non so rispondere"
+	};
+	qst.setProperty("cols", q240_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("scale", 250);
+	qst.setProperty("text", "Per cortesia ci indichi la sua opinione sullo stato di salute delle seguenti categorie in Italia.");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "g3");
+	vector q250_rows = new vector {
+		"Il paese in generale",
+		"L’economia",
+		"La lotta al terrorismo",
+		"Il tasso di criminalit&agrave;",
+		"La scuola",
+		"La situazione dei rifugiati",
+		"L’ambiente",
+		"Lo sviluppo sostenibile",
+		"Il sistema sanitario",
+		"La corruzione governativa/amministrativa",
+		"La povert&agrave;"
+	};
+	qst.setProperty("rows", q250_rows);
+	vector q250_cols = new vector {
+		"Eccellente",
+		"Buono",
+		"Medio",
+		"Cattivo",
+		"Pessimo",
+		"Non so rispondere"
+	};
+	qst.setProperty("cols", q250_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("scale", 260);
+	qst.setProperty("text", "E secondo lei i seguenti aspetti nel nostro paese miglioreranno, resteranno stabili, o peggioreranno nei prossimi 12 mesi?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "g4");
+	vector q260_rows = new vector {
+		"Il paese in generale",
+		"L’economia",
+		"La lotta al terrorismo",
+		"Il tasso di criminalit&agrave;",
+		"La scuola",
+		"La situazione dei rifugiati",
+		"L’ambiente",
+		"Lo sviluppo sostenibile",
+		"Il sistema sanitario",
+		"La corruzione governativa/amministrativa",
+		"La povert&agrave;"
+	};
+	qst.setProperty("rows", q260_rows);
+	vector q260_cols = new vector {
+		"Migliorer&agrave;",
+		"Rester&agrave; stabile",
+		"Peggiorer&agrave;",
+		"Non so rispondere"
+	};
+	qst.setProperty("cols", q260_cols);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 270);
+	qst.setProperty("text", "Secondo la sua opinione &egrave; pi&ugrave; importante per il mondo la crescita economica o la tutela dell’ambiente?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "g5");
+	vector q270_opts = new vector {
+		"La crescita economica",
+		"La tutela dell’ambiente"
+	};
+	qst.setProperty("options", q270_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 280);
+	qst.setProperty("text", "Qual &egrave; il pi&ugrave; grande pericolo per la pace nel mondo?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "g6");
+	vector q280_opts = new vector {
+		"Lo stato islamico",
+		"La Russia",
+		"La Cina",
+		"Gli Stati Unuiti",
+		"Israele",
+		"La Palestina",
+		"L’Iran",
+		"L’Iraq",
+		"Il Regno Unito",
+		"La Corea del Nord",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q280_opts);
+	send qst;
+	
+
+
+	
+	qst = new question("concept", 281);
+	qst.setProperty("text", "Le indichiamo ora alcuni comportamenti riguardo il modo di spendere/consumare");
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 282);
+	qst.setProperty("text", "Può indicarci con quale di essi lei si identifica di più, cioè lo ritiene un comportamento abituale che pensa di mantenere anche in futuro?");
+	qst.setProperty("code", "p2d1");
+	vector q282_opts = new vector {
+"Evitare consumi superflui acquisti futili, comperare solo quel che serve effettivamente ed è necessario nella vita quotidiana",
+"Stare attenti a quanto si spende, ma senza negarsi qualche piccolo lusso, ad esempio prodotti alimentari pregiati, un accessorio, una serata “speciale”, prodotti di bellezza, etc…",
+"Nei limiti del possibile, soddisfare le proprie esigenze di consumo senza porsi troppi problemi di risparmio"
+	};
+	qst.setProperty("options", q282_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 283);
+	qst.setProperty("text", "Le indichiamo ora alcuni comportamenti riguardo la scelta dei prodotti o servizi da acquistare. Può indicarci con quale di essi si identifica di più, cioè lo ritiene un comportamento abituale che pensa di mantenere anche in futuro?");
+	qst.setProperty("code", "p2d2");
+	qst.setProperty("show_rand", true);
+	vector q283_opts = new vector {
+"Prestare in ogni caso molta attenzione al prezzo, cercando le soluzioni più convenienti (offerte promozionali, saldi, volantini dei supermercati, internet, etc…)",
+"Comperare prodotti di ottima qualità anche a prezzo superiore in alcune categorie, e  magari accontentarsi di una qualità accettabile a un buon prezzo, in altre",
+"Acquistare in ogni caso prodotti di qualità media a un prezzo ragionevole"
+	};
+	qst.setProperty("options", q283_opts);
+	send qst;	
+	
+	
+	
+qst = new question("scale", 284);
+	qst.setProperty("text", "E lei pensa di adottare/continuare ad adottare questi comportamenti in futuro? Risponda per ciascuno dei comportamenti segnalati.");
+	qst.setProperty("code", "p2d3");
+	//qst.setProperty("show_rand", true);
+	vector q284_rows = new vector {
+"<u>Invece di uscire</u> (pub, ristorante), organizzare cene/aperitivi in casa con gli amici/parenti",
+"<u>Invece di buttare/dare via</u> abiti/borse/scarpe, ripararli",
+"<u>Invece di acquistare nuovi</u> utensili/apparecchi domestici, cercare di aggiustarli",
+"<u>Invece di andare</u> a mangiare fuori per la pausa-pranzo, portare il pasto cucinato /preparato a casa",
+"<u>Invece di delegare</u> piccoli lavori di manutenzione/riparazione all’esterno, eseguirli personalmente",
+"<u>Invece di acquistare alcuni alimenti</u>, farli in casa (es: pane, marmellate,  etc..)",
+"<u>Invece di acquistare alcuni oggetti/beni/prodotti</u> (es: abbigliamento, o utensili o piccola elettronica o cosmetici, etc…), farli da me",
+"<u>Invece di acquistare alcuni tipi di verdura/frutta,coltivarli</u> in casa/nell’orto/sul balcone"
+	};
+	qst.setProperty("rows", q284_rows);
+	vector q284_cols = new vector {
+		"Sicuramente sì",
+		"Probabilmente si",
+		"Probabilmente no",
+		"Sicuramente no"
+	};
+	qst.setProperty("cols", q284_cols);
+	//qst.setProperty("extras", "{header_repeat: 10}");
+	send qst;	
+	
+	
+qst = new question("scale", 285);
+	qst.setProperty("text", "Le elenchiamo ora alcuni modi in cui un’Azienda può gestire la sua offerta ai consumatori. Può dirci se Lei acquisterebbe i prodotti/servizi di un’azienda che si comportasse nei seguenti modi:");
+	qst.setProperty("code", "p2d4");
+	//qst.setProperty("show_rand", true);
+	vector q285_rows = new vector {
+"Produce / ha gli stabilimenti in Italia (non delocalizza)",
+"Cerca di risparmiare risorse energetiche, usando fonti rinnovabili / non inquinanti",
+"Favorisce il benessere e la qualità della vita dei propri dipendenti",
+"E’ attenta alla protezione dei diritti umani in tutte le fasi del processo di produzione, anche se all’estero",
+"Non esegue test sugli animali",
+"Utilizza confezioni fatte con materiali riciclabili",
+"Riduce al minimo l’impiegodi imballaggi ",
+"Utilizza solo materie prime di origine italiana",
+"Acquista beni attraverso i canali del commercio equo-solidale",
+"Dona parte dei suoi profitti a situazioni di disagio sociale, economico o ambientale",
+"Finanzia i beni culturali (es: restauro monumenti, mostre, musei, teatro, etc..)"
+	};
+	qst.setProperty("rows", q285_rows);
+	vector q285_cols = new vector {
+		"Acquisterei ma solo se costassero meno rispetto alle altre marche",
+		"Acquisterei a parità di prezzo rispetto alle altre marche",
+		"Acquisterei, anche se il prezzo fosse leggermente superiore (max 15%)",
+		"Non acquisterei/Indifferente"
+	};
+	qst.setProperty("cols", q285_cols);
+	send qst;		
+	
+	
+	qst = new question("scale", 286);
+	qst.setProperty("text", "Le presentiamo alcuni comportamenti della vita di tutti i giorni. Potrebbe dirci se lei oggi adotta questi comportamenti di più, alla stessa maniera, o di meno, rispetto a 2/3 anni fa?");
+	qst.setProperty("code", "p2d5");
+	//qst.setProperty("show_rand", true);
+	vector q286_rows = new vector {
+"Separare il più possibile/correttamente i rifiuti domestici",
+"Utilizzare il più possibile i trasporti pubblici (tram, bus, treni)",
+"Utilizzare la bicicletta ",
+"Risparmiare il più possibile risorse domestichecome acqua, luce, gas, elettricità",
+"Consumare tutti gli alimenti che si acquistano, anche se non più freschissimi (ovviamente non avariati), buttando via il meno possibile",
+"Non acquistare mai prodotti di aziende che non sono rispettose dei diritti umani/dell’ambiente",
+"Utilizzare fonti di energia rinnovabili per la mia abitazione (es: fotovoltaico, biomasse, geotermia, centrali di scambio, etc..)",
+"Svolgere abitualmente attività di volontariato"
+	};
+	qst.setProperty("rows", q286_rows);
+	vector q286_cols = new vector {
+"di più",
+"alla stessa maniera",
+"di meno",
+"mai adottato"
+	};
+	qst.setProperty("cols", q286_cols);
+	send qst;	
+	
+	
+qst = new question("choice", 287);
+	qst.setProperty("text", "Può dirci ora, quali potrebbero essere, tra i seguenti, i comportamenti che potrebbero diventare <u>per lei personalmente</u> abitudini, indipendentemente dalla sua situazione economica (sia che migliori, sia che peggiori, sia che resti come ora)?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "p2d6");
+	vector q287_opts = new vector {
+"Prestare la massima attenzione negli acquisti, cercando le offerte, confrontando i prezzi, andando nei punti vendita più convenienti, etc..",
+"Evitare di comperare cose inutili, ridurre il ",
+"Sprecare il meno possibile in tutti i campi (beni alimentari, energia,acqua, etc…)",
+"Modificare il modo di muovermi, privilegiando altre modalità di trasporto rispetto all’automobile privata",
+"Cercare di risparmiare qualche cosa per garantirmi  risorse (una riserva di danaro) per il futuro",
+"Fare/costruire cose da me (prodotti alimentari e/o altri beni/oggetti ad esempio di abbigliamento, utensili, piccola elettronica etc…)", 
+"Privilegiare le marche di Imprese che adottano comportamenti Sostenibili (protezione dell’ambiente, attenzione alle condizioni di lavoro, risparmio di energia, rispetto dei diritti umano, etc…)",
+"Orientarsi a prodotti naturali (senza OGM o componenti chimiche, biologici, vegetali, etc…)"
+	};
+	qst.setProperty("options", q287_opts);
+	send qst;
+	
+
+	
+	qst = new question("concept", 1000);
+	qst.setProperty("text", "Pensi ora in particolare ai suoi acquisti di prodotti alimentari.");
+	send qst;	
+	
+qst = new question("choice", 1001);
+	qst.setProperty("text", "Quando fa la spesa al supermercato, a quali di questi prodotti alimentari è interessato in modo particolare?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "p3d1");
+	vector q1001_opts = new vector {
+"prodotti bio",
+"prodotti vegetariani",
+"prodotti vegani",
+"prodotti senza glutine",
+"prodotti senza zuccheri",
+"prodotti senza lattosio",
+"altro#so#sf",
+"nessuno di questi compro indifferentemente tutti i prodotti alimentari#se#sf"
+	};
+	qst.setProperty("options", q1001_opts);
+	send qst;	
+	
+	sel=system.getProperty("ans1001_7");
+	
+	if (sel==false)
+	{
+	
+	for (int i=0,6)
+	{
+	
+	selb=system.getProperty("ans1001_"+i);
+	
+	if (selb==true)
+	{
+	if (i!=6){label=q1001_opts.get(i);}
+	else{label=system.getProperty("ans1001_6_comp");}
+	
+	qid=10000+i;
+
+	qst = new question("choice", qid);
+	qst.setProperty("text", "Qual è il motivo principale per cui è interessato/a <b>"+label+"</b>?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "p3d2"+qid);
+vector q1002_opts = new vector {
+"seguo una dieta",
+"per motivi etici",
+"per intolleranze alimentari",
+"per vari motivi di salute (specificare)#so",
+"perchè fanno bene",
+"perchè sono più naturali",
+"perchè non mi fido degli altri prodotti",
+"altro#so#sf"
+	};
+	qst.setProperty("options", q1002_opts);
+	send qst;	
+	
+	}
+	
+	}
+	
+	
+
+	qst = new question("choice", 1003);
+	qst.setProperty("text", allinea+"In particolare, quali di queste marche di prodotti alimentari lei compra abitualmente:");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "p3d3");
+	vector q1003_opts = new vector {
+"Alce Nero<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/1.jpg alt=''></div>",
+"Allos<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/2.jpg alt=''></div>",
+"Altromercato<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/3.jpg alt=''></div>",
+"Baule Volante<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/4.jpg alt=''></div>",
+"Bio's<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/5.jpg alt=''></div>",
+"Cascina Bianca<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/6.jpg alt=''></div>",
+"Cibo Crudo<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/7.jpg alt=''></div>",
+"Consonni<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/8.jpg alt=''></div>",
+"Ecor<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/9.jpg alt=''></div>",
+"Fior di Loto<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/10.jpg alt=''></div>",
+"Fonte della Vita<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/11.jpg alt=''></div>",
+"Isola Bio<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/12.jpg alt=''></div>",
+"Ki Group<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/13.jpg alt=''></div>",
+"La Finestra sul Cielo<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/14.jpg alt=''></div>",
+"LifeFood<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/15.jpg alt=''></div>",
+"Lubs<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/16.jpg alt=''></div>",
+"Più bene<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/17.jpg alt=''></div>",
+"Probios<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/18.jpg alt=''></div>",
+"Provamel<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/19.jpg alt=''></div>",
+"Rapunzel<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/20.jpg alt=''></div>",
+"Sapore di Sole<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/21.jpg alt=''></div>",
+"Sottolestelle<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/22.jpg alt=''></div>",
+"Taste Of Nature<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/23.jpg alt=''></div>",
+"Terre e tradizioni<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/24.jpg alt=''></div>",
+"Verde & bio<div><img src=http://www.primisoft.com/fields/GLO/ITA1710133/resources/25.jpg alt=''></div>",
+"Altra marca (specificare)#so#sf"
+};
+	qst.setProperty("options", q1003_opts);
+	send qst;
+
+}	
+
+
+	qst = new question("choice", 1004);
+	qst.setProperty("text", "Secondo lei, considerando il prezzo medio di un prodotto alimentare generico, quale potrebbe essere il prezzo dello stesso prodotto qualora fosse biologico?");
+	qst.setProperty("code", "p3d4");
+	vector q1004_opts = new vector {
+"+35%",
+"+30%",
+"+25%",
+"+20%",
+"+15%",
+"+10%",
+"+5%",
+"lo stesso prezzo",
+"-5%",
+"-10% ",
+"-15%",
+"-20%",
+"-25%",
+"-30%",
+"-35%"
+	};
+	qst.setProperty("options", q1004_opts);
+	send qst;
+
+
+
+	
+	
+	qst = new question("choice", 290);
+	qst.setProperty("text", "Queste ultime domande  sono di carattere socio-demografico<br><br>Lei &egrave;….?");
+	qst.setProperty("code", "d1");
+	vector q290_opts = new vector {
+		"Single, mai sposato/a",
+		"Sposato/a o convivente",
+		"Divorziato/a, Separato/a, Vedovo/a",
+		"Preferisco non rispondere"
+	};
+	qst.setProperty("options", q290_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 300);
+	qst.setProperty("text", "Quante persone, Lei inclusa, vivono nella sua famiglia?");
+	qst.setProperty("code", "d2");
+	vector q300_opts = new vector {
+		"1",
+		"2",
+		"3",
+		"4",
+		"5 o pi&ugrave;"
+	};
+	qst.setProperty("options", q300_opts);
+	send qst;
+	int selintd2=system.getProperty("ans300");
+	
+	
+	
+	if (selintd2>0)
+	{
+	qst = new question("choice", 310);
+	qst.setProperty("text", "Quanti bambini/ragazzi di et&agrave; inferiore ai 18 anni vivono nella sua famiglia?");
+	qst.setProperty("code", "d3");
+	vector q310_opts = new vector {
+		"0",
+		"1",
+		"2",
+		"3",
+		"4",
+		"5 o pi&ugrave;"
+	};
+	qst.setProperty("options", q310_opts);
+	send qst;
+	
+	selint=system.getProperty("ans310");
+	
+	
+	/////////////////////////////////////CONTROLLO CON WHILE, RIPROPOSIZIONE DOMANDA
+
+	string errMsg="<p style='color:red'>Valore incoerente</p>";
+	while (selint>selintd2 && selintd2<4) 
+	{
+    // elimina l'ultima risposta
+    system.setProperty("delete", "ans310");
+    qst.setProperty("text", errMsg+"Quanti bambini/ragazzi di et&agrave; inferiore ai 18 anni vivono nella sua famiglia?");
+    send qst;
+	}
+
+//////////////////////////////////////////////////////////////////////////////////
+	
+	
+	}
+	
+	
+	
+	qst = new question("choice", 320);
+	qst.setProperty("text", "L’abitazione in cui Lei risiede di trova?");
+	qst.setProperty("code", "d4");
+	vector q320_opts = new vector {
+		"In citt&agrave;",
+		"In periferia",
+		"In campagna"
+	};
+	qst.setProperty("options", q320_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 330);
+	qst.setProperty("text", "La Sua condizione lavorativa &egrave;…?");
+	qst.setProperty("code", "d5");
+	vector q330_opts = new vector {
+		"Lavoro full-time",
+		"Lavoro part-time",
+		"Non lavoro/disoccupato",
+		"Pensionato",
+		"Studente a tempo pieno",
+		"Preferisco non rispondere"
+	};
+	qst.setProperty("options", q330_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 340);
+	qst.setProperty("text", "Qual &egrave; il suo titolo di studi?");
+	qst.setProperty("code", "d6");
+	vector q340_opts = new vector {
+		"Licenza Elementare",
+		"Licenza Media",
+		"Licenzia superiore/ Maturit&agrave;",
+		"Laurea Breve",
+		"Laurea Specialistica",
+		"Dottorato di Ricerca",
+		"Preferisco non rispondere"
+	};
+	qst.setProperty("options", q340_opts);
+	send qst;
+	
+	
+	
+	
+	qst = new question("choice", 350);
+	qst.setProperty("text", "Qual &egrave; il Suo reddito Familiare?");
+	qst.setProperty("code", "d7");
+	vector q350_opts = new vector {
+			"Sotto 15.000€",
+		"Tra  15.000€ - 25.000€",
+		"Tra  25.001€ - 30.000€",
+		"Tra  30.001€ - 35.000€",
+		"Tra  35.001€ - 40.000€",
+		"Tra  40.001€ - 50.000€",
+		"Tra  50.001€ - 80.000€",
+		"Oltre 80.000€",
+		"Preferisco non rispondere"
+	};
+	qst.setProperty("options", q350_opts);
+	send qst;
+}

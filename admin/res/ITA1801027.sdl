@@ -1,0 +1,1628 @@
+#export vars "Target"
+#export vars "cel"
+
+void main() {
+
+	question qst;
+
+	int selint;
+	boolean sel;
+	boolean sel2;
+	int qid;
+	string item;
+	int reCod;
+	string cmd;
+	int count;
+	string label;
+	string nascondi_item;
+	string prodotto;
+//	string delay;
+	string qtext;
+	int r2;
+	string img_prodotto;	
+	string img_prodotto2;	
+	
+
+	system.setProperty("env", "debug:true");
+	system.setProperty("env", "stylesheet:mod.css");
+	
+	string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.js?v=2.1.5'></script>";
+	string altroscript="<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+	string fogliostile="<link rel='stylesheet' href='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.css?v=2.1.5' type='text/css' media='screen' />";
+
+	
+	string cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/leftImg.js'></script>";
+	
+	string scriptconcept="<script type='text/javascript' src='http://www.primisoft.com/fields/script/dinNone.js'></script>";
+	
+	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+	string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,10,30,150);});</script>";
+	string allinea=all+mozCode;
+	
+	
+	
+string jq="<script type='text/javascript' src='http://www.primisoft.com/fields/script/easyzoom.min.js'></script>";
+
+string zm=jq+"<script type='text/javascript'>jQuery(function($){"+
+"$('a.zoom').easyZoom();"+
+"});"+
+"</script>";
+
+
+
+
+
+
+
+
+
+
+	
+	scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+	"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+	
+
+	string esempio="<p><img src=http://www.primisoft.com/fields/STR/ITA1610144/resources/esempio.jpg alt=''></p>";
+
+
+
+
+
+
+
+
+/////Screening
+
+	
+	qst = new question("concept", 2);
+qst.setProperty("text", "<p>Nous vous recommandons d'utiliser un ordinateur de bureau plutôt qu'une tablette ou téléphone portable</p>"+
+"  <p>Pour que vous visualisiez les questions et les images dans la meilleure qualité, nous vous conseillons de passer en mode plein-écran. Pour cela merci d'appuyer sur la touche F11</p>"+
+"  <p>Merci de suivre les instructions ci-dessus pour que votre navigateur affiche toutes les images en entier:</p> <div id=''> Internet Explorer : CTRL 0 (touche zéro au dessus de  «o» et «p») et ensuite la touche F1 </div> <div id=''> Firefox : CTRL 0 (touche zéro au-dessus de «o» et «p» ou la touche zéro de la partie numérique du clavier) et ensuite la touche F11 </div> <div id=''>Chrome : CTRL 0 (touche zéro au dessus de «à» ou la touche zéro sur la partie numérique du clavier) et ensuite la touche F11</div>");
+send qst;		
+		
+	qst = new question("choice", 10);
+	qst.setProperty("text", esempio+"Voici une image, merci de la regarder attentivement et d’indiquer si vous pouvez la voir enti&egrave;rement.");
+	qst.setProperty("code", "qf0a");
+	vector q10_opts = new vector {
+		"Oui",
+		"Non"
+	};
+	qst.setProperty("options", q10_opts);
+	send qst;
+	
+	int lectq10=system.getProperty("ans10");
+		if (lectq10==1){
+	
+	qst = new question("choice", 20);
+	qst.setProperty("text", esempio+"Voici une image, merci de la regarder attentivement et d’indiquer si vous pouvez la voir enti&egrave;rement.");
+	qst.setProperty("code", "qf0b");
+	vector q20_opts = new vector {
+		"Oui",
+		"Non"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+	
+	int lectq20=system.getProperty("ans20");
+	if (lectq20==1){return 4;}
+	
+						}
+	
+	qst = new question("choice", 30);
+	qst.setProperty("text", "Etes-vous…");
+	qst.setProperty("code", "qf1");
+	vector q30_opts = new vector {
+		"Un homme",
+		"Une femme"
+	};
+	qst.setProperty("options", q30_opts);
+	send qst;
+	
+	
+	qst = new question("open", 40);
+	qst.setProperty("text", "Quel âge avez-vous ?") ;
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "qf2");
+	send qst;
+	
+	int eta=(int)system.getProperty("ans40");
+	
+	if (eta<18) {return 4;}
+	if (eta>65) {return 4;}
+	
+	
+	if(eta<18) { reCod=0;}
+	if(eta>=18 && eta<=34) { reCod=1;}
+	if(eta>=35 && eta<=49) { reCod=2;}
+	if(eta>=50 && eta<=64) { reCod=3;}
+	if(eta>=65) { reCod=4;}
+	
+
+qst = new question("choice", 41);
+qst.setProperty("text", "RECODE IN TO:");
+qst.setProperty("code", "recAge");
+vector q41_opts = new vector {
+"<18",
+"18-34",
+"35-49",
+"50-64",
+">64"
+};
+qst.setProperty("options", q41_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+cmd=q41_opts.get(reCod);
+system.out("<div>Fascia di età: "+cmd+"</div>");	
+	
+	
+	qst = new question("choice", 50);
+	qst.setProperty("text", "Vous-même ou un membre de votre famille travaille-t-il dans l’un des secteurs d’activité suivants ? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf3");
+	vector q50_opts = new vector {
+		"Banque",
+		"Bâtiment et la construction",
+		"Les études de marché",
+		"La publicité et les relations de presse",
+		"Le journalisme / la télévision / les médias",
+		"Distribution ou vente au détail de produits alimentaires (hypermarché/supermarché/droguerie)",
+		"Vente, fabrication ou distribution de produits alimentaires ou de nutrition",
+		"Design graphique / design d’emballage",
+		"Marketing / développement de nouveaux produits",
+		"Restaurant / traiteur",
+		"Aucun de cette liste #se"
+	};
+	qst.setProperty("options", q50_opts);
+	send qst;
+	
+	count=0;
+	
+	for (int i=2, 9)
+	{
+	sel=system.getProperty("ans50_"+i);
+	if (sel==true)
+				  {
+				  count=count+1;
+				  }
+	}
+	
+	if (count>0){return 4;}	
+	
+	qst = new question("choice", 60);
+	qst.setProperty("text", "Avez-vous déj&agrave; été interrogé pour une étude de marché au cours des 3 derniers mois ? ");
+	qst.setProperty("code", "qf4a");
+	vector q60_opts = new vector {
+		"Oui",
+		"Non"
+	};
+	qst.setProperty("options", q60_opts);
+	send qst;
+	
+	int lectq60=system.getProperty("ans60");
+	
+		if (lectq60==0) {
+	
+	qst = new question("choice", 70);
+	qst.setProperty("text", "Parmi les sujets suivants, merci d’indiquer celui ou ceux sur lesquels vous avez été interviewé. ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf4b");
+	vector q70_opts = new vector {
+		"Des boissons non alcoolisées",
+		"Du café",
+		"Des produits d’hygi&egrave;ne corporelle",
+		"Des magazines pour enfants",
+		"Aucun de ces sujets#se"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+		
+	boolean lect70=system.getProperty("ans70_1");
+		if (lect70==true) {return 4;}	
+	
+	
+						}
+	
+	
+	qst = new question("choice", 80);
+	qst.setProperty("text", "Êtes-vous principalement ou conjointement responsable des courses de nourriture et d’épicerie au sein de votre ménage ?");
+	qst.setProperty("code", "qf5");
+	vector q80_opts = new vector {
+		"Je suis enti&egrave;rement responsable",
+		"Je suis conjointement responsable",
+		"Quelqu’un d’autre est enti&egrave;rement responsable"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+	
+	int lectq80=system.getProperty("ans80");
+		if (lectq80==2) {return 4;}	
+
+	
+	
+	qst = new question("choice", 90);
+	qst.setProperty("text", "Dans quels types de magasin faites-vous vos courses, ne serait-ce que de temps en temps ? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf6a");
+	vector q90_opts = new vector {
+		"Hypermarchés type Carrefour, Auchan, Géant casino …",
+		"Supermarché type Leclerc, Intermarché, Carrefour Market, Super U…",
+		"Des magasins de hard discount type Lidl, Aldi, Leader Price …",
+		"Des magasins spécialisés pour le café",
+		"Autre"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+	
+	
+	count=0;
+	
+	for (int i=0, 1)
+	{
+	sel=system.getProperty("ans90_"+i);
+	if (sel==true)
+				  {
+				  count=count+1;
+				  }
+	}
+	
+	if (count==0){return 4;}		
+	
+	
+	
+	qst = new question("choice", 100);
+	qst.setProperty("text", "Faites-vous vos courses en drive?");
+	qst.setProperty("code", "qf6b");
+	vector q100_opts = new vector {
+		"Oui exclusivement",
+		"Oui de temps en temps",
+		"Non jamais"
+	};
+	qst.setProperty("options", q100_opts);
+	send qst;
+	
+	int lectq100=system.getProperty("ans100");
+	if (lectq100==0){return 4;}	
+
+	
+	qst = new question("choice", 110);
+	qst.setProperty("text", "Lequel des produits suivants avec-vous acheté au cours des 3 derniers mois en supermarché / hypermarché et que vous avez consommé vous-même ?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf7a");
+	vector q110_opts = new vector {
+		"Jus de fruits",
+		"Café",
+		"Sauce pour pâtes",
+		"Eau minérale &agrave; saveur de fruit",
+		"Bi&egrave;re",
+		"Aucun d’entre eux#se"
+	};
+	qst.setProperty("options", q110_opts);
+	send qst;
+	
+	
+boolean lectq110=system.getProperty("ans110_1");
+	if (lectq110==false){return 4;}	
+	
+	
+	qst = new question("choice", 120);
+	qst.setProperty("text", "Vous avez indiqué acheter du café. </br>Quel type de café achetez-vous habituellement ?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf7b");
+	vector q120_opts = new vector {
+		"Café en dosettes souples pour machine Senseo",
+		"Café en capsules pour machine Nespresso, Tassimo ou Dolce Gusto",
+		"Café en grains",
+		"Café torréfié et moulu",
+		"Autre"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+	
+boolean lectq120=system.getProperty("ans120_0");
+	if (lectq120==false){return 4;}		
+	
+	qst = new question("choice", 130);
+	qst.setProperty("text", "Parmi les machines qui permettent de préparer des boissons chaudes (thé, café, cappuccino, chocolat) suivantes, </br>quelles sont celles que vous possédez chez vous ? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf7c");
+	vector q130_opts = new vector {
+		"Machine &agrave; boissons chaudes Nescafé Dolce Gusto",
+		"Machine &agrave; boissons chaudes Nespresso",
+		"Machine &agrave; boissons chaudes Tassimo",
+		"Machine &agrave; boissons chaudes Senseo",
+		"Aucune de ces machines"
+	};
+	qst.setProperty("options", q130_opts);
+	send qst;
+	
+boolean lectq130=system.getProperty("ans130_3");
+	if (lectq130==false){return 4;}			
+	
+	
+	qst = new question("choice", 140);
+	qst.setProperty("text", "Vous avez indiqué avoir acheté du café en dosettes souples au cours des 3 derniers mois. </br>Quelle sorte de café en dosettes souples avez-vous acheté ?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf8a");
+	vector q140_opts = new vector {
+		"Classique",
+		"Café allongé / long / pour grande tasse",
+		"Origines",
+		"Doux",
+		"Gourmand (Cappuccino, Choco)",
+		"Corsé",
+		"Espresso",
+		"Autre"
+	};
+	qst.setProperty("options", q140_opts);
+	send qst;
+	
+
+	
+	qst = new question("choice", 150);
+	qst.setProperty("text", "Diriez-vous des dosettes souples de café long / allongé / pour grande tasse…");
+	qst.setProperty("code", "qf8b");
+	vector q150_opts = new vector {
+		"Vous en avez déj&agrave; acheté mais n’en ach&egrave;terez plus",
+		"Vous en avez déj&agrave; acheté et vous en ach&egrave;terez &agrave; nouveau",
+		"Vous n’en avez jamais acheté mais pourriez en acheter",
+		"Vous n’en avez jamais acheté et n’en ach&egrave;terez jamais"
+	};
+	qst.setProperty("options", q150_opts);
+	send qst;
+	
+int lectq150=system.getProperty("ans150");
+
+	if (lectq150==0 || lectq150==3){return 4;}	
+	
+	
+	
+	qst = new question("choice", 160);
+	qst.setProperty("text", "Parmi les marques de café en dosettes souples suivantes, lesquelles avez-vous achetées au cours des 3 derniers mois ?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf9a");
+	vector q160_opts = new vector {
+		"Carte Noire Classique",
+		"Café Royal",
+		"Senseo",
+		"Grand-M&egrave;re",
+		"San Marco",
+		"Malongo",
+		"Lavazza",
+		"Milka",
+		"Velours Noir",
+		"Legal",
+		"La marque de mon magasin",
+		"Autre marque cafés en dosettes souples",
+		"Aucune de ces marques#se"
+	};
+	qst.setProperty("options", q160_opts);
+	send qst;
+	
+	boolean lect160=system.getProperty("ans160_12");
+	if (lect160==true){return 4;}			
+	
+	reCod=0;
+	count=0;
+	for(int i=0,11)
+	{
+	sel=system.getProperty("ans160_"+i);
+	if (sel==true) { count=count+1; reCod=i; }
+	}	
+	
+
+	
+	qst = new question("choice", 170);
+	qst.setProperty("text", "Laquelle achetez-vous le plus souvent ?");
+	qst.setProperty("code", "qf9b");
+	qst.setProperty("controller", 160);
+	vector q170_opts = new vector {
+		"Aucune de ces marques#se"
+	};	
+	if (count==1){
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	}	
+	qst.setProperty("options", q170_opts);	
+	send qst;
+	
+
+int lect170=system.getProperty("ans170");	
+	if (lect170==12){return 4;}	
+	if (lect170!=0 && lect170!=2){return 4;}	
+	
+	reCod=0; 
+	if (lect170==0){reCod=0;}	
+	if (lect170==2){reCod=1;}	
+	
+			system.setProperty("Target", reCod);
+			system.out("<div class='info'>Target: "+reCod+"</div>");		
+	
+	qst = new question("choice", 173);
+	qst.setProperty("text", "Targetqf9b");
+	qst.setProperty("code", "qf9bb");
+	vector q173_opts = new vector {
+		"TARGET 1 -- CODE 1 IN QF9b",
+		"TARGET 2 -- CODE 3 IN QF9b"
+	};
+	qst.setProperty("options", q173_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;		
+	
+	int assegnazionetarget;
+	int lect173=system.getProperty("ans173");
+	if (lect173==0){assegnazionetarget=1;}	
+	if (lect173==1){assegnazionetarget=2;}	
+	
+	
+	qst = new question("choice", 180);
+	qst.setProperty("text", "Quelle marque de café en dosettes souples n’envisageriez-vous PAS pour un futur achat ? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf9c");
+	qst.setProperty("controller", 160);
+	qst.setProperty("reverse_control", true);	
+	vector q180_opts = new vector {
+		"Aucune de ces marques#se"
+	};		
+	qst.setProperty("options", q180_opts);	
+	
+
+	send qst;
+	
+boolean lectq180a=system.getProperty("ans180_0");
+	if (lectq180a==true){return 4;}		
+	
+	
+	
+	if (assegnazionetarget==1){
+	
+	
+	qst = new question("choice", 190);
+	qst.setProperty("text", "Vous avez indiqué avoir acheté du café en dosettes souples de la marque Carte Noire. </br>Quelles variétés de café Carte Noire en dosettes souples avez-vous acheté ? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf10a");
+	vector q190_opts = new vector {
+		"Carte Noire Classique",
+		"Carte Noire Corsé",
+		"Carte Noire Douceur Intense",
+		"Carte Noire Décaféiné",
+		"Carte Noire autres cafés en dosettes souples",
+		"Aucun de ces produits#se"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+	
+	boolean lectq190=system.getProperty("ans190_5");
+	if (lectq190==true){return 4;}	
+
+								}
+								
+								
+		if (assegnazionetarget==2){							
+								
+	
+	qst = new question("choice", 200);
+	qst.setProperty("text", "Vous avez indiqué avoir acheté du café en dosettes souples de la marque Senseo. Quelles variétés de café Senseo en dosettes souples avez-vous acheté ? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "qf10b");
+	vector q200_opts = new vector {
+		"Senseo Classique",
+		"Senseo Corsé",
+		"Senseo Décaféiné",
+		"Senseo Doux",
+		"Senseo autres cafés en dosettes souples",
+		"Aucun de ces produits#se"
+	};
+	qst.setProperty("options", q200_opts);
+	send qst;
+	
+	
+	boolean lectq200=system.getProperty("ans200_5");
+	if (lectq200==true){return 4;}		
+
+								}
+	
+	
+	qst = new question("choice", 210);
+	qst.setProperty("text", "Et &agrave; quelle fréquence consommez-vous habituellement du café en dosettes souples ? ");
+	qst.setProperty("code", "qf11");
+	vector q210_opts = new vector {
+		"Tous les jours",
+		"2-3 fois par semaine",
+		"Une fois par semaine",
+		"2-3 fois par mois",
+		"Une fois par mois",
+		"Moins souvent"
+	};
+	qst.setProperty("options", q210_opts);
+	send qst;
+	
+int lectq210=system.getProperty("ans210");	
+	if (lectq210>2){return 4;}		
+	
+	qst = new question("scale", 220);
+	qst.setProperty("text", "Pour chacune des marques de café en dosettes souples suivantes, veuillez indiquer dans quelle mesure vous les aimez/n’aimez pas…");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qf12");
+	vector q220_rows = new vector {
+		"Café Royal",
+		"Carte Noire",
+		"Grand-M&egrave;re",
+		"Senseo"
+	};
+	qst.setProperty("rows", q220_rows);
+	vector q220_cols = new vector {
+		"Enormément",
+		"Beaucoup",
+		"Bien",
+		"Moyennement",
+		"Pas tellement",
+		"Pas du tout",
+		"Ne sait pas"
+	};
+	qst.setProperty("cols", q220_cols);
+	send qst;
+	
+	
+int lectq220=system.getProperty("ans220_1");	
+	if (lectq220==5){return 4;}		
+	
+	
+	
+	
+	
+///fine screening	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	///estrazione cella
+	system.setProperty("cella", "rand:12");
+    int cella = (int)system.getProperty("cella");
+	cella=cella+1;
+	
+	system.setProperty("cel",cella);
+	system.out("<div>Cella: "+cella+"</div>");	
+	
+
+	
+		string delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(250);"+
+			"setTimeout(function() { $('#shelf').delay(250).empty(); $('#bnNext').click(); }, 250);"+
+		"})"+
+			"</script>";	
+	
+		string txtimgdelay;
+		
+		
+		
+		
+		
+		
+		
+	
+	
+if (cella<4){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/Flashtest_N1.jpg alt=''  height='650px'></center>";
+			}
+
+if (cella>3 && cella<7){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/Flashtest_N2.jpg alt=''  height='650px'></center>";
+		}
+
+if (cella>6 && cella<10){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/Flashtest_N3.jpg alt=''  height='650px'></center>";
+		}
+
+if (cella>9){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/Flashtest_N4.jpg alt=''  height='650px'></center>";
+		}
+		
+
+	qst = new question("concept", 230);
+	qst.setProperty("text", "Vous allez voir apparaître une image sur votre écran tr&egrave;s rapidement. </br>Vous devrez décrire le plus exactement possible et avec le plus de détails possibles, ce que vous aurez vu et lu.  </br><b>Cliquer sur le bouton « suivant » quand vous êtes prêt.</b>");
+	send qst;
+		
+	qst = new question("concept", 228);
+	qst.setProperty("text", delay+txtimgdelay);
+	send qst;	
+	
+	
+
+	
+
+
+delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(1000);"+
+			"setTimeout(function() { $('#shelf').delay(1000).empty(); $('#bnNext').click(); }, 1000);"+
+		"})"+
+			"</script>";
+			
+			
+		
+
+	
+	qst = new question("open", 240);
+	qst.setProperty("text", "Décrivez tout ce que vous avez vu ou lu ?");
+	qst.setProperty("code", "q1a");
+	send qst;
+	
+	
+	qst = new question("open", 250);
+	qst.setProperty("text", "De quel type de produit s’agissait-il ? Quel nom ? Quelle marque ? Quelles mentions ? ");
+	qst.setProperty("code", "q1b");
+	send qst;
+	
+
+
+		
+	
+	qst = new question("concept", 260);
+	qst.setProperty("text", "Vous allez voir apparaître une image sur votre écran tr&egrave;s rapidement. </br>Vous devrez décrire le plus exactement possible et avec le plus de détails possibles, ce que vous aurez vu et lu.  </br><b>Cliquer sur le bouton « suivant » quand vous êtes prêt.</b>");
+	send qst;
+	
+	qst = new question("concept", 268);
+	qst.setProperty("text", delay+txtimgdelay);
+	send qst;			
+	
+	qst = new question("open", 270);
+	qst.setProperty("text", "Décrivez tout ce que vous avez vu ou lu ?");
+	qst.setProperty("code", "q2a");
+	send qst;
+	
+	
+	qst = new question("open", 280);
+	qst.setProperty("text", "De quel type de produit s’agissait-il ? Quel nom ? Quelle marque ? quelles mentions ? ");
+	qst.setProperty("code", "q2b");
+	send qst;
+	
+	
+	
+	qst = new question("concept", 290);
+	qst.setProperty("text", "Vous allez maintenant voir quelques produits apparaître sur votre écran. </br>Vous aurez la possibilité de zoomer sur chaque produit en passant la souris dessus. </br>Merci de regarder attentivement l’image et de cliquer sur le bouton « suivant » quand vous êtes prêt.");
+	send qst;
+	
+
+
+	
+	
+	
+
+	
+	
+		string txtimgdelayq35;
+	string txtimgdelayq4;
+	string txtimgdelayq6;
+	
+	string img_prodottoq35;
+	string img_prodottoq4;
+	string img_prodottoq6;
+	
+
+	
+	
+if (cella<4){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1.jpg alt=''  height='500px'></center>";
+		
+		txtimgdelayq35="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q3.jpg alt=''  height='500px'></center>";
+		img_prodottoq35=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q3.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q3.jpg'  width='425px' alt='' /></a></p>";
+
+		txtimgdelayq4="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q4.jpg alt=''  height='500px'></center>";
+		img_prodottoq4=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q4.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q4.jpg'  width='425px' alt='' /></a></p>";
+	
+		txtimgdelayq6="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q6.jpg alt=''  height='500px'></center>";
+		img_prodottoq6=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q6.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N1_q6.jpg'  width='425px' alt='' /></a></p>";
+			
+
+		}
+
+if (cella>3 && cella<7){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2.jpg alt=''  height='500px'></center>";
+
+		txtimgdelayq35="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q3.jpg alt=''  height='500px'></center>";
+		img_prodottoq35=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q3.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q3.jpg'  width='425px' alt='' /></a></p>";
+
+			txtimgdelayq4="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q4.jpg alt=''  height='500px'></center>";
+		img_prodottoq4=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q4.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q4.jpg'  width='425px' alt='' /></a></p>";
+	
+		txtimgdelayq6="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q6.jpg alt=''  height='500px'></center>";
+		img_prodottoq6=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q6.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N2_q6.jpg'  width='425px' alt='' /></a></p>";
+		
+		}
+
+if (cella>6 && cella<10){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3.jpg alt=''  height='500px'></center>";
+
+		txtimgdelayq35="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q3.jpg alt=''  height='500px'></center>";
+		img_prodottoq35=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q3.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q3.jpg'  width='425px' alt='' /></a></p>";
+
+			txtimgdelayq4="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q4.jpg alt=''  height='500px'></center>";
+		img_prodottoq4=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q4.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q4.jpg'  width='425px' alt='' /></a></p>";
+	
+		txtimgdelayq6="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q6.jpg alt=''  height='500px'></center>";
+		img_prodottoq6=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q6.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N3_q6.jpg'  width='425px' alt='' /></a></p>";
+	
+		}
+
+if (cella>9){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4.jpg alt=''  height='500px'></center>";
+
+		txtimgdelayq35="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q3.jpg alt=''  height='500px'></center>";
+		img_prodottoq35=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q3.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q3.jpg'  width='425px' alt='' /></a></p>";
+	
+			txtimgdelayq4="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q4.jpg alt=''  height='500px'></center>";
+		img_prodottoq4=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q4.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q4.jpg'  width='425px' alt='' /></a></p>";
+	
+		txtimgdelayq6="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q6.jpg alt=''  height='500px'></center>";
+		img_prodottoq6=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q6.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/SC_SuperBowl_L950_N4_q6.jpg'  width='425px' alt='' /></a></p>";
+		
+		}	
+
+	
+	string img_linea_piccola2=scriptzoom+fogliostile+altroscript+"<p  class='limg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1709120/resources/p"+cella+".jpg'><img src='http://www.primisoft.com/fields/STR/ITA1709120/resources/p"+cella+".jpg'  height='300px' alt='' /></a></p>";
+
+
+
+	
+	
+/////////delay dopo 5 secondi dovrà apparire tasto next
+////Fatto, afammocc!
+
+
+
+	delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(5000);"+
+			"setTimeout(function() { $('#shelf').delay(5000).empty(); $('#bnNext').show(); }, 5000);"+
+		"})"+
+			"</script>";
+	
+//	qst = new question("concept", 298);
+//	qst.setProperty("text", delay+txtimgdelay);
+//	send qst;		
+	
+	
+/////////Che sangue del nostro signore devo richiamarre nel testo delle qst?!	
+/////////L'immagine a sinistra	
+////Fatto, afammocc!
+	
+	qst = new question("scale", 300);
+	qst.setProperty("text", img_prodottoq35+cod+"Pour la gamme encadrée, vous indiquerez si son emballage vous plaît...");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3");
+	vector q300_rows = new vector {
+		"<span style='font-weight: bold;color:#01358d'>Carte Noire Mon Mug</span>",
+		"<span style='font-weight: bold;color:#009e56'>Senseo Extra Long</span>"
+	};
+	qst.setProperty("rows", q300_rows);
+	vector q300_cols = new vector {
+		"Enormément",
+		"Beaucoup",
+		"Bien",
+		"Moyennement",
+		"Peu",
+		"Pas du tout"
+	};
+	qst.setProperty("cols", q300_cols);
+	send qst;
+	
+	
+	
+
+	
+	qst = new question("scale", 310);
+	qst.setProperty("text", img_prodottoq4+cod+"Pour le produit encadré, si vous le trouviez dans votre magasin &agrave; un prix qui vous convienne, vous l’ach&egrave;teriez...");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4");
+	vector q310_rows = new vector {
+		"<span style='font-weight: bold;color:#01358d'>Carte Noire Mon Mug Classique</span>",
+		"<span style='font-weight: bold;color:#bdbb05'>Carte Noire Mon Mug Corsé</span>",
+		"<span style='font-weight: bold;color:#eb0202'>Carte Noire Mon Mug Doux</span>",
+		"<span style='font-weight: bold;color:#009e56'>Senseo Extra Long Classic</span>",
+		"<span style='font-weight: bold;color:#6c07d2'>Senseo Extra Long Corsé</span>",
+		"<span style='font-weight: bold;color:#db6702'>Senseo Extra Long Doux</span>"
+	};
+	qst.setProperty("rows", q310_rows);
+	vector q310_cols = new vector {
+		"Certainement",
+		"Probablement",
+		"Je ne sais pas",
+		"Probablement pas",
+		"Certainement pas"
+	};
+	qst.setProperty("cols", q310_cols);
+	send qst;
+	
+	
+	
+	qst = new question("scale", 320);
+	qst.setProperty("text", img_prodottoq35+cod+"Pour chacune de ces affirmations, vous direz &agrave; quelle gamme de produits encadrée elle correspond. Vous pouvez en sélectionner autant que vous souhaitez : une seule, deux ou aucune si vous pensez que cette caractéristique ne s’applique &agrave; aucune de ces 2 gammes de produits. </br></br><b><i>Quand je regarde le design de l’emballage, je pense &agrave; une marque….</i></b>");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q5");
+	vector q320_rows = new vector {
+		"Qui est moderne / actuelle",
+		"Qui offre une large variété de cafés",
+		"Qui est différente d’autres marques de café",
+		"Qui propose des produits avec un bon rapport qualité prix",
+		"Qui répond &agrave; mes besoins",
+		"Qui propose des produits complémentaires &agrave; l’offre existante",
+		"Qui est pour tous les jours",
+		"Qui propose un café de qualité"
+	};
+	qst.setProperty("rows", q320_rows);
+	vector q320_cols = new vector {
+		"<span style='font-weight: bold;color:#01358d'>Carte Noire Mon Mug</span>",
+		"<span style='font-weight: bold;color:#009e56'>Senseo Extra Long</span>",
+		"Aucune de ces gammes de produits#se"
+	};
+	qst.setProperty("cols", q320_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 330);
+	qst.setProperty("text", img_prodottoq6+cod+"Regardez maintenant attentivement le design des deux gammes encadrées. Pour chacune de ces affirmations vous indiquerez si vous êtes d’accord ou non… </br></br><b><i>Les designs de ces 2 gammes…</i></b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q6");
+	vector q330_rows = new vector {
+		"Vont bien ensemble",
+		"Se différencient de la concurrence",
+		"Se distinguent bien l’un de l’autre",
+		"Font penser &agrave; une même famille de produits",
+		"Correspondent &agrave; des cafés de longueur différentes"
+	};
+	qst.setProperty("rows", q330_rows);
+	vector q330_cols = new vector {
+		"Tout &agrave; fait d’accord",
+		"Plutôt d’accord",
+		"Ni d’accord, ni pas d’accord",
+		"Plutôt pas d’accord",
+		"Pas du tout d’accord"
+	};
+	qst.setProperty("cols", q330_cols);
+	send qst;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	qst = new question("concept", 340);
+	qst.setProperty("text", "Vous allez maintenant voir apparaître une gamme de produits, merci de la regarder attentivement. </br><b>Cliquez sur suivant lorsque vous êtes prêt(e)</b>");
+	send qst;
+
+
+if (cella<4){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg alt=''  width='400px'></center>";
+//		imgq24a2="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg'  width='400px' alt='' /></a></p>";
+	
+
+		}
+
+if (cella>3 && cella<7){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg alt=''  width='400px'></center>";
+//		imgq24a2="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg'  width='400px' alt='' /></a></p>";
+	
+		}
+
+if (cella>6 && cella<10){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg alt=''  width='400px'></center>";
+//		imgq24a2="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg'  width='400px' alt='' /></a></p>";
+	
+		}
+
+if (cella>9){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg alt=''  width='400px'></center>";
+//		imgq24a2="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg'  width='400px' alt='' /></a></p>";
+	
+		}	
+
+	
+	
+	
+/////////delay dopo 5 secondi dovrà apparire tasto next
+////Fatto, afammocc!
+
+
+
+delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(5000);"+
+			"setTimeout(function() { $('#shelf').delay(5000).empty(); $('#bnNext').show(); }, 5000);"+
+		"})"+
+			"</script>";
+	
+
+
+	
+
+	
+	qst = new question("concept", 348);
+	qst.setProperty("text", delay+txtimgdelay);
+	send qst;		
+	
+	qst = new question("open", 350);
+	qst.setProperty("text", "Si vous deviez décrire cette gamme de produits &agrave; quelqu’un, comment la décririez-vous ?");
+	qst.setProperty("code", "q7");
+	send qst;
+	
+	
+	qst = new question("choice", 360);
+	qst.setProperty("text", img_prodotto+cod+"Diriez-vous de l’<u>emballage</u> de cette gamme de produits qu’il vous plaît…");
+	qst.setProperty("code", "q8");
+	vector q360_opts = new vector {
+		"Enormément",
+		"Beaucoup",
+		"Bien",
+		"Moyennement",
+		"Peu",
+		"Pas du tout"
+	};
+	qst.setProperty("options", q360_opts);
+	send qst;
+	
+	
+	qst = new question("open", 370);
+	qst.setProperty("text", img_prodotto+cod+"Pourriez-vous indiquer ce qui vous <u>plaît</u> dans l’emballage, la présentation de cette gamme de produits ?");
+	qst.setProperty("code", "q9");
+	send qst;
+	
+	
+	qst = new question("open", 380);
+	qst.setProperty("text", img_prodotto+cod+"Pourriez-vous indiquer ce qui vous <u>déplaît</u> ou vous <u>plaît moins</u> dans l’emballage, la présentation de cette gamme de produits ?");
+	qst.setProperty("code", "q10");
+	send qst;
+	
+	
+	qst = new question("choice", 390);
+	qst.setProperty("text", img_prodotto+cod+"Si vous trouviez cette gamme de produits dans votre magasin habituel, diriez-vous que vous l’ach&egrave;teriez… ");
+	qst.setProperty("code", "q11a");
+	vector q390_opts = new vector {
+		"Certainement",
+		"Probablement",
+		"Je ne sais pas",
+		"Probablement pas",
+		"Certainement pas"
+	};
+	qst.setProperty("options", q390_opts);
+	send qst;
+	
+	
+	qst = new question("scale", 400);
+	qst.setProperty("text", img_prodotto+cod+"Et pour le produit encadré, vous indiquerez si vous l’ach&egrave;teriez...");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q11b");
+	vector q400_rows = new vector {
+		"Carte Noire Mon Mug Classique",
+		"Carte Noire Mon Mug Corsé",
+		"Carte Noire Mon Mug Doux"
+	};
+	qst.setProperty("rows", q400_rows);
+	vector q400_cols = new vector {
+		"Certainement",
+		"Probablement",
+		"Je ne sais pas",
+		"Probablement pas",
+		"Certainement pas"
+	};
+	qst.setProperty("cols", q400_cols);
+	send qst;
+	
+	
+	qst = new question("choice", 410);
+	qst.setProperty("text", img_prodotto+cod+"Diriez-vous de cette gamme de produits au prix de 4,25€ le paquet de 20 dosettes souples, qu’elle est...");
+	qst.setProperty("code", "q12");
+	vector q410_opts = new vector {
+		"D’un tr&egrave;s bon rapport qualité prix",
+		"D’un bon rapport qualité prix",
+		"D’un rapport qualité prix normal",
+		"D’un mauvais rapport qualité prix",
+		"D’un tr&egrave;s mauvais rapport qualité prix"
+	};
+	qst.setProperty("options", q410_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 420);
+	qst.setProperty("text", img_prodotto+cod+"Diriez-vous que cette gamme de produits est…");
+	qst.setProperty("code", "q13");
+	vector q420_opts = new vector {
+		"Tr&egrave;s intéressante",
+		"Assez intéressante",
+		"Moyennement intéressante",
+		"Pas tellement intéressante",
+		"Pas du tout intéressante"
+	};
+	qst.setProperty("options", q420_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 430);
+	qst.setProperty("text", img_prodotto+cod+"Par rapport aux autres cafés en dosettes souples que vous connaissez, diriez-vous que cette gamme de produits est…");
+	qst.setProperty("code", "q14");
+	vector q430_opts = new vector {
+		"Tr&egrave;s nouvelle et différente",
+		"Assez nouvelle et différente",
+		"Moyennement nouvelle et différente",
+		"Pas tellement nouvelle et différente",
+		"Pas nouvelle et différente du tout"
+	};
+	qst.setProperty("options", q430_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 440);
+	qst.setProperty("text", img_prodotto+cod+"Diriez-vous que cette gamme de produits correspond … </br>	… &agrave; l’idée que vous vous faîtes d’un <b>café long en dosettes souples</b>.");
+	qst.setProperty("code", "q15");
+	vector q440_opts = new vector {
+		"Tr&egrave;s bien",
+		"Assez bien",
+		"Moyennement bien",
+		"Pas tellement bien",
+		"Pas bien du tout"
+	};
+	qst.setProperty("options", q440_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 450);
+	qst.setProperty("text", img_prodotto+cod+"Diriez-vous que cette gamme de produits correspond … </br>… &agrave; l’idée que vous vous faîtes de la marque <b>Carte Noire</b>.");
+	qst.setProperty("code", "q16");
+	vector q450_opts = new vector {
+		"Tr&egrave;s bien",
+		"Assez bien",
+		"Moyennement bien",
+		"Pas tellement bien",
+		"Pas bien du tout"
+	};
+	qst.setProperty("options", q450_opts);
+	send qst;
+	
+	
+	qst = new question("scale", 460);
+	qst.setProperty("text", img_prodotto+cod+"Voici des phrases que d’autres personnes nous ont dites &agrave; propos de cette gamme de produits <b><u>&agrave; travers ses emballages</u></b>. </BR>Pour chacune d’elles vous indiquerez si vous êtes d’accord ou non… </br></br><b><i>Ces emballages évoquent une gamme de produits…</i></b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q17");
+	vector q460_rows = new vector {
+		"De bonne qualité",
+		"Avec une large variété de goûts",
+		"Qui ont un tr&egrave;s bon goût",
+		"Qui sont riches en arômes",
+		"Qui sont pour de plus grandes tasses",
+		"Pour tous les jours"
+	};
+	qst.setProperty("rows", q460_rows);
+	vector q460_cols = new vector {
+		"Tout &agrave; fait d’accord",
+		"Plutôt d’accord",
+		"Ni d’accord, ni pas d’accord",
+		"Plutôt pas d’accord",
+		"Pas du tout d’accord"
+	};
+	qst.setProperty("cols", q460_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 470);
+	qst.setProperty("text", img_prodotto+cod+"Voici des phrases que d’autres personnes nous ont dites &agrave; propos <u><b>de la marque Carte Noire &agrave; travers ces emballages</b></u>. </BR>Pour chacune d’elles vous indiquerez si vous êtes d’accord ou non … </br></br><i><b>Ces emballages évoquent une marque</b></i> ‍");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q18");
+	vector q470_rows = new vector {
+		"Qui est moderne / actuelle",
+		"Qui offre une large variété de cafés",
+		"Qui est différente d’autres marques de café",
+		"Qui propose des produits avec un bon rapport qualité prix",
+		"Qui répond &agrave; mes besoins",
+		"Qui propose des produits complémentaires &agrave; l’offre existante",
+		"Qui est pour tous les jours",
+		"Qui propose un café de qualité"
+	};
+	qst.setProperty("rows", q470_rows);
+	vector q470_cols = new vector {
+		"Tout &agrave; fait d’accord",
+		"Plutôt d’accord",
+		"Ni d’accord, ni pas d’accord",
+		"Plutôt pas d’accord",
+		"Pas du tout d’accord"
+	};
+	qst.setProperty("cols", q470_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 480);
+	qst.setProperty("text", img_prodotto+cod+"Voici maintenant des phrases concernant <b><u>les emballages</u></b> de cette gamme de produits. Pour chacune d’elles vous indiquerez si vous êtes d’accord ou non…  </br></br><b><i>Les emballages de ces produits…..</i></b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q19");
+	vector q480_rows = new vector {
+		"Sont clairs et lisibles",
+		"Modernes",
+		"Me donnent une idée claire du produit que je vais trouver &agrave; l’intérieur",
+		"Donnent envie de goûter ce produit",
+		"Permettent &agrave; ces produits de bien se différencier des concurrents",
+		"Permettent d’identifier facilement les différentes variétés",
+		"Vont bien avec l’idée que je me fais de la marque Carte Noire",
+		"Expriment bien l’idée d’un café long",
+		"Me donnent une indication claire sur le fait qu’il faudra utiliser un porte dosette double (comme pour faire 2 tasses)"
+	};
+	qst.setProperty("rows", q480_rows);
+	vector q480_cols = new vector {
+		"Tout &agrave; fait d’accord",
+		"Plutôt d’accord",
+		"Ni d’accord, ni pas d’accord",
+		"Plutôt pas d’accord",
+		"Pas du tout d’accord"
+	};
+	qst.setProperty("cols", q480_cols);
+	send qst;
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+if (cella<4){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_q20.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_q20.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_q20.jpg'  width='400px' alt='' /></a></p>";
+	
+
+		}
+
+if (cella>3 && cella<7){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_q20.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_q20.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_q20.jpg'  width='400px' alt='' /></a></p>";
+	
+		}
+
+if (cella>6 && cella<10){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_q20.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_q20.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_q20.jpg'  width='400px' alt='' /></a></p>";
+	
+		}
+
+if (cella>9){
+		txtimgdelay="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_q20.jpg alt=''  width='400px'></center>";
+		img_prodotto=scriptzoom+fogliostile+altroscript+"<p class='limg2'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_q20.jpg'><img src='http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_q20.jpg'  width='400px' alt='' /></a></p>";
+	
+		}	
+
+	
+	
+	
+/////////delay dopo 5 secondi dovrà apparire tasto next
+////Fatto, afammocc!
+
+
+
+delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(5000);"+
+			"setTimeout(function() { $('#shelf').delay(5000).empty(); $('#bnNext').show(); }, 5000);"+
+		"})"+
+			"</script>";
+	
+
+
+	
+
+	
+	vector q490_rows = new vector {
+		"#shLe décor (ROT 1-3 / ROT 10-12) en arri&egrave;re-plan/ les couleurs (ROT 4-9) en arri&egrave;re-plan",
+		"<span style='font-weight: bold;color:#29c414'>Le logo",
+		"<span style='font-weight: bold;color:#fef607'>L’image de la tasse de café",
+		"<span style='font-weight: bold;color:#1ca1ee'>L’image de la dosette de café avec la mention « MAXI DOSETTE »",
+		"<span style='font-weight: bold;color:#fcfcfb'>Le cercle coloré au-dessus de la tasse qui indique la variété",
+		"<span style='font-weight: bold;color:#ee1c24'>La façon dont les noms des variétés sont écrits",
+		"<span style='font-weight: bold;color:#ee1c24'>Le nom des variétés de cette gamme (Classique/ Doux/ Corsé)"
+	};		
+	
+	
+	if (cella<4 || cella>9){q490_rows.set(0,"<span style='font-weight: bold;color:#01358d'>Le décor en arri&egrave;re-plan/ les couleurs");}
+	else {q490_rows.set(0,"<span style='font-weight: bold;color:#01358d'>Le décor en arri&egrave;re-plan");}
+	
+	
+	
+	
+	
+	
+	qst = new question("scale", 490);
+	qst.setProperty("text", img_prodotto+cod+"Pour chacun des éléments de l’emballage de cette gamme de produits, vous indiquerez s’il vous plaît…");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q20");
+
+	qst.setProperty("rows", q490_rows);
+	vector q490_cols = new vector {
+		"Enormément",
+		"Beaucoup",
+		"Bien",
+		"Moyennement",
+		"Pas tellement",
+		"Pas du tout"
+	};
+	qst.setProperty("cols", q490_cols);
+	send qst;
+	
+	
+
+	
+	string img1;
+	string img2;
+	string img3;
+	
+
+if (cella<4){
+		img3="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_CL.jpg></p>";
+		img2="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_GT.jpg></p>";
+		img1="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_MM.jpg></p>";
+		                  
+                          
+		}                 
+                          
+if (cella>3 && cella<7){  
+		img3="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_CL.jpg></p>";
+		img2="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_GT.jpg></p>";
+		img1="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_MM.jpg></p>";
+	                      
+		}                 
+                          
+if (cella>6 && cella<10){ 
+		img3="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_CL.jpg></p>";
+		img2="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_GT.jpg></p>";
+		img1="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_MM.jpg></p>";
+	                      
+		}                 
+                          
+if (cella>9){             
+		img3="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_CL.jpg></p>";
+		img2="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_GT.jpg></p>";
+		img1="<p><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_MM.jpg></p>";
+	
+		}	
+		
+		
+	
+	string	imgaffianc;
+	imgaffianc="<table>"+
+	"<tr><td><a class='fancybox' rel='group' href='"+img3+"'><img width='400px' src='"+img3+"'/></a></td></tr>"+
+	"<tr><td><a class='fancybox' rel='group' href='"+img2+"'><img width='400px' src='"+img2+"'/></a></td></tr>"+
+	"<tr><td><a class='fancybox' rel='group' href='"+img1+"'><img width='400px' src='"+img1+"'/></a></td></tr>"+
+	"</tr></table>";	
+	
+	
+	
+	
+
+	///estrazione cella
+	system.setProperty("r2", "rand:3");
+    r2 = (int)system.getProperty("r2");
+	system.setProperty("r2",r2);
+	
+	
+//	qst = new question("concept", 498);
+//	qst.setProperty("text", delay+imgaffianc);
+//	send qst;		
+	
+	string imgq21;
+	int index=r2+1;
+	
+	
+	for (int i=0,2)
+		
+	{
+
+		if (index==1){imgq21=img1;}
+		if (index==2){imgq21=img2;}
+		if (index==3){imgq21=img3;}
+		
+		
+	
+	qid = 5000+100*r2;	
+	
+	qst = new question("scale", qid);
+	qst.setProperty("text", imgq21+cod+"Diriez-vous du nom de cette gamme de produits qu’il vous plaît…");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q21."+r2);
+	vector q500_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q500_rows);
+	vector q500_cols = new vector {
+		"Enormément",
+		"Beaucoup",
+		"Bien",
+		"Moyennement",
+		"Peu",
+		"Pas du tout"
+	};
+	qst.setProperty("cols", q500_cols);
+	send qst;
+	
+	
+		if (r2==2)
+			 {
+			 r2=0;
+			 index=1;
+			 }
+			 else
+			 {
+			 r2=r2+1;
+			 index=index+1;
+			 }
+	
+	
+	
+	}
+	
+	
+	string imgg1;
+	string imgg2;
+	string imgg3;
+
+if (cella<4){
+		imgg3="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_CLL.jpg";
+		imgg2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_GTT.jpg";
+		imgg1="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1_MMM.jpg";
+		      
+              
+		}     
+              
+if (cella>3 && cella<7){  
+		imgg3="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_CLL.jpg";
+		imgg2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_GTT.jpg";
+		imgg1="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2_MMM.jpg";
+	          
+		}     
+              
+if (cella>3 && cella<10){  
+		imgg3="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_CLL.jpg";
+		imgg2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_GTT.jpg";
+		imgg1="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3_MMM.jpg";
+	          
+		}     
+              
+if (cella>9){ 
+		imgg3="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_CLL.jpg";
+		imgg2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_GTT.jpg";
+		imgg1="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4_MMM.jpg";
+	
+		}		
+	
+	
+	
+
+	
+	vector q510_opts = new vector {
+		"#shMon Mug",
+		"#shLa Grande Tasse",
+		"#shCafé Long",
+		"Aucun des 3"
+	};	
+	
+	
+	string imgq22;
+			imgq22="<a class='fancybox' rel='group' href='"+imgg1+"'><img width='200px' src='"+imgg1+"'/></a>";
+			q510_opts.set(0,imgq22);
+			imgq22="<a class='fancybox' rel='group' href='"+imgg2+"'><img width='200px' src='"+imgg2+"'/></a>";
+			q510_opts.set(1,imgq22);
+			imgq22="<a class='fancybox' rel='group' href='"+imgg3+"'><img width='200px' src='"+imgg3+"'/></a>";
+			q510_opts.set(2,imgq22);			
+	
+	
+	qst = new question("choice", 510);
+	qst.setProperty("text", "Parmi ces différents noms, lequel correspond le mieux &agrave; cette gamme de produits ?");
+	qst.setProperty("code", "q22");
+
+	qst.setProperty("options", q510_opts);
+	send qst;
+	
+	int lectq510=system.getProperty("ans510");
+	label=q510_opts.get(lectq510);
+	if (lectq510<3){
+	
+	qst = new question("open", 520);
+	qst.setProperty("text", scriptzoom+"Pour quelles raisons préférez-vous </br>"+label+" </br><b>Merci de citer le plus exactement possible et expliquer les raisons pour lesquelles vous partagez cette conviction.</b>");
+	qst.setProperty("code", "q23");
+	send qst;
+					
+					}
+	
+	
+
+	
+	
+
+	
+string imgq24a0;
+string imgq24a1;
+string imgq24a2;
+
+	
+if (cella==4 || cella==7 || cella==10){
+		imgq24a1="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg alt=''  width='400px'></center>";
+		imgq24a2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg";
+		}
+		
+if (cella==1 || cella==8 || cella==11){
+		imgq24a1="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg alt=''  width='400px'></center>";
+		imgq24a2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg";
+		}
+
+if (cella==2 || cella==5 || cella==12){
+		imgq24a1="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg alt=''  width='400px'></center>";
+		imgq24a2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg";
+		}
+
+if (cella==3 || cella==6 || cella==9){
+		imgq24a1="<center><img src=http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg alt=''  width='400px'></center>";
+		imgq24a2="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg";
+		}	
+
+		
+
+if (cella<4){
+		imgq24a0="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N1.jpg";
+		}
+
+if (cella>3 && cella<7){
+		imgq24a0="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N2.jpg";
+		}
+
+if (cella>6 && cella<10){
+		imgq24a0="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N3.jpg";
+		}
+
+if (cella>9){
+		imgq24a0="http://www.primisoft.com/fields/STR/ITA1801027/resources/L800_N4.jpg";
+		}	
+	
+	
+
+
+delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(5000);"+
+			"setTimeout(function() { $('#shelf').delay(5000).empty(); $('#bnNext').show(); }, 5000);"+
+		"})"+
+			"</script>";
+	
+
+	qst = new question("concept", 518);
+	qst.setProperty("text", delay+imgq24a1+"Voici une autre présentation possible pour cette gamme de produits");
+	send qst;	
+
+
+
+
+	imgaffianc="<table>"+
+	"<tr><td><a class='fancybox' rel='group' href='"+imgq24a0+"'><img width='400px' src='"+imgq24a0+"'/></a></td></tr>"+
+	"<tr><td></td></tr>"+
+	"<tr><td></td></tr>"+
+	"<tr><td><a class='fancybox' rel='group' href='"+imgq24a2+"'><img width='400px' src='"+imgq24a2+"'/></a></td></tr>"+
+	"</tr></table>";		
+	
+	
+	
+	qst = new question("concept", 522);
+	qst.setProperty("text", delay+imgaffianc+scriptzoom+"Voici &agrave; présent les deux présentations possibles pour cette gamme de produits. ");
+	send qst;		
+	
+
+	
+	
+	
+	
+	
+	
+	vector q530_opts = new vector {
+		"#shMon Mug",
+		"#shLa Grande Tasse",
+		"Autant l’un que l’autre",
+		"Aucun des deux"
+	};	
+	
+	
+	string imgq24c;
+			imgq24c="<a class='fancybox' rel='group' href='"+imgq24a0+"'><img width='400px' src='"+imgq24a0+"'/></a>";
+			q530_opts.set(0,imgq24c);
+			imgq24c="<a class='fancybox' rel='group' href='"+imgq24a2+"'><img width='400px' src='"+imgq24a2+"'/></a>";
+			q530_opts.set(1,imgq24c);
+
+	
+	qst = new question("choice", 530);
+	qst.setProperty("text", scriptzoom+"Parmi ces deux emballages, lequel ach&egrave;teriez-vous le plus volontiers ?");
+	qst.setProperty("code", "q24a");
+	qst.setProperty("options", q530_opts);
+	send qst;
+	
+	
+	
+	
+	int lectq530=system.getProperty("ans530");	
+	label=q530_opts.get(lectq530);	
+	
+	if (lectq530<2){
+	
+	qst = new question("open", 540);
+	qst.setProperty("text", label+"Pourquoi préférez-vous cette emballage? </br><b>Merci de citer le plus exactement possible et expliquer les raisons pour lesquelles vous partagez cette conviction.</b>");
+	qst.setProperty("code", "q24b");
+	send qst;
+					
+					}
+	
+	qst = new question("choice", 550);
+	qst.setProperty("text", "A quel moment de la journée consommez-vous du café allongé / long?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q25");
+	vector q550_opts = new vector {
+		"Au petit déjeuner",
+		"Dans la matinée",
+		"A midi au déjeuner",
+		"Apr&egrave;s le déjeuner",
+		"Dans l’apr&egrave;s-midi",
+		"Pour le goûter"
+	};
+	qst.setProperty("options", q550_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 560);
+	qst.setProperty("text", "Avec qui consommez-vous du café allongé / long ?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q26");
+	vector q560_opts = new vector {
+		"Seul(e)",
+		"Avec votre conjoint",
+		"Avec un ou plusieurs de vos enfants",
+		"Avec un autre membre de votre famille",
+		"En famille",
+		"Avec un ou des amis",
+		"Avec un ou des coll&egrave;gues",
+		"Autre"
+	};
+	qst.setProperty("options", q560_opts);
+	send qst;
+	
+	
+	
+
+
+
+	
+	
+	
+}
+
+

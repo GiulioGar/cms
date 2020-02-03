@@ -1,0 +1,1077 @@
+#export vars "cella"
+
+void main() {
+	question qst;
+	
+	
+	int selint;
+	boolean sel;
+	boolean selnutella;
+	int qid;
+	string item;
+	int reCod;
+	string cmd;
+	int conta;
+	string label;
+	string nascondi_item;
+	int selintfigli;
+	string img;
+	string img_linea_piccola;
+	string link;
+	int baseQid;
+	string qtext;
+	int ansId;
+	string cod;
+	int count;
+	
+	system.setProperty("env", "debug:true");
+	system.setProperty("env", "browser:full");
+	system.setProperty("env", "stylesheet:mod.css");
+	string autotest=system.getProperty("test");
+	if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+	
+	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+	string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,10,30,150);});</script>";
+	string allinea=all+mozCode;
+	
+	
+	
+	
+	string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.js?v=2.1.5'></script>";
+	string altroscript="<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+	string fogliostile="<link rel='stylesheet' href='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.css?v=2.1.5' type='text/css' media='screen' />";
+	
+	string panel=system.getProperty("ssi");
+	
+
+	
+	
+	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all_r="<script type='text/javascript' src='http://www.primisoft.com/fields/FER/ITA1808120/resources/all_rank.js'></script>";
+	string mozCode_r="<script type='text/javascript'>$(window).load(function() {allinea_r(2,60,600,150);});</script>";
+	string allinea_r=all_r+mozCode_r;
+	
+	
+
+qst = new question("choice", 5);
+qst.setProperty("text", "Se deciderà di partecipare a questo sondaggio, le verranno fornite alcune informazioni riservate di proprietà di un importante produttore. Queste informazioni potrebbero includere, ma non solamente, idee e concetti per nuovi prodotti/iniziative sperimentali.<br>In cambio della sua partecipazione a questo progetto e in considerazione delle informazioni riservate che le verranno fornite, le chiediamo di impegnarsi a non utilizzare o divulgare le informazioni di cui verrà a conoscenza in questo studio a nessuna persona, inclusi amici e famigliari, o entità. Lei si impegna a non tentare di copiare, stampare o scaricare alcuna informazione fornitale nell’ambito di questo studio.<br><br>Selezionando “Accetto” qui sotto, dichiara di aver letto, compreso e accettato questi termini.");
+qst.setProperty("code", "aut");
+vector q5_opts = new vector {
+"Accetto",
+"Non accetto"
+};
+qst.setProperty("options", q5_opts);
+send qst;
+selint=system.getProperty("ans5");
+if (selint==1){return 4;}
+
+	
+qst = new question("choice", 10);
+qst.setProperty("text", "In quale regione vive?");
+qst.setProperty("code", "s2");
+vector q10_opts = new vector {
+"ABRUZZO",
+"BASILICATA",
+"CALABRIA",
+"CAMPANIA",
+"EMILIA-ROMAGNA",
+"FRIULI-VENEZIA GIULIA",
+"LAZIO",
+"LIGURIA",
+"LOMBARDIA",
+"MARCHE",
+"MOLISE",
+"PIEMONTE",
+"PUGLIA",
+"SARDEGNA",
+"SICILIA",
+"TOSCANA",
+"TRENTINO-ALTO ADIGE",
+"UMBRIA",
+"VALLE D'AOSTA",
+"VENETO"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+int regione=system.getProperty("ans10");
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(regione)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+        case 6,9,15,17:{reCod=2;}
+        }
+		
+	
+
+qst = new question("choice", 121);
+qst.setProperty("text", "Codifica Aree:");
+qst.setProperty("code", "RecArea");
+vector q121_opts = new vector {
+"Nord Ovest: Piemonte, Val d&#39;Aosta, Liguria, Lombardia",
+"Nord Est: Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna",
+"Centro: Toscana, Umbria, Marche, Lazio",
+"Sud+Isole: Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria, Sicilia, Sardegna"
+};
+qst.setProperty("options", q121_opts);
+qst.setProperty("hidden", true);
+qst.setProperty("default_answer", "{ 'selection': ["+reCod+"] }");
+send qst;
+
+cmd=q121_opts.get(reCod);
+system.out("<div>Area geografica: "+cmd+"</div>"); 	
+
+
+int areageog=system.getProperty("ans121");	
+
+
+	qst = new question("choice", 20);
+	qst.setProperty("text", "Lei &egrave;..");
+	qst.setProperty("code", "s3");
+	vector q20_opts = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+	
+	selint=system.getProperty("ans20");
+	int sex=selint;
+	
+
+	
+	
+	
+	qst = new question("open", 30);
+	qst.setProperty("text", "Indichi la sua et&agrave;.");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s4");
+	send qst;
+	
+	int eta=(int)system.getProperty("ans30");
+	
+	if (eta<18 || eta>55){return 4;}
+	
+	
+	
+	
+	
+	if(eta<18) { reCod=0;}
+	if(eta>=18 && eta<=24) { reCod=1;}
+	if(eta>=25 && eta<=35) { reCod=2;}
+	if(eta>=36 && eta<=44) { reCod=3;}
+	if(eta>=45 && eta<=55) { reCod=4;}
+	if(eta>55) { reCod=5;}
+	
+	
+
+	
+qst = new question("choice", 41);
+qst.setProperty("text", "RECODE IN TO:");
+qst.setProperty("code", "recAge");
+vector q41_opts = new vector {
+"Meno di 18 anni",
+"18 –24 anni",
+"25– 35  anni",
+"36  - 44  anni",
+"45 – 55  anni",
+"Più di 55 anni"
+};	
+qst.setProperty("options", q41_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+cmd=q41_opts.get(reCod);
+system.out("<div>Fascia di età: "+cmd+"</div>");
+
+
+if (reCod==1 || reCod==2) { reCod=0;}
+else { reCod=1;}
+
+	qst = new question("choice", 43);
+	qst.setProperty("text", "MILLENIALS");
+	qst.setProperty("code", "millen");
+	vector q43_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q43_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	
+int mill=reCod;
+
+
+	
+cmd=q43_opts.get(reCod);
+system.out("<div>MILLENIALS: "+cmd+"</div>");	
+
+	qst = new question("choice", 42);
+	qst.setProperty("text", "All’interno della sua famiglia ci sono bambini/ragazzi tra i 6 e i 18 anni? ");
+	qst.setProperty("code", "s4b");
+	vector q42_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q42_opts);
+	send qst;
+
+ansId=system.getProperty("ans42");
+int selints4b=system.getProperty("ans42");
+
+
+cmd=q42_opts.get(ansId);
+system.out("<div>Target 6-18: "+cmd+"</div>");
+	
+	
+	qst = new question("choice", 40);
+	qst.setProperty("text", "Chi si occupa dell’acquisto di prodotti alimentari nella sua famiglia?");
+	qst.setProperty("code", "s5");
+	vector q40_opts = new vector {
+		"Io personalmente",
+		"Io e il mio coniuge/altre persone insieme",
+		"Il mio coniuge/altre persone"
+	};
+	qst.setProperty("options", q40_opts);
+	send qst;
+	
+	selint=system.getProperty("ans40");
+	if (selint==2){return 4;}
+	
+	
+	qst = new question("choice", 50);
+	qst.setProperty("text", "Quali fra i seguenti prodotti <b><u>acquista abitualmente</u></b> per lei e la sua famiglia?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "s6");
+	vector q50_opts = new vector {
+"Creme spalmabili (alle Nocciole, Gianduia, cioccolato)",
+"Snack e barrette al cioccolato",
+"Biscotti",
+"Cioccolato",
+"Merendine per la prima colazione",
+"Confetture",
+"Nessuno di questi#se#sf"
+	};
+	qst.setProperty("options", q50_opts);
+	send qst;
+	
+	boolean selprod=system.getProperty("ans50_0");
+	boolean selbar=system.getProperty("ans50_1");
+	
+	
+	for (int i=0, 5)
+	{
+	sel=system.getProperty("ans50_"+i);
+	if (sel==true)
+				  {
+				  nascondi_item="nascondi#sh"+i;
+				  q50_opts.set(i, nascondi_item);
+				  }
+	}
+	
+	
+	
+	qst = new question("choice", 60);
+	qst.setProperty("text", "E quali fra loro <b><u>non acquisterebbe mai</u></b> per lei e la sua famiglia?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "s6a");
+	qst.setProperty("options", q50_opts);
+	send qst;
+	
+	sel=system.getProperty("ans60_0");
+	if (sel==true){return 4;}
+	
+	
+if (selprod==true)
+{
+qst = new question("choice", 70);
+qst.setProperty("text", "Quali delle seguenti marche di <b><u>Creme spalmabili</u></b> acquista abitualmente?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s7");
+//qst.setProperty("show_rand", true);
+vector q70_opts = new vector {
+	"Caffarel",
+	"Lindt ",
+	"Novi",
+	"Nutella",
+	"Pernigotti ",
+	"Rigoni",
+	"Marche del supermercato",
+	"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+	
+
+	selnutella=system.getProperty("ans70_3");
+	if (selnutella==true)
+		{
+
+			qst = new question("choice", 80);
+			qst.setProperty("text", "Nel dettaglio, quale formato di Nutella acquista?  ");
+			qst.setProperty("code", "s8");
+			qst.setProperty("selection", "multiple");
+			vector q80_opts = new vector {
+					"15g – Monodose",
+					"Bicchiere da 200g",
+					"Vasetto da 450 g",
+					"Vasetto da 630 g",
+					"Vasetto da 800 g",
+					"Vasetto da 950 g",
+					"Altro (specificare)#so#sf"
+			};
+			qst.setProperty("options", q80_opts);
+			send qst;
+		}
+	
+	}
+	
+	
+if (selbar==true)
+{
+qst = new question("choice", 77);
+qst.setProperty("text", "Quali delle seguenti marche di <b><u>Snack e barrette al cioccolato</u></b>  acquista abitualmente?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "s7a");
+//qst.setProperty("show_rand", true);
+vector q77_opts = new vector {
+"Nutella B-Ready",
+"Kinder Cioccolato",
+"Kinder Maxi ",
+"Kinder Bueno",
+"Kinder Cereali",
+"Kinder Merendero",
+"Kinder Sorpresa",
+"Kinder Cards",
+"Tronky",
+"Duplo",
+"Kit Kat ",
+"Bounty ",
+"Snickers",
+"Twix",
+"Mars ",
+"Lions",
+	"Marche del supermercato",
+	"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q77_opts);
+send qst;
+}
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Negli ultimi 12 mesi le &egrave; capitato di partecipare a <b><u>promozioni/concorsi</u></b>? "+
+"Con promozioni/concorsi si intendono quelle iniziative a cui &egrave; possibile partecipare con l’acquisto di uno o pi&ugrave; prodotti?");
+qst.setProperty("code", "s9");
+vector q90_opts = new vector {
+	"SI",
+	"NO"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+	
+int reCodtarget=99;
+	
+	if (selnutella==true){reCodtarget=0;}
+	if (selprod==true && selnutella==false){reCodtarget=1;}
+	if (selprod==false){ reCodtarget=2; }
+	
+	if (reCodtarget!=0 &&  reCodtarget!=1 &&  reCodtarget!=2) { return 4; }
+	
+	
+	qst = new question("choice", 85);
+	qst.setProperty("text", "cella target");
+	qst.setProperty("code", "rectg");
+	vector q85_opts = new vector {
+		"NUTELLA",
+		"CATEGORIA",
+		"ALTRI"
+	};
+	qst.setProperty("options", q85_opts);
+	qst.setProperty("hidden", true);
+	qst.setProperty("default_answer", "{ 'selection': ["+reCodtarget+"] }");
+	send qst;
+	
+	
+	label=q85_opts.get(reCodtarget);
+	system.out("<div>Target: Totale- "+label+"</div>");
+	system.setProperty("targ",label);
+
+
+
+	///estrazione cella
+	int r1;
+	system.setProperty("r1", "rand:10");
+    r1 = (int)system.getProperty("r1");
+	int cella=r1+1;
+
+	system.setProperty("cella",cella);
+	
+	int indicepv=cella-1;
+	
+	
+	
+	qst = new question("choice", 86);
+	qst.setProperty("text", "pv");
+	qst.setProperty("code", "recpv");
+	vector q86_opts = new vector {
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"1B",
+		"2B",
+		"3B",
+		"4B",
+		"5B"
+	};
+	qst.setProperty("options", q86_opts);
+	qst.setProperty("hidden", true);
+	qst.setProperty("default_answer", "{ 'selection': ["+indicepv+"] }");
+	send qst;
+	
+	label=q86_opts.get(indicepv);
+	system.out("<div>Primo Visto: "+label+"</div>");
+	
+	
+baseQid=5000;
+
+int index;
+int alter;
+
+
+
+
+for(int i=0,4)
+{
+
+index=cella;
+
+if(cella>5) { index=index-5;}
+
+label="http://www.primisoft.com/fields/FER/ITA1808124/resources/c"+cella+".JPG";
+
+
+qid=baseQid+100*index;
+	
+link="http://www.primisoft.com/fields/FER/ITA1808124/resources/c"+cella+".JPG";
+img="<img src='"+link+"' alt='' width='1100px'>";	
+img_linea_piccola=scriptzoom+fogliostile+altroscript+"<p><a class='fancybox' rel='group' href='"+link+"'><img src='"+link+"'  height='200px' alt='' /></a><br><i>Clicchi per ingrandire</i></p>";
+	
+
+	if (count==0) 
+	{ 
+	qtext="“Nella prossima schermata vedrà la proposta di una promozione futura. "+
+"<br/><br/><br/>Per cortesia, la osservi, la legga con attenzione e prosegua rispondendo alle domande”"; 
+	}
+	else 
+	{
+	qtext="“Nella prossima schermata vedrà un’altra proposta di una promozione futura. "+
+"<br/><br/><br/>Per cortesia, la osservi, la legga con attenzione e prosegua rispondendo alle domande”";
+	}
+	
+	qst = new question("concept", qid);
+	qst.setProperty("text", qtext);
+	send qst;
+	
+	qid=baseQid+100*index+5;
+	
+	qst = new question("concept", qid);
+	qst.setProperty("text", "<center>"+img+"</center>");
+	send qst;
+	
+	
+	qid=baseQid+100*index+7;
+	
+	qst = new question("choice", qid);
+	qst.setProperty("text", img_linea_piccola+"Lei direbbe che <b>la sua voglia di acquistare Nutella</b>, dopo aver letto di questa promozione è …");
+	qst.setProperty("code", "q0c"+index);
+	vector q120_rows = new vector {
+			"Decisamente aumentata",
+			"Leggermente aumentata",
+			"Rimasta la stessa",
+			"Leggermente diminuita",
+			"Decisamente diminuita"
+	};
+	qst.setProperty("options", q120_rows);
+	send qst;
+	
+	qid=baseQid+100*index+10;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Ed in generale, quanto le piace questa promozione?");
+	qst.setProperty("code", "q1c"+index);
+	vector q130_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q130_rows);
+	vector q130_cols = new vector {
+		"Per niente<br/>1",
+		"2",
+		"3",
+		"4",
+		"Molto<br/>5"
+	};
+	qst.setProperty("cols", q130_cols);
+	send qst;
+	
+	qid=baseQid+100*index+15;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Se questo tipo di promozione venisse applicata su vasetti di NUTELLA, quanto sarebbe incentivato a comprare un vasetto di Nutella?");
+	qst.setProperty("code", "q2c"+index);
+	qst.setProperty("rows", q130_rows);
+	vector q131_cols = new vector {
+		"Sicuramente non l’acquisterei<br/>1",
+		"2",
+		"3",
+		"4",
+		"Sicuramente l’acquisterei<br/>5"
+	};
+	qst.setProperty("cols", q131_cols);
+	send qst;
+	
+	qid=baseQid+100*index+20;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Direbbe quindi che sarebbe interessato a partecipare a questa promozione?");
+	qst.setProperty("code", "q3c"+index);
+	qst.setProperty("rows", q130_rows);
+	vector q132_cols = new vector {
+		"Per niente interessato<br/>1",
+		"2",
+		"3",
+		"4",
+		"Certamente interessato<br/>5"
+	};
+	qst.setProperty("cols", q132_cols);
+	send qst;
+	
+	qid=baseQid+100*index+25;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Secondo lei, quanto <b>è originale</b> questa promozione di <b>NUTELLA</b>?");
+	qst.setProperty("code", "q4c"+index);
+	qst.setProperty("rows", q130_rows);
+	vector q133_cols = new vector {
+		"Per niente originale<br/>1",
+		"2",
+		"3",
+		"4",
+		"Molto originale<br/>5"
+	};
+	qst.setProperty("cols", q133_cols);
+	send qst;
+	
+	qid=baseQid+100*index+30;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Secondo lei, quanto questa promozione si <b>adatta al marchio NUTELLA</b>?");
+	qst.setProperty("code", "q4ac"+index);
+	qst.setProperty("rows", q130_rows);
+	vector q134_cols = new vector {
+		"Per niente adatta<br/>1",
+		"2",
+		"3",
+		"4",
+		"Molto adatta<br/>5"
+	};
+	qst.setProperty("cols", q134_cols);
+	send qst;
+	
+	qid=baseQid+100*index+35;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Per cortesia mi dica quanto ognuna delle seguenti frasi si adatta a questa promozione");
+	qst.setProperty("code", "q5c"+index);
+	qst.setProperty("show_rand", true);
+	vector q160_rows = new vector {
+		"E’ una promozione <b>molto interessante</b> ",
+		"È una promozione <b>divertente</b> ",
+		"E’ una promozione <b>chiara e intuitiva</b> ",
+		"È una promozione che consiglierei agli amici ",
+		"È una promozione per i giovani",
+		"È una promozione per le famiglie",
+		"È una promozione per persone come me",
+		"Questa promozione mostra che NUTELLA è un marchio adatto alle famiglie",
+		"Questa promozione mostra che NUTELLA è un prodotto di alta qualità",
+		"È una bella idea",
+		"È un'offerta interessante",
+		"È un'offerta di alta qualità"
+
+	};
+	qst.setProperty("rows", q160_rows);
+	vector q160_cols = new vector {
+		"Per niente adatta<br/>1",
+		"2",
+		"3",
+		"4",
+		"Molto adatta<br/>5"
+	};
+	qst.setProperty("cols", q160_cols);
+	send qst;
+	
+	
+	////meccanismo////
+	
+	
+	
+	link="http://www.primisoft.com/fields/FER/ITA1808124/resources/ca"+cella+".JPG";
+	img="<p><img width='440px' src='"+link+"' alt=''></p>";
+	
+	
+	qid=baseQid+100*index+40;
+	qst = new question("scale", qid);
+	qst.setProperty("text", "Lei direbbe che le <b><u>modalit&agrave; di partecipazione</u></b> sono …"+img);
+	qst.setProperty("code", "m1c"+index);
+	vector q200_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q200_rows);
+	vector q200_cols = new vector {
+		"Per niente chiare",
+		"Poco chiare",
+		"N&egrave; chiare n&egrave; non chiare",
+		"Abbastanza chiare",
+		"Molto Chiare"
+	};
+	qst.setProperty("cols", q200_cols);
+	send qst;
+	
+	qid=baseQid+100*index+45;
+	qst = new question("scale", qid);
+	qst.setProperty("text", "E come valuta la <b><u>facilit&agrave; di partecipazione</u></b> a questa promozione?"+img);
+	qst.setProperty("code", "m2c"+index);
+	vector q210_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q210_rows);
+	vector q210_cols = new vector {
+		"Per niente facile",
+		"Poco facile",
+		"N&egrave; facile n&egrave; difficile",
+		"Abbastanza facile",
+		"Molto Facile"
+	};
+	qst.setProperty("cols", q210_cols);
+	send qst;
+	
+	
+	if (cella>5) { alter=cella-5;}
+	else {alter=cella+5;}
+	
+		link="http://www.primisoft.com/fields/FER/ITA1808124/resources/c"+alter+".JPG";
+	img_linea_piccola=scriptzoom+fogliostile+altroscript+"<p><a class='fancybox' rel='group' href='"+link+"'><img src='"+link+"'  height='200px' alt='' /></a><br><i>Clicchi per ingrandire</i></p>";
+	
+	qid=baseQid+100*index+46;
+	qst = new question("concept", qid);
+	qst.setProperty("text", "Le mostreremo ora una diversa modalità di partecipazione.<p><img src='"+link+"' width='800px'/></p> ");
+	send qst;
+	
+	qid=baseQid+100*index+47;
+		qst = new question("choice", qid);
+	qst.setProperty("text", img_linea_piccola+"Leggendo questa <b>modalità di partecipazione</b> la sua voglia di partecipare a questa promozione rispetto alla modalità precedente è ...");
+	qst.setProperty("code", "m3c"+index);
+	vector q222_rows = new vector {
+			"Aumentata",
+			"Rimasta la stessa",
+			"Diminuita"
+	};
+	qst.setProperty("options", q222_rows);
+	send qst;
+
+	
+	
+	link="http://www.primisoft.com/fields/FER/ITA1808124/resources/p"+cella+".JPG";
+	img_linea_piccola=scriptzoom+fogliostile+altroscript+"<p><a class='fancybox' rel='group' href='"+link+"'><img src='"+link+"'  height='200px' alt='' /></a><br><i>Clicchi per ingrandire</i></p>";
+	
+	qid=baseQid+100*index+50;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Quanto le piace il premio in palio?");
+	qst.setProperty("code", "p1c"+index);
+	vector q230_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q230_rows);
+	vector q230_cols = new vector {
+		"Per niente",
+		"Poco",
+		"Cos&igrave; cos&igrave;",
+		"Abbastanza",
+		"Molto"
+	};
+	qst.setProperty("cols", q230_cols);
+	send qst;
+	
+	
+	qid=baseQid+100*index+55;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Per cortesia mi dica quanto ognuna delle seguenti frasi si adatta a questo premio.");
+	qst.setProperty("code", "p2c"+index);
+	qst.setProperty("show_rand", true);
+	vector q240_rows = new vector {
+"E’ un premio <b>molto interessante</b>",
+"È un premio originale, <b>diverso dagli altri</b>",
+"È una premio <b>adatto a NUTELLA</b>",
+"È un premio <b>divertente</b>",
+"E’ un premio che <b>mi invoglia a partecipare</b> alla promozione",
+"E’ un premio <b>utile</b>"
+	};
+	qst.setProperty("rows", q240_rows);
+	vector q240_cols = new vector {
+		"Per niente adatta<br/>1",
+		"2",
+		"3",
+		"4",
+		"Molto adatta<br/>5"
+	};
+	qst.setProperty("cols", q240_cols);
+	send qst;
+	
+	if(cella==1 || cella==4 || cella==6 || cella==9)
+	{
+
+	link="http://www.primisoft.com/fields/FER/ITA1808124/resources/c"+cella+".JPG";
+	img_linea_piccola=scriptzoom+fogliostile+altroscript+"<p><a class='fancybox' rel='group' href='"+link+"'><img src='"+link+"'  height='200px' alt='' /></a><br><i>Clicchi per ingrandire</i></p>";
+	
+		if (cella==1 || cella==6) {qtext="<p><b>L’oggetto in premio per questa promozione è una 'Light box', cioè una lavagna luminosa su cui applicare delle lettere per formare varie frasi. </b></p>";}
+	else {qtext="<p><b>L’oggetto in premio per questa promozione è un 'Voice recorder', cioè un registratore vocale digitale, che registra in formato MP3.</b></p>";}
+	
+	qid=baseQid+100*index+57;
+	qst = new question("choice", qid);
+	qst.setProperty("text", img_linea_piccola+qtext+"Considerando la descrizione della promozione che ha letto prima, Lei aveva compreso correttamente qual era l’oggetto in premio?");
+	qst.setProperty("code", "p3c"+index);
+		vector q233_cols = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q233_cols);
+	send qst;	
+	
+	
+	qid=baseQid+100*index+59;
+	qst = new question("choice", qid);
+	qst.setProperty("text", img_linea_piccola+qtext+"Ora che ha letto cosa rappresenta esattamente questo premio, Lei direbbe che le piace ...");
+	qst.setProperty("code", "p3ac"+index);
+	vector q244_rows = new vector {
+			"Decisamente di più rispetto a prima",
+			"Un po’ di più rispetto a prima",
+			"E’ rimasto invariato",
+			"Un po’ di meno rispetto a prima",
+			"Decisamente meno rispetto a prima"
+
+	};
+	qst.setProperty("options", q244_rows);
+	send qst;
+	}
+
+
+
+count=count+1;
+
+if (cella<6)
+{
+if (cella==5) { cella=1;}
+else {cella=cella+1; }	
+}
+
+else
+{
+
+if (cella==10) { cella=6;}
+else {cella=cella+1; }	
+
+}
+
+
+}
+
+
+
+
+
+	qst = new question("ordering", 245);
+qst.setProperty("text", allinea_r+"Ora che ha visto tutte le alternative di promozione ideate da NUTELLA, potrebbe dirmi quale preferisce? Per favore le metta in ordine di preferenza: clicci sulla preferita, poi sulla seconda, sulla terza, sulla quarta ed infine sulla quinta. "+
+"<div class='info'>Per deselezionare cliccare sulla risposta che si vuole cancellare</div>"+cod);
+qst.setProperty("sel_count", 5);
+qst.setProperty("code", "p4");
+vector q245_opts = new vector {
+		"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c1.JPG' height='280px' alt=''></div>",
+		"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c2.JPG' height='280px' alt=''></div>",
+		"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c3.JPG' height='280px' alt=''></div>",
+		"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c4.JPG' height='280px' alt=''></div>",
+		"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c5.JPG' height='280px' alt=''></div>"
+	};
+	
+if (cella>5)
+{	
+ q245_opts.set(0,"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c6.JPG'  height='280px' alt=''></div>");
+ q245_opts.set(1,"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c7.JPG'  height='280px' alt=''></div>");
+ q245_opts.set(2,"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c8.JPG'  height='280px' alt=''></div>");
+ q245_opts.set(3,"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c9.JPG'  height='280px' alt=''></div>");
+ q245_opts.set(4,"<div><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c10.JPG' height='280px' alt=''></div>");
+}	
+qst.setProperty("options", q245_opts);
+qst.setProperty("strict_selection", true);
+send qst;
+
+
+	
+	qst = new question("scale", 246);
+	qst.setProperty("text", scriptzoom+fogliostile+altroscript+"Vorrei ora che mi dicesse quali di questi premi assocerebbe alle seguenti affermazioni. Per ogni affermazione può associare, una, alcune, tutte o nessuna promozione.");
+	qst.setProperty("code", "p5");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+qst.setProperty("extras","{min:1}");
+	vector q246_rows = new vector {
+"E’ una promozione molto interessante",
+"È una promozione divertente",
+"E’ una promozione chiara e intuitiva",
+"È una promozione che consiglierei agli amici",
+"È una promozione per i giovani",
+"È una promozione per le famiglie",
+"È una promozione per persone come me",
+"Questa promozione mostra che NUTELLA è un marchio adatto alle famiglie",
+"Questa promozione mostra che NUTELLA è un prodotto di alta qualità",
+"È una bella idea",
+"È un'offerta interessante",
+"È un'offerta di alta qualità"
+	};
+	qst.setProperty("rows", q246_rows);
+	vector q246_cols = new vector {
+		"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c1.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c1.JPG'  height='80px' alt='' /></a>",
+		"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c2.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c2.JPG'  height='80px' alt='' /></a>",
+		"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c3.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c3.JPG'  height='80px' alt='' /></a>",
+		"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c4.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c4.JPG'  height='80px' alt='' /></a>",
+		"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c5.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c5.JPG'  height='80px' alt='' /></a>",
+		"Nessuna#se"
+	};
+	if (cella>5)
+{	
+ q246_cols.set(0,"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c6.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c6.JPG'  	height='80px' alt='' /></a>");
+ q246_cols.set(1,"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c7.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c7.JPG'  	height='80px' alt='' /></a>");
+ q246_cols.set(2,"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c8.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c8.JPG'  	height='80px' alt='' /></a>");
+ q246_cols.set(3,"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c9.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c9.JPG'  	height='80px' alt='' /></a>");
+ q246_cols.set(4,"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/FER/ITA1808124/resources/c10.JPG'><img src='http://www.primisoft.com/fields/FER/ITA1808124/resources/c10.JPG'   height='80px' alt='' /></a>");
+
+}
+	
+	qst.setProperty("cols", q246_cols);
+	qst.setProperty("extras","{header_repeat:6}");
+	send qst;
+		
+	
+
+
+
+
+	
+	qst = new question("choice", 300);
+	qst.setProperty("text", "Siamo arrivati alla fine dell’intervista. Ora le faremo solo qualche domanda a scopo statistico. <br><br>Complessivamente, di quante persone &egrave; composto il suo nucleo familiare incluso Lei?");
+	qst.setProperty("code", "dm1");
+	vector q300_opts = new vector {
+		"1 persona",
+		"2 persone",
+		"3 persone",
+		"4 persone",
+		"5 persone",
+		"6 persone",
+		"7 o pi&ugrave; persone"
+	};
+	qst.setProperty("options", q300_opts);
+	send qst;
+	
+	int selintfiglidm1=system.getProperty("ans300");
+	
+	
+	if (selintfiglidm1>0)
+	{
+	qst = new question("choice", 310);
+	qst.setProperty("text", "Ha figli?");
+	qst.setProperty("code", "dm2");
+	vector q310_opts = new vector {
+		"S&igrave;",
+		"No"
+	};
+	qst.setProperty("options", q310_opts);
+	send qst;
+	
+	selintfigli=system.getProperty("ans310");
+	
+	if (selintfigli==0)
+	{
+	qst = new question("choice", 320);
+	qst.setProperty("text", "Quanti figli ha?");
+	qst.setProperty("code", "dm3");
+	vector q320_opts = new vector {
+		"Uno",
+		"Due",
+		"Tre",
+		"Quattro",
+		"Cinque",
+		"Pi&ugrave; di cinque"
+	};
+	qst.setProperty("options", q320_opts);
+	send qst;
+	
+	selint=system.getProperty("ans320");
+	
+	vector q330_rows = new vector {
+		"1° figlio/a",
+		"2° figlio/a",
+		"3° figlio/a",
+		"4° figlio/a",
+		"5° figlio/a"
+	};
+	
+	conta=0;
+	for (int i=0,4)
+	{
+	if (i>selint)
+				{
+				nascondi_item="nascondi#sh"+i;
+				q330_rows.set(i, nascondi_item);
+				conta=conta+1;
+				}
+	
+	}
+	
+	if (conta==4){label="Qual è l’età di suo figlio/a? ";}
+	else {label="Qual &egrave; l’et&agrave; di ciascuno dei suoi figli?";}
+	
+	qst = new question("scale", 330);
+	qst.setProperty("text", label+" <br>Se non ha ancora compiuto l’anno metta 0.");
+	qst.setProperty("code", "dm3a");
+	qst.setProperty("rows", q330_rows);
+	vector q330_cols = new vector {
+		"Da 0 a 3 anni",
+		"Da 4 a 6 anni",
+		"Da 7 a 9 anni",
+		"Da 10 a 13 anni",
+		"Da 14 a 17 anni",
+		"Da 18 a 21 ani",
+		"Da 22 a 25 anni",
+		"26 anni o pi&ugrave;"
+	};
+	qst.setProperty("cols", q330_cols);
+	qst.setProperty("view", "columns");
+	send qst;
+	
+	
+	}
+	
+	}
+	
+
+	qst = new question("choice", 340);
+	qst.setProperty("text", "Qual &egrave; il Suo livello di istruzione? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm4");
+	vector q340_opts = new vector {
+		"Specializzazione/master post Laurea",
+		"Universit&agrave; con laurea",
+		"Universit&agrave; senza laurea",
+		"Licenza Media superiore",
+		"Licenza Media inferiore",
+		"Licenza Elementare",
+		"Nessun titolo"
+	};
+	qst.setProperty("options", q340_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 350);
+	qst.setProperty("text", "Qual &egrave; il Suo stato civile? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm5");
+	vector q350_opts = new vector {
+		"Sposato/a, convivente",
+		"Celibe/nubile",
+		"Separato/a, divorziato/a, vedovo/a"
+	};
+	qst.setProperty("options", q350_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 360);
+	qst.setProperty("text", "Potrebbe indicare la sua attuale condizione lavorativa? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm6");
+	vector q360_opts = new vector {
+		"Occupato/a a tempo pieno",
+		"Occupato/a a tempo parziale",
+		"In congedo di maternit&agrave;/paternit&agrave;",
+		"Altra condizione lavorativa",
+		"Disoccupato/a",
+		"Pensionato/a",
+		"Casalingo/a",
+		"Studente",
+		"Altra condizione NON lavorativa"
+	};
+	qst.setProperty("options", q360_opts);
+	send qst;
+	selint=system.getProperty("ans360");
+	
+	if (selint<4)
+	{
+	qst = new question("choice", 370);
+	qst.setProperty("text", "Potrebbe indicare che lavoro svolge? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm7");
+	vector q370_opts = new vector {
+		"Imprenditore",
+		"Libero professionista",
+		"Dirigente",
+		"Quadro /funzionario",
+		"Artigiano",
+		"Commerciante/esercente",
+		"Lavoratore autonomo",
+		"Impiegato/ Insegnante",
+		"Operaio",
+		"Altro"
+	};
+	qst.setProperty("options", q370_opts);
+	send qst;
+	}
+	
+	qst = new question("choice", 380);
+	qst.setProperty("text", "Indicativamente, quanti sono gli abitanti della citt&agrave; in cui vive?");
+	qst.setProperty("code", "dm8");
+	vector q380_opts = new vector {
+		"Meno di 10.000 abitanti",
+		"Da 10.000 a 30.000 abitanti",
+		"Da 30.000 a 100.000 abitanti",
+		"Da 100.000 a 250.000 abitanti",
+		"Pi&ugrave; di 250.000 abitantI"
+	};
+	qst.setProperty("options", q380_opts);
+	send qst;
+	
+	
+	
+	qst = new question("choice", 390);
+	qst.setProperty("text", "Infine, vorrei sapere  quali marche tra le seguenti acquista di solito.");
+	qst.setProperty("code", "dm9");
+	qst.setProperty("selection", "multiple");
+	vector q390_opts = new vector {
+		"Kinder",
+		"Ferrero",
+		"Tic Tac",
+		"Estath&egrave;",
+		"Nestl&egrave;",
+		"Novi",
+		"Pernigotti",
+		"Caffarel",
+		"Mulino Bianco",
+		"Bauli",
+		"Lindt",
+		"Motta",
+		"Milka"
+	};
+	qst.setProperty("options", q390_opts);
+	send qst;
+
+
+
+
+}

@@ -1,0 +1,1518 @@
+
+//http://www.primisoft.com/primis/run.do?sid=ITA18B1005&prj=LMI&uid=GUEST
+
+void main() 
+{
+
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "debug:true");
+
+/////////////////////TUTTI PIENI IN FIXED SUM
+	string tuttiPieni="<script type='text/javascript'>"+
+     "$(document).ready(function() {"+
+     "var contaInp=$('input[type=\"text\"]').length;"+
+     "contaInp--;"+ 
+     "$(':text').keyup(function() {"+
+     "var contaPieni=0; var verVal;var verValb; var mostra=1;"+
+     "verVal=$('#comp0').val().length; "+
+     "verValb=$('#comp1').val().length; "+
+     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+	 "verVal=$('#comp2').val().length; "+
+     "verValb=$('#comp3').val().length; "+
+     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+	 "verVal=$('#comp4').val().length; "+
+     "verValb=$('#comp5').val().length; "+
+     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+	 "verVal=$('#comp6').val().length; "+
+     "verValb=$('#comp7').val().length; "+
+     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+	 "verVal=$('#comp8').val().length; "+
+     "verValb=$('#comp9').val().length; "+
+//     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+//	 "verVal=$('#comp10').val().length; "+
+//     "verValb=$('#comp11').val().length; "+
+//     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+//	 "verVal=$('#comp12').val().length; "+
+//     "verValb=$('#comp13').val().length; "+
+//     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+//	 "verVal=$('#comp14').val().length; "+
+//     "verValb=$('#comp15').val().length; "+
+//     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+//	 "verVal=$('#comp16').val().length; "+
+//     "verValb=$('#comp17').val().length; "+
+//     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+//	 "verVal=$('#comp18').val().length; "+
+//     "verValb=$('#comp19').val().length; "+
+     "if (((verVal>0)&&(verValb==0))||((verVal==0)&&(verValb>0))){mostra=0;}"+
+	 "if (mostra==1){$('#console').show();}else{$('#console').hide();}"+
+     "}); });</script>";
+    
+	 	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all="<script type='text/javascript' src='http://www.primisoft.com/fields/LMI/ITA1801005/resources/all.js'></script>";
+	string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,10,450,450);});</script>";
+	string allinea=all+mozCode;
+	
+		
+	string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+	"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+	
+	 
+
+ 
+
+	
+
+////////////FINE FASE SHELF	
+
+
+	
+	
+	qst = new question("choice", 200);
+	qst.setProperty("text", "ROTAZIONE");
+	qst.setProperty("code", "rr1");
+	vector q200_opts = new vector {
+		"ROTAZIONE 1 Current",
+		"ROTAZIONE 2 New"
+	};
+	qst.setProperty("options", q200_opts);
+
+	int lectrot=system.getProperty("ans200");
+	if (lectrot==0) {label="<b><u> Cella - Current</u></b>";}	
+	if (lectrot==1) {label="<b><u> Cella - New</u></b>";}
+
+
+	
+	
+	int indexrot=lectrot+1;
+	
+	
+	 link="http://www.primisoft.com/fields/LMI/ITA1801005/resources/img"+indexrot+".jpg";
+
+	 
+	   qtext="<table style='position:absolute; top:-9999px;' id='shelf'><tr>"+
+       "<td><img src='"+link+"'/><img src='"+link+"'/></td>"+
+		"</tr></table>";		
+	
+	qst = new question("choice", 210);
+	qst.setProperty("text", "BUYERS");
+	qst.setProperty("code", "rr2");
+	vector q210_opts = new vector {
+		"Buyers",
+		"Not Buyers"
+	};
+	qst.setProperty("options", q210_opts);
+
+
+	
+	
+
+		qst = new question("composed", 215);
+	vector q215_comps = new vector { "200", "210"};
+	qst.setProperty("components", q215_comps);
+	send qst;	
+	
+	cmd=q200_opts.get(lectrot);
+	system.out("<div class='info'>Cella: "+cmd+"</div>");	
+	
+	int buy=system.getProperty("ans210");
+	cmd=q210_opts.get(buy);
+	system.out("<div class='info'>Buyers: "+cmd+"</div>");		
+	
+	
+	qst = new question("open", 220);
+	qst.setProperty("text", qtext+"Nome intervistatore:");
+	qst.setProperty("code", "rr3");
+
+	
+	qst = new question("open", 230);
+	qst.setProperty("text", "Intervistatore n°:");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "rr4");
+
+	
+	qst = new question("open", 240);
+	qst.setProperty("text", "Nome e cognome rispondente:");
+	qst.setProperty("code", "rr5");
+
+	
+	qst = new question("open", 250);
+	qst.setProperty("text", "Data :");
+	qst.setProperty("code", "rr6");
+	qst.setProperty("view", "date");
+	
+	qst = new question("choice", 260);
+	qst.setProperty("text", "Citt&agrave;");
+	qst.setProperty("code", "rr7");
+	vector q260_opts = new vector {
+		"Milano",
+		"Roma"
+	};
+	qst.setProperty("options", q260_opts);
+
+		qst = new question("composed", 265);
+	vector q265_comps = new vector { "220", "230" , "240" , "250", "260"};
+	qst.setProperty("components", q265_comps);
+	send qst;	
+	
+	int lectq260=system.getProperty("ans260");
+	cmd=q260_opts.get(lectq260);
+	system.out("<div class='info'>City: "+cmd+"</div>");	
+	
+	
+	if (lectq260==0){
+	
+	qst = new question("choice", 270);
+	qst.setProperty("text", "L’intervistato ha fatto la parte di Eye-Tracking?");
+	qst.setProperty("code", "qeye1");
+	vector q270_opts = new vector {
+		"S&igrave;",
+		"No"
+	};
+	qst.setProperty("options", q270_opts);
+	send qst;
+	
+		}
+		
+
+	
+
+				
+	img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+	"<img src='"+link+"' width='450px'  alt='' /></a><div class='info'>Clicchi per ingrandire</div></p>";
+
+
+		string delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(250);"+
+			"setTimeout(function() { $('#shelf').delay(250).empty(); $('#bnNext').click(); }, 250);"+
+		"})"+
+			"</script>";	
+			
+	
+	qst = new question("concept", 280);
+	qst.setProperty("text", "“Le mostrer&ograve; un prodotto. Quando questo prodotto scomparir&agrave;, mi dir&agrave; se lo acquisterebbe o no. </br>Per favore non muova la testa </br>E’ pronto? Partiamo …” </br>     </br>ANDARE A POSTAZIONE TACHY </br>FLASH TEST </br>Tachy su Certosa Galbani Classico 165g   </br>“Sto per mostrarle l’immagine di un prodotto molto velocemente. Mi dica, con pi&ugrave; dettagli possibili, cosa ha visto o letto esattamente. </br>E’ pronto? » Cominciamo.  </br>INTERVISTATORE: ASSICURARSI CHE IL RISPONDENTE ABBIA CAPITO BENE E PARTIRE CON LA PRIMA ESPOSIZIONE DI ¼ DI SECONDO </br>CHIEDERE AL RISPONDENTE DI NON DISTOGLIERE LO SGUARDO E PARTIRE PONENDO LE DOMANDE DI SEGUITO");
+	send qst;
+	
+		qst = new question("concept", 282);
+	qst.setProperty("text", delay+"“Sto per mostrarle l’immagine di un prodotto molto velocemente. Mi dica, con pi&ugrave; dettagli possibili, cosa ha visto o letto esattamente. E’ pronto? » Cominciamo.  </br>INTERVISTATORE: ASSICURARSI CHE IL RISPONDENTE ABBIA CAPITO BENE E PARTIRE CON LA PRIMA ESPOSIZIONE DI ¼ DI SECONDO  </br>CHIEDERE AL RISPONDENTE DI NON DISTOGLIERE LO SGUARDO E PARTIRE PONENDO LE DOMANDE DI SEGUITO <center><p><img src='"+link+"' width='300px'  alt=''/></p></center>");
+	send qst;
+	
+	qst = new question("open", 290);
+	qst.setProperty("text", "Cosa ha visto o letto esattamente? <b>(CITARE PER INTERO)</b>");
+	qst.setProperty("code", "qq1a");
+	send qst;
+	
+	
+	qst = new question("open", 300);
+	qst.setProperty("text", "Che tipo di prodotto era? Quale era il suo nome? Quale era la marca? <b>(CITARE PER INTERO)</b>");
+	qst.setProperty("code", "qq1b");
+	send qst;
+	
+	
+	
+	delay="<script type='text/javascript'>"+
+		"$(document).ready(function() {"+
+		"$('#bnNext').hide();"+
+			"$('#shelf').slideDown(1000);"+
+			"setTimeout(function() { $('#shelf').delay(1000).empty(); $('#bnNext').click(); }, 1000);"+
+		"})"+
+			"</script>";	
+	
+	
+	qst = new question("concept", 310);
+	qst.setProperty("text", "“Ora le mostrer&ograve; la stessa immagine un po’ pi&ugrave; lentamente. Mi dica, con pi&ugrave; dettagli possibili, cosa ha visto o letto esattamente. </br>Per favore, guardi attentamente l’immagine senza distogliere lo sguardo. </br>E’ pronto? Cominciamo. “  </br>INTERVISTATORE: ASSICURARSI CHE IL RISPONDENTE ABBIA CAPITO BENE E PARTIRE CON LA SECONDA ESPOSIZIONE DI 1 SECONDO");
+	send qst;
+	
+		qst = new question("concept", 312);
+	qst.setProperty("text", delay+"INTERVISTATORE: ASSICURARSI CHE IL RISPONDENTE ABBIA CAPITO BENE E PARTIRE CON LA SECONDA ESPOSIZIONE DI 1 SECONDO <center><p><img src='"+link+"' width='300px'  alt=''/></p></center>");
+	send qst;
+	
+	
+	qst = new question("open", 320);
+	qst.setProperty("text", "Cosa ha visto o letto esattamente? <b>(CITARE PER INTERO)</b>");
+	qst.setProperty("code", "qq2a");
+	send qst;
+	
+	
+	qst = new question("open", 330);
+	qst.setProperty("text", "Che tipo di prodotto era? Quale era il suo nome? Quale era la marca? <b>(CITARE PER INTERO)</b>");
+	qst.setProperty("code", "qq2b");
+	send qst;
+	
+	
+	qst = new question("choice", 340);
+	qst.setProperty("text", "<p><b>METTERE IL MOCK UP SULLA SCRIVANIA </b></p><p><b>Mostrare all'intervistato il MOCK UP "+label+" con Galbani Certosa Classica. </b></p>Quanto le piace o non le piace questa <b>Certosa Galbani Classica</b>? </br>LEGGERE E MOSTRARE MOCK UP "+label+"");
+	qst.setProperty("code", "qq4");
+	vector q340_opts = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Nè mi piace nè mi dispiace",
+"Mi piace poco",
+"Mi piace pochissimo",
+"Non mi piace per niente"
+	};
+	qst.setProperty("options", q340_opts);
+	send qst;
+	
+	int lectq340=system.getProperty("ans340");
+	
+	
+	
+	
+	qst = new question("open", 350);
+	qst.setProperty("text", "Cosa le piace di questa <b>Certosa Galbani Classica</b>?");
+	qst.setProperty("code", "qq5");
+	
+	qst = new question("open", 360);
+	qst.setProperty("text", "E cosa altro le piace di questa <b>Certosa Galbani Classica</b>?");
+	qst.setProperty("code", "qq5b");
+
+	
+	
+	qst = new question("open", 370);
+	qst.setProperty("text", "E cosa <b>non</b> le piace di questa <b>Certosa Galbani Classica</b>?");
+	qst.setProperty("code", "qq6");
+	
+	
+	qst = new question("open", 380);
+	qst.setProperty("text", "E cosa altro <b>non</b> le piace di questa <b>Certosa Galbani Classica</b>?");
+	qst.setProperty("code", "qq6b");
+
+	
+	vector q381_comps = new vector { "350", "360", "370", "380"};
+
+	if (lectq340>2)
+	{
+	q381_comps.set(0,"370");
+	q381_comps.set(1,"380");
+	q381_comps.set(2,"350");
+	q381_comps.set(3,"360");
+	}
+		
+	
+	
+	qst = new question("composed", 381);
+	qst.setProperty("components", q381_comps);
+	send qst;	
+	
+	
+	
+	qst = new question("scale", 390);
+	qst.setProperty("text", "Sto per leggerle delle affermazioni che altre persone hanno fatto riguardo <b>Certosa Galbani Classica</b> sulla base della sua confezione. </br>Per ognuna di esse vorrei che mi dicesse quanto &egrave; d’accordo o in disaccordo usando una scala da “Molto d’accordo” a “Molto in disaccordo”. </br>MOSTRARE MOCK UP "+label+" </br></br><b>Certosa Galbani Classica &egrave; un prodotto che ...</b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qq7");
+	vector q390_rows = new vector {
+		"<b>È di qualit&agrave; superiore</b>",
+		"Che sono disposto a pagare di pi&ugrave;",
+		"Adatto a tutta la famiglia",
+		"Adatto per un consumo giornaliero",
+		"<b>È fatto solo con latte italiano</b>",
+		"È cremoso",
+		"<b>Ha un gusto molto buono</b>",
+		"È fatto con latte regionale",
+		"<b>È fatto solo con ingredienti naturali</b>",
+		"Viene prodotto vicino al luogo di mungitura",
+		"E’ adatto ai bambini",
+		"È genuino",
+		"<b>Ha un sapore di latte fresco</b>",
+		"Si adatta ai miei bisogni",
+		"È diverso dagli altri prodotti in questa categoria"
+	};
+	qst.setProperty("rows", q390_rows);
+	vector q390_cols = new vector {
+		"Molto d’accordo",
+		"Abbastanza d’accordo",
+		"N’&egrave; d’accordo n&egrave; in disaccordo",
+		"Abbastanza in disaccordo",
+		"Molto in disaccordo"
+	};
+	qst.setProperty("cols", q390_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 400);
+	qst.setProperty("text", "Sto per leggerle delle affermazioni che altre persone hanno fatto riguardo alla marca <b>Certosa Galbani Classica</b> sulla base della sua confezione.  </br>Per ognuna di esse vorrei che mi dicesse quanto &egrave; d’accordo o in disaccordo usando una scala da “Molto d’accordo” a “Molto in disaccordo”.  </br>MOSTRARE MOCK UP "+label+"</br></br><b>Certosa Galbani...</b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qq8");
+	vector q400_rows = new vector {
+"È una marca che sento vicina",
+"È una marca di cui mi fido",
+"È una marca storica",
+"È una marca che fa prodotti con cura"
+	};
+	qst.setProperty("rows", q400_rows);
+	vector q400_cols = new vector {
+		"Molto d’accordo",
+		"Abbastanza d’accordo",
+		"N’&egrave; d’accordo n&egrave; in disaccordo",
+		"Abbastanza in disaccordo",
+		"Molto in disaccordo"
+	};
+	qst.setProperty("cols", q400_cols);
+	send qst;
+	
+	
+	
+		vector q410_rows = new vector {
+		"I colori in generale",
+		"Il colore bianco dello sfondo",
+		"L'immagine del formaggio",
+		"L'immagine della tovaglia",
+		"L'immagine dei Pomodori",
+		"L'immagine dell’insalata",
+		"#shLa parola 'Crescenza' (ROT 1 'CURRENT PACK') / 'Crescenza Italiana' (ROT 2 'NEW PACK')",
+		"#shLa scritta '100% Latte Italiano' (ROT 1 'CORRENTE') / 'Solo Latte Lombardo e Piemontese' (ROT 2 - NEW PACK)",
+		"Il colore blu della tovaglia",
+		"La forma della tovaglia",
+		"Il nome 'Certosa'",
+		"Il modo in cui &egrave; scritto 'Crescenza'",
+		"Il logo Galbani",
+		"La scritta «Senza Conservanti»",
+		"La bandiera italiana"
+	};
+	
+	
+	if (lectrot==0) {q410_rows.set(6, "La parola 'Crescenza'"); q410_rows.set(7, "La scritta '100% Latte Italiano'");}
+	if (lectrot==1) {q410_rows.set(6, "La parola 'Crescenza Italiana'"); q410_rows.set(7, "La scritta 'Solo Latte Lombardo e Piemontese'");}
+	
+	
+	
+	qst = new question("scale", 410);
+	qst.setProperty("text", "Sto per parlare di alcuni elementi della confezione di questa <b>Certosa Galbani Classica</b>. </br>Per ogni elemento, mi dica quale affermazione meglio descrive quanto le piace. </br></br>MOSTRARLI SUL MOCK UP "+label+"</br></br>MOSTRARE OGNI ELEMENTO DELLA CONFEZIONE");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qq9");
+	qst.setProperty("rows", q410_rows);
+	vector q410_cols = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("cols", q410_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 420);
+	qst.setProperty("text", "Sto per leggerle delle affermazioni che altre persone hanno fatto su questa confezione di <b>Certosa Galbani Classica</b>. </br>Per ognuna di esse vorrei che mi dicesse quanto &egrave; d’accordo o in disaccordo usando una scala da “Molto d’accordo” a “Molto in disaccordo” </br></br><b>Questa confezione...</b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qq10");
+	vector q420_rows = new vector {
+		"Si adatta alla marca Certosa Galbani",
+		"È chiara, leggibile",
+		"Fa capire molto chiaramente di che prodotto si tratta",
+		"Fornisce tutte le informazioni di cui ho bisogno",
+		"Guardandola posso quasi sentire il sapore e la consistenza del prodotto in bocca",
+		"Ha una grafica artigianale che richiama la freschezza del prodotto",
+		"Ha una grafica raffinata"
+	};
+	qst.setProperty("rows", q420_rows);
+	vector q420_cols = new vector {
+		"Molto d’accordo",
+		"Abbastanza d’accordo",
+		"N’&egrave; d’accordo n&egrave; in disaccordo",
+		"Abbastanza in disaccordo",
+		"Molto in disaccordo"
+	};
+	qst.setProperty("cols", q420_cols);
+	send qst;
+	
+	
+
+	
+	
+	
+	qst = new question("choice", 430);
+	qst.setProperty("text", "In quale misura acquisterebbe questa <b>Certosa Galbani Classica</b> 165gr al prezzo di 1,79 €?</br>LEGGERE E MOSTRARE MOCK UP "+label);
+	qst.setProperty("code", "qq11");
+	vector q430_opts = new vector {
+		"Lo acquisterei sicuramente",
+		"Lo acquisterei probabilmente",
+		"Non so se lo acquisterei o no",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q430_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 440);
+	qst.setProperty("text", "E quanto spesso acquisterebbe <b>Certosa Galbani Classica</b> 165gr al prezzo di 1.79€? </br>LEGGERE E MOSTRARE MOCK UP "+label);
+	qst.setProperty("code", "qq12");
+	vector q440_opts = new vector {
+		"Una volta a settimana o pi&ugrave;",
+		"2 o 3 volte la settimana",
+		"Una volta al mese",
+		"Una volta ogni 2/3 mesi",
+		"2/3 volte l’anno",
+		"Una volta l’anno",
+		"Meno spesso di una volta l’anno"
+	};
+	qst.setProperty("options", q440_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 450);
+	qst.setProperty("text", "Direbbe che <b>Certosa Galbani Classica</b> 165gr al prezzo di 1.79€ ha…</br> LEGGERE E MOSTRARE MOCK UP "+label);
+	qst.setProperty("code", "qq13");
+	vector q450_opts = new vector {
+"Vale molto di più del prezzo che costa",
+"Vale di più del prezzo che costa",
+"Vale il prezzo che costa",
+"Vale di meno del prezzo che costa",
+"Non vale per niente il prezzo che costa"
+	};
+	qst.setProperty("options", q450_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 460);
+	qst.setProperty("text", "Per quali piatti userebbe <b>Certosa Galbani Classica</b>?");
+	qst.setProperty("selection", "multiple");	
+	qst.setProperty("code", "qq14");
+	vector q460_opts = new vector {
+		"Primi piatti base pasta/riso",
+		"Lasagne, crespelle",
+		"Secondi piatti base di carne, pesce, uova, verdure…",
+		"Torte Salate",
+		"Ingrediente per dolci (es. cheese cake)",
+		"Da solo, cos&igrave; com'&egrave;",
+		"Focacce, pizze, torte salate",
+		"Antipasti/Stuzzichini a base di farina salati (es. vol-au-vent, tartine, pizzette...)",
+		"Controni di Verdure crude/Insalata di verdure crude, verdure cotte, patate",
+		"Farcitura Panini/Burger/Toast/Focacce…",
+		"Ingrediente per Sughi",
+		"Da solo su una fetta di pane (o altro..)",
+		"Spalmato su pane/ crostini con altri ingredienti",
+		"Altro (specificare)#so"
+	};
+	qst.setProperty("options", q460_opts);
+	send qst;
+	
+	
+
+	qst = new question("scale", 470);
+	qst.setProperty("text", "Per ognuno dei seguenti prodotti, pu&ograve; dirmi se le piacciono o non le piacciono in generale?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qq15");
+	vector q470_rows = new vector {
+		"Certosa Classica",
+		"Certosa Light",
+		"Certosa Senza lattosio",
+		"Certosino"
+	};
+	qst.setProperty("rows", q470_rows);
+	vector q470_cols = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("cols", q470_cols);
+	send qst;
+	
+	
+	qst = new question("choice", 480);
+	qst.setProperty("text", "Lei direbbe che questa gamma di prosotti si adatta …  alla marca Certosa Galbani? </br>LEGGERE E MOSTRARE BOARD RANGE "+label+"");
+	qst.setProperty("code", "qq16");
+	vector q480_opts = new vector {
+		"Molto bene",
+		"Bene",
+		"Abbastanza bene",
+		"Non molto bene",
+		"Per niente"
+	};
+	qst.setProperty("options", q480_opts);
+	send qst;
+	
+	
+
+
+	
+	vector q490_opts = new vector {
+		"I colori in generale",
+		"#shL'affermazione “<b><u>Alta digeribilit&agrave;</u></b>” (MOSTRARE Alta digeribilit&agrave; sul pack SENZA LATTOSIO)",
+		"L’immagine della <b>crescenza</b> (MOSTRARE L’immagine della crescenza sul pack SENZA LATTOSIO)",
+		"L’immagine della verdura (MOSTRARE L’immagine della verdura sul pack SENZA LATTOSIO)"
+	};
+	
+	if (lectrot==0) {q490_opts.set(1, "L'affermazione “<b><u>Alta digeribilit&agrave;</u></b>” (MOSTRARE Alta digeribilit&agrave; sul pack SENZA LATTOSIO)");}
+
+
+	qst = new question("choice", 490);
+	qst.setProperty("text", "Adesso le parlerò di alcuni elementi per ogni confezione di questa gamma di prodotti. </br>Per ogni elemento, mi dica quale affermazione meglio descrive quanto le piace.</br>MOSTRARLI SUL BOARD RANGE "+label+" </br></br></br>SENZA LATTOSIO");
+	qst.setProperty("code", "qq17");
+	qst.setProperty("options", q490_opts);
+	
+	
+	qst = new question("choice", 500);
+	qst.setProperty("text", "LIGHT");
+	qst.setProperty("code", "qq17b");
+	vector q500_opts = new vector {
+		"I colori in generale",
+		"L’immagine della <b>crescenza</b> (MOSTRARE L’immagine della crescenza sul pack LIGHT)",
+		"L’immagine della verdura (MOSTRARE L’immagine della verdura sul pack LIGHT)"
+	};
+	qst.setProperty("options", q500_opts);
+
+	
+	qst = new question("choice", 510);
+	qst.setProperty("text", "CERTOSINO");
+	qst.setProperty("code", "qq17c");
+	vector q510_opts = new vector {
+		"I colori in generale",
+		"Il logo “<b><u>Certosino</u></b>”",
+		"La scritta “<b><u>porzione per uno</u></b>” (MOSTRARE La scritta “porzione per uno” sul pack CERTOSINO)"
+	};
+	qst.setProperty("options", q510_opts);
+
+	
+	qst = new question("composed", 913);
+	vector q913_comps = new vector { "490", "500", "510"};
+	qst.setProperty("components", q913_comps);
+	send qst;
+
+
+	
+	
+	qst = new question("concept", 520);
+	qst.setProperty("text", "ISTRUZIONI PER LA GESTIONE DELL’INTERVISTA: </br></br>• TENERE FUORI DAL FRIGO PER 10 MINUTI </br>• SOLO DOPO 10 MINUTI, SCARTARE IL PRODOTTO (da pack esterno e da pirottino e incarto interno) </br>• PORLO SU PIATTO INTERO (SENZA TOCCARLO E RIBALTANDOLO PRIMA UNA VOLTA POI UNA SECONDA CON L’AIUTO DI DUE PIATTI PER LASCIARE IL TOP IN ALTO) E SENZA CARTA IN ASSENZA DELL’INTERVISTATA </br>• PRESENTARE LA CRESCENZA SENZA INCARTO, SCOLATA SUL PIATTINO SIGLATO (<u>Attenzione alla rotazione</u>) CON FORCHETTA E COLTELLO </br>• ATTENZIONE! <u>IL PRODOTTO NON DEVE ESSERE CAPOVOLTO</u> </br>• MANTENERE IL MOCK UP "+label+" VICINO AL PRODOTTO E FUORI DAL PIATTO");
+	send qst;
+	
+
+
+
+	
+	qst = new question("choice", 530);
+	qst.setProperty("text", "<u><b>VALUTAZIONE VISIVA</b></u></br></br>Direbbe che <u><b>l’aspetto di questo prodotto</b></u> le piace …");
+	qst.setProperty("code", "q100");
+	vector q530_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q530_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 540);
+	qst.setProperty("text", "Direbbe che il <u><b>colore del prodotto</b></u> &egrave;…");
+	qst.setProperty("code", "q105");
+	vector q540_opts = new vector {
+		"Troppo giallo",
+		"Giallo",
+		"Giusto",
+		"Un pò troppo bianco",
+		"Decisamente troppo bianco"
+	};
+	qst.setProperty("options", q540_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 550);
+	qst.setProperty("text", "<b>Adesso ne tagli un p&ograve; con il coltello, com’&egrave; abituata a fare.. senza ancora assaggiare il prodotto</b></br></br>Direbbe che la <u><b>consistenza al taglio</b></u> le piace …");
+	qst.setProperty("code", "q110");
+	vector q550_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q550_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 560);
+	qst.setProperty("text", "Direbbe che la <u><b>consistenza al taglio</b> di questo prodotto</u> &egrave;..");
+	qst.setProperty("code", "q115");
+	vector q560_opts = new vector {
+		"Decisamente troppo molle/morbida",
+		"Un po’ troppo molle/morbida",
+		"Giusta",
+		"Un po’ troppo compatta/Sostenuta",
+		"Decisamente troppo compatta/sostenuta"
+	};
+	qst.setProperty("options", q560_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 570);
+	qst.setProperty("text", "Direbbe che <u><b>l’odore</b></u> le piace...");
+	qst.setProperty("code", "q120");
+	vector q570_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q570_opts);
+	send qst;
+	
+	qst = new question("concept", 580);
+	qst.setProperty("text", "ISTRUZIONI PER LA GESTIONE DELL’INTERVISTA: </br>• INVITARE L’INTERVISTATA AD ASSAGGIARE IL PRODOTTO DA SOLO COSÌ COM’È </br>• LASCIARE IL PRODOTTO DI FRONTE ALL’INTERVISTATA DURANTE IL CORSO DELLA VALUTAZIONE </br>• RICORDARE ALL’INTERVISTATA CHE È LIBERA DI TAGLIARE E ASSAGGIARE LA CRESCENZA QUANTE VOLTE VUOLE");
+	send qst;
+
+	
+	
+	qst = new question("choice", 590);
+	qst.setProperty("text", "E ora che ha consumato questo prodotto, direbbe …? </br>LEGGERE");
+	qst.setProperty("code", "q130");
+	vector q590_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q590_opts);
+	send qst;
+	
+	
+	int lectq590 = system.getProperty("ans590");
+	
+	
+	
+	qst = new question("open", 600);
+	qst.setProperty("text", "Cosa le piace di questo prodotto?");
+	qst.setProperty("code", "q131");
+
+	
+	qst = new question("open", 610);
+	qst.setProperty("text", "E cosa altro le piace di questo prodotto?");
+	qst.setProperty("code", "q131b");
+
+	
+	qst = new question("open", 620);
+	qst.setProperty("text", "E cosa <b>non</b> le piace di questo prodotto?");
+	qst.setProperty("code", "q132");
+
+	
+	qst = new question("open", 630);
+	qst.setProperty("text", "E cosa altro <b>non</b> le piace di questo prodotto?");
+	qst.setProperty("code", "q132b");
+
+	
+	vector q632_comps = new vector { "600", "610", "620", "630"};
+
+	if (lectq590>2)
+	{
+	q632_comps.set(0,"620");
+	q632_comps.set(1,"630");
+	q632_comps.set(2,"600");
+	q632_comps.set(3,"610");
+	}
+		
+	
+	
+	qst = new question("composed", 632);
+	qst.setProperty("components", q632_comps);
+	send qst;		
+	
+	
+	
+	qst = new question("choice", 640);
+	qst.setProperty("text", "Direbbe che <u><b>il sapore del prodotto</b></u> le piace …");
+	qst.setProperty("code", "q135");
+	vector q640_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q640_opts);
+	send qst;
+	
+	qst = new question("choice", 650);
+	qst.setProperty("text", "Direbbe che <u><b>il sapore</b></u> di questo prodotto &egrave; …");
+	qst.setProperty("code", "q140");
+	vector q650_opts = new vector {
+		"Decisamente Troppo intenso / forte",
+		"Un po’ troppo intenso/forte",
+		"Giusto",
+		"Un po’ troppo delicato",
+		"Decisamente Troppo delicato"
+	};
+	qst.setProperty("options", q650_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 660);
+	qst.setProperty("text", "Direbbe che <u><b>il sapore di latte del prodotto</b></u> le piace …");
+	qst.setProperty("code", "q145");
+	vector q660_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q660_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 670);
+	qst.setProperty("text", "Direbbe che <u><b>il sapore di latte</b></u> di questo prodotto &egrave; …");
+	qst.setProperty("code", "q150");
+	vector q670_opts = new vector {
+		"Decisamente Troppo intenso / forte",
+		"Un po’ troppo intenso/forte",
+		"Giusto",
+		"Un po’ troppo delicato",
+		"Decisamente Troppo delicato"
+	};
+	qst.setProperty("options", q670_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 680);
+	qst.setProperty("text", "Direbbe che <u><b>il grado di salatura</b></u> di questo prodotto &egrave; …");
+	qst.setProperty("code", "q155");
+	vector q680_opts = new vector {
+		"Decisamente Troppo salato",
+		"Un po’ troppo salato",
+		"Giusto",
+		"Un po’ troppo poco salato",
+		"Decisamente troppo poco salato"
+	};
+	qst.setProperty("options", q680_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 690);
+	qst.setProperty("text", "Direbbe che <u><b>il grado di dolcezza</b></u> di questo prodotto &egrave;…");
+	qst.setProperty("code", "q160");
+	vector q690_opts = new vector {
+		"Decisamente Troppo dolce",
+		"Un po’ troppo dolce",
+		"Giusto",
+		"Un po’ troppo amaro",
+		"Decisamente Troppo amaro"
+	};
+	qst.setProperty("options", q690_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 700);
+	qst.setProperty("text", "Direbbe che <u><b>il grado di acidit&agrave;</b></u> di questo prodotto &egrave;…");
+	qst.setProperty("code", "q165");
+	vector q700_opts = new vector {
+		"Decisamente Troppo acido",
+		"Abbastanza Acido",
+		"Giusto",
+		"Non troppo acido",
+		"Decisamente poco acido"
+	};
+	qst.setProperty("options", q700_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 710);
+	qst.setProperty("text", "Direbbe che la<u> <b>consistenza in bocca </b></u>le piace …");
+	qst.setProperty("code", "q170");
+	vector q710_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q710_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 720);
+	qst.setProperty("text", "Direbbe che la <u><b>consistenza in bocca</b> di questo prodotto </u>&egrave;…");
+	qst.setProperty("code", "q175");
+	vector q720_opts = new vector {
+		"Decisamente Troppo molle/morbida",
+		"Un po’ troppo molle/morbida",
+		"Giusta",
+		"Un po’ troppo compatta/Sostenuta",
+		"Decisamente Troppo compatta/sostenuta"
+	};
+	qst.setProperty("options", q720_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 730);
+	qst.setProperty("text", "Direbbe che <u><b>il retrogusto</b></u> le piace…");
+	qst.setProperty("code", "q180");
+	vector q730_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q730_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 740);
+	qst.setProperty("text", "Direbbe che <u>il retrogusto</u> &egrave;…");
+	qst.setProperty("code", "q185");
+	vector q740_opts = new vector {
+		"Decisamente Troppo intenso / forte",
+		"Un po’ troppo intenso/forte",
+		"Giusto",
+		"Un po’ troppo delicato",
+		"Decisamente Troppo delicato"
+	};
+	qst.setProperty("options", q740_opts);
+	send qst;
+	
+	
+	qst = new question("concept", 750);
+	qst.setProperty("text", "</br>ASSAGGIO SUL CRACKERS </br></br><b>CHIEDERE ALL’INTERVISTATO DI SPALMARLO SU UN CRACKERS E ASSAGGIARLO</b> </br></br>ISTRUZIONI PER LA GESTIONE DELL’INTERVISTA: INVITARE L’INTERVISTATA A : </br>• BERE UN BICCHIERE D’ACQUA </br>• TAGLIARE LA CRESCENZA </br>• SPALMARE IL PRODOTTO SU UN CRACKER NON SALATO </br>• ASSAGGIARE NUOVAMENTE IL PRODOTTO </br>• LASCIARE IL PRODOTTO DI FRONTE ALL’INTERVISTATA DURANTE IL CORSO DELLA VALUTAZIONE, IN MODO CHE POSSA EVENTUALMENTE RIPROVARLO");
+	send qst;
+	
+	
+	qst = new question("choice", 760);
+	qst.setProperty("text", "Ora che lo ha assaggiato accompagnato a un cracker, mi pu&ograve; dare la sua opinione in generale su questo prodotto?</br>LEGGERE");
+	qst.setProperty("code", "q200");
+	vector q760_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q760_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 770);
+	qst.setProperty("text", "In particolare, come lo giudica in termini di spalmabilit&agrave;? </br>LEGGERE");
+	qst.setProperty("code", "q205");
+	vector q770_opts = new vector {
+		"Molto difficile da spalmare",
+		"Abbastanza difficile da spalmare",
+		"N&egrave; facile n&egrave; diffcile",
+		"Abbastanza facile da spalmare",
+		"Molto facile da spalmare"
+	};
+	qst.setProperty("options", q770_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 780);
+	qst.setProperty("text", "E ancora pensando alla consistenza del prodotto quando l’ha spalmato sul cracker, secondo lei il prodotto &egrave; … </br>LEGGERE");
+	qst.setProperty("code", "q210");
+	vector q780_opts = new vector {
+		"Decisamente Troppo molle/morbido",
+		"Un po’ troppo molle/morbido",
+		"Giusto",
+		"Un po’ troppo compatto",
+		"Decisamente Troppo compatto/sostenuto"
+	};
+	qst.setProperty("options", q780_opts);
+	send qst;
+	
+	
+	qst = new question("concept", 790);
+	qst.setProperty("text", "Pensi ora al prodotto nel suo complesso, a quando l’ha: </br>• osservato </br>• assaggiato da solo </br>• spalmato e  assaggiato col cracker");
+	send qst;
+	
+	
+	qst = new question("choice", 800);
+	qst.setProperty("text", "Tutto considerando Lei direbbe che questo prodotto…  </br>LEGGERE");
+	qst.setProperty("code", "q220");
+	vector q800_opts = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Né mi piace né mi dispiace",
+		"Mi piace poco",
+		"Mi piace pochissimo",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q800_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 810);
+	qst.setProperty("text", "Pensando ora a tutte le caratteristiche di questo prodotto, come lo giudica <u>rispetto all’idea che si era fatto prima di assaggiarlo? </u></br>LEGGERE");
+	qst.setProperty("code", "q225");
+	vector q810_opts = new vector {
+"Decisamente meglio",
+"Un po’ meglio",
+"Uguale",
+"Un po’ peggio",
+"Decisamente peggio"
+	};
+	qst.setProperty("options", q810_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 820);
+	qst.setProperty("text", "E, come lo giudica<u> rispetto alla crescenza/stracchino che acquista abitualmente ….</u>?  </br>LEGGERE");
+	qst.setProperty("code", "q230");
+	vector q820_opts = new vector {
+"Decisamente meglio",
+"Un po’ meglio",
+"Uguale",
+"Un po’ peggio",
+"Decisamente peggio"
+	};
+	qst.setProperty("options", q820_opts);
+	send qst;
+	
+	
+	qst = new question("scale", 830);
+	qst.setProperty("text", "Ora le legger&ograve; delle affermazioni che altre persone hanno fatto su questo prodotto.</br>Per ognuna di esse, in base a quanto ha assaggiato, vorrei che mi dicesse quanto &egrave; d’accordo o in disaccordo usando questa scala da “molto d’accordo” a “per niente d’accordo” in base all’esperienza di assaggio. </br>LEGGERE </br></br></br><b>Questo prodotto...</b>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q240");
+	vector q830_rows = new vector {
+		"<b>È di qualit&agrave; superiore</b>",
+		"Sono disposto a pagarlo di pi&ugrave;",
+		"Adatto a tutta la famiglia",
+		"Adatto per un consumo giornaliero",
+		"<b>È fatto solo con latte italiano</b>",
+		"È cremoso",
+		"<b>Ha un gusto molto buono</b>",
+		"È fatto con latte regionale",
+		"<b>È fatto solo con ingredienti naturali</b>",
+		"Viene prodotto vicino al luogo di mungitura",
+		"E’ adatto ai bambini",
+		"È genuino",
+		"<b>Ha un sapore di latte fresco</b>",
+		"Si adatta ai miei bisogni",
+		"È diverso dagli altri prodotti in questa categoria"
+	};
+	qst.setProperty("rows", q830_rows);
+	vector q830_cols = new vector {
+		"Molto d’accordo",
+		"Abbastanza d’accordo",
+		"N’&egrave; d’accordo n&egrave; in disaccordo",
+		"Abbastanza in disaccordo",
+		"Molto in disaccordo"
+	};
+	qst.setProperty("cols", q830_cols);
+	send qst;
+	
+	
+	qst = new question("choice", 840);
+	qst.setProperty("text", "Ora che ha provato <b>Certosa Galbani Classica</b> da 165gr, in quale misura lo acquisterebbe al prezzo di 1,79 €?   </br>LEGGERE");
+	qst.setProperty("code", "q245");
+	vector q840_opts = new vector {
+		"Lo acquisterei sicuramente",
+		"Lo acquisterei probabilmente",
+		"Non so se lo acquisterei o no",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q840_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 850);
+	qst.setProperty("text", "E quanto spesso acquisterebbe <b>Certosa Galbani Classica</b> da 165gr al prezzo di 1.79€? </br>LEGGERE");
+	qst.setProperty("code", "q250");
+	vector q850_opts = new vector {
+		"Una volta a settimana o pi&ugrave;",
+		"2 o 3 volte la settimana",
+		"Una volta al mese",
+		"Una volta ogni 2/3 mesi",
+		"2/3 volte l’anno",
+		"Una volta l’anno",
+		"Meno spesso di una volta l’anno"
+	};
+	qst.setProperty("options", q850_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 860);
+	qst.setProperty("text", "Direbbe che <b>Certosa Galbani Classica</b> da 165gr al prezzo di 1.79€ ...  </br>LEGGERE E MOSTRARE MOCK UP"+label);
+	qst.setProperty("code", "q255");
+	vector q860_opts = new vector {
+"Vale molto di più del prezzo che costa",
+"Vale di più del prezzo che costa",
+"Vale il prezzo che costa",
+"Vale di meno del prezzo che costa",
+"Non vale per niente il prezzo che costa"
+	};
+	qst.setProperty("options", q860_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 870);
+	qst.setProperty("text", "Per quali piatti userebbe <b>Certosa Galbani Classica</b>?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q260");
+	vector q870_opts = new vector {
+		"Primi piatti base pasta/riso",
+		"Lasagne, crespelle",
+		"Secondi piatti base di carne, pesce, uova, verdure…",
+		"Torte Salate",
+		"Ingrediente per dolci (es. cheese cake)",
+		"Da solo, cos&igrave; com'&egrave;",
+		"Focacce, pizze, torte salate",
+		"Antipasti/Stuzzichini a base di farina salati (es. vol-au-vent, tartine, pizzette...)",
+		"Controni di Verdure crude/Insalata di verdure crude, verdure cotte, patate",
+		"Farcitura Panini/Burger/Toast/Focacce…",
+		"Ingrediente per Sughi",
+		"Da solo su una fetta di pane (o altro..)",
+		"Spalmato su pane/ crostini con altri ingredienti",
+		"Altro (specificare)#so"
+	};
+	qst.setProperty("options", q870_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 880);
+	qst.setProperty("text", "Per concludere, le chieder&ograve; alcune informazioni su di lei e la sua famiglia.</br></br>Lei &egrave;:");
+	qst.setProperty("code", "1");
+	vector q880_opts = new vector {
+		"Nubile",
+		"Coniugata/convivente",
+		"Separata/divorziata",
+		"Vedova"
+	};
+	qst.setProperty("options", q880_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 890);
+	qst.setProperty("text", "Qual’&egrave; il suo titolo di studio?");
+	qst.setProperty("code", "2");
+	vector q890_opts = new vector {
+"Nessun titolo/licenza elementare",
+"Licenza media",
+"Licenza scuola superiore",
+"Laurea/diploma di laurea",
+"Master post laurea"
+	};
+	qst.setProperty("options", q890_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 900);
+	qst.setProperty("text", "Lei lavora?");
+	qst.setProperty("code", "5");
+	vector q900_opts = new vector {
+		"Si, a tempo pieno",
+		"Si, part time",
+		"No"
+	};
+	qst.setProperty("options", q900_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 910);
+	qst.setProperty("text", "Qual’&egrave; la sua professione?");
+	qst.setProperty("code", "6");
+	vector q910_opts = new vector {
+		"Dirigente, imprenditrice, libera professionista",
+		"Insegnante",
+		"Impiegata",
+		"Commerciante/esercente (in proprio)",
+		"Commerciante/esercente (alle dipendenze di altri)",
+		"Artigiana",
+		"Operaia",
+		"Studentessa",
+		"Casalinga",
+		"In cerca di prima occupazione",
+		"Disoccupata",
+		"Altro (specificare)	#so"
+	};
+	qst.setProperty("options", q910_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 920);
+	qst.setProperty("text", "Lei &egrave; il capofamiglia?");
+	qst.setProperty("code", "7");
+	vector q920_opts = new vector {
+		"Sì",
+		"No"
+	};
+	qst.setProperty("options", q920_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 930);
+	qst.setProperty("text", "Qual’&egrave; l’occupazione del capofamiglia?");
+	qst.setProperty("code", "8");
+	vector q930_opts = new vector {
+		"Dirigente, imprenditore, libera/o professionista",
+		"Insegnante",
+		"Impiegata/o",
+		"Commerciante/esercente (in proprio)",
+		"Commerciante/esercente (alle dipendenze di altri)",
+		"Artigiana/o",
+		"Operaia/o",
+		"Studente/essa",
+		"Casalinga",
+		"In cerca di prima occupazione",
+		"Disoccupata",
+		"Altro (specificare)	#so"
+	};
+	qst.setProperty("options", q930_opts);
+	send qst;
+	
+	
+	
+	
+///////screening	
+
+	
+	
+//	qst = new question("concept", 940);
+//	qst.setProperty("text", "Salve, sono…......... di Strategir IMR, sto conducendo una ricerca. Vuol rispondere a poche domande? Grazie!");
+//	send qst;
+	
+	
+	qst = new question("choice", 950);
+	qst.setProperty("text", "INTERVISTATORE CODIFICARE SESSO");
+	qst.setProperty("code", "qf0");
+	vector q950_opts = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", q950_opts);
+	send qst;
+	
+	int lectq950 = system.getProperty("ans950");
+	
+	if (lectq950==1){
+	
+	qst = new question("choice", 960);
+	qst.setProperty("text", "Lei &egrave; incinta?");
+	qst.setProperty("code", "qf0a");
+	vector q960_opts = new vector {
+		"S&igrave;",
+		"No"
+	};
+	qst.setProperty("options", q960_opts);
+	send qst;
+	
+					}
+	
+	
+	qst = new question("choice", 970);
+	qst.setProperty("text", "E’ affetto da qualche allergia alimentare?");
+	qst.setProperty("code", "qf0b");
+	vector q970_opts = new vector {
+		"SI",
+		"No"
+	};
+	qst.setProperty("options", q970_opts);
+	send qst;
+	
+	
+	qst = new question("open", 980);
+	qst.setProperty("text", "Quanti anni ha? </br>SCRIVERE ETA’ PUNTUALE");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "qf1");
+	send qst;
+	
+
+	int eta=(int)system.getProperty("ans980");
+	
+					if(eta<=17) 		   { reCod=0;}
+					if(eta>=18 && eta<=24) { reCod=1;}
+					if(eta>=25 && eta<=34) { reCod=2;}
+					if(eta>=35 && eta<=44) { reCod=3;}
+					if(eta>=45 && eta<=54) { reCod=4;}
+					if(eta>=55 && eta<=64) { reCod=5;}
+					if(eta>=65 && eta<=70) { reCod=6;}
+					if(eta>=71) 		   { reCod=7;}
+	
+	
+	
+		qst = new question("choice", 982);
+	qst.setProperty("text", "Quanti anni ha?");
+	qst.setProperty("code", "receta");
+	vector q982_opts = new vector {
+"Meno di  18 anni",
+"18-24 anni",
+"25-34 anni",
+"35-44 anni",
+"45-54 anni",
+"55 -64 anni",
+"65-70 anni",
+"71 o più"
+	};
+	qst.setProperty("options", q982_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	
+	
+	qst = new question("fixed_sum", 990);
+	qst.setProperty("text", "Potrebbe indicarci il numero di persone, per ogni  fascia d’et&agrave; e il sesso che vivono con lei (considerando anche se stesso)?");
+	qst.setProperty("code", "qf1b");
+	vector q990_opts = new vector {
+"Uomini - 18-24 anni",
+"Uomini - 25-34 anni",
+"Uomini - 35-44 anni",
+"Uomini - 45-54 anni",
+"Uomini - 55 -64 anni",
+"Uomini - 65-70 anni",
+"Uomini - 71 o più",
+"Donne - 18-24 anni",
+"Donne - 25-34 anni",
+"Donne - 35-44 anni",
+"Donne - 45-54 anni",
+"Donne - 55 -64 anni",
+"Donne - 65-70 anni",
+"Donne - 71 o più",
+"Bambini - 0-3 anni",
+"Bambini - 4-6 anni",
+"Bambini - 7-10 anni",
+"Bambini - 11-12 anni",
+"Bambini - 13-15 anni",
+"Bambini - 16-17 anni"
+	};	
+	qst.setProperty("fields", q990_opts);
+	qst.setProperty("show_sum", false);
+	qst.setProperty("sum", 0); // set total value
+    qst.setProperty("operator", ">"); //set total value parameter
+	qst.setProperty("show_sum", false); //hide sum box	
+//	qst.setProperty("label_at:0","<b>UOMINI</b>");	
+//	qst.setProperty("label_at:7","<b>DONNE</b>");	
+	send qst;	
+	
+	
+	qst = new question("choice", 1000);
+	qst.setProperty("text", "Vorremmo intervistare persone di determinate professioni. Mi dice se lei, qualche membro della sua famiglia o amico intimo lavora in uno dei seguenti settori?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qf2");
+	vector q1000_opts = new vector {
+		"Industria automobilistica",
+		"Editoria",
+		"Produzione o vendita di Cibo o Bevande",
+		"Supermercati/Ipermercati",
+		"Banche",
+		"Marketing, Ricerche di mercato",
+		"Stampa ad e. giornalismo",
+		"Pubblicit&agrave;",
+		"Altro"
+	};
+	qst.setProperty("options", q1000_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 1010);
+	qst.setProperty("text", "Ha preso parte a studi di Ricerche di Mercato  o a Ricerche negli ultimi 6 mesi?");
+	qst.setProperty("code", "qf3");
+	vector q1010_opts = new vector {
+		"S&igrave;",
+		"No"
+	};
+	qst.setProperty("options", q1010_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 1020);
+	qst.setProperty("text", "Chi si occupa dell’acquisto di prodotti alimentari per la famiglia ?");
+	qst.setProperty("code", "qf4");
+	vector q1020_opts = new vector {
+		"Io personalmente",
+		"Io e il mio cognuge/altre persone insieme",
+		"Esclusivamente il mio coniuge/altre persone"
+	};
+	qst.setProperty("options", q1020_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 1030);
+	qst.setProperty("text", "Quali tipi di prodotti ha comprato negli ultimi 12 mesi?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qf6");
+	vector q1030_opts = new vector {
+		"Crescenza/Stracchino",
+		"Mozzarella",
+		"Latte",
+		"Acqua Minerale",
+		"Olio di oliva"
+	};
+	qst.setProperty("options", q1030_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 1040);
+	qst.setProperty("text", "Quanto spesso acquista Crescenza/Stracchino? </br>CITARE E MOSTRARE CARTELLINO");
+	qst.setProperty("code", "qf9");
+	vector q1040_opts = new vector {
+		"Una volta a settimana o pi&ugrave;",
+		"Una volta ogni 2 o 3 settimane",
+		"Un volta al mese",
+		"Una volta ogni  2 o 3  mesi",
+		"2 o 3 volte l’anno",
+		"Una volta l’anno",
+		"Meno di una volta l’anno"
+	};
+	qst.setProperty("options", q1040_opts);
+	send qst;
+	
+	
+	qst = new question("choice", 1050);
+	qst.setProperty("text", "Di solito dove acquista la Crescenza/Stracchino?");
+	qst.setProperty("code", "qf9b");
+	vector q1050_opts = new vector {
+		"Solo allo scaffale frigo/vasca frigo",
+		"Solo al banco servito dal negoziante/banco gastronomia",
+		"Sia allo scaffale che al banco servito"
+	};
+	qst.setProperty("options", q1050_opts);
+	send qst;
+	
+	
+	qst = new question("concept", 1060);
+	qst.setProperty("text", "Nel corso di questa intervista parleremo della crescenza/stracchino confezionata. <br/>Le chiedo quindi di rispondere alle domande che le far&ograve; pensando specificatamente alla crescenza/stracchino confezionata che <u>acquista a scaffale</u> e <u>non</u> a quella al taglio.");
+	send qst;
+
+
+	
+	qst = new question("choice", 1070);
+	qst.setProperty("text", "Quali marche di Crescenza/Stracchino ha acquistato <u>negli ultimi 12 mesi?</u></br> MOSTRARE CARTELLINO.");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qf8a");
+	vector q1070_opts = new vector {
+		"CERTOSA/CERTOSA GALBANI",
+		"CERTOSINO/CERTOSINO GALBANI",
+		"CERTOSA GALBANI LIGHT",
+		"CERTOSA GALBANI SENZA LATTOSIO",
+		"INVERNIZZI/INVERNIZZINA",
+		"INVERNIZZI STRACCHINO/INVERNIZZINA STRACCHINO",
+		"GRANAROLO",
+		"GRANAROLO ACCADÌ/ACCADÌ",
+		"NONNO NANNI / LATTERIA MONTELLO",
+		"VALLELATA / STRACCHINO VALLELATA",
+		"PRODUTTORI LOCALI (Centrali del Latte)",
+		"MARCA DEL SUPERMERCATO",
+		"ALTRA MARCA (SPECIFICARE)#so#sf"
+	};
+	qst.setProperty("options", q1070_opts);
+	send qst;
+
+
+	count=0;
+	for(int i=0,12)
+	{
+	sel=system.getProperty("ans1070_"+i);
+	if (sel==true) { count=count+1; reCod=i; }
+	}
+
+	
+	
+	qst = new question("choice", 1080);
+	qst.setProperty("text", "Quale marca di Crescenza/Stracchino acquista pi&ugrave; spesso?</br> MOSTRARE CARTELLINO.");
+	qst.setProperty("code", "qf8b");
+	qst.setProperty("controller", 1070);
+	if (count==1){
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	}	
+	send qst;
+	
+	
+	
+	int lectq1080 = system.getProperty("ans1080");
+	if (lectq1080<=3) {reCod=0;}
+	if (lectq1080>=4) {reCod=1;}
+	
+		qst = new question("choice", 1082);
+	qst.setProperty("text", "Target");
+	qst.setProperty("code", "targ");
+	vector q1082_opts = new vector {
+"Target 1: MOP BUYER CERTOSA GALBANI",
+"Target 2: MOP BUYER COMPETITION"
+	};
+	qst.setProperty("options", q1082_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	
+	
+	int tar=system.getProperty("ans1082");	
+	cmd=q1082_opts.get(tar);
+	system.out("<div class='info'>TARGET: "+cmd+"</div>");	
+	
+	qst = new question("scale", 1090);
+	qst.setProperty("text", "Per ognuna delle seguenti marche di CRESCENZA/STRACCHINO, mi dica per favore quanto le piace usando la scala su questo cartellino da “Mi piace moltissimo” a “Non mi piace per niente”. </br> MOSTRARE CARTELLINO. ");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "qf12");
+	vector q1090_rows = new vector {
+		"Galbani Certosa",
+		"Nonno Nanni",
+		"Granarolo",
+		"Invernizzina",
+		"Marche del Supermercato",
+		"Marche Locali"
+	};
+	qst.setProperty("rows", q1090_rows);
+	vector q1090_cols = new vector {
+		"Mi piace moltissimo",
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Mi piace e non mi piace",
+		"Non mi piace abbastanza",
+		"Non mi piace molto",
+		"Non mi piace per niente",
+		"Non so"
+	};
+	qst.setProperty("cols", q1090_cols);
+	send qst;
+	
+	
+
+	
+	
+}

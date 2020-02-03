@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <title>Intervista in corso - Primis - IMR</title>
+        <link href="/primis/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="http://www.primisoft.com/primis/scripts/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://www.primisoft.com/primis/scripts/survey.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.primisoft.com/primis/styles/survey.css">
+
+    </head>
+    <body role="document">
+
+    <div class="container">
+        <div class="row">
+            <div id="logo" class="col-xs-3 col-md-3"></div>
+
+          <div id="sec-logo" class="col-xs-3 col-md-3"></div>
+      </div>
+    </div>
+       <div class="container"  role="main">
+            <div id='' style="position:relative; left:300px;">
+			<p style="font-size:18px"><b>GRAZIE INFINITE PER LA SUA COLLABORAZIONE!</b></p>
+			</div>
+        </div>
+       
+        <script type="text/javascript" src="/primis/bootstrap/js/bootstrap.min.js"></script>
+		<script>
+		url="https://s.cint.com/Survey/Complete?ProjectToken=8c0a9a3a-f050-4540-8466-9768d759983b";
+		 $(document).ready(function() {
+		 $.ajax(
+          url,
+          {
+            
+            data:{
+              
+            },
+            complete: function(resp){
+              //restituisce 1 quando va a buon fine
+            if (resp.responseText==1){
+            
+			//alert('riuscita');
+
+            }
+            else
+            {
+            //alert('Problema server...');
+            
+            }
+            }
+          }
+          );
+		  });
+		</script>
+    </body>
+</html>

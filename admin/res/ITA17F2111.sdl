@@ -1,0 +1,995 @@
+//#export vars "recodleg"
+//http://www.primisoft.com/primis/run.do?sid=ITA17F2111&prj=BRS&uid=GUEST
+//http://www.primisoft.com/primis/run.do?sid=ITA17F2111&prj=BRS&uid=GUEST&cella=1&ricq21=1
+
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string opt;
+string label;
+int r1;
+string img;
+string img1;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int qid;
+int n;
+int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+system.setProperty("env", "debug:false");
+//system.setProperty("env", "browser:full");
+
+
+	string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+	"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+
+/////// DIARY /////////
+int baseQid=1100;
+int qid1;
+int qid2;
+int qid3;
+int qid4;
+int qid5;
+int qid6;
+int qid7;
+int qid8;
+int qid9;
+int qid10;
+int qid11;
+
+int index;
+
+	int lectq20;
+	int lectq40;
+		boolean lectq70;
+		int lectq100;
+		string cella=system.getProperty("cella");
+		string ricq21=system.getProperty("ricq21");
+	int lectq122;
+	int lectq480;
+
+
+	for(int i=0,7)
+				{
+
+index=i+1;
+
+qid1=baseQid+11*i;
+qid2=baseQid+11*i+10;
+qid3=baseQid+11*i+20;
+qid4=baseQid+11*i+30;
+qid5=baseQid+11*i+40;
+qid6=baseQid+11*i+50;
+qid7=baseQid+11*i+60;
+qid8=baseQid+11*i+70;
+qid9=baseQid+11*i+80;
+qid10=baseQid+11*i+90;
+qid11=baseQid+11*i+100;
+
+	if (index==1)
+				 {
+
+	qst = new question("choice", qid1);
+	qst.setProperty("text", "DIARIO PER OGNI ASSUNZIONE <br>Diario <b>"+index+"</b>° giorno <br>Come si sentiva prima dell’assunzione?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.4a"+i);
+	vector q60_opts = new vector {
+		"mi sentivo scombussolato/a",
+		"mi sentivo appesantito/a",
+		"non mi sentivo completamente svuotato/a",
+		"mi sentivo leggero/a",
+		"mi sentivo pulito/a dentro",
+		"mi sentivo sicuro/a di me",
+		"sentivo il mio intestino libero",
+		"mi sentivo bene/miglioramenti su tutto l&#39;organismo, non solo l&#39;intestino",
+		"sentivo miglioramenti sul mio aspetto fisico (es. ventre piatto, pelle pi&ugrave; liscia ecc.)",
+		"Altro e cio&egrave;…#so#sf"
+	};
+	qst.setProperty("options", q60_opts);
+	send qst;
+
+
+				}
+
+
+	if (index>1)
+				 {
+
+	qst = new question("choice", qid2);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Quante capsule/compresse ha preso nell’arco delle ultime 24 ore?");
+	qst.setProperty("code", "q3.1"+i);
+	vector q20_opts = new vector {
+		"Ho preso 2 capsule/compresse, come indicato",
+		"Ho preso un numero di capsule/compresse diverso da quello indicato e cio&egrave;#so",
+		"Non ho preso nessuna capsula"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+
+	lectq20=system.getProperty("ans"+qid2);
+
+	if (lectq20>0){
+
+	qst = new question("open", qid3);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Per quali motivi non ha preso il numero di capsule/compresse consigliato? <div class=&#39;info&#39;>Specifichi per favore perché ne ha prese un numero diverso da 2 </div>");
+	qst.setProperty("code", "q3.2"+i);
+	send qst;
+					}
+
+
+	if (lectq20<2){
+
+	qst = new question("choice", qid4);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Registrare il momento di assunzione della/e capsule/compresse ingerite nell’arco delle ultime 24 ore. <br>Assunzione richiesta: la sera, prima di andare a letto. <br>In caso di assunzione in un momento diverso dalle indicazioni ricevute specificare quando");
+	qst.setProperty("code", "q3.3"+i);
+	vector q40_opts = new vector {
+		"La sera, prima di andare a letto",
+		"In un altro momento della giornata"
+	};
+	qst.setProperty("options", q40_opts);
+	send qst;
+
+	 lectq40=system.getProperty("ans"+qid4);
+
+	if (lectq40==1){
+
+	qst = new question("choice", qid5);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Registrare l’esatto momento di assunzione del rimedio nell’arco delle ultime 24 ore, se diverso da quello consigliato.");
+	qst.setProperty("code", "q3.3bis"+i);
+	vector q50_opts = new vector {
+		"La mattina/appena sveglio/a",
+		"Durante la mattinata",
+		"Prima/dopo pranzo",
+		"Nel pomeriggio",
+		"Prima/dopo cena"
+	};
+	qst.setProperty("options", q50_opts);
+	send qst;
+
+				}
+
+
+
+	qst = new question("choice", qid6);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Come si &egrave; sentito dopo l’assunzione, nell’arco delle ultime 24 ore?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.4b"+i);
+	vector q70_opts = new vector {
+		"mi sentivo scombussolato/a",
+		"mi sentivo appesantito/a",
+		"non mi sentivo completamente svuotato/a",
+		"mi sentivo leggero/a",
+		"mi sentivo pulito/a dentro",
+		"mi sentivo sicuro/a di me",
+		"sentivo il mio intestino libero",
+		"mi sentivo bene/miglioramenti su tutto l&#39;organismo, non solo l&#39;intestino",
+		"sentivo miglioramenti sul mio aspetto fisico (es. ventre piatto, pelle pi&ugrave; liscia ecc.)",
+		"Altro e cio&egrave;…(specificare)#so#sf",
+		"non ho percepito nessun effetto#sf#se"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+
+
+
+	count=0;
+
+	for (int j=0,9){
+	lectq70=system.getProperty("ans"+qid6+"_"+j);
+	if (lectq70==true)
+		{
+		count=count+1;
+		}
+					}
+
+	if (count>=1) {
+
+	qst = new question("choice", qid7);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Dopo quanto tempo la/le capsule/compresse che ha ingerito hanno avuto l’effetto sperato?");
+	qst.setProperty("code", "q3.5"+i);
+	vector q80_opts = new vector {
+		"Immediatamente dopo averla/e ingerite",
+		"Poche ore dopo averla/e ingerite",
+		"Stamattina, ovvero il mattino del giorno dopo l’assunzione",
+		"In un altro momento della giornata e cio&egrave; (specificare)#so"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+
+				}
+
+
+
+	qst = new question("choice", qid8);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Ha avuto effetti collaterali indesiderati nell’arco delle ultime 24 ore? Se s&igrave;, quali?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q3.6"+i);
+	vector q90_opts = new vector {
+		"Crampi/coliche addominali",
+		"Nausea",
+		"Vomito",
+		"Diarrea",
+		"Emicrania",
+		"Febbre",
+		"Altro (specificare)#so#sf",
+		"Non ho avuto nessun effetto collaterale#se#sf"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+
+				}
+
+
+				}
+
+
+
+
+	qst = new question("choice", qid9);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Numero di evacuazioni avute nell’arco delle ultime 24 ore");
+	qst.setProperty("code", "q3.7"+i);
+	vector q100_opts = new vector {
+		"1",
+		"2",
+		"3",
+		"Pi&ugrave; di 3",
+		"No, nessuna"
+	};
+	qst.setProperty("options", q100_opts);
+	send qst;
+
+	 lectq100=system.getProperty("ans"+qid9);
+
+
+	if (lectq100<=3){
+
+	vector q110_opts = new vector
+			{
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff1.gif'width='400px'/>",
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff2.gif'width='400px'/>",
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff3.gif'width='400px'/>",
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff4.gif'width='400px'/>",
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff5.gif'width='400px'/>",
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff6.gif'width='400px'/>",
+			"<img src='http://www.primisoft.com/fields/BRS/ITA17F2111/resources/ff7.gif'width='400px'/>"
+			};
+
+
+
+
+	qst = new question("choice", qid10);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Guardi con attenzione l’immagine di seguito riportata…si tratta di una scala delle feci usata in ambito medico. <br>Quale tipologia meglio rappresenta la/le sue evacuazioni nell’arco delle ultime 24 ore?");
+	qst.setProperty("code", "q3.8"+i);
+	qst.setProperty("options", q110_opts);
+	send qst;
+
+
+
+	qst = new question("choice", qid11);
+	qst.setProperty("text", "Diario <b>"+index+"</b>° giorno <br>Quale tra le seguenti sensazioni descrive meglio il suo stato dopo la/le sue evacuazioni delle sue ultime 24 ore?");
+	qst.setProperty("code", "q3.9"+i);
+	vector q120_opts = new vector {
+		"Mi sento completamente svuotato/a",
+		"Mi sento abbastanza svuotato/a",
+		"Mi sento come prima dell’evacuazione",
+		"Mi sento poco svuotato/a",
+		"Non mi sento per niente svuotato/a"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+
+
+
+				}
+
+
+
+}
+
+
+
+
+
+cod="<script type='text/javascript'> $(document).ready(diverse);</script>";
+
+
+/////// RECALL /////////
+
+
+
+		qst = new question("choice", 122);
+	qst.setProperty("text", "<b>Domanda utile solo per la fase di testing</b> <br>Registrare la cella:");
+	qst.setProperty("code", "q1.00");
+	vector q122_opts = new vector {
+"Cella 1 - FCAA",
+"Cella 2 - FCAN",
+"Cella 3 - FCON",
+"Cella 4 - STAA"
+	};
+	qst.setProperty("options", q122_opts);
+	send qst;
+
+	 lectq122=system.getProperty("ans122");
+	if (lectq122==0){cella="1";}
+	if (lectq122==1){cella="2";}
+	if (lectq122==2){cella="3";}
+	if (lectq122==3){cella="4";}
+
+
+	qst = new question("concept", 130);
+	qst.setProperty("text", "Le faremo ora alcune domande relative al prodotto che le abbiamo chiesto di provare negli scorsi giorni.<br>");
+
+
+
+	qst = new question("choice", 140);
+	qst.setProperty("text", "<br>Quanto &egrave; rimasto/a soddisfatto/a nel complesso del prodotto che ha provato?<br>");
+	qst.setProperty("code", "q4.1");
+	vector q140_opts = new vector {
+		"Molto soddisfatto",
+		"Abbastanza soddisfatto",
+		"Soddisfatto cos&igrave; cos&igrave;",
+		"Poco soddisfatto",
+		"Per niente soddisfatto"
+	};
+	qst.setProperty("options", q140_opts);
+
+
+
+	  qst = new question("composed", 142);
+    vector q142_comps = new vector { "130", "140" };
+    qst.setProperty("components", q142_comps);
+    send qst;
+
+
+	qst = new question("open", 150);
+	qst.setProperty("text", "Quali sono gli aspetti che l’hanno soddisfatta di questo prodotto? <br>Descriva per favore tutto ci&ograve; che le viene in mente e cerchi di motivare la sua risposta");
+	qst.setProperty("code", "q4.2");
+
+
+
+	qst = new question("open", 160);
+	qst.setProperty("text", "<br>E quali sono gli aspetti che non l’hanno soddisfatta/l’hanno soddisfatta <u>di meno</u>? <br>Descriva per favore tutto ci&ograve; che le viene in mente e cerchi di motivare la sua risposta");
+	qst.setProperty("code", "q4.3");
+
+
+	  qst = new question("composed", 162);
+    vector q162_comps = new vector { "150", "160" };
+    qst.setProperty("components", q162_comps);
+    send qst;
+
+
+	qst = new question("choice", 170);
+	qst.setProperty("text", "Quanto secondo lei questo prodotto &egrave; <u>adatto</u> alle sue esigenze?");
+	qst.setProperty("code", "q4.4");
+	vector q170_opts = new vector {
+		"Molto adatto",
+		"Abbastanza adatto",
+		"Cos&igrave; Cos&igrave;",
+		"Poco adatto",
+		"Per niente adatto"
+	};
+	qst.setProperty("options", q170_opts);
+	send qst;
+
+
+	qst = new question("choice", 180);
+	qst.setProperty("text", "Quale tra le seguenti affermazioni meglio descrive <u>quanto &egrave; diverso</u> in termini di efficacia per lei questo prodotto rispetto ai prodotti che ha provato in passato?");
+	qst.setProperty("code", "q4.5");
+	vector q180_opts = new vector {
+		"E’ completamente diverso, non esiste un prodotto simile",
+		"E’ diverso dai prodotti esistenti",
+		"E’ diverso, anche se non significativamente diverso",
+		"Non &egrave; diverso dai prodotti esistenti",
+		"Per niente diverso, &egrave; come gli altri"
+	};
+	qst.setProperty("options", q180_opts);
+	send qst;
+
+
+	qst = new question("choice", 190);
+	qst.setProperty("text", "E quale tra le seguenti affermazioni meglio descriverebbe la sua <u>intenzione ad acquistare</u> questo prodotto se lo trovasse presso il supermercato/la farmacia dove abitualmente si reca?");
+	qst.setProperty("code", "q4.6");
+	vector q190_opts = new vector {
+		"Sicuramente lo acquisterei",
+		"Probabilmente lo acquisterei",
+		"Non so se lo acquisterei o meno",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+
+
+	qst = new question("scale", 200);
+	qst.setProperty("text", cod+"Di seguito sono riportate alcune caratteristiche che un rimedio per la stitichezza pu&ograve; avere. <br>Mi dica per favore quanto ciascuna &egrave; adatta a descrivere il prodotto che ha provato negli scorsi giorni.");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4.7");
+	vector q200_rows = new vector {
+		"Agisce in modo mirato, senza effetti collaterali",
+		"Si pu&ograve; usare a lungo senza che faccia male",
+		"Aiuta l’intestino a funzionare in modo normale",
+		"Con un effetto rapido/immediato",
+		"Mi fa sentire pi&ugrave; leggero/a",
+		"Mi fa sentire pulito/a dentro",
+		"Ha un’azione di lunga durata/i benefici durano pi&ugrave; giorni",
+		"Ha un’azione delicata sul mio intestino",
+		"Non interferisce con i processi naturali dell’intestino",
+		"Fa bene a tutto l’organismo, non solo all’intestino",
+		"Migliora anche il mio aspetto estetico, mi rende il ventre piatto",
+		"Ha un effetto preventivo rispetto ad episodi futuri",
+		"Mi fa andare in bagno costi quel che costi",
+		"Fa bene anche per altro, non &egrave; un semplice lassativo",
+		"Efficace quando usato con continuit&agrave;/dopo averlo preso pi&ugrave; volte"
+	};
+	qst.setProperty("rows", q200_rows);
+	vector q200_cols = new vector {
+		"Molto adatta",
+		"Abbastanza adatta",
+		"Cos&igrave; cos&igrave;",
+		"Poco adatta",
+		"Per niente adatta"
+	};
+	qst.setProperty("cols", q200_cols);
+	send qst;
+
+
+	qst = new question("scale", 210);
+	qst.setProperty("text", "Di seguito sono riportate alcune caratteristiche su come un rimedio per la stitichezza pu&ograve; farla sentire. <br>Mi dica per favore quanto ciascuna &egrave; adatta a descrivere il prodotto che ha provato negli scorsi giorni.");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4.8");
+	vector q210_rows = new vector {
+		"Mi consente di godere la mia quotidianit&agrave; liberamente, senza sentirmi scombussolato/a",
+		"Mi fa sentire in armonia con il mio corpo",
+		"Mi consente di gestire il disturbo con serenit&agrave;",
+		"Mi fa sentire di avere le cose sotto controllo",
+		"Mi fa sentire sicuro/a di me",
+		"Mi fa sentire vitale/attivo"
+	};
+	qst.setProperty("rows", q210_rows);
+	vector q210_cols = new vector {
+		"Molto adatta",
+		"Abbastanza adatta",
+		"Cos&igrave; cos&igrave;",
+		"Poco adatta",
+		"Per niente adatta"
+	};
+	qst.setProperty("cols", q210_cols);
+	send qst;
+
+
+	qst = new question("scale", 220);
+	qst.setProperty("text", "Nel complesso, durante i 7 giorni di prova di prodotto, quanto spesso le &egrave; capitato di provare le seguenti sensazioni a causa del suo disturbo intestinale? <div class='info'>Per rispondere utilizzi la scala: sempre, di solito, una volta ogni tanto, raramente, mai</div> <br>Mi sono sentito/a…");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.14bis");
+	vector q220_rows = new vector {
+		"Scoraggiato/a perché non sto migliorando",
+		"Incapace di risolvere i miei disturbi intestinali",
+		"Frustrato/a perché i rimedi che ho provato non funzionano",
+		"Preoccupato che questo disturbo non passi",
+		"Depresso/a per il fatto che i miei disturbi intestinali stiano condizionando la mia vita",
+		"Preoccupato/a che questo significhi che il mio corpo ha qualcosa di pi&ugrave; grave"
+	};
+	qst.setProperty("rows", q220_rows);
+	vector q220_cols = new vector {
+		"Sempre",
+		"Di solito",
+		"Una volta ogni tanto",
+		"Raramente",
+		"Mai"
+	};
+	qst.setProperty("cols", q220_cols);
+	send qst;
+
+
+	qst = new question("scale", 230);
+	qst.setProperty("text", "E durante questi 7 giorni i suoi disturbi intestinali hanno avuto un impatto negativo su qualcuno dei seguenti aspetti? <div class='info'>Per graduare la sua risposta utilizzi la scala: molto, abbastanza, cos&igrave; cos&igrave;, poco, per niente </div>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.15bis");
+	vector q230_rows = new vector {
+		"La relazione con i suoi amici",
+		"La relazione con i suoi colleghi/ collaboratori",
+		"La relazione con i suoi conoscenti",
+		"Gli incontri con le persone che non conosce",
+		"La sua abilit&agrave; a farsi nuovi amici"
+	};
+	qst.setProperty("rows", q230_rows);
+	vector q230_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; Cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q230_cols);
+	send qst;
+
+
+	qst = new question("scale", 240);
+	qst.setProperty("text", "E sempre pensando a questi 7 giorni di prova del prodotto, quanto spesso – utilizzando una scala che va da 5 sempre a 1 mai – a causa dei suoi disturbi intestinali <br>le &egrave; capitato di…");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.16bis");
+	vector q240_rows = new vector {
+		"…evitare cibi che le piacciono?",
+		"…limitare la quantit&agrave; di alimenti che ingerisce?",
+		"…limitare i tipi di alimenti che ingerisce?"
+	};
+	qst.setProperty("rows", q240_rows);
+	vector q240_cols = new vector {
+		"Sempre",
+		"Di solito",
+		"Una volta ogni tanto",
+		"Raramente",
+		"Mai"
+	};
+	qst.setProperty("cols", q240_cols);
+	send qst;
+
+
+	qst = new question("scale", 250);
+	qst.setProperty("text", "E in che misura in questi 7 giorni si &egrave; sentito/a…. <div class='info'>Per graduare la sua risposta utilizzi la scala: molto, abbastanza, cos&igrave; cos&igrave;, poco, per niente</div>");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.17bis");
+	vector q250_rows = new vector {
+		"…imbarazzato/a di dover andare in bagno fuori casa?",
+		"…preoccupato/a di trovarsi lontano/a da un bagno?",
+		"…preoccupato/a di dover utilizzare un bagno pubblico?",
+		"…imbarazzato/a circa la quantit&agrave; di tempo trascorsa in bagno?"
+	};
+	qst.setProperty("rows", q250_rows);
+	vector q250_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; Cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q250_cols);
+	send qst;
+
+
+	qst = new question("scale", 260);
+	qst.setProperty("text", cod+"Di seguito sono riportati alcuni sintomi che la stitichezza pu&ograve; dare. <br>Indichi per favore quanto ciascuno di questi &egrave; stato grave per lei negli ultimi 7 giorni");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q1.18bis");
+	vector q260_rows = new vector {
+		"Fastidi allo stomaco",
+		"Dolori di stomaco",
+		"Gonfiori di stomaco",
+		"Crampi allo stomaco",
+		"Dolorosi movimenti intestinali",
+		"Bruciori rettali durante o dopo un’evacuazione",
+		"Sanguinamento o tagli rettali durante o dopo un’evacuazione",
+		"Evacuazioni incomplete, come se non avessi “finito”",
+		"Feci troppo dure",
+		"Feci troppo piccole",
+		"Sforzarmi per cercare di evacuare",
+		"Avere la sensazione di dover evacuare ma non riuscire (falso allarme)"
+	};
+	qst.setProperty("rows", q260_rows);
+	vector q260_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; Cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q260_cols);
+	send qst;
+
+
+	qst = new question("choice", 270);
+	qst.setProperty("text", "Come valuta nel complesso <u>l’efficacia</u> di questo prodotto?");
+	qst.setProperty("code", "q4.9");
+	vector q270_opts = new vector {
+		"Molto efficace",
+		"Abbastanza efficace",
+		"Efficace cos&igrave; cos&igrave;",
+		"Poco efficace",
+		"Per niente efficace"
+	};
+	qst.setProperty("options", q270_opts);
+	send qst;
+
+
+	qst = new question("choice", 280);
+	qst.setProperty("text", "E i <u>tempi di azione</u>?");
+	qst.setProperty("code", "q4.10");
+	vector q280_opts = new vector {
+		"Troppo lunghi",
+		"Un po’ troppo lunghi",
+		"Giusti",
+		"Un po&#39; troppo brevi",
+		"Troppo brevi"
+	};
+	qst.setProperty("options", q280_opts);
+	send qst;
+
+
+	qst = new question("choice", 290);
+	qst.setProperty("text", "E come valuta nel complesso <u>l’intensit&agrave; dell’azione</u> del prodotto?");
+	qst.setProperty("code", "q4.11");
+	vector q290_opts = new vector {
+		"E’ troppo forte",
+		"E’ un po’ forte",
+		"E’ intenso nella giusta misura",
+		"E’ un po&#39; delicato/debole",
+		"E’ troppo delicato/debole"
+	};
+	qst.setProperty("options", q290_opts);
+	send qst;
+
+
+
+	qst = new question("choice", 300);
+	qst.setProperty("text", "Come valuta l’assunzione consigliata di 2 capsule/compresse al giorno?");
+	qst.setProperty("code", "q4.12");
+	vector q300_opts = new vector {
+		"Eccessiva",
+		"Giusta",
+		"Insufficiente"
+	};
+	qst.setProperty("options", q300_opts);
+	send qst;
+
+	ansId=system.getProperty("ans300");
+	label=q300_opts.get(ansId);
+
+	if (ansId==0 || ansId==2){
+
+	qst = new question("open", 310);
+	qst.setProperty("text", "Per quali motivi ha valutato la dose consigliata "+label+"?");
+	qst.setProperty("code", "q4.12bis");
+	send qst;
+
+							}
+
+
+	qst = new question("choice", 320);
+	qst.setProperty("text", "Quanto le piace <u>l’aspetto</u> di questo prodotto?");
+	qst.setProperty("code", "q4.14");
+	vector q320_opts = new vector {
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Mi piace cos&igrave; cos&igrave;",
+		"Mi piace poco",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q320_opts);
+	send qst;
+
+
+	qst = new question("choice", 330);
+	qst.setProperty("text", "Quanto le piace <u>il colore</u> di questo prodotto?");
+	qst.setProperty("code", "q4.15");
+	vector q330_opts = new vector {
+		"Mi piace molto",
+		"Mi piace abbastanza",
+		"Mi piace cos&igrave; cos&igrave;",
+		"Mi piace poco",
+		"Non mi piace per niente"
+	};
+	qst.setProperty("options", q330_opts);
+	send qst;
+
+
+	qst = new question("choice", 340);
+	qst.setProperty("text", "Come valuta <u>il sapore/gusto</u> che il prodotto le lascia in bocca?");
+	qst.setProperty("code", "q4.16");
+	vector q340_opts = new vector {
+		"Non lascia nessun sapore in bocca",
+		"Lascia un sapore gradevole",
+		"Lascia un sapore sgradevole"
+	};
+	qst.setProperty("options", q340_opts);
+	send qst;
+
+
+	qst = new question("choice", 350);
+	qst.setProperty("text", "Quanto le sembra <u>facile da ingerire</u> questo prodotto?");
+	qst.setProperty("code", "q4.17");
+	vector q350_opts = new vector {
+		"Molto facile",
+		"Abbastanza facile",
+		"Facile cos&igrave; cos&igrave;",
+		"Poco facile",
+		"Per niente facile"
+	};
+	qst.setProperty("options", q350_opts);
+	send qst;
+
+
+	qst = new question("choice", 360);
+	qst.setProperty("text", "Definirebbe la <u>dimensione</u> di questa capsula/compressa…");
+	qst.setProperty("code", "q4.18");
+	vector q360_opts = new vector {
+		"Troppo grande",
+		"Un po&#39; grande",
+		"Della giusta dimensione",
+		"Un po&#39; piccola",
+		"Troppo piccola"
+	};
+	qst.setProperty("options", q360_opts);
+	send qst;
+
+
+
+
+	vector q370_opts = new vector {
+		"#shCompresse",
+		"#shCapsule",
+		"Bustine da sciogliere in acqua",
+		"Gocce",
+		"Sciroppo",
+		"Infuso in bustine",
+		"Infuso preparato solubile",
+		"Alimento (marmellata, cioccolata,…)",
+		"Altro (specificare) #so"
+	};
+
+
+
+	if (cella=="1" || cella=="2" || cella=="3"){q370_opts.set(0,"Compresse"); q370_opts.set(1,"Capsule"); label="Fave di Fuca";}
+	if (cella=="4"){q370_opts.set(1,"Capsule"); q370_opts.set(0,"Compresse"); label="Sollievo Bio Tav";}
+
+	qst = new question("choice", 370);
+	qst.setProperty("text", "Indipendentemente dalla forma farmaceutica con cui ha provato questo prodotto, in quale forma lo preferirebbe? <br>Pu&ograve; indicare sia la stessa forma provata sia una forma diversa");
+	qst.setProperty("code", "q4.19");
+	qst.setProperty("options", q370_opts);
+	send qst;
+
+
+	qst = new question("choice", 380);
+	qst.setProperty("text", "E quali delle seguenti frasi meglio descrive le modalit&agrave; che lei ha utilizzato per assumere le capsule/compresse in questi 7 giorni?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4.19bis");
+	vector q380_opts = new vector {
+		"Ho assunto le capsule/compresse bevendo molta acqua",
+		"Ho assunto le capsule/compresse bevendo poca acqua",
+		"Ho assunto le capsule/compresse senza bere acqua"
+	};
+	qst.setProperty("options", q380_opts);
+	send qst;
+
+
+	qst = new question("choice", 390);
+	qst.setProperty("text", "Ha ingerito il rimedio cos&igrave; come l’ha trovato nella confezione o ha sentito l’esigenza di frantumarlo/aprirlo?");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4.19ter");
+	vector q390_opts = new vector {
+		"Ho frantumato/aperto in pi&ugrave; parti il prodotto",
+		"Ho mandato gi&ugrave; il prodotto cos&igrave; come l’ho trovato nella confezione"
+	};
+	qst.setProperty("options", q390_opts);
+	send qst;
+
+
+	qst = new question("concept", 400);
+	qst.setProperty("text", "Il prodotto che le abbiamo chiesto di provare negli scorsi giorni &egrave; della marca <b>"+label+"</b>.");
+    send qst;
+
+
+
+
+
+////POI COMMENTA
+
+	qst = new question("choice", 403);
+	qst.setProperty("text", "<b>Domanda utile solo per la fase di testing: q2.1 (Screening)</b> <br>Quali tra le seguenti marche/prodotti per combattere la stitichezza conosce, anche solo per averli sentiti nominare? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q2.1");
+	vector q403_opts = new vector {
+		"Fave di Fuca",
+		"Fave di Fuca - Hydralax",
+		"Sollievo Aboca",
+		"Benefibra",
+		"Confetto Falqui",
+		"Dicopeg",
+		"Guttalax",
+		"Kel&egrave;mata tisana",
+		"Le dieci erbe",
+		"Normalene",
+		"Plantalax",
+		"Psyllogel",
+		"Pursennid",
+		"Sanipeg",
+		"Agpeg",
+		"Aboca Melilax",
+		"Verecolene",
+		"Verum",
+		"Rimedi a base di erbe/prodotti naturali (es: tisane, semi di lino, aloe, miscele di erbe ecc.)",
+		"Fibre/ integratori di fibre",
+		"Altri integratori",
+		"Rimedio omeopatico",
+		"Tamarine",
+		"Le Dodici Erbe",
+		"Altro e cio&egrave; (specificare)#sf#so",
+		"Nessuna di queste#se#sf"
+	};
+	qst.setProperty("options", q403_opts);
+	send qst;
+
+
+	count=0;
+	sel=system.getProperty("ans403_0");
+	if ((cella=="1" || cella=="2" || cella=="3") && sel==true) {count=count+1; ricq21="1";}
+
+	sel=system.getProperty("ans403_1");
+	if ((cella=="1" || cella=="2" || cella=="3") && sel==true) {count=count+1; ricq21="1";}
+
+	sel=system.getProperty("ans403_2");
+	if (cella=="4" && sel==true) {count=count+1; ricq21="1";}
+
+	if (ricq21=="1") {
+
+	qst = new question("choice", 410);
+	qst.setProperty("text", "Pensando alla forma e alla composizione del rimedio per la stitichezza che ha provato in questi giorni, quanto secondo lei questo prodotto &egrave; adatto a <b>"+label+"</b>?");
+	qst.setProperty("code", "q4.20");
+	vector q410_opts = new vector {
+		"Molto adatto",
+		"Abbastanza adatto",
+		"Cos&igrave; Cos&igrave;",
+		"Poco adatto",
+		"Per niente adatto"
+	};
+	qst.setProperty("options", q410_opts);
+    send qst;
+
+					}
+
+
+	qst = new question("choice", 420);
+	qst.setProperty("text", "Ora che sa che il nome del produttore è <b>"+label+"</b>, quanto &egrave; intenzionato ad acquistarlo?");
+	qst.setProperty("code", "q4.21");
+	vector q420_opts = new vector {
+		"Sicuramente lo acquisterei",
+		"Probabilmente lo acquisterei",
+		"Non so se lo acquisterei o meno",
+		"Probabilmente non lo acquisterei",
+		"Sicuramente non lo acquisterei"
+	};
+	qst.setProperty("options", q420_opts);
+	send qst;
+
+
+	if (cella!="4"){
+
+	qst = new question("open", 430);
+	qst.setProperty("text", "In conclusione, prima di chiederle alcuni dati finali, le chiediamo se vuole dare i suoi suggerimenti a Fave di Fuca su come migliorare la propria offerta. <br> Cosa vorrebbe dirgli? Ci dica tutto ci&ograve; che le viene in mente, ogni suggerimento sar&agrave; prezioso");
+	qst.setProperty("code", "q4.22");
+	send qst;
+
+
+				}
+
+	qst = new question("concept", 440);
+	qst.setProperty("text", "Le chiederemo ora di registrare alcuni dati personali e relativi alle sue abitudini.<br>");
+
+
+
+	qst = new question("choice", 450);
+	qst.setProperty("text", "Quali delle seguenti affermazioni sente <u>pi&ugrave; vicine</u> e vere a lei, quali descrivono meglio le sue abitudini? <div class='info'>Scelga tra quelle proposte un massimo di 3 frasi.</div>");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q7.1");
+	vector q450_opts = new vector {
+		"Mangio quello che mi piace senza pensarci troppo",
+		"Cerco di avere una dieta equilibrata",
+		"Consumo molte verdure",
+		"Ho l’abitudine di bere sempre molta acqua",
+		"Pratico sport pi&ugrave; volte alla settimana",
+		"Faccio una vita sedentaria",
+		"Ho ritmi frenetici e stressanti durante la settimana",
+		"Mangio spesso di corsa la prima cosa che capita",
+		"Per curarmi prediligo i prodotti naturali"
+	};
+	qst.setProperty("extras","{max:3}");
+	qst.setProperty("options", q450_opts);
+
+
+	  qst = new question("composed", 452);
+    vector q452_comps = new vector { "440", "450" };
+    qst.setProperty("components", q452_comps);
+    send qst;
+
+
+	qst = new question("choice", 460);
+	qst.setProperty("text", "Da quante persone &egrave; composto il suo nucleo famigliare?");
+	qst.setProperty("code", "q7.2");
+	vector q460_opts = new vector {
+		"Una",
+		"Due",
+		"Tre",
+		"Quattro",
+		"Pi&ugrave; di quattro"
+	};
+	qst.setProperty("options", q460_opts);
+	send qst;
+
+
+	qst = new question("choice", 470);
+	qst.setProperty("text", "Attualmente lei…");
+	qst.setProperty("code", "q7.3");
+	vector q470_opts = new vector {
+		"Vive con i suoi genitori",
+		"Vive da solo/a",
+		"È parte di una coppia giovane senza figli",
+		"Vive con figli piccoli (il maggiore ha meno di 15 anni)",
+		"Vive con figli grandi (almeno uno con pi&ugrave; di 15 anni) conviventi",
+		"E’ parte di una coppia matura senza figli (mai avuti o non conviventi)",
+		"Vive con la famiglia del figlio/a",
+		"Vive con altre persone (amici, parenti)"
+	};
+	qst.setProperty("options", q470_opts);
+	send qst;
+
+
+	qst = new question("choice", 480);
+	qst.setProperty("text", "Indichi la sua situazione professionale. Lei…");
+	qst.setProperty("code", "q7.4");
+	vector q480_opts = new vector {
+		"Lavora part time",
+		"Lavora full time",
+		"È in cerca di un’occupazione",
+		"Studia",
+		"Si occupa della casa/casalinga",
+		"Non lavora"
+	};
+	qst.setProperty("options", q480_opts);
+	send qst;
+
+	 lectq480=system.getProperty("ans480");
+
+	if (lectq480<2){
+
+	qst = new question("choice", 490);
+	qst.setProperty("text", "Qual &egrave; la sua attuale professione?");
+	qst.setProperty("code", "q7.4bis");
+	vector q490_opts = new vector {
+		"Dirigente/Libero professionista/Imprenditore",
+		"Insegnante",
+		"Impiegato/Quadro",
+		"Operaio/Bracciante",
+		"Rappresentante/Commerciante/Negoziante",
+		"Artigiano/Lavoratore autonomo",
+		"Altro#so"
+	};
+	qst.setProperty("options", q490_opts);
+	send qst;
+
+					}
+
+	qst = new question("choice", 500);
+	qst.setProperty("text", "Qual &egrave; il titolo di studio pi&ugrave; recente che ha conseguito?");
+	qst.setProperty("code", "q7.5");
+	vector q500_opts = new vector {
+		"Scuola elementare",
+		"Licenza media inferiore",
+		"Licenza media superiore",
+		"Laurea breve/triennale",
+		"Laurea magistrale/specialistica/vecchio ordinamento",
+		"Master post laurea/Dottorato"
+	};
+	qst.setProperty("options", q500_opts);
+	send qst;
+
+
+
+
+
+
+}

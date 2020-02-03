@@ -1,0 +1,612 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+int idex;
+
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "debug:true");
+system.setProperty("env", "browser:full");
+
+int leg;
+system.setProperty("r1", "rand:6");
+r1=(int)system.getProperty("r1");
+
+leg=r1+1;
+system.setProperty("leg",leg);
+
+
+system.out("<div>Leg: "+leg+"</div>");vector col0 = new vector { "0.8093", "5.0634", "1.4072", "4.0186", "2.6321", "3.3730", "1.4874", "3.4336", "2.7880", "1.8770", "4.0213", "2.7970", "1.4514", "3.7124", "1.5760", "2.1337", "1.2498", "1.4232", "2.3277"};vector col1 = new vector { "0.8802", "5.9683", "1.4215", "3.9142", "3.1699", "2.9431", "1.4670", "3.7664", "3.0107", "1.4541", "4.6369", "3.0064", "1.1861", "4.5285", "2.0242", "1.8642", "1.5223", "1.7481", "2.9791" };vector col2 = new vector { "1.5209", "5.7123", "1.9521", "5.1770", "3.2656", "3.8986", "1.9791", "4.2043", "3.6177", "2.3835", "4.8610", "3.5643", "2.0411", "4.2025", "2.1061", "2.5333", "1.7580", "1.6912", "2.9113"}; vector col3 = new vector { "0.4514", "4.8892", "1.0407", "3.8517", "2.4213", "3.3845", "1.0437", "3.5452", "2.5112", "1.5802", "4.3608", "2.4055", "1.3867", "4.0569", "1.4463", "2.0604", "1.0035", "1.2512", "2.3504" }; vector col4 = new vector {  "0.1601", "5.7884", "0.7914", "4.1698", "3.0259", "3.0405", "0.7852", "4.1646", "2.2084", "1.4789", "5.0279", "2.9669", "1.0914", "4.2540", "1.3390", "1.5810", "1.7556", "0.8671", "2.4946" }; 
+
+qst = new question("choice", 10);
+qst.setProperty("text", "Le 3 VP vengono ruotate ogni 50 casi secondo il seguente schema:");
+qst.setProperty("code", "rotaz");
+vector q10_opts = new vector {
+"X Y Z",
+"X Z Y",
+"Y X Z",
+"Y Z X",
+"Z X Y",
+"Z Y X"
+};
+qst.setProperty("options", q10_opts);
+qst.setProperty("default_answer","{ 'selection': ["+r1+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q10_opts.get(r1);
+system.out("<div>Ordine: "+cmd+"</div>");
+
+
+
+
+qst = new question("open", 20);
+qst.setProperty("text", "Please indicate how old you are:");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "qa");
+
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Your gender:");
+qst.setProperty("code", "qb");
+vector q40_opts = new vector {
+		"Male",		"Female"
+};
+qst.setProperty("options", q40_opts);
+
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Which region do you live in?");
+qst.setProperty("code", "qc");
+vector q50_opts = new vector {
+    "London", "Yorkshire and the Humber", "East Midlands", "East of England (East Anglia)", "South East", "South West", "West Midlands", "North West", "Scotland", "Wales", "Northern Ireland", "North East"
+};
+qst.setProperty("options", q50_opts);
+
+
+
+qst = new question("choice", 60);
+qst.setProperty("text", "City Centre:");
+qst.setProperty("code", "qd");
+vector q60_opts = new vector {
+"< di 30.000 people",
+"30.001-100.000 people",
+"101.000-500.000 people",
+"> 501.000  people"
+};
+qst.setProperty("options", q60_opts);
+
+qst = new question("choice", 61);
+qst.setProperty("text", "Married/living as a couple?");
+qst.setProperty("code", "qdbis");
+vector q61_opts = new vector {
+"Yes",
+"No"
+};
+qst.setProperty("options", q61_opts);
+
+
+qst = new question("composed", 65);
+vector q65_comps = new vector { "20", "40", "50", "60","61"};
+qst.setProperty("components", q65_comps);
+send qst;
+
+
+int eta=(int)system.getProperty("ans20");
+if (eta<25 || eta >55 ) { return 4;}
+
+	if(eta<25) { reCod=0;}
+	if(eta>=26 && eta<=35) { reCod=1;}
+	if(eta>=36 && eta<=45) { reCod=2;}
+	if(eta>=46 && eta<=55) { reCod=3;}
+	if(eta>55 ) { reCod=4;}
+
+
+qst = new question("choice", 30);
+qst.setProperty("text", "Quanti anni ha?");
+qst.setProperty("code", "qarec");
+vector q30_opts = new vector {
+"Meno di 25 anni",
+"26 – 35",
+"36 - 45",
+"46 - 55",
+"Oltre i 55 anni"
+};
+qst.setProperty("options", q30_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+/*
+ansId=system.getProperty("ans50");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+		case 6,9,15,17:{reCod=2;}
+        case 13,14:{reCod=4;}
+
+        }
+
+qst = new question("choice", 55);
+qst.setProperty("text", "Area");
+qst.setProperty("code", "qcrec");
+vector q55_opts = new vector {
+"Nord ovest",
+"nord est",
+"centro",
+"sud"
+};
+qst.setProperty("options", q55_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+*///VERIFICA STATUSansId=system.getProperty("ans61");double staDisc=0.0;double staAsp=0.0;double staYou=0.0;double staTrad=0.0;double staHome=0.0;if (ansId==0){staDisc=6.56853310094094;staAsp=5.5751891703135;staYou=6.35302234966431;staTrad=3.03705239484867;staHome=6.18873626691045;}
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Do you own a washing-machine in your household?");
+qst.setProperty("code", "qf");
+vector q70_opts = new vector {
+"Yes",
+"No"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+ansId=system.getProperty("ans70");
+if (ansId==1) { return 4; }
+
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Who is usually in charge of the laundry in your household?");
+qst.setProperty("code", "qf2");
+vector q80_opts = new vector {
+"Myself only","Myself and other members of my household","Other members only"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+ansId=system.getProperty("ans80");
+if (ansId==2) { return 4; }
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Are you planning to buy a new washing-machine?");
+qst.setProperty("code", "qg");
+vector q90_opts = new vector {
+"No ","Maybe, in a year or more","Yes, within one year  "
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+ansId=system.getProperty("ans90");
+if (ansId!=2) { return 4; }
+
+qst = new question("open", 100);
+qst.setProperty("text", "How much money would you be willing to spend on a new washing-machine?");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "qh");
+qst.setProperty("right_label", "£");
+send qst;
+
+n=(int)system.getProperty("ans100");
+if (n<499) { return 4;}
+
+qst = new question("scale", 105);
+qst.setProperty("text", "How much do you personally agree with the following statements? ");
+qst.setProperty("code", "qI");
+qst.setProperty("show_rand", true);
+vector q105_rows = new vector {
+"I am among the first ones to buy new technology","I really care about the house being clean","I am attracted by domestic appliances that can be controlled remotely via app","To control domestic appliances, I prefer knobs","I really enjoy cooking","I hate doing any form of housework","I try to keep up with the latest fashion trends","I prefer to spend a quiet evening at home rather than go out","To control domestic appliances, I prefer digital interface like touch screen","Because of my busy lifestyle, I don't take care of myself as well as I should","The most important thing in domestic appliances is simplicity & ease of use","I am very happy with my life as it is","I mostly act on instinct, in an emotional rather than rational way","When I need information the first place I look is Internet","Style and design of domestic appliances are very important to me","I spend a lot of time out of home","I love to buy new gadgets and appliances","It is worth paying extra for quality goods","The kitchen is the most important room in my home"
+};
+qst.setProperty("rows", q105_rows);
+vector q105_cols = new vector {
+"1-Strongly disagree",
+"2",
+"3",
+"4",
+"5-Strongly agree"
+};
+qst.setProperty("cols", q105_cols);
+send qst;
+
+double point;double varDisc;double varAspi;double varYoung;double varTrad;double varHome;double sum0;double sum1;double sum2;double sum3;double sum4;double costDisc=0.0-82.3164352332969;double costAspi=0.0-97.7894999775557;double costYoung=0.0-125.940695811202;double costTrad=0.0-73.3373726926974;double costHome=0.0-85.0092488493739;	for (int i=0, 18)	{	ansId=system.getProperty("ans105_"+i);	if (ansId==0){point=1.0;}	if (ansId==1){point=2.0;}	if (ansId==2){point=3.0;}	if (ansId==3){point=4.0;}	if (ansId==4){point=5.0;}	varDisc=(double)col0.get(i);	varAspi=(double)col1.get(i);	varYoung=(double)col2.get(i);	varTrad=(double)col3.get(i);	varHome=(double)col4.get(i);	sum0=sum0+(point*varDisc);	sum1=sum1+(point*varAspi);	sum2=sum2+(point*varYoung);	sum3=sum3+(point*varTrad);	sum4=sum4+(point*varHome);	}		sum0=sum0+staDisc;sum1=sum1+staAsp;sum2=sum2+staYou;sum3=sum3+staTrad;sum4=sum4+staHome;	sum0=costDisc+sum0;	sum1=costAspi+sum1;	sum2=costYoung+sum2;	sum3=costTrad+sum3;	sum4=costHome+sum4;	double total=sum0+sum1+sum2+sum3+sum4; double perc0=sum0/total;double perc1=sum1/total;double perc2=sum2/total;double perc3=sum3/total;double perc4=sum4/total;//system.out("<div>Score Unengaged Discoverer : "+sum0+"</div>");//system.out("<div>Score Aspirational : "+sum1+"</div>");//system.out("<div>Score Young Urban Techie : "+sum2+"</div>");//system.out("<div>Score Traditional Way : "+sum3+"</div>");//system.out("<div>Score Home Sweet Home: "+sum4+"</div>");//system.out("<div>-----PERCENTUALI-----</div>");//system.out("<div>% Unengaged Discoverer : "+perc0+"</div>");//system.out("<div>% Aspirational : "+perc1+"</div>");//system.out("<div>% Young Urban Techie : "+perc2+"</div>");//system.out("<div>% Traditional Way : "+perc3+"</div>");//system.out("<div>% Home Sweet Home: "+perc4+"</div>");system.setProperty("sum0", sum0);system.setProperty("sum1", sum1);system.setProperty("sum2", sum2);system.setProperty("sum3", sum3);system.setProperty("sum4", sum4);system.setProperty("perc0", perc0);system.setProperty("perc1", perc1);system.setProperty("perc2", perc2);system.setProperty("perc3", perc3);system.setProperty("perc4", perc4);double win=perc0;reCod=0;if (win <perc1) {win=perc1; reCod=1;}if (win <perc2) {win=perc2; reCod=2;}if (win <perc3) {win=perc3; reCod=3;}if (win <perc4) {win=perc4; reCod=4;}qst = new question("choice", 106);qst.setProperty("text", "target");qst.setProperty("code", "target");vector q106_opts = new vector {"Unengaged Discoverer","Aspirational","Young Urban Techie","Traditional Way","Home Sweet Home"};qst.setProperty("options", q106_opts);qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");qst.setProperty("hidden", true);send qst;ansId=system.getProperty("ans106");label=q106_opts.get(ansId);
+
+system.out("<div>Segment: "+label+"</div>");system.setProperty("segment", label);
+if (ansId==0 || ansId==3 || ansId==4) { return 4; }
+
+
+
+qst = new question("choice", 110);
+qst.setProperty("text", "How many times per week do you do the laundry in your household?");
+qst.setProperty("code", "q1");
+vector q110_opts = new vector {
+"Once a week","2/3 times a week","4/5 times a week","More than 5 times a week"
+};
+qst.setProperty("options", q110_opts);
+send qst;
+
+qst = new question("choice", 120);
+qst.setProperty("text", "What program(s) do you use more often?  <div class='info'>(Please choose max. 2 answers)</div>");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2");
+vector q120_opts = new vector {
+"Whites","Colours","Delicate","Silk","Wool","Mixed","Cotton","Synthetics","Jeans","Shirts","Outdoor","Kids","Sport","Heavy-duty","Dark clothes","Anti-allergic","Environment-friendly","Quick wash","Hand wash","Other (please share)#so#sf"
+};
+qst.setProperty("options", q120_opts);
+qst.setProperty("extras", "{max:2}");
+send qst;
+
+baseQid=1000;
+
+if (leg==1) { idex=0;}
+if (leg==2) { idex=0;}
+if (leg==3) { idex=1;}
+if (leg==4) { idex=1;}
+if (leg==5) { idex=2;}
+if (leg==6) { idex=2;}
+
+for(int i=0,2)
+{
+
+qid=baseQid+100*idex;
+
+if (idex==0) { label="X";}
+if (idex==1) { label="Y";}
+if (idex==2) { label="Z";}if (i==0) { cmd="<p>We are now going to show you an offer for the new washing-machine </p>";}if (i==1) { cmd="<p>We are now going to show you another offer for the new washing-machine</p>";}if (i==2) { cmd="<p>We are now going to show you another offer for the new washing-machine</p>";}
+
+link="http://www.primisoft.com/fields/AST/ITA1710135/resources/"+label+".JPG";
+if (idex==0) { qtext="An issue we always experience when doing the laundry is that clothes might get damaged; therefore we must know very well how to wash them carefully. <br/>The new X washing-machines gets to know you and your way of life, so as to suggest tips and customised programs that can make your clothes last longer and enhance their features in time. <br/>The X washing-machine is equipped with artificial intelligence, thus being able to process data independently, to get input from the app and to identify the best solution at all times. <br/>For instance, it detects the way you wash and suggests how you can wash even better. It provides the best possible cycle based on your requirements for fabrics and type of stains. It suggests when it is better to do the laundry based on the weather forecast. ";}if (idex==1) { qtext="An issue we experience when doing the laundry is that we often have little time or we have doubts concerning the most appropriate washing program for our clothes or the best solution for soap, water and power management. <br/>The new Y washing-machine makes the washing more automatic and sets you free from all chores, from soap dosing to cycle setting, adapting the time to your needs: washing can be as quick as you wish. Moreover, it ensures perfect results even when washing different clothes, fabrics and colours together, so you can make better use of your time. <br/>In fact, the new Y washing-machine is equipped with artificial intelligence, and therefore able to identify the best possible program for your needs and the available time. It is also equipped with an auto-dosing system, that reduces the waste of water and power, dosing the exact amount of soap according to the fabric, soil level, laundry load and water hardness. "; }if (idex==2) { qtext="An issue we encounter when doing the laundry is that we are never completely sure that our washing-machine is always perfectly working, without any fault or nasty surprises. <br/>The Z washing-machine guides you through maintenance, thus lasting longer and it  warns you in advance of possible troubles, getting the customer service directly in touch with you (free maintenance during the warranty period). <br/>In fact, the Z washing-machine is equipped with sensors that are constantly detecting working parameters and uses artificial intelligence in order to process such data. So, if necessary, it can suggest the right maintenance intervention and it can prevent some faults, or even promptly warn customer service. <br/>For instance, it can detect low performance due to little amount of water, potential break-down of the motor or partial operation, a clogged dirty filter, and it can prevent moulds and bad smells. ";}
+
+qid=baseQid+100*idex+5;
+
+qst = new question("choice", qid);
+qst.setProperty("text",  cmd+"<div id='qt'>"+qtext+"</div>Overall, on a 1-to-6 scale, where 1 stands for “not at all” and 6 stands for “very much”, how would you like to have a washing-machine like this?");
+qst.setProperty("code", "q3.1id"+idex);
+vector q140_opts = new vector {
+"1-I would not like it at all",
+"2",
+"3",
+"4",
+"5",
+"6-I would like it very much"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+
+if (idex==0) { qtext="An issue we always experience when doing the laundry is that clothes might get damaged; therefore we must know very well how to wash them carefully.";}
+if (idex==1) { qtext="An issue we experience when doing the laundry is that we often have little time or we have doubts concerning the most appropriate washing program for our clothes or the best solution for soap, water and power management."; }
+if (idex==2) { qtext="An issue we encounter when doing the laundry is that we are never completely sure that our washing-machine is always perfectly working, without any fault or nasty surprises ";}
+
+
+qid=baseQid+100*idex+10;
+qst = new question("choice", qid);
+qst.setProperty("text", "<p>Now please consider the following statement:</p>"+
+"<div id='qt'>"+qtext+"</div>"+
+"<div class=''>On a 1-to-6 scale, where 1 stands for “not at all” and 6 stands for “absolutely”, can you tell us to what extent you agree with this statement, i.e. how much it matches your laundry experience?</div>");
+qst.setProperty("code", "q3.2id"+idex);
+vector q150_opts = new vector {
+"1-Do not agree at all",
+"2",
+"3",
+"4",
+"5",
+"6-Totally agree"
+};
+qst.setProperty("options", q150_opts);
+send qst;
+
+
+if (idex==0) { qtext="The new X washing-machines gets to know you and your way of life, so as to suggest tips and customised programs that can make your clothes last longer and enhance their features in time.";}
+if (idex==1) { qtext="The new Y washing-machine makes the washing more automatic, and sets you free from all chores, from soap dosing to cycle setting, adapting time to your needs: washing can be as quick as you wish. Moreover, it ensures perfect results even when washing different clothes, fabrics and colours together, so you can make better use of your time."; }
+if (idex==2) { qtext="The Z washing-machine guides you through maintenance, thus lasting longer and it warns you in advance of possible troubles,getting the customer service directly in touch with you (free maintenance during the warranty period).";}
+
+
+qid=baseQid+100*idex+15;
+qst = new question("choice", qid);
+qst.setProperty("text", "<p>Now please consider the following offer:</p>"+
+"<div id='qt'>"+qtext+"</div>"+
+"<div class=''>On a 1-to-6 scale, where 1 stands for “not at all” and 6 stands for “very much”, can you tell us how interesting you find this offer?</div>");
+qst.setProperty("code", "q3.3id"+idex);
+vector q160_opts = new vector {
+"1-Not interesting at all",
+"2",
+"3",
+"4",
+"5",
+"6-Very much interesting"
+};
+qst.setProperty("options", q160_opts);
+send qst;
+
+if (idex==0) {cod="Do you believe that, with the above described systems, this new X washing-machine can provide tips and customised programs that can make your clothes last longer and enhance their features in time?"; qtext="The X washing-machine is equipped with artificial intelligence, thus being able to process data independently, to get input from the app and to identify the best solution at all times. <br/>For instance, it detects the way you wash and suggests how you can wash even better. It provides the best possible cycle based on your requirements for fabrics and type of stains. It suggests when it is better to do the laundry based on the weather forecast. ";}
+if (idex==1) {cod="Do you believe that, with the above described systems, this new Y washing-machine can make the washing more automatic and ensure perfect results even when mixing different clothes and colours?"; qtext="The new Y washing-machine is equipped with artificial intelligence, and therefore able to identify the best possible program for your needs and the available time. It is also equipped with an auto-dosing system, that reduces the waste of water and power, dosing the exact amount of soap according to the fabric, soil level, laundry load and water hardness. "; }
+if (idex==2) {cod="Do you believe that the above described systems can make this new Y washing-machine last longer?"; qtext="The Z washing-machine is equipped with sensors that are constantly detecting working parameters and uses artificial intelligence in order to process such data. So, if necessary, it can suggest the right maintenance intervention and it can prevent some faults, or even promptly warn customer service. For instance, it can detect low performance due to little amount of water, potential break-down of the motor or partial operation, a clogged dirty filter, and it can prevent moulds and bad smells.";}
+
+qid=baseQid+100*idex+20;
+qst = new question("choice", qid);
+qst.setProperty("text", "<p>Now please consider the following explanation: </p>"+
+"<div id='qt'> "+qtext+" </div>"+
+"<div class=''>On a 1-to-6 scale, where 1 stands for “not at all” and 6 stands for “very much”, can you tell us how convincing this explanation sounds to you? <br/> "+cod+"</div>");
+qst.setProperty("code", "q3.4id"+idex);
+vector q170_opts = new vector {
+"1-Not convincing at all",
+"2",
+"3",
+"4",
+"5",
+"6-Very much convincing"
+};
+qst.setProperty("options", q170_opts);
+send qst;
+
+
+
+qid=baseQid+100*idex+25;
+qst = new question("choice", qid);
+qst.setProperty("text", "This washing-machine will be sold at £499.On a 1-to-6 scale, where 1 stands for “not at all” and 6 stands for “definitely”, how likely is it for you to buy it?");
+qst.setProperty("code", "q4id"+idex);
+vector q180_opts = new vector {
+"1-I would not buy it at all",
+"2",
+"3",
+"4",
+"5",
+"6-I would definitely buy it"
+};
+qst.setProperty("options", q180_opts);
+send qst;
+
+if (i==0)
+		{
+		if (leg==1) { idex=1;}
+		if (leg==2) { idex=2;}
+		if (leg==3) { idex=0;}
+		if (leg==4) { idex=2;}
+		if (leg==5) { idex=0;}
+		if (leg==6) { idex=1;}
+		}
+
+if (i==1)
+		{
+		if (leg==1) { idex=2;}
+		if (leg==2) { idex=1;}
+		if (leg==3) { idex=2;}
+		if (leg==4) { idex=0;}
+		if (leg==5) { idex=1;}
+		if (leg==6) { idex=0;}
+		}
+
+
+}
+
+
+
+
+
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+	"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='450px'  alt='' /></a></p>";
+		 string sortOrder="[0,1,2]";		if (leg==1) { sortOrder="[0,1,2]";}		if (leg==2) { sortOrder="[0,2,1]";}		if (leg==3) { sortOrder="[1,0,2]";}		if (leg==4) { sortOrder="[1,2,0]";}		if (leg==5) { sortOrder="[2,0,1]";}		if (leg==6) { sortOrder="[2,1,0]";}
+
+qst = new question("choice", 190);
+qst.setProperty("text", "Now we are going to show you the three washing-machines again. Can you tell us which one you would be more inclined to buy at a £499 price?<div class='info'>Click on concepts to enlarge.</div>"+scriptzoom);
+qst.setProperty("code", "q9");
+vector q190_opts = new vector {
+"<b>washing-machines X</b><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/AST/UK1710135/resources/X.png'><img class='bord' src='http://www.primisoft.com/fields/AST/UK1710135/resources/X.png' width='400px'  alt='' /></a>",
+"<b>washing-machines Y</b><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/AST/UK1710135/resources/Y.png'><img class='bord' src='http://www.primisoft.com/fields/AST/UK1710135/resources/Y.png' width='400px'  alt='' /></a>",
+"<b>washing-machines Z</b><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/AST/UK1710135/resources/Z.png'><img class='bord' src='http://www.primisoft.com/fields/AST/UK1710135/resources/Z.png' width='400px'  alt='' /></a>"
+};
+qst.setProperty("options", q190_opts);qst.setProperty("sortorder", sortOrder); 
+send qst;
+
+qst = new question("choice", 200);
+qst.setProperty("text", "Can you tell us, of these situations which you might encounter while doing the laundry, which is the most critical for you? ");
+qst.setProperty("code", "q10");
+vector q200_opts = new vector {
+"An issue we always have to  face is that clothes might get damaged; therefore we must know very well how to wash them carefully.","Often we have little time or we have doubts concerning the most appropriate washing program for our clothes or the best solution for soap, water and power management.","We are never completely sure that our washing-machine is always perfectly working, without any fault or nasty surprises."
+};
+qst.setProperty("options", q200_opts);
+send qst;
+
+qst = new question("choice", 210);
+qst.setProperty("text", "Can you tell us, of these offers for a new washing-machine, which one is more interesting to you?  ");
+qst.setProperty("code", "q11");
+vector q210_opts = new vector {
+"A washing-machine that offers customised programs and tips","A washing-machine that makes the washing more automatic, leaving me free from all chores","A washing-machine that guides me through maintenance and warns me in advance of possible troubles"
+};
+qst.setProperty("options", q210_opts);
+send qst;
+
+qst = new question("choice", 220);
+qst.setProperty("text", "Which of these explanations seems more convincing to you?  ");
+qst.setProperty("code", "q12");
+vector q220_opts = new vector {
+"Artificial intelligence allows the washing-machine to process data and receive input in order to identify the best solution ","Artificial intelligence allows the washing-machine to identify the most suitable program for your needs and the time that you have for the laundry","Artificial intelligence processes data coming from the sensors and can suggest proper maintenance"
+};
+qst.setProperty("options", q220_opts);
+send qst;
+
+
+baseQid=8000;
+
+
+if (leg==1) { idex=0;}
+if (leg==2) { idex=0;}
+if (leg==3) { idex=1;}
+if (leg==4) { idex=1;}
+if (leg==5) { idex=2;}
+if (leg==6) { idex=2;}
+
+for(int i=0,2)
+{
+
+qid=baseQid+100*idex;
+
+if (idex==0) { label="X";}
+if (idex==1) { label="Y";}
+if (idex==2) { label="Z";}
+
+link="http://www.primisoft.com/fields/AST/ITA1710135/resources/"+label+".JPG";
+
+
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+ "<img src='"+link+"' width='650px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>"; if (idex==0) { qtext="An issue we always experience when doing the laundry is that clothes might get damaged; therefore we must know very well how to wash them carefully. <br/>The new X washing-machines gets to know you and your way of life, so as to suggest tips and customised programs that can make your clothes last longer and enhance their features in time. <br/>The X washing-machine is equipped with artificial intelligence, thus being able to process data independently, to get input from the app and to identify the best solution at all times. <br/>For instance, it detects the way you wash and suggests how you can wash even better. It provides the best possible cycle based on your requirements for fabrics and type of stains. It suggests when it is better to do the laundry based on the weather forecast. ";}if (idex==1) { qtext="An issue we experience when doing the laundry is that we often have little time or we have doubts concerning the most appropriate washing program for our clothes or the best solution for soap, water and power management. <br/>The new Y washing-machine makes the washing more automatic and sets you free from all chores, from soap dosing to cycle setting, adapting the time to your needs: washing can be as quick as you wish. Moreover, it ensures perfect results even when washing different clothes, fabrics and colours together, so you can make better use of your time. <br/>In fact, the new Y washing-machine is equipped with artificial intelligence, and therefore able to identify the best possible program for your needs and the available time. It is also equipped with an auto-dosing system, that reduces the waste of water and power, dosing the exact amount of soap according to the fabric, soil level, laundry load and water hardness. "; }if (idex==2) { qtext="An issue we encounter when doing the laundry is that we are never completely sure that our washing-machine is always perfectly working, without any fault or nasty surprises. <br/>The Z washing-machine guides you through maintenance, thus lasting longer and it  warns you in advance of possible troubles, getting the customer service directly in touch with you (free maintenance during the warranty period). <br/>In fact, the Z washing-machine is equipped with sensors that are constantly detecting working parameters and uses artificial intelligence in order to process such data. So, if necessary, it can suggest the right maintenance intervention and it can prevent some faults, or even promptly warn customer service. <br/>For instance, it can detect low performance due to little amount of water, potential break-down of the motor or partial operation, a clogged dirty filter, and it can prevent moulds and bad smells. ";}
+
+qst = new question("choice", qid);
+qst.setProperty("text", "<div id='qt'> "+qtext+" </div>Which of the following brands, in your opinion, could be the manufacturer of the new <b>washing-machine "+label+"</b> that we have just described?");
+qst.setProperty("code", "q13id"+idex);
+vector q230_opts = new vector {
+"AEG",
+"Beko",
+"Bosch",
+"Candy",
+"Electrolux",
+"Hoover",
+"Hotpoint",
+"Indesit",
+"LG",
+"Miele",
+"Samsung",
+"Whirpool"
+};
+qst.setProperty("options", q230_opts);
+send qst;
+
+if (i==0)
+		{
+		if (leg==1) { idex=1;}
+		if (leg==2) { idex=2;}
+		if (leg==3) { idex=0;}
+		if (leg==4) { idex=2;}
+		if (leg==5) { idex=0;}
+		if (leg==6) { idex=1;}
+		}
+
+if (i==1)
+		{
+		if (leg==1) { idex=2;}
+		if (leg==2) { idex=1;}
+		if (leg==3) { idex=2;}
+		if (leg==4) { idex=0;}
+		if (leg==5) { idex=1;}
+		if (leg==6) { idex=0;}
+		}
+
+
+}
+
+qst = new question("choice", 240);
+qst.setProperty("text", "<p>Actually all these offers are by Hoover.</p> The fact that are by Hoover, on a whole, makes you feel:");
+qst.setProperty("code", "q16");
+vector q240_opts = new vector {
+"Pleasantly surprised  ","Disappointed","Indifferent "
+};
+qst.setProperty("options", q240_opts);
+send qst;
+
+qst = new question("choice", 250);
+qst.setProperty("text", "Seeing these latest washing-machines by Hoover, what do you think of this brand?");
+qst.setProperty("code", "q17");
+vector q250_opts = new vector {
+"The same as before, as these features are consistent with the typical characteristics of the brand","Better than before, as it shows that it is trying to create value through innovation","Less well than before, because these products have little to do with its typical features"
+};
+qst.setProperty("options", q250_opts);
+send qst;
+
+
+baseQid=5000;
+
+
+if (leg==1) { idex=0;}
+if (leg==2) { idex=0;}
+if (leg==3) { idex=1;}
+if (leg==4) { idex=1;}
+if (leg==5) { idex=2;}
+if (leg==6) { idex=2;}
+
+int ansIdX=system.getProperty("ans1025");
+int ansIdY=system.getProperty("ans1125");
+int ansIdZ=system.getProperty("ans1225");
+
+
+
+for(int i=0,2)
+{
+
+qid=baseQid+100*idex;
+
+if (idex==0) { label="X"; ansId=ansIdX;}
+if (idex==1) { label="Y"; ansId=ansIdY;}
+if (idex==2) { label="Z"; ansId=ansIdZ;}
+
+cmd=q180_opts.get(ansId);if(cmd=="2") {cmd="probably would not buy it";}if(cmd=="3") {cmd="probably would not buy it";}if(cmd=="4") {cmd="probably buy it";}if(cmd=="5") {cmd="probably buy it";}
+
+link="http://www.primisoft.com/fields/AST/ITA1710135/resources/"+label+".JPG";
+
+
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='650px'  alt='' /></a><div class='info'>Click to enlarge</div></p>";
+		 if (idex==0) { qtext="An issue we always experience when doing the laundry is that clothes might get damaged; therefore we must know very well how to wash them carefully. <br/>The new X washing-machines gets to know you and your way of life, so as to suggest tips and customised programs that can make your clothes last longer and enhance their features in time. <br/>The X washing-machine is equipped with artificial intelligence, thus being able to process data independently, to get input from the app and to identify the best solution at all times. <br/>For instance, it detects the way you wash and suggests how you can wash even better. It provides the best possible cycle based on your requirements for fabrics and type of stains. It suggests when it is better to do the laundry based on the weather forecast. ";}if (idex==1) { qtext="An issue we experience when doing the laundry is that we often have little time or we have doubts concerning the most appropriate washing program for our clothes or the best solution for soap, water and power management. <br/>The new Y washing-machine makes the washing more automatic and sets you free from all chores, from soap dosing to cycle setting, adapting the time to your needs: washing can be as quick as you wish. Moreover, it ensures perfect results even when washing different clothes, fabrics and colours together, so you can make better use of your time. <br/>In fact, the new Y washing-machine is equipped with artificial intelligence, and therefore able to identify the best possible program for your needs and the available time. It is also equipped with an auto-dosing system, that reduces the waste of water and power, dosing the exact amount of soap according to the fabric, soil level, laundry load and water hardness. "; }if (idex==2) { qtext="An issue we encounter when doing the laundry is that we are never completely sure that our washing-machine is always perfectly working, without any fault or nasty surprises. <br/>The Z washing-machine guides you through maintenance, thus lasting longer and it  warns you in advance of possible troubles, getting the customer service directly in touch with you (free maintenance during the warranty period). <br/>In fact, the Z washing-machine is equipped with sensors that are constantly detecting working parameters and uses artificial intelligence in order to process such data. So, if necessary, it can suggest the right maintenance intervention and it can prevent some faults, or even promptly warn customer service. <br/>For instance, it can detect low performance due to little amount of water, potential break-down of the motor or partial operation, a clogged dirty filter, and it can prevent moulds and bad smells. ";}		 
+qst = new question("choice", qid);
+qst.setProperty("text", "<p>Look at this offer again. </p><div id='qt'> "+qtext+" </div>"+
+"Before you told us that, on a 1-to-6 scale, where 1 means “not at all” and 6 means “definitely”, your likelihood to buy it would be  <b>"+cmd+"</b>."+
+" <p>Now you know it is Hoover, how likely would it be for you to buy it?</p>");
+qst.setProperty("code", "q18id"+idex);
+vector q260_opts = new vector {
+"Same as before ","I would be more willing to buy it","I would be less willing to buy it"
+};
+qst.setProperty("options", q260_opts);
+send qst;
+
+
+if (i==0)
+		{
+		if (leg==1) { idex=1;}
+		if (leg==2) { idex=2;}
+		if (leg==3) { idex=0;}
+		if (leg==4) { idex=2;}
+		if (leg==5) { idex=0;}
+		if (leg==6) { idex=1;}
+		}
+
+if (i==1)
+		{
+		if (leg==1) { idex=2;}
+		if (leg==2) { idex=1;}
+		if (leg==3) { idex=2;}
+		if (leg==4) { idex=0;}
+		if (leg==5) { idex=1;}
+		if (leg==6) { idex=0;}
+		}
+
+
+}
+
+}

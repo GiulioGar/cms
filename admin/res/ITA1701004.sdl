@@ -1,0 +1,2558 @@
+#export vars "hq13a" 
+#export vars "hq13b"
+
+
+void main(){
+	question qst;
+	boolean selected;
+	string label;
+	string item;
+	string opt;
+	string cmd;
+	int core;
+	int ansId;
+	boolean sel;
+	int selint;
+	int qid;
+	int r2;
+	string brandName;
+	boolean flag = false;
+	int nums11;
+	int nums12;
+	int nums13;
+	
+	system.setProperty("env", "stylesheet:mod.css");
+	system.setProperty("env", "debug:false");
+	
+	system.setProperty("r2", "rand:3");
+	
+	
+	// s1
+	qst = new question("choice", 2);
+	qst.setProperty("text", "Lei è...?");
+	vector list_s1 = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", list_s1);
+	qst.setProperty("code", "s1");
+	send qst;
+	
+	ansId=system.getProperty("ans2");
+	
+	// for debug
+	int sel_s1 = (int)system.getProperty("ans2");
+	cmd = list_s1.get(sel_s1);
+	system.out("<div class=''>Sesso:"+cmd+"</div>");
+	
+	// s2
+	qst = new question("open", 3);
+	qst.setProperty("text", "Qual è la Sua età?");
+	qst.setProperty("view", "numeric");
+	//qst.setProperty("right_label","anni");
+	qst.setProperty("code", "s2");
+	send qst;
+	
+	// s2 - terminate
+	int sel_s2 = (int)system.getProperty("ans3");
+	if( sel_s2 < 25 || sel_s2 > 70 ){ return 4; }
+	
+	// for debug
+	system.out("<div class=''>Età:"+sel_s2+"</div>");
+	
+	// s2 - recoding question
+	int rec_s2;
+	if( sel_s2 >= 25 && sel_s2 <= 34 ){ rec_s2 = 0; }
+	if( sel_s2 >= 35 && sel_s2 <= 47 ){ rec_s2 = 1; }
+	if( sel_s2 >= 48 && sel_s2 <= 60 ){ rec_s2 = 2; }
+	if( sel_s2 >= 61 && sel_s2 <= 70 ){ rec_s2 = 3; }
+	
+	
+
+	
+	qst = new question("choice", 4);
+	qst.setProperty("text", "Recode Age");
+	vector list_rec_s2 = new vector {
+		"25-34 anni",
+		"35-47 anni",
+		"48-60 anni",
+		"61-70 anni"
+	};
+	qst.setProperty("options",list_rec_s2);
+	qst.setProperty("default_answer","{ 'selection': ["+rec_s2+"]}");
+	qst.setProperty("hidden", true);
+	qst.setProperty("code", "hs2");
+	send qst;
+	
+	// for debug
+	int sel_rec_s2 = (int)system.getProperty("ans4");
+	cmd = list_rec_s2.get(sel_rec_s2);
+	system.out("<div class=''>Age Group:"+cmd+"</div>");
+	
+	
+	
+	int rec_s2_new;
+	if( sel_s2 >= 25 && sel_s2 <= 34 ){ rec_s2_new = 0; }
+	if( sel_s2 >= 35 && sel_s2 <= 60 ){ rec_s2_new = 1; }
+	if( sel_s2 >= 61 && sel_s2 <= 70 ){ rec_s2_new = 2; }
+	
+	
+	qst = new question("choice", 4000);
+	qst.setProperty("text", "Recode Age 2");
+	vector list_rec_s4000 = new vector {
+"25-34 anni",
+"35-60 anni",
+"61-70 anni"
+
+	};
+	qst.setProperty("options",list_rec_s4000);
+	qst.setProperty("default_answer","{ 'selection': ["+rec_s2_new+"]}");
+	qst.setProperty("hidden", true);
+	qst.setProperty("code", "recneweta");
+	send qst;
+	
+	// for debug
+	int sel_rec_s4000 = (int)system.getProperty("ans4000");
+	cmd = list_rec_s4000.get(sel_rec_s4000);
+	system.out("<div class=''>Age Group 2:"+cmd+"</div>");
+	
+	
+	// s3
+	qst = new question("choice", 5);
+	qst.setProperty("text", "In quale regione vive attualmente?");
+	vector list_s3 = new vector {
+		"Piemonte",
+		"Valle D'Aosta",
+		"Liguria",
+		"Lombardia",
+		"Trentino",
+		"Veneto",
+		"Friuli V. G.",
+		"Emilia Romagna",
+		"Marche",
+		"Toscana",
+		"Umbria",
+		"Lazio",
+		"Campania",
+		"Abruzzo",
+		"Molise",
+		"Puglia",
+		"Basilicata",
+		"Calabria",
+		"Sicilia",
+		"Sardegna"
+	};
+	qst.setProperty("options", list_s3);
+	qst.setProperty("code", "s3");
+	send qst;
+	
+	// for debug
+	int sel_s3 = (int)system.getProperty("ans5");
+	cmd = list_s3.get(sel_s3);
+	system.out("<div class=''>Area:"+cmd+"</div>");
+	
+	// s3 - recoding question
+	int rec_s3;
+	if( sel_s3 == 0 || sel_s3 == 1 || sel_s3 == 2 || sel_s3 == 3 ){ rec_s3 = 0; }
+	if( sel_s3 == 4 || sel_s3 == 5 || sel_s3 == 6 || sel_s3 == 7 ){ rec_s3 = 1; }
+	if( sel_s3 == 8 || sel_s3 == 9 || sel_s3 == 10 || sel_s3 == 11 || sel_s3 == 19 ){ rec_s3 = 2; }
+	if( sel_s3 == 12 || sel_s3 == 13 || sel_s3 == 14 || sel_s3 == 15 || sel_s3 == 16 || sel_s3 == 17 || sel_s3 == 18 ){ rec_s3 = 3; }
+	
+	qst = new question("choice", 6);
+	qst.setProperty("text", "Recode Region");
+	vector list_rec_s3 = new vector {
+		"Nord Ovest (Valle d’Aosta, Piemonte, Lombardia, Liguria)",
+		"Nord Est (Emilia Romagna, Veneto, Trentino, Friuli)",
+		"Centro + Sardegna (Toscana, Marche, Umbria, Lazio, Sardegna)",
+		"Sud + Sicilia (Abruzzo, Molise, Basilicata, Campania, Calabria, Puglia, Sicilia)"
+	};
+	qst.setProperty("options",list_rec_s3);
+	qst.setProperty("default_answer","{ 'selection': ["+rec_s3+"]}");
+	qst.setProperty("hidden", true);
+	qst.setProperty("code", "hs3");
+	send qst;
+	
+	// for debug
+	int sel_rec_s3 = (int)system.getProperty("ans6");
+	cmd = list_rec_s3.get(sel_rec_s3);
+	system.out("<div class=''>Region:"+cmd+"</div>");
+	
+	// s4
+	qst = new question("choice", 7);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", "Lei o qualcuno della sua famiglia lavora o ha lavorato in uno dei settori qui elencati? Sono ammesse più risposte.");
+	vector list_s4 = new vector {
+		"Agenzia di pubblicità/promozioni/design",
+		"Aziende che producono o vendono prodotti ottici",
+		"Negozi/Rivenditori di prodotti ottici",
+		"Giornalismo",
+		"Marketing/ricerche di mercato",
+		"Sviluppo nuovi prodotti",
+		"Pubbliche relazioni",
+		"TV/Radio/Stampa",
+		"#se#sfNessuno di questi"
+	};
+	qst.setProperty("options", list_s4);
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "s4");
+	send qst;
+	
+	// s4 - term
+	int sel_s4 = 0;
+	
+	for( int i=0,7 ){
+		selected = system.getProperty("ans7_"+i);
+		if( selected == true ){
+			sel_s4 = sel_s4 + 1;
+		}
+	}
+	
+	//if( sel_s4 > 0 ){ return 4; }
+	
+	// s5
+	qst = new question("choice", 8);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", " Quali dei seguenti abbonamenti televisivi possedete in famiglia?");
+	vector list_s5 = new vector {
+		"Sky",
+		"Mediaset Premium",
+		"#seNessuno di questi"
+	};
+	qst.setProperty("options", list_s5);
+	qst.setProperty("code", "s5");
+	send qst;	
+	
+	sel=system.getProperty("ans8_2");
+
+	if  (sel_s2>34 && sel_s2<61) { core=0;}
+	else { core=1; }
+	
+	// Core target
+	qst = new question("choice", 191);
+	qst.setProperty("text", "Core Target:");
+	qst.setProperty("code", "coreTarget");
+	vector list_191 = new vector { 		"Si", 		"No" 	};
+	qst.setProperty("options", list_191);
+	qst.setProperty("default_answer","{ 'selection': ["+core+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	
+	// s6
+	qst = new question("choice", 9);
+	qst.setProperty("text", "Lei utilizza occhiali da vista?");
+	vector list_s6 = new vector {
+		"Si, ne utilizzo 1",
+		"Si, ne utilizzo 2",
+		"Si, ne utilizzo 3 o +",
+		"No"
+	};
+	qst.setProperty("options", list_s6);
+	qst.setProperty("code", "s6");
+	send qst;
+	
+	// s6 - term
+	int sel_s6 = system.getProperty("ans9");
+	if( sel_s6 == 3 ){ return 4; }
+	
+	
+	// s7
+	qst = new question("choice", 10);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", "Lei ha uno di questi difetti visivi?");
+	vector list_s7 = new vector {
+		"#se<b>Nessuno</b>",
+		"Astigmatismo",
+		"Miopia (difficoltà a vedere da lontano)",
+		"Presbiopia (difficoltà a vedere da vicino)",
+		"Ipermetropia"
+	};
+	qst.setProperty("options", list_s7);
+	qst.setProperty("label_at:1","&nbsp;&nbsp;Si quali?");
+	qst.setProperty("code", "s7");
+	send qst;
+	
+	// s7 - term
+	selected = system.getProperty("ans10_0");
+	if( selected == true ){ return 4; }
+	
+	// Show s7a
+	selected = system.getProperty("ans10_3");
+	if( selected == true ){
+		
+		// s7a
+		qst = new question("choice", 11);
+		qst.setProperty("text", "Per la sua difficoltà a vedere da vicino, presbiopia, che tipo di occhiali lei utilizza?");
+		vector list_s7a = new vector {
+			"Solo occhiali con lenti premontate/occhiali completi di lenti con gradazioni standard (ad esempio che si acquistano al supermercato, farmacia,..)",
+			"Solo montature dotate di lenti specifiche e personalizzate appositamente scelte e montate presso l’ottico",
+			"Entrambi"
+		};
+		qst.setProperty("options", list_s7a);
+		qst.setProperty("code", "s7a");
+		send qst;
+	}
+	
+	// Mask s8
+	vector list_s8 = new vector{
+		"Nessuno",
+		"Astigmatismo",
+		"Miopia",
+		"Presbiopia",
+		"Ipermetropia"
+	};
+	for( int i = 0, 4 ){
+		selected = system.getProperty("ans10_"+i);
+		if( selected != true ){
+			opt=list_s8.get(i);
+			opt="#sh"+opt;
+			list_s8.set(i,opt);
+		}
+	}
+	
+	// s8
+	qst = new question("scale", 12);
+	qst.setProperty("text", "Da quanto tempo porta occhiali correttivi per questi difetti visivi?");
+	vector scale_s8 = new vector{
+		"Da 1 anno o meno",
+		"Da 2-3 anni",
+		"Da 4-5 anni",
+		"Da 6-10 anni",
+		"Da più di 10 anni"
+	};
+	qst.setProperty("rows", list_s8);
+	qst.setProperty("cols", scale_s8);
+	qst.setProperty("view", "columns");
+	qst.setProperty("code", "s8");
+	send qst;
+	
+	// s9
+	qst = new question("choice", 13);
+	qst.setProperty("text", "A quando risale l’ultima volta in cui ha cambiato le <b>lenti oftalmiche</b> degli occhiali da vista?");
+	vector list_s9 = new vector {
+		"3 mesi fa o meno",
+		"4-6 mesi fa",
+		"1 anno fa",
+		"2-3 anni fa",
+		"4-5 anni fa",
+		"più di 5 anni fa"
+	};
+	qst.setProperty("options", list_s9);
+	qst.setProperty("code", "s9");
+	send qst;
+	
+	// s10
+	qst = new question("choice", 14);
+	qst.setProperty("text", "Con quale frequenza le è capitato di dover cambiare le <b>lenti oftalmiche</b> dei suoi occhiali da vista?<br/> Per favore faccia riferimento al periodo più recente.");
+	vector list_s10 = new vector {
+		"Ogni anno",
+		"Ogni 2-3 anni",
+		"Ogni 4-5 anni",
+		"Meno spesso"
+	};
+	qst.setProperty("options", list_s10);
+	qst.setProperty("code", "s10");
+	send qst;
+	
+	
+	
+	
+	// s11
+	qst = new question("open", 50000);
+	qst.setProperty("text", "Negli ultimi 3 anni, presso quanti ottici le è capitato di fare acquisti, per occhiali da vista o da sole, lenti, lenti a contatto o altro?  ");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s11");
+	send qst;
+	
+	nums11=(int)system.getProperty("ans50000");
+	
+	
+	
+	
+	// s12
+	qst = new question("open", 50001);
+	qst.setProperty("text", "Presso quanti le è capitato di acquistare nello specifico occhiali da vista o lenti oftalmiche? ");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s12");
+	send qst;	
+	
+	nums12=(int)system.getProperty("ans50001");
+	
+	
+		/////////////////////////////////////CONTROLLO CON WHILE, RIPROPOSIZIONE DOMANDA
+while (nums12>nums11) 
+{
+        // elimina l'ultima risposta
+        system.setProperty("delete", "ans50001");
+        qst.setProperty("text", "<p style='color:red'>valore incoerente</p>Presso quanti le è capitato di acquistare nello specifico occhiali da vista o lenti oftalmiche?");
+        send qst;
+}
+//////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	// s13
+	qst = new question("open", 50002);
+	qst.setProperty("text", "Di quanti ottici si considera cliente in questo momento?  ");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s13");
+	send qst;	
+
+	nums13=(int)system.getProperty("ans50002");
+	
+			/////////////////////////////////////CONTROLLO CON WHILE, RIPROPOSIZIONE DOMANDA
+while (nums13>nums11) 
+{
+        // elimina l'ultima risposta
+        system.setProperty("delete", "ans50002");
+        qst.setProperty("text", "<p style='color:red'>valore incoerente</p>Di quanti ottici si considera cliente in questo momento?");
+        send qst;
+}
+//////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	// intro_q1a
+	qst = new question("concept", 15);
+	qst.setProperty("text", "Durante questa intervista parleremo nello specifico  di lenti oftalmiche per occhiali da vista.");
+	qst.setProperty("code", "introq1a");
+	send qst;
+
+	// q1a
+	string jcode_q1 = "<style>#opt0{display:none;}</style><script>function refresh(){}function checkedBox(id){	var ex = document.getElementById(\"opt1\");	if( ex.checked == true ){		ex.checked = false;	}	var o = document.getElementById(\"opt\"+id);	if( o.checked != true ){		var oth = document.getElementById(\"comp\"+id);		oth.value = \"\";	}}function charInOe(id){	var oth = document.getElementById(\"comp\"+id);	if( oth.value == \"\" ){		var ot = document.getElementById(\"opt\"+id);		if( ot.checked == true ){			ot.checked = false;		}	} else {		var o = document.getElementById(\"opt\"+id);		if( o.checked != true ){			o.click();		}		var ex = document.getElementById(\"opt1\");		if( ex.checked == true ){			ex.checked = false;		}	}}function checkedExc(){	var o = document.getElementById(\"opt0\");	if( o.checked == true ){		o.checked = false;	}	var oth = document.getElementById(\"comp0\");	oth.value = \"\";}</script>";
+	qst = new question("choice", 16);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", jcode_q1 + "Qual è la <u>prima marca</u> di lenti oftalmiche per occhiali da vista che le <u>viene in mente</u>?");
+	vector list_q1a = new vector {
+		"#so#sa ",
+		"Nessuna<script>document.getElementById(\"comp0\").onkeyup = function(){ charInOe(\"0\"); };document.getElementById(\"opt0\").onclick = function(){ checkedBox(\"0\"); };document.getElementById(\"opt1\").onclick = function(){ checkedExc(); };</script>"
+	};
+	qst.setProperty("options", list_q1a);
+	qst.setProperty("code", "q1a");
+	send qst;
+	
+	// Show q1b - q1c
+	selected = system.getProperty("ans16_1");
+	if( selected != true ){
+		
+		// q1b
+		string jcode_q1b = "<style>#opt0,#opt1,#opt2,#opt3,#opt4,#opt5,#opt6,#opt7,#opt8,#opt9,#opt10,#opt11,#opt12,#opt13,#opt14,#opt15,#opt16,#opt17,#opt18,#opt19{display:none;}</style><script>function refresh(){}function checkedBox(id){	var ex = document.getElementById(\"opt20\");	if( ex.checked == true ){		ex.checked = false;	}	var o = document.getElementById(\"opt\"+id);	if( o.checked != true ){		var oth = document.getElementById(\"comp\"+id);		oth.value = \"\";	}}function charInOe(id){	var oth = document.getElementById(\"comp\"+id);	if( oth.value == \"\" ){		var ot = document.getElementById(\"opt\"+id);		if( ot.checked == true ){			ot.checked = false;		}	} else {		var o = document.getElementById(\"opt\"+id);		if( o.checked != true ){			o.click();		}		var ex = document.getElementById(\"opt20\");		if( ex.checked == true ){			ex.checked = false;		}	}}function checkedExc(){	for( var i=0; i<20; i++ ){		var o = document.getElementById(\"opt\"+i);		if( o.checked == true ){			o.checked = false;		}		var oth = document.getElementById(\"comp\"+i);		oth.value = \"\";	}}</script>";
+		qst = new question("choice", 17);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", jcode_q1b+"Quali <u>altre marche</u> di lenti oftalmiche per occhiali da vista le <u>vengono in mente</u>?");
+		vector list_q1b = new vector {
+			"#so#sa ",
+			"#so#sa  ",
+			"#so#sa   ",
+			"#so#sa    ",
+			"#so#sa     ",
+			"#so#sa      ",
+			"#so#sa       ",
+			"#so#sa        ",
+			"#so#sa         ",
+			"#so#sa          ",
+			"#so#sa           ",
+			"#so#sa            ",
+			"#so#sa             ",
+			"#so#sa              ",
+			"#so#sa               ",
+			"#so#sa                ",
+			"#so#sa                 ",
+			"#so#sa                  ",
+			"#so#sa                   ",
+			"#so#sa                    ",
+			"Nessuna<script>document.getElementById(\"comp0\").onkeyup = function(){ charInOe(\"0\"); };document.getElementById(\"comp1\").onkeyup = function(){ charInOe(\"1\"); };document.getElementById(\"comp2\").onkeyup = function(){ charInOe(\"2\"); };document.getElementById(\"comp3\").onkeyup = function(){ charInOe(\"3\"); };document.getElementById(\"comp4\").onkeyup = function(){ charInOe(\"4\"); };document.getElementById(\"comp5\").onkeyup = function(){ charInOe(\"5\"); };document.getElementById(\"comp6\").onkeyup = function(){ charInOe(\"6\"); };document.getElementById(\"comp7\").onkeyup = function(){ charInOe(\"7\"); };document.getElementById(\"comp8\").onkeyup = function(){ charInOe(\"8\"); };document.getElementById(\"comp9\").onkeyup = function(){ charInOe(\"9\"); };document.getElementById(\"comp10\").onkeyup = function(){ charInOe(\"10\"); };document.getElementById(\"comp11\").onkeyup = function(){ charInOe(\"11\"); };document.getElementById(\"comp12\").onkeyup = function(){ charInOe(\"12\"); };document.getElementById(\"comp13\").onkeyup = function(){ charInOe(\"13\"); };document.getElementById(\"comp14\").onkeyup = function(){ charInOe(\"14\"); };document.getElementById(\"comp15\").onkeyup = function(){ charInOe(\"15\"); };document.getElementById(\"comp16\").onkeyup = function(){ charInOe(\"16\"); };document.getElementById(\"comp17\").onkeyup = function(){ charInOe(\"17\"); };document.getElementById(\"comp18\").onkeyup = function(){ charInOe(\"18\"); };document.getElementById(\"comp19\").onkeyup = function(){ charInOe(\"19\"); };document.getElementById(\"opt0\").onclick = function(){ checkedBox(\"0\"); };document.getElementById(\"opt1\").onclick = function(){ checkedBox(\"1\"); };document.getElementById(\"opt2\").onclick = function(){ checkedBox(\"2\"); };document.getElementById(\"opt3\").onclick = function(){ checkedBox(\"3\"); };document.getElementById(\"opt4\").onclick = function(){ checkedBox(\"4\"); };document.getElementById(\"opt5\").onclick = function(){ checkedBox(\"5\"); };document.getElementById(\"opt6\").onclick = function(){ checkedBox(\"6\"); };document.getElementById(\"opt7\").onclick = function(){ checkedBox(\"7\"); };document.getElementById(\"opt8\").onclick = function(){ checkedBox(\"8\"); };document.getElementById(\"opt9\").onclick = function(){ checkedBox(\"9\"); };document.getElementById(\"opt10\").onclick = function(){ checkedBox(\"10\"); };document.getElementById(\"opt11\").onclick = function(){ checkedBox(\"11\"); };document.getElementById(\"opt12\").onclick = function(){ checkedBox(\"12\"); };document.getElementById(\"opt13\").onclick = function(){ checkedBox(\"13\"); };document.getElementById(\"opt14\").onclick = function(){ checkedBox(\"14\"); };document.getElementById(\"opt15\").onclick = function(){ checkedBox(\"15\"); };document.getElementById(\"opt16\").onclick = function(){ checkedBox(\"16\"); };document.getElementById(\"opt17\").onclick = function(){ checkedBox(\"17\"); };document.getElementById(\"opt18\").onclick = function(){ checkedBox(\"18\"); };document.getElementById(\"opt19\").onclick = function(){ checkedBox(\"19\"); };document.getElementById(\"opt20\").onclick = function(){ checkedExc(); };</script>"
+		};
+		qst.setProperty("options", list_q1b);
+		qst.setProperty("code", "q1b");
+		send qst;
+		
+		// q1c
+		string jcode_q1c = "<style>#opt0,#opt1,#opt2,#opt3,#opt4,#opt5,#opt6,#opt7,#opt8,#opt9,#opt10,#opt11,#opt12,#opt13,#opt14,#opt15,#opt16,#opt17,#opt18,#opt19{display:none;}</style><script>function refresh(){}function checkedBox(id){	var ex = document.getElementById(\"opt20\");	if( ex.checked == true ){		ex.checked = false;	}	var o = document.getElementById(\"opt\"+id);	if( o.checked != true ){		var oth = document.getElementById(\"comp\"+id);		oth.value = \"\";	}}function charInOe(id){	var oth = document.getElementById(\"comp\"+id);	if( oth.value == \"\" ){		var ot = document.getElementById(\"opt\"+id);		if( ot.checked == true ){			ot.checked = false;		}	} else {		var o = document.getElementById(\"opt\"+id);		if( o.checked != true ){			o.click();		}		var ex = document.getElementById(\"opt20\");		if( ex.checked == true ){			ex.checked = false;		}	}}function checkedExc(){	for( var i=0; i<20; i++ ){		var o = document.getElementById(\"opt\"+i);		if( o.checked == true ){			o.checked = false;		}		var oth = document.getElementById(\"comp\"+i);		oth.value = \"\";	}}</script>";
+		qst = new question("choice", 18);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", jcode_q1c+"Di quale marca di lenti oftalmiche per occhiali da vista ricorda di aver visto la pubblicità?");
+		vector list_q1c = new vector {
+			"#so#sa ",
+			"#so#sa  ",
+			"#so#sa   ",
+			"#so#sa    ",
+			"#so#sa     ",
+			"#so#sa      ",
+			"#so#sa       ",
+			"#so#sa        ",
+			"#so#sa         ",
+			"#so#sa          ",
+			"#so#sa           ",
+			"#so#sa            ",
+			"#so#sa             ",
+			"#so#sa              ",
+			"#so#sa               ",
+			"#so#sa                ",
+			"#so#sa                 ",
+			"#so#sa                  ",
+			"#so#sa                   ",
+			"#so#sa                    ",
+			"Non ne ricordo nessuna<script>document.getElementById(\"comp0\").onkeyup = function(){ charInOe(\"0\"); };document.getElementById(\"comp1\").onkeyup = function(){ charInOe(\"1\"); };document.getElementById(\"comp2\").onkeyup = function(){ charInOe(\"2\"); };document.getElementById(\"comp3\").onkeyup = function(){ charInOe(\"3\"); };document.getElementById(\"comp4\").onkeyup = function(){ charInOe(\"4\"); };document.getElementById(\"comp5\").onkeyup = function(){ charInOe(\"5\"); };document.getElementById(\"comp6\").onkeyup = function(){ charInOe(\"6\"); };document.getElementById(\"comp7\").onkeyup = function(){ charInOe(\"7\"); };document.getElementById(\"comp8\").onkeyup = function(){ charInOe(\"8\"); };document.getElementById(\"comp9\").onkeyup = function(){ charInOe(\"9\"); };document.getElementById(\"comp10\").onkeyup = function(){ charInOe(\"10\"); };document.getElementById(\"comp11\").onkeyup = function(){ charInOe(\"11\"); };document.getElementById(\"comp12\").onkeyup = function(){ charInOe(\"12\"); };document.getElementById(\"comp13\").onkeyup = function(){ charInOe(\"13\"); };document.getElementById(\"comp14\").onkeyup = function(){ charInOe(\"14\"); };document.getElementById(\"comp15\").onkeyup = function(){ charInOe(\"15\"); };document.getElementById(\"comp16\").onkeyup = function(){ charInOe(\"16\"); };document.getElementById(\"comp17\").onkeyup = function(){ charInOe(\"17\"); };document.getElementById(\"comp18\").onkeyup = function(){ charInOe(\"18\"); };document.getElementById(\"comp19\").onkeyup = function(){ charInOe(\"19\"); };document.getElementById(\"opt0\").onclick = function(){ checkedBox(\"0\"); };document.getElementById(\"opt1\").onclick = function(){ checkedBox(\"1\"); };document.getElementById(\"opt2\").onclick = function(){ checkedBox(\"2\"); };document.getElementById(\"opt3\").onclick = function(){ checkedBox(\"3\"); };document.getElementById(\"opt4\").onclick = function(){ checkedBox(\"4\"); };document.getElementById(\"opt5\").onclick = function(){ checkedBox(\"5\"); };document.getElementById(\"opt6\").onclick = function(){ checkedBox(\"6\"); };document.getElementById(\"opt7\").onclick = function(){ checkedBox(\"7\"); };document.getElementById(\"opt8\").onclick = function(){ checkedBox(\"8\"); };document.getElementById(\"opt9\").onclick = function(){ checkedBox(\"9\"); };document.getElementById(\"opt10\").onclick = function(){ checkedBox(\"10\"); };document.getElementById(\"opt11\").onclick = function(){ checkedBox(\"11\"); };document.getElementById(\"opt12\").onclick = function(){ checkedBox(\"12\"); };document.getElementById(\"opt13\").onclick = function(){ checkedBox(\"13\"); };document.getElementById(\"opt14\").onclick = function(){ checkedBox(\"14\"); };document.getElementById(\"opt15\").onclick = function(){ checkedBox(\"15\"); };document.getElementById(\"opt16\").onclick = function(){ checkedBox(\"16\"); };document.getElementById(\"opt17\").onclick = function(){ checkedBox(\"17\"); };document.getElementById(\"opt18\").onclick = function(){ checkedBox(\"18\"); };document.getElementById(\"opt19\").onclick = function(){ checkedBox(\"19\"); };document.getElementById(\"opt20\").onclick = function(){ checkedExc(); };</script>"
+		};
+		qst.setProperty("options", list_q1c);
+		qst.setProperty("code", "q1c");
+		send qst;
+	}
+	
+	// q2
+	qst = new question("choice", 19);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", "Per favore selezioni tutte le marche di <b>lenti oftalmiche per occhiali da vista</b> che <u>conosce, anche solo di nome</u>. Non importa che Lei abbia utilizzato questi prodotti, siamo solo interessati a sapere se li ha già sentiti nominare. <br/> La preghiamo di selezionare anche le marche che ha selezionato nella precedente domanda. Sono ammesse più risposte.");
+	vector list_q2 = new vector {
+		"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+		"#se#sfNon conosco alcuna  marca"
+	};
+	qst.setProperty("options", list_q2);
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q2");
+	send qst;
+	
+	// Mask q3
+	vector list_q3 = new vector {
+		"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+		"#se#sfNon saprei"
+	};
+	int count_q2 = 0;
+	for( int i = 0, 19 ){
+		selected = system.getProperty("ans19_"+i);
+		if( selected != true ){
+			opt=list_q3.get(i);
+			opt="#sh"+opt;
+			list_q3.set(i,opt);
+		} else {
+			if( i == 19 ){
+				opt = system.getProperty("ans19_19_comp");
+				opt = opt + " ";
+				opt = "#sf" + opt;
+				list_q3.set(i,opt);
+			}
+			count_q2 = count_q2 + 1;
+		}
+	}
+	
+	// Show q3
+	if( count_q2 > 0 ){
+	
+		// q3
+		qst = new question("choice", 20);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Quali delle seguenti marche di <b>lenti oftalmiche per occhiali da vista</b> le è mai capitato di utilizzare per i suoi occhiali? Sono ammesse più risposte.");
+		qst.setProperty("options", list_q3);
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q3");
+		send qst;
+	}
+	
+	// Mask q4
+	int sel_q3 = 0;
+	vector list_q4 = new vector {
+		"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+		"#se#sfNon saprei"
+	};
+	if( count_q2 > 0 ){
+		for( int i = 0, 19 ){
+			selected = system.getProperty("ans20_"+i);
+			if( selected != true ){
+				opt=list_q4.get(i);
+				opt="#sh"+opt;
+				list_q4.set(i,opt);
+			} else {
+				if( i <= 19 ){
+					sel_q3 = sel_q3+1;
+				}
+				if( i == 19 ){
+					opt = system.getProperty("ans19_19_comp");
+					opt = opt + " ";
+					opt = "#sf" + opt;
+					list_q4.set(i,opt);
+				}
+			}
+		}
+	}
+	
+	string ans_q4 = "";
+	int ans_code_q4 = 0;
+	boolean has_ans_q4 = false;
+	
+	// Show q4
+	if( sel_q3 > 0 ){
+
+		// q4
+		qst = new question("choice", 21);
+		qst.setProperty("text", "Quale marca di <b>lenti oftalmiche per occhiali da vista</b> Lei <u>utilizza attualmente</u>? <br/>Per favore selezioni una sola risposta.");
+		qst.setProperty("options", list_q4);
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q4");
+		send qst;
+		
+		int selOpt_q4 = (int)system.getProperty("ans21");
+		if( selOpt_q4 < 20 ){
+			ans_q4 = list_q4.get(selOpt_q4);
+			ans_code_q4 = selOpt_q4;
+			has_ans_q4 = true;
+		}
+	}
+	
+	// Mask q5
+	int sel_q4 = 0;
+	vector list_q5 = new vector {
+		"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+		"#se#sfNon saprei"
+	};
+	boolean selected_q2;
+	boolean selected_q3;
+	for( int i = 0, 19 ){
+		selected_q2 = system.getProperty("ans19_"+i);
+		//if( count_q2 > 0 ){
+		//	selected_q3 = system.getProperty("ans20_"+i);
+		//} else {
+		//	selected_q3 = false;
+		//}
+		//if( selected_q2 != true || selected_q3 == true ){
+		if( selected_q2 != true ){
+			opt=list_q5.get(i);
+			opt="#sh"+opt;
+			list_q5.set(i,opt);
+		} else {
+			if( i <= 19 ){
+				sel_q4 = sel_q4+1;
+			}
+			if( i == 19 ){
+				opt = system.getProperty("ans19_19_comp");
+				opt = opt + " ";
+				opt = "#sf" + opt;
+				list_q5.set(i,opt);
+			}
+		}
+	}
+	
+	// Show q5
+	if( sel_q4 > 0 ){
+
+		// q5
+		qst = new question("choice", 22);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Tra tutte le marche <b><u>di lenti oftalmiche</u> per occhiali da vista</b> che Lei conosce, quali pensa di <u>prendere in considerazione per un acquisto futuro</u>? Sono ammesse più risposte.");
+		qst.setProperty("options", list_q5);
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5");
+		send qst;
+		
+		
+		// Mask q5a
+		int sel_q5 = 0;
+		vector list_q5a = new vector {
+			"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare"
+		};
+		for( int i = 0, 19 ){
+			selected = system.getProperty("ans22_"+i);
+			if( selected != true ){
+				opt=list_q5a.get(i);
+				opt="#sh"+opt;
+				list_q5a.set(i,opt);
+			} else {
+				if( i <= 19 ){
+					sel_q5 = sel_q5+1;
+				}
+				if( i == 19 ){
+					opt = system.getProperty("ans19_19_comp");
+					opt = opt + " ";
+					opt = "#sf" + opt;
+					list_q5a.set(i,opt);
+				}
+			}
+		}
+		
+		// Show q5a
+		if( sel_q5 > 1 ){
+	
+			// q5a
+			qst = new question("choice", 23);
+			qst.setProperty("text", "E quale sarebbe la sua prima scelta?");
+			qst.setProperty("options", list_q5a);
+			qst.setProperty("show_rand", true);
+			qst.setProperty("code", "q5a");
+			send qst;
+		}
+	}
+	
+	// Show q6
+
+	if( count_q2 > 0 ){
+		selected = system.getProperty("ans20_15");
+		int ansq4 = 0;
+		
+		if( selected == true ){
+			if( sel_q3 > 0 )
+			{
+			ansq4 = (int)system.getProperty("ans21");
+			if( ansq4 == 15 ){flag = true; } 
+			} 
+			else { if( ansq4 == 15 ){flag = true; } }
+		}
+		if( flag == true ){
+		
+			// q6
+			qst = new question("choice", 24);
+			qst.setProperty("text", "Lei mi ha detto di avere delle lenti Zeiss. Può dirmi se le sue lenti sono siglate (con una piccola Z serigrafata) oppure no?");
+			vector list_q6 = new vector {
+				"Si, hanno la sigla",
+				"No, non ce l’hanno",
+				"Non so"
+			};
+			qst.setProperty("options", list_q6);
+			qst.setProperty("code", "q6");
+			send qst;
+		}
+	}
+	
+	// Show q7
+	string q7_fix = "";
+	if( count_q2 > 13 ){
+		q7_fix = "<style>div#container{ width: 1200px !important; }</style>";
+	}
+	selected = system.getProperty("ans19_20");
+	if( selected != true )
+	{
+		
+		// q7
+		qst = new question("scale", 25);
+		qst.setProperty("text", q7_fix + "Può dirmi qual è il suo grado di conoscenza dei seguenti marchi?");
+		vector scale_q7 = new vector{
+			"Lo conosco solo per sentito dire, ma non saprei dirne nulla",
+			"Lo conosco abbastanza, per averne sentito parlare o averne visto la pubblicità",
+			"Lo conosco per esperienza diretta (l’ho usato io o qualcuno molto vicino a me)"
+		};
+		qst.setProperty("controller", 19);
+		qst.setProperty("cols", scale_q7);
+		qst.setProperty("view", "columns");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q7");
+		send qst;
+	//}
+	
+	//if( sel_q3 > 0 && count_q2 > 0 ){
+	
+		// q8
+		qst = new question("scale", 26);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", q7_fix + "Come è venuto a conoscenza di questi marchi?");
+		vector scale_q8 = new vector{
+			"Qualcuno (amico/familiare) me ne ha parlato/me lo ha raccomandato",
+			"Ne ho sentito parlare sui social networks",
+			"L’ho conosciuta grazie all’esposizione o alla pubblicità all’interno nel negozio ottico",
+			"Me ne ha parlato l’ottico del negozio",
+			"Me l’ha consigliato l’oculista",
+			"Ho visto/sentito la pubblicità e poi mi sono consultato con l’ottico",
+			"Ho visto/sentito la pubblicità  e poi mi sono informato online",
+			"Ho visto/sentito  la pubblicità",
+			"#sfAltro (specificare)"
+		};
+		qst.setProperty("controller", 19);
+		qst.setProperty("cols", scale_q8);
+		qst.setProperty("view", "columns");
+		qst.setProperty("extras", "{rand_cols:true,min:1}");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q8");
+		send qst;
+		
+	
+		// Show q8_oth
+
+		for( int i = 0, 19 ){
+			selected = system.getProperty("ans26_"+i+"_8");
+			if( selected == true ){
+				
+				// q8_oth
+				qid = 100+i;
+				if( i < 19 ){
+					brandName = list_q2.get(i);
+				} else {
+					brandName = system.getProperty("ans19_19_comp");
+				}
+				qst = new question("open", qid);
+				qst.setProperty("text", "In che altro modo è venuto a conoscenza della marca "+brandName+"?");
+				qst.setProperty("code", "q8oth"+i);
+				send qst;
+			}
+		}
+	}
+	
+	// q9
+	qst = new question("choice", 27);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", "Di quali di queste marche di <b>lenti oftalmiche</b> per occhiali da vista ricorda di aver visto la pubblicità recentemente?");
+	vector list_q9 = new vector {
+			"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+		"#sf#seNessuna"
+	};
+	qst.setProperty("options", list_q9);
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q9");
+	send qst;
+	
+	boolean selnessuno9a=system.getProperty("ans27_20");
+	
+	boolean zeisq9a=system.getProperty("ans27_15");
+	boolean variq9a=system.getProperty("ans27_16");
+	
+	
+	if (selnessuno9a==false)
+	{
+	
+	// q9b
+	qst = new question("scale", 2700);
+	qst.setProperty("text", "In quali canali ricorda di aver visto la pubblicità?");
+	qst.setProperty("code", "q9b");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras","{min:1}");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("controller", 27);
+	vector q2700_cols = new vector {
+		"Televisione (non a pagamento)",
+		"Televisione a pagamento (Sky, Mediaset premium)",
+		"Radio",
+		"Quotidiani",
+		"Stampa",
+		"Affissioni (manifesti e poster) in luoghi pubblici",
+		"Espositori presso ottici",
+		"Cinema",
+		"Mailing/pubblicità per posta",
+		"Internet /web",
+		"Social network (Facebook, Twitter, etc.) ",
+		"Altro (specificare)"
+};
+	qst.setProperty("cols", q2700_cols);
+	qst.setProperty("view", "columns");
+	send qst;
+	
+	
+	
+	for (int i=0, 19)
+	{
+	sel=system.getProperty("ans2700_"+i+"_11");
+	
+	if (sel==true)
+				 {
+				 qid=2701+i;
+				 
+				 
+				 if (i==19){item=system.getProperty("ans27_19_comp");}
+							else
+							{item=list_q9.get(i);}
+				 
+				 qst = new question("open", qid);
+	             qst.setProperty("text", "Specificare in quali altri canali ricorda di aver visto la pubblicità di <b>"+item+"</b>");
+	             qst.setProperty("code", "Altroq9b."+i);
+	             send qst;
+				 }
+	}
+	
+	
+
+r2 = (int)system.getProperty("r2");   
+
+for (int i=0,2)
+{
+
+if (r2==0){label="ZEISS"; sel=system.getProperty("ans27_15");}
+if (r2==1){label="VARILUX"; sel=system.getProperty("ans27_16");}
+if (r2==2){label="AVANZI OPTISSIMO"; sel=system.getProperty("ans27_0");}
+
+if (sel==true)
+{
+qid = 5000+100*r2;
+qst = new question("open", qid);
+qst.setProperty("text", "Mi ha detto di aver visto pubblicità per <b>"+label+"</b>. Può indicare tutto quello che ricorda di questa pubblicità? Cosa si vedeva? Cosa si diceva?");
+qst.setProperty("code", "q9c."+r2);
+send qst;
+
+qid = 5000+100*r2+10;
+qst = new question("open", qid);
+qst.setProperty("text", "Secondo lei, a parte l’invito ad acquistare il prodotto, qual è il messaggio principale che voleva comunicare la pubblicità di <b>"+label+"</b>?");
+qst.setProperty("code", "q9d."+r2);
+send qst;
+
+if (r2==2)
+{
+/*
+qid = 5000+100*r2+15;
+qst = new question("choice", qid);
+qst.setProperty("text", "Avanzi Optissimo fa parte del gruppo GrandVision. Lei ne era a conoscenza?");
+qst.setProperty("code", "q9e."+r2);
+vector sinoo = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", sinoo);
+send qst;
+*/
+}
+
+}
+
+if (r2<2)
+		{
+		r2=r2+1;
+		}
+		else
+		{
+		r2=0;
+		}
+		 
+}	
+	
+	
+	
+	
+	}
+	
+	
+	
+	// q10
+	qst = new question("choice", 28);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("text", "Quale delle seguenti tipologie di lenti oftalmiche conosce?");
+	vector list_q10 = new vector {
+		"Monofocali (correggono un unico difetto)",
+		"Bifocali",
+		"Lenti progressive (correggono sia presbiopia che altri difetti visivi)",
+		"Fotocromatiche",
+		"#sf#seNon so"
+	};
+	qst.setProperty("options", list_q10);
+	qst.setProperty("code", "q10");
+	send qst;
+	
+	// Mask q11
+	vector list_q11 = new vector {
+		"Monofocali (correggono un unico difetto)",
+		"Bifocali",
+		"Lenti progressive (correggono sia presbiopia che altri difetti visivi)",
+		"Fotocromatiche",
+		"#sf#seNon so"
+	};
+	int count_q10 = 0;
+	for( int i = 0, 3 ){
+		selected = system.getProperty("ans28_"+i);
+		if( selected != true ){
+			opt=list_q11.get(i);
+			opt="#sh"+opt;
+			list_q11.set(i,opt);
+		} else {
+			count_q10 = count_q10 + 1;
+		}
+	}
+	
+	// Show q11
+	if( count_q10 > 0 ){
+
+		// q11
+		qst = new question("choice", 29);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Quale di queste attualmente utilizza?");
+		qst.setProperty("options", list_q11);
+		qst.setProperty("code", "q11");
+		send qst;
+	}
+	
+	// Mask q12
+	vector list_q12 = new vector {
+		"Monofocali (correggono un unico difetto)",
+		"Bifocali",
+		"Lenti progressive (correggono sia presbiopia che altri difetti visivi)",
+		"Fotocromatiche",
+		"#sf#seNon so"
+	};
+	int count_q11 = 0;
+	boolean selected_q10;
+	boolean selected_q11;
+	for( int i = 0, 3 ){
+		selected_q10 = system.getProperty("ans28_"+i);
+		//if( count_q10 > 0 ){
+			//selected_q11 = system.getProperty("ans29_"+i);
+		//} else {
+				//selected_q11 = false;
+		//}
+		//if( selected_q10 != true || selected_q11 == true ){
+		if( selected_q10 != true ){
+			opt=list_q12.get(i);
+			opt="#sh"+opt;
+			list_q12.set(i,opt);
+		} else {
+			count_q11 = count_q11 + 1;
+		}
+	}
+	
+	// Show q12
+	if( count_q11 > 0 ){
+
+		// q12
+		qst = new question("choice", 30);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Quali di queste considererebbe di utilizzare in futuro?");
+		qst.setProperty("options", list_q12);
+		qst.setProperty("code", "q12");
+		send qst;
+	}
+	
+	// coding h_q13a, h_q13b
+	int code_q13a = 0;
+	int code_q13b = 0;
+	code_q13a = code_q13a - 1;
+	code_q13b = code_q13b - 1;
+	int countWZeis = 0;
+	int rand1;
+	int rand2;
+	boolean isZeis = false;
+	vector availCodes = new vector {"-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1" };
+	for( int i = 0, 19 ){
+		selected = system.getProperty("ans19_"+i);
+		if( selected == true ){
+			if( i == 15 ){
+				isZeis = true;
+			} else {
+				availCodes.set(i, "1");
+				countWZeis = countWZeis + 1;
+			}
+		}
+	}
+	if( isZeis == true ){ code_q13a = 15; }
+	if( isZeis == true && countWZeis == 1 ){
+		for( int i = 0, 19 ){
+			opt=availCodes.get(i);
+			if( opt != "-1" ){
+				code_q13b = i;
+			}
+		}
+	}
+	
+	
+	
+	if( isZeis == false && countWZeis == 1 ){
+		for( int i = 0, 19 ){
+			opt=availCodes.get(i);
+			if( opt != "-1" ){
+				code_q13a = i;
+			}
+		}
+	}
+	
+	
+	
+	if( isZeis == true && countWZeis > 1 ){
+		system.setProperty("rand1", "rand:"+countWZeis);
+		rand1 = (int)system.getProperty("rand1");
+		for( int i = 0, 19 ){
+			opt=availCodes.get(i);
+			if( opt != "-1" ){
+				if( rand1 == 0 ){
+					code_q13b = i;
+				}
+				rand1 = rand1-1;
+			}
+		}
+	}
+	if( isZeis == false && countWZeis == 2 ){
+		for( int i = 0, 19 ){
+			opt=availCodes.get(i);
+			if( opt != "-1" ){
+				if( code_q13a < 0 ){
+					code_q13a = i;
+				} else {
+					code_q13b = i;
+				}
+			}
+		}
+	}
+	if( isZeis == false && countWZeis > 2 ){
+		system.setProperty("rand1", "rand:"+countWZeis);
+		rand1 = (int)system.getProperty("rand1");
+		for( int i = 0, 19 ){
+			opt=availCodes.get(i);
+			if( opt != "-1" ){
+				if( rand1 == 0 ){
+					code_q13a = i;
+					availCodes.set(i,"-1");
+					countWZeis = countWZeis - 1;
+				}
+				rand1 = rand1-1;
+			}
+		}
+		system.setProperty("rand2", "rand:"+countWZeis);
+		rand2 = (int)system.getProperty("rand2");
+		for( int i = 0, 19 ){
+			opt=availCodes.get(i);
+			if( opt != "-1" ){
+				if( rand2 == 0 ){
+					code_q13b = i;
+				}
+				rand2 = rand2-1;
+			}
+		}
+	}
+	
+	
+	if( code_q13a >= 0 ){
+	// h_q13a
+	qst = new question("choice", 31);
+	qst.setProperty("text", "Store for what will be asked q13a");
+	vector list_code_q13a = new vector {
+		"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"Altro specificare"
+	};
+	qst.setProperty("options",list_code_q13a);
+	if( code_q13a >= 0 ){ qst.setProperty("default_answer","{ 'selection': ["+code_q13a+"]}"); }
+	qst.setProperty("code", "hq13as");
+	qst.setProperty("hidden", true);
+	send qst;
+	}
+	
+	
+	
+	if( code_q13b >= 0 ){
+	// h_q13b
+	qst = new question("choice", 32);
+	qst.setProperty("text", "Store for what will be asked q13b");
+	vector list_code_q13b = new vector {
+		"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"Altro specificare"
+	};
+	qst.setProperty("options",list_code_q13b);
+	if( code_q13b >= 0 ){ qst.setProperty("default_answer","{ 'selection': ["+code_q13b+"]}"); }
+	qst.setProperty("code", "hq13bis");
+	qst.setProperty("hidden", true);
+	send qst;
+	}
+	
+	
+	system.setProperty("hq13a", code_q13a);
+	system.setProperty("hq13b", code_q13b);
+	
+	// Show q13a
+	if( code_q13a >= 0 ){
+	
+		// q13a
+		cmd = list_code_q13a.get(code_q13a);
+		qst = new question("scale", 33);
+		qst.setProperty("text", "Parliamo ora di <b>"+cmd+"</b> Le verrà ora mostrata una lista di affermazioni , vorrei che per ciascuno di essi mi dicesse la sua valutazione, quanto è d’accordo o in disaccordo,  rispetto al brand considerato.");
+		vector scale_q13a = new vector{
+			"Molto d’accordo",
+			"Abbastanza d’accordo",
+			"Così così d’accordo",
+			"Poco d’accordo",
+			"Per niente d’accordo"
+		};
+		vector list_q13a = new vector{
+			"moderna, al passo con i tempi",
+			"che offre delle lenti diverse dagli altri",
+			"superiore alle altre del settore",
+			"In grado di fare lenti per qualunque tipo di difetto visivo, anche su misura",
+			"adatta a tutta la famiglia",
+			"specifica per chi ha problemi visivi complessi",
+			"che offre prodotti che valgono il loro prezzo",
+			"che offre prodotti costosi",
+			"storica, con una grande tradizione alle spalle",
+			"che offre prodotti innovativi",
+			"che offre lenti che una volta provate ti permettono di vedere la  differenza rispetto alle altre",
+			"che offre lenti con le quali si riesce a raggiungere una qualità visiva eccellente",
+			"tecnologica",
+			"poco impegnativa",
+			"giovane",
+			"consigliata dagli ottici",
+			"consigliata dagli oculisti",
+			"che offre prodotti di alta qualità",
+			"Molto conosciuta",
+			"Leader nel settore",
+			"che offre lenti di altissima precisione",
+			"di grande affidabilità"
+		};
+		qst.setProperty("rows", list_q13a);
+		qst.setProperty("cols", scale_q13a);
+		qst.setProperty("label_at:0","E’ UNA MARCA...");
+		qst.setProperty("extras","{header_repeat:11}");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q13a");
+		send qst;
+	}
+	
+	if( code_q13b >= 0 ){
+		
+		// q13b
+		cmd = list_code_q13b.get(code_q13b);
+		qst = new question("scale", 34);
+		qst.setProperty("text", "Parliamo ora di <b>"+cmd+"</b> Le verrà ora mostrata una lista di affermazioni , vorrei che per ciascuno di essi mi dicesse la sua valutazione, quanto è d’accordo o in disaccordo,  rispetto al brand considerato.");
+		vector scale_q13b = new vector{
+			"Molto d’accordo",
+			"Abbastanza d’accordo",
+			"Così così d’accordo",
+			"Poco d’accordo",
+			"Per niente d’accordo"
+		};
+		vector list_q13b = new vector{
+			"moderna, al passo con i tempi",
+			"che offre delle lenti diverse dagli altri",
+			"superiore alle altre del settore",
+			"In grado di fare lenti per qualunque tipo di difetto visivo, anche su misura",
+			"adatta a tutta la famiglia",
+			"specifica per chi ha problemi visivi complessi",
+			"che offre prodotti che valgono il loro prezzo",
+			"che offre prodotti costosi",
+			"storica, con una grande tradizione alle spalle",
+			"che offre prodotti innovativi",
+			"che offre lenti che una volta provate ti permettono di vedere la  differenza rispetto alle altre",
+			"che offre lenti con le quali si riesce a raggiungere una qualità visiva eccellente",
+			"tecnologica",
+			"poco impegnativa",
+			"giovane",
+			"consigliata dagli ottici",
+			"consigliata dagli oculisti",
+			"che offre prodotti di alta qualità",
+			"Molto conosciuta",
+			"Leader nel settore",
+			"che offre lenti di altissima precisione",
+			"di grande affidabilità"
+		};
+		qst.setProperty("rows", list_q13b);
+		qst.setProperty("cols", scale_q13b);
+		qst.setProperty("label_at:0","E’ UNA MARCA...");
+		qst.setProperty("extras","{header_repeat:11}");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q13b");
+		send qst;
+	}
+	
+	// Show q14 - q34b
+	selected = system.getProperty("ans10_3");
+	flag = true;
+	boolean flag2 = false;
+	if( selected == true ){
+		int sel_s7a = (int)system.getProperty("ans11");
+		//if( sel_s7a == 0 ){
+		//	flag = false;
+		//}
+	}
+	selected = system.getProperty("ans19_19");
+	if( selected == true ){
+		flag2 = true;
+	}
+	if( count_q2 > 0 ){
+		selected = system.getProperty("ans20_19");
+		if( selected == true ){
+			flag2 = true;
+		}
+	}
+	//system.out("<div class=''>q14-q34b - will it start</div>");
+	if( flag == true || flag2 == true )
+		{
+		
+		//system.out("<div class=''>q14-q34b - start</div>");
+	
+		 
+			// q14
+			qst = new question("choice", 35);
+			qst.setProperty("text", "<p>Andremo ora ad approfondire la sua personale esperienza nei confronti delle lenti oftalmiche che <b>utilizza attualmente</b>.</p>"+
+			"Pensando alle lenti oftalmiche che mi ha detto di utilizzare. È lei che ha deciso l’acquisto delle lenti oftalmiche?");
+			vector list_q14 = new vector {
+				"Si",
+				"No"
+			};
+			qst.setProperty("options", list_q14);
+			qst.setProperty("code", "q14");
+			send qst;
+		
+			// q15
+			qst = new question("choice", 36);
+			qst.setProperty("selection", "multiple");
+			qst.setProperty("text", "Cosa l’ha portata a decidere l’acquisto?");
+			vector list_q15 = new vector {
+				"Le lenti si erano rotte/deteriorate",
+				"La montatura si era rovinata",
+				"La montatura mi aveva stancato",
+				"Le lenti non erano più adeguate al mio problema visivo",
+				"Mi trovavo male con le lenti, avevo dei problemi a portarle",
+				"Volevo delle lenti migliori, più performanti",
+				"Volevo delle lenti più adatte al mio stile di vita (es. per computer, per sport, etc)",
+				"#sf#soAltro (specificare)"
+			};
+			qst.setProperty("options", list_q15);
+			qst.setProperty("show_rand", true);
+			qst.setProperty("code", "q15");
+			send qst;
+		
+		
+		// q16
+		qst = new question("choice", 37);
+		qst.setProperty("text", "Si è informato <u>sulle lenti</u> prima di andare dall’ottico?");
+		vector list_q16 = new vector {
+			"Si, sulla tipologia di lenti",
+			"Si, sulle marche di lenti",
+			"Sia su tipologia che su marche",
+			"No"
+		};
+		qst.setProperty("options", list_q16);
+		qst.setProperty("code", "q16");
+		send qst;
+		
+		// Show q17 - q19
+		int sel_q16 = (int)system.getProperty("ans37");
+		if( sel_q16 <= 2 ){
+		
+			// q17
+			qst = new question("choice", 38);
+			qst.setProperty("text", "Quanto tempo prima dell’acquisto ha cominciato ad informarsi sulle lenti?");
+			vector list_q17 = new vector {
+				"una settimana prima o meno",
+				"2-3 settimane prima",
+				"1 mese prima",
+				"2-3 mesi prima",
+				"Circa 6 mesi prima",
+				"Quasi un anno prima"
+			};
+			qst.setProperty("options", list_q17);
+			qst.setProperty("code", "q17");
+			send qst;
+			
+			// q18
+			qst = new question("choice", 39);
+			qst.setProperty("selection", "multiple");
+			qst.setProperty("text", "E dove si è informato sulle lenti oftalmiche? ");
+			vector list_q18 = new vector {
+				"Da amici e parenti",
+				"Sul sito delle aziende produttrici di lenti",
+				"Sul sito di ottici o di catene di ottici",
+				"Su siti di opinioni, blog, social network",
+				"In pubblicità (tv, stampa)",
+				"Attraverso materiali disponibili dagli ottici",
+				"Confrontando le offerte in vetrina presso gli ottici",
+				"Presso altri ottici, diverso da quello dove ho comprato le lenti",
+				"Presso lo stesso ottico da cui poi ho comprato le lenti, in visite precedenti",
+				"Presso l’oculista",
+				"#sf#soAltro (Specificare)"
+			};
+			qst.setProperty("options", list_q18);
+			qst.setProperty("show_rand", true);
+			qst.setProperty("code", "q18");
+			send qst;
+			
+			// q19
+			qst = new question("choice", 40);
+			qst.setProperty("text", "Rispetto alle informazioni raccolte lei direbbe che PRIMA DELL’ACQUISTO ...");
+			vector list_q19 = new vector {
+				"aveva una idea molto chiara sulle lenti che voleva",
+				"aveva una idea di massima, ma poi l’ottico da cui ha acquistato ha spiegato meglio e chiarito alcuni punti",
+				"non sapeva su che tipo di lenti orientarsi"
+			};
+			qst.setProperty("options", list_q19);
+			qst.setProperty("code", "q19");
+			send qst;
+		}
+		
+		// q20
+		qst = new question("choice", 41);
+		qst.setProperty("text", "Quale di queste frasi descrive meglio la sua esperienza nell’ultimo acquisto di lenti da vista");
+		vector list_q20 = new vector {
+			"Sono andato da un unico ottico",
+			"...per capire quello dove le montature mi piacevano di più",
+			"...per capire quello in cui facevano i prezzi migliori",
+			"...per capire quello dove c’era più competenza o gentilezza",
+			"...per trovare chi vendeva certe marche di lenti",
+			"...per trovarne uno dove il servizio era veloce",
+			"...per farmi una idea complessiva dell’offerta",
+			"#soAltro (Specificare)"
+		};
+		qst.setProperty("options", list_q20);
+		qst.setProperty("label_at:1","<b>&nbsp;&nbsp;Ho girato alcuni negozi di ottici per poi sceglierne uno..</b>.");
+		qst.setProperty("code", "q20");
+		send qst;
+		
+		// Show q21
+		int sel_q20 = (int)system.getProperty("ans41");
+		if( sel_q20 > 0 ){
+		
+			// q21
+			qst = new question("choice", 42);
+			qst.setProperty("text", "Nel girare più ottici, lei ha anche chiesto dei preventivi di spesa?");
+			vector list_q21 = new vector {
+				"Si, mi è capitato di chiedere il prezzo delle lenti o delle montature con lenti",
+				"No, chiedevo solo delle informazioni, ma non arrivavo a chiedere i prezzi delle lenti",
+				"No, guardavo i prezzi esposti ma non chiedevo direttamente",
+				"No, non ho guardato al prezzo"
+			};
+			qst.setProperty("options", list_q21);
+			qst.setProperty("code", "q21");
+			send qst;
+		}
+		
+		// q22a
+		qst = new question("choice", 43);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Quali sono i criteri di scelta del negozio di ottica  dove alla fine ha comprato le lenti?");
+		vector list_q22a = new vector {
+			"È l’ottico da cui vado sempre, che mi conosce",
+			"È quello più competente, di cui mi fido",
+			"È l’ottico più vicino a me, più comodo",
+			"È quello con i prezzi migliori",
+			"È quello che tiene le montature che mi piacciono",
+			"È quello dove sono stati più gentili e disponibili",
+			"È l’ottico che tiene la marca di lenti che volevo",
+			"È l’ottico segnalato dall’azienda produttrice di lenti",
+			"#sf#soAltro (Specificare)"
+		};
+		qst.setProperty("options", list_q22a);
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q22a");
+		send qst;
+		
+		// Show q22b
+		int count_q22a = 0;
+		for( int i = 0, 8 ){
+			selected = system.getProperty("ans43_"+i);
+			if( selected == true ){
+				count_q22a = count_q22a + 1;
+			}
+		}
+		if( count_q22a > 1 ){
+			// q22b
+			qst = new question("choice", 44);
+			qst.setProperty("text", "E quale di questi è il più importante?");
+			qst.setProperty("controller", 43);
+			qst.setProperty("code", "q22b");
+			send qst;
+		}
+		
+		// q23
+		qst = new question("choice", 45);
+		qst.setProperty("text", "L’ottico da cui ha acquistato faceva parte di una catena, di un consorzio o era un ottico indipendente?");
+		vector list_q23 = new vector {
+			"Catena (es. GrandVision, Salmoiraghi Viganò, Nau, Randazzo, etc)",
+			"Consorzi di indipendenti (es. Greenvision, Oxo)",
+			"Indipendente (quelli in cui lavora il titolare, a insegna propria)"
+		};
+		qst.setProperty("options", list_q23);
+		qst.setProperty("code", "q23");
+		send qst;
+		
+		// q24
+		qst = new question("choice", 46);
+		qst.setProperty("text", "L’ultima volta ha acquistato..");
+		vector list_q24 = new vector {
+			"solo le  lenti",
+			"sia lenti che montatura"
+		};
+		qst.setProperty("options", list_q24);
+		qst.setProperty("code", "q24");
+		send qst;
+		
+		// q25
+		string cod="<script type='text/javascript'>"+
+					"$(document).ready(function() {"+
+					"$('#console').hide();"+
+					"$('button').click( function() {"+
+					"var ct=$('input[name=selIds]').val();"+
+					" if ( ct.length == 0) { $('#console').hide();} "+
+					" else { $('#console').show();} "+
+					" }); });</script>";
+					
+		qst = new question("ordering", 47);
+		qst.setProperty("text", cod + "Quale di queste operazioni ha fatto per prima nel negozio di ottica dove ha acquistato le lenti? E per seconda? E per terza?");
+		vector list_q25 = new vector {
+			"Ho scelto la montatura",
+			"Ho controllato la vista attraverso l’esame con lettura della lavagna luminosa",
+			"Ho controllato la vista attraverso dei macchinari, con test di vario tipo",
+			"Ho scelto le caratteristiche delle lenti (spessore, etc)",
+			"Ho scelto la marca delle lenti"
+		};
+		qst.setProperty("options", list_q25);
+		qst.setProperty("sel_count", 3);
+		qst.setProperty("strict_selection", false);
+		qst.setProperty("code", "q25");
+		send qst;
+		
+		// Mask q26
+		vector list_q26 = new vector {
+			"Ho scelto la montatura",
+			"Ho controllato la vista attraverso l’esame con lettura della lavagna luminosa",
+			"Ho controllato la vista attraverso dei macchinari, con test di vario tipo",
+			"Ho scelto le caratteristiche delle lenti (spessore, etc)",
+			"Ho scelto la marca delle lenti",
+			"#sf#sele ho fatte tutte"
+		};
+		int sel_q25_1 = system.getProperty("ans47_0");
+		int sel_q25_2 = system.getProperty("ans47_1");
+		int sel_q25_3 = system.getProperty("ans47_2");
+		for( int i = 0, 4 ){
+			if( sel_q25_1 == i || sel_q25_2 == i || sel_q25_3 == i ){
+				opt=list_q26.get(i);
+				opt="#sh"+opt;
+				list_q26.set(i,opt);
+			}
+		}
+		
+		// q26
+		qst = new question("choice", 48);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Quale di queste operazioni non ha fatto per niente nel negozio di ottica dove ha acquistato le lenti?");
+		qst.setProperty("options", list_q26);
+		qst.setProperty("reverse_control", true);
+		qst.setProperty("code", "q26");
+		send qst;
+		
+		// q27
+		qst = new question("choice", 49);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Alla fine, su quale tipo di lenti si è orientata la sua scelta?");
+		vector list_q27 = new vector {
+			"Lenti monofocali (correggono solo un difetto visivo)",
+			"Lenti progressive (correggono sia presbiopia che altri difetti visivi)",
+			"Lenti bifocali",
+			"Lenti per ufficio (fatte apposta per lavorare al computer)",
+			"#seNon so"
+		};
+		qst.setProperty("options", list_q27);
+		qst.setProperty("code", "q27");
+		send qst;
+		
+		
+		
+		string codsn="<script type='text/javascript' src='http://www.primisoft.com/fields/IPS/USF102030/resources/numericInput.min.js'></script>";
+        string solonumeri=codsn+"<script type='text/javascript'>"+
+        "$(document).ready(function() {"+
+        "$(':checkbox').hide();"+
+        "$(function() { $('#comp0').numericInput();});"+
+        "});</script>";
+		
+		
+		
+		// Show q28
+		int sel_q24 = (int)system.getProperty("ans46");
+		if( sel_q24 == 1 ){
+		
+			// q28
+			string jcode_q28 = "<style>#opt0,#console{display:none;}</style><script>function refresh(){}function checkedBox(id){ var ex = document.getElementById(\"opt1\"); if( ex.checked == true ){ ex.checked = false; } var o = document.getElementById(\"opt\"+id); if( o.checked != true ){ var oth = document.getElementById(\"comp\"+id); oth.value = \"\"; } var cons = document.getElementById(\"console\"); cons.style.display = \"none\"; var oth = document.getElementById(\"comp\"+id); if( oth.value.length > 0 ){ if( parseInt(oth.value) >= 30 ){ cons.style.display = \"block\"; } }}function charInOe(id){ var oth = document.getElementById(\"comp\"+id); if( oth.value == \"\" ){ var ot = document.getElementById(\"opt\"+id); if( ot.checked == true ){ ot.checked = false; } } else { var ans = oth.value; var mem = 999; for( var i=0; i<ans.length; i++ ){ if( isNaN(ans[i]) ){ mem = i; break; } } ans = ans.substr(0, mem); if( ans.length > 4 ){ ans = ans.substr(0,4); } var pAns = parseInt(ans); if( pAns > 1000 ){ ans = 1000; } var cons = document.getElementById(\"console\"); if( pAns < 30 ){ cons.style.display = \"none\"; } else { cons.style.display = \"block\"; } oth.value = ans; var o = document.getElementById(\"opt\"+id); if( o.checked != true ){ o.click(); } var ex = document.getElementById(\"opt1\"); if( ex.checked == true ){ ex.checked = false; } }}function checkedExc(){ var o = document.getElementById(\"opt0\"); if( o.checked == true ){ o.checked = false; } var oth = document.getElementById(\"comp0\"); oth.value = \"\"; var cons = document.getElementById(\"console\"); cons.style.display = \"block\";}</script>";
+			qst = new question("choice", 50);
+			qst.setProperty("selection", "multiple");
+			qst.setProperty("text", solonumeri+jcode_q28+"Quanto ha speso l’ultima volta per la montatura?");
+			vector list_q28 = new vector {
+				"#so#sa &euro;",
+				"NON RICORDO<script>document.getElementById(\"comp0\").onkeyup = function(){ charInOe(\"0\"); };document.getElementById(\"opt0\").onclick = function(){ checkedBox(\"0\"); };document.getElementById(\"opt1\").onclick = function(){ checkedExc(); };</script>#se"
+			};
+			qst.setProperty("options", list_q28);
+			qst.setProperty("code", "q28");
+			send qst;
+		}
+		
+		// q29
+		string jcode_q29 = "";
+		qst = new question("choice", 51);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", solonumeri+jcode_q29+"Quanto ha speso l’ultima volta per le lenti?");
+		vector list_q29 = new vector {
+			"#so#sa &euro;",
+			"NON RICORDO#se"
+		};
+		qst.setProperty("options", list_q29);
+		qst.setProperty("code", "q29");
+		send qst;
+		
+		// q30
+		qst = new question("choice", 52);
+		qst.setProperty("text", "Quale delle seguenti frasi racconta meglio il suo processo di scelta delle lenti?");
+		vector list_q30 = new vector {
+			"Sono entrato in negozio con in mente una marca di lenti e mi sono attenuto a quello",
+			"L’ottico mi ha proposto una rosa di marche, spiegandomene le caratteristiche, e ho scelto io tra queste",
+			"L’ottico mi ha proposto una unica marca di lenti che poi ho scelto",
+			"Non abbiamo parlato di marche"
+		};
+		qst.setProperty("options", list_q30);
+		qst.setProperty("code", "q30");
+		send qst;
+		
+		// q31
+		qst = new question("choice", 53);
+		qst.setProperty("selection", "multiple");
+		qst.setProperty("text", "Pensi all’intero processo di acquisizione delle informazioni e di acquisto. Quale dei seguenti mezzi Le è capitato, in un qualunque momento, di utilizzare per raccogliere informazioni sul tipo o la marca di lenti da acquistare?");
+		vector list_q31 = new vector {
+			"Ottico",
+			"Oculista",
+			"Pubblicità TV",
+			"Pubblicità stampa",
+			"Pubbliciità radio",
+			"Affissioni",
+			"Opuscoli, depliant dell’ottico",
+			"Punto vendita in generale (esposizione, informazioni presenti)",
+			"Internet-sito dell’azienda",
+			"Internet-siti di opinioni, blog, social network",
+			"Internet-altri siti",
+			"Passaparola di amici e parenti",
+			"Esperienza precedente/uso personale in passato"
+		};
+		qst.setProperty("options", list_q31);
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q31");
+		send qst;
+	/*	
+		// Mask q32
+		vector list_q32 = new vector {
+			"Ottico",
+			"Oculista",
+			"Pubblicità TV",
+			"Pubblicità stampa",
+			"Pubbliciità radio",
+			"Affissioni",
+			"Opuscoli, depliant dell’ottico",
+			"Punto vendita in generale (esposizione, informazioni presenti)",
+			"Internet-sito dell’azienda",
+			"Internet-siti di opinioni, blog, social network",
+			"Internet-altri siti",
+			"Passaparola di amici e parenti"
+		};
+		int count_q31 = 0;
+		for( int i = 0, 11 ){
+			selected = system.getProperty("ans53_"+i);
+			if( selected != true ){
+				opt=list_q32.get(i);
+				opt="#sh"+opt;
+				list_q32.set(i,opt);
+			} else {
+				count_q31 = count_q31 + 1;
+			}
+		}
+		
+		
+		vector list_q33 = new vector {
+			"Ottico",
+			"Oculista",
+			"Pubblicità TV",
+			"Pubblicità stampa",
+			"Pubbliciità radio",
+			"Affissioni",
+			"Opuscoli, depliant dell’ottico",
+			"Punto vendita in generale (esposizione, informazioni presenti)",
+			"Internet-sito dell’azienda",
+			"Internet-siti di opinioni, blog, social network",
+			"Internet-altri siti",
+			"Passaparola di amici e parenti",
+			"Esperienza precedente/uso personale in passato"
+		};
+		
+		
+		for( int i = 0, 12 ){
+			selected = system.getProperty("ans53_"+i);
+			if( selected != true ){
+				opt=list_q33.get(i);
+				opt="#sh"+opt;
+				list_q33.set(i,opt);
+			} 
+		}
+		
+		
+		// Show q32
+		if( count_q31 > 0 ){
+			
+			// q32
+			qst = new question("scale", 54);
+			qst.setProperty("text", "Quale tipo di informazione ha aiutato a dare ciascun mezzo utilizzato?");
+			vector scale_q32 = new vector{
+				"Informazioni sul tipo di lente più adatto",
+				"Informazioni sulla marca di lenti e differenze tra marche",
+				"Informazioni sui prezzi",
+				"Informazione sui criteri di qualità",
+				"Informazioni sulle novità in fatto di lenti"
+			};
+			qst.setProperty("rows", list_q32);
+			qst.setProperty("cols", scale_q32);
+			qst.setProperty("code", "q32");
+			send qst;
+		}
+		
+		// q33
+		qst = new question("scale", 55);
+		qst.setProperty("text", "Ciascun mezzo utilizzato quanto è stato determinante per la scelta della lente che ha poi acquistato?");
+		vector scale_q33 = new vector{
+			"Poco <br>determinante<br/> 1",
+			"<br/>2",
+			"<br/>3",
+			"<br/>4",
+			"Molto <br>determinante<br/> 5"
+		};
+		qst.setProperty("rows", list_q33);
+		qst.setProperty("cols", scale_q33);
+		qst.setProperty("code", "q33");
+		send qst;
+	
+*/
+
+	
+		
+		// q34
+		qst = new question("choice", 57);
+		qst.setProperty("text", "Quanto è soddisfatto delle lenti che utilizza attualmente?");
+		vector list_q34 = new vector {
+			"Molto soddisfatto/a",
+			"Abbastanza soddisfatto/a",
+			"Così così soddisfatto/a",
+			"Poco soddisfatto/a",
+			"Per niente soddisfatto/a"
+		};
+		qst.setProperty("options", list_q34);
+		qst.setProperty("code", "q34");
+		send qst;
+		
+		// q34b
+		qst = new question("choice", 58);
+		qst.setProperty("text", "Come ritiene il rapporto qualità prezzo delle lenti che utilizza attualmente?");
+		vector list_q34b = new vector {
+			"Valgono molto più del loro prezzo",
+			"Valgono più del loro prezzo",
+			"Valgono il loro prezzo",
+			"Valgono meno del loro prezzo",
+			"Valgono molto meno del loro prezzo"
+		};
+		qst.setProperty("options", list_q34b);
+		qst.setProperty("code", "q34b");
+		send qst;
+		
+		//system.out("<div class=''>q14-q34b - end</div>");
+	}
+	
+	//system.out("<div class=''>q35-q42 - will it start</div>");
+	// Show q35 - ad12
+	if( flag == true && has_ans_q4 == true )
+	{ 
+		// q35
+		qst = new question("scale", 59);
+		qst.setProperty("text", "Quanto raccomanderebbe la marca di lenti "+ans_q4+" ad altre persone?");
+		vector scale_q35 = new vector{
+			"Non la <br>raccomanderei affatto<br/> 0",
+			"<br/>1",
+			"<br/>2",
+			"<br/>3",
+			"<br/>4",
+			"<br/>5",
+			"<br/>6",
+			"<br/>7",
+			"<br/>8",
+			"<br/>9",
+			"Certamente <br>la raccomanderei<br/> 10"
+		};
+		vector list_q35 = new vector {
+			"Selezionare"
+		};
+		qst.setProperty("rows", list_q35);
+		qst.setProperty("cols", scale_q35);
+		qst.setProperty("code", "q35");
+		send qst;
+	}	
+	
+
+		// q35b
+		qst = new question("choice", 591);
+		qst.setProperty("text", "Dopo aver acquistato le lenti, le è capitato di parlare con qualcuno di questa esperienza?");
+		vector list_q35b = new vector {
+				"Si, ne ho parlato a familiari e parenti",
+				"Si, ne ho parlato ad amici e colleghi ",
+				"Si, ho scritto qualcosa sui social network",
+				"Si, ho scritto qualcosa su blog/forum",
+				"Altro (specificare)#so",
+				"No non ne ho parlato#se"
+		};
+		qst.setProperty("options", list_q35b);
+		qst.setProperty("code", "q35b");
+		qst.setProperty("selection", "multiple");
+		send qst;
+		
+		
+		int count=0;
+		for(int i=0,4)
+		{
+		sel=system.getProperty("ans591_"+i);
+		if (sel==true) { count=count+1;	}
+		}
+		
+		if (count>0)
+		{
+				
+				
+				qst = new question("choice", 593);
+				qst.setProperty("text", "Cosa ha raccontato/riferito della sua esperienza? ");
+				vector list_q35d = new vector {
+							"La marca delle lenti",
+							"Le caratteristiche delle lenti ",
+							"L’esperienza visiva (il fatto che ero riuscito a correggere bene il difetto)",
+							"La montatura",
+							"Il marchio della montatura",
+							"Il prezzo",
+							"La professionalità dell’ottico",
+							"L’assortimento dell’ottico",
+							"Altro (specificare)#so"
+				};
+				qst.setProperty("options", list_q35d);
+				qst.setProperty("code", "q35d");
+				qst.setProperty("selection", "multiple");
+				send qst;
+		
+					
+		
+		}
+	if( flag == true && has_ans_q4 == true )
+	{ 
+		// q36
+		qst = new question("choice", 60);
+		qst.setProperty("text", "In futuro ha intenzione di acquistare ancora lenti "+ans_q4+"?");
+		vector list_q36 = new vector {
+			"Sicuramente l’acquisterei",
+			"Probabilmente l’acquisterei",
+			"Non so se l’acquisterei",
+			"Probabilmente  non l’acquisterei",
+			"Sicuramente non l’acquisterei"
+		};
+		qst.setProperty("options", list_q36);
+		qst.setProperty("code", "q36");
+		send qst;
+		
+		// Mask q37
+		vector list_q37 = new vector {
+				"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+			"#se#sfNon ne considererei nessun’altra"
+		};
+		int count_q37 = 0;
+		for( int i = 0, 18 ){
+			selected = system.getProperty("ans19_"+i);
+			if( selected != true || i == ans_code_q4 ){
+				opt=list_q37.get(i);
+				opt="#sh"+opt;
+				list_q37.set(i,opt);
+			} else {
+				count_q37 = count_q37 + 1;
+			}
+		}
+		selected = system.getProperty("ans19_19");
+		if( selected != true ){
+			opt=list_q37.get(19);
+			opt="#sh"+opt;
+			list_q37.set(19,opt);
+		} else {
+			opt = system.getProperty("ans19_19_comp");
+			opt = opt + " ";
+			opt = "#sf" + opt;
+			list_q37.set(19,opt);
+			count_q37 = count_q37 + 1;
+		}
+		
+		if( count_q37 > 0 ){
+			
+			// q37
+			qst = new question("choice", 70);
+			//qst.setProperty("selection", "multiple");
+			qst.setProperty("text", "Se le lenti "+ans_q4+" non fossero disponibili quale altra marca prenderebbe in considerazione?");
+			qst.setProperty("options", list_q37);
+			qst.setProperty("code", "q37");
+			send qst;
+		}
+		
+		// Show q38 - q41
+		if( ans_code_q4 == 15 ){
+			
+			// q38
+			qst = new question("choice", 71);
+			qst.setProperty("text", "E’ la prima volta che utilizza lenti Zeiss?");
+			vector list_q38 = new vector {
+				"Si",
+				"No"
+			};
+			qst.setProperty("options", list_q38);
+			qst.setProperty("code", "q38");
+			send qst;
+			
+			
+			// Show q39
+			int sel_q38 = system.getProperty("ans71");
+			
+			/*
+			if( sel_q38 == 1 ){
+				
+				// q39
+				qst = new question("choice", 72);
+				qst.setProperty("text", "Quando le aveva già acquistate?");
+				vector list_q39 = new vector {
+					"3 anni fa",
+					"4 anni fa",
+					"5 anni fa",
+					"Più di 5 anni fa"
+				};
+				qst.setProperty("options", list_q39);
+				qst.setProperty("code", "q39");
+				send qst;
+			}
+			*/
+			
+			
+			// Show q40 - q41
+			if( sel_q38 == 0 ){
+				
+				// Mask q40
+				vector list_q40 = new vector {
+						"Avanzi Optissimo",
+		"CZV Quality#sh",
+		"Dai Optical",
+		"Essilor",
+		"Galileo",
+		"Green Vision",
+		"Hoya",
+		"Nikon",
+		"Optilens",
+		"Opto Vista",
+		"Rodestock",
+		"Salmoiraghi",
+		"Seiko",
+		"Sola Optical",
+		"Transition",
+		"Zeiss",
+		"Varilux",
+		"Divel",
+		"Synchrony",
+		"#sf#soAltro specificare",
+					"#se#sfNON RICORDO LA MARCA"
+				};
+				int count_q40 = 0;
+				for( int i = 0, 19 ){
+					selected = system.getProperty("ans19_"+i);
+					if( selected != true || i == 15 ){
+						opt=list_q40.get(i);
+						opt="#sh"+opt;
+						list_q40.set(i,opt);
+					} else {
+						if( i == 19 ){
+							opt = system.getProperty("ans19_19_comp");
+							opt = opt + " ";
+							opt = "#sf" + opt;
+							list_q40.set(i,opt);
+						}
+						count_q40 = count_q40 + 1;
+					}
+				}
+				if( count_q40 > 0 ){
+				
+					// q40
+					qst = new question("choice", 73);
+					qst.setProperty("text", "Quale brand utilizzava in precedenza?");
+					qst.setProperty("options", list_q40);
+					qst.setProperty("show_rand", true);
+					qst.setProperty("code", "q40");
+					send qst;
+				}
+				
+				// q41
+				qst = new question("choice", 74);
+				qst.setProperty("text", "Per quale ragione ha deciso di cambiare marca?");
+				vector list_q41 = new vector {
+					"Volevo un prezzo più accessibile",
+					"C’era una offerta promozionale su questa marca",
+					"Volevo un miglior rapporto qualità prezzo",
+					"Volevo una qualità maggiore",
+					"Volevo cambiare, provare",
+					"Ho seguito il consiglio dell’ottico",
+					"Il mio ottico non aveva quella marca",
+					"Volevo una tipologia particolare che l’altra marca non aveva",
+					"Volevo una tipologia particolare di lenti che in questa marca sono migliori",
+					"ho seguito il consiglio dell’oculista",
+					"per il mio problema non c’è bisogno di una marca speciale, una vale l’altra",
+					"mi trovavo male con la marca precedente, non ci vedevo bene",
+					"#so#sfAltro (specificare)"
+				};
+				qst.setProperty("options", list_q41);
+				qst.setProperty("show_rand", true);
+				qst.setProperty("code", "q41");
+				send qst;
+			}
+		}
+		
+		// Show q42
+		if( count_q2 > 0 ){
+			selected = system.getProperty("ans20_15");
+		} else {
+			selected = false;
+		}
+		if( selected == true && ans_code_q4 != 15 ){
+			
+			// q42
+			qst = new question("choice", 75);
+			qst.setProperty("text", "Mi ha detto di aver utilizzato in passato le lenti oftalmiche Zeiss. Per quale ragione l’ultima volta ha acquistato lenti del brand "+ans_q4+" invece di Zeiss?");
+			vector list_q42 = new vector {
+				"Volevo un prezzo più accessibile",
+				"C’era una offerta promozionale su questa marca",
+				"Volevo un miglior rapporto qualità prezzo",
+				"Volevo una qualità maggiore",
+				"Volevo cambiare, provare",
+				"Ho seguito il consiglio dell’ottico",
+				"Il mio ottico non aveva quella marca",
+				"Volevo una tipologia particolare che l’altra marca non aveva",
+				"Volevo una tipologia particolare di lenti che in questa marca sono migliori",
+				"ho seguito il consiglio dell’oculista",
+				"per il mio problema non c’è bisogno di una marca speciale, una vale l’altra",
+				"mi trovavo male con la marca precedente, non ci vedevo bene",
+				"#so#sfAltro (specificare)"
+			};
+			qst.setProperty("options", list_q42);
+			qst.setProperty("code", "q42");
+			send qst;
+		}
+		
+		//system.out("<div class=''>q35-q42 - end</div>");
+	}
+	
+	
+
+	
+	//ADVERTISING//
+	
+	qst = new question("concept", 910);
+	qst.setProperty("text", "Le mostrer&ograve; ora un filmato pubblicitario. La preghiamo di guardarlo con attenzione."+
+	"<div class='info'>Si assicuri che le casse del suo pc siano accese per ascoltare il messaggio<br/>Clicchi su avanti per guardare il video.</div>");
+	send qst;
+	
+	string delay="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('#console').hide();"+
+    "setTimeout(function() { $('#video').delay(31000).empty(); $('#console').show(); }, 31000);"+
+    "});</script>";
+
+	string movieCode="<video width=\"850\"  autoplay>"+
+					 "<source src=\"http://www.primisoft.com/fields/RSM/ITA1701004/resources/video.mp4\" type=\"video/mp4\">"+
+					 "<source src=\"http://www.primisoft.com/fields/RSM/ITA1701004/resources/video.ogg\" type=\"video/ogg\">"+
+					 "Il tuo browser non supporta i contenuti video HTML5"+
+				     "</video>";
+  
+	
+	qst = new question("concept", 915);
+	qst.setProperty("text", delay+movieCode);
+	send qst;
+	
+	qst = new question("choice", 920);
+	qst.setProperty("text", "Lei ha visto recentemente questa pubblicit&agrave;?");
+	qst.setProperty("code", "ad1");
+	vector q920_opts = new vector { 		"Si", 		"No" 	};
+	qst.setProperty("options", q920_opts);
+	send qst;
+	
+	
+	ansId=system.getProperty("ans920");
+	if (ansId==0)
+	{
+	
+	qst = new question("choice", 930);
+	qst.setProperty("text", "Dove ricorda di aver visto/sentito questa pubblicit&agrave;?");
+	qst.setProperty("code", "ad1b");
+	
+	vector q930_opts = new vector {
+		"Televisione (non a pagamento)",
+		"Televisione a pagamento (Sky, Mediaset premium)",
+		"Radio",
+		"Quotidiani",
+		"Stampa",
+		"Affissioni (manifesti e poster)	in luoghi pubblici",
+		"Espositori presso ottici",
+		"Cinema",
+		"Mailing/pubblicit&agrave; per posta",
+		"Internet /web",
+		"Social network (Facebook, Twitter, etc.)",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q930_opts);
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	send qst;
+	}
+	
+	qst = new question("choice", 940);
+	qst.setProperty("text", "Quanto le &egrave; piaciuto questo filmato?");
+	qst.setProperty("code", "ad2");
+	vector q940_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q940_opts);
+	send qst;
+	
+	qst = new question("open", 950);
+	qst.setProperty("text", "Quale brand era presente nel filmato?");
+	qst.setProperty("code", "ad3");
+	send qst;
+	
+	qst = new question("open", 960);
+	qst.setProperty("text", "Secondo lei, a parte l’invito ad acquistare il prodotto, qual &egrave; il messaggio principale che voleva comunicare?");
+	qst.setProperty("code", "ad4");
+	send qst;
+	
+	qst = new question("choice", 970);
+	qst.setProperty("text", "Secondo lei quale tra questi &egrave; il <b>messaggio principale</b> che voleva comunicare?");
+	qst.setProperty("code", "ad4b");
+	qst.setProperty("show_rand", true);
+	vector q970_opts = new vector {
+"Ha lenti specifiche per ogni momento/attività della giornata",
+"Ha lenti costruite con tecnologia “Digital inside”",
+"E’ un prodotto che migliora la qualità di vita",
+"È un prodotto che offre una visione eccellente",
+"Con queste lenti riesci a vedere cose che non avresti visto altrimenti",
+"Offre lenti da vista innovative",
+"Offre lenti diverse da ogni altra marca",
+"Vale la pena comprare lenti di qualità",
+"Vale la pena spendere di più per avere un prodotto di qualità ",
+"Offre lenti che ti aiutano ad avere una visione confortevole e rilassata anche a fine giornata ",
+"Ha lenti pensate anche per l’utilizzo dei dispositivi digitali"
+	};
+	qst.setProperty("options", q970_opts);
+	send qst;
+	
+	qst = new question("choice", 980);
+	qst.setProperty("text", "Quali altri messaggi voleva comunicare?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "ad4c");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("controller", 970);
+	qst.setProperty("reverse_control", true);
+	send qst;
+	
+	
+
+	
+
+	
+
+string all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,10,50);});</script>";
+string allinea=all+mozCode;    
+
+	
+
+	qst = new question("scale", 1060);
+	qst.setProperty("text", "Ora le verranno mostrate una serie di frasi che possono essere riferite al filmato appena visto.<div class='info'>Per ciascuna frase dovrebbe indicare quanto le sembra adatta a descriverlo.</div>");
+	qst.setProperty("code", "ad5");
+	qst.setProperty("show_rand", true);
+	vector q1060_rows = new vector {
+"È memorabile",
+"È di impatto",
+"È originale",
+"E’ diverso dalle altre pubblicità nel settore ottico",
+"È moderno, innovativo",
+"Migliora la mia opinione su Zeiss",
+"Mi fa capire che Zeiss è davvero diverso agli altri",
+"Evidenzia bene la qualità delle lenti",
+"Mi fa capire che Zeiss è il prodotto per me",
+"Mi fa venir voglia di comprare il prodotto",
+"Mi fa venir voglia di andare dall’ottico a chiedere maggiori informazioni",
+"È una pubblicità che rivedrei volentieri",
+"È una pubblicità che non stanca"
+	};
+	qst.setProperty("rows", q1060_rows);
+	vector q1060_cols = new vector {
+		"Molto d’accordo",
+		"Abbastanza d’accordo",
+		"Cos&igrave; cos&igrave; d’accordo",
+		"Poco d’accordo",
+		"Per niente d’accordo"
+	};
+	qst.setProperty("cols", q1060_cols);
+	qst.setProperty("label_at:0", "<b>IL FILMATO...</b>");
+    send qst;
+	
+	
+	
+	qst = new question("choice", 1061);
+	qst.setProperty("text", "Quanto questa pubblicità è in grado di comunicare nuove informazioni?");
+	qst.setProperty("code", "ad6");
+	vector q1061_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+	qst.setProperty("options", q1061_opts);
+	send qst;
+	
+	
+	
+	
+	
+	qst = new question("choice", 1062);
+	qst.setProperty("text", "Quanto questa pubblicità è credibile?");
+	qst.setProperty("code", "ad7");
+	vector q1062_opts = new vector {
+"Molto credibile",
+"Abbastanza credibile",
+"Così così credibile",
+"Poco credibile",
+"Per niente credibile"
+	};
+	qst.setProperty("options", q1062_opts);
+	send qst;
+	
+	
+	
+	
+	// ad8
+	qst = new question("open", 1063);
+	qst.setProperty("text", "Cosa le è piaciuto del filmato?");
+	qst.setProperty("code", "ad8");
+	send qst;
+	
+	// ad9
+	qst = new question("open", 1064);
+	qst.setProperty("text", "Cosa non le è piaciuto del filmato?");
+	qst.setProperty("code", "ad9");
+	send qst;
+	
+	
+	
+	
+
+	
+	
+
+
+
+	
+	// p1
+	qst = new question("scale", 79);
+	qst.setProperty("text", "Ora vedrà di seguito una serie di frasi che possono essere riferite alle abitudini/comportamenti delle persone in relazione ai prodotti del settore ottico. Per ciascuna frase dovrebbe indicare quanto le sembra adatta a descrivere il suo modo di pensare e di comportarsi in relazione prodotti del settore ottico.<br/> Per favore selezioni una risposta per riga.");
+	vector scale_p1 = new vector{
+		"Molto d’accordo",
+		"Abbastanza d’accordo",
+		"Così così d’accordo",
+		"Poco d’accordo",
+		"Per niente d’accordo"
+	};
+	vector list_p1 = new vector{
+		"Sono molto attento alla qualità quando scelgo le lenti dei miei occhiali",
+		"Sono molto attento al risparmio",
+		"Presto molta cura/attenzione al mio aspetto",
+		"Sono molto attento alla qualità quando compro beni durevoli",
+		"Compro sempre la stessa marca di lenti oftalmiche",
+		"Le lenti sono più importanti della montatura stessa",
+		"Non scendo mai a compromessi quando si tratta delle lenti dei miei occhiali",
+		"Non credo esista molta differenza tra le diverse  tipologie di lenti offerte",
+		"Nella scelta della marca di lenti seguo sempre il consiglio del mio ottico",
+		"Preferisco spendere di più per la montatura piuttosto che le lenti oftalmiche",
+		"Tendo a cambiare spesso occhiali per variare con le montature",
+		"Mi piace seguire l’ultima moda in fatto di occhiali",
+		"Sono molto attento all’aspetto tecnico di una lente",
+		"C’è una grande differenza tra una marca di lenti e un’altra",
+		"Credo che la lente giusta dipenda più che altro dalla professionalità e competenza dell’ottico",
+		"Non credo ci sia stata tanta innovazione nelle lenti da vista recentemente",
+		"Cerco di avere le ultime novità in fatto di lenti",
+		"Credo che la qualità di una lente valga la differenza di prezzo che richiede",
+		"Mi è capitato di avere delle esperienze non positive in fatto di lenti"
+	};
+	qst.setProperty("rows", list_p1);
+	qst.setProperty("cols", scale_p1);
+	qst.setProperty("extras","{header_repeat:10}");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "p1");
+	send qst;
+	
+	// intro_dm1
+	qst = new question("concept", 80);
+	qst.setProperty("text", "Siamo arrivati alla fine dell’intervista. Ora Le faremo solo qualche domanda a scopo puramente statistico.");
+	qst.setProperty("code", "introdm1");
+	send qst;
+	
+	// dm1
+	qst = new question("choice", 81);
+	qst.setProperty("text", "Quante persone vivono nella Sua famiglia, incluso/a Lei stesso/a? Per favore selezioni una sola risposta.");
+	vector list_dm1 = new vector {
+		"1 persona",
+		"2 persone",
+		"3 persone",
+		"4 persone",
+		"5 persone o più"
+	};
+	qst.setProperty("options", list_dm1);
+	qst.setProperty("code", "dm1");
+	send qst;
+	
+	// Show dm2 - dm2_ter
+	int sel_dm1 = system.getProperty("ans81");
+	if( sel_dm1 > 0 ){
+	
+		// dm2
+		qst = new question("choice", 82);
+		qst.setProperty("text", "Lei ha figli di età minore di 18 anni che vivono nella Sua famiglia?");
+		vector list_dm2 = new vector {
+			"Sì",
+			"No"
+		};
+		qst.setProperty("options", list_dm2);
+		qst.setProperty("code", "dm2");
+		send qst;
+		
+		
+	}
+	
+	// dm3
+	qst = new question("choice", 85);
+	qst.setProperty("text", "Qual è il Suo livello di istruzione? Per favore selezioni una sola risposta.");
+	vector list_dm3 = new vector {
+		"Specializzazione/master post Laurea",
+		"Università con laurea",
+		"Università senza laurea",
+		"Licenza Media superiore",
+		"Licenza Media inferiore",
+		"Licenza Elementare",
+		"Nessun titolo"
+	};
+	qst.setProperty("options", list_dm3);
+	qst.setProperty("code", "dm3");
+	send qst;
+	
+	// dm4
+	qst = new question("choice", 86);
+	qst.setProperty("text", "Qual è il Suo stato civile? Per favore selezioni una sola risposta.");
+	vector list_dm4 = new vector {
+		"Sposato/a, convivente",
+		"Celibe/nubile",
+		"Separato/a, divorziato/a, vedovo/a"
+	};
+	qst.setProperty("options", list_dm4);
+	qst.setProperty("code", "dm4");
+	send qst;
+	
+	// dm5
+	qst = new question("choice", 87);
+	qst.setProperty("text", "Potrebbe indicare la sua attuale condizione lavorativa? Per favore selezioni una sola risposta.");
+	vector list_dm5 = new vector {
+		"Occupato/a a tempo pieno",
+		"Occupato/a a tempo parziale",
+		"In congedo di maternità/paternità",
+		"Altra condizione lavorativa",
+		"Disoccupato/a",
+		"Pensionato/a",
+		"Casalingo/a",
+		"Studente",
+		"Altra condizione NON lavorativa"
+	};
+	qst.setProperty("options", list_dm5);
+	qst.setProperty("code", "dm5");
+	send qst;
+	
+	// Show dm6
+	int sel_dm5 = system.getProperty("ans87");
+	if( sel_dm5 <= 2 ){
+	
+		// dm6
+		qst = new question("choice", 88);
+		qst.setProperty("text", "Potrebbe indicare che lavoro svolge? Per favore selezioni una sola risposta.");
+		vector list_dm6 = new vector {
+			"Imprenditore",
+			"Libero professionista",
+			"Dirigente",
+			"Quadro /funzionario",
+			"Artigiano",
+			"Commerciante/esercente",
+			"Lavoratore autonomo",
+			"Impiegato/ Insegnante",
+			"Operaio",
+			"Altro"
+		};
+		qst.setProperty("options", list_dm6);
+		qst.setProperty("code", "dm6");
+		send qst;
+	}
+	
+	
+	/*
+	// dm7
+	qst = new question("choice", 89);
+	qst.setProperty("text", "Quanti abitanti ci sono nel luogo in cui vive?");
+	vector list_dm7 = new vector {
+		"Meno di 10.000 abitanti",
+		"10.-30.000 abitanti",
+		"30.000-100.000 abitanti",
+		"Più di 100.000 abitanti"
+	};
+	qst.setProperty("options", list_dm7);
+	qst.setProperty("code", "dm7");
+	send qst;
+	*/
+	
+}

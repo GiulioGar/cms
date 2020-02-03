@@ -1,0 +1,3077 @@
+#export vars "Svar1"
+#export vars "Svar2"
+#export vars "Svar3"
+#export vars "Svar4"
+#export vars "Svar5"
+#export vars "SvarText1"
+#export vars "SvarText2"
+#export vars "SvarText3"
+#export vars "SvarText4"
+#export vars "SvarText5"
+#export vars "Svuti1"
+#export vars "Svuti2"
+#export vars "Svuti3"
+#export vars "Svuti4"
+#export vars "SvutiText1"
+#export vars "SvutiText2"
+#export vars "SvutiText3"
+#export vars "SvutiText4"
+
+
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+system.setProperty("env", "debug:true");
+system.setProperty("env", "browser:full");
+string autotest=system.getProperty("test");
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+int sex;
+int Nran=12;
+boolean prep;
+string all;
+string mozCode;
+string allinea;
+boolean noPrep=true;
+int countBarb;
+int countDeo;
+int countDopo;
+int countLadies;
+int countMani;
+int countRasa;
+int countSkin;
+int countSolari;
+string sortOrder;
+boolean valid;
+
+
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+
+int ordRot;
+system.setProperty("ordRot", "rand:2000");
+ordRot=(int)system.getProperty("ordRot");
+
+
+
+qst = new question("concept", 10);
+qst.setProperty("text", "Buongiorno/buon pomeriggio/buonasera. Benvenuto ad una nuova ricerca di Beyond Research sulle abitudini ed opinioni degli italiani.");
+send qst;
+
+
+qst = new question("choice", 20);
+qst.setProperty("text", "<p>Per iniziare le chiederemo alcuni dati personali</p>Indichi per favore il genere");
+qst.setProperty("code", "q1.1");
+vector q20_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+sex=system.getProperty("ans20");
+
+
+
+
+qst = new question("open", 30);
+qst.setProperty("text", "Indichi la sua et&agrave; precisa");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q1.2");
+send qst;
+
+int eta=(int)system.getProperty("ans30");
+if (eta<25 || eta>64) { return 4;}
+
+	if(eta<25) { reCod=0;}
+	if(eta>=25 && eta<=34) { reCod=1;}
+	if(eta>=35 && eta<=44) { reCod=2;}
+	if(eta>=45 && eta<=54) { reCod=3;}
+	if(eta>=55 && eta<=64) { reCod=4;}
+	if(eta>64 ) { reCod=5;}
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Ricodifica et&agrave;");
+qst.setProperty("code", "q1.2x");
+vector q40_opts = new vector {
+"<25",
+"25-34",
+"35-44",
+"45-54",
+"55-64",
+">65"
+};
+qst.setProperty("options", q40_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Ha preso parte a qualche indagine di mercato sui prodotti per la cura della pelle (creme, olii, gel, balsami,…) negli ultimi 3 mesi?");
+qst.setProperty("code", "q1.3");
+vector q50_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q50_opts);
+send qst;
+
+ansId=system.getProperty("ans50");
+if (ansId==0) { return 4; }
+
+
+qst = new question("choice", 60);
+qst.setProperty("text", "Lei o qualcuno della sua famiglia lavora in uno dei seguenti settori?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.4");
+vector q60_opts = new vector {
+"Marketing/Comunicazione/Pubblicit&agrave;",
+"Societ&agrave; di ricerche di mercato",
+"Editoria/Media/Giornalismo",
+"Pubbliche relazioni",
+"Produzione o distribuzione di prodotti per la pelle",
+"Supermercati/ipermercati",
+"Industria abbigliamento",
+"Nessuno tra quelli menzionati sopra#se#sf"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+count=0;
+for(int i=0,4)
+{
+sel=system.getProperty("ans60_"+i);
+if (sel==true) { count=count+1; }
+}
+
+// if (count>0) { return 4; }
+
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Potrebbe indicarmi in che regione vive?");
+qst.setProperty("code", "q1.5");
+vector q70_opts = new vector {
+"ABRUZZO",
+"BASILICATA",
+"CALABRIA",
+"CAMPANIA",
+"EMILIA-ROMAGNA",
+"FRIULI-VENEZIA GIULIA",
+"LAZIO",
+"LIGURIA",
+"LOMBARDIA",
+"MARCHE",
+"MOLISE",
+"PIEMONTE",
+"PUGLIA",
+"SARDEGNA",
+"SICILIA",
+"TOSCANA",
+"TRENTINO-ALTO ADIGE",
+"UMBRIA",
+"VALLE D'AOSTA",
+"VENETO"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+int regione=system.getProperty("ans70");
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(regione)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+        case 6,9,15,17:{reCod=2;}
+        }
+		
+	
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Codifica Aree:");
+qst.setProperty("code", "RecArea");
+vector q80_opts = new vector {
+"Nord Ovest: Piemonte, Val d&#39;Aosta, Liguria, Lombardia",
+"Nord Est: Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna",
+"Centro: Toscana, Umbria, Marche, Lazio",
+"Sud+Isole: Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria, Sicilia, Sardegna"
+};
+qst.setProperty("options", q80_opts);
+qst.setProperty("hidden", true);
+qst.setProperty("default_answer", "{ 'selection': ["+reCod+"] }");
+send qst;
+
+cmd=q80_opts.get(reCod);
+system.out("<div>Area geografica: "+cmd+"</div>");
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Indichi la dimensione del centro nel quale vive");
+qst.setProperty("code", "q1.6");
+vector q90_opts = new vector {
+"Fino a 10.000 abitanti",
+"Tra 10.000 e 30.000 abitanti",
+"Tra 30.000 e 100.000 abitanti",
+"Tra 100.000 e 250.000 abitanti",
+"Tra 250.000 e 500.000 abitanti",
+"Pi&ugrave; di 500.000 abitanti"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+qst = new question("choice", 100);
+qst.setProperty("text", "Le &egrave; capitato di utilizzare prodotti per la cura della pelle (creme, olii, gel, balsami,…)  negli ultimi 3 mesi?");
+qst.setProperty("code", "q1.7");
+vector q100_opts = new vector {
+"S&igrave;",
+"No"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+ansId=system.getProperty("ans100");
+//if (ansId==1) { return 4; }
+
+
+qst = new question("choice", 110);
+qst.setProperty("text", "I prodotti per la cura della pelle (creme, olii, gel, balsami,…) che ci ha detto di utilizzare sono venduti…");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.8");
+vector q110_opts = new vector {
+"Al supermercato/ipermercato",
+"In un piccolo negozio/minimarket/drogheria",
+"In un discount",
+"In catene specializzate in prodotti per la cura della persona/casa (Lillapois, Tigot&agrave;,…)",
+"In farmacia/parafarmacia",
+"In profumeria (Limoni, Marionnaud,…)",
+"In erboristeria",
+"On line",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q110_opts);
+send qst;
+
+count=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans110_"+i);
+if (sel==true) { count=count+1; }
+}
+
+ if (count==0) { return 4; }
+
+qst = new question("choice", 120);
+qst.setProperty("text", "E quanto spesso di solito usa prodotti per la cura della pelle (creme, olii, gel, balsami,…) ?");
+qst.setProperty("code", "q1.9");
+vector q120_opts = new vector {
+"Pi&ugrave; volte al giorno",
+"Circa una volta al giorno",
+"Circa 3-4 volte alla settimana",
+"Circa 1-2 volte alla settimana",
+"Circa 1 volta ogni 2-3 settimane",
+"Circa 1 volta al mese",
+"Circa 1 volta ogni 2-3 mesi",
+"Meno spesso"
+};
+qst.setProperty("options", q120_opts);
+send qst;
+
+ansId=system.getProperty("ans120");
+if (ansId==7) { return 4; }
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/oneforone.js'></script>";
+
+
+
+qst = new question("choice", 130);
+qst.setProperty("text", "<p>Ci ha detto di utilizzare prodotti per la cura della pelle (creme, olii, gel, balsami,…). </p>"+
+" <p>Parliamo ora delle <b>marche</b> di questi prodotti.</p> "+
+"Quali marche di prodotti per la cura della pelle (creme, olii, gel, balsami,…) <b>le vengono in mente</b>?"+cod);
+qst.setProperty("code", "q2.1");
+vector q130_opts = new vector {
+"Marca 1:#so",
+"Marca 2:#so",
+"Marca 3:#so",
+"Marca 4:#so",
+"Marca 5:#so",
+"Marca 6:#so",
+"Marca 7:#so",
+"Marca 8:#so",
+"Marca 9:#so",
+"Marca 10#so"
+};
+qst.setProperty("options", q130_opts);
+qst.setProperty("selection", "multiple");
+send qst;
+
+
+
+qst = new question("choice", 140);
+qst.setProperty("text", "Quali tra le seguenti marche di prodotti per la cura della pelle <b>conosce</b>, anche solo per averle sentite nominare?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.2");
+vector q140_opts = new vector {
+"Prep",
+"Nivea",
+"Dove",
+"Proraso",
+"Gillette",
+"Eucerin",
+"Intesa",
+"Vichy",
+"Avene",
+"Bilboa",
+"Foille",
+"Aveeno",
+"Lichtena",
+"Leocrema",
+"Glysolid",
+"Acqua alle Rose",
+"L’Oreal",
+"Garnier",
+"Just",
+"Altra marca (specificare)#so#sf",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+sel=system.getProperty("ans140_20");
+if (sel==true) {return 4;}
+
+prep=system.getProperty("ans140_0");
+
+
+qst = new question("choice", 150);
+qst.setProperty("text", "Tra le marche di creme che ci ha detto di conoscere, quali ha utilizzato negli <b>ultimi 12 mesi</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.3");
+vector q150_opts = new vector { "Nessuna di queste #se#sf" };
+qst.setProperty("controller", 140);
+qst.setProperty("options", q150_opts);
+send qst;
+
+sel=system.getProperty("ans150_21");
+if (sel==true) {return 4;}
+
+sel=system.getProperty("ans150_0");
+
+if (sel==true) { reCod=0;}
+else { reCod=1;}
+
+qst = new question("choice", 155);
+qst.setProperty("text", "Boost:");
+qst.setProperty("code", "boostPre");
+vector q155_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q155_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+ 
+
+
+qst = new question("choice", 160);
+qst.setProperty("text", "Quali ha utilizzato negli<b> ultimi 3 mesi</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.4");
+qst.setProperty("controller", 150);
+vector q160_opts = new vector { "Nessuna di queste  #se#sf" };
+qst.setProperty("options", q160_opts);
+send qst;
+
+
+sel=system.getProperty("ans160_22");
+if (sel==true) {return 4;}
+
+
+count=0;
+for(int i=0,19)
+{
+sel=system.getProperty("ans160_"+i);
+if (sel==true) { count=count+1;  reCod=i;}
+}
+
+
+qst = new question("choice", 170);
+qst.setProperty("text", "E quali utilizza <b>pi&ugrave; spesso</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.5");
+qst.setProperty("controller", 160);
+if (count==1) 
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+qst = new question("choice", 180);
+qst.setProperty("text", "Quali <b>non</b> utilizzerebbe mai?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.6");
+qst.setProperty("controller", 140);
+vector q180_opts = new vector { "Nessuna di queste#se#sf" };
+qst.setProperty("options", q180_opts);
+send qst;
+
+
+
+vector brands = new vector {
+"#sha",
+"#shb",
+"#shc",
+"#shd",
+"#she",
+"Nessuna#se#sf"
+};
+
+vector indici = new vector {
+"#sha",
+"#shb",
+"#shc",
+"#shd",
+"#she"
+};
+
+vector elementPrio = new vector {
+"Prep",
+"Nivea",
+"Dove",
+"Proraso",
+"Gillette",
+"Eucerin",
+"Intesa",
+"Vichy",
+"Avene",
+"Bilboa",
+"Foille",
+"Aveeno",
+"Lichtena",
+"Leocrema",
+"Glysolid",
+"Acqua alle Rose",
+"L’Oreal",
+"Garnier",
+"Just"
+};
+
+int selCon;
+vector indiciPrio = new vector {"0", "1", "2", "3", "4" , "5", "6", "7", "13","14","16","17" };
+
+int rm;
+count=0;
+opt="";
+int idx;
+
+
+for (int i=0,11)
+{ 
+
+	if (i==0) {rm=0;}
+
+	else 
+	{
+	system.setProperty("rm"+i, "rand:"+Nran);
+	rm = (int)system.getProperty("rm"+i); 
+	}
+
+	opt=indiciPrio.get(rm);
+
+	system.setProperty("idx",opt);
+	idx=(int)system.getProperty("idx");
+
+	if (selCon<5)
+	{
+
+	sel=system.getProperty("ans140_"+opt);
+
+	if (sel==true)
+		{
+			nam=elementPrio.get(idx);
+			brands.set(selCon,nam);
+			indici.set(selCon,opt);
+			selCon=selCon+1;
+			
+			// salvo nel sistema una variabile che contiene l'item pescato.
+			system.setProperty("Svar"+selCon, opt);
+			system.setProperty("SvarText"+selCon, nam);
+			
+			system.out("<div>Item  "+selCon+": "+nam+"</div>"); 
+			system.out("<div>Indice  "+selCon+": "+opt+"</div>"); 
+		}
+	}	
+
+indiciPrio.remove(rm);
+Nran=Nran-1;
+
+}
+
+
+
+
+vector indici2 = new vector {"8","9", "10", "11", "12", "15" , "18" };
+int rmb;
+Nran=7;
+opt="";
+
+int idx2;
+
+for (int i=0,6)
+{ 
+
+system.setProperty("rmb"+i, "rand:"+Nran);
+rmb = (int)system.getProperty("rmb"+i); 
+
+opt=indici2.get(rmb);
+
+	system.setProperty("idx2",opt);
+	idx2=(int)system.getProperty("idx2");
+
+	if (selCon<5)
+	{
+	sel=system.getProperty("ans140_"+opt);
+
+	if (sel==true)
+		{
+			nam=elementPrio.get(idx2);
+			brands.set(selCon,nam);
+			indici.set(selCon,opt);
+			selCon=selCon+1;
+			
+			
+			// salvo nel sistema una variabile che contiene l'item pescato.
+			system.setProperty("Svar"+selCon, opt);
+			system.setProperty("SvarText"+selCon, nam);
+			
+			system.out("<div>Item  "+selCon+": "+nam+"</div>"); 
+			system.out("<div>Indice  "+selCon+": "+opt+"</div>"); 
+		}
+	}	
+
+indici2.remove(rmb);
+Nran=Nran-1;
+
+}
+
+
+int cod0=99;
+int cod1=99;
+int cod2=99;
+int cod3=99;
+int cod4=99;
+int ncod;
+
+
+
+count=0;
+for(int i=0,4)
+{
+	label =indici.get(i);
+	valid=label.contains("#sh");
+
+
+	if (valid==false) 
+	{ 
+
+	system.setProperty("rec",label);
+	ncod=(int)system.getProperty("rec");
+
+	if(i==0) { cod0=ncod;}
+	if(i==1) { cod1=ncod;}
+	if(i==2) { cod2=ncod;}
+	if(i==3) { cod3=ncod;}
+	if(i==4) { cod4=ncod;}
+
+	}
+
+
+}
+
+
+
+qst = new question("choice", 999);
+qst.setProperty("text", "prodotti estratti");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "prodEstr");
+qst.setProperty("options", elementPrio);
+qst.setProperty("default_answer","{ 'selection': ["+cod0+","+cod1+","+cod2+","+cod3+","+cod4+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+
+
+
+
+
+
+
+	  cod="<script type='text/javascript'>"+
+				"$(document).ready(function() {"+
+				"$('th:first-child').html( $('.introd') );"+
+				"});</script>";		
+
+				
+if (selCon>0)
+{
+				
+qst = new question("scale", 190);
+qst.setProperty("text", "Trover&agrave; di seguito alcune caratteristiche che le creme possono avere. "+
+"Associ ora le seguenti caratteristiche con le marche che mi ha detto di conoscere. "+
+"Ogni caratteristica pu&ograve; essere associata a pi&ugrave; marche, ad una sola o anche a nessuna di queste marche."+
+"<div class='introd'>Questa marca..</div>"+cod);
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.7");
+vector q190_rows = new vector {
+"…offre prodotti con un buon profumo",
+"… offre prodotti efficaci per diversi problemi di pelle",
+"… offre prodotti particolarmente adatti per esigenze specifiche",
+"… offre prodotti di qualit&agrave;",
+"… offre prodotti ipoallergenici (es. senza alcol, parabeni,…)",
+"… offre prodotti a base di ingredienti naturali",
+"… offre prodotti molto efficaci",
+"… fa sentire sicuri di sé",
+"… fa sentire di scegliere il meglio per sé",
+"… fa sentire di aver trovato un alleato fedele",
+"… fa sentire di avere una soluzione pratica e concreta",
+"… si prende cura della pelle a 360 gradi",
+"… aiuta a sentirsi in armonia con il proprio corpo",
+"… aiuta a prendersi cura di sé",
+"… aiuta a risolvere le irritazioni della pelle",
+"… offre prodotti con una confezione pratica",
+"… offre prodotti con prezzi convenienti",
+"… offre prodotti con prezzi alti",
+"… offre prodotti con un buon rapporto qualit&agrave;/prezzo",
+"… ha una lunga tradizione nella cura della pelle",
+"… &egrave; innovativa",
+"… &egrave; moderna, al passo coi tempi",
+"… ha un’ampia offerta di prodotti tra cui scegliere",
+"… offre prodotti adatti a tutti i tipi di pelle",
+"… offre prodotti specifici per uomo",
+"… offre prodotti specifici per donna",
+"… offre prodotti giusti per me",
+"… non può mancare in casa",
+"… &egrave; specialista della pelle"
+};
+qst.setProperty("rows", q190_rows);
+qst.setProperty("cols", brands);
+qst.setProperty("extras","{header_repeat:10, min:1}");
+send qst;
+
+}
+
+
+
+
+
+if (prep==true)
+{
+
+qst = new question("open", 200);
+qst.setProperty("text", "<p>Concentriamoci ora sulla linea di prodotti PREP.</p>"+
+"Sa dirci di quali prodotti si compone la linea Prep? "+
+"<p>Scriva per favore tutti i prodotti/tipi di prodotto /formati (vasetto, tubo) che le vengono in mente della marca Prep</p>");
+qst.setProperty("code", "q3.1");
+qst.setProperty("alt", "1:Non so, non ricordo");
+send qst;
+
+
+////    multifunzione   ////
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(3,50,80);});</script>";
+allinea=all+mozCode;    
+
+qst = new question("choice", 210);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a1");
+vector q210_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva (tubo)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva (vasetto)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva da viaggio (tubo)</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q210_opts);
+send qst;
+
+
+vector q220_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva (tubo)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva (vasetto)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva da viaggio (tubo)</div>",
+"Nessuno di questi#se#sf"
+};
+
+count=0;
+for(int i=0,2)
+{
+sel=system.getProperty("ans210_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q220_opts.set(i,opt); }
+else { count=count+1;}
+}
+
+if (count>0)
+	{
+
+	qst = new question("choice", 220);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b1");
+	qst.setProperty("options", q220_opts);
+	send qst;
+	
+	noPrep=system.getProperty("ans220_3");
+
+	}
+
+}
+
+if (noPrep==true) { reCod=1;}
+else   			 { reCod=0;}
+
+qst = new question("choice", 222222);
+qst.setProperty("text", "Boost:");
+qst.setProperty("code", "boostPost");
+vector q222222_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q222222_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+ 
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+qst = new question("scale", 240);
+qst.setProperty("text",  scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente”.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c1");
+vector q240_opts = new vector {
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png' width='150px'  alt='' /></a><br/>Crema dermoprotettiva (tubo)</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png' width='150px'  alt='' /></a><br/>Crema dermoprotettiva (vasetto)</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png' width='150px'  alt='' /></a><br/>Crema dermoprotettiva da viaggio (tubo)</div>"
+};
+qst.setProperty("rows", q240_opts);
+vector q240_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q240_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+
+
+if (sex==1)
+{
+
+////    for ladies   ////
+
+if (prep==true)
+{
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(3,50,80);});</script>";
+allinea=all+mozCode;    
+
+qst = new question("choice", 209);
+qst.setProperty("text", "Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?"+scriptzoom+allinea);
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a1b");
+vector q209_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png' width='250px'  alt='' /></a><br/>Prep Derm Oil</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png' width='250px'  alt='' /></a><br/>Prep For Ladies</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q209_opts);
+send qst;
+
+
+vector q208_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png' width='250px'  alt='' /></a><br/>Prep Derm Oil</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png' width='250px'  alt='' /></a><br/>Prep For Ladies</div>",
+"Nessuno di questi#se#sf"
+};
+
+countLadies=0;
+for(int i=0,1)
+{
+sel=system.getProperty("ans209_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q208_opts.set(i,opt); }
+else { countLadies=countLadies+1;}
+}
+
+if (countLadies>0)
+	{
+
+	qst = new question("choice", 208);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b1b");
+	qst.setProperty("options", q208_opts);
+	send qst;
+	}
+
+}
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+qst = new question("scale", 207);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente”.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c1b");
+vector q207_opts = new vector {
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png' width='150px'  alt='' /></a><br/>Prep Derm Oil</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png' width='150px'  alt='' /></a><br/>Prep For Ladies</div>"
+};
+qst.setProperty("rows", q207_opts);
+vector q207_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q207_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+}
+
+
+
+////    rasatura   ////
+if(sex==0)
+{
+
+if (prep==true)
+{
+
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(3,50,80);});</script>";
+allinea=all+mozCode; 
+
+
+
+qst = new question("choice", 211);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a2");
+vector q211_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png' width='250px'  alt='' /></a><br/>Schiuma da barba (formato viaggio)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png' width='250px'  alt='' /></a><br/>Balsamo 2 in 1</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png' width='250px'  alt='' /></a><br/>Dopobarba Pelli Sensibili</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png' width='250px'  alt='' /></a><br/>Schiuma da barba</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png' width='250px'  alt='' /></a><br/>Schiuma Pelli Sensibili</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q211_opts);
+send qst;
+
+
+
+
+vector q221_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png' width='250px'  alt='' /></a><br/>Schiuma da barba (formato viaggio)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png' width='250px'  alt='' /></a><br/>Balsamo 2 in 1</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png' width='250px'  alt='' /></a><br/>Dopobarba Pelli Sensibili</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png' width='250px'  alt='' /></a><br/>Schiuma da barba</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png' width='250px'  alt='' /></a><br/>Schiuma Pelli Sensibili</div>",
+"Nessuno di questi#se#sf"
+};
+
+countRasa=0;
+for(int i=0,4)
+{
+sel=system.getProperty("ans211_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q221_opts.set(i,opt); }
+else { countRasa=countRasa+1;}
+}
+
+if (countRasa>0)
+	{
+
+	
+	qst = new question("choice", 221);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b2");
+	qst.setProperty("options", q221_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+
+qst = new question("scale", 241);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c2");
+vector q241_opts = new vector {
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png' width='100px'  alt='' /></a><br/>Schiuma da barba (formato viaggio)</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png' width='100px'  alt='' /></a><br/>Balsamo 2 in 1</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png' width='100px'  alt='' /></a><br/>Dopobarba Pelli Sensibili</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png' width='100px'  alt='' /></a><br/>Schiuma da barba</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png' width='100px'  alt='' /></a><br/>Schiuma Pelli Sensibili</div>"
+};
+qst.setProperty("rows", q241_opts);
+vector q241_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q241_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+}
+
+
+
+////    mani   ////
+
+
+if (prep==true)
+{
+
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,50,80);});</script>";
+allinea=all+mozCode; 
+
+
+
+qst = new question("choice", 212);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a3");
+vector q212_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg' width='250px'  alt='' /></a><br/>Crema mani riparatrice</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg' width='250px'  alt='' /></a><br/>Crema mani concentrata</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q212_opts);
+send qst;
+
+
+
+
+vector q222_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg' width='250px'  alt='' /></a><br/>Crema mani riparatrice</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg' width='250px'  alt='' /></a><br/>Crema mani concentrata</div>",
+"Nessuno di questi#se#sf"
+};
+
+countMani=0;
+for(int i=0,1)
+{
+sel=system.getProperty("ans212_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q222_opts.set(i,opt); }
+else { countMani=countMani+1;}
+}
+
+if (countMani>0)
+	{
+
+	qst = new question("choice", 222);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b3");
+	qst.setProperty("options", q222_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+
+qst = new question("scale", 242);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c3");
+vector q242_opts = new vector 
+{
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg' width='150px'  alt='' /></a><br/>Crema mani riparatrice</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg' width='150px'  alt='' /></a><br/>Crema mani concentrata</div>"
+};
+qst.setProperty("rows", q242_opts);
+vector q242_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q242_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+
+
+
+////    solari   ////
+
+
+if (prep==true)
+{
+
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(4,40,70);});</script>";
+allinea=all+mozCode; 
+
+
+
+qst = new question("choice", 213);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a4");
+vector q213_opts = new vector {
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png' width='200px'  alt='' /></a><br/>Crema Solare Tattoo SPF 50</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png' width='200px'  alt='' /></a><br/>Spray Solare Sport SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png' width='200px'  alt='' /></a><br/>Crema Solare Viso SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png' width='200px'  alt='' /></a><br/>Spray Solare SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png' width='200px'  alt='' /></a><br/>Spray Solare SPF 50</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png' width='200px'  alt='' /></a><br/>Spray Solare SPF 50+</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png' width='200px'  alt='' /></a><br/>Latte Solare SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png' width='200px'  alt='' /></a><br/>Latte Solare SPF 20</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png' width='200px'  alt='' /></a><br/>Latte Solare SPF 50</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q213_opts);
+send qst;
+
+
+
+
+vector q223_opts = new vector {
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png' width='200px'  alt='' /></a><br/>Crema Solare Tattoo SPF 50</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png' width='200px'  alt='' /></a><br/>Spray Solare Sport SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png' width='200px'  alt='' /></a><br/>Crema Solare Viso SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png' width='200px'  alt='' /></a><br/>Spray Solare SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png' width='200px'  alt='' /></a><br/>Spray Solare SPF 50</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png' width='200px'  alt='' /></a><br/>Spray Solare SPF 50+</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png' width='200px'  alt='' /></a><br/>Latte Solare SPF 30</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png' width='200px'  alt='' /></a><br/>Latte Solare SPF 20</div>",
+"<div id='itsol'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png' width='200px'  alt='' /></a><br/>Latte Solare SPF 50</div>",
+"Nessuno di questi#se#sf"
+};
+
+countSolari=0;
+for(int i=0,8)
+{
+sel=system.getProperty("ans213_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q223_opts.set(i,opt); }
+else { countSolari=countSolari+1;}
+}
+
+if (countSolari>0)
+	{
+
+	
+	qst = new question("choice", 223);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b4");
+	qst.setProperty("options", q223_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+
+qst = new question("scale", 243);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c4");
+vector q243_opts = new vector 
+{
+
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png' width='70px'  alt='' /></a><br/>Crema Solare Tattoo SPF 50</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png' width='70px'  alt='' /></a><br/>Spray Solare Sport SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png' width='70px'  alt='' /></a><br/>Crema Solare Viso SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png' width='70px'  alt='' /></a><br/>Spray Solare SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png' width='70px'  alt='' /></a><br/>Spray Solare SPF 50</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png' width='70px'  alt='' /></a><br/>Spray Solare SPF 50+</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png' width='70px'  alt='' /></a><br/>Latte Solare SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png' width='70px'  alt='' /></a><br/>Latte Solare SPF 20</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png' width='70px'  alt='' /></a><br/>Latte Solare SPF 50</div>"
+};
+
+
+qst.setProperty("rows", q243_opts);
+vector q243_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q243_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+
+
+////    doposole   ////
+
+
+if (prep==true)
+{
+
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,50,80);});</script>";
+allinea=all+mozCode; 
+
+
+
+qst = new question("choice", 214);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a5");
+vector q214_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png' width='250px'  alt='' /></a><br/>Spray Doposole</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png' width='250px'  alt='' /></a><br/>Crema Doposole</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q214_opts);
+send qst;
+
+
+
+
+vector q224_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png' width='250px'  alt='' /></a><br/>Spray Doposole</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png' width='250px'  alt='' /></a><br/>Crema Doposole</div>",
+"Nessuno di questi#se#sf"
+};
+
+countDopo=0;
+for(int i=0,1)
+{
+sel=system.getProperty("ans214_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q224_opts.set(i,opt); }
+else { countDopo=countDopo+1;}
+}
+
+if (countDopo>0)
+	{
+
+	
+	qst = new question("choice", 224);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b5");
+	qst.setProperty("options", q224_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+
+qst = new question("scale", 244);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c5");
+vector q244_opts = new vector 
+{
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png' width='150px'  alt='' /></a><br/>Spray Doposole</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png' width='150px'  alt='' /></a><br/>Crema Doposole</div>"
+};
+qst.setProperty("rows", q244_opts);
+vector q244_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q244_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+
+////    deodorante   ////
+
+
+if (prep==true)
+{
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,50,80);});</script>";
+allinea=all+mozCode;    
+
+qst = new question("choice", 215);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a6");
+vector q215_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png' width='250px'  alt='' /></a><br/>Deo Sensitive Skin Vapo</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png' width='250px'  alt='' /></a><br/>Deo Sensitive Skin</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png' width='250px'  alt='' /></a><br/>Deo Fresh & Dry</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png' width='250px'  alt='' /></a><br/>Crema deodorante</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q215_opts);
+send qst;
+
+
+vector q225_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png' width='250px'  alt='' /></a><br/>Deo Sensitive Skin Vapo</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png' width='250px'  alt='' /></a><br/>Deo Sensitive Skin</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png' width='250px'  alt='' /></a><br/>Deo Fresh & Dry</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png' width='250px'  alt='' /></a><br/>Crema deodorante</div>",
+"Nessuno di questi#se#sf"
+};
+
+countDeo=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans215_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q225_opts.set(i,opt); }
+else { countDeo=countDeo+1;}
+}
+
+if (countDeo>0)
+	{
+
+	qst = new question("choice", 225);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b6");
+	qst.setProperty("options", q225_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+qst = new question("scale", 245);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente”.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c6");
+vector q245_opts = new vector {
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png' width='150px'  alt='' /></a><br/>Deo Sensitive Skin Vapo</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png' width='150px'  alt='' /></a><br/>Deo Sensitive Skin</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png' width='150px'  alt='' /></a><br/>Deo Fresh & Dry</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png' width='150px'  alt='' /></a><br/>Crema deodorante</div>"
+};
+qst.setProperty("rows", q245_opts);
+vector q245_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q245_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+if (sex==0)
+{
+////    FOR MEN – BARBA E BAFFI    ////
+
+if (prep==true)
+{
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(3,50,80);});</script>";
+allinea=all+mozCode;    
+
+qst = new question("choice", 216);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a7");
+vector q216_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png' width='250px'  alt='' /></a><br/>Olio da barba</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png' width='250px'  alt='' /></a><br/>Shampoo & Balsamo da barba</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png' width='250px'  alt='' /></a><br/>Gel rasatura</div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q216_opts);
+send qst;
+
+
+vector q226_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png' width='250px'  alt='' /></a><br/>Olio da barba</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png' width='250px'  alt='' /></a><br/>Shampoo & Balsamo da barba</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png' width='250px'  alt='' /></a><br/>Gel rasatura</div>",
+"Nessuno di questi#se#sf"
+};
+
+countBarb=0;
+for(int i=0,2)
+{
+sel=system.getProperty("ans216_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q226_opts.set(i,opt); }
+else { countBarb=countBarb+1;}
+}
+
+if (countBarb>0)
+	{
+
+	qst = new question("choice", 226);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b7");
+	qst.setProperty("options", q226_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+qst = new question("scale", 246);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente”.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c7");
+vector q246_opts = new vector {
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png' width='150px'  alt='' /></a><br/>Olio da barba</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png' width='150px'  alt='' /></a><br/>Shampoo & Balsamo da barba</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png' width='150px'  alt='' /></a><br/>Gel rasatura</div>"
+};
+qst.setProperty("rows", q246_opts);
+vector q246_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q246_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+}
+
+
+if (sex==0)
+{
+////    FOR MEN – SKIN CARE    ////
+
+if (prep==true)
+{
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,50,80);});</script>";
+allinea=all+mozCode;    
+
+qst = new question("choice", 217);
+qst.setProperty("text", scriptzoom+allinea+"Quali tra i seguenti prodotti della linea Prep conosce, anche solo per averlo sentito nominare o visto al supermercato?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2a8");
+vector q217_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png' width='250px'  alt='' /></a><br/>Crema Viso Rivitalizzante – Risveglio Express</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png' width='250px'  alt='' /></a><br/>Crema Viso Anti-rughe</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png' width='250px'  alt='' /></a><br/>Doccia & Shampoo</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png' width='250px'  alt='' /></a><br/>Detergente Viso Esfoliante </div>",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q217_opts);
+send qst;
+
+
+vector q227_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png' width='250px'  alt='' /></a><br/>Crema Viso Rivitalizzante – Risveglio Express</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png' width='250px'  alt='' /></a><br/>Crema Viso Anti-rughe</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png' width='250px'  alt='' /></a><br/>Doccia & Shampoo</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png' width='250px'  alt='' /></a><br/>Detergente Viso Esfoliante </div>",
+"Nessuno di questi#se#sf"
+};
+
+countSkin=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans217_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q227_opts.set(i,opt); }
+else { countSkin=countSkin+1;}
+}
+
+if (countSkin>0)
+	{
+
+	qst = new question("choice", 227);
+	qst.setProperty("text", scriptzoom+allinea+"E quali tra questi ha utilizzato negli ultimi 12 mesi? ");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q3.2b8");
+	qst.setProperty("options", q227_opts);
+	send qst;
+	}
+
+}
+
+
+if (prep==false) { qtext="<p>Concentriamoci ora su alcuni prodotti Prep, una marca specializzata nella cura della pelle</p>";}
+else { qtext="<p>Concentriamoci ora su alcuni prodotti Prep.</p>";}
+
+
+qst = new question("scale", 247);
+qst.setProperty("text", scriptzoom+"Indipendentemente da quanto ha fatto in passato, quanto sarebbe intenzionato/a ad acquistare ciascuno dei seguenti prodotti? Per rispondere utilizzi una scala che va da “molto” a “per niente”.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2c8");
+vector q247_opts = new vector {
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png' width='150px'  alt='' /></a><br/>Crema Viso Rivitalizzante – Risveglio Express</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png' width='150px'  alt='' /></a><br/>Crema Viso Anti-rughe</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png' width='150px'  alt='' /></a><br/>Doccia & Shampoo</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png' width='150px'  alt='' /></a><br/>Detergente Viso Esfoliante </div>"
+};
+qst.setProperty("rows", q247_opts);
+vector q247_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q247_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+}
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/oneforone.js'></script>";
+
+qst = new question("choice", 250);
+qst.setProperty("text", "E quali altre creme Prep comprerebbe? Ci dica tutte le creme che vorrebbe che Prep offrisse che le vengono in mente"+cod);
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q3.2d");
+vector q250_opts = new vector {
+"Crema 1:#so",
+"Crema 2:#so",
+"Crema 3:#so",
+"Crema 4:#so",
+"Crema 5:#so",
+"Crema 6:#so",
+"Crema 7:#so",
+"Crema 8:#so",
+"Crema 9:#so",
+"Crema 10#so"
+};
+qst.setProperty("options", q250_opts);
+send qst;
+
+
+
+
+baseQid=2600;
+
+int rt1;
+system.setProperty("rt1", "rand:8");
+rt1=(int)system.getProperty("rt1");
+
+for(int i=0,7)
+{
+
+qid=baseQid+100*rt1;
+
+
+vector q260_rows = new vector {
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr1.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr1.png' width='150px'  alt='' /></a><br/>Crema Nutriente",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr2.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr2.png' width='150px'  alt='' /></a><br/>Crema Idratante",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr3.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr3.png' width='150px'  alt='' /></a><br/>Crema Pre Depilazione",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr4.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr4.png' width='150px'  alt='' /></a><br/>Crema Post Depilazione",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr5.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr5.png' width='150px'  alt='' /></a><br/>Crema Depilazione Uomo",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr6.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr6.png' width='150px'  alt='' /></a><br/>Crema Viso Antirughe",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr7.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr7.png' width='150px'  alt='' /></a><br/>Crema Contorno Occhi",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr8.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr8.png' width='150px'  alt='' /></a><br/>Shampoo Nutriente",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr9.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr9.png' width='150px'  alt='' /></a><br/>Shampoo Delicato",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr10.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr10.png' width='150px'  alt='' /></a><br/>Lozione Cute Irritata",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr11.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr11.png' width='150px'  alt='' /></a><br/>Crema per Gambe & Piedi Affaticati",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr12.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr12.png' width='150px'  alt='' /></a><br/>Crema per Talloni Screpolati",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr13.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr13.png' width='150px'  alt='' /></a><br/>Classic Care",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr14.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr14.png' width='150px'  alt='' /></a><br/>Protezione Solare FPS 30",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr15.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr15.png' width='150px'  alt='' /></a><br/>Repellente Zanzare",
+"<a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr16.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/pr16.png' width='150px'  alt='' /></a><br/>Crema Post Puntura di Zanzare"
+};
+
+vector frasi = new vector {
+"<p class=\"claim\">Creme Corpo PREP. <br/> Donano idratazione e nutrimento alle pelli più delicate e sensibili.</p>",
+"<p class=\"claim\">Linea Depilazione PREP. <br/>Crema pre e post Depilazione per una pelle sempre protetta e senza irritazioni.</p>",
+"<p class=\"claim\">Creme Viso PREP. <br/>Per proteggere e curare al meglio la pelle sensibile del viso</p>",
+"<p class=\"claim\">Linea Cute Sensibile PREP. <br/>Prodotti per capelli per chi ha problemi di sensibilità o irritazioni della cute</p>",
+"<p class=\"claim\">Crema Gambe e Piedi PREP.  <br/> Per donare sollievo immediato a piedi e gambe affaticate e per chi soffre di talloni screpolati</p>",
+"<p class=\"claim\">Stick Labbra PREP.  <br/>Per proteggere ed idratare le tue labbra, anche sotto il sole.</p>",
+"<p class=\"claim\">Repellente PREP. <br/> Per allontanare le zanzare e gli insetti fastidiosi.</p>",
+"<p class=\"claim\">Crema Post Puntura PREP.  <br/>Allevia il fastidioso prurito causato dalle punture di zanzare ed insetti.</p>"
+};
+
+qtext="ciascuna delle seguenti creme";
+
+if (rt1==0)
+{
+for(int j=2,15) {    opt ="#shopt"+j; q260_rows.set(j,opt);  }   
+
+
+}
+
+if (rt1==1)
+{
+
+if (sex==0) { qtext="questa crema"; }
+
+for(int j=0,15) 
+	{  
+	if (j<2 || j>4) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   
+	if ((j==2 || j==3) && sex==0)	{  opt ="#shopt"+j; q260_rows.set(j,opt); }   
+	if (j==4 && sex==1)	{  opt ="#shopt"+j; q260_rows.set(j,opt); }   
+	}
+}
+
+if (rt1==2)
+{
+qtext="ciascuna delle seguenti creme";
+for(int j=0,15) {  if (j<5 || j>6) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   }
+}
+
+if (rt1==3)
+{
+qtext="ciascuno dei seguenti prodotti per capelli";
+
+for(int j=0,15) {  if (j<7 || j>9) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   }
+}
+
+if (rt1==4)
+{
+qtext="ciascuna delle seguenti creme";
+for(int j=0,15) {  if (j<10 || j>11) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   }
+}
+if (rt1==5)
+{
+qtext="ciascuno dei seguenti stick";
+for(int j=0,15) {  if (j<12 || j>13) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   }
+}
+if (rt1==6)
+{
+qtext="questo repellente";
+
+for(int j=0,15) {  if (j!=14) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   }
+}
+if (rt1==7)
+{
+qtext="questa crema";
+
+for(int j=0,15) {  if (j!=15) {  opt ="#shopt"+j; q260_rows.set(j,opt); }   }
+}
+
+nam=frasi.get(rt1);
+
+	  cod="<script type='text/javascript'>"+
+				"$(document).ready(function() {"+
+				"$('<tr><th class=\"empty\">&nbsp;</th><th style=\"text-align:center\" colspan=\"2\">"+nam+"</th></tr>').insertBefore('thead tr');"+
+				"});</script>";		
+				
+				
+				
+qst = new question("scale", qid);
+qst.setProperty("text", scriptzoom+cod+"E quanto sarebbe <b>intenzionato/a ad acquistare</b> "+qtext+" , qualora Prep le proponesse sul mercato?"+
+" Utilizzi sempre una scala che va da “molto” a “per niente”");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.2e"+rt1);
+qst.setProperty("rows", q260_rows);
+vector q260_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q260_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+
+if (rt1==7) { rt1=0;}
+else { rt1=rt1+1;}
+	
+}
+
+
+
+if (prep==true && noPrep==true)
+{
+
+qst = new question("choice", 270);
+qst.setProperty("text", "E per quali motivi <b>non</b> ha utilizzato una crema dermoprotettiva della linea Prep negli ultimi 12 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.3");
+vector q270_opts = new vector {
+"Non mi piace il profumo",
+"Non si assorbono bene/velocemente",
+"Costano troppo",
+"Non sono mai in offerta",
+"Sono di bassa qualit&agrave;",
+"Sono di scarsa efficacia/non funzionano",
+"Preferisco altre marche",
+"Preferisco prodotti per applicazioni pi&ugrave; specifiche",
+"Sono aggressivi sulla pelle",
+"Sono prodotti superati/vecchi",
+"Contengono conservanti/parabeni, ect",
+"Non la trovo nel mio punto vendita abituale",
+"Sono difficili da vedere sugli scaffali del mio punto vendita abituale",
+"Preferisco prodotti specifici solo per uomo/donna",
+"Non ne conosco i possibili utilizzi",
+"Non &egrave; un prodotto per me",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q270_opts);
+send qst;
+}
+
+if (noPrep==false)
+{
+
+
+qst = new question("concept", 277);
+qst.setProperty("text", "<p>Parliamo ora della CREMA DERMOPROTETTIVA Prep.</p><p><img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/linea.png' width='1200px'/></p>");
+send qst;
+
+if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6,7]";}
+else { sortOrder="[7,6,5,4,3,2,1,0]";}
+
+qst = new question("choice", 280);
+qst.setProperty("text", "<b>Da quanto tempo</b> utilizza la crema dermoprotettiva Prep?");
+qst.setProperty("code", "q4.1");
+vector q280_opts = new vector {
+"Meno di 3 mesi",
+"Da 3 a 6 mesi",
+"Da 6 mesi a 1 anno",
+"Da 1-2 anni",
+"Da 2-3 anni",
+"Da 3-4 anni",
+"Da 4-5 anni",
+"Da pi&ugrave; di 5 anni"
+};
+qst.setProperty("options", q280_opts);
+qst.setProperty("sortorder", sortOrder);
+send qst;
+
+qst = new question("choice", 290);
+qst.setProperty("text", "<b>In quale confezione</b> utilizza di solito la crema dermoprotettiva Prep?");
+qst.setProperty("code", "q4.2");
+vector q290_opts = new vector {
+"Vasetto 75 ml",
+"Tubetto 75 ml",
+"Tubetto 50 ml"
+};
+qst.setProperty("options", q290_opts);
+send qst;
+
+ansId=system.getProperty("ans290");
+
+label=q290_opts.get(ansId);
+
+qst = new question("choice", 300);
+qst.setProperty("text", "<b>Per quali motivi</b> utilizza di solito la crema dermoprotettiva Prep in "+label+"?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q4.2a");
+vector q300_opts = new vector {
+"Costa meno",
+"E’ pi&ugrave; igienico",
+"E’ pi&ugrave; pratico",
+"Posso comodamente portarlo in viaggio",
+"E’ pi&ugrave; resistente agli urti",
+"Posso trasportarlo facilmente/&egrave; meno ingombrante",
+"Non consente sprechi, non rimangono parti di crema residue nella confezione",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q300_opts);
+send qst;
+
+
+if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6,7,8,9,10]";}
+else { sortOrder="[9,8,7,6,5,4,3,2,1,0,10]";}
+
+
+
+qst = new question("choice", 310);
+qst.setProperty("text", "Per che cosa utilizza la crema dermoprotettiva Prep?"+
+"<p> Pensi <b>a tutti gli usi che ne fa</b>.</p>");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q4.2ab");
+vector q310_opts = new vector {
+"Come dopobarba/dopo la rasatura/depilazione",
+"Per preparare la pelle alla rasatura/depilazione/prima di fare la barba",
+"Per le irritazioni (da vento, freddo, sfregamento,,..)",
+"Per le scottature/eritemi solari",
+"Per ustioni leggere",
+"Per eritemi/eczemi da allergia",
+"Per le punture di insetto",
+"Per la pelle screpolata (mani, labbra, viso, …)",
+"Per arrossamento da pannolini, assorbenti",
+"Per i piedi affaticati",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q310_opts);
+qst.setProperty("sortorder", sortOrder);
+send qst;
+
+
+count=0;
+for(int i=0,10)
+{
+sel=system.getProperty("ans310_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+
+
+qst = new question("choice", 320);
+qst.setProperty("text", "Qual &egrave; invece <b>l’uso principale</b> che ne fa della crema dermoprotettiva Prep?");
+qst.setProperty("code", "q4.2b");
+qst.setProperty("controller", 310);
+if(count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+
+qst = new question("choice", 330);
+qst.setProperty("text", "Oltre a lei, <b>chi altro</b> utilizza in famiglia/casa la crema dermoprotettiva Prep…?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q4.3a");
+vector q330_opts = new vector {
+"Marito/moglie/compagno/a",
+"Figlio/i",
+"Altri familiari/conviventi",
+"Nessun altro#se#sf"
+};
+qst.setProperty("options", q330_opts);
+send qst;
+
+sel=system.getProperty("ans330_1");
+if (sel==true) 
+{
+
+qst = new question("choice", 340);
+qst.setProperty("text", "Indichi l’et&agrave; dei suoi figli che usano la crema");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q4.3b");
+vector q340_opts = new vector {
+"0-2 anni",
+"3-5 anni",
+"6-10 anni",
+"11-14 anni",
+"15-18 anni",
+"19 anni e pi&ugrave;"
+};
+qst.setProperty("options", q340_opts);
+send qst;
+}
+
+baseQid=1000;
+
+
+count=0;
+for(int i=0,2)
+{
+qid=baseQid+i;
+sel=system.getProperty("ans330_"+i);
+if (sel==true) 
+	{ 
+	
+	label=q330_opts.get(i);
+	
+	if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6,7,8,9,10]";}
+	else { sortOrder="[9,8,7,6,5,4,3,2,1,0,10]";}
+	
+	qst = new question("choice", qid);
+	qst.setProperty("text", "E quali utilizzi fanno <b>"+label+"</b>");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4.3C"+i);
+	vector q350_opts = new vector {
+	"Come dopobarba/dopo la rasatura/depilazione",
+	"Per preparare la pelle alla rasatura/depilazione/prima di fare la barba",
+	"Per le irritazioni (da vento, freddo, sfregamento,,..)",
+	"Per le scottature/eritemi solari",
+	"Per ustioni leggere",
+	"Per eritemi/eczemi da allergia",
+	"Per le punture di insetto",
+	"Per la pelle screpolata (mani, labbra, viso, …)",
+	"Per arrossamento da pannolini, assorbenti",
+	"Per i piedi affaticati",
+	"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q350_opts);
+	qst.setProperty("sortorder", sortOrder);
+	send qst;
+
+
+
+	}
+}
+
+
+
+qst = new question("concept", 360);
+qst.setProperty("text", "Le chiederemo ora, per rispondere alle seguenti domande, di concentrarsi su ciascun utilizzo tra quelli che ci ha detto di fare lei personalmente");
+send qst;
+
+
+vector utilizziBase = new vector {
+"Come dopobarba/dopo la rasatura/depilazione",
+"Per preparare la pelle alla rasatura/depilazione/prima di fare la barba",
+"Per le irritazioni (da vento, freddo, sfregamento,,..)",
+"Per le scottature/eritemi solari",
+"Per ustioni leggere",
+"Per eritemi/eczemi da allergia",
+"Per le punture di insetto",
+"Per la pelle screpolata (mani, labbra, viso, …)",
+"Per arrossamento da pannolini, assorbenti",
+"Per i piedi affaticati",
+"Altro (specificare)"
+};
+
+
+
+vector indiciUtiPrio = new vector  { "0", "1", "2", "3", "4" , "5", "6", "7","8","9","10" };
+
+sel=system.getProperty("ans310_10");
+if (sel==true) { comp=system.getProperty("ans310_10_comp"); utilizziBase.set(10,comp); }
+
+vector utilizzi = new vector {
+"#shutilizzo 1",
+"#shutilizzo 2",
+"#shutilizzo 3",
+"#shutilizzo 4"
+};
+
+vector indiciUt = new vector {
+"#sha",
+"#shb",
+"#shc",
+"#shd"
+};
+
+int mop=system.getProperty("ans320");
+int selUti;
+
+int rum;
+Nran=11;
+opt="";
+int idx3;
+
+for (int i=0,10)
+{ 
+	if (i==0) {rum=mop;}
+	
+	else 
+	{
+	system.setProperty("rum"+i, "rand:"+Nran);
+	rum = (int)system.getProperty("rum"+i); 
+	}
+	
+	opt=indiciUtiPrio.get(rum);
+	system.setProperty("idx3",opt);
+	idx3=(int)system.getProperty("idx3");
+	
+	if (selUti<4)
+	{
+	
+	sel=system.getProperty("ans310_"+opt);
+		if (sel==true)
+		{
+			nam=utilizziBase.get(idx3);
+			utilizzi.set(selUti,nam);
+			indiciUt.set(selUti,opt);
+			selUti=selUti+1;
+	
+	// salvo nel sistema una variabile che contiene l'item pescato.
+			system.setProperty("Svuti"+selUti, opt);
+			system.setProperty("SvutiText"+selUti, nam);
+			
+			system.out("<div>Item Utilizzo "+selUti+": "+nam+"</div>"); 
+			system.out("<div>Indice Utilizzo  "+selUti+": "+opt+"</div>"); 
+		}
+	}	
+
+indiciUtiPrio.remove(rum);
+Nran=Nran-1;
+
+}
+
+
+int code0=99;
+int code1=99;
+int code2=99;
+int code3=99;
+int code4=99;
+int ncode;
+valid=false;
+
+count=0;
+for(int i=0,3)
+{
+	label =indiciUt.get(i);
+	valid=label.contains("#sh");
+
+
+	if (valid==false) 
+	{ 
+
+	system.setProperty("recb",label);
+	ncode=(int)system.getProperty("recb");
+
+	if(i==0) { code0=ncode;}
+	if(i==1) { code1=ncode;}
+	if(i==2) { code2=ncode;}
+	if(i==3) { code3=ncode;}
+	if(i==4) { code4=ncode;}
+
+	}
+
+
+}
+
+
+qst = new question("choice", 9999);
+qst.setProperty("text", "utilizzi estratti");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "utiEstr");
+qst.setProperty("options", utilizziBase);
+qst.setProperty("default_answer","{ 'selection': ["+code0+","+code1+","+code2+","+code3+","+code4+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+
+
+qst = new question("scale", 370);
+qst.setProperty("text", "In generale, usa la crema dermoprotettiva Prep <b>tutto l’anno o solo in alcuni periodi</b> dell’anno…?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q4.4");
+qst.setProperty("rows", utilizzi);
+vector q370_cols = new vector {
+"Tutto l’anno#se#sf",
+"D’inverno",
+"In primavera",
+"D’estate",
+"In autunno"
+};
+qst.setProperty("cols", q370_cols);
+qst.setProperty("extras","{rand_cols:true,min:1}");
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("scale", 380);
+qst.setProperty("text", "E pensando ai periodi che ha appena indicato, <b>con quale frequenza</b> utilizza la crema dermoprotettiva Prep per…?");
+qst.setProperty("code", "q4.5");
+qst.setProperty("rows", utilizzi);
+vector q380_cols = new vector {
+"Pi&ugrave; volte al giorno",
+"Circa una volta al giorno",
+"Circa 3-4 volte alla settimana",
+"Circa 1-2 volte alla settimana",
+"Circa 1 volta ogni 2-3 settimane",
+"Circa 1 volta al mese",
+"Circa 1 volta ogni 2-3 mesi",
+"Meno spesso"
+};
+qst.setProperty("cols", q380_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("scale", 390);
+qst.setProperty("text", "E in <b>quali aree del corpo</b> utilizza pi&ugrave; spesso la crema dermoprotettiva Prep per…?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q4.6");
+qst.setProperty("rows", utilizzi);
+vector q390_cols = new vector {
+"Viso",
+"Collo/decolleté",
+"Spalle",
+"Braccia",
+"Mani",
+"Petto",
+"Ventre",
+"Schiena",
+"Gambe",
+"Piedi",
+"Altro#sf"
+};
+qst.setProperty("cols", q390_cols);
+qst.setProperty("view", "columns");
+qst.setProperty("extras","{rand_cols:true,min:1}");
+send qst;
+
+
+baseQid=10000;
+for(int i=0,3)
+{
+sel=system.getProperty("ans390_"+i+"_10");
+if (sel==true) 
+		{
+		label=utilizzi.get(i);
+		qid=baseQid+i;
+		qst = new question("open", qid);
+		qst.setProperty("text", "E in <b>quali altre aree del corpo</b> utilizza pi&ugrave; spesso la crema dermoprotettiva Prep  "+label+" ?");
+		qst.setProperty("code", "q4.6X"+i);
+		send qst;
+
+		}
+}
+
+
+qst = new question("scale", 400);
+qst.setProperty("text", "Per ciascun utilizzo che ne fa, utilizza <b>solo la crema dermoprotettiva Prep o usa anche altri prodotti…</b>?");
+qst.setProperty("code", "q4.7");
+qst.setProperty("rows", utilizzi);
+vector q400_cols = new vector {
+"Solo la crema Prep",
+"Anche altri prodotti"
+};
+qst.setProperty("cols", q400_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+
+baseQid=2000;
+count=0;
+valid=false;
+
+for(int i=0,3)
+{
+qid=baseQid+i;
+
+label=utilizzi.get(i);
+valid=label.contains("#sh");
+
+
+if (valid==false)
+	{
+
+	ansId=system.getProperty("ans400_"+i);
+
+
+	if(ansId==1)
+			{
+			
+			
+			vector q410_opts = new vector {
+			"#shPrep",
+			"Nivea",
+			"Dove",
+			"Proraso",
+			"Gillette",
+			"Eucerin",
+			"Intesa",
+			"Vichy",
+			"Avene",
+			"Bilboa",
+			"Foille",
+			"Aveeno",
+			"Lichtena",
+			"Leocrema",
+			"Glysolid",
+			"Acqua alle Rose",
+			"L’Oreal",
+			"Garnier",
+			"Just",
+			"Altra marca ld#so#sf",
+			"Altra marca (specificare)#so#sf"
+			};
+			
+			for(int q=1,19)
+			{
+			sel=system.getProperty("ans140_"+q);
+			if (sel==false)  {  opt ="#shopt"+q; q410_opts.set(q,opt); }
+			else { if (q==19) { comp=system.getProperty("ans140_19_comp");  q410_opts.set(19,comp);} }
+			}
+
+			qst = new question("choice", qid);
+			qst.setProperty("text", "E quali altre marche/prodotti utilizza per <b>"+label+"</b>, oltre a Prep …?");
+			qst.setProperty("selection", "multiple");
+			qst.setProperty("show_rand", true);
+			qst.setProperty("code", "q4.8it"+i);
+			qst.setProperty("options", q410_opts);
+			send qst;
+
+
+			}
+	}
+
+}
+
+
+
+qst = new question("scale", 420);
+qst.setProperty("text", "Complessivamente, <b>quanto &egrave; soddisfatto</b> della crema dermoprotettiva Prep …?");
+qst.setProperty("code", "q4.9");
+qst.setProperty("rows", utilizzi);
+vector q420_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q420_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("open", 430);
+qst.setProperty("text", "Che <b>vantaggi</b> ha secondo lei Prep rispetto ad altri prodotti? Indichi per favore tutti i vantaggi che trova, cercando di essere il pi&ugrave; dettagliato/a possibile");
+qst.setProperty("code", "q4.9a");
+send qst;
+
+
+qst = new question("open", 440);
+qst.setProperty("text", "E quali sono invece gli <b>svantaggi</b> di Prep rispetto agli altri prodotti…? Cerchi di essere il pi&ugrave; dettagliato ed esauriente possibile");
+qst.setProperty("code", "q4.9b");
+send qst;
+
+qst = new question("scale", 450);
+qst.setProperty("text", "Trover&agrave; ora di seguito alcune caratteristiche. Indichi quanto ciascuna &egrave; adatta a descrivere la crema dermoprotettiva Prep, utilizzando una scala che va da molto a per niente   <div id=&#39;&#39;>La crema dermoprotettiva Prep…</div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q4.10");
+vector q450_rows = new vector {
+"…ha un buon profumo",
+"… &egrave; efficace per diversi problemi di pelle",
+"… &egrave; particolarmente adatta per esigenze specifiche",
+"… &egrave; un prodotto di qualit&agrave;",
+"… &egrave; un prodotto ipoallergenico (es. senza alcol, parabeni,…)",
+"… &egrave; un prodotto a base di ingredienti naturali",
+"…ha la giusta consistenza",
+"…idrata la pelle",
+"…si assorbe velocemente",
+"…non unge",
+"…non macchia gli indumenti",
+"…d&agrave; sollievo immediato",
+"…rinfresca la pelle",
+"…lenisce/calma la pelle arrossata",
+"…toglie il prurito",
+"…lascia la pelle morbida",
+"…previene le rughe",
+"…ha un’azione prolungata",
+"…&egrave; davvero unica",
+"… fa sentire sicuri di sé",
+"… fa sentire di scegliere il meglio per sé",
+"… fa sentire di aver trovato un alleato fedele",
+"… fa sentire di avere una soluzione pratica e concreta",
+"…si prende cura della pelle a 360 gradi",
+"…aiuta a sentirsi in armonia con il proprio corpo",
+"…aiuta a prendersi cura di sé",
+"…ha una confezione pratica",
+"… ha prezzi convenienti",
+"… ha prezzi alti",
+"… ha un buon rapporto qualit&agrave;/prezzo",
+"…ha una lunga tradizione nella cura della pelle",
+"… &egrave; all’avanguardia",
+"… &egrave; un prodotto moderno, al passo coi tempi",
+"… &egrave; adatta a tutti i tipi di pelle",
+"… &egrave; specifico per uomo",
+"… &egrave; specifico per donna",
+"…non pu&ograve; mancare in casa"
+};
+qst.setProperty("rows", q450_rows);
+vector q450_cols = new vector {
+"Molto",
+"Abbastanza",
+"Cos&igrave; cos&igrave;",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q450_cols);
+qst.setProperty("extras","{header_repeat:13}");
+send qst;
+
+//sezione 5//
+
+qst = new question("choice", 460);
+qst.setProperty("text", "<b>Chi</b> si occupa principalmente degli acquisti per quanto riguarda la crema dermoprotettiva Prep?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q5.1");
+vector q460_opts = new vector {
+"Io personalmente",
+"Marito/moglie/compagno/a",
+"Figlio/i",
+"Altri familiari/conviventi",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q460_opts);
+send qst;
+
+sel=system.getProperty("ans460_0");
+if (sel==true) 
+{
+
+qst = new question("choice", 470);
+qst.setProperty("text", "<b>Dove</b> acquista di solito la crema dermoprotettiva Prep?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5.2");
+vector q470_opts = new vector {
+"Al supermercato/ipermercato",
+"In un piccolo negozio/minimarket/drogheria",
+"In un discount",
+"In catene specializzate in prodotti per la cura della persona/casa (Lillapois, Tigot&agrave;,…)",
+"In farmacia/parafarmacia",
+"In profumeria (Limoni, Marionnaud,…)",
+"In erboristeria",
+"On line",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q470_opts);
+send qst;
+
+
+if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6]";}
+else { sortOrder="[6,5,4,3,2,1,0]";}
+
+qst = new question("choice", 480);
+qst.setProperty("text", "<b>E con quale frequenza</b> acquista di solito la crema dermoprotettiva Prep?");
+qst.setProperty("code", "q5.3");
+vector q480_opts = new vector {
+"Pi&ugrave; di una volta al mese",
+"Una volta al mese",
+"Una volta ogni 2-3 mesi",
+"Una volta ogni 4-5 mesi",
+"Ogni 6 mesi",
+"Una volta all’anno",
+"Meno spesso"
+};
+qst.setProperty("options", q480_opts);
+qst.setProperty("sortorder", sortOrder);
+send qst;
+
+qst = new question("choice", 490);
+qst.setProperty("text", "<b>Che cosa la spinge a comprare</b> la crema dermoprotettiva Prep, quali sono <b>i principali motivi di acquisto</b> di Prep?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5.4");
+vector q490_opts = new vector {
+"La marca di fiducia",
+"La qualit&agrave; elevata",
+"Me l’hanno consigliata amici/parenti",
+"Me l’hanno consigliata il farmacista/il medico",
+"Il prezzo conveniente",
+"Le offerte/ promozioni",
+"E’ un prodotto che non pu&ograve; mancare in casa",
+"L’adeguatezza all’uso che ne devo fare (ad es. arrossamenti, irritazioni, scottature,…)",
+"L’adeguatezza a diversi usi/diversi problemi della pelle",
+"La confezione attraente",
+"Il tipo di confezione (tubetto, vasetto)",
+"La pubblicit&agrave;",
+"L’acquisto da sempre, &egrave; un’abitudine",
+"Altro (specificare) #so#sf"
+};
+qst.setProperty("options", q490_opts);
+send qst;
+
+vector q500_opts = new vector {
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it1.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva (tubo)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it2.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva (vasetto)</div>",
+"<div id='its'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it3.png' width='250px'  alt='' /></a><br/>Crema dermoprotettiva da viaggio (tubo)</div>"
+};
+
+count=0;
+for(int i=0,2)
+{
+sel=system.getProperty("ans220_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q500_opts.set(i,opt);}
+else {count=count+1; reCod=i;}
+}
+
+all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+mozCode="<script type='text/javascript'>$(window).load(function() {allinea(3,50,80);});</script>";
+allinea=all+mozCode;    
+
+qst = new question("choice", 500);
+qst.setProperty("text", scriptzoom+allinea+"Pensando all’ultima volta che ha acquistato la crema dermoprotettiva Prep, si ricorda <b>quale tra queste ha comprato</b>?");
+qst.setProperty("code", "q5.5a");
+qst.setProperty("options", q500_opts);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+ansId=system.getProperty("ans500");
+label=q500_opts.get(ansId);
+
+
+if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6]";}
+else { sortOrder="[5,4,3,2,1,0,6]";}
+
+qst = new question("choice", 510);
+qst.setProperty("text", "<p>"+label+"</p>"+
+"E pensando alla crema Prep che mi ha detto di aver comprato l'ultima volta, si ricorda quanto l'ha pagata?"+scriptzoom);
+qst.setProperty("code", "q5.5b");
+vector q510_opts = new vector {
+"S&igrave;, meno di 2 euro",
+"S&igrave;, 2-3 euro",
+"S&igrave;, 3-4 euro",
+"S&igrave;, 4-5 euro",
+"S&igrave;, 5-6 euro",
+"S&igrave;, pi&ugrave; di 6 euro",
+"No, non ricordo"
+};
+qst.setProperty("options", q510_opts);
+qst.setProperty("sortorder", sortOrder);
+send qst;
+
+qst = new question("choice", 520);
+qst.setProperty("text", "E quale sarebbe secondo lei il prezzo pi&ugrave; adatto alla crema dermoprotettiva Prep?");
+qst.setProperty("code", "q5.5c");
+vector q520_opts = new vector {
+"Meno di 2 euro",
+"2-3 euro",
+"3-4 euro",
+"4-5 euro",
+"5-6 euro",
+"6-8 euro",
+"8-10 euro",
+"Pi&ugrave; di 10 euro"
+};
+qst.setProperty("options", q520_opts);
+send qst;
+
+qst = new question("choice", 530);
+qst.setProperty("text", "E sempre pensando all’ultima volta che ha acquistato la crema dermoprotettiva Prep, l’ha trovata facilmente all’interno del suo supermercato/negozio abituale?");
+qst.setProperty("code", "q5.6a");
+vector q530_opts = new vector {
+"S&igrave;",
+"No"
+};
+qst.setProperty("options", q530_opts);
+send qst;
+
+
+if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6,7,8,9,10]";}
+else { sortOrder="[8,7,6,5,4,3,2,1,0,9,10]";}
+
+qst = new question("choice", 541);
+qst.setProperty("text", "Si ricorda <b>vicino a quali altri prodotti</b> si trovava?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5.6b");
+vector q541_opts = new vector {
+"Nello scaffale rasatura/barba - uomo",
+"Nello scaffale depilazione - donne",
+"Tra i prodotti solari",
+"Tra i prodotti per il bagno/doccia",
+"Tra le creme corpo/viso",
+"Vicino alla cassa",
+"Tra i prodotti insetticidi/repellenti/anti puntura",
+"Tra i prodotti per l’igiene e la cura dei bambini",
+"Tra i prodotti per la cura dei piedi",
+"Altro (specificare) #so#sf",
+"No, non ricordo #se#sf"
+};
+qst.setProperty("options", q541_opts);
+qst.setProperty("sortorder", sortOrder);
+send qst;
+
+if (ordRot<=1000) { sortOrder="[0,1,2,3,4,5,6,7,8,9]";}
+else { sortOrder="[8,7,6,5,4,3,2,1,0,9]";}
+
+qst = new question("choice", 551);
+qst.setProperty("text", "E secondo lei <b>dove dovrebbe trovarsi all’interno del punto vendita</b> la crema dermoprotettiva Prep, vicino a quali altri prodotti?"+
+" Pu&ograve; indicare lo stesso luogo dove ha trovato il prodotto l’ultima volta");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5.6c");
+vector q551_opts = new vector {
+"Nello scaffale rasatura/barba - uomo",
+"Nello scaffale depilazione - donne",
+"Tra i prodotti solari",
+"Tra i prodotti per il bagno/doccia",
+"Tra le creme corpo/viso",
+"Vicino alla cassa",
+"Tra i prodotti insetticidi/repellenti/anti puntura",
+"Tra i prodotti per l’igiene e la cura dei bambini",
+"Tra i prodotti per la cura dei piedi",
+"Altro (specificare) #so#sf"
+};
+qst.setProperty("options", q551_opts);
+qst.setProperty("sortorder", sortOrder);
+send qst;
+
+}
+
+//FOR LADIES
+
+if (sex==1 && countLadies>0)
+{
+
+	vector q560_rows = new vector 
+	{
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it4.png' width='150px'  alt='' /></a><br/>Prep Derm Oil</div>",
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it5.png' width='150px'  alt='' /></a><br/>Prep For Ladies</div>"
+	};
+
+	count=0;
+	
+	for(int i=0,1)
+	{
+	sel=system.getProperty("ans208_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q560_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+		qst = new question("scale", 560);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti For Ladies."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7a");
+		qst.setProperty("rows", q560_rows);
+		vector q560_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q560_cols);
+		send qst;
+	}
+}
+
+//RASATURA
+
+if (sex==0 && countRasa>0)
+{
+
+	vector q561_rows = new vector 
+	{
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it6.png' width='100px'  alt='' /></a><br/>Schiuma da barba (formato viaggio)</div>",
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it8.png' width='100px'  alt='' /></a><br/>Balsamo 2 in 1</div>",
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it9.png' width='100px'  alt='' /></a><br/>Dopobarba Pelli Sensibili</div>",
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it10.png' width='100px'  alt='' /></a><br/>Schiuma da barba</div>",
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it11.png' width='100px'  alt='' /></a><br/>Schiuma Pelli Sensibili</div>"
+	};
+
+	count=0;
+	
+	for(int i=0,4)
+	{
+	sel=system.getProperty("ans221_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q561_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 561);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti per rasatura."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7b");
+		qst.setProperty("rows", q561_rows);
+		vector q561_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q561_cols);
+		send qst;
+	}	
+}
+
+//MANI
+
+if (countMani>0)
+{
+
+	vector q562_rows = new vector 
+	{
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it12.jpg' width='150px'  alt='' /></a><br/>Crema mani riparatrice</div>",
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it13.jpg' width='150px'  alt='' /></a><br/>Crema mani concentrata</div>"
+	};
+
+	count=0;
+	for(int i=0,1)
+	{
+	sel=system.getProperty("ans222_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q562_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 562);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti per mani."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7c");
+		qst.setProperty("rows", q562_rows);
+		vector q562_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q562_cols);
+		send qst;
+	}	
+}
+
+
+//SOLARI
+
+if (countSolari>0)
+{
+
+	vector q563_rows = new vector 
+	{
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it14.png' width='90px'  alt='' /></a><br/>Crema Solare Tattoo SPF 50</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it15.png' width='90px'  alt='' /></a><br/>Spray Solare Sport SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it16.png' width='90px'  alt='' /></a><br/>Crema Solare Viso SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it17.png' width='90px'  alt='' /></a><br/>Spray Solare SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it18.png' width='90px'  alt='' /></a><br/>Spray Solare SPF 50</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it19.png' width='90px'  alt='' /></a><br/>Spray Solare SPF 50+</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it20.png' width='90px'  alt='' /></a><br/>Latte Solare SPF 30</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it21.png' width='90px'  alt='' /></a><br/>Latte Solare SPF 20</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it22.png' width='90px'  alt='' /></a><br/>Latte Solare SPF 50</div>"
+	};
+
+	count=0;
+	for(int i=0,8)
+	{
+	sel=system.getProperty("ans223_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q563_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 563);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti per il sole."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7d");
+		qst.setProperty("rows", q563_rows);
+		vector q563_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q563_cols);
+		send qst;
+	}	
+}
+
+//DOPOSOLE
+
+if (countDopo>0)
+{
+
+	vector q564_rows = new vector 
+	{
+	"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it23.png' width='150px'  alt='' /></a><br/>Spray Doposole</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it24.png' width='150px'  alt='' /></a><br/>Crema Doposole</div>"
+	};
+
+	count=0;
+	for(int i=0,1)
+	{
+	sel=system.getProperty("ans224_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q564_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 564);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti doposole."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7e");
+		qst.setProperty("rows", q564_rows);
+		vector q564_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q564_cols);
+		send qst;
+	}	
+}
+
+
+//DEODORANTI
+
+if (countDeo>0)
+{
+
+	vector q565_rows = new vector 
+	{
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it25.png' width='150px'  alt='' /></a><br/>Deo Sensitive Skin Vapo</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it26.png' width='150px'  alt='' /></a><br/>Deo Sensitive Skin</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it27.png' width='150px'  alt='' /></a><br/>Deo Fresh & Dry</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it28.png' width='150px'  alt='' /></a><br/>Crema deodorante</div>"
+	};
+
+	count=0;
+	for(int i=0,3)
+	{
+	sel=system.getProperty("ans225_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q565_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 565);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti deodoranti."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7f");
+		qst.setProperty("rows", q565_rows);
+		vector q565_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q565_cols);
+		send qst;
+	}	
+}
+
+// FOR MEN – BARBA E BAFFI  
+
+if (countBarb>0 && sex==0)
+{
+
+	vector q566_rows = new vector 
+	{
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it29.png' width='150px'  alt='' /></a><br/>Olio da barba</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it30.png' width='150px'  alt='' /></a><br/>Shampoo & Balsamo da barba</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it31.png' width='150px'  alt='' /></a><br/>Gel rasatura</div>"
+	};
+
+	count=0;
+	for(int i=0,2)
+	{
+	sel=system.getProperty("ans226_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q566_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 566);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti per barba e baffi."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7g");
+		qst.setProperty("rows", q566_rows);
+		vector q566_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q566_cols);
+		send qst;
+	}	
+}
+
+
+// FOR MEN – SKIN
+
+if (countSkin>0 && sex==0)
+{
+
+	vector q567_rows = new vector 
+	{
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it32.png' width='150px'  alt='' /></a><br/>Crema Viso Rivitalizzante – Risveglio Express</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it33.png' width='150px'  alt='' /></a><br/>Crema Viso Anti-rughe</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it34.png' width='150px'  alt='' /></a><br/>Doccia & Shampoo</div>",
+"<div id='itg'><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png'> <img src='http://www.primisoft.com/fields/BRS/ITA1805087/resources/it35.png' width='150px'  alt='' /></a><br/>Detergente Viso Esfoliante </div>"
+	};
+
+	count=0;
+	for(int i=0,3)
+	{
+	sel=system.getProperty("ans227_"+i);
+	if (sel==false)  {  opt ="#shopt"+i; q567_rows.set(i,opt); }
+	else { count=count+1;}
+	}
+	
+	if (count>0)
+	{
+	
+		qst = new question("scale", 567);
+		qst.setProperty("text", scriptzoom+"Prima ci ha detto di aver acquistato negli ultimi 12 mesi anche altri prodotti Prep, in particolare prodotti per la pelle dell'uomo."+
+		" Complessivamente quanto &egrave; soddisfatto di ciascuno? Per rispondere utilizzi una scala che va da “molto” a “per niente” ");
+		qst.setProperty("show_rand", true);
+		qst.setProperty("code", "q5.7h");
+		qst.setProperty("rows", q567_rows);
+		vector q567_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Cos&igrave; cos&igrave;",
+		"Poco",
+		"Per niente"
+		};
+		qst.setProperty("cols", q567_cols);
+		send qst;
+	}	
+}
+
+
+
+
+
+
+}
+
+
+if (sex==0)
+{
+
+
+qst = new question("choice", 570);
+qst.setProperty("text", "<p>Per finire le faremo qualche domanda sulle sue abitudini per radersi la barba/i baffi.</p>"+
+"Lei ha…");
+qst.setProperty("code", "q6.1a");
+vector q570_opts = new vector {
+"la barba corta",
+"la barba di media lunghezza",
+"la barba lunga",
+"non ho la barba"
+};
+qst.setProperty("options", q570_opts);
+
+
+qst = new question("choice", 572);
+qst.setProperty("text", "Lei porta..");
+qst.setProperty("code", "q6.1b");
+qst.setProperty("selection", "multiple");
+vector q572_opts = new vector {
+"il pizzetto",
+"i baffi",
+"né baffi/pizzetto#se#sf"
+};
+qst.setProperty("options", q572_opts);
+
+qst = new question("composed", 577);
+vector q577_comps = new vector { "570", "572"};
+qst.setProperty("components", q577_comps);
+send qst;
+
+qst = new question("choice", 580);
+qst.setProperty("text", "E con quali strumenti si rade a casa?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q6.2");
+vector q580_opts = new vector {
+"il rasoio /la lametta",
+"il rasoio elettrico",
+"il regola barba",
+"il rasoio a mano /la lama manuale da barba",
+"le forbici",
+"Vado solo da barbiere#se#sf",
+"Altro (specificare) #so#sf"
+};
+qst.setProperty("options", q580_opts);
+send qst;
+
+
+vector q590_rows = new vector {
+"il rasoio /la lametta",
+"il rasoio elettrico",
+"il regola barba",
+"il rasoio a mano /la lama manuale da barba"
+};
+
+count=4;
+for(int i=0,3)
+{
+sel=system.getProperty("ans580_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q590_rows.set(i,opt); count=count-1;}
+}
+
+if (count>0)
+{
+qst = new question("scale", 590);
+qst.setProperty("text", "Per ciascuno degli strumenti che ha indicato, con quale frequenza si rade?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q6.3");
+qst.setProperty("rows", q590_rows);
+vector q590_cols = new vector {
+"Pi&ugrave; volte al giorno",
+"Circa una volta al giorno",
+"Circa 3-4 volte alla settimana",
+"Circa 1-2 volte alla settimana",
+"Circa 1 volta ogni 2 settimane",
+"Meno spesso"
+};
+qst.setProperty("cols", q590_cols);
+qst.setProperty("view", "columns");
+send qst;
+}
+
+
+}
+
+
+else
+{
+
+
+	qst = new question("choice", 600);
+	qst.setProperty("text", "<p>Per finire le faremo qualche domanda sulle sue abitudini nella depilazione.</p>"+
+	"<br>Di solito con quali strumenti si depila a casa?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q6.4");
+	vector q600_opts = new vector {
+	"il rasoio / la lametta",
+	"la crema depilatoria",
+	"la ceretta fai da te (strisce depilatorie, cera, etc)",
+	"il silk-épil/epilatore elettrico",
+	"l’epilatore a luce pulsata fai da te",
+	"Vado solo in un centro estetico/da un’estetista#se#sf",
+	"Altro (specificare) #so#sf"
+	};
+	qst.setProperty("options", q600_opts);
+	send qst;
+
+	
+
+
+
+}
+
+
+qst = new question("choice", 610);
+qst.setProperty("text", "<p>Le chiederemo infine di registrare alcuni dati personali prima di chiudere l’intervista.</p>Indichi il numero di componenti del suo nucleo familiare");
+qst.setProperty("code", "q7.1");
+vector q610_opts = new vector {
+"1",
+"2",
+"3",
+"4",
+"5 o pi&ugrave;"
+};
+qst.setProperty("options", q610_opts);
+send qst;
+
+ansId=system.getProperty("ans610");
+if (ansId>0)
+{
+
+qst = new question("choice", 620);
+qst.setProperty("text", "Ha figli che vivono con lei?");
+qst.setProperty("code", "q7.2");
+vector q620_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q620_opts);
+send qst;
+
+ansId=system.getProperty("ans620");
+if (ansId==0)
+	{
+
+	qst = new question("choice", 630);
+	qst.setProperty("text", "Indichi l’et&agrave; dei suoi figli");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q7.3");
+	vector q630_opts = new vector {
+	"0-2 anni",
+	"3-5 anni",
+	"6-10 anni",
+	"11-14 anni",
+	"15-18 anni",
+	"19 anni e pi&ugrave;"
+	};
+	qst.setProperty("options", q630_opts);
+	send qst;
+	}
+
+}
+
+
+qst = new question("choice", 640);
+qst.setProperty("text", "Attualmente lei…");
+qst.setProperty("code", "q7.4");
+vector q640_opts = new vector {
+"Vive con i genitori",
+"Vive da solo/a",
+"È parte di una coppia giovane senza figli",
+"Vive con figli piccoli (il maggiore ha meno di 15 anni)",
+"Vive con figli grandi (almeno uno con pi&ugrave; di 15 anni)",
+"È parte di una coppia matura con figli ormai non pi&ugrave; conviventi",
+"È parte di una coppia matura senza figli (mai avuti o non conviventi)",
+"Vive con la famiglia del figlio/a",
+"Vive con altre persone (amici, parenti)"
+};
+qst.setProperty("options", q640_opts);
+send qst;
+
+qst = new question("choice", 650);
+qst.setProperty("text", "Indichi la sua situazione professionale. Lei…");
+qst.setProperty("code", "q7.5");
+vector q650_opts = new vector {
+"Lavora part time",
+"Lavora full time",
+"È in cerca di un’occupazione",
+"Studia",
+"Si occupa della casa/casalinga",
+"Non lavora/pensionato"
+};
+qst.setProperty("options", q650_opts);
+send qst;
+
+ansId=system.getProperty("ans650");
+if (ansId<2)
+{
+
+qst = new question("choice", 660);
+qst.setProperty("text", "Qual &egrave; la sua attuale professione?");
+qst.setProperty("code", "q7.6");
+vector q660_opts = new vector {
+"Dirigente/Libero professionista/Imprenditore",
+"Insegnante",
+"Impiegato/Quadro",
+"Operaio",
+"Rappresentante/Commerciante/Negoziante",
+"Artigiano/Lavoratore autonomo",
+"Investitori/immobiliaristi",
+"Altro"
+};
+qst.setProperty("options", q660_opts);
+send qst;
+
+}
+
+qst = new question("choice", 670);
+qst.setProperty("text", "Qual &egrave; l’ultimo titolo di studio che ha conseguito?");
+qst.setProperty("code", "q7.7");
+vector q670_opts = new vector {
+"Master/Dottorato",
+"Laurea Specialistica/Laurea ciclo unico",
+"Laurea Primo Livello-Triennale/Diploma di Laurea",
+"Diploma di scuola media superiore",
+"Diploma di scuola media inferiore",
+"Licenza di scuola elementare",
+"Non ho conseguito nessun titolo di studio"
+};
+qst.setProperty("options", q670_opts);
+send qst;
+
+
+
+
+}

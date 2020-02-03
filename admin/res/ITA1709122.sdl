@@ -1,0 +1,518 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+
+system.setProperty("env", "stylesheet:mod.css");
+//system.setProperty("env", "debug:true");
+//system.setProperty("env", "browser:full");
+
+
+
+qst = new question("choice", 10);
+qst.setProperty("text", "Lei &egrave;?");
+qst.setProperty("code", "q10");
+vector q10_opts = new vector {
+"uomo",
+"donna"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+
+qst = new question("open", 20);
+qst.setProperty("text", "Mi pu&ograve; dire la sua et&agrave;:<div class='info'>(segnare l’et&agrave; puntuale dell’intervistato)</div>");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q20");
+send qst;
+
+
+qst = new question("choice", 40);
+qst.setProperty("text", "In quale regione risiede?");
+qst.setProperty("code", "q30");
+vector q40_opts = new vector {
+"Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia-Romagna",
+"Friuli-Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino-Alto Adige",
+"Umbria",
+"Val d&#39;Aosta",
+"Veneto"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+ansId=system.getProperty("ans40");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+case 6,9,15,17:{reCod=2;} 
+}
+
+
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Ricodifica");
+qst.setProperty("code", "q30rec");
+vector q50_opts = new vector {
+"Nord Ovest",
+"Nord Est",
+"Centro",
+"Sud"
+};
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+qst.setProperty("options", q50_opts);
+send qst;
+
+qst = new question("choice", 60);
+qst.setProperty("text", "Di recente ha acquistato prodotti per l’illuminazione da esterno?");
+qst.setProperty("code", "q40");
+vector q60_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+
+ansId=system.getProperty("ans60");
+int ansq40=ansId;
+
+if (ansId==1)
+{
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Nel prossimo futuro ha intenzione di acquistare illuminazione da esterno?");
+qst.setProperty("code", "q40bis");
+vector q70_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+ansId=system.getProperty("ans70");
+if (ansId==1) { return 4; }
+
+
+}
+
+
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/oneforone.js'></script>";
+
+
+qst = new question("choice", 80);
+qst.setProperty("text", "<p><p><div class='info'>PARLEREMO ORA DEI PRODOTTI CHE LE SERVONO PER L’ ILLUMINAZIONE DEGLI SPAZI ESTERNI DELLA SUA ABITAZIONE</div></p></p>Pensando ai prodotti da esterno, quali sono le marche che le vengono in mente anche solo per averle sentite nominare?"+cod);
+qst.setProperty("code", "q100");
+qst.setProperty("selection", "multiple");
+vector q80_opts = new vector {
+"La prima che le viene in mente:#so",
+"Altre marche#so",
+"Altre marche #so",
+"Altre marche  #so",
+"Altre marche   #so",
+"Altre marche    #so",
+"Altre marche     #so",
+"Altre marche      #so",
+"Altre marche       #so",
+"Altre marche        #so",
+"Altre marche         #so",
+"Non so/non ricordo#se#sf"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Per favore selezioni tutte le marche di Illuminazione da esterno che conosce, anche solo di nome. La preghiamo di selezionare anche le marche che ha indicato nella precedente domanda.");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q110");
+vector q90_opts = new vector {
+"PHILIPS",
+"ARTEMIDE",
+"FLOS",
+"DISANO",
+"MANTRA",
+"FONTANARTE",
+"ZUMTOBEL",
+"Altra (specificare)#so#sf",
+"Non so/ Non ricordo#se#sf"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+boolean sel110=system.getProperty("ans90_8");
+
+
+system.out("<div>Ans 40: "+ansq40+"</div>"); 
+system.out("<div>Non so: "+sel+"</div>"); 
+
+count=0;
+for(int i=0,7)
+{
+sel=system.getProperty("ans90_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q90_opts.set(i,opt); }
+else { if (i==7) {comp=system.getProperty("ans90_7_comp"); q90_opts.set(7,comp);} }
+}
+
+if (ansq40==0 && sel110==false)
+{
+
+qst = new question("choice", 100);
+qst.setProperty("text", "Di che marca &egrave; la lampada da esterno che ha acquistato pi&ugrave; recentemente?");
+qst.setProperty("code", "q120");
+qst.setProperty("options", q90_opts);
+send qst;
+}
+
+vector q110_opts = new vector {
+"Applique murale",
+"Proiettore",
+"Fungo (ca. 60cm)",
+"Palo a 1 luce",
+"Palo a 3 luci",
+"Palo medio (ca. 1mt)",
+"Plafoniera a soffitto",
+"Lampada da appoggio",
+"Striscia di led",
+"Oggetto portatile luminoso",
+"Catena di luci",
+"Faretto da incasso",
+"Terminale / tag (10cm – 50cm)",
+"Luce sepolta/ da incasso",
+"Luce a picchetto",
+"Lampadario/ luce a sospensione",
+"Altro (specificare)#so#sf"
+};
+
+qst = new question("choice", 110);
+qst.setProperty("text", "Quale/i tipo/i di illuminazione da esterno ha acquistato negli ultimi 12 mesi, oppure &egrave; intenzionato ad acquistare, presso un punto vendita Leroy Merlin?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q200");
+qst.setProperty("options", q110_opts);
+send qst;
+
+
+qst = new question("choice", 120);
+qst.setProperty("text", "Per il/i suo/suoi acquisti ha scelto o &egrave; intenzionato a scegliere prodotto/i <b>ad energia solare</b>?");
+qst.setProperty("code", "q210");
+vector q120_opts = new vector {
+"Si",
+"No",
+"Ho acquistato/ ho intenzione di acquistare sia prodotti ad energia solare che non solare",
+"Non so"
+};
+qst.setProperty("options", q120_opts);
+send qst;
+
+qst = new question("choice", 130);
+qst.setProperty("text", "Per il/i suo/suoi acquisti o è intenzionato a scegliere, ha scelto prodotto/i <b>con sensore di movimento</b>?");
+qst.setProperty("code", "q220");
+vector q130_opts = new vector {
+"Si",
+"No",
+"Ho acquistato/ ho intenzione di acquistare sia prodotti con rilevamento che senza",
+"Non so"
+};
+qst.setProperty("options", q130_opts);
+send qst;
+
+qst = new question("choice", 140);
+qst.setProperty("text", "Dove ha installato o pensa di installare i prodotti di illuminazione da esterno che ha acquistato pi&ugrave; recentemente o che &egrave; intenzionato ad acquistare?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q230");
+vector q140_opts = new vector {
+"Terrazzo",
+"Pergola",
+"Gazebo",
+"Giardino",
+"Facciata",
+"Scale",
+"Pavimento",
+"Piscina",
+"Viale",
+"Parcheggio / Accesso Garage",
+"Cancello / cancello d'ingresso",
+"Scala",
+"Recinzioni esterne",
+"Cucina esterna / Barbecue",
+"Abbellimenti architettonici (ponte, statua ...)",
+"Altra destinazione (specificare)#so#sf"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+qst = new question("choice", 150);
+qst.setProperty("text", "Qual &egrave; la sua esigenza in termini di illuminazione esterna?");
+qst.setProperty("code", "q240");
+qst.setProperty("selection", "multiple");
+vector q150_opts = new vector {
+"Godere pienamente dell’attivit&agrave; all’aria aperta (vedere correttamente)",
+"Segnare il percorso (potersi muovere liberamente)",
+"Migliorare la zona esterna attraverso l’illuminazione",
+"Proteggere l’esterno dalle intrusioni"
+};
+qst.setProperty("options", q150_opts);
+send qst;
+
+qst = new question("scale", 160);
+qst.setProperty("text", "Pensando all’acquisto di prodotti di illuminazione da esterno, quanto &egrave; importante secondo lei…?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q250");
+vector q160_rows = new vector {
+"L’estetica del prodotto",
+"La funzionalit&agrave; del prodotto",
+"La possibilit&agrave; di acquistare prodotti diversi di una stessa serie (Es. Applique murale e palo da giardino)",
+"La possibilit&agrave; di avere il servizio completo (installazione del prodotto)"
+};
+qst.setProperty("rows", q160_rows);
+vector q160_cols = new vector {
+"Molto importante",
+"Abbastanza importante",
+"N&egrave; importante,n&egrave; poco importante",
+"Poco importante",
+"Per niente importante"
+};
+qst.setProperty("cols", q160_cols);
+send qst;
+
+qst = new question("choice", 170);
+qst.setProperty("text", "Sempre pensando all’acquisto di prodotti di illuminazione da esterno, qual &egrave;, secondo lei, l’informazione principale da riportare sulla confezione del prodotto?");
+qst.setProperty("code", "q260");
+vector q170_opts = new vector {
+"Informazioni sul prodotto (potenza, certificazioni, indice di protezione)",
+"Destinazione consigliata del prodotto",
+"Informazioni circa l’installazione del prodotto",
+"Materiali/ colori",
+"Disponibilit&agrave; di altri prodotti della stessa serie",
+"Altro (specificare……)#so#sf",
+"Non so/ Non mi interessa#se#sf"
+};
+qst.setProperty("options", q170_opts);
+send qst;
+
+if (ansq40==0)
+{
+	qst = new question("choice", 180);
+	qst.setProperty("text", "<p><p><div class='info'>“PARLEREMO ORA DI ILLUMINAZIONE DA ESTERNO RIFERENDOCI AL PRODOTTO CHE HA ACQUISTATO PIU’ RECENTEMENTE”</div></p></p>"+
+	"Lei ha recentemente acquistato prodotti per illuminazione da esterno, quale frase meglio descrive la motivazione di questo acquisto?");
+	qst.setProperty("code", "q310");
+	vector q180_opts = new vector {
+	"È una sostituzione di uno o pi&ugrave; apparecchi esterni gi&agrave; esistenti",
+	"È un complemento di illuminatori esterni gi&agrave; presenti",
+	"È un progetto misto (sostituzione e complemento)",
+	"È un nuovo progetto (non c’era nessuna illuminazione in precedenza)"
+	};
+	qst.setProperty("options", q180_opts);
+	send qst;
+
+	ansId=system.getProperty("ans180");
+	if (ansId==0 || ansId==2 )
+	{
+
+	qst = new question("choice", 190);
+	qst.setProperty("text", "Quali sono le ragioni per cui ha sostituito il vecchio apparecchio di illuminazione?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q320");
+	vector q190_opts = new vector {
+	"Il precedente era rotto",
+	"Non ero pi&ugrave; soddisfatto del mio vecchio prodotto",
+	"Volevo acquistare uno nuovo con migliori prestazioni tecniche",
+	"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+	}
+
+
+	qst = new question("choice", 200);
+	qst.setProperty("text", "Rispetto alle sue aspettative e al suo progetto di illuminazione esterna, quanto si ritiene soddisfatto del prodotto che ha acquistato?");
+	qst.setProperty("code", "q330");
+	vector q200_opts = new vector {
+	"Molto soddisfatto",
+	"Abbastanza soddisfatto",
+	"Né soddisfatto, né insoddisfatto",
+	"Abbastanza insoddisfatto",
+	"Molto insoddisfatto"
+	};
+	qst.setProperty("options", q200_opts);
+	send qst;
+
+	qst = new question("choice", 210);
+	qst.setProperty("text", "Durante l'acquisto su quale/i aspetto/i avrebbe voluto ricevere maggiori informazioni, maggiore consulenza?");
+	qst.setProperty("code", "q340");
+	qst.setProperty("selection", "multiple");
+	vector q210_opts = new vector {
+	"L'utilizzo di prodotti (potenza di luce, posizioni consigliate ...)",
+	"Domotica",
+	"Giochi di luce (luci su una facciata ...)",
+	"L'installazione dei prodotti (a livello di impianto, utensili ...)",
+	"Aspetti tecnici (come passare i cavi e collegare i miei prodotti)",
+	"Altro (specificare)#so#sf",
+	"Nessuno#se#sf"
+	};
+	qst.setProperty("options", q210_opts);
+	send qst;
+}
+
+
+qst = new question("choice", 220);
+qst.setProperty("text", "Ipotizzando di dover acquistare un nuovo prodotto per illuminazione da esterno, dove recupererebbe le informazioni prima dell’acquisto?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q400");
+vector q220_opts = new vector {
+"Mi informerei on line",
+"Andrei in un negozio Leroy Merlin",
+"Cercherei nel catalogo di Leroy Merlin",
+"Visiterei altri negozi specializzati",
+"Guarderei i volantini/ pubblicit&agrave;/ riviste specializzate",
+"Altro (specificare….)#so#sf"
+};
+qst.setProperty("options", q220_opts);
+send qst;
+
+sel=system.getProperty("ans220_0");
+if (sel==true) 
+{
+
+qst = new question("choice", 230);
+qst.setProperty("text", "Quali sono i siti internet che consulterebbe per l’acquisto di prodotti per illuminazione da esterno?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q410");
+vector q230_opts = new vector {
+"Sito di Leroy Merlin",
+"Sito di altri negozi specializzati nel fai da te",
+"Forum di consumatori",
+"Sito del produttore",
+"Sito di comparazione prezzi",
+"Altri siti (specificare….)#so#sf"
+};
+qst.setProperty("options", q230_opts);
+send qst;
+}
+
+
+qst = new question("choice", 240);
+qst.setProperty("text", "Quali sono i servizi post vendita che si aspetta vengano offerti per l’acquisto dell’illuminazione da esterno?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q600");
+vector q240_opts = new vector {
+"Consegna a domicilio",
+"Assistenza al primo utilizzo del prodotto",
+"Finanziamento per l’acquisto",
+"Garanzia del miglior prezzo (e rimborso della differenza)",
+"Servizio clienti post vendita 24h",
+"Garanzia del prodotto di almeno 2 anni",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q240_opts);
+send qst;
+
+
+
+qst = new question("choice", 250);
+qst.setProperty("text", "Lei conosce i servizi di vendita e post vendita che Leroy Merlin offre per l’acquisto dell’illuminazione da esterno?");
+qst.setProperty("code", "q610");
+vector q250_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q250_opts);
+send qst;
+
+ansId=system.getProperty("ans250");
+if (ansId==0)
+	{
+
+	qst = new question("choice", 260);
+	qst.setProperty("text", "Quali sono i servizi di vendita e post vendita che Leroy Merlin offre per l’acquisto dell’illuminazione da esterno secondo lei?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q620");
+	vector q260_opts = new vector {
+	"Consegna a domicilio",
+	"Assistenza al primo utilizzo del prodotto",
+	"Finanziamento per l’acquisto",
+	"Garanzia del miglior prezzo (e rimborso della differenza)",
+	"Servizio clienti post vendita 24h",
+	"Garanzia del prodotto di almeno 2 anni",
+	"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q260_opts);
+	send qst;
+	}
+
+
+qst = new question("choice", 270);
+qst.setProperty("text", "In un futuro acquisto di illuminazione da esterno presso Leroy Merlin, le piacerebbe se le venisse proposto un servizio di installazione a domicilio (servizio a pagamento)?");
+qst.setProperty("code", "q630");
+vector q270_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q270_opts);
+send qst;
+
+ansId=system.getProperty("ans270");
+if (ansId==0)
+	{
+
+	qst = new question("choice", 280);
+	qst.setProperty("text", "In quale fase del progetto utilizzerebbe questo servizio?");
+	qst.setProperty("code", "q640");
+	vector q280_opts = new vector {
+	"In ogni fase del progetto",
+	"Nella fase di installazione degli apparecchi",
+	"Nella fase dell’impianto (creazione della linea elettrica)"
+	};
+	qst.setProperty("options", q280_opts);
+	send qst;
+	}
+
+
+}

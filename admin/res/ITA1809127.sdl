@@ -1,0 +1,1487 @@
+#export vars "sVar0"
+#export vars "sVar1"
+#export vars "sVar2"
+
+
+void main() {
+	question qst;
+	
+	int selint;
+	boolean sel;
+	boolean selnutella;
+	int qid;
+	string item;
+	int reCod;
+	string cmd;
+	int conta;
+	string label;
+	string nascondi_item;
+	int selintfigli;
+	string img;
+	string img_linea_piccola;
+	string link;
+	int baseQid;
+	string qtext;
+	int ansId;
+	string cod;
+	int count;
+		int target=0;
+		string comp;
+	
+	system.setProperty("env", "debug:true");
+	system.setProperty("env", "browser:full");
+	system.setProperty("env", "stylesheet:mod.css");
+	string autotest=system.getProperty("test");
+	if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+	
+	
+	qst = new question("open", 5);
+	qst.setProperty("text", "CUSTOMER ID (da anagrafica):  ");
+	qst.setProperty("code", "ID");
+	qst.setProperty("view", "numeric");
+	send qst;
+
+	
+	qst = new question("open", 10);
+	qst.setProperty("text", "NOME SOCIETÀ (da anagrafica)");
+	qst.setProperty("code", "s01");
+	send qst;
+
+	
+	
+	qst = new question("open", 20);
+	qst.setProperty("text", "PUNTO VENDITA (da anagrafica)");
+	qst.setProperty("code", "s02");
+	send qst;
+
+	
+	
+	
+	qst = new question("choice", 30);
+	qst.setProperty("text", "AREA DI VENDITA (da anagrafica):");
+	qst.setProperty("code", "s03");
+	vector q30_opts = new vector {
+"MODERN TRADE NORTH",
+"MODERN TRADE SOUTH",
+"OOH CENTER",
+"OOH NORTH EAST",
+"OOH NORTH WEST",
+"OOH SOUTH"
+	};
+	qst.setProperty("options", q30_opts);
+	send qst;
+
+	
+	
+	qst = new question("choice", 40);
+	qst.setProperty("text", "CANALE (da anagrafica):");
+	qst.setProperty("code", "s04");
+	vector q40_opts = new vector {
+		"Supermercato",
+		"Superette-mini market",
+		"Ipermercato",
+		"Bar diurni (DAY TIME BAR)",
+		"Ristoranti e pizzerie (RESTAURANTS&PIZZERIAS)",
+		"Take away",
+		"Tradizionale (MOM & POP)",
+		"Evening&Night (CANALE NOTTURNO)",
+		"Altro"
+	};
+	qst.setProperty("options", q40_opts);
+	send qst;
+
+	ansId=system.getProperty("ans40");
+	ansId=ansId+1;
+	
+	system.setProperty("rtrControl",ansId);
+
+	
+	if (ansId>3) { reCod=1;}
+	else { reCod=0;}
+	
+	qst = new question("choice", 45);
+	qst.setProperty("text", "target:");
+	qst.setProperty("code", "tar");
+	vector q45_opts = new vector {
+		"FC",
+		"IC"
+	};
+	qst.setProperty("options", q45_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+
+	target=system.getProperty("ans45");
+
+	
+	qst = new question("choice", 60);
+	qst.setProperty("text", "TELEMARKETING  - (da anagrafica):");
+	qst.setProperty("code", "s04c");
+	vector q60_opts = new vector {
+		"SI",
+		"NO"
+	};
+	qst.setProperty("options", q60_opts);
+	send qst;
+
+	
+	qst = new question("choice", 70);
+	qst.setProperty("text", "FUNZIONE (chiesta):");
+	qst.setProperty("code", "s05");
+	vector q70_opts = new vector {
+		"Responsabile punto vendita",
+		"Assistente al responsabile punto vendita",
+		"Titolare",
+		"Altro (specificare)#so"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+
+	
+	
+	qst = new question("choice", 80);
+	qst.setProperty("text", "CLASSIFICAZIONE: Tipologia di cliente da file (EATB Customer Segmentation)");
+	qst.setProperty("code", "s06");
+	vector q80_opts = new vector {
+		"A-type (Gold)",
+		"B-type (Silver)",
+		"Platinum",
+		"C-type (Bronze) NO"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+
+	
+	
+	qst = new question("choice", 90);
+	qst.setProperty("text", "RED (Right execution Daily): Il cliente fa parte del programma RED");
+	qst.setProperty("code", "s07");
+	vector q90_opts = new vector {
+		"Si (SOLO RED)",
+		"No"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+
+	selint=system.getProperty("ans90");
+	
+	if (selint==0)
+	{
+	
+	qst = new question("open", 95);
+	qst.setProperty("text", "quale è il red index ");
+	qst.setProperty("code", "s08");
+	qst.setProperty("right_label", "%");
+	qst.setProperty("view", "numeric");
+	send qst;
+
+	
+	}
+	
+	qst = new question("open", 100);
+	qst.setProperty("text", "NOME INTERVISTATO (chiesto)");
+	qst.setProperty("code", "s08");
+	send qst;
+
+	
+	
+	qst = new question("choice", 110);
+	qst.setProperty("text", "RIFERIMENTI (da anagrafica):");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{min:2,max:2}");
+	qst.setProperty("code", "s09");
+	vector q110_opts = new vector {
+		"Telefono:#so",
+		"Indirizzo:#so"
+	};
+	qst.setProperty("options", q110_opts);
+	send qst;
+
+	
+	
+	
+	qst = new question("open", 120);
+	qst.setProperty("text", "DATA INTERVISTA (registrata)");
+	qst.setProperty("code", "s10");
+	qst.setProperty("view", "date");
+	send qst;
+
+	
+	
+	qst = new question("concept", 130);
+	qst.setProperty("text", "Buongiorno, sono … (nome) di Interactive Market Research. Stiamo svolgendo un’indagine sulla soddisfazione dei clienti per conto di una grande azienda di bevande. I risultati dell’indagine saranno utilizzati per comprendere meglio le esigenze dei clienti e migliorare la loro soddisfazione. L’intervista richiede circa 15 minuti.");
+	send qst;
+
+
+	
+	qst = new question("choice", 140);
+	qst.setProperty("text", "Per prima cosa vorrei parlare dei suoi fornitori di bibite gassate, birra, acqua in bottiglia, succhi e bevande in generale. Nel suo punto vendita trattate prodotti di quali di queste aziende?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q1a");
+	vector q140_opts = new vector {
+		"COCA-COLA",
+		"PEPSICO",
+		"NESTLE - San Pellegrino",
+		"SAN BENEDETTO",
+		"HEINEKEN",
+		"FERRERO (Estathe)",
+		"CONSERVE ITALIA (Derby, Yoga)",
+		"CAMPARI",
+		"nessuno (non leggere)#se",
+		"non sa (non leggere)#se"
+	};
+	qst.setProperty("options", q140_opts);
+	send qst;
+
+	
+	sel=system.getProperty("ans140_0");
+	if (sel==false){return 4;}
+	
+	int countBrand=0;
+	for(int i=0,7)
+	{
+	sel=system.getProperty("ans140_"+i);
+	if (sel==true) { countBrand=countBrand+1; }
+	}
+	
+ string prova="<script type='text/javascript'>"+
+  "var id;"+
+  "var trovato=0;"+
+  "var selezioni;"+
+     "$(document).ready(function() {"+
+     "$('button').click(function(e) {"+
+  
+  "id=$(this).attr(\"id\");"+
+  "if (id=='bn10' && e.originalEvent !== undefined){"+
+  "selezioni=$('input[name=selIds]').val();"+
+  "$('input[name=selIds]').val('10;');"+
+  "$('#bnNext').click();"+
+  "}"+
+  
+ "});"+
+  
+  
+     " });</script>";
+	 
+	 
+	 
+  cod="<script type='text/javascript'>"+
+     "$(document).ready(function() {"+
+     "$('#bnNext').hide();"+
+     "$('button').click( function() {"+
+     "var ct=$('input[name=sel_count]').val();"+
+     " if (ct==3) { $('#bnNext').hide();} "+
+     " else { $('#bnNext').show();; } "+
+     " }); });</script>";
+	 
+	
+	qst = new question("ordering", 150);
+	qst.setProperty("text", cod+"Pu&ograve; ordinare in termini di vendite (volume/fatturato) i prodotti delle aziende che mi ha citato? Inizi con quella che corrisponde alle vendite maggiori  (volume/fatturato) sviluppato negli ultimi 6 mesi. Qual &egrave; la prima? Quale la seconda? Quale la terza?"+prova);
+	qst.setProperty("code", "q1b");
+	qst.setProperty("controller", 140);
+	qst.setProperty("sel_count", 3);
+		vector none = new vector {
+		"<i>NESSUNO</i>"
+	};
+	qst.setProperty("strict_selection", false);
+	qst.setProperty("options", none);
+	send qst;
+
+	
+		vector brandsOriginal = new vector {
+		"COCA-COLA",
+		"PEPSICO",
+		"NESTLE - San Pellegrino",
+		"SAN BENEDETTO",
+		"HEINEKEN",
+		"FERRERO (Estathe)",
+		"CONSERVE ITALIA (Derby, Yoga)",
+		"CAMPARI"
+	};
+	
+	vector brands = new vector {
+		"COCA-COLA",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3"
+	};
+	
+	vector brands12b = new vector {
+		"COCA-COLA",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3"
+	};	
+	
+int countSel=1;
+string opt;
+
+int sVar0=0;
+system.setProperty("sVar0",sVar0);
+
+
+int sVar1=99;
+int sVar2=99;
+
+if (countBrand>1)
+{
+
+	for(int i=0,2)
+	{
+	
+		
+	ansId=system.getProperty("ans150_"+i);
+
+	if ((ansId >0 && ansId <10) && countSel <3)
+		{
+		 opt=brandsOriginal.get(ansId);
+		 brands.set(countSel,opt);
+		 brands12b.set(countSel,opt);
+		
+		 countSel=countSel+1;
+		 
+		 if (countSel==2) { sVar1=ansId;  system.setProperty("sVar1",ansId);}
+		 if (countSel==3) { sVar2=ansId;  system.setProperty("sVar2",ansId);}
+		
+		}
+
+	}	
+
+}
+
+
+qst = new question("choice", 999);
+qst.setProperty("text", "prodotti estratti");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "prodVal");
+qst.setProperty("options", brandsOriginal);
+qst.setProperty("default_answer","{ 'selection': ["+sVar0+","+sVar1+","+sVar2+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+
+	qst = new question("scale", 160);
+	qst.setProperty("text", "Tra i primi 3 fornitori di bevande che ha citato, quali consegnano direttamente al suo/ai suoi punti vendita e quali consegnano tramite un grossista o un distributore?");
+	qst.setProperty("code", "q1c");
+	qst.setProperty("rows", brands);
+	vector q160_cols = new vector {
+		"CONSEGNA DIRETTA",
+		"GROSSISTA /DISTRIBUTORE"
+	};
+	qst.setProperty("cols", q160_cols);
+	send qst;
+
+	
+	
+	
+	qst = new question("scale", 170);
+	qst.setProperty("text", "Parliamo ora dei suoi principali fornitori di bevande e di altri prodotti cio&egrave; … [ripetere il nome dei 3 principali fornitori di dom.1c]."+
+	"<br>Nel complesso, quanto &egrave; soddisfatto di... [inserire la prima azienda] rispetto a ci&ograve; che si aspetta da un fornitore?"+
+	"<br>E quanto &egrave; soddisfatto di …  [inserire la seconda azienda] rispetto a ci&ograve; che si aspetta da un fornitore?"+
+	"<br>E quanto &egrave; soddisfatto di …  [nominare la terza azienda] rispetto a ci&ograve; che si aspetta da un fornitore?");
+	qst.setProperty("code", "q3");
+	qst.setProperty("rows", brands);
+	vector q170_cols = new vector {
+		"supera ampiamente le mie aspettative",
+		"soddisfa e spesso supera le mie aspettative",
+		"soddisfa le mie aspettative",
+		"soddisfa solo in parte le mie aspettative",
+		"non soddisfa le mie aspettative",
+		"non sa"
+	};
+	qst.setProperty("cols", q170_cols);
+	send qst;
+
+	
+	
+	qst = new question("scale", 180);
+	qst.setProperty("text", "Pensando a … [ripetere il nome dei 3 principali fornitori di dom.1c], come giudicherebbe il valore che riceve da … [inserire la prima azienda]?"+
+	" Il valore comprende aspetti come il marchio e i prodotti offerti, i servizi di contabilit&agrave; e i programmi di marketing, l’affidabilit&agrave;, la qualit&agrave; o un grande servizio post-vendita."+
+	" <br/>Ritiene di ricevere un valore eccellente, buono, né buono né cattivo, iscreto o scarso?"+
+	"<br><br>INTERVISTATORE: Per “valore” non si intende il valore economico, ma il valore aggiunto derivato dagli aspetti descritti nel testo della domanda.<br> (Continuare con le altre aziende)");
+	qst.setProperty("code", "q4");
+	qst.setProperty("rows", brands);
+	vector q180_cols = new vector {
+		"eccellente",
+		"buono",
+		"né buono né cattivo",
+		"discreto",
+		"scarso",
+		"non sa"
+	};
+	qst.setProperty("cols", q180_cols);
+	send qst;
+
+	
+	
+	qst = new question("scale", 190);
+	qst.setProperty("text", "In base alla sua esperienza con … [ripetere il nome dei 3 principali fornitori], quanto &egrave; facile lavorare  con … [nominare la prima azienda]?"+
+	" È molto facile, abbastanza  facile, né facile né difficile, abbastanza difficile o molto difficile?"+
+	"<br>(Continuare con le altre aziende)");
+	qst.setProperty("code", "q5");
+	qst.setProperty("rows", brands);
+	vector q190_cols = new vector {
+		"molto facile",
+		"abbastanza facile",
+		"né facile né difficile",
+		"abbastanza difficile",
+		"molto difficile",
+		"non sa (non leggere)"
+	};
+	qst.setProperty("cols", q190_cols);
+	send qst;
+
+	qst = new question("scale", 200);
+	qst.setProperty("text", "Ripensando a questi fornitori, fino a che punto … [nominare la prima azienda] ricerca il vostro migliore interesse? Ricerca molto il suo interesse, lo ricerca abbastanza, non lo ricerca né tanto né poco, lo ricerca abbastanza poco o non lo ricerca affatto?");
+	qst.setProperty("code", "q6");
+	qst.setProperty("rows", brands);
+	vector q200_cols = new vector {
+		"ricerca molto",
+		"ricerca abbastanza",
+		"non ricerca né tanto né poco",
+		"ricerca abbastanza poco",
+		"non ricerca affatto",
+		"non sa (non leggere)"
+	};
+	qst.setProperty("cols", q200_cols);
+	send qst;
+
+	qst = new question("scale", 210);
+	qst.setProperty("text", "Pensando agli impegni presi con … [ripetere il nome dei 3 principali fornitori] nei vostri rapporti di affari, fino a che punto … [nominare la prima azienda] mantiene gli impegni presi? Questa azienda li mantiene sempre, quasi sempre, qualche volta, quasi mai o mai?");
+	qst.setProperty("code", "q7");
+	qst.setProperty("rows", brands);
+	vector q210_cols = new vector {
+		"sempre",
+		"quasi sempre",
+		"qualche volta",
+		"quasi mai",
+		"mai",
+		"non sa"
+	};
+	qst.setProperty("cols", q210_cols);
+	send qst;
+
+	qst = new question("scale", 220);
+	qst.setProperty("text", "Se lei pensa a tutti i servizi che ricevete da … [nominare la prima aziend], quante volte direbbe che questo fornitore fa bene le cose “al primo colpo”?");
+	qst.setProperty("code", "q8");
+	qst.setProperty("rows", brands);
+	vector q220_cols = new vector {
+		"sempre",
+		"quasi sempre",
+		"qualche volta",
+		"quasi mai",
+		"mai",
+		"non sa"
+	};
+	qst.setProperty("cols", q220_cols);
+	send qst;
+
+	qst = new question("scale", 230);
+	qst.setProperty("text", "Supponendo che sia una decisione di business che spetta solo a lei, con quale probabilit&agrave; continuerebbe a vendere i prodotti di … [nominare la prima azienda] nel suo punto vendita?");
+	qst.setProperty("code", "q9");
+	qst.setProperty("rows", brands);
+	vector q230_cols = new vector {
+		"Continuerebbe di certo",
+		"Probabilmente continuerebbe",
+		"Forse continuerebbe o forse no",
+		"Probabilmente non continuerebbe",
+		"Non continuerebbe di certo",
+		"non sa"
+	};
+	qst.setProperty("cols", q230_cols);
+	send qst;
+
+	qst = new question("scale", 240);
+	qst.setProperty("text", "Fino a che punto consiglierebbe … [ripetere il nome dei 3 principali fornitori] ad un’azienda che non sia in diretta concorrenza con lei? Consiglierebbe o no … [nominare la prima azienda] a un’altra azienda?");
+	qst.setProperty("code", "q10");
+	qst.setProperty("rows", brands);
+	vector q240_cols = new vector {
+		"Consiglierebbe di certo",
+		"Probabilmente consiglierebbe",
+		"Forse s&igrave;/ forse no",
+		"Probabilmente non consiglierebbe",
+		"Non consiglierebbe di certo",
+		"non sa"
+	};
+	qst.setProperty("cols", q240_cols);
+	send qst;
+	
+
+
+
+
+		vector brands12 = new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b",
+		"#shFornitore bevande 1c",
+		"#shFornitore bevande 2c",
+		"#shFornitore bevande 3c",
+		"#shFornitore bevande 1d",
+		"#shFornitore bevande 2d",
+		"#shFornitore bevande 3d",
+		"#shFornitore bevande 1e",
+		"#shFornitore bevande 2e",
+		"#shFornitore bevande 3e"
+	};
+	
+
+int idx=0;
+cmd="";
+
+for(int i=0,14)
+	{
+	
+	
+	if (i==3 || i==6 || i==9 || i==12) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands.get(idx);
+	opt=opt+cmd;
+	brands12.set(i,opt);
+	}
+	
+	string codintesta2="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('thead tr').clone().insertBefore('tr').find('.sectionHeader');"+
+    "});</script>";	
+	
+
+
+	
+qst = new question("scale", 245);
+qst.setProperty("text", "<p>Ora vorrei parlare con lei pi&ugrave; approfonditamente della sua relazione di business con i suoi principali fornitori di bevande."+
+		" Il primo argomento di cui vorrei parlare &egrave; il C di … [ripetere il nome dei 3 principali fornitori].</p>"+
+		"<br><br>Legger&ograve; alcune frasi, chiedendole di giudicare le aziende in base alle sue aspettative. "+
+		"<br>Utilizzer&ograve; questa scala da 5 a 1 in cui 5 significa “supera di molto le mie aspettative”, 3 significa “soddisfa le mie aspettative” e 1 significa “non soddisfa affatto le mie aspettative”. "+
+		"<br>Pu&ograve; utilizzare anche i punteggi intermedi.<br><br>Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo alla frase successiva."+
+		"<br>Pensando al suo fornitore di bevande, fino a che punto [leggere fornitore] soddisfa le sue aspettative in merito a …[leggere le affermazioni; una sola risposta per azienda]");
+		qst.setProperty("code", "q12");
+		qst.setProperty("rows", brands12);
+		vector q245_cols = new vector {
+			"Supera di molto le mie aspettative<br>5",
+			"&nbsp;<br>4",
+			"Soddisfa le mie aspettative<br>3.",
+			"&nbsp;<br>2",
+			"Non soddisfa affatto le mie aspettative<br>1",
+			"&nbsp;<br>(non sa)"
+		};
+qst.setProperty("cols", q245_cols);
+
+if (countSel==1)
+{
+qst.setProperty("label_at:0","<b>Disponibile e facilmente contattabile</b>");
+qst.setProperty("label_at:1","<b>Ha una conoscenza adeguata del suo business</b>");
+qst.setProperty("label_at:2","<b>La frequenza di visita &egrave; appropriata e riflette le esigenze del suo business</b>");
+qst.setProperty("label_at:3","<b>Ascolta le sue esigenze e domande e sa fornire una risposta prontamente</b>");
+qst.setProperty("label_at:4","<b>Le d&agrave; consigli e fa proposte per sviluppare il suo business</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0","<b>Disponibile e facilmente contattabile</b>");
+qst.setProperty("label_at:2","<b>Ha una conoscenza adeguata del suo business</b>");
+qst.setProperty("label_at:4","<b>La frequenza di visita &egrave; appropriata e riflette le esigenze del suo business</b>");
+qst.setProperty("label_at:6","<b>Ascolta le sue esigenze e domande e sa fornire una risposta prontamente</b>");
+qst.setProperty("label_at:8","<b>Le d&agrave; consigli e fa proposte per sviluppare il suo business</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0","<b>Disponibile e facilmente contattabile</b>");
+qst.setProperty("label_at:3","<b>Ha una conoscenza adeguata del suo business</b>");
+qst.setProperty("label_at:6","<b>La frequenza di visita &egrave; appropriata e riflette le esigenze del suo business</b>");
+qst.setProperty("label_at:9","<b>Ascolta le sue esigenze e domande e sa fornire una risposta prontamente</b>");
+qst.setProperty("label_at:12","<b>Le d&agrave; consigli e fa proposte per sviluppare il suo business</b>");
+}
+send qst;
+
+
+
+	qst = new question("scale", 260);
+	qst.setProperty("text", "Parliamo ora del Contact Center (servizio assistenza) dei suoi fornitori pi&ugrave; importanti. Di quale di questi fornitori ha utilizzato il Contact Center per servizi come ordini telefonici o altri servizi come richiesta di prodotti o attrezzature (frigoriferi, impianti alla spina,…)?");
+	qst.setProperty("code", "q12a");
+	qst.setProperty("rows", brands);
+	vector q260_cols = new vector {
+		"Si, utilizzo il servizio di  Contact Center (assistenza clienti)",
+		"No, non utilizzo il servizio di Contact Center (assistenza clienti)",
+		"Non sa"
+	};
+	qst.setProperty("cols", q260_cols);
+	send qst;
+	
+	
+	int countSelb=countSel;
+	
+	for(int i=0,2)
+	{
+	ansId=system.getProperty("ans260_"+i);
+	if (ansId>0)  { countSelb=countSelb-1;  opt ="#shopt"+i; brands12b.set(i,opt); }
+	}
+	
+	
+	
+	
+if(countSelb>0)
+{
+
+vector brands12b2 = new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b",
+		"#shFornitore bevande 1c",
+		"#shFornitore bevande 2c",
+		"#shFornitore bevande 3c",
+		"#shFornitore bevande 1d",
+		"#shFornitore bevande 2d",
+		"#shFornitore bevande 3d",
+		"#shFornitore bevande 1e",
+		"#shFornitore bevande 2e",
+		"#shFornitore bevande 3e"
+	};
+	
+
+idx=0;
+cmd="";
+
+for(int i=0,14)
+	{
+	
+	
+	if (i==3 || i==6 || i==9 || i==12) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands12b.get(idx);
+	opt=opt+cmd;
+	brands12b2.set(i,opt);
+	}
+
+	
+qst = new question("scale", 270);
+		qst.setProperty("text", "Pensando ai suoi fornitori di bevande, fino a che punto il CONTACT CENTER  di [leggere fornitore] soddisfa le sue aspettative in merito a …(leggere le affermazioni; una sola risposta per azienda, &egrave; ammessa la risposta “non sa”):");
+		qst.setProperty("code", "q12b");
+		qst.setProperty("rows", brands12b2);
+		vector q270_cols = new vector {
+			"Supera di molto le mie aspettative<br>5",
+			"&nbsp;<br>4",
+			"Soddisfa le mie aspettative<br>3.",
+			"&nbsp;<br>2",
+			"Non soddisfa affatto le mie aspettative<br>1",
+			"&nbsp;<br>(non sa)"
+		};
+		
+if (countSelb==1)
+{
+qst.setProperty("label_at:0","<b>Personale &egrave; disponibile e facilmente contattabile</b>");
+qst.setProperty("label_at:1","<b>Personale &egrave; competente</b>");
+qst.setProperty("label_at:2","<b>La frequenza delle chiamate &egrave; adeguata rispetto alle sue esigenze di business</b>");
+qst.setProperty("label_at:3","<b>Personale ascolta le sue esigenze e domande e fornisce una risposta prontamente</b>");
+qst.setProperty("label_at:4","<b>Le d&agrave; consigli e fa proposte per sviluppare il suo business</b>");
+}
+
+if (countSelb==2)
+{
+qst.setProperty("label_at:0","<b>Personale &egrave; disponibile e facilmente contattabile</b>");
+qst.setProperty("label_at:2","<b>Personale &egrave; competente</b>");
+qst.setProperty("label_at:4","<b>La frequenza delle chiamate &egrave; adeguata rispetto alle sue esigenze di business</b>");
+qst.setProperty("label_at:6","<b>Personale ascolta le sue esigenze e domande e fornisce una risposta prontamente</b>");
+qst.setProperty("label_at:8","<b>Le d&agrave; consigli e fa proposte per sviluppare il suo business</b>");
+}
+
+if (countSelb==3)
+{
+qst.setProperty("label_at:0","<b>Personale &egrave; disponibile e facilmente contattabile</b>");
+qst.setProperty("label_at:3","<b>Personale &egrave; competente</b>");
+qst.setProperty("label_at:6","<b>La frequenza delle chiamate &egrave; adeguata rispetto alle sue esigenze di business</b>");
+qst.setProperty("label_at:9","<b>Personale ascolta le sue esigenze e domande e fornisce una risposta prontamente</b>");
+qst.setProperty("label_at:12","<b>Le d&agrave; consigli e fa proposte per sviluppare il suo business</b>");
+}
+		
+qst.setProperty("cols", q270_cols);
+send qst;
+
+
+}
+
+
+
+
+vector brands13 = new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b",
+		"#shFornitore bevande 1c",
+		"#shFornitore bevande 2c",
+		"#shFornitore bevande 3c",
+		"#shFornitore bevande 1d",
+		"#shFornitore bevande 2d",
+		"#shFornitore bevande 3d"
+	};
+	
+
+idx=0;
+cmd="";
+
+for(int i=0,11)
+	{
+	
+	
+	if (i==3 || i==6 || i==9) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands.get(idx);
+	opt=opt+cmd;
+	brands13.set(i,opt);
+	}	
+	
+	
+qst = new question("scale", 280);
+qst.setProperty("text", "Parliamo ora pi&ugrave; in dettaglio del SUPPORTO DI MARKETING di [leggere fornitore] .<br>Legger&ograve; nuovamente alcune frasi, chiedendole di giudicare le aziende in base alle sue aspettative utilizzando la stessa scala.<br>Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo all’affermazione successiva.<br>Pensando al suo fornitore di bevande, fino a che punto … [nominare la prima azienda] soddisfa le sue aspettative in merito a… (leggere le affermazioni; una sola risposta per azienda, &egrave; ammessa la risposta “non sa”):");
+qst.setProperty("code", "q13");
+qst.setProperty("rows", brands13);
+	vector q280_cols = new vector {
+		"Supera di molto le mie aspettative<br>5",
+		"&nbsp;<br>4",
+		"Soddisfa le mie aspettative<br>3.",
+		"&nbsp;<br>2",
+		"Non soddisfa affatto le mie aspettative<br>1",
+		"&nbsp;<br>(non sa)"
+	};
+	
+
+if (target==0) { qtext="<b>Supporto di marketing e promozionale per aiutarla ad aumentare il traffico e le vendite nel complesso</b>";}	
+if (target==1) { qtext="<b>Fornitura di materiale a supporto delle vendite (bicchieri, portatovaglioli,…) di qualit&agrave;";}	
+	
+if (countSel==1)
+{
+qst.setProperty("label_at:0",qtext);
+qst.setProperty("label_at:1","<b>Fornitura di materiale di merchandising efficace, inclusi espositori di prodotto</b>");
+qst.setProperty("label_at:2","<b>Fornitura di informazioni sul mercato e sui consumatori utili per aumentare la vendita di bevande</b>");
+qst.setProperty("label_at:3","<b>Pubblicit&agrave; efficace verso il consumatore</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0",qtext);
+qst.setProperty("label_at:2","<b>Fornitura di materiale di merchandising efficace, inclusi espositori di prodotto</b>");
+qst.setProperty("label_at:4","<b>Fornitura di informazioni sul mercato e sui consumatori utili per aumentare la vendita di bevande</b>");
+qst.setProperty("label_at:6","<b>Pubblicit&agrave; efficace verso il consumatore</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0",qtext);
+qst.setProperty("label_at:3","<b>Fornitura di materiale di merchandising efficace, inclusi espositori di prodotto</b>");
+qst.setProperty("label_at:6","<b>Fornitura di informazioni sul mercato e sui consumatori utili per aumentare la vendita di bevande</b>");
+qst.setProperty("label_at:9","<b>Pubblicit&agrave; efficace verso il consumatore</b>");
+}	
+qst.setProperty("cols", q280_cols);
+send qst;	
+
+qst = new question("scale", 285);
+qst.setProperty("text", "Parliamo ora pi&ugrave; in dettaglio del SUPPORTO DI MARKETING di [leggere fornitore] .<br>Legger&ograve; nuovamente alcune frasi, chiedendole di giudicare le aziende in base alle sue aspettative utilizzando la stessa scala.<br>Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo all’affermazione successiva.<br>Pensando al suo fornitore di bevande, fino a che punto … [nominare la prima azienda] soddisfa le sue aspettative in merito a… (leggere le affermazioni; una sola risposta per azienda, &egrave; ammessa la risposta “non sa”):");
+qst.setProperty("code", "q13p2");
+qst.setProperty("rows", brands13);
+	vector q285_cols = new vector {
+		"Supera di molto le mie aspettative<br>5",
+		"&nbsp;<br>4",
+		"Soddisfa le mie aspettative<br>3.",
+		"&nbsp;<br>2",
+		"Non soddisfa affatto le mie aspettative<br>1",
+		"&nbsp;<br>(non sa)"
+	};
+	
+if (countSel==1)
+{
+qst.setProperty("label_at:0","<b>Fornisce i prodotti giusti per uno stile di vita bilanciato e salutare</b>");
+qst.setProperty("label_at:1","<b>Fornitura di un portafoglio completo di prodotti che soddisfi i consumatori in ogni occasione di consumo</b>");
+qst.setProperty("label_at:2","<b>Prodotti con qualit&agrave; e sicurezza delle quali puoi fidarti</b>");
+qst.setProperty("label_at:3","<b>Fornitura di promozioni personalizzate efficaci</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0","<b>Fornisce i prodotti giusti per uno stile di vita bilanciato e salutare</b>");
+qst.setProperty("label_at:2","<b>Fornitura di un portafoglio completo di prodotti che soddisfi i consumatori in ogni occasione di consumo</b>");
+qst.setProperty("label_at:4","<b>Prodotti con qualit&agrave; e sicurezza delle quali puoi fidarti</b>");
+qst.setProperty("label_at:6","<b>Fornitura di promozioni personalizzate efficaci</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0","<b>Fornisce i prodotti giusti per uno stile di vita bilanciato e salutare</b>");
+qst.setProperty("label_at:3","<b>Fornitura di un portafoglio completo di prodotti che soddisfi i consumatori in ogni occasione di consumo</b>");
+qst.setProperty("label_at:6","<b>Prodotti con qualit&agrave; e sicurezza delle quali puoi fidarti</b>");
+qst.setProperty("label_at:9","<b>Fornitura di promozioni personalizzate efficaci</b>");
+}	
+qst.setProperty("cols", q285_cols);
+send qst;
+
+vector brands14 = new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b",
+		"#shFornitore bevande 1c",
+		"#shFornitore bevande 2c",
+		"#shFornitore bevande 3c",
+		"#shFornitore bevande 1d",
+		"#shFornitore bevande 2d",
+		"#shFornitore bevande 3d",
+		"#shFornitore bevande 1e",
+		"#shFornitore bevande 2e",
+		"#shFornitore bevande 3e",
+		 "#shFornitore bevande 1f",
+		"#shFornitore bevande 2f",
+		"#shFornitore bevande 3f"
+	};
+	
+idx=0;
+cmd="";
+
+for(int i=0,17)
+	{
+	
+	
+	if (i==3 || i==6 || i==9 || i==12 || i==15) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands.get(idx);
+	opt=opt+cmd;
+	brands14.set(i,opt);
+	}	
+
+	
+	
+qst = new question("scale", 290);
+qst.setProperty("text", "Veniamo ora agli aspetti legati a Logistica, Ordini e Consegne relativi a [leggere fornitore]. "+
+"<br>Giudichi nuovamente queste aziende in base alle sue aspettative utilizzando la stessa scala.<br><br>"+
+"Nel caso in cui il fornitore in oggetto stia fornendo prodotti attraverso un grossista / distributore,  le chiediamo di valutare i servizi forniti dai rispettivi grossisti / distributori.  "+
+"<br><br>Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo all’affermazione successiva."+
+"<br>Pensando al suo fornitore di bevande, fino a che punto [leggere fornitore] soddisfa le sue aspettative in merito a …"+
+"(leggere le affermazioni; una sola risposta per azienda; &egrave; ammessa la risposta “non sa”):");
+qst.setProperty("code", "q14");
+qst.setProperty("rows", brands14);
+	vector q290_cols = new vector {
+		"Supera di molto le mie aspettative<br>5",
+		"&nbsp;<br>4",
+		"Soddisfa le mie aspettative<br>3.",
+		"&nbsp;<br>2",
+		"Non soddisfa affatto le mie aspettative<br>1",
+		"&nbsp;<br>(non sa)"
+	};
+if (countSel==1)
+{
+qst.setProperty("label_at:0","<b>Procedura di ordine semplice e flessibile</b>");
+qst.setProperty("label_at:1","<b>Consegna dei prodotti precisa, puntuale e completa</b>");
+qst.setProperty("label_at:2","<b>Piani di consegna flessibili</b>");
+qst.setProperty("label_at:3","<b>Attenzione a evitare che non si esauriscano le vostre scorte</b>");
+qst.setProperty("label_at:4","<b>Gestione dei reclami flessibile ed efficace relativi alle consegne inesatte</b>");
+qst.setProperty("label_at:5","<b>Affidabilit&agrave; e servizi forniti dal personale che effettua le consegne</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0","<b>Procedura di ordine semplice e flessibile</b>");
+qst.setProperty("label_at:2","<b>Consegna dei prodotti precisa, puntuale e completa</b>");
+qst.setProperty("label_at:4","<b>Piani di consegna flessibili</b>");
+qst.setProperty("label_at:6","<b>Attenzione a evitare che non si esauriscano le vostre scorte</b>");
+qst.setProperty("label_at:8","<b>Gestione dei reclami flessibile ed efficace relativi alle consegne inesatte</b>");
+qst.setProperty("label_at:10","<b>Affidabilit&agrave; e servizi forniti dal personale che effettua le consegne</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0","<b>Procedura di ordine semplice e flessibile</b>");
+qst.setProperty("label_at:3","<b>Consegna dei prodotti precisa, puntuale e completa</b>");
+qst.setProperty("label_at:6","<b>Piani di consegna flessibili</b>");
+qst.setProperty("label_at:9","<b>Attenzione a evitare che non si esauriscano le vostre scorte</b>");
+qst.setProperty("label_at:12","<b>Gestione dei reclami flessibile ed efficace relativi alle consegne inesatte</b>");
+qst.setProperty("label_at:15","<b>Affidabilit&agrave; e servizi forniti dal personale che effettua le consegne</b>");
+}
+qst.setProperty("cols", q290_cols);
+send qst;
+
+vector q300_rows = new vector {
+		"Possibilit&agrave; di ottenere equi margini di profitto",
+		"Politica di prezzo trasparente e di facile comprensione",
+		"Flessibilit&agrave; nel negoziare costi e servizi aggiuntivi",
+		"Termini di pagamento (politica di credito)"
+	};
+
+	
+vector brands15 = new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b",
+		"#shFornitore bevande 1c",
+		"#shFornitore bevande 2c",
+		"#shFornitore bevande 3c",
+		"#shFornitore bevande 1d",
+		"#shFornitore bevande 2d",
+		"#shFornitore bevande 3d"
+	};
+	
+
+idx=0;
+cmd="";
+
+for(int i=0,11)
+	{
+	
+	
+	if (i==3 || i==6 || i==9) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands.get(idx);
+	opt=opt+cmd;
+	brands15.set(i,opt);
+	}	
+
+qst = new question("scale", 300);
+qst.setProperty("text", "Passiamo ora alle CONDIZIONI COMMERCIALI di [leggere fornitore]. "+
+	"<br><br>Giudichi nuovamente queste aziende in base alle sue aspettative utilizzando la stessa scala."+
+	"<br>Nel caso in cui sia un grossista/distributore a venderle direttamente i prodotti, per favore valuti il servizio fornito da questi."+
+	"<br>Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo all’affermazione successiva."+
+	"<br>Pensando al suo fornitore di bevande, fino a che punto … [leggere fornitore] soddisfa le sue aspettative in merito a … (leggere le affermazioni; una sola risposta per azienda; &egrave; ammessa la risposta “non sa”):");
+	qst.setProperty("code", "q15");
+qst.setProperty("rows", brands15);
+vector q300_cols = new vector {
+		"Supera di molto le mie aspettative<br>5",
+		"&nbsp;<br>4",
+		"Soddisfa le mie aspettative<br>3.",
+		"&nbsp;<br>2",
+		"Non soddisfa affatto le mie aspettative<br>1",
+		"&nbsp;<br>(non sa)"
+	};
+	
+if (countSel==1)
+{
+qst.setProperty("label_at:0","<b>Possibilit&agrave; di ottenere equi margini di profitto</b>");
+qst.setProperty("label_at:1","<b>Politica di prezzo trasparente e di facile comprensione</b>");
+qst.setProperty("label_at:2","<b>Flessibilit&agrave; nel negoziare costi e servizi aggiuntivi</b>");
+qst.setProperty("label_at:3","<b>Termini di pagamento (politica di credito)</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0","<b>Possibilit&agrave; di ottenere equi margini di profitto</b>");
+qst.setProperty("label_at:2","<b>Politica di prezzo trasparente e di facile comprensione</b>");
+qst.setProperty("label_at:4","<b>Flessibilit&agrave; nel negoziare costi e servizi aggiuntivi</b>");
+qst.setProperty("label_at:6","<b>Termini di pagamento (politica di credito)</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0","<b>Possibilit&agrave; di ottenere equi margini di profitto</b>");
+qst.setProperty("label_at:3","<b>Politica di prezzo trasparente e di facile comprensione</b>");
+qst.setProperty("label_at:6","<b>Flessibilit&agrave; nel negoziare costi e servizi aggiuntivi</b>");
+qst.setProperty("label_at:9","<b>Termini di pagamento (politica di credito)</b>");
+}		
+qst.setProperty("cols", q300_cols);
+send qst;
+
+
+vector brands16= new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b"
+	};
+	
+
+idx=0;
+cmd="";
+
+for(int i=0,5)
+	{
+	
+	
+	if (i==3) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands.get(idx);
+	opt=opt+cmd;
+	brands16.set(i,opt);
+	}	
+
+
+qst = new question("scale", 310);
+qst.setProperty("text", "Passiamo ora agli aspetti relativi ad AMMINISTRAZIONE E FATTURAZIONE di [leggere fornitore]. "+
+	"<br>Giudichi nuovamente queste aziende in base alle sue aspettative utilizzando la stessa scala."+
+	"<br>Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo all’affermazione successiva."+
+	"<br>Pensando al suo fornitore di bevande e in particolare al sistema e ai processi che stanno alla base della fatturazione e amministrazione,"+
+	" fino a che punto [leggere fornitore] soddisfa le sue aspettative in merito a … (leggere le affermazioni);"+
+	" una sla risposta per azienda; &egrave; ammessa la risposta “non sa”):");
+qst.setProperty("code", "q16");
+qst.setProperty("rows", brands16);
+	vector q310_cols = new vector {
+		"Supera di molto le mie aspettative<br>5",
+		"&nbsp;<br>4",
+		"Soddisfa le mie aspettative<br>3.",
+		"&nbsp;<br>2",
+		"Non soddisfa affatto le mie aspettative<br>1",
+		"&nbsp;<br>(non sa)"
+	};
+qst.setProperty("cols", q310_cols);
+if (countSel==1)
+{
+qst.setProperty("label_at:0","<b>Fornisce fatture precise, puntuali e di facile comprensione</b>");
+qst.setProperty("label_at:1","<b>La gestione amministrativa (scambio di documenti, fatturazione, processi approvativi) &egrave; rapida ed efficace.</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0","<b>Fornisce fatture precise, puntuali e di facile comprensione</b>");
+qst.setProperty("label_at:2","<b>La gestione amministrativa (scambio di documenti, fatturazione, processi approvativi) &egrave; rapida ed efficace.</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0","<b>Fornisce fatture precise, puntuali e di facile comprensione</b>");
+qst.setProperty("label_at:3","<b>La gestione amministrativa (scambio di documenti, fatturazione, processi approvativi) &egrave; rapida ed efficace.</b>");
+}	
+send qst;
+
+	qst = new question("scale", 320);
+	qst.setProperty("text", "<p>Parliamo ancora di CONTROVERSIE O RECLAMI SULLE FATTURE.</p>"+
+	" Con quale di questi fornitori le &egrave; capitato di avere una controversia o di fare un reclamo in materia di fatturazione negli ultimi due mesi?");
+	qst.setProperty("code", "q16a");
+	qst.setProperty("rows", brands);
+	vector q320_cols = new vector {
+		"Si, ci sono state controversie o reclami su fatture negli ultimi due mesi",
+		"No, non ci sono state controversie o reclami su fatture negli ultimi due mesi",
+		"Non sa"
+	};
+	qst.setProperty("cols", q320_cols);
+	send qst;
+	
+	
+	qst = new question("scale", 330);
+	qst.setProperty("text", "E infine parliamo di SUPPORTO TECNICO E IMPIANTI DI REFRIGERAZIONE di… [ripetere il nome dei 3 principali fornitori]."+
+	"<br>Quali di questi fornitori rifornisce il vostro punto vendita con refrigeratori?");
+	qst.setProperty("code", "q17a");
+	qst.setProperty("rows", brands);
+	vector q330_cols = new vector {
+		"Si, ho un refrigeratore",
+		"No, non ho un refrigeratore",
+		"Non sa"
+	};
+	qst.setProperty("cols", q330_cols);
+	send qst;
+	
+vector brands17b= new vector {
+		"#shFornitore bevande 1",
+		"#shFornitore bevande 2",
+		"#shFornitore bevande 3",
+		"#shFornitore bevande 1b",
+		"#shFornitore bevande 2b",
+		"#shFornitore bevande 3b"
+	};
+	
+
+idx=0;
+cmd="";
+
+for(int i=0,5)
+	{
+	
+	
+	if (i==3) 
+	{ 
+	cmd="<span style='display:none'>X"+i+"</span>";
+	idx=0;
+	}
+	
+	else { if (i!=0){ idx=idx+1; } }
+		
+	opt=brands.get(idx);
+	opt=opt+cmd;
+	brands17b.set(i,opt);
+	}	
+	
+	
+	qst = new question("scale", 340);
+	qst.setProperty("text", "Ed ora le chiedo di valutare ancora queste aziende sull’ASSISTENZA TECNICA E DELLE ATTREZZATURE, in base alle sue aspettative utilizzando la scala seguente. <br><br>"+
+	"Se ci sono aspetti sui quali non ritiene di avere abbastanza esperienza per giudicare, me lo dica e passeremo all’affermazione successiva."+
+	"<br>Pensando al suo fornitore di bevande, fino a che punto … [leggere fornitore] soddisfa le sue aspettative in merito a…  [leggere le affermazioni; una sola risposta per azienda; &egrave; ammessa la risposta “non sa”]:");
+	qst.setProperty("code", "q17b");
+	qst.setProperty("rows", brands17b);
+	vector q340_cols = new vector {
+		"Supera di molto le mie aspettative<br>5",
+		"&nbsp;<br>4",
+		"Soddisfa le mie aspettative<br>3.",
+		"&nbsp;<br>2",
+		"Non soddisfa affatto le mie aspettative<br>1",
+		"&nbsp;<br>(non sa)"
+	};
+
+if (countSel==1)
+{
+qst.setProperty("label_at:0","<b>Fornitura di attrezzature affidabili e adeguate che soddisfano al meglio il vostro busniness/i vostri affari</b>");
+qst.setProperty("label_at:1","<b>Riparazione o revisione accurata e tempestiva delle attrezzature</b>");
+}
+
+if (countSel==2)
+{
+qst.setProperty("label_at:0","<b>Fornitura di attrezzature affidabili e adeguate che soddisfano al meglio il vostro busniness/i vostri affari</b>");
+qst.setProperty("label_at:2","<b>Riparazione o revisione accurata e tempestiva delle attrezzature</b>");
+}
+
+if (countSel==3)
+{
+qst.setProperty("label_at:0","<b>Fornitura di attrezzature affidabili e adeguate che soddisfano al meglio il vostro busniness/i vostri affari</b>");
+qst.setProperty("label_at:3","<b>Riparazione o revisione accurata e tempestiva delle attrezzature</b>");
+}		
+qst.setProperty("cols", q340_cols);
+send qst;	
+
+
+
+
+
+
+
+baseQid=1000;
+	
+for(int i=0,14)
+{
+ansId=system.getProperty("ans245_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3 || i==6 || i==9 || i==12) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Disponibile e facilmente contattabile";}
+		if(i==3) {label="Ha una conoscenza adeguata del suo business";}
+		if(i==6) {label="La frequenza di visita &egrave; appropriata e riflette le esigenze del suo business";}
+		if(i==9) {label="Ascolta le sue esigenze e domande e sa fornire una risposta prontamente";}
+	    if(i==12) {label="Le d&agrave; consigli e fa proposte per sviluppare il suo business";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a PERSONALE DI VENDITA <b>' "+label+" '</b>");
+		qst.setProperty("code", "q12XXit"+i);
+		send qst;
+		}
+
+}
+
+if(countSelb>0)
+{
+
+baseQid=1050;
+
+
+for(int i=0,14)
+{
+ansId=system.getProperty("ans270_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3 || i==6 || i==9 || i==12) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Personale &egrave; disponibile e facilmente contattabile";}
+		if(i==3) {label="Personale &egrave; competente";}
+		if(i==6) {label="La frequenza delle chiamate &egrave; adeguata rispetto alle sue esigenze di business";}
+		if(i==9) {label="Personale ascolta le sue esigenze e domande e fornisce una risposta prontamente";}
+	    if(i==12) {label="Le d&agrave; consigli e fa proposte per sviluppare il suo business";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b>CONTACT CENTER ' "+label+" '</b>");
+		qst.setProperty("code", "q12bXXit"+i);
+		send qst;
+		}
+
+}	
+
+
+}
+
+
+baseQid=1100;
+for(int i=0,11)
+{
+ansId=system.getProperty("ans280_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3 || i==6 || i==9 ) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0 && target==0) {label="Supporto di marketing e promozionale per aiutarla ad aumentare il traffico e le vendite nel complesso";}
+		if(i==0 && target==1) {label="Fornitura di materiale a supporto delle vendite (bicchieri, portatovaglioli,…) di qualit&agrave;";}
+		if(i==3) {label="Fornitura di materiale di merchandising efficace, inclusi espositori di prodotto";}
+		if(i==6) {label="Fornitura di informazioni sul mercato e sui consumatori utili per aumentare la vendita di bevande";}
+		if(i==9) {label="Pubblicit&agrave; efficace verso il consumatore";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b>SUPPORTO DI MARKETING ' "+label+" '</b>");
+		qst.setProperty("code", "q13XXit"+i);
+		send qst;
+		}
+
+}		
+	
+baseQid=1150;
+for(int i=0,11)
+{
+ansId=system.getProperty("ans285_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3 || i==6 || i==9 ) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Fornisce i prodotti giusti per uno stile di vita bilanciato e salutare";}
+		if(i==3) {label="Fornitura di un portafoglio completo di prodotti che soddisfi i consumatori in ogni occasione di consumo";}
+		if(i==6) {label="Prodotti con qualit&agrave; e sicurezza delle quali puoi fidarti";}
+		if(i==9) {label="Fornitura di promozioni personalizzate efficaci";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b>SUPPORTO DI MARKETING ' "+label+" '</b>");
+		qst.setProperty("code", "q13bXXit"+i);
+		send qst;
+		}
+
+}	
+
+
+baseQid=1200;
+for(int i=0,17)
+{
+ansId=system.getProperty("ans290_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3 || i==6 || i==9 || i==12 || i==15 ) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Procedura di ordine semplice e flessibile";}
+		if(i==3) {label="Consegna dei prodotti precisa, puntuale e completa";}
+		if(i==6) {label="Piani di consegna flessibili";}
+		if(i==9) {label="Attenzione a evitare che non si esauriscano le vostre scorte";}
+		if(i==12) {label="Gestione dei reclami flessibile ed efficace relativi alle consegne inesatte";}
+		if(i==15) {label="Affidabilit&agrave; e servizi forniti dal personale che effettua le consegne";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b>Ordini e Consegne ' "+label+" '</b>");
+		qst.setProperty("code", "q14XXit"+i);
+		send qst;
+		}
+
+}	
+
+
+baseQid=1250;
+for(int i=0,11)
+{
+ansId=system.getProperty("ans300_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3 || i==6 || i==9 ) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Possibilit&agrave; di ottenere equi margini di profitto";}
+		if(i==3) {label="Politica di prezzo trasparente e di facile comprensione";}
+		if(i==6) {label="Flessibilit&agrave; nel negoziare costi e servizi aggiuntivi";}
+		if(i==9) {label="Termini di pagamento (politica di credito)";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b> CONDIZIONI COMMERCIALI' "+label+" '</b>");
+		qst.setProperty("code", "q15XXit"+i);
+		send qst;
+		}
+
+}	
+
+
+baseQid=1300;
+for(int i=0,5)
+{
+ansId=system.getProperty("ans310_"+i);
+
+qid=baseQid+i;
+
+if ( (i==0 || i ==3) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Fornisce fatture precise, puntuali e di facile comprensione";}
+		if(i==3) {label="La gestione amministrativa (scambio di documenti, fatturazione, processi approvativi) &egrave; rapida ed efficace.";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b>AMMINISTRAZIONE E FATTURAZIONE ' "+label+" '</b>");
+		qst.setProperty("code", "q16XXit"+i);
+		send qst;
+		}
+
+}	
+
+baseQid=1350;
+for(int i=0,5)
+{
+ansId=system.getProperty("ans340_"+i);
+qid=baseQid+i;
+
+if ( (i==0 || i ==3) && (ansId==3 || ansId==4))
+		{
+		
+		if(i==0) {label="Fornitura di attrezzature affidabili e adeguate che soddisfano al meglio il vostro busniness/i vostri affari";}
+		if(i==3) {label="Riparazione o revisione accurata e tempestiva delle attrezzature";}
+		
+		qst = new question("open", qid);
+		qst.setProperty("text", "Il nostro cliente è Coca-Cola Hellenic. Per quale motivo è insoddisfatto di Coca-Cola Hellenic rispetto a <b>ASSISTENZA TECNICA E DELLE ATTREZZATURE ' "+label+" '</b>");
+		qst.setProperty("code", "q17bXXit"+i);
+		send qst;
+		}
+
+}
+
+
+qst = new question("choice", 360);
+qst.setProperty("text", "Ritiene che strumenti “digitali” (esempi: Smart Coolers, Portali Web, altro)  che Coca-Cola Hellenic potrebbe metterle o gi&agrave; le mette a disposizione potrebbero aggiungere valore al suo business?");
+qst.setProperty("code", "q18.1");
+	vector q360_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Né si né no",
+		"Poco",
+		"Nessuno",
+		"Non so (INT: Non leggere)"
+	};
+qst.setProperty("options", q360_opts);
+send qst;
+
+ansId=system.getProperty("ans360");
+if (ansId==3 || ansId==4)
+{
+
+qst = new question("open", 370);
+qst.setProperty("text", "Pu&ograve; dirci per quale motivo questi strumenti digitali creano o potrebbero creare “poco” o “nessun” valore al suo business?");
+qst.setProperty("code", "q18.2");
+send qst;
+
+}
+
+
+qst = new question("choice", 380);
+qst.setProperty("text", "Riitiene rilevanti  le iniziative che Coca-Cola Hellenic realizza in materia di “sostenibilit&agrave; ambientale” (frigorieri a basso consumo energetico, confezioni riciclabili, contenimento dell’utilizzo dell’acqua, auto-produzione di energia elettrica etc.).?");
+qst.setProperty("code", "q18.3");
+	vector q380_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Né si né no",
+		"Poco",
+		"Nessuno",
+		"Non so (INT: Non leggere)"
+	};
+qst.setProperty("options", q380_opts);
+send qst;
+	
+	ansId=system.getProperty("ans380");
+	if (ansId==3 || ansId==4 )
+	{
+
+	qst = new question("open", 390);
+	qst.setProperty("text", "Pu&ograve; dirci per quale motivo ritiene tali iniziative di “poca” o “nessuna” rilevanza?");
+	qst.setProperty("code", "q18.4");
+	send qst;
+
+	}
+	
+	qst = new question("choice", 400);
+	qst.setProperty("text", "Ha un referente principale in Coca-Cola Hellenic a cui si pu&ograve; rivolgere per domande o problemi?");
+	qst.setProperty("code", "q19a");
+	vector q400_opts = new vector {
+		"Si",
+		"No",
+		"Non sa"
+	};
+	qst.setProperty("options", q400_opts);
+	send qst;
+	
+	ansId=system.getProperty("ans40");
+	if (ansId==0) { qtext="Desidera che questa persona la contatti per discutere in dettaglio della sua relazione di business con Coca-Cola?"; }
+	else {  qtext="Desidera che qualcuno della Coca-Cola Hellenic la contatti per discutere in dettaglio della sua relazione di business con Coca-Cola?"; }
+	
+	
+
+	qst = new question("choice", 410);
+	qst.setProperty("text", qtext);
+	qst.setProperty("code", "q19b");
+	vector q410_opts = new vector {
+		"s&igrave;",
+		"no",
+		"non sa"
+	};
+	qst.setProperty("options", q410_opts);
+	send qst;
+	
+   ansId=system.getProperty("ans410");
+	if (ansId==0)
+	{
+		
+	    opt=system.getProperty("ans100");
+		cmd="<br/><br/><p>Nome:"+opt+"</p><br/><br/>";
+		comp=system.getProperty("ans110_1_comp");
+		cmd=cmd+"<p>Indirizzo:"+comp+"</p><br/><br/>";
+		comp=system.getProperty("ans110_0_comp");
+		cmd=cmd+"<p>Telefono:"+comp+"</p>";
+	
+		qst = new question("concept", 420);
+		qst.setProperty("text", "Verificare i dati:"+cmd);
+		send qst;
+	}	
+	
+
+
+}

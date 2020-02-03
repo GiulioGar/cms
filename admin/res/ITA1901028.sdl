@@ -1,0 +1,1868 @@
+#export vars "leg"
+#export vars "rot"
+#export vars "legrot"
+
+
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+int legrot;
+system.setProperty("env", "stylesheet:mod.css");
+//system.setProperty("env", "debug:true");
+//system.setProperty("env", "browser:full");
+string autotest=system.getProperty("test");
+boolean concaf;
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+qst = new question("concept", 10);
+qst.setProperty("text", "Buongiorno/Buon pomeriggio/Buonasera. Benvenuto/a a questa ricerca di mercato di Beyond Research."+
+"<br/><br/>Stiamo conducendo un’indagine sui prodotti alimentari e ci interesserebbe conoscere la Sua opinione in merito.");
+send qst;
+
+qst = new question("choice", 20);
+qst.setProperty("text", "<p>Per iniziare compili alcuni dati personali</p>Indicare il sesso");
+qst.setProperty("code", "q1.1");
+vector q20_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+qst = new question("open", 30);
+qst.setProperty("text", "Indicare l’età precisa");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q1.2");
+send qst;
+
+
+int eta=(int)system.getProperty("ans30");
+
+	if(eta<30) { reCod=0;}
+	if(eta>=30 && eta<=47) { reCod=1;}
+	if(eta>=48 && eta<=65) { reCod=2;}
+	if(eta>65 ) { reCod=3;}
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Età");
+qst.setProperty("code", "q1.2x");
+vector q40_opts = new vector {
+"<30",
+"30-47",
+"48-65",
+">65"
+};
+qst.setProperty("options", q40_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+int ans40 = system.getProperty("ans40");
+if (ans40==0 || ans40==3) { return 4; }
+
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Negli ultimi 3 mesi, ha partecipato ad una intervista per una ricerca di mercato su uno dei seguenti prodotti?");
+qst.setProperty("code", "q1.3");
+vector q50_opts = new vector {
+"Alimentari",
+"Detergenza per la casa",
+"Automobili",
+"Non so/non ricordo",
+"Nessuna intervista negli ultimi 3 mesi"
+};
+qst.setProperty("options", q50_opts);
+send qst;
+
+int ans50 = system.getProperty("ans50");
+//if (ans50==0 || ans50==3) { return 4; }
+
+qst = new question("choice", 60);
+qst.setProperty("text", "Lei, o qualcuno della sua famiglia, lavora in uno dei seguenti settori?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.4");
+vector q60_opts = new vector {
+"Pubblicità",
+"Società di ricerche di mercato",
+"Marketing",
+"Giornalismo",
+"Pubbliche relazioni",
+"Produzione o distribuzione di prodotti alimentari",
+"Supermercati/ipermercati/discount",
+"Produzione o vendita di prodotti per l’igiene e cura della persona",
+"Industria tessile",
+"Nessuna tra quelle menzionate sopra#se#sf"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+boolean ans60_0 = system.getProperty("ans60_0");
+boolean ans60_1 = system.getProperty("ans60_1");
+boolean ans60_2 = system.getProperty("ans60_2");
+boolean ans60_3 = system.getProperty("ans60_3");
+boolean ans60_4 = system.getProperty("ans60_4");
+boolean ans60_5 = system.getProperty("ans60_5");
+boolean ans60_6 = system.getProperty("ans60_6");
+//if (ans60_0==true || ans60_1==true || ans60_2==true || ans60_3==true || ans60_4==true || ans60_5==true || ans60_6==true) { return 4; }
+
+
+
+qst = new question("choice", 70);
+qst.setProperty("text", "In che regione vive?");
+qst.setProperty("code", "q1.5");
+vector q70_opts = new vector {
+"Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia-Romagna",
+"Friuli-Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino-Alto Adige",
+"Umbria",
+"Val d&#39;Aosta",
+"Veneto"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+ansId=system.getProperty("ans70");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+		case 6,9,15,17:{reCod=2;}
+        }
+
+
+
+qst = new question("choice", 75);
+qst.setProperty("text", "area?");
+qst.setProperty("code", "q1.5X");
+vector q75_opts = new vector {
+"NO",
+"NE",
+"CE",
+"SUD"
+};
+qst.setProperty("options", q75_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Quali tra i seguenti prodotti a base di cioccolato/cacao le è capitato di acquistare e consumare negli ultimi 6 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.6");
+vector q80_opts = new vector {
+"Tavolette di cioccolato",
+"Praline/cioccolatini",
+"Creme spalmabili",
+"Uova/ovetti di cioccolato",
+"Cacao solubile",
+"Merendine/snack/tortine",
+"Biscotti ripieni/ricoperti di cioccolato",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+sel=system.getProperty("ans80_0");
+if (sel==false) {return 4;}
+
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Dove le capita di acquistare prodotti a base di cioccolato/cacao (es. tavolette, cioccolatini ecc.)?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.7");
+vector q90_opts = new vector {
+"Supermercato/ipermercato",
+"Piccolo supermercato di prossimità/superette",
+"Discount",
+"Negozio monomarca/che vende una sola marca di dolci/cioccolato",
+"Outlet/spaccio dolciario (grande negozio specializzato in prodotti come caramelle, cioccolatini, ecc.)",
+"Cioccolateria/negozio specializzato in cioccolato",
+"Pasticceria/ bar-pasticceria",
+"Punti vendita alimentari di alta qualità (es. Eataly, Carrefour Gourmet, Viaggiator Goloso, Mercato Duomo, Mercato centrale Roma/Firenze)",
+"Panetteria/forno",
+"Corner/negozi in aeroporti",
+"Autogrill",
+"On line",
+"Altro rivenditore#sf"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+count=0;
+for(int i=3,9)
+{
+sel=system.getProperty("ans90_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if (count==0) { return 4; }
+
+
+
+qst = new question("choice", 100);
+qst.setProperty("text", "Parliamo ora delle tavolette di cioccolato. Quali tipi di tavolette di cioccolato ha acquistato e consumato negli ultimi 6 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.8");
+vector q100_opts = new vector {
+"Gianduia",
+"Fondente",
+"Fondente con nocciole",
+"Al latte",
+"Al latte con nocciole",
+"Bianco",
+"Bianco con nocciole",
+"Cioccolato ripieno con altri ingredienti (es. frutta, caramello)",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+sel=system.getProperty("ans100_8");
+if (sel==true) {return 4;}
+
+
+count=0;
+for(int i=0,7)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==true) { count=count+1; reCod=i; }
+}
+
+
+qst = new question("choice", 110);
+qst.setProperty("text", "Quale tipo di tavoletta di cioccolato acquista e consuma più spesso?");
+qst.setProperty("code", "q1.9");
+qst.setProperty("controller", 100);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+
+vector q120_opts = new vector {
+"Gianduia",
+"Fondente",
+"Fondente con nocciole",
+"Al latte",
+"Al latte con nocciole",
+"Bianco",
+"Bianco con nocciole",
+"Cioccolato ripieno con altri ingredienti (es. frutta, caramello)",
+"Nessuna di queste#se#sf"
+};
+
+count=0;
+for(int i=0,7)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==true)  {  opt ="#shopt"+i; q120_opts.set(i,opt);  count=count+1;}
+}
+
+if (count<8)
+{
+qst = new question("choice", 120);
+qst.setProperty("text", "E quali tipi non comprerebbe mai?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.10");
+qst.setProperty("options", q120_opts);
+send qst;
+
+sel=system.getProperty("ans120_0");
+if (sel==true) {return 4;}
+
+sel=system.getProperty("ans120_1");
+if (sel==true) {return 4;}
+
+}
+
+
+qst = new question("choice", 130);
+qst.setProperty("text", "Con che frequenza le capita di consumare tavolette di cioccolato?");
+qst.setProperty("code", "q1.11");
+vector q130_opts = new vector {
+"Tutti i giorni o quasi",
+"4-5 volte la settimana",
+"2-3 volte la settimana",
+"Una volta la settimana",
+"Una volta ogni 2-3 settimane",
+"Una volta al mese",
+"Una volta ogni 2-3 mesi",
+"Meno spesso"
+};
+qst.setProperty("options", q130_opts);
+send qst;
+
+ansId=system.getProperty("ans130");
+if (ansId==7) { return 4; }
+
+qst = new question("choice", 140);
+qst.setProperty("text", "<p>Parliamo ora di marche di cioccolato. </p>"+
+"Quali delle seguenti marche di cioccolato conosce anche solo per averle sentire nominare?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.12");
+vector q140_opts = new vector {
+"Caffarel",
+"Ferrero",
+"Kinder",
+"Lindt",
+"Majani",
+"Novi",
+"Pernigotti",
+"Perugina",
+"Venchi",
+"Witor’s",
+"Milka",
+"Nestlè",
+"Zaini",
+"Ritter",
+"Amedei",
+"Domori",
+"Vanini",
+"#sfMarca del supermercato di alto prezzo (es. Esselunga Top, Terre d’Italia Carrefour, Viaggiator Goloso ecc.)",
+"#sfMarca del supermercato di basso prezzo",
+"#sfAltre marche"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+concaf=system.getProperty("ans140_0");
+
+
+vector q150_opts = new vector {
+"Caffarel",
+"Ferrero",
+"Kinder",
+"Lindt",
+"Majani",
+"Novi",
+"Pernigotti",
+"Perugina",
+"Venchi",
+"Witor’s",
+"Milka",
+"Nestlè",
+"Zaini",
+"Ritter",
+"Amedei",
+"Domori",
+"Vanini",
+"Marca del supermercato di alto prezzo (es. Esselunga Top, Terre d’Italia Carrefour, Viaggiator Goloso ecc.)",
+"Marca del supermercato di basso prezzo",
+"Altre marche"
+};
+
+count=0;
+for(int i=0,19)
+{
+sel=system.getProperty("ans140_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q150_opts.set(i,opt); reCod=i;}
+}
+
+
+qst = new question("choice", 150);
+qst.setProperty("text", "Quali marche ha acquistato negli ultimi 6 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.13");
+qst.setProperty("options", q150_opts);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+
+vector q160_opts = new vector {
+"Caffarel",
+"Ferrero",
+"Kinder",
+"Lindt",
+"Majani",
+"Novi",
+"Pernigotti",
+"Perugina",
+"Venchi",
+"Witor’s",
+"Milka",
+"Nestlè",
+"Zaini",
+"Ritter",
+"Amedei",
+"Domori",
+"Vanini",
+"Marca del supermercato di alto prezzo (es. Esselunga Top, Terre d’Italia Carrefour, Viaggiator Goloso ecc.)",
+"Marca del supermercato di basso prezzo",
+"Altre marche"
+};
+
+
+count=0;
+for(int i=0,19)
+{
+sel=system.getProperty("ans150_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q160_opts.set(i,opt); reCod=i;}
+}
+
+
+qst = new question("choice", 160);
+qst.setProperty("text", "Quale ha acquistato più spesso?");
+qst.setProperty("code", "q1.14");
+qst.setProperty("options", q160_opts);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+ansId=system.getProperty("ans160");
+if (ansId==18) { return 4; }
+
+
+
+vector q170_opts = new vector {
+"Caffarel",
+"Ferrero",
+"Kinder",
+"Lindt",
+"Majani",
+"Novi",
+"Pernigotti",
+"Perugina",
+"Venchi",
+"Witor’s",
+"Milka",
+"Nestlè",
+"Zaini",
+"Ritter",
+"Amedei",
+"Domori",
+"Vanini",
+"Marca del supermercato di alto prezzo (es. Esselunga Top, Terre d’Italia Carrefour, Viaggiator Goloso ecc.)",
+"Marca del supermercato di basso prezzo",
+"Altre marche",
+"Nessuna di queste#se#sf"
+};
+
+for(int i=0,19)
+{
+sel=system.getProperty("ans140_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q170_opts.set(i,opt); reCod=i;}
+}
+
+qst = new question("choice", 170);
+qst.setProperty("text", "Quali prenderebbe in considerazione per acquisti futuri?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.15");
+qst.setProperty("options", q170_opts);
+send qst;
+
+
+vector q180_opts = new vector {
+"Caffarel",
+"Ferrero",
+"Kinder",
+"Lindt",
+"Majani",
+"Novi",
+"Pernigotti",
+"Perugina",
+"Venchi",
+"Witor’s",
+"Milka",
+"Nestlè",
+"Zaini",
+"Ritter",
+"Amedei",
+"Domori",
+"Vanini",
+"Marca del supermercato di alto prezzo (es. Esselunga Top, Terre d’Italia Carrefour, Viaggiator Goloso ecc.)",
+"Marca del supermercato di basso prezzo",
+"Altre marche",
+"Nessuna le acquisterei tutte#se#sf"
+};
+
+count=20;
+
+for(int i=0,19)
+{
+sel=system.getProperty("ans140_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q180_opts.set(i,opt); count=count-1;}
+sel=system.getProperty("ans150_"+i);
+if (sel==true)  {  opt ="#shopt"+i; q180_opts.set(i,opt); count=count-1;}
+}
+
+if (count>0)
+{
+qst = new question("choice", 180);
+qst.setProperty("text", "E quali non acquisterebbe mai? ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.16");
+qst.setProperty("options", q180_opts);
+send qst;
+
+sel=system.getProperty("ans180_0");
+if (sel==true) {return 4;}
+}
+
+
+
+
+qst = new question("choice", 190);
+qst.setProperty("text", "<p>Parliamo ora del cioccolato gianduia.</p>Quali prodotti a base di cioccolato gianduia conosce?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.20");
+vector q190_opts = new vector {
+"Tavolette",
+"Praline/cioccolatini",
+"Creme spalmabili",
+"Uova di Pasqua",
+"Ovetti di Pasqua",
+"Altri prodotti#sf",
+"Nessun prodotto a base di cioccolato gianduia#se#sf"
+};
+qst.setProperty("options", q190_opts);
+send qst;
+
+sel=system.getProperty("ans190_6");
+if (sel==true) {return 4;}
+
+vector q200_opts = new vector {
+"Tavolette",
+"Praline/cioccolatini",
+"Creme spalmabili",
+"Uova di Pasqua",
+"Ovetti di Pasqua",
+"Altri prodotti#sf",
+"Nessun prodotto a base di cioccolato gianduia#se#sf"
+};
+
+for(int i=0,5)
+{
+sel=system.getProperty("ans190_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q200_opts.set(i,opt); }
+}
+
+
+qst = new question("choice", 200);
+qst.setProperty("text", "E quali prodotti a base di cioccolato gianduia le è capitato di consumare almeno qualche volta?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.21");
+qst.setProperty("options", q200_opts);
+send qst;
+
+
+
+sel=system.getProperty("ans200_6");
+if (sel==true) { return 4; }
+
+vector q210_opts = new vector {
+"Tavolette",
+"Praline/cioccolatini",
+"Creme spalmabili",
+"Uova di Pasqua",
+"Ovetti di Pasqua",
+"Altri prodotti#sf",
+"Nessun prodotto a base di cioccolato gianduia"
+};
+
+for(int i=0,5)
+{
+sel=system.getProperty("ans200_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q210_opts.set(i,opt); }
+}
+
+qst = new question("choice", 210);
+qst.setProperty("text", "Quali consuma abitualmente?");
+qst.setProperty("code", "q1.22");
+qst.setProperty("options", q210_opts);
+send qst;
+
+qst = new question("open", 220);
+qst.setProperty("text", "Se dovesse descrivere il cioccolato gianduia, cosa direbbe? Secondo lei da che cosa è caratterizzato questo tipo di cioccolato (pensi a tutto quello che le viene in mente: ingredienti, sapore, consistenza ecc.)");
+qst.setProperty("code", "q1.23");
+send qst;
+
+
+int leg;
+system.setProperty("r1", "rand:2000");
+r1=(int)system.getProperty("r1");
+
+if (r1<=1000) { leg=1;}
+if (r1>1000 ) { leg=2;}
+
+reCod=leg-1;
+
+qst = new question("choice", 360);
+qst.setProperty("text", "MOSTRARE, A ROTAZIONE, UNO DEI DUE PACK. DELLA LEG");
+qst.setProperty("code", "legEstratta");
+vector q360_opts = new vector {
+"LINEA 72/82 ",
+"LINEA INTENSO/DECISO"
+};
+qst.setProperty("options", q360_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+
+system.setProperty("leg",leg);
+system.out("<div>Leg: "+leg+"</div>"); 
+
+
+int r2;
+int rot;
+
+system.setProperty("r2", "rand:2000");
+r2=(int)system.getProperty("r2");
+
+if (r2<=1000) { rot=1;}
+if (r2>1000 ) { rot=2;}
+
+system.setProperty("rot",rot);
+
+system.out("<div>Rotazione: "+rot+"</div>"); 
+
+
+if (leg==1 && rot==1) {legrot=1; }
+if (leg==1 && rot==2) {legrot=2; }
+if (leg==2 && rot==1) {legrot=3; }
+if (leg==2 && rot==2) {legrot=4; }
+
+
+reCod=legrot-1;
+
+system.out("<div>leg+rotazione: "+legrot+"</div>"); 
+
+
+qst = new question("choice", 365);
+qst.setProperty("text", "ROTAZIONE ESTRATTA");
+qst.setProperty("code", "rotazleg");
+vector q365_opts = new vector {
+"LINEA 1 - 72%",
+"LINEA 1 - 82%",
+"LINEA 2 - INTENSO",
+"LINEA 2 - DECISO"
+};
+qst.setProperty("options", q365_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+system.setProperty("legrot",legrot);
+
+
+link="http://www.primisoft.com/fields/BRS/ITA1901028/resources/linea"+leg+".png";
+            
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='450px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>";
+
+qst = new question("concept", 225);
+qst.setProperty("text", "<p>Parliamo ora di una nuova linea di tavolette di cioccolato gianduia proposta da Caffarel. </p>Guardi i prodotti di questa nuova linea."+
+"<p><img src='"+link+"' /></p>");
+send qst;
+
+qst = new question("open", 230);
+qst.setProperty("text", img+"Se dovesse descrivere ad un’amica/o i prodotti che ha appena visto, cosa le racconterebbe?"+
+" Ci dica tutto quello che le viene in mente, tutto quello che ha visto");
+qst.setProperty("code", "q2.0");
+send qst;
+
+qst = new question("choice", 240);
+qst.setProperty("text", img+"Quanto le piace questa linea di tavolette Caffarel?");
+qst.setProperty("code", "q2.1");
+vector q240_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q240_opts);
+send qst;
+
+qst = new question("open", 250);
+qst.setProperty("text", img+"Quali sono gli aspetti che le <b>piacciono di più</b>? <div class='info'>Per favore indichi tutto ciò che le viene in mente e motivi le sue risposte</div>");
+qst.setProperty("code", "q2.2");
+send qst;
+
+qst = new question("open", 260);
+qst.setProperty("text", img+"Quali sono invece gli aspetti che le <b>piacciono meno</b>? <div class='info'>Per favore indichi tutto ciò che le viene in mente e motivi le sue risposte</div>");
+qst.setProperty("code", "q2.3");
+send qst;
+
+qst = new question("choice", 270);
+qst.setProperty("text", img+"Quanto sarebbe intenzionato ad acquistare qualcuno dei prodotti di questa linea di tavolette Caffarel? ");
+qst.setProperty("code", "q2.4");
+vector q270_opts = new vector {
+"Sicuramente l’acquisterei",
+"Probabilmente l’acquisterei",
+"Non so se l’acquisterei",
+"Probabilmente non l’acquisterei",
+"Sicuramente non l’acquisterei"
+};
+qst.setProperty("options", q270_opts);
+send qst;
+
+
+vector q280_rows = new vector {
+"CLASSICO VELLUTATO",
+"DARK GIANDUIA 72%",
+"DARK GIANDUIA 82%"
+};
+
+if (leg==2)
+{
+q280_rows.set(1,"GIANDUIA INTENSO");
+q280_rows.set(2,"GIANDUIA DECISO");
+}
+
+qst = new question("scale", 280);
+qst.setProperty("text", img+"E quanto sarebbe intenzionato ad acquistare ciascuno dei prodotti di questa linea?");
+//qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.5");
+qst.setProperty("rows", q280_rows);
+vector q280_cols = new vector {
+"Sicuramente acquisterei",
+"Probabilmente acquisterei",
+"Non so se acquisterei",
+"Probabilmente non acquisterei",
+"Sicuramente non acquisterei"
+};
+qst.setProperty("cols", q280_cols);
+qst.setProperty("view", "columns");
+send qst;
+
+qst = new question("choice", 290);
+qst.setProperty("text", img+"Quanto è interessante per lei quello che ha visto/letto sulle confezioni e che viene proposto da questa linea di tavolette Caffarel?");
+qst.setProperty("code", "q2.6");
+vector q290_opts = new vector {
+"Molto interessante",
+"Abbastanza interessante",
+"Interessante così così",
+"Poco interessante",
+"Per niente interessante"
+};
+qst.setProperty("options", q290_opts);
+send qst;
+
+qst = new question("choice", 300);
+qst.setProperty("text", img+"E quanto è credibile per lei quello che ha visto/letto sulle confezioni e che viene proposto da questa linea di tavolette Caffarel?");
+qst.setProperty("code", "q2.7");
+vector q300_opts = new vector {
+"Molto credibile",
+"Abbastanza credibile",
+"Credibile così e così",
+"Poco credibile",
+"Per niente credibile"
+};
+qst.setProperty("options", q300_opts);
+send qst;
+
+qst = new question("choice", 310);
+qst.setProperty("text", img+"E quanto è adatto quello che ha visto/letto sulle confezioni al cioccolato gianduia?");
+qst.setProperty("code", "q2.8");
+vector q310_opts = new vector {
+"Molto adatto",
+"Abbastanza adatto",
+"Adatto così e così",
+"Poco adatto",
+"Per niente adatto"
+};
+qst.setProperty("options", q310_opts);
+send qst;
+
+ansId=system.getProperty("ans310");
+if (ansId>2)
+{
+qst = new question("open", 320);
+qst.setProperty("text", img+"Cosa non le sembra adatto al cioccolato gianduia? Per quale motivo?");
+qst.setProperty("code", "q2.9");
+send qst;
+}
+
+qst = new question("choice", 330);
+qst.setProperty("text", img+"Quanto secondo lei questa proposta di Caffarel, nel complesso, è originale e diversa rispetto alle altre tavolette di cioccolato che può trovare in commercio?");
+qst.setProperty("code", "q2.10");
+vector q330_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così e così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q330_opts);
+send qst;
+
+
+if (concaf==true)
+{
+qst = new question("choice", 340);
+qst.setProperty("text", img+"E quanto la marca Caffarel è adatta a proporre questa nuova linea di tavolette?");
+qst.setProperty("code", "q2.11");
+vector q340_opts = new vector {
+"Molto adatta",
+"Abbastanza adatta",
+"Così e così",
+"Poco adatta",
+"Per niente adatta"
+};
+qst.setProperty("options", q340_opts);
+send qst;
+}
+
+
+qst = new question("scale", 350);
+qst.setProperty("text", img+"Qui di seguito troverà alcune opinioni e sensazioni che potrebbero essere suscitate da questa linea di tavolette Caffarel."+
+" Per ciascuna di esse Lei dovrebbe indicare quanto è d’accordo.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q2.12");
+vector q350_rows = new vector {
+"Offre prodotti di qualità superiore",
+"Usa solo ingredienti selezionati",
+"Offre prodotti particolarmente buoni",
+"Offre diverse gradazioni di gianduia per soddisfare gusti diversi",
+"Le tavolette di questa linea hanno    un sapore unico e inconfondibile",
+"Piace a tutti, grandi e piccoli",
+"Adatta soprattutto agli adulti",
+"Esprime tutta la competenza di Caffarel nel cioccolato",
+"E’ un cioccolato goloso",
+"Offre un gianduia di pregio",
+"È una linea di tavolette per cui mi aspetto un prezzo elevato",
+"Dà informazioni chiare sul prodotto (es: composizione, ingredienti…)",
+"È raffinata/ricercata",
+"Ha delle belle confezioni",
+"Attira l’attenzione",
+"Invoglia all’assaggio",
+"È per veri intenditori del cioccolato",
+"È capace di sorprendere",
+"È una vera coccola",
+"Fa sentire meno in colpa di altre  tavolette di cioccolato",
+"Esprime la vera tradizione del gianduia",
+"Fa fare bella figura",
+"Adatta ad un consumo quotidiano/anche tutti i giorni",
+"Adatta ad occasioni un po’ speciali",
+"Adatta da regalare o offrire agli ospiti"
+};
+qst.setProperty("rows", q350_rows);
+vector q350_cols = new vector {
+"Completamente d’accordo",
+"Abbastanza d’accordo",
+"Nè d’accordo nè in disaccordo",
+"Poco d’accordo",
+"Per niente d’accordo"
+};
+qst.setProperty("cols", q350_cols);
+qst.setProperty("extras", "{rand_groups:[0,10,12,16], rand_groups_mode:'both', label_at_mode:'blocks',header_repeat:13}");
+send qst;
+
+
+
+link="http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark"+legrot+".png";
+            
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' width='150px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>";
+
+
+qst = new question("concept", 370);
+qst.setProperty("text", "Concentriamoci ora su questa tavoletta di gianduia dark della nuova linea di tavolette Caffarel.<p><img src='"+link+"'/></p>");
+send qst;
+
+qst = new question("choice", 380);
+qst.setProperty("text", img+"Guardi ora in particolare la confezione di questo prodotto. <p>Quanto le piace questa confezione?</p> ");
+qst.setProperty("code", "q3.0");
+vector q380_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q380_opts);
+send qst;
+
+qst = new question("open", 390);
+qst.setProperty("text", img+"Quali sono gli aspetti che le <b>piacciono di più</b>?<div class='info'> Per favore indichi tutto ciò che le viene in mente</div>");
+qst.setProperty("code", "q3.1");
+send qst;
+
+qst = new question("open", 400);
+qst.setProperty("text", img+"Quali sono invece gli aspetti che le <b>piacciono meno</b>? <div class='info'>Per favore indichi tutto ciò che le viene in mente</div>");
+qst.setProperty("code", "q3.2");
+send qst;
+
+qst = new question("scale", 410);
+qst.setProperty("text", img+"Quanto è d’accordo con ciascuna delle seguenti affermazioni riguardo a questa confezione?"+
+" <p> Dà l’idea di un prodotto..</p>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.3");
+vector q410_rows = new vector {
+"Di qualità elevata",
+"Fatto con ingredienti selezionati",
+"Con un forte gusto di gianduia",
+"Con un forte gusto di cacao",
+"Con un forte gusto di nocciole",
+"Con un gusto ben bilanciato",
+"Con un sapore unico e inconfondibile",
+"Goloso",
+"Fatto con gianduia di pregio",
+"Con prezzo superiore alla media",
+"Per veri intenditori di cioccolato",
+"Adatto a me",
+"Con un’alta percentuale di cacao",
+"Con un’alta percentuale di nocciole"
+};
+qst.setProperty("rows", q410_rows);
+vector q410_cols = new vector {
+"Completamente d’accordo",
+"Abbastanza d’accordo",
+"Nè d’accordo nè in disaccordo",
+"Poco d’accordo",
+"Per niente d’accordo"
+};
+qst.setProperty("cols", q410_cols);
+send qst;
+
+qst = new question("concept", 420);
+qst.setProperty("text", "<p>Concentriamoci ora sui dettagli di questa confezione. "+
+"<br/>Guardi attentamente l’immagine di queste confezioni e poi risponda alle seguenti domande. <br/>"+
+"Per rispondere potrà utilizzare il mouse per cliccare direttamente sulle parti/aree delle confezioni. </p><p><img src='"+link+"' /></p>");
+send qst;
+
+
+
+
+
+string cpt1;
+string cpt2;
+string cpt3;
+string cpt4;
+
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/dinNone.js'></script>";
+
+cpt1=cod+"<table id='Table_01' width='344' height='658' border='0' cellpadding='0' cellspacing='0'>"+
+"<tr>"+
+"<td rowspan='17'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_01.gif' width='52' height='655' alt=''>#ae</td>"+
+"<td colspan='11' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_02.gif' width='255' height='20' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_03.gif' width='36' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='1' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='17'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_04.gif' width='36' height='656' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='19' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='10'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_05.gif' width='235' height='123' alt=''>#ae</td>"+
+"<td rowspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_06.gif' width='20' height='426' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='123' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='10'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_07.gif' width='235' height='59' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='59' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='14'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_08.gif' width='9' height='455' alt=''></td>"+
+"<td colspan='9'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_09.gif' width='226' height='75' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='75' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_10.gif' width='30' height='235' alt=''>#ae</td>"+
+"<td colspan='7'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_11.gif' width='164' height='34' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_12.gif' width='32' height='169' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_13.gif' width='134' height='101' alt=''>#ae</td>"+
+"<td colspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_14.jpg' width='30' height='101' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='101' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_15.gif' width='155' height='34' alt=''>#ae</td>"+
+"<td colspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_16.gif' width='9' height='34' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_17.gif' width='73' height='66' alt=''>#ae</td>"+
+"<td colspan='6' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_18.gif' width='143' height='86' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='66' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='4' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_19.gif' width='103' height='41' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='20' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_20.gif' width='143' height='21' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='21' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='7'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_21.gif' width='30' height='104' alt=''></td>"+
+"<td colspan='7'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_22.gif' width='164' height='34' alt=''>#ae</td>"+
+"<td colspan='2' rowspan='7'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_23.gif' width='52' height='104' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='7'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_24.gif' width='164' height='7' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='7' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='2' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_25.gif' width='27' height='36' alt=''></td>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_26.gif' width='107' height='28' alt=''>#ae</td>"+
+"<td colspan='3' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_27.gif' width='30' height='36' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='28' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_28.gif' width='107' height='8' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='8' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='3'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_29.gif' width='5' height='27' alt=''></td>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_30.gif' width='153' height='23' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_31.gif' width='6' height='27' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='23' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_32.gif' width='153' height='4' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='2' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark1_33.gif' width='52' height='2' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='2' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='52' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='30' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='5' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='22' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='46' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='61' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='21' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='3' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='6' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='32' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='20' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='36' height='1' alt=''></td>"+
+"<td></td>"+
+"</tr>"+
+"</table>";
+
+
+cpt2=cod+"<table id='Table_01' width='344' height='658' border='0' cellpadding='0' cellspacing='0'>"+
+"<tr>"+
+"<td rowspan='19'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_01.gif' width='52' height='655' alt=''>#ae</td>"+
+"<td colspan='9' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_02.gif' width='255' height='30' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_03.gif' width='36' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='1' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='19'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_04.gif' width='36' height='656' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='29' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='8'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_05.gif' width='235' height='126' alt=''>#ae</td>"+
+"<td rowspan='8'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_06.gif' width='20' height='416' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='126' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='8'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_07.gif' width='235' height='42' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='42' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_08.gif' width='9' height='4' alt=''></td>"+
+"<td colspan='7' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_09.gif' width='226' height='76' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='4' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='15'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_10.gif' width='9' height='455' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='72' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='7'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_11.gif' width='226' height='3' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='3' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_12.gif' width='30' height='235' alt=''>#ae</td>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_13.gif' width='164' height='34' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_14.gif' width='32' height='169' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_15.gif' width='134' height='101' alt=''>#ae</td>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_16.jpg' width='30' height='101' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='101' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_17.gif' width='155' height='34' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_18.gif' width='9' height='34' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_19.gif' width='73' height='66' alt=''>#ae</td>"+
+"<td colspan='5' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_20.gif' width='143' height='86' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='66' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='3' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_21.gif' width='103' height='27' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='20' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_22.gif' width='143' height='7' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='7' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='7'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_23.gif' width='30' height='118' alt=''></td>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_24.gif' width='164' height='43' alt=''>#ae</td>"+
+"<td colspan='2' rowspan='7'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_25.gif' width='52' height='118' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='43' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_26.gif' width='164' height='5' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='5' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_27.gif' width='27' height='34' alt=''></td>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_28.gif' width='107' height='31' alt=''>#ae</td>"+
+"<td colspan='2' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_29.gif' width='30' height='34' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='31' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_30.gif' width='107' height='3' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='3' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_31.gif' width='164' height='24' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='24' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_32.gif' width='164' height='12' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='10' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark2_33.gif' width='52' height='2' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='2' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='52' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='30' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='27' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='46' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='61' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='21' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='32' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='20' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='36' height='1' alt=''></td>"+
+"<td></td>"+
+"</tr>"+
+"</table>";
+
+
+
+cpt3=cod+"<table id='Table_01' width='344' height='658' border='0' cellpadding='0' cellspacing='0'>"+
+"<tr>"+
+"<td rowspan='17'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_01.gif' width='52' height='655' alt=''>#ae</td>"+
+"<td colspan='10' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_02.gif' width='255' height='30' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_03.gif' width='36' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='1' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='17'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_04.gif' width='36' height='656' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='29' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='9'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_05.gif' width='235' height='126' alt=''>#ae</td>"+
+"<td rowspan='8'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_06.gif' width='20' height='416' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='126' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='9'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_07.gif' width='235' height='42' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='42' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_08.gif' width='9' height='4' alt=''></td>"+
+"<td colspan='8' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_09.gif' width='226' height='76' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='4' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='13'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_10.gif' width='9' height='455' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='72' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='8'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_11.gif' width='226' height='3' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='3' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_12.gif' width='30' height='235' alt=''>#ae</td>"+
+"<td colspan='6'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_13.gif' width='164' height='34' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_14.gif' width='32' height='169' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_15.gif' width='154' height='101' alt=''>#ae</td>"+
+"<td colspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_16.gif' width='10' height='101' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='101' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_17.gif' width='155' height='34' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_18.gif' width='9' height='34' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_19.gif' width='73' height='66' alt=''>#ae</td>"+
+"<td colspan='6' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_20.gif' width='143' height='86' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='66' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='3' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_21.gif' width='103' height='27' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='20' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_22.gif' width='143' height='7' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='7' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='5'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_23.gif' width='30' height='118' alt=''></td>"+
+"<td colspan='6'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_24.gif' width='164' height='43' alt=''>#ae</td>"+
+"<td colspan='2' rowspan='5'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_25.gif' width='52' height='118' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='43' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_26.gif' width='164' height='11' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='11' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_27.gif' width='27' height='31' alt=''></td>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_28.gif' width='107' height='31' alt=''>#ae</td>"+
+"<td colspan='3'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_29.gif' width='30' height='31' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='31' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_30.gif' width='164' height='31' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='31' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_31.gif' width='52' height='2' alt=''></td>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark3_32.gif' width='164' height='2' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='2' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='52' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='30' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='27' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='46' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='61' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='20' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='32' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='20' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='36' height='1' alt=''></td>"+
+"<td></td>"+
+"</tr>"+
+"</table>";
+
+
+cpt4=cod+"<table id='Table_01' width='344' height='658' border='0' cellpadding='0' cellspacing='0'>"+
+"<tr>"+
+"<td rowspan='17'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_01.gif' width='52' height='655' alt=''>#ae</td>"+
+"<td colspan='10' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_02.gif' width='255' height='30' alt=''></td>#ae"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_03.gif' width='36' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='1' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='17'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_04.gif' width='36' height='656' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='29' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='9'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_05.gif' width='235' height='126' alt=''>#ae</td>"+
+"<td rowspan='8'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_06.gif' width='20' height='416' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='126' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='9'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_07.gif' width='235' height='42' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='42' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_08.gif' width='9' height='4' alt=''></td>"+
+"<td colspan='8' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_09.gif' width='226' height='76' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='4' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='13'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_10.gif' width='9' height='455' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='72' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='8'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_11.gif' width='226' height='3' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='3' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_12.gif' width='30' height='235' alt=''>#ae</td>"+
+"<td colspan='6'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_13.gif' width='164' height='34' alt=''>#ae</td>"+
+"<td rowspan='3'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_14.gif' width='32' height='169' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='4'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_15.gif' width='154' height='101' alt=''>#ae</td>"+
+"<td colspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_16.gif' width='10' height='101' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='101' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='5'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_17.gif' width='155' height='34' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_18.gif' width='9' height='34' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='34' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_19.gif' width='73' height='66' alt=''>#ae</td>"+
+"<td colspan='6' rowspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_20.gif' width='143' height='86' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='66' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='3' rowspan='2'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_21.gif' width='103' height='27' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='20' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_22.gif' width='143' height='7' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='7' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td rowspan='5'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_23.gif' width='30' height='118' alt=''></td>"+
+"<td colspan='6'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_24.gif' width='164' height='43' alt=''>#ae</td>"+
+"<td colspan='2' rowspan='5'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_25.gif' width='52' height='118' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='43' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_26.gif' width='164' height='11' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='11' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_27.gif' width='27' height='31' alt=''></td>"+
+"<td colspan='2'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_28.gif' width='107' height='31' alt=''>#ae</td>"+
+"<td colspan='3'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_29.gif' width='30' height='31' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='31' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td colspan='6'>"+
+"#as<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_30.gif' width='164' height='31' alt=''>#ae</td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='31' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_31.gif' width='52' height='2' alt=''></td>"+
+"<td colspan='6'>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/dark4_32.gif' width='164' height='2' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='2' alt=''></td>"+
+"</tr>"+
+"<tr>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='52' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='30' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='27' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='46' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='61' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='20' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='1' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='9' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='32' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='20' height='1' alt=''></td>"+
+"<td>"+
+"<img src='http://www.primisoft.com/fields/BRS/ITA1901028/resources/spacer.gif' width='36' height='1' alt=''></td>"+
+"<td></td>"+
+"</tr>"+
+"</table>";
+
+
+if (legrot==1)
+{
+qst = new question("concept_eval", 430);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>attirano maggiormente la sua attenzione</b>?");
+qst.setProperty("code", "Q3.4l1r1");
+qst.setProperty("concept", cpt1);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 440);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>le sembrano più interessanti per lei</b>?");
+qst.setProperty("code", "Q3.5l1r1");
+qst.setProperty("concept", cpt1);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 450);
+qst.setProperty("text", "Ci sono delle parti/aree che <b>non la convincono</b> del tutto?");
+qst.setProperty("code", "Q3.6l1r1");
+qst.setProperty("concept", cpt1);
+qst.setProperty("allow_nosel", true);
+send qst;
+}
+
+if (legrot==2)
+{
+qst = new question("concept_eval", 432);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>attirano maggiormente la sua attenzione</b>?");
+qst.setProperty("code", "Q3.4l1r2");
+qst.setProperty("concept", cpt2);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 442);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>le sembrano più interessanti per lei</b>?");
+qst.setProperty("code", "Q3.5l1r2");
+qst.setProperty("concept", cpt2);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 452);
+qst.setProperty("text", "Ci sono delle parti/aree che <b>non la convincono</b> del tutto?");
+qst.setProperty("code", "Q3.6l1r2");
+qst.setProperty("concept", cpt2);
+qst.setProperty("allow_nosel", true);
+send qst;
+}
+
+if (legrot==3)
+{
+qst = new question("concept_eval", 433);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>attirano maggiormente la sua attenzione</b>?");
+qst.setProperty("code", "Q3.4l2r1");
+qst.setProperty("concept", cpt3);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 443);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>le sembrano più interessanti per lei</b>?");
+qst.setProperty("code", "Q3.5l2r1");
+qst.setProperty("concept", cpt3);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 453);
+qst.setProperty("text", "Ci sono delle parti/aree che <b>non la convincono</b> del tutto?");
+qst.setProperty("code", "Q3.6l2r1");
+qst.setProperty("concept", cpt3);
+qst.setProperty("allow_nosel", true);
+send qst;
+}
+
+
+if (legrot==4)
+{
+qst = new question("concept_eval", 434);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>attirano maggiormente la sua attenzione</b>?");
+qst.setProperty("code", "Q3.4l2r2");
+qst.setProperty("concept", cpt4);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 444);
+qst.setProperty("text", "Quali parti/aree di questa confezione <b>le sembrano più interessanti per lei</b>?");
+qst.setProperty("code", "Q3.5l2r2");
+qst.setProperty("concept", cpt4);
+qst.setProperty("allow_nosel", true);
+send qst;
+
+qst = new question("concept_eval", 454);
+qst.setProperty("text", "Ci sono delle parti/aree che <b>non la convincono</b> del tutto?");
+qst.setProperty("code", "Q3.6l2r2");
+qst.setProperty("concept", cpt4);
+qst.setProperty("allow_nosel", true);
+send qst;
+}
+
+
+
+
+if (legrot==1) { nam="Dark Gianduia 72%";}
+if (legrot==2) { nam="Dark Gianduia 82%";}
+if (legrot==3) { nam="Dark Gianduia INTENSO";}
+if (legrot==4) { nam="Dark Gianduia DECISO";}
+
+qst = new question("choice", 460);
+qst.setProperty("text", img+"Quanto le piace l’indicazione <b>"+nam+"</b> presente su questa confezione?");
+qst.setProperty("code", "q3.7");
+vector q460_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così Così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q460_opts);
+send qst;
+
+qst = new question("scale", 470);
+qst.setProperty("text", img+"Sempre con riferimento l’indicazione <b>"+nam+"</b>, quanto è d’accordo con ciascuna delle seguenti affermazioni?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.8");
+vector q470_rows = new vector {
+"Chiarisce bene le caratteristiche del prodotto",
+"È un elemento originale/unico di queste tavolette",
+"Impreziosisce il prodotto",
+"È una garanzia di qualità del cioccolato",
+"Rende il prodotto più interessante per me"
+};
+qst.setProperty("rows", q470_rows);
+vector q470_cols = new vector {
+"Completamente d’accordo",
+"Abbastanza d’accordo",
+"Nè d’accordo nè in disaccordo",
+"Poco d’accordo",
+"Per niente d’accordo"
+};
+qst.setProperty("cols", q470_cols);
+send qst;
+
+qst = new question("choice", 480);
+qst.setProperty("text", "<p>Ora le chiederemo alcuni dati personali per  l’intervista.</p> "+
+"Qual è il titolo di studio più recente che ha conseguito?");
+qst.setProperty("code", "q4.0");
+vector q480_opts = new vector {
+"Scuola elementare",
+"Licenza media inferiore",
+"Licenza media superiore",
+"Laurea",
+"Master post laurea"
+};
+qst.setProperty("options", q480_opts);
+send qst;
+
+qst = new question("choice", 490);
+qst.setProperty("text", "Attualmente lei…");
+qst.setProperty("code", "q4.1");
+vector q490_opts = new vector {
+"Lavora part time",
+"Lavora full time",
+"È in cerca di un’occupazione",
+"Studia",
+"Si occupa della casa/casalinga",
+"Non lavora"
+};
+qst.setProperty("options", q490_opts);
+send qst;
+
+qst = new question("choice", 500);
+qst.setProperty("text", "Attualmente lei…");
+qst.setProperty("code", "q4.2");
+vector q500_opts = new vector {
+"Vive con i genitori",
+"Vive da solo/a",
+"È parte di una coppia giovane senza figli",
+"Vive con figli piccoli  (il maggiore ha meno di 15anni)",
+"Vive con figli grandi  (almeno uno con almeno 15 anni)",
+"È parte di una coppia matura senza figli conviventi",
+"Vive con la famiglia del figlio/a",
+"Vive con altre persone (amici, compagni di studi)",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q500_opts);
+send qst;
+
+}

@@ -1,0 +1,371 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+//system.setProperty("env", "debug:true");
+//system.setProperty("env", "browser:full");
+string autotest=system.getProperty("test");
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+qst = new question("concept", 1);
+qst.setProperty("text", "<p>Buongiorno/Buon pomeriggio/Buonasera.</p> "+
+"Benvenuto ad una nuova ricerca sulle abitudini ed opinioni degli italiani.");
+send qst;
+
+qst = new question("choice", 10);
+qst.setProperty("text", "<p><b>Per iniziare compili alcuni dati personali</b></p><br/>Indicare il sesso");
+qst.setProperty("code", "q1.1");
+vector q10_opts = new vector {
+"Maschio",
+"Femmina"
+};
+qst.setProperty("options", q10_opts);
+
+
+qst = new question("open", 20);
+qst.setProperty("text", "Indicare l’et&agrave; precisa");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q1.2");
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Potrebbe indicare in che regione vive?");
+qst.setProperty("code", "q1.3");
+vector q40_opts = new vector {
+"Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia-Romagna",
+"Friuli-Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino-Alto Adige",
+"Umbria",
+"Val d&#39;Aosta",
+"Veneto"
+};
+qst.setProperty("options", q40_opts);
+
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Lei, qualcuno della sua famiglia o dei suoi amici lavora in uno dei seguenti settori?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand",true);
+qst.setProperty("code", "q1.4");
+vector q50_opts = new vector {
+"Pubblicit&agrave;",
+"Societ&agrave; di ricerche di mercato",
+"Marketing",
+"Giornalismo",
+"Pubbliche relazioni",
+"Produzione o distribuzione di prodotti alimentari",
+"Supermercati/ipermercati/discount",
+"Produzione o vendita di prodotti per l’igiene e cura della persona",
+"Industria tessile",
+"Nessuna tra quelle menzionate sopra#se#sf"
+};
+qst.setProperty("options", q50_opts);
+
+
+
+qst = new question("composed", 52);
+vector q52_comps = new vector { "10", "20", "40", "50" };
+qst.setProperty("components", q52_comps);
+send qst;
+
+int eta;
+eta=(int)system.getProperty("ans20");
+
+if(eta<20) { reCod=0;}
+if(eta>=20 && eta<=36) { reCod=1;}
+if(eta>=37 && eta<=55) { reCod=2;}
+if(eta>55 ) { reCod=3;}
+
+
+qst = new question("choice", 30);
+qst.setProperty("text", "Indicare l’et&agrave;");
+qst.setProperty("code", "q1.2rec");
+vector q30_opts = new vector {
+"<20",
+"20-36",
+"37-55",
+">55"
+};
+qst.setProperty("options", q30_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+int ans30 = system.getProperty("ans30");
+if (ans30==0 || ans30==3) { return 4; }
+
+
+ansId=system.getProperty("ans40");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+		case 6,9,15,17:{reCod=2;}
+        case 13,14:{reCod=4;}
+	
+        }
+
+qst = new question("choice", 59);
+qst.setProperty("text", "Indicare Area");
+qst.setProperty("code", "q1.4rec");
+vector q59_opts = new vector {
+"Nord Ovest",
+"Nord est",
+"Centro",
+"Sud"
+};
+qst.setProperty("options", q59_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+
+boolean ans50_0 = system.getProperty("ans50_0");
+boolean ans50_1 = system.getProperty("ans50_1");
+boolean ans50_2 = system.getProperty("ans50_2");
+boolean ans50_3 = system.getProperty("ans50_3");
+boolean ans50_4 = system.getProperty("ans50_4");
+boolean ans50_5 = system.getProperty("ans50_5");
+boolean ans50_6 = system.getProperty("ans50_6");
+//if (ans50_0==true || ans50_1==true || ans50_2==true || ans50_3==true || ans50_4==true || ans50_5==true || ans50_6==true) { return 4; }
+
+
+qst = new question("choice", 60);
+qst.setProperty("text", "Quali delle seguenti attivit&agrave; ha svolto negli ultimi 6 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.5");
+vector q60_opts = new vector {
+"Acquistare un nuovo smartphone",
+"Rispondere ad un sondaggio politico",
+"Leggere un libro",
+"Partecipare ad una ricerca di mercato",
+"Andare in vacanza",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+boolean ans60_3 = system.getProperty("ans60_3");
+//if (ans60_3==true) { return 4; }
+
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Quali tra i seguenti prodotti ha acquistato negli ultimi 12 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.6");
+vector q70_opts = new vector {
+"Pasta",
+"Detersivi",
+"Gelati confezionati in vaschetta/barattoli",
+"Gelati confezionati in confezioni multiple/multipack",
+"Gelati confezionati venduti singolarmente",
+"Verdure surgelate pronte da cuocere",
+"Prodotti per la cura del corpo (es. creme, oli, ecc.)",
+"Shampoo",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+count=0;
+for(int i=2,4)
+{
+sel=system.getProperty("ans70_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if (count==0) { return 4; }
+
+
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Ci ha detto di aver acquistato gelati confezionati, dove le capita di acquistarli?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.7");
+vector q80_opts = new vector {
+"In un super/ipermercato",
+"In un piccolo supermercato/negozio di alimentari",
+"In un discount",
+"In un bar",
+"Altro"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+count=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans80_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if (count==0) { return 4; }
+
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Ci ha detto di acquistare gelati confezionati. Quali tra queste marche <b>conosce</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.8");
+vector q90_opts = new vector {
+"Sammontana",
+"Algida",
+"Magnum",
+"Carte d’or",
+"Motta",
+"Antica Gelateria del Corso",
+"Valsoia",
+"La Cremeria",
+"Haagen-Dazs",
+"Altro#sf",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+string sortOrder=system.getProperty("ans90_sortorder");
+
+
+
+system.out("<div>Area geografica: "+sortOrder+"</div>"); 
+
+sel=system.getProperty("ans90_0");
+if (sel==false) {return 4;}
+
+sel=system.getProperty("ans90_10");
+if (sel==true) {return 4;}
+
+for(int i=0,9)
+{
+sel=system.getProperty("ans90_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q90_opts.set(i,opt); }
+}
+
+
+ cod="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('div.choice-option_10,div.choice-option_9').appendTo( $('.col-xs-12:first') );"+
+    "});</script>";
+
+
+qst = new question("choice", 100);
+qst.setProperty("text", "E quali tra queste marche ha acquistato negli <b>ultimi 12 mesi</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.9");
+qst.setProperty("options", q90_opts);
+qst.setProperty("show_rand",true);
+send qst;
+
+
+sel=system.getProperty("ans100_10");
+if (sel==true) {return 4;}
+
+
+count=0;
+for(int i=0,9)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+
+qst = new question("choice", 110);
+qst.setProperty("text", cod+"Quale tra queste marche acquista<b> pi&ugrave; spesso</b>?");
+qst.setProperty("code", "q1.9b");
+qst.setProperty("controller", 100);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+qst.setProperty("show_rand",true);
+send qst;
+
+qst = new question("choice", 120);
+qst.setProperty("text", cod+"E quali tra queste marche <b>non acquisterebbe mai</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.10");
+qst.setProperty("options", q90_opts);
+qst.setProperty("show_rand",true);
+send qst;
+
+sel=system.getProperty("ans120_0");
+if (sel==true) {return 4;}
+
+int leg;
+system.setProperty("r1", "rand:2000");
+r1=(int)system.getProperty("r1");
+
+if (r1<=1000) { leg=1;}
+if (r1>1000 ) { leg=2;}
+system.setProperty("leg",leg);
+
+if (leg==1) { nam="GELATI ALL’ITALIANA";}
+if (leg==2) { nam="GELATO ALL’ITALIANA";}
+
+reCod=leg-1;
+
+qst = new question("choice", 125);
+qst.setProperty("text", "Claim");
+qst.setProperty("code", "claim");
+vector q125_opts = new vector {
+"GELATI ALL’ITALIANA",
+"GELATO ALL’ITALIANA"
+};
+qst.setProperty("options", q125_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q125_opts.get(reCod);
+system.out("<div>Claim: "+cmd+"</div>"); 
+
+qst = new question("open", 130);
+qst.setProperty("text", "<p>Parliamo della marca di gelati Sammontana. </p>"+
+"Pensando alla marca di gelati Sammontana, cosa le fa venire in mente <b>"+nam+"</b>?<br/>"+
+" Cosa associa a questa frase, cosa significa secondo lei? <p>Mi dica tutto quello che le viene in mente, cerchi di essere il pi&ugrave; dettagliato possibile</p>");
+qst.setProperty("code", "q2.1");
+send qst;
+
+
+
+
+}

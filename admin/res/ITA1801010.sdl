@@ -1,0 +1,1265 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "debug:true");
+system.setProperty("env", "browser:full");
+
+string tabella;
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script>"+
+"<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+
+
+
+qst = new question("choice", 20);
+qst.setProperty("text", "Lei o qualcuno della sua famiglia lavora in uno dei settori qui elencati ?");
+qst.setProperty("code", "s.1");
+qst.setProperty("selection", "multiple");
+vector q20_opts = new vector {
+"Aziende che producono bevande",
+"Aziende che vendono/distribuiscono bevande",
+"Ricerche di mercato",
+"Giornali / Televisione",
+"Pubblicit&agrave;/Pubbliche relazione",
+"Supermercati / Ipermercati",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+sel=system.getProperty("ans20_6");
+//if (sel==false) {return 4;}
+
+qst = new question("choice", 30);
+qst.setProperty("text", "In quale regione vive?");
+qst.setProperty("code", "s2");
+vector q30_opts = new vector {
+"Valle d’Aosta",
+"Piemonte",
+"Lombardia",
+"Liguria",
+"Veneto",
+"Friuli V.G.",
+"Trentino A.A.",
+"Emilia Romagna",
+"Toscana",
+"Marche",
+"Umbria",
+"Lazio",
+"Abruzzo",
+"Molise",
+"Campania",
+"Puglia",
+"Basilicata",
+"Sardegna",
+"Calabria",
+"Sicilia"
+};
+qst.setProperty("options", q30_opts);
+send qst;
+
+ansId=system.getProperty("ans30");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 0,1,2,3:{reCod=0;}
+        case 4,5,6,7:{reCod=1;}
+		case 8,9,10,11:{reCod=2;}
+        }
+
+
+
+qst = new question("choice", 40);
+qst.setProperty("text", "REGION_RECODE BASED ON THE ANSWERS FROM S.1A");
+qst.setProperty("code", "regrec");
+vector q40_opts = new vector {
+"Region=1 North West",
+"Region=2 North East",
+"Region=3 Centre",
+"Region=4B South and Islands_OTHERS"
+};
+qst.setProperty("options", q40_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Lei &egrave;..");
+qst.setProperty("code", "s3");
+vector q50_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q50_opts);
+send qst;
+
+qst = new question("open", 60);
+qst.setProperty("text", "Indichi la sua et&agrave;.");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "s.4");
+send qst;
+
+int eta=(int)system.getProperty("ans60");
+if (eta<18 || eta>55) { return 4;}
+
+	if(eta<18) { reCod=0;}
+	if(eta>=18 && eta<=24) { reCod=1;}
+	if(eta>=25 && eta<=34) { reCod=2;}
+	if(eta>=35 && eta<=44) { reCod=3;}
+	if(eta>=45 && eta<=55) { reCod=4;}
+	if(eta>55 ) { reCod=5;}
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Recode age");
+qst.setProperty("code", "s.4bis");
+vector q70_opts = new vector {
+"Less than  18 y.o.",
+"18 –24 y.o.",
+"25– 34  y.o.",
+"35  - 44  y.o.",
+"45 – 54  y.o.",
+"More than 55  y.o."
+};
+qst.setProperty("options", q70_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Con che frequenza le capita di bere bevande analcoliche – acqua esclusa – <b>fuori casa</b> (bar, autogrill, … )?");
+qst.setProperty("code", "s.5");
+vector q80_opts = new vector {
+"Tutti i giorni o quasi",
+"1 volta alla settimana",
+"Ogni 2-3 settimane",
+"1 volte al mese",
+"Ogni 2-3 mesi",
+"Ogni 6 mesi",
+"Una volta l’anno o meno"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+ansId=system.getProperty("ans80");
+if (ansId>5) { return 4; }
+
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Negli ultimi 6 mesi, quali dei seguenti prodotti ha consumato <b>fuori casa</b> (bar, autogrill, …)?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.6");
+vector q90_opts = new vector {
+"Acqua minerale gasata o naturale",
+"Bevande anacoliche non gassate (tipo Elisir di Rocchetta)",
+"Bevande analcoliche gassate a base di Cola",
+"Bevande analcoliche gassate a base di Aranciata",
+"Gassosa",
+"Chinotto",
+"Acqua Tonica",
+"Th&egrave; Freddo",
+"Succhi di frutta (tipo Batik San Benedetto, Derby, Pago,…)",
+"Bevande energizzanti gassate (tipo Red Bull)",
+"Bevande energizzanti non gassate (tipo Gatorade)",
+"Aperitivi analcolici (tipo Crodino)",
+"Altro Specificare#so#sf"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+boolean user=system.getProperty("ans90_7");
+boolean succhi=system.getProperty("ans90_8");
+boolean sel2=system.getProperty("ans90_2");
+boolean sel3=system.getProperty("ans90_3");
+boolean sel4=system.getProperty("ans90_4");
+boolean sel5=system.getProperty("ans90_5");
+boolean sel9=system.getProperty("ans90_9");
+boolean gas;
+
+if (sel2==true || sel3==true || sel4==true ||  sel5==true || sel9==true) { gas=true;}
+
+qst = new question("choice", 100);
+qst.setProperty("text", "E quali dei seguenti prodotti non consumerebbe mai  <b>fuori casa</b> (bar, autogrill, …)?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.6a");
+vector q100_opts = new vector {
+"Acqua minerale gasata o naturale",
+"Bevande anacoliche non gassate (tipo Elisir di Rocchetta, Batik San Benedetto, …)",
+"Bevande analcoliche gassate a base di Cola",
+"Bevande analcoliche gassate a base di Aranciata",
+"Gassosa",
+"Chinotto",
+"Acqua Tonica",
+"Th&egrave; Freddo",
+"Succhi di frutta",
+"Bevande energizzanti gassate (tipo Red Bull)",
+"Bevande energizzanti non gassate (tipo Gatorade)",
+"Aperitivi analcolici (tipo Crodino)",
+"Altro Specificare#so#sf",
+"Li consumerei tutti#se#sf"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+sel=system.getProperty("ans100_7");
+if (sel==true) {return 4;}
+
+boolean boost=false;
+
+if (succhi==true)
+{
+
+
+qst = new question("choice", 102);
+qst.setProperty("text", "Quali delle seguenti marche di <b>Succhi di frutta</b> ha <b>acquistato negli ultimi 6 mesi fuori casa</b> (bar, autogrill, …)?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.9");
+vector q102_opts = new vector {
+"Derby",
+"Pago",
+"Batik San Benedetto",
+"Yoga",
+"Del monte",
+"Alce nero",
+"Solevita",
+"Santal",
+"Altro Specificare#so#sf"
+};
+qst.setProperty("options", q102_opts);
+send qst;
+
+count=0;
+for(int i=0,8)
+{
+sel=system.getProperty("ans102_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+qst = new question("choice", 103);
+qst.setProperty("text", "Quali delle seguenti marche di <b>Succhi di frutta</b> ha <b>acquistato più spesso fuori casa</b> (bar, autogrill, …)?");
+qst.setProperty("code", "s.9a");
+qst.setProperty("controller", 102);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+qst = new question("choice", 105);
+qst.setProperty("text", "Quali <b>Succhi di frutta</b> delle seguenti marche non acquisterebbe mai?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.10");
+vector q105_opts = new vector {
+"Derby",
+"Pago",
+"Batik San Benedetto",
+"Yoga",
+"Del monte",
+"Alce nero",
+"Solevita",
+"Santal",
+"Altro Specificare#so#sf",
+"Le acquisterei tutti#se#sf"
+};
+qst.setProperty("options", q105_opts);
+send qst;
+
+
+}
+
+
+
+if (user==true)
+{
+
+qst = new question("choice", 110);
+qst.setProperty("text", "Quali delle seguenti marche di <b>th&egrave; freddo</b>  naturale ha <b>acquistato negli ultimi 6 mesi fuori casa</b> (bar, autogrill, …)?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.7");
+vector q110_opts = new vector {
+"Estath&egrave;",
+"Nestea",
+"Lipton",
+"San Benedetto",
+"Santh&egrave;",
+"San Bernardo",
+"Twinings",
+"Belt&egrave;",
+"Rocchetta",
+"Altro Specificare#so#sf"
+};
+qst.setProperty("options", q110_opts);
+send qst;
+
+boost=system.getProperty("ans110_0");
+
+count=0;
+for(int i=0,9)
+{
+sel=system.getProperty("ans110_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+
+
+qst = new question("choice", 120);
+qst.setProperty("text", "Quali delle seguenti marche di th&egrave; freddo  naturale ha acquistato pi&ugrave; spesso fuori casa (bar, autogrill, …)? ");
+qst.setProperty("code", "s.7a");
+qst.setProperty("controller", 110);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+}
+
+if (boost==true) { reCod=0;}
+else { reCod=1;}
+
+qst = new question("choice", 119);
+qst.setProperty("text", "Boost");
+qst.setProperty("code", "boostcontr");
+vector q119_opts = new vector {
+"Boost",
+"Main"
+};
+qst.setProperty("options", q119_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+ansId=system.getProperty("ans119");
+
+cmd=q119_opts.get(reCod);
+system.out("<div class='info'>Target:"+cmd+"</div>");
+
+
+//1-boost
+//2-main
+
+int bst=ansId+1;
+system.setProperty("bst",bst);
+
+
+int leg;
+system.setProperty("r1", "rand:4000");
+r1=(int)system.getProperty("r1");
+
+
+
+if (r1<=1000) { leg=1;}
+if (r1>1000 && r1<=2000) { leg=2;}
+if (r1>2000 && r1<=3000) { leg=3;}
+if (r1>3000 ) { leg=4;}
+
+system.setProperty("leg",leg);
+
+reCod=leg-1;
+
+qst = new question("choice", 10);
+qst.setProperty("text", "CELLS");
+qst.setProperty("code", "cella");
+vector q10_opts = new vector {
+"Leg 1 - In or Out",
+"Leg 2 – Twist",
+"Leg 3 – Straight",
+"Leg 4 – New Twist"
+};
+qst.setProperty("options", q10_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+int rtrCont;
+if (bst==1) { rtrCont=leg;}
+if (bst==2) { rtrCont=leg+4;}
+system.setProperty("rtrCont",rtrCont);
+
+
+system.out("<div>Boost + Cella : "+rtrCont+"</div>"); 
+
+
+
+
+if (boost==false)
+{
+
+qst = new question("choice", 130);
+qst.setProperty("text", "Quali delle seguenti marche di th&egrave; freddo non acquisterebbe mai?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.8");
+vector q130_opts = new vector {
+"Estath&egrave;",
+"Nestea",
+"Lipton",
+"San Benedetto",
+"Santh&egrave;",
+"San Bernardo",
+"Twinings",
+"Belt&egrave;",
+"Rocchetta",
+"Altro Specificare#so#sf",
+"Le acquisterei tutti#se#sf"
+};
+qst.setProperty("options", q130_opts);
+send qst;
+
+sel=system.getProperty("ans130_0");
+if (sel==true) {return 4;}
+
+}
+
+
+
+if (gas==true)
+{
+
+
+qst = new question("choice", 132);
+qst.setProperty("text", "Quali delle seguenti marche di <b>Bevande analcoliche gassate</b> ha <b>acquistato negli ultimi 6 mesi fuori casa</b> (bar, autogrill, …)? ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.11");
+vector q132_opts = new vector {
+"Coca cola",
+"Fanta",
+"Bitter",
+"Chinò",
+"Pepsi Cola",
+"Sprite",
+"Lemonsoda",
+"Altro Specificare#so#sf"
+};
+qst.setProperty("options", q132_opts);
+send qst;
+
+count=0;
+for(int i=0,7)
+{
+sel=system.getProperty("ans132_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+qst = new question("choice", 133);
+qst.setProperty("text", "Quali delle seguenti marche di <b>Bevande analcoliche gassate </b> ha <b>acquistato più spesso fuori casa</b> (bar, autogrill, …)?");
+qst.setProperty("code", "s.11a");
+qst.setProperty("controller", 132);
+if (count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+qst = new question("choice", 135);
+qst.setProperty("text", "Quali <b>Bevande analcoliche gassate </b> delle seguenti marche <b>non acquisterebbe mai</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.12");
+vector q135_opts = new vector {
+"Coca cola",
+"Fanta",
+"Bitter",
+"Chinò",
+"Pepso Cola",
+"Sprite",
+"Lemonsoda",
+"Altro Specificare#so#sf",
+"Le acquisterei tutti#se#sf"
+};
+qst.setProperty("options", q135_opts);
+send qst;
+
+
+}
+
+
+
+
+
+string movieCode;
+string time="10000";
+	string delay="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('#console').hide();"+
+    "$('#console').before('<div class=\"alt\">Attendere la fine del filmato per procedere.</div>');"+
+    "$('#video').slideDown(1000);"+
+    "setTimeout(function() { $('#console').show(); $('div.alt').remove(); }, "+time+");"+
+    "});</script>"; 
+	
+movieCode=delay+"<div id='video'><video width=\"850\"  autoplay>"+
+      "<source src=\"http://www.primisoft.com/fields/FER/ITA1801010/resources/v"+leg+".mp4\" type=\"video/mp4\">"+
+      "Il tuo browser non supporta i contenuti video HTML5"+
+         "</video></div>";
+
+qst = new question("concept", 140);
+qst.setProperty("text", "Le mostreremo ora un breve video relativo ad un prodotto in bottiglia."+movieCode);
+send qst;
+
+qst = new question("choice", 150);
+qst.setProperty("text", "Quanto le piace la bottiglia che ha appena visto?");
+qst.setProperty("code", "v.0");
+vector q150_opts = new vector {
+"1 - Non mi piace per niente",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10 - Mi piace moltissimo"
+};
+qst.setProperty("options", q150_opts);
+send qst;
+
+link="http://www.primisoft.com/fields/FER/ITA1801010/resources/blind"+leg+".jpg";
+
+qst = new question("concept", 160);
+qst.setProperty("text", "La guardi ancora brevemente<p><img src='"+link+"' height='700px'/></p>");
+send qst;
+
+qst = new question("choice", 170);
+qst.setProperty("text", "Secondo lei questa &egrave; una bottiglia di …");
+qst.setProperty("code", "v1");
+vector q170_opts = new vector {
+"Acqua minerale gasata o naturale",
+"Bevande anacoliche non gassate (tipo Elisir di Rocchetta)",
+"Bevande analcoliche gassate a base di Cola",
+"Bevande analcoliche gassate a base di Aranciata",
+"Gassosa",
+"Chinotto",
+"Acqua Tonica",
+"Th&egrave; Freddo",
+"Succhi di frutta (tipo Batik San Benedetto, Derby, Pago,…)",
+"Bevande energizzanti gassate (tipo Red Bull)",
+"Bevande energizzanti non gassate (tipo Gatorade)",
+"Aperitivi analcolici (tipo Crodino)",
+"Altro Specificare#so#sf"
+};
+qst.setProperty("options", q170_opts);
+send qst;
+
+qst = new question("open", 180);
+qst.setProperty("text", "<p><img src='"+link+"' height='500px'/></p>E secondo lei di che marca &egrave; questa bottiglia? <div class='info'>Per cortesia riporti qui sotto tutte le marche di bevande analcoliche che le vengono in mente guardando questa bottiglia.</div>");
+qst.setProperty("code", "v1b");
+send qst;
+
+qst = new question("open", 183);
+qst.setProperty("text", "<p>Questa &egrave; una bottiglia di <b>Th&egrave; Freddo</b>.</p>E secondo lei di che marca è questa bottiglia di Thè Freddo? ");
+qst.setProperty("code", "v1c");
+send qst;
+
+qst = new question("choice", 190);
+qst.setProperty("text", " E a quale delle seguenti marche di th&egrave; freddo assocerebbe questa bottiglia?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "v.2");
+vector q190_opts = new vector {
+"Estath&egrave;",
+"Nestea",
+"Lipton",
+"San Benedetto",
+"Santh&egrave;",
+"San Bernardo",
+"Twinings",
+"Belt&egrave;",
+"Rocchetta",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q190_opts);
+send qst;
+
+count=0;
+for(int i=0,9)
+{
+sel=system.getProperty("ans190_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+
+qst = new question("choice", 210);
+qst.setProperty("text", "Quanto ritiene adatta questa bottiglia a contenere Th&egrave; freddo?");
+qst.setProperty("code", "v.3");
+vector q210_opts = new vector {
+"1 -Per niente Adatta",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10-Completamente adatta"
+};
+qst.setProperty("options", q210_opts);
+send qst;
+
+
+tabella=scriptzoom+"<p><table border='1' cellpadding='5'><tr>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg' height='700px'  alt='' /></a></td>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg' height='700px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per ingrandire l'immagine</div></p>";	
+
+qst = new question("concept", 220);
+qst.setProperty("text", "Guardi nuovamente la bottiglia, questa volta completa di etichetta."+tabella);
+send qst;
+
+qst = new question("open", 230);
+qst.setProperty("text", "A prima vista, che cosa questa confezione le ha trasmesso? <p>Si senta libero di riportare messaggi, sensazioni, impressioni, …</p>");
+qst.setProperty("code", "q.3");
+send qst;
+
+qst = new question("choice", 240);
+qst.setProperty("text", "Quale delle seguenti affermazioni meglio descrive la sua propensione ad acquistare questo prodotto, considerando ci&ograve; che ha visto oggi e quello che conosce di questa marca?");
+qst.setProperty("code", "q.3.1");
+vector q240_opts = new vector {
+"Sicuramente lo acquisterei",
+"Probabilmente lo acquisterei",
+"Non so se lo acquisterei o non lo acquisterei",
+"Probabilmente non lo acquisterei",
+"Sicuramente non lo acquisterei"
+};
+qst.setProperty("options", q240_opts);
+send qst;
+
+qst = new question("choice", 250);
+qst.setProperty("text", "Quanto le piace questa bottiglia?");
+qst.setProperty("code", "q.4");
+vector q250_opts = new vector {
+"1 -Non mi piace per niente",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10-Mi piace moltissimo"
+};
+qst.setProperty("options", q250_opts);
+send qst;
+
+qst = new question("open", 260);
+qst.setProperty("text", "Che cosa <b>le piace</b> particolarmente di questa confezione ?  <div id=''>Riporti qui sotto tutti gli elementi che le piacciono.</div>");
+qst.setProperty("code", "q.5");
+send qst;
+
+qst = new question("open", 270);
+qst.setProperty("text", "E cosa invece <b>le piace di meno</b> o per niente di questa confezione ?");
+qst.setProperty("code", "q.5b");
+send qst;
+
+tabella=scriptzoom+"<p><table border='1' cellpadding='5'><tr>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg' height='400px'  alt='' /></a></td>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg' height='400px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per ingrandire l'immagine</div></p>";	
+
+qst = new question("scale", 280);
+qst.setProperty("text", tabella+"Quanto le piace ciascuno dei seguenti elementi della confezione qui mostrata? <div class='info'>Dia un voto tra 1 e 10</div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q6.1");
+vector q280_rows = new vector {
+"Il materiale, il fatto che sia in vetro",
+"Il tappo",
+"La forma",
+"Le scanalature della bottiglia",
+"La grafica dell’etichetta sul fronte della bottiglia",
+"La dimensione dell’etichetta sul fronte",
+"L’etichetta sul fronte è chiara e leggibile ",
+"Il logo della marca Estathè",
+"Il colore della scritta Estathè",
+"L’orientamento dell’etichetta",
+"Il retro della bottiglia",
+"L’etichetta sul retro ",
+"La dimensione dell’etichetta sul retro ",
+"L’etichetta sul retro è chiara e leggibile "
+};
+
+if (leg>2) 
+{
+q280_rows.set(11,"#shopt11");
+q280_rows.set(12,"#shopt12");
+q280_rows.set(13,"#shopt13");
+}
+
+qst.setProperty("rows", q280_rows);
+vector q280_cols = new vector {
+"1 - Non mi piace per niente",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10 - Mi piace moltissimo"
+};
+qst.setProperty("cols", q280_cols);
+send qst;
+
+qst = new question("choice", 285);
+qst.setProperty("text", "La bottiglia ha una capacità di 250 CL. Considerato che è una bottiglia da vendere al bar, Secondo lei è …");
+qst.setProperty("code", "q6.2");
+vector q285_opts = new vector {
+"Decisamente Troppo Grande",
+"Un po’ troppo grande",
+"Delle giuste dimensioni",
+"Un po’ troppo piccola",
+"Decisamente troppo piccola"
+};
+qst.setProperty("options", q285_opts);
+send qst;
+
+
+qst = new question("scale", 290);
+qst.setProperty("text", "Seguir&agrave; ora una lista di frasi che potrebbero essere usate per descrivere la confezione che ha appena visto. Per favore indichi quanto Lei &egrave; d’accordo o in disaccordo utilizzando una scala da 1 (per niente d’accordo) a 10 (completamente d’accordo).");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "d.5");
+vector q290_rows = new vector {
+"È una confezione adatta alla marca Estathè",
+"E’ una confezione unica, diversa dalle altre confezioni di bevande presenti sul mercato",
+"Sarei disposto a spendere di più per questa confezione",
+"E’ la confezione di un prodotto premium",
+"Mi fa pensare che il prodotto sia di  qualità",
+"E’ una confezione adatta a me ",
+"Invoglia all’acquisto",
+"Attira l’attenzione",
+"E’ pratica da usare",
+"Ha il tipico stile italiano",
+"E’ elegante",
+"Mi fa pensare che il prodotto sia dissetante",
+"E’ una confezione raffinata",
+"E’ una confezione adatta ad un momento speciale",
+"E’ la confezione di una marca attenta all’ambiente",
+"E’ la confezione di una marca innovativa",
+"E’ una confezione moderna",
+"E’ una confezione attuale",
+"E’ una confezioone adatta ai giovani",
+"E’ una confezione adatta ai bambini",
+"E’ una confezione adatta per essere venduta al bar"
+};
+qst.setProperty("rows", q290_rows);
+vector q290_cols = new vector {
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10"
+};
+qst.setProperty("cols", q290_cols);
+qst.setProperty("extras","{header_repeat:11}");
+send qst;
+
+
+// price score 
+
+qst = new question("choice", 300);
+qst.setProperty("text", "Considerando di acquistare Estathè in vetro da 250 cl al bar, a che prezzo lo considererebbe <b>CONVENIENTE</b>?");
+qst.setProperty("code", "q10");
+vector q300_opts = new vector {
+"3,30€",
+"3,20€",
+"3,10€",
+"3,00€",
+"2,90€",
+"2,80€",
+"2,70€",
+"2,60€",
+"2,50€",
+"2,40€",
+"2,30€",
+"2,20€",
+"2,10€",
+"2,00€",
+"1,90€",
+"1,80€",
+"1,70€",
+"1,60€",
+"1,50€",
+"1,40€"
+};
+qst.setProperty("options", q300_opts);
+send qst;
+
+int s1=system.getProperty("ans300");
+
+qst = new question("choice", 305);
+qst.setProperty("text", "Considerando di acquistare Estathè in vetro da 250 cl al bar, a che prezzo lo considererebbe <b>COSTOSO</b> ma comunque ne valuterebbe l'acquisto?");
+qst.setProperty("code", "q11");
+vector q305_opts = new vector {
+"1,40€",
+"1,50€",
+"1,60€",
+"1,70€",
+"1,80€",
+"1,90€",
+"2,00€",
+"2,10€",
+"2,20€",
+"2,30€",
+"2,40€",
+"2,50€",
+"2,60€",
+"2,70€",
+"2,80€",
+"2,90€",
+"3,00€",
+"3,10€",
+"3,20€",
+"3,30€"
+};
+
+
+for (int k=0,19)
+	{
+	
+	n=19-s1;
+	if (k<n)
+			 {
+			 opt="nascondi#sh"+k;
+			 q305_opts.set(k,opt);
+			 }
+	
+	}
+
+qst.setProperty("options", q305_opts);
+send qst;
+
+int s2=system.getProperty("ans305");
+
+qst = new question("choice", 310);
+qst.setProperty("text", "Considerando di acquistare Estathè in vetro da 250 cl al bar a che prezzo considererebbe questo prodotto così <b>POCO COSTOSO</b> da dubitarne la qualità?");
+qst.setProperty("code", "q12");
+vector q310_opts = new vector {
+"3,30€",
+"3,20€",
+"3,10€",
+"3,00€",
+"2,90€",
+"2,80€",
+"2,70€",
+"2,60€",
+"2,50€",
+"2,40€",
+"2,30€",
+"2,20€",
+"2,10€",
+"2,00€",
+"1,90€",
+"1,80€",
+"1,70€",
+"1,60€",
+"1,50€",
+"1,40€"
+};
+
+for (int k=0,19)
+	{
+	
+	
+	if (k<s1)
+			 {
+			 opt="nascondi#sh"+k;
+			 q310_opts.set(k,opt);
+			 }
+	
+	}
+
+qst.setProperty("options", q310_opts);
+send qst;
+
+
+qst = new question("choice", 315);
+qst.setProperty("text", "Considerando di acquistare Estathè in vetro da 250 cl al bar a che prezzo considererebbe questo prodotto <b>TALMENTE COSTOSO</b> da non ipotizzarne l'acquisto?");
+qst.setProperty("code", "q13");
+vector q315_opts = new vector {
+"1,40€",
+"1,50€",
+"1,60€",
+"1,70€",
+"1,80€",
+"1,90€",
+"2,00€",
+"2,10€",
+"2,20€",
+"2,30€",
+"2,40€",
+"2,50€",
+"2,60€",
+"2,70€",
+"2,80€",
+"2,90€",
+"3,00€",
+"3,10€",
+"3,20€",
+"3,30€"
+};
+
+
+for (int k=0,19)
+	{
+	
+	if (k<s2)
+			 {
+			 opt="nascondi#sh"+k;
+			 q315_opts.set(k,opt);
+			 }
+	
+	}
+
+qst.setProperty("options", q315_opts);
+send qst;
+
+string conv=q300_opts.get(s1);
+
+qst = new question("choice", 340);
+qst.setProperty("text", "Consideri di essere al bar. Con che probabilità acquisterebbe il prodotto a questo prezzo "+conv+"");
+qst.setProperty("code", "q.14");
+vector q340_opts = new vector {
+"Sicuramente lo acquisterei",
+"Probabilmente lo acquisterei",
+"Non so se lo acquisterei o non lo acquisterei",
+"Probabilmente non lo acquisterei",
+"Sicuramente non lo acquisterei"
+};
+qst.setProperty("options", q340_opts);
+send qst;
+
+int ansq14=system.getProperty("ans340");
+
+
+string cost=q305_opts.get(s2);
+
+qtext= "Consideri di essere al bar. Con che probabilità acquisterebbe il prodotto a questo prezzo "+cost+"";
+qst = new question("choice", 345);
+qst.setProperty("text",qtext);
+qst.setProperty("code", "q.15");
+qst.setProperty("options", q340_opts);
+send qst;
+
+int ansq15=system.getProperty("ans345");
+
+	while (ansq15<ansq14) 
+	{
+    // elimina l'ultima risposta
+    system.setProperty("delete", "ans345");
+    qst.setProperty("text", "<p style='color:red'>Valore incoerente</p>"+qtext);
+    send qst;
+	}
+
+
+qst = new question("choice", 346);
+qst.setProperty("text", "Quale frase descrive al meglio la sua idea in merito al prezzo di <b> €2,50</b> di <b>Estathè in vetro 250 CL</b>?");
+qst.setProperty("code", "q.16");
+vector q346_opts = new vector {
+"È molto costoso ",
+"È abbastanza costoso",
+"È nella media ",
+"È abbastanza economico",
+"È molto economico"
+
+};
+qst.setProperty("options", q346_opts);
+send qst;
+
+qst = new question("choice", 349);
+qst.setProperty("text", "Considerando il prezzo di <b>€2,50</b> direbbe che<b> Estathè in vetro 250 CL</b>… ");
+qst.setProperty("code", "q.17");
+vector q349_opts = new vector {
+"Vale molto di più del prezzo che costa",
+"Vale di più del prezzo che costa",
+"Vale il prezzo che costa",
+"Vale di meno del prezzo che costa",
+"Non vale per niente il prezzo che costa"
+};
+qst.setProperty("options", q349_opts);
+send qst;
+
+
+tabella=scriptzoom+"<p><table border='1' cellpadding='5'><tr>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg' height='700px'  alt='' /></a></td>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroB"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroB"+leg+".jpg' height='700px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per ingrandire l'immagine</div></p>";	
+
+qst = new question("concept", 350);
+qst.setProperty("text", "Le mostreremo ora 2 possibili alternative di retro per questa bottiglia di Estath&egrave; in vetro da 250 cl."+tabella);
+send qst;
+
+qst = new question("scale", 360);
+qst.setProperty("text", scriptzoom+"Quale delle due versioni preferisce?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "b.1a");
+vector q360_rows = new vector {
+"&nbsp;"
+};
+qst.setProperty("rows", q360_rows);
+vector q360_cols = new vector {
+"• Il retro X",
+"• Il retro Y"
+};
+opt="<a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroA"+leg+".jpg' height='500px'  alt='' /></a>";
+q360_cols.set(0,opt);
+opt="<a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroB"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/retroB"+leg+".jpg' height='500px'  alt='' /></a>";
+q360_cols.set(1,opt);
+qst.setProperty("cols", q360_cols);
+send qst;
+
+
+ansId=system.getProperty("ans360_0");
+label=q360_cols.get(ansId);
+
+
+qst = new question("open", 362);
+qst.setProperty("text", scriptzoom+"Perchè preferisce :<p>"+label+"</p><div class='info'>Ce lo scriva qui sotto</div>");
+qst.setProperty("code", "b.2");
+send qst;
+
+tabella=scriptzoom+"<p><table border='1' cellpadding='5'><tr>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg' height='700px'  alt='' /></a></td>"+
+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/tap"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/tap"+leg+".jpg' height='700px'  alt='' /></a></td>"+
+"</tr></table><div class='info'>Clicchi per ingrandire l'immagine</div></p>";
+
+qst = new question("concept", 370);
+qst.setProperty("text", "Le mostreremo ora 2 possibili alternative di tappo per questa bottiglia di Estath&egrave; in vetro da 250 cl"+tabella);
+send qst;
+
+qst = new question("scale", 380);
+qst.setProperty("text", scriptzoom+"Quale delle due versioni preferisce?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "b.3a");
+vector q380_rows = new vector {
+"&nbsp;"
+};
+qst.setProperty("rows", q380_rows);
+vector q380_cols = new vector {
+"Il tappo a corona",
+"Il tappo ring pull",
+"#shEntrambe",
+"#shNessuna"
+};
+opt="<a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti"+leg+".jpg' height='300px'  alt='' /></a>";
+q380_cols.set(0,opt);
+opt="<a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/tap"+leg+".jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/tap"+leg+".jpg' height='300px'  alt='' /></a>";
+q380_cols.set(1,opt);
+qst.setProperty("cols", q380_cols);
+send qst;
+
+
+q380_cols.set(2,"Entrambe");
+q380_cols.set(3,"Nessuna");
+
+qst = new question("scale", 385);
+qst.setProperty("text", scriptzoom+"Associ ogni frase che leggerà di seguito alle due versioni di tappo per questa bottiglia di Estathè in vetro da 250 cl. Lei può indicare una delle due proposte, entrambe o nessuna ");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "b.4");
+vector q385_rows = new vector {
+"È facile da aprire",
+"È esteticamente bello ",
+"È moderno",
+"Conferisce valore alla bottiglia",
+"È adatto a Estathè"
+};
+qst.setProperty("rows", q385_rows);
+qst.setProperty("cols", q380_cols);
+send qst;
+
+link="http://www.primisoft.com/fields/FER/ITA1801010/resources/tap"+leg+".jpg";  
+ img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+         "<img src='"+link+"' height='300px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>";
+
+
+qst = new question("choice", 388);
+qst.setProperty("text", img+"Le è già capitato di vedere bottiglie con questo tipo di tappo?");
+qst.setProperty("code", "B.5");
+vector q388_opts = new vector {
+"Si, spesso",
+"Qualche volta",
+"Raramente",
+"No, mai viste"
+};
+qst.setProperty("options", q388_opts);
+send qst;
+
+
+
+
+tabella=scriptzoom+"<p><table border='1' cellpadding='5'><tr>";
+
+
+tabella=tabella+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti1.jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti1.jpg' height='500px'  alt='' /></a></td>"; 
+tabella=tabella+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti2.jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti2.jpg' height='500px'  alt='' /></a></td>"; 
+tabella=tabella+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti3.jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti3.jpg' height='500px'  alt='' /></a></td>"; 
+tabella=tabella+"<td><a class='fancybox' href='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti4.jpg'><img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti4.jpg' height='500px'  alt='' /></a></td>"; 
+
+
+tabella=tabella+"</tr></table><div class='info'>Clicchi per ingrandire l'immagine</div></p>";
+
+
+
+qst = new question("concept", 390);
+qst.setProperty("text", "Le mostreremo ora altre 3 possibili versioni di Estath&egrave; in Vetro 250 CL, insieme a quella che gi&agrave; conosce."+tabella);
+send qst;
+
+
+qst = new question("ordering", 400);
+qst.setProperty("text", "Per cortesia metta in ordine di preferenza queste bottiglie. Clicci sulla preferita, poi sulla seconda, la terza ed infine la quarta.");
+qst.setProperty("code", "p.1");
+qst.setProperty("sel_count", 4);
+vector q400_opts = new vector {
+"<img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti1.jpg' height='300px'  alt='' />",
+"<img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti2.jpg' height='300px'  alt='' />",
+"<img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti3.jpg' height='300px'  alt='' />",
+"<img oncontextmenu='return false;' src='http://www.primisoft.com/fields/FER/ITA1801010/resources/eti4.jpg' height='300px'  alt='' />"
+};
+qst.setProperty("options", q400_opts);
+qst.setProperty("strict_selection", true);
+send qst;
+
+ansId=system.getProperty("ans400_0");
+img=q400_opts.get(ansId);
+
+
+
+qst = new question("open", 410);
+qst.setProperty("text", "<p>"+img+"</p>Perché ha messo al primo posto questa bottiglia invece delle altre?<div id=''>Cosa le &egrave; piaciuto in particolare?</div>");
+qst.setProperty("code", "p.2");
+send qst;
+
+int r2;
+system.setProperty("r2", "rand:4");
+r2=(int)system.getProperty("r2");
+
+baseQid=1000;
+
+vector frasi = new vector 
+{
+"È la confezione più adatta alla marca Estathè",
+"E’ una confezione unica, diversa dalle altre confezioni di bevande presenti sul mercato",
+"Sarei disposto a spendere di più per questa confezione",
+"E’ la confezione di un prodotto premium",
+"Mi fa pensare che il prodotto sia di  qualità"
+};
+
+string cod2="<script type='text/javascript'>"+
+ "$(document).ready(function() {"+
+"$('.effetto').hide();"+
+"$( '.effetto' ).insertBefore( '.choice-option:first' );"+
+"$( '#bnNext' ).insertAfter( '.choice-option:last-of-type' );"+
+"$('.effetto').toggle('slow');"+
+ "});</script>";
+
+
+
+for(int i=0,4)
+{
+
+qid=baseQid+100*r2;
+
+label=frasi.get(r2);
+
+qst = new question("ordering", qid);
+qst.setProperty("text", cod2+"Per ognuna delle seguenti frasi indichi per cortesia, qual &egrave; il suo pack preferito, il secondo, il terzo ed infine il quarto.<br/><br/><div class='effetto'><b>"+label+"</b></div>");
+qst.setProperty("code", "p.3.f"+r2);
+qst.setProperty("sel_count", 4);
+qst.setProperty("options", q400_opts);
+qst.setProperty("strict_selection", true);
+send qst;
+
+
+if (r2==4) { r2=0;}	
+else { r2=r2+1;}
+	
+}
+
+
+
+qst = new question("choice", 430);
+qst.setProperty("text", "In totale, quante persone, compreso Lei, vivono nella sua famiglia?");
+qst.setProperty("code", "cl.2");
+vector q430_opts = new vector {
+"1",
+"2",
+"3",
+"4+"
+};
+qst.setProperty("options", q430_opts);
+send qst;
+
+ansId=system.getProperty("ans430");
+if (ansId!=0)
+	{
+
+	qst = new question("choice", 440);
+	qst.setProperty("text", "Lei ha dei figli di 18 anni o meno che vivono a casa con Lei?");
+	qst.setProperty("code", "cl.4");
+	vector q440_opts = new vector {
+	"Si",
+	"No"
+	};
+	qst.setProperty("options", q440_opts);
+	send qst;
+	
+	ansId=system.getProperty("ans440");
+	if (ansId==0)
+		{
+
+		qst = new question("fixed_sum", 450);
+		qst.setProperty("text", "Indichi quanti figli vivono in casa con lei per ogni fascia di et&agrave;. <div class='info'>Inserire il numero di figli per ogni fascia di et&agrave;. Se non presenti, inserire “0”</div>");
+		qst.setProperty("code", "cl.5");
+		vector q450_opts = new vector {
+		"0-3 anni",
+		"4-12 anni",
+		"13-18 anni"
+		};
+		qst.setProperty("fields", q450_opts);
+		qst.setProperty("sum", 1); // set total value
+		qst.setProperty("operator", ">="); //set total value parameter
+		qst.setProperty("show_sum", false); //hide sum box
+		send qst;
+		}
+
+	}
+
+}
