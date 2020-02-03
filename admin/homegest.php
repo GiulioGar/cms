@@ -74,12 +74,12 @@ if (empty($ag2)) { $ag2=65;}
 		
  <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="panel panel-default">
-   <div class="panel-heading">
+   <div class="card card-default">
+   <div class="card-heading">
    <span style="float:left;">Progetti in corso</span><span style="float:right;"><a href='pannello.php'>MOSTRA TUTTI</a></span>
    <span style="clear: both;">&nbsp;</span>
    </div>
-   <div class="panel-body text-center recent-users-sec">
+   <div class="card-body text-center recent-users-sec">
    <?php include 'fieldControl.php'; ?>
    </div>
    
@@ -90,11 +90,11 @@ if (empty($ag2)) { $ag2=65;}
 
  <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="panel panel-primary">
-   <div class="panel-heading">
+   <div class="card card-primary">
+   <div class="card-heading">
    Dati Panel
    </div>
-   <div class="panel-body text-center recent-users-sec">
+   <div class="card-body text-center recent-users-sec">
   <?php include 'PanelDat.php'; ?> 
    </div>
    

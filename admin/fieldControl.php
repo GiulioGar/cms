@@ -17,26 +17,27 @@ $surOp = mysqli_query($admin,$query_conta) or die(mysql_error());
 $opSur = mysqli_fetch_assoc($surOp);
 
 
-echo "<table class='table table-bordered ' >";
-echo "<tr ><th colspan='15' align='left' style='font-weight:bold; font-size:13px; color:#032B51'>RIEPILOGO FIELD</th></tr>";
+echo "<table class='table'>";
+echo "<tr ><th colspan='15' align='left' style='font-weight:bold; font-size:15px; color:#032B51'>RIEPILOGO FIELD</th></tr>";
+echo "<thead class='thead-light'>";
 echo "<tr style='font-weight:bold'>";	
-echo "<td style='font-weight:bold'>ID</td>";
-echo "<td style='font-weight:bold'>Info</td>";
-echo "<td style='font-weight:bold'>Giorni</td>";
-echo "<td style='font-weight:bold'>Compl.</td>";
-echo "<td style='font-weight:bold'>Durata</td>";
-echo "<td style='font-weight:bold'>N° Interv.</td>";
-echo "<td style='font-weight:bold'>Obiet.</td>";
-echo "<td style='font-weight:bold'>Cont.</td>";
-echo "<td style='font-weight:bold'>% Pan.</td>";
-echo "<td style='font-weight:bold'>% Ric.</td>";
-echo "<td style='font-weight:bold'>Abil.</td>";
-echo "<td style='font-weight:bold'>Sesso</td>";
-echo "<td style='font-weight:bold'>Età</td>";
-echo "<td style='font-weight:bold'>Panel</td>";
-echo "<td style='font-weight:bold'>Stato</td>";
+echo "<th scope='col'>ID</th>";
+echo "<th scope='col'>Info</th>";
+echo "<th scope='col'>Giorni</th>";
+echo "<th scope='col'>Compl.</th>";
+echo "<th scope='col'>Durata</th>";
+echo "<th scope='col'>N° Interv.</th>";
+echo "<th scope='col'>Obiet.</th>";
+echo "<th scope='col'>Cont.</th>";
+echo "<th scope='col'>% Pan.</th>";
+echo "<th scope='col'>% Ric.</th>";
+echo "<th scope='col'>Abil.</th>";
+echo "<th scope='col'>Sesso</th>";
+echo "<th scope='col'>Età</th>";
+echo "<th scope='col'>Panel</th>";
+echo "<th scope='col'>Stato</th>";
 
-echo "</tr>";
+echo "</tr></thead>";
 
 
 while ($row = mysqli_fetch_assoc($tot_attive))
