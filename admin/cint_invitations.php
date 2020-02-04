@@ -66,6 +66,9 @@ $row = mysqli_fetch_array($cintUltimo);
 $lastview= $row["id"];
 
 
+$todaydate=date ("Y/m/d H:i:s");
+
+
 
 
 // lettura api
@@ -86,8 +89,18 @@ foreach ( $invitations as $var )
     $arrivoC= date('Y-m-d H:i:s', strtotime($arrivo));
     $fineC= date('Y-m-d H:i:s', strtotime($fine));
 
+    //calcolo scadenza
+    $strStart1 = $fineC;
+    $strEnd1   = $todaydate; 
+    $dteStart1 = new DateTime($strStart1);
+    $dteEnd1   = new DateTime($strEnd1); 
+    $dteDiff1  = $dteStart1->diff($dteEnd1); 
+    $scade=$dteDiff1->format("%h ore %i minuti");
+
+
+
     //aggiungo i dati dell'api nella tabella
-    $query_agginv= "INSERT INTO cint_invites (id,member_id,project_id,loi,ir,survey_url,date_to_send,expires) values ('".$idunico."','".$mbId."','".$pId."','".$loi."','".$ir."','".$url."','".$arrivoC."','".$fineC."')";
+    $query_agginv= "INSERT INTO cint_invites (id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,scadenza) values ('".$idunico."','".$mbId."','".$pId."','".$loi."','".$ir."','".$url."','".$arrivoC."','".$fineC."','".$scade."')";
     $aggiungi = mysqli_query($admin,$query_agginv);
 
 }
@@ -97,7 +110,7 @@ foreach ( $invitations as $var )
     $aggId = mysqli_query($admin,$query_aggId);
 
 
-$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti FROM cint_invites c, t_user_info i where i.user_id=c.member_id ORDER BY expires DESC";
+$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti FROM cint_invites c, t_user_info i where i.user_id=c.member_id ORDER BY id DESC";
 $cintInviti = mysqli_query($admin,$query_cintInviti);
 
 $query_contanew = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND expires >= CURDATE()";
@@ -114,7 +127,7 @@ $csv_mvf = mysqli_query($admin,$query_new);
         //// ESPORTA CAMPIONE MVF IN CSV ////
     
     
-        @$csv="uid;email;firstName;genderSuffix;link";
+        @$csv="uid;email;firstName;genderSuffix;link;scade";
         $csv .= "\n";
         
         
@@ -128,10 +141,12 @@ $csv_mvf = mysqli_query($admin,$query_new);
                 $urlsend=$row['survey_url'];
                 $sesso=$row['gender'];
                 $prid=$row['project_id'];
+                $exp=$row['expires'];
+                $scad = date("d-m-Y h:i", strtotime($exp));
                 if($sesso==1){$genderTransform="o";}
                 else {$genderTransform="a";}
                 
-                $csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$urlsend; 
+                $csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$urlsend.";".$scad; 
                 $csv .= "\n";
 
                     //aggiorno ultimo id salvato
@@ -186,13 +201,20 @@ echo "<th style='font-weight:bold'>Progetto</th>";
 echo "<th style='font-weight:bold'>Loi</th>";
 echo "<th style='font-weight:bold'>Ir</th>";
 echo "<th style='font-weight:bold'>Link</th>";
-echo "<th style='font-weight:bold'>Data Invio</th>";
-echo "<th style='font-weight:bold'>Data Fine</th>";
+echo "<th style='font-weight:bold'>Scadenza</th>";
 echo "<th style='font-weight:bold'>Inviti</th>";
 echo "</tr>";
 
 
 while ($row = mysqli_fetch_assoc($cintInviti)) {
+
+    $strStart = $row['expires'];
+    $strEnd   = $todaydate; 
+    $dteStart = new DateTime($strStart);
+    $dteEnd   = new DateTime($strEnd); 
+    $dteDiff  = $dteStart->diff($dteEnd); 
+    
+
     echo "<tr>";
     echo "<td>".$row['id']."</td>";
     echo "<td>".$row['member_id']."</td>";
@@ -202,8 +224,10 @@ while ($row = mysqli_fetch_assoc($cintInviti)) {
     echo "<td>".$row['loi']."</td>";
     echo "<td>".$row['ir']."</td>";
     echo "<td>".$row['survey_url']."</td>";
-    echo "<td>".$row['date_to_send']."</td>";
-    echo "<td>".$row['expires']."</td>";
+    if ($dteStart>=$dteEnd )
+    { echo "<td>". $dteDiff->format("%h ore %i minuti")."</td>";}
+    else
+    { echo "<td style='color:red'>Scaduto</td>";}
     echo "<td>".$row['inviti']."</td>";
     echo "</tr>";
   

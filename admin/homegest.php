@@ -94,7 +94,7 @@ if (empty($ag2)) { $ag2=65;}
 
  <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="card border-primary mb-3">
+   <div class="card border-success mb-3">
    <h5 class="card-header">
    Dati Panel
     </h5>

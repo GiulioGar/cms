@@ -17,7 +17,7 @@ $surOp = mysqli_query($admin,$query_conta) or die(mysql_error());
 $opSur = mysqli_fetch_assoc($surOp);
 
 
-echo "<table class='table table-striped '>";
+echo "<table class='table table-bordered'>";
 echo "<thead class='thead-light'>";
 echo "<tr style='font-weight:bold'>";	
 echo "<th scope='col'>ID</th>";
@@ -64,7 +64,7 @@ $obj=$row['complete']-$row['goal'];
 if ($obj<0) {$stObj='red';}
 else {$stObj='#02680F';}
 
-echo "<tr>";
+echo "<tbody><tr>";
 echo "<td><a href='conta_locale.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
 echo "<td>".$row['description']."</td>";
 echo "<td><span class='".$dayClass."'>".$daysField."<span></td>";
@@ -145,7 +145,7 @@ echo "</tr>";
 
 }
 
-echo "</table>";
+echo "</tbody></table>";
 
 
 
