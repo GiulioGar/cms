@@ -17,8 +17,7 @@ $surOp = mysqli_query($admin,$query_conta) or die(mysql_error());
 $opSur = mysqli_fetch_assoc($surOp);
 
 
-echo "<table class='table'>";
-echo "<tr ><th colspan='15' align='left' style='font-weight:bold; font-size:15px; color:#032B51'>RIEPILOGO FIELD</th></tr>";
+echo "<table class='table table-striped '>";
 echo "<thead class='thead-light'>";
 echo "<tr style='font-weight:bold'>";	
 echo "<th scope='col'>ID</th>";

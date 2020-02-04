@@ -823,9 +823,13 @@ $percH=$h_ric['total']/$tot_act12['total']*100;
 
 	
 <div class="col-md-4 col-sm-4">
-	 <div class="panel panel-default">
-	                 <div class="panel-heading">
-                           Attivit&agrave; utenti
+	 <div class="card card-default">
+	                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					 <h6 class="m-0 font-weight-bold text-primary">Attivit&agrave; utenti</h6> 
+					 <span style="font-size: 28px; color: Dodgerblue;">
+					 <i class="fas fa-chart-line"></i>
+					</span>
+					 
                         </div>
 				<div class="panel-body">		
 				<table class="table table-striped table-bordered" style="font-size:12px" >
