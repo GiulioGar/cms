@@ -142,7 +142,7 @@ $csv_mvf = mysqli_query($admin,$query_new);
                 $sesso=$row['gender'];
                 $prid=$row['project_id'];
                 $exp=$row['expires'];
-                $scad = date("d-m-Y h:i", strtotime($exp));
+                $scad = date("d-m-Y H:i", strtotime($exp));
                 if($sesso==1){$genderTransform="o";}
                 else {$genderTransform="a";}
                 
