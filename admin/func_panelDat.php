@@ -196,85 +196,85 @@ if ($altro_c2014['complete_ext']==''){$altro_c2014['complete_ext']=0;}
 
 
 
-//RICERCHE ESTERNE ITALIA 2018
+//RICERCHE ESTERNE ITALIA 2020
 mysqli_select_db($admin,$database_admin);
-$query_user_italia2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_italia2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_italia2018 = mysqli_query($admin,$query_user_italia2018) or die(mysql_error());
 $italia2018 = mysqli_fetch_assoc($ric_italia2018);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_italia_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_italia_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_italia_c2018 = mysqli_query($admin,$query_user_italia_c2018) or die(mysql_error());
 $italia_c2018 = mysqli_fetch_assoc($ric_italia_c2018);
 
 if ($italia_c2018['complete_ext']==''){$italia_c2018['complete_ext']=0;}
 
-//RICERCHE ESTERNE UK 2018
+//RICERCHE ESTERNE UK 2020
 mysqli_select_db($admin,$database_admin);
-$query_user_uk2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_uk2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_uk2018 = mysqli_query($admin,$query_user_uk2018) or die(mysql_error());
 $uk2018 = mysqli_fetch_assoc($ric_uk2018);
 
 mysqli_select_db($admin,$database_admin);
-$query_user_uk_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_uk_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_uk_c2018 = mysqli_query($admin,$query_user_uk_c2018) or die(mysql_error());
 $uk_c2018 = mysqli_fetch_assoc($ric_uk_c2018);
 
 if ($uk_c2018['complete_ext']==''){$uk_c2018['complete_ext']=0;}
 
-//RICERCHE ESTERNE FRANCIA 2018
+//RICERCHE ESTERNE FRANCIA 2020
 mysqli_select_db($admin,$database_admin);
-$query_user_francia2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_francia2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_francia2018 = mysqli_query($admin,$query_user_francia2018) or die(mysql_error());
 $francia2018 = mysqli_fetch_assoc($ric_francia2018);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_francia_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_francia_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_francia_c2018 = mysqli_query($admin,$query_user_francia_c2018) or die(mysql_error());
 $francia_c2018 = mysqli_fetch_assoc($ric_francia_c2018);
 
 if ($francia_c2018['complete_ext']==''){$francia_c2018['complete_ext']=0;}
 
-//RICERCHE ESTERNE GERMANIA 2018
+//RICERCHE ESTERNE GERMANIA 2020
 mysqli_select_db($admin,$database_admin);
-$query_user_germania2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_germania2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_germania2018 = mysqli_query($admin,$query_user_germania2018) or die(mysql_error());
 $germania2018 = mysqli_fetch_assoc($ric_germania2018);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_germania_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_germania_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_germania_c2018 = mysqli_query($admin,$query_user_germania_c2018) or die(mysql_error());
 $germania_c2018 = mysqli_fetch_assoc($ric_germania_c2018);
 
 if ($germania_c2018['complete_ext']==''){$germania_c2018['complete_ext']=0;}
 
 
-//RICERCHE ESTERNE SPAGNA 2018
+//RICERCHE ESTERNE SPAGNA 2020
 mysqli_select_db($admin,$database_admin);
-$query_user_spagna2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Spagna')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_spagna2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Spagna')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_spagna2018 = mysqli_query($admin,$query_user_spagna2018) or die(mysql_error());
 $spagna2018 = mysqli_fetch_assoc($ric_spagna2018);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_spagna_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='spagna')AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_spagna_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='spagna')AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_spagna_c2018 = mysqli_query($admin,$query_user_spagna_c2018) or die(mysql_error());
 $spagna_c2018 = mysqli_fetch_assoc($ric_spagna_c2018);
 
 if ($spagna_c2018['complete_ext']==''){$spagna_c2018['complete_ext']=0;}
 
-//RICERCHE ESTERNE ALTRO 2018
+//RICERCHE ESTERNE ALTRO 2020
 mysqli_select_db($admin,$database_admin);
-$query_user_altro2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_altro2018 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_altro2018 = mysqli_query($admin,$query_user_altro2018) or die(mysql_error());
 $altro2018 = mysqli_fetch_assoc($ric_altro2018);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_altro_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2018%')  and (panel=0 or panel=1))";
+$query_user_altro_c2018 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2020%')  and (panel=0 or panel=1))";
 $ric_altro_c2018 = mysqli_query($admin,$query_user_altro_c2018) or die(mysql_error());
 $altro_c2018 = mysqli_fetch_assoc($ric_altro_c2018);
 
@@ -283,85 +283,85 @@ if ($altro_c2018['complete_ext']==''){$altro_c2018['complete_ext']=0;}
 
 
 
-//RICERCHE ESTERNE ITALIA 2016
+//RICERCHE ESTERNE ITALIA 2019
 mysqli_select_db($admin,$database_admin);
-$query_user_italia2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_italia2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_italia2016 = mysqli_query($admin,$query_user_italia2016) or die(mysql_error());
 $italia2016 = mysqli_fetch_assoc($ric_italia2016);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_italia_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_italia_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Italia')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_italia_c2016 = mysqli_query($admin,$query_user_italia_c2016) or die(mysql_error());
 $italia_c2016 = mysqli_fetch_assoc($ric_italia_c2016);
 
 if ($italia_c2016['complete_ext']==''){$italia_c2016['complete_ext']=0;}
 
-//RICERCHE ESTERNE UK 2016
+//RICERCHE ESTERNE UK 2019
 mysqli_select_db($admin,$database_admin);
-$query_user_uk2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_uk2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_uk2016 = mysqli_query($admin,$query_user_uk2016) or die(mysql_error());
 $uk2016 = mysqli_fetch_assoc($ric_uk2016);
 
 mysqli_select_db($admin,$database_admin);
-$query_user_uk_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_uk_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Uk')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_uk_c2016 = mysqli_query($admin,$query_user_uk_c2016) or die(mysql_error());
 $uk_c2016 = mysqli_fetch_assoc($ric_uk_c2016);
 
 if ($uk_c2016['complete_ext']==''){$uk_c2016['complete_ext']=0;}
 
-//RICERCHE ESTERNE FRANCIA 2016
+//RICERCHE ESTERNE FRANCIA 2019
 mysqli_select_db($admin,$database_admin);
-$query_user_francia2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_francia2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_francia2016 = mysqli_query($admin,$query_user_francia2016) or die(mysql_error());
 $francia2016 = mysqli_fetch_assoc($ric_francia2016);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_francia_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_francia_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Francia')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_francia_c2016 = mysqli_query($admin,$query_user_francia_c2016) or die(mysql_error());
 $francia_c2016 = mysqli_fetch_assoc($ric_francia_c2016);
 
 if ($francia_c2016['complete_ext']==''){$francia_c2016['complete_ext']=0;}
 
-//RICERCHE ESTERNE GERMANIA 2016
+//RICERCHE ESTERNE GERMANIA 2019
 mysqli_select_db($admin,$database_admin);
-$query_user_germania2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_germania2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_germania2016 = mysqli_query($admin,$query_user_germania2016) or die(mysql_error());
 $germania2016 = mysqli_fetch_assoc($ric_germania2016);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_germania_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_germania_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='Germania')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_germania_c2016 = mysqli_query($admin,$query_user_germania_c2016) or die(mysql_error());
 $germania_c2016 = mysqli_fetch_assoc($ric_germania_c2016);
 
 if ($germania_c2016['complete_ext']==''){$germania_c2016['complete_ext']=0;}
 
 
-//RICERCHE ESTERNE SPAGNA 2016
+//RICERCHE ESTERNE SPAGNA 2019
 mysqli_select_db($admin,$database_admin);
-$query_user_spagna2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Spagna')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_spagna2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where ((paese='Spagna')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_spagna2016 = mysqli_query($admin,$query_user_spagna2016) or die(mysql_error());
 $spagna2016 = mysqli_fetch_assoc($ric_spagna2016);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_spagna_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='spagna')AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_spagna_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where ((paese='spagna')AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_spagna_c2016 = mysqli_query($admin,$query_user_spagna_c2016) or die(mysql_error());
 $spagna_c2016 = mysqli_fetch_assoc($ric_spagna_c2016);
 
 if ($spagna_c2016['complete_ext']==''){$spagna_c2016['complete_ext']=0;}
 
-//RICERCHE ESTERNE ALTRO 2016
+//RICERCHE ESTERNE ALTRO 2019
 mysqli_select_db($admin,$database_admin);
-$query_user_altro2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_altro2016 = "SELECT COUNT(sur_id) as total  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_altro2016 = mysqli_query($admin,$query_user_altro2016) or die(mysql_error());
 $altro2016 = mysqli_fetch_assoc($ric_altro2016);
 
 
 mysqli_select_db($admin,$database_admin);
-$query_user_altro_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2016%')  and (panel=0 or panel=1))";
+$query_user_altro_c2016 = "SELECT SUM(complete_ext) as complete_ext  FROM t_panel_control where (((paese<>'Spagna')AND(paese<>'Germania')AND(paese<>'Francia')AND(paese<>'Uk')AND(paese<>'Italia')||(paese IS NULL))AND(complete_ext>0)AND(sur_date like '2019%')  and (panel=0 or panel=1))";
 $ric_altro_c2016 = mysqli_query($admin,$query_user_altro_c2016) or die(mysql_error());
 $altro_c2016 = mysqli_fetch_assoc($ric_altro_c2016);
 
@@ -561,13 +561,13 @@ $age_useMen = mysqli_fetch_assoc($age_userMen);
 	
 	//tutte
 	mysqli_select_db($admin,$database_admin);
-	$query_ric = "SELECT COUNT(sur_id) as tot FROM t_panel_control where sur_date like '2018%'  and (panel=0 or panel=1)";
+	$query_ric = "SELECT COUNT(sur_id) as tot FROM t_panel_control where sur_date like '2019%'  and (panel=0 or panel=1)";
 	$surTot = mysqli_query($admin,$query_ric) or die(mysql_error());
 	$totSur= mysqli_fetch_assoc($surTot);
 	
 	//interne ed esterne
 	mysqli_select_db($admin,$database_admin);
-	$query_ie = "SELECT * FROM t_panel_control where sur_date like '2018%' and (panel=0 or panel=1)";
+	$query_ie = "SELECT * FROM t_panel_control where sur_date like '2019%' and (panel=0 or panel=1)";
 	$ie = mysqli_query($admin,$query_ie) or die(mysql_error());
 	
 	$contaInt=0;
@@ -594,17 +594,17 @@ $age_useMen = mysqli_fetch_assoc($age_userMen);
 	}
 	
 
-	// info 2016 su tutte le ricerche
+	// info 2020 su tutte le ricerche
 	
 	//tutte
 	mysqli_select_db($admin,$database_admin);
-	$query_ric16 = "SELECT COUNT(sur_id) as tot FROM t_panel_control where sur_date like '2019%'  and (panel=0 or panel=1)";
+	$query_ric16 = "SELECT COUNT(sur_id) as tot FROM t_panel_control where sur_date like '2020%'  and (panel=0 or panel=1)";
 	$surTot16 = mysqli_query($admin,$query_ric16) or die(mysql_error());
 	$totSur16= mysqli_fetch_assoc($surTot16);
 	
 	//interne ed esterne
 	mysqli_select_db($admin,$database_admin);
-	$query_ie16 = "SELECT * FROM t_panel_control where sur_date like '2019%' and (panel=0 or panel=1)";
+	$query_ie16 = "SELECT * FROM t_panel_control where sur_date like '2020%' and (panel=0 or panel=1)";
 	$ie16 = mysqli_query($admin,$query_ie16) or die(mysql_error());
 	
 	$contaInt16=0;
@@ -640,17 +640,17 @@ $age_useMen = mysqli_fetch_assoc($age_userMen);
 	
 	
 	
-	// info 2017 su tutte le ricerche
+	// info 2019 su tutte le ricerche
 	
 	//tutte
 	mysqli_select_db($admin,$database_admin);
-	$query_ric17 = "SELECT COUNT(sur_id) as tot FROM t_panel_control where sur_date like '2017%' and (panel=0 or panel=1)";
+	$query_ric17 = "SELECT COUNT(sur_id) as tot FROM t_panel_control where sur_date like '2018%' and (panel=0 or panel=1)";
 	$surTot17 = mysqli_query($admin,$query_ric17) or die(mysql_error());
 	$totSur17= mysqli_fetch_assoc($surTot17);
 	
 	//interne ed esterne
 	mysqli_select_db($admin,$database_admin);
-	$query_ie17 = "SELECT * FROM t_panel_control where sur_date like '2017%' and (panel=0 or panel=1)";
+	$query_ie17 = "SELECT * FROM t_panel_control where sur_date like '2018%' and (panel=0 or panel=1)";
 	$ie17 = mysqli_query($admin,$query_ie17) or die(mysql_error());
 	
 	$contaInt17=0;
@@ -714,9 +714,9 @@ $totRegmvf= mysqli_fetch_assoc($regTotmvf);
 
 
 
-//complete italia interne 2018
+//complete italia interne 2019
 mysqli_select_db($admin,$database_admin);
-$query_italia2018 = "SELECT * FROM t_panel_control where sur_date like '2018%' and paese='Italia' and (panel=0 or panel=1)";
+$query_italia2018 = "SELECT * FROM t_panel_control where sur_date like '2019%' and paese='Italia' and (panel=0 or panel=1)";
 $ita2018 = mysqli_query($admin,$query_italia2018) or die(mysql_error());
 
 $italiainterne2018=0;
@@ -740,9 +740,9 @@ $percentualeesterne2018=number_format(($italiaesterne2018/($italiainterne2018+$i
 
 
 
-//complete italia interne 2016
+//complete italia interne 2020
 mysqli_select_db($admin,$database_admin);
-$query_italia2016 = "SELECT * FROM t_panel_control where sur_date like '2016%' and paese='Italia' and (panel=0 or panel=1)";
+$query_italia2016 = "SELECT * FROM t_panel_control where sur_date like '2020%' and paese='Italia' and (panel=0 or panel=1)";
 $ita2016 = mysqli_query($admin,$query_italia2016) or die(mysql_error());
 
 $italiainterne2016=0;
@@ -765,9 +765,9 @@ $percentualeesterne2016=number_format(($italiaesterne2016/($italiainterne2016+$i
 
 
 
-//complete italia interne 2017
+//complete italia interne 2018
 mysqli_select_db($admin,$database_admin);
-$query_italia2017 = "SELECT * FROM t_panel_control where sur_date like '2017%' and paese='Italia' and (panel=0 or panel=1)";
+$query_italia2017 = "SELECT * FROM t_panel_control where sur_date like '2018%' and paese='Italia' and (panel=0 or panel=1)";
 $ita2017 = mysqli_query($admin,$query_italia2017) or die(mysql_error());
 
 $italiainterne2017=0;

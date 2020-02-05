@@ -24,6 +24,8 @@
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
     <link href="assets/css/style.css" rel="stylesheet" />
+  <!-- DATA TABLES  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />		
   
@@ -52,7 +54,6 @@ function confermaAzione() {
  
 </script>
 <script type="text/javascript" language="JavaScript"> 
-<!--
 function campirichiesti(which){
 var pass=true
 if (document.images){

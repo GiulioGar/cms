@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 

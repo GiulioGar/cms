@@ -1,12 +1,10 @@
-
-
 <?php 
 	if (!isset($_SESSION)) {
 		session_start();
 	}
 	require_once('../Connections/admin.php'); 
 	  require_once('inc_auth.php'); 
-	  mysqli_select_db($database_admin, $admin);	
+	  mysqli_select_db($admin,$database_admin);	
 
 $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
@@ -75,7 +73,7 @@ if($duplicate>0) { ?>
 	  
 	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese) 
 	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."')";
-	mysqli_query($admin,$query_user) or die(mysql_error());
+	mysqli_query($admin,$query_user);
 	}
 }
 
@@ -85,7 +83,7 @@ if($modSearch=="Modifica")
 	  
 	$query_user = "UPDATE t_panel_control set panel='".$panel."',age1_target='".$age1_target."',age2_target='".$age2_target."',prj='".$labprj."',
 	sur_date='".$sur_date."',end_field='".$end_date."',description='".$descrizione."',goal='".$goal."',sex_target='".$sex_target."',paese='".$paese."' where sur_id='".$id_sur."'";
-	mysqli_query($admin,$query_user) or die(mysql_error());
+	mysqli_query($admin,$query_user);
 
 }
  
@@ -93,7 +91,7 @@ if($modSearch=="Modifica")
 
 if($closearch=="CLOSE")
 {
-mysqli_select_db($database_admin, $admin);
+mysqli_select_db($admin,$database_admin);
 $query_aggiorna = "UPDATE t_panel_control SET stato=1 WHERE stato=0 and id='".$id_sur."'";
 $up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
 
@@ -101,7 +99,7 @@ $up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
 
 
 
-mysqli_select_db($database_admin, $admin);
+mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel like '$cerca_panel' and sur_date like '$cerca_anno' order by stato,id DESC";
 $query_ricerche_aggiornate = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel like '$cerca_panel' and sur_date like '$cerca_anno' order by stato,giorni_rimanenti ASC,id DESC";
 $tot_ricerche = mysqli_query($admin,$query_ricerche) or die(mysql_error());
@@ -148,115 +146,46 @@ require_once('inc_tagbody.php');
   */
 </script>
 
- <div class="content-wrapper">
+<div class="content-wrapper">
      <div class="container">
 
 	
- <div class="row">
-   <div class="col-md-2 col-sm-2 col-xs-12">
-    <div class="panel panel-primary">	
-	                        <div class="panel-heading">
-                          Nuova ricerca
-                        </div>
-<div class="panel-body text-center recent-users-sec">	
-   <?php if ($_SESSION['MM_Username']=="g_garofalo"){require_once('modulo_aggiungi_ricerca.php'); }?>
-   </div>
-   </div>
+<div class="row">
+  <div class="col-md-12 col-md-offset-1">
+   <div class="card card-default">
    
-   </div>
-  
-  
- 
- 
-  <div class="col-md-4 col-sm-4 col-xs-12">
-   <div class="panel panel-default">	 
-                        <div class="panel-heading">
-                          FILTRA RICERCHE
-                        </div>
-	 <div class="panel-body text-center recent-users-sec">
-
-	<form role="form" name="modulo_cerca_prj" action="pannello.php" method="get">
-	<select class="form-control" name="prj">
-	<option value="">[PROGETTO]</option>
-	<option value="ABO" <?php if ($cerca_progetto=="ABO") {echo 'selected="selected"';} ?>>ABO</option>
-	<option value="ADV" <?php if ($cerca_progetto=="ADV") {echo 'selected="selected"';} ?>>ADV</option>
-	<option value="AST" <?php if ($cerca_progetto=="AST") {echo 'selected="selected"';} ?>>AST</option>
-	<option value="BRS" <?php if ($cerca_progetto=="BRS") {echo 'selected="selected"';} ?>>BRS</option>
-	<option value="CLP" <?php if ($cerca_progetto=="CLP") {echo 'selected="selected"';} ?>>CLP</option>
-	<option value="CLP" <?php if ($cerca_progetto=="CLP") {echo 'selected="selected"';} ?>>CLP</option>
-	<option value="COS" <?php if ($cerca_progetto=="COS") {echo 'selected="selected"';} ?>>COS</option>
-	<option value="FAT" <?php if ($cerca_progetto=="FAT") {echo 'selected="selected"';} ?>>FAT</option>
-	<option value="FIT" <?php if ($cerca_progetto=="FIT") {echo 'selected="selected"';} ?>>FIT</option>
-	<option value="GSI" <?php if ($cerca_progetto=="GSI") {echo 'selected="selected"';} ?>>GSI</option>
-	<option value="IPS" <?php if ($cerca_progetto=="IPS") {echo 'selected="selected"';} ?>>IPS</option>
-	<option value="JTSMR" <?php if ($cerca_progetto=="JTSMR") {echo 'selected="selected"';} ?>>JTSMR</option>
-	<option value="LMI" <?php if ($cerca_progetto=="LMI") {echo 'selected="selected"';} ?>>LMI</option>
-	<option value="MRP" <?php if ($cerca_progetto=="MRP") {echo 'selected="selected"';} ?>>MRP</option>
-	<option value="MWB" <?php if ($cerca_progetto=="MWB") {echo 'selected="selected"';} ?>>MWB</option>
-	<option value="RES" <?php if ($cerca_progetto=="RES") {echo 'selected="selected"';} ?>>RES</option>
-	<option value="SIL" <?php if ($cerca_progetto=="SIL") {echo 'selected="selected"';} ?>>SIL</option>
-	<option value="SRM" <?php if ($cerca_progetto=="SRM") {echo 'selected="selected"';} ?>>SRM</option>
-	<option value="STR" <?php if ($cerca_progetto=="STR") {echo 'selected="selected"';} ?>>STR</option>
-	<option value="TNS" <?php if ($cerca_progetto=="TNS") {echo 'selected="selected"';} ?>>TNS</option>
-	</select>
-		<select class="form-control" name="Cpanel">
-			<option value="">[PANEL]</option>
-			<option value="0" <?php if ($cerca_panel=="0") {echo 'selected="selected"';} ?>>Esterno</option>
-			<option value="1" <?php if ($cerca_panel=="1") {echo 'selected="selected"';} ?>>Millebytes</option>
-			
-		</select>
-		
-		<select class="form-control" name="Canno">
-			<option value="">[ANNO]</option>
-			<option value="2014" <?php if ($cerca_anno_originale=="2014") {echo 'selected="selected"';} ?>>2014</option>
-			<option value="2015" <?php if ($cerca_anno_originale=="2015") {echo 'selected="selected"';} ?>>2015</option>
-			<option value="2016" <?php if ($cerca_anno_originale=="2016") {echo 'selected="selected"';} ?>>2016</option>
-			<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>
-			<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
-		</select>
-		<span class="form-group input-group-btn">
-	<p><input class="btn btn-danger" type="submit" value="Filtra"></p>
-	</span>
-	</form>
-	</div>
-	
-</div>	
-</div>
-
-</div>
-<?php
-
-
-
-
-?>
-
- <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="panel panel-default">
-   
-   <div class="panel-body text-center recent-users-sec">
+   <div class="card-body">
     <div class="table-responsive">
+		
+
+<table id='table_sur' style='display:none; font-size:11px; text-align:center' class='table table-striped table-hover dt-responsive display dataTable no-footer'>
+<thead>
+<tr>
+<td style='font-weight:bold'>Ricerca</td>
+<td style='font-weight:bold'>Descrizione</td>
+<td style='font-weight:bold'>Panel</td>
+<td style='font-weight:bold'>Complete</td>
+<td style='font-weight:bold'>% Panel</td>
+<td style='font-weight:bold'>% Ricerca</td>
+<td style='font-weight:bold'>N° Interviste</td>
+<td style='font-weight:bold'>Durata</td>
+<td style='font-weight:bold'>Start</td>
+<td style='font-weight:bold'>Giorni</td>
+<td style='font-weight:bold'>Costo Panel</td>
+<td style='font-weight:bold'>Stato</td>
+<td style='font-weight:bold'>&nbsp;</td>
+<td style='font-weight:bold'>&nbsp;</td>
+</tr>
+</thead>
+
+<tbody>
+
+
 <?php
-echo "<table id='tabField' style='font-size:11px' class='table table-striped table-bordered table-hover'>";
-echo "<tr class='intesta'>";
-echo "<td style='font-weight:bold'>Ricerca</td>";
-echo "<td style='font-weight:bold'>Descrizione</td>";
-echo "<td style='font-weight:bold'>Panel</td>";
-echo "<td style='font-weight:bold'>Complete</td>";
-echo "<td style='font-weight:bold'>% Panel</td>";
-echo "<td style='font-weight:bold'>% Ricerca</td>";
-echo "<td style='font-weight:bold'>N° Interviste</td>";
-echo "<td style='font-weight:bold'>Obiettivo</td>";
-echo "<td style='font-weight:bold'>Durata</td>";
-echo "<td style='font-weight:bold'>Start</td>";
-echo "<td style='font-weight:bold'>Giorni</td>";
-echo "<td style='font-weight:bold'>Costo Panel</td>";
-echo "<td style='font-weight:bold'>Stato</td>";
-echo "<td colspan='2' style='font-weight:bold'>&nbsp;</td>";
-echo "</tr>";
 
 //AGGIORNO INFO GIORNI RIMANENTI IN DB
+
+
 while ($row = mysqli_fetch_assoc($tot_ricerche))
 {
 $today=substr($data,0,10);
@@ -267,13 +196,13 @@ else { $daysField="n.d.";}
 if ($daysField<0) {$daysField=0;}
 $sid=$row['sur_id'];
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
-$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) or die(mysql_error());
+$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
 $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 }
 
 
 //STAMPO LE RICERCHE DOPO AGGIORNAMENTO DEI GIORNI RIMANENTI
-$tot_ricerche = mysqli_query($admin,$query_ricerche_aggiornate) or die(mysql_error());
+$tot_ricerche = mysqli_query($admin,$query_ricerche_aggiornate);
 
 
 while ($row = mysqli_fetch_assoc($tot_ricerche))
@@ -308,7 +237,6 @@ echo "<td>".$row['complete']."</td>";
 echo "<td>".$row['red_panel']."%</td>";
 echo "<td>".$row['red_surv']."%</td>";
 echo "<td>".$row['goal']."</td>";
-echo "<td style='color:".$stObj."'>".$obj."</td>";
 echo "<td>".$row['durata']." min.</td>";
 echo "<td>".$sur_date."</td>";
 if ($daysField==0 && $end_date==$today ){echo "<td><span class='".$dayClass."'>Ultimo<span></td>";}else{echo "<td><span class='".$dayClass."'>".$daysField."<span></td>";}
@@ -376,25 +304,37 @@ $(".apriMod#<?php echo $sid; ?>").click(
  
 </script>
 <?php
+
 }
 
 
-echo "</table>";
+
 ?>
-</div>
+</tbody>
+</table>
 
 </div>
 
 </div>
-</div>
-</div>
 
-
+</div>
 </div>
 </div>
 
 
- <script>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="sp">&nbsp;</div>
+<div class="sp">&nbsp;</div>
+
+<script>
 $("#datepicker").datepicker({ 
   dateFormat: "yy-mm-dd",
   altFormat: "yy-mm-dd"
@@ -402,11 +342,8 @@ $("#datepicker").datepicker({
 </script>
 
 
-
 <?php
 
 require_once('inc_footer.php'); 
 
-
-mysql_close();
 ?>
