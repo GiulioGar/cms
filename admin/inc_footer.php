@@ -226,6 +226,7 @@ $.fn.dataTable.Api.register( 'clearPipeline()', function () {
  
 $(document).ready( function () {
   $('#table_sur').show();
+  $('.mess').fadeOut();
     $('#table_sur').DataTable( {
         "order": [[ 11, "asc" ]],
         "pagingType": "full_numbers",
@@ -235,7 +236,7 @@ $(document).ready( function () {
         "pageLength": 30,
         'columnDefs': [ {
 
-                        'targets': [1,2,12,13], /* column index */
+                        'targets': [1,2,12], /* column index */
 
                         'orderable': false, /* true or false */
 

@@ -89,11 +89,14 @@ if($modSearch=="Modifica")
  
 
 
-if($closearch=="CLOSE")
+if($closearch=="CLOSE" || $closearch=="OPEN")
 {
+if ($closearch=="CLOSE") {$statoSur=0;}
+else {$statoSur=1;}
+
 mysqli_select_db($admin,$database_admin);
-$query_aggiorna = "UPDATE t_panel_control SET stato=1 WHERE stato=0 and id='".$id_sur."'";
-$up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+$query_aggiorna = "UPDATE t_panel_control SET stato=$statoSur WHERE id='".$id_sur."'";
+$up_ricercha = mysqli_query($admin,$query_aggiorna);
 
 }
 
@@ -149,6 +152,13 @@ require_once('inc_tagbody.php');
 <div class="content-wrapper">
      <div class="container">
 
+	 <div class="row">
+	 <div class="col col-xs-6">
+	</div>
+	<div class="col col-xs-6 text-right">
+	<?php require_once('modulo_aggiungi_ricerca.php'); ?>
+	</div>
+	</div>
 	
 <div class="row">
   <div class="col-md-12 col-md-offset-1">
@@ -157,6 +167,7 @@ require_once('inc_tagbody.php');
    <div class="card-body">
     <div class="table-responsive">
 		
+	<div class="alert alert-secondary mess" role="alert"> Caricamento in corso... </div>
 
 <table id='table_sur' style='display:none; font-size:11px; text-align:center' class='table table-striped table-hover dt-responsive display dataTable no-footer'>
 <thead>
@@ -173,7 +184,6 @@ require_once('inc_tagbody.php');
 <td style='font-weight:bold'>Giorni</td>
 <td style='font-weight:bold'>Costo Panel</td>
 <td style='font-weight:bold'>Stato</td>
-<td style='font-weight:bold'>&nbsp;</td>
 <td style='font-weight:bold'>&nbsp;</td>
 </tr>
 </thead>
@@ -228,8 +238,12 @@ $sid=$row['sur_id'];
 //Definisco stile obiettivo//
 if ($obj<0) {$stObj='red';}
 else {$stObj='#02680F';}
+?>
 
-echo "<tr class='rowSur' style='background:".$colRow."'>";
+<tr class="rowSur<?php echo $row['id'] ?>" style="background:<?php echo $colRow; ?>">
+
+<?php
+
 echo "<td><a href='conta_locale.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
 echo "<td>".$row['description']."</td>";
 echo "<td>".$panel."</td>";
@@ -244,13 +258,28 @@ if ($daysField==0 && $end_date==$today ){echo "<td><span class='".$dayClass."'>U
 $costo=$row['costo'];
 if ($costo==""){$costo=0;}
 echo "<td>€".$costo."</td>";
-echo "<td style='color:".$colSat."'>".$stato."</td>";
-if($stato=="Aperto" && $_SESSION['MM_Username']=="g_garofalo") { echo "<td id='forClo'><form  action=\"pannello.php\" method=\"get\"><input type=\"hidden\" name=\"id_sur\" value=\"".$row['id']."\" />
-<input id='botClo' type='submit'  name='closearch' value='CLOSE' /></form></td>";}
-else { echo "<td id='forClo'>&nbsp;</td>";}
-if ($_SESSION['MM_Username']=="g_garofalo"){echo "<td><div class='apriMod' id='$sid'><img style='width:15px' src='img/modbutton.jpg'/></div></td>";}
-else
-{echo "<td><div></div></td>";}
+?>
+
+
+<td >
+<form id="<?php echo $row['id'] ?>" class="myform" name="modulo2" >
+<input type="hidden" id="id_sur<?php echo $row['id'] ?>" name="id_sur" value="<?php echo $row['id'] ?>">
+<input id="stato<?php echo $row['id'] ?>" data-item-id="<?php echo $row['id'] ?>"  type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-size="xs" data-onstyle="success" data-offstyle="danger">
+</form>
+</td>
+
+<script type="text/javascript">
+
+<?php if ($row['stato']==0) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('on')	<?php } ?>
+<?php if ($row['stato']==1) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('off')	<?php } ?>
+
+</script>
+
+
+
+<?php
+
+echo "<td><div class='apriMod' id='$sid'><i class='fas fa-pen'></i></div></td>";
 echo "</tr>";
 
 
@@ -258,6 +287,8 @@ $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$d
 $aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) or die(mysql_error());
 $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
  ?>
+
+ 
 
 <div align="left" class="modifica" id="<?php echo $sid; ?>">
 <div style="padding:30px; font-size:16px;">
@@ -339,6 +370,50 @@ $("#datepicker").datepicker({
   dateFormat: "yy-mm-dd",
   altFormat: "yy-mm-dd"
 });
+</script>
+
+
+<script type="text/javascript">
+
+<?php if ($row['stato']==0) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('on')	<?php } ?>
+<?php if ($row['stato']==1) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('off')	<?php } ?>
+
+  //al click sul bottone del form
+  $(".myform").click(function(){
+	
+	let idVal=$(this).attr("id");
+
+	let togStatus=document.getElementById('stato'+idVal).checked;
+
+	
+    //associo variabili
+    let id_sur = $("#id_sur"+idVal).val();
+    let selezionato="";
+
+	console.log("tog "+id_sur+":"+togStatus);
+
+	if(togStatus==false) { selezionato="CLOSE";}
+	else  { selezionato="OPEN";} 
+
+  //chiamata ajax
+    $.ajax({
+
+     //imposto il tipo di invio dati (GET O POST)
+      type: "POST",
+
+      //Dove devo inviare i dati recuperati dal form?
+      url: "pannello.php",
+
+      //Quali dati devo inviare?
+      data: "id_sur=" + id_sur + "&closearch=" + selezionato,
+      dataType: "html",
+	  success: function() 
+	  					{ 
+							location.reload(); 
+						}
+
+    });
+  });
 </script>
 
 

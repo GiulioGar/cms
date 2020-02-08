@@ -1,70 +1,133 @@
+<button type="button" class="btn btn-success apri" data-toggle="modal" data-target="#modalCrea" data-whatever="@mdo"><i class="fas fa-folder-plus" aria-hidden="true"></i> PROGETTO</button>
 
-<div class="btn btn-default apri">Aggiungi Ricerca</div>
 
-<div align="left" id="aggiungi">
-<form  action="pannello.php" method="get">
-<div style="padding:30px; font-size:16px;">
-<div><b>Nuova ricerca:</b></div>
-<div style="float:left;">Inserisci sid:</div><div style="margin-left:130px;"><input type="text" name="sid"></div>
-<div style="float:left;">Inserisci prj:</div> <div style="margin-left:130px;"><input type="text" name="prj"></div>
-<div style="float:left;">Panel: </div><div style="margin-left:130px;"><select name="panel"><option value="1">Millebytes</option><option value="0">Esterno</option><option value="2">Target</option></select></div>
-<div style="float:left;">Target Sesso:</div><div style="margin-left:130px;"> <select name="sex_target"><option value="1">Uomo</option><option value="2">Donna</option><option value="3">Uomo/Donna</option></select></div>
-<div style="float:left;">Target Età:</div><div style="margin-left:130px;"><input type="text" maxlength="2" style="width:40px"  name="age1_target">-<input type="text" maxlength="2" style="width:40px" name="age2_target"></div>
-<div style="float:left;">N°Interviste:</div><div style="margin-left:130px;"><input type="text" maxlength="4" style="width:80px" id="goal" name="goal"></div>
-<div style="float:left;">End Field:</div><div style="margin-left:130px;"><input type="text" id="datepicker" name="end_date"></div>
-<div style="float:left;">Descrizione:</div><div style="margin-left:130px;"><input type="text" name="descrizione"></div>
-<div style="float:left;">Paese: </div><div style="margin-left:130px;"><select name="paese"><option value="Italia">Italia</option><option value="Uk">Uk</option><option value="Germania">Germania</option><option value="Francia">Francia</option><option value="Spagna">Spagna</option><option value="Altro">Altro</option></select></div>
-<div><input type="submit" name="openSearch" value="Aggiungi"></div>
+<div class="modal fade" id="modalCrea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuova Ricerca</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form  action="pannello.php" method="get">
+
+      <div class="input-group">
+      <div class="input-group-prepend">
+    <span class="input-group-text" id="">Codice SID Progetto:</span>
+      </div>
+      <input required="" type="text" class="form-control" id="sid" placeholder="" name="sid">
+      </div>
+
+      <div>&nbsp; </div>
+
+      <div class="input-group">
+      <div class="input-group-prepend">
+      <span class="input-group-text" id="">Codice PRJ Progetto:</span>
+      </div>
+      <input required="" type="text" class="form-control" id="prj" placeholder="" name="sid">
+      </div>
+
+<div>&nbsp; </div>
+
+      <div class="input-group mb-3">
+      <div class="input-group-prepend">
+    <label class="input-group-text" for="panel">Panel:</label>
+    </div>
+      <select  name="panel" required="" class="custom-select" id="panel">
+      <option value="1">Millebytes</option>
+      <option value="0">Esterno</option>
+      <option value="2">Target</option>
+      </select>
+      </div>
+
+      <div>&nbsp; </div>
+      
+      <div class="input-group mb-3">
+      <div class="input-group-prepend">
+    <label class="input-group-text" for="panel">Genere:</label>
+    </div>
+      <select required="" name="sex_target" required="" class="custom-select" id="sex_target">
+      <option value="1">Uomo</option>
+      <option value="2">Donna</option>
+      <option value="3">Uomo/Donna</option>
+      </select>
+      </div>
+
+<div>&nbsp; </div>
+
+  <div class="form-row input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text" id="">Età:</span>
+      </div>
+    <div class="col">
+    <input name="age1_target" type="number" class="form-control" placeholder="18">
+    </div>
+    <div class="col">
+    <input name="age2_target" type="number" class="form-control" placeholder="65">
+    </div>
+  </div>
+
+  <div>&nbsp; </div>
+
+  <div class="input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text" id="">Interviste:</span>
+      </div>
+      <input required="" type="number" class="form-control" id="goal" placeholder="0" name="goal">
+   </div>
+
+   <div>&nbsp; </div>
+
+   <div class="input-group date">
+   <div class="input-group-prepend">
+      <span class="input-group-text" id="">Chiusura Field:</span>
+      </div>
+    <input type="date"  id="date" class="form-control" name="end_date" >
+</div>
+
+<div>&nbsp; </div>
+
+<div class="input-group">
+<div class="input-group-prepend">
+      <span class="input-group-text" id="">Descrizione:</span>
+      </div>
+      <input required="" type="text" class="form-control" id="descrizione" placeholder="Inserire descrizione" name="descrizione">
+      </div>
+
+   <div>&nbsp; </div>
+
+      <div class="input-group mb-3">
+      <div class="input-group-prepend">
+    <label class="input-group-text" for="panel">Nazione:</label>
+    </div>
+      <select required="" name="paese" required="" class="custom-select" id="sex_paesetarget">
+      <option value="Italia">Italia</option>
+      <option value="Uk">Uk</option>
+      <option value="Germania">Germania</option>
+      <option value="Francia">Francia</option>
+      <option value="Spagna">Spagna</option>
+      <option value="Altro">Altro</option>
+      </select>
+      </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" value="Aggiungi"  name="openSearch" class="btn btn-primary">Aggiungi</button>
+      </div>
+    </div>
+  </div>
+</div>
 </form>
-</div>
-<p class="chiudi">X</p>
-</div>
-
-<div class="overlay" id="overlay" style="display:none;"></div>
-
- <script>
 
 
-$("#datepicker").datepicker({ 
-  dateFormat: "yy-mm-dd",
-  altFormat: "yy-mm-dd"
-});
 
-
-</script>
-
-<script type='text/javascript'>
-$(document).ready(function() {
-    $("input,select").on("focusin", function()
-                  { $(this).css("border-color","red").parent().prev().css("font-weight","bold"); }
-                 );   
-        $("input,select").on("focusout", function()
-                  { $(this).css("border-color","").parent().prev().css("font-weight",""); }
-                 );  
-
-});
-
-
-</script>
 
 <script>
-$(".apri").click(
-     function(){
-         $('#overlay').fadeIn('fast');
-         $('#aggiungi').fadeIn('slow');
-     });
- 
-     $(".chiudi").click(
-     function(){
-     $('#overlay').fadeOut('fast');
-     $('#aggiungi').hide();
-     });
- 
-     //chiusura emergenza
-     $("#overlay").click(
-     function(){
-     $(this).fadeOut('fast');
-     $('#aggiungi').hide();
-     });
- 
+
+
+
 </script>
