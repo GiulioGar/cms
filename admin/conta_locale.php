@@ -28,6 +28,8 @@ $data=date("Y-m-d H:i:s");
 //echo "la ricerca è:".$sid." ".$prj;
 
 require_once('function_conta_locale.php');   
+
+
 ?>
 
 <div class="content-wrapper">
@@ -85,7 +87,7 @@ require_once('function_conta_locale.php');
 <div class="card body">
 <div class="row no-gutters align-items-center" style="min-height: 100px;">
           <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Tempistiche</div>
+            <div class="h5 text-xs font-weight-bold text-success  text-uppercase mb-1">Tempistiche</div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Inizio Field:</b> <?php echo $newDateStart;  ?></div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Fine Field:</b> <?php echo $newDate;  ?> </div>
           </div>
@@ -133,9 +135,12 @@ require_once('function_conta_locale.php');
 			<?php if ($contaPan>1) 		
 			{ ?>
                 <div class="col-xl-4 col-lg-5">
+				<div class="progress">
+  				<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            TOTALE
+						<h6 class="m-0 font-weight-bold text-primary"> TOTALE </h6> <span style="color:gray"><i class="far fa-flag fa-2x text-gray-300"></i></span>
                         </div>
                         <div class="card-body">
 
@@ -166,15 +171,20 @@ require_once('function_conta_locale.php');
 
 				
 				 <div class="col-xl-4 col-lg-5">
+
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            PANEL MILLEBYTES
+						<h6 class="m-0 font-weight-bold text-primary">PANEL MILLEBYTES </h6><span style="color:gray"><i class="fas fa-users fa-2x text-gray-300"></i></span>
                         </div>
                         <div class="card-body">
 					<?php if ($panel_in==1 || $panel_in==2) 		
 						{ ?>
 
-					
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?php echo $progress ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+  <?php echo $progress ?>%
+  </div>
+</div>
 								<table class="table table-striped table-bordered"  >
 								<tr> <td> Complete: </td> <td> <b><?php echo  $conta_complete_panel; ?></b> </td> </tr>
 								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati_panel; ?></b> </td> </tr> 
@@ -213,30 +223,26 @@ require_once('function_conta_locale.php');
 
 </form>
 
-<div class="campioni">
-		<div style='color:red'><b>DOWNLOAD SOLLECITO</b></div>		
-			<table>
-			<tr>
-			<td>
-			<form style="width: 50px" action="csv.php" method="post" target="_blank">
+<div class="form-check form-check-inline">
+
+		<div class="form-check form-check-inline ">
+			<form action="csv.php" method="post" target="_blank">
 				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
 				<input type="hidden" name="filename" value="user_list" />
-				<input class="form-control" type="image" value="submit" src="img/CSV.gif" />
-				Random
+				<label class="form-check-label text-center" for="inlineCheckbox1">Random</label>
+				<input class="form-control" type="image" value="submit" src="img/csv.png" />
 				</form>
-		</td>
-		<td width="30">&nbsp;</td>
-		<td>
-				<form  style="width: 50px" action="csv.php" method="post" target="_blank">
+			</div>
+
+			<div class="form-check form-check-inline">
+				<form   action="csv.php" method="post" target="_blank" >
 				<input type="hidden" name="csv" value="<?php echo $csv_attivi ?>" />
 				<input type="hidden" name="filename" value="user_list" />
-				<input class="form-control" type="image" value="submit" src="img/CSV.gif" />
-				Attivi
+				<label class="form-check-label text-center" for="inlineCheckbox1">Attivi</label>
+				<input class="form-control" type="image" value="submit" src="img/csv.png" />
 				</form>		
-		</td>
-		</tr>	
-		</table>
-		</div>
+			</div>
+</div>	
                         </div>
                     </div>
                 </div>
@@ -244,12 +250,12 @@ require_once('function_conta_locale.php');
 				
 
 				
-					<div class="col-md-4 col-sm-4">
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                           PANEL ESTERNO
+				<div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary">  PANEL ESTERNO </h6> <span style="color:gray"><i class="fas fa-external-link-alt fa-2x text-gray-300"></i></span>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
 						
 					<?php if ($panel_esterno>0) 		
 						{ ?>
@@ -271,7 +277,7 @@ require_once('function_conta_locale.php');
 			else  { echo "<h3>Non utilizzato</h3>"; } ?>
                             
                         </div>
-                        <div class="panel-footer">
+                        <div class="card-footer">
                             &nbsp;
                         </div>
                     </div>
@@ -294,13 +300,12 @@ require_once('function_conta_locale.php');
 						?>
 						
 						
-             <div class="col-md-4 col-sm-4">
-				
-				    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Calcolo stima
+						<div class="col-xl-4 col-lg-5">
+                   		 <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-success">  STIMA FILED </h6> <span style="color:gray"> <i class="fas fa-calculator fa-2x text-gray-300"></i></span>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
 
 						<div class="tabGen"  <?php if ($contaIns<3) { echo "style='float:left;'"; }?> >
 						<table class="table table-striped table-bordered">
@@ -330,16 +335,23 @@ require_once('function_conta_locale.php');
 			?>
 				
 				
-		<div class="col-md-4 col-sm-4">
-			<div class="panel panel-danger">
-                        <div class="panel-heading">
-                           Traccia filtrate
+				<div class="col-xl-4 col-lg-5">
+                   		 <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-success"> CONTROLLO INTERVISTE FILTRATE </h6> <span style="color:gray"> <i class="fas fa-sign-out-alt fa-2x text-gray-300"></i></span>
                         </div>
-						
-                <div class="panel-body">
+                        <div class="card-body">
                       
 		<table class="table table-striped table-bordered">
-		<tr><td>Domanda</td><td>Cod.</td><td>Num.</td><td>%</td></tr>
+		<thead>
+		<tr>
+		<th scope="col">Domanda</td>
+		<th scope="col">Cod.</td>
+		<th scope="col">Num.</td>
+		<th scope="col">%</td>
+		</tr>
+		</thead>
+		<tbody>
 		<?php
 		$contaImm==0;
 		arsort($filtri);
@@ -434,6 +446,8 @@ require_once('function_conta_locale.php');
 				}
 		$contaIns++;		
 		?>
+		</tbody>
+
 		</table>
 			</div>
                         <div class="panel-footer">
@@ -443,15 +457,23 @@ require_once('function_conta_locale.php');
             </div>
 			
 			
-<div class="col-md-4 col-sm-4">
-			<div class="panel panel-warning">
-                        <div class="panel-heading">
-                           Traccia sospese
+				<div class="col-xl-4 col-lg-5">
+                   		 <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-success">  CONTROLLO INTERVISTE SOSPESE  </h6> <span style="color:gray"><i class="fas fa-cut fa-2x text-gray-300"></i></span>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                       
 			<table class="table table-striped table-bordered">
-		<tr><td>Domanda</td><td>Cod.</td><td>Num.</td><td>%</td></tr>
+			<thead>
+		<tr>
+		<th scope="col">Domanda</td>
+		<th scope="col">Cod.</td>
+		<th scope="col">Num.</td>
+		<th scope="col">%</td>
+		</tr>
+		</thead>
+		<tbody>
 		<?php
 		$contaImm2==0;
 		
@@ -551,6 +573,8 @@ require_once('function_conta_locale.php');
 				}
 		$contaIns++;	
 		?>
+		</tbody>
+
 		</table>
 					  
 					  
@@ -568,12 +592,12 @@ require_once('function_conta_locale.php');
 
 <div class="row">
 
-            <div class="col-md-4 col-sm-4">
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                           Controllo quote
+<div class="col-xl-4 col-lg-5">
+                   		 <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-danger"> CONTROLLO QUOTE IMPOSTATE </h6> <span style="color:gray"><i class="fas fa-user-check fa-2x text-gray-300"></i></span>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                            <?php
 			$query_quo = "SELECT * FROM millebytesdb.t_quota_status where survey_id='$sid' and project_name='$prj' order by target_name ASC";
 			$tot_quo = mysqli_query($admin,$query_quo) or die(mysql_error());
@@ -584,8 +608,14 @@ require_once('function_conta_locale.php');
 		?>
 	
 		
-					<table class="table table-striped table-bordered">
-				<tr class="intesta"><th colspan='4'><span style="color:red"><b>QUOTE</b></span></th></tr>
+				<table class="table table-striped table-bordered">
+				<thead>
+				<tr>
+				<th colspan='4'><span style="color:red"><b>QUOTE</b></span></th>
+				</tr>
+				</thead>
+
+				<tbody>
 				<?php
 
 				
@@ -605,6 +635,7 @@ require_once('function_conta_locale.php');
 					}
 
 				?>
+				</tbody>
 				</table>
 					<?php } 
 					else  {echo "<h3>Nessuna quota impostata</h3>";}
@@ -620,12 +651,12 @@ require_once('function_conta_locale.php');
 
 
 
-                <div class="col-md-8 col-sm-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DIARIO RICERCA
+				<div class="col-xl-8 col-lg-5">
+                   		<div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-danger">DIARIO DELLA RICERCA </h6> <span style="color:gray"><i class="fas fa-book fa-2x text-gray-300"></i> </span>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
 						
 						<?php if ($contaPan>1) 
 							{ ?>
@@ -643,6 +674,7 @@ require_once('function_conta_locale.php');
 							<tr><th><b>Giorno</b></th><th colspan="2"><b>Complete</b></th><th colspan="2"><b>Non in target</b></th><th colspan="2"><b>Over Quota</b></th><th colspan="2"><b>Sospese</b></th>
 							<th><b>Contatti</b></th><th><b>Incidenza</b></th></tr>
 							</thead>
+							<tbody>
 							<?php
 
 							asort($diario);
@@ -679,6 +711,7 @@ require_once('function_conta_locale.php');
 							</tr>";
 							}
 							?>
+							</tbody>
 							</table>
 							</div>
 							<?php  } ?>
@@ -704,7 +737,7 @@ require_once('function_conta_locale.php');
 									<tr><th><b>Giorno</b></th><th colspan="2"><b>Complete</b></th><th colspan="2"><b>Non in target</b></th><th colspan="2"><b>Over Quota</b></th><th colspan="2"><b>Sospese</b></th>
 									<th><b>Contatti</b></th><th><b>Incidenza</b></th><th><b>Panel %</b></th><th><b>Abilitati</b></th></tr>
 									</thead>
-
+									<tbody>
 									<?php
 									asort($diario);
 
@@ -759,6 +792,7 @@ require_once('function_conta_locale.php');
 
 									}
 									?>
+									</tbody>
 									</table>
 									</div>
 									<?php
@@ -783,6 +817,7 @@ require_once('function_conta_locale.php');
 									<tr><th><b>Giorno</b></th><th colspan="2"><b>Complete</b></th><th colspan="2"><b>Non in target</b></th><th colspan="2"><b>Over Quota</b></th><th colspan="2"><b>Sospese</b></th>
 									<th><b>Contatti</b></th><th><b>Incidenza</b></th></tr>
 									</thead>
+									<tbody>
 									<?php
 
 									asort($diario);
@@ -843,7 +878,7 @@ require_once('function_conta_locale.php');
 							{ 
 							echo "<tr><td>".$chiave."</td><td>".$contatori[$chiave]."</td></tr>";
 							}										
-							echo "</table>";		
+							echo "</tbody></table>";		
 									?>
 						
                             
@@ -914,5 +949,4 @@ $aggiorna_statistiche_t_costo = mysqli_fetch_assoc($aggiorna_statistiche_costo);
 
 require_once('inc_footer.php'); 
 
-mysql_close();
 ?>

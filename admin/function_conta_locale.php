@@ -753,4 +753,12 @@ if ($panel_in==1 || $panel_in==2) { $contaPan++;}
 
 $contaIns=0;
 
+
+/// only for test da cancellare//
+$conta_complete_panel=750;
+
+//progresso field
+$obiet=round($lu['goal']); 
+$progress=$conta_complete_panel/$obiet*100;
+
 ?>
