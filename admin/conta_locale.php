@@ -47,7 +47,7 @@ require_once('function_conta_locale.php');
             <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo $lu['description']; ?> </div>
           </div>
           <div class="col-auto">
-		  <span style="font-size: 28px; color: #94d872;">
+		  <span style="font-size: 28px; color: #94d872; opacity: 0.5;">
 		  <i class="fas fa-poll-h"></i>
 		  </span>
 
@@ -70,7 +70,7 @@ require_once('function_conta_locale.php');
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Età: </b><?php echo $lu['age1_target']."-".$lu['age2_target']." anni" ?> </div>
           </div>
           <div class="col-auto">
-		  <span style="font-size: 28px; color: #007BFF;">
+		  <span style="font-size: 28px; color: #007BFF; opacity: 0.5;">
 		  <i class="fas fa-bullseye"></i>
 		  </span>
 
@@ -87,12 +87,12 @@ require_once('function_conta_locale.php');
 <div class="card body">
 <div class="row no-gutters align-items-center" style="min-height: 100px;">
           <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-success  text-uppercase mb-1">Tempistiche</div>
+            <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Tempistiche</div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Inizio Field:</b> <?php echo $newDateStart;  ?></div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Fine Field:</b> <?php echo $newDate;  ?> </div>
           </div>
           <div class="col-auto">
-		  <span style="font-size: 28px; color: #F7BB07;">
+		  <span style="font-size: 28px; color: #F7BB07; opacity: 0.5;">
 		  <i class="fas fa-business-time"></i>
 		  </span>
 
@@ -110,10 +110,10 @@ require_once('function_conta_locale.php');
           <div class="col mr-2">
             <div class="h5 text-xs font-weight-bold text-danger text-uppercase mb-1">Info</div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Stato Field:</b> <?php echo $stato; ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Durata intervista:</b> <span style="color:red"><?php echo substr($loi,0,4); ?> minuti</span> </div>
+            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Loi:</b> <span style="color:red"><?php echo substr($loi,0,4); ?> minuti</span> </div>
           </div>
           <div class="col-auto">
-		  <span style="font-size: 28px; color: #D53343;">
+		  <span style="font-size: 28px; color: #D53343; opacity: 0.5;">
 		  <i class="fas fa-info-circle"></i>
 		  </span>
 
@@ -130,19 +130,24 @@ require_once('function_conta_locale.php');
 </div>
 
 
-<div class="row">
+<div class="jumbotron jumbotron-fluid">
+
+<div class="row ">
 
 			<?php if ($contaPan>1) 		
 			{ ?>
                 <div class="col-xl-4 col-lg-5">
-				<div class="progress">
-  				<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-				</div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary"> TOTALE </h6> <span style="color:gray"><i class="far fa-flag fa-2x text-gray-300"></i></span>
                         </div>
                         <div class="card-body">
+
+						<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?php echo $progressTot ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+  <?php echo $progressTot ?>%
+  </div>
+</div>
 
 								<table class="table table-striped table-bordered" >
 								<tr> <td> Complete: </td> <td> <b><?php echo  $conta_complete; ?></b> </td> </tr>
@@ -259,6 +264,12 @@ require_once('function_conta_locale.php');
 						
 					<?php if ($panel_esterno>0) 		
 						{ ?>
+
+						<div class="progress">
+						<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?php echo $progressExt ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+						<?php echo $progressExt ?>%
+						</div>
+						</div>
 					
 								<table class="table table-striped table-bordered">
 								<tr class="intesta"><th colspan='2'>Panel esterno</th></tr> 
@@ -306,16 +317,28 @@ require_once('function_conta_locale.php');
 						<h6 class="m-0 font-weight-bold text-success">  STIMA FILED </h6> <span style="color:gray"> <i class="fas fa-calculator fa-2x text-gray-300"></i></span>
                         </div>
                         <div class="card-body">
+						<?php 
+						if ($alsuccess==1) {
+						?>		
+						<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Casi sufficienti per chiudere il field.</button></h6>
+						<?php 
+						}
+						if ($alsuccess==0) {
+						?>	
+						<h6 class="align-items-center justify-content-between text-center"><button id="alert4" class="btn btn-alert btn-danger alcasi" type="button">Casi insufficienti per chiudere il field.</button></h6>
+						<?php 
+						}
+						?>	
 
-						<div class="tabGen"  <?php if ($contaIns<3) { echo "style='float:left;'"; }?> >
+						<div class="tabGen" >
 						<table class="table table-striped table-bordered">
 						<tr> <td>Utenti disponibili </td> <td> <b><?php echo  $contatti_disponibili; ?></b> </td> </tr>
-						<tr> <td>% Media Panel </td> <td> <b><?php echo  $media_redemption_panel."%"; ?></b> </td> </tr>
-						<tr> <td>% Panel Field </td> <td> <b><?php echo  $redemption_panel."%"; ?> </b></td> </tr>
-						<tr> <td>% Total: </td> <td> <b><?php echo  $totalRed."%"; ?> </b></td> </tr>
 						<tr> <td> Casi possibili </td> <td> <b><?php echo  $previsione ?></b> </td> </tr>
 						<tr> <td> Da Fare: </td> <td> <b><?php echo  $daFare ?></b> </td> </tr>
 						<tr> <td>Utenti da inviare: </td> <td> <b><?php echo  $inviaUtenti ?></b> </td> </tr>
+						<tr> <td>% Media Panel </td> <td> <b><?php echo  $media_redemption_panel."%"; ?></b> </td> </tr>
+						<tr> <td>% Panel Field </td> <td> <b><?php echo  $redemption_panel."%"; ?> </b></td> </tr>
+						<tr> <td>% Total: </td> <td> <b><?php echo  $totalRed."%"; ?> </b></td> </tr>
 						</table>
 						<div id="chart_div"></div>
 						</div>
@@ -900,6 +923,8 @@ require_once('function_conta_locale.php');
 
 
 </div>
+</div>
+
 </div>
 
 <?php

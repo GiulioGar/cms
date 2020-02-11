@@ -755,10 +755,32 @@ $contaIns=0;
 
 
 /// only for test da cancellare//
-$conta_complete_panel=750;
+$conta_complete_panel=780;
+$previsione=650;
 
-//progresso field
+//////////  progresso field//////////////
 $obiet=round($lu['goal']); 
+
+//totale
+$progressTot=$conta_complete/$obiet*100;
+
+if ($progressTot>=100) {$progressTot=100;}
+
+//millebytes
 $progress=$conta_complete_panel/$obiet*100;
+
+if ($progress>=100) {$progress=100;}
+
+//esterne
+$progressExt=$conta_complete_ssi/$obiet*100;
+
+if ($progressExt>=100) {$progressExt=100;}
+
+////////// allert stima  //////////////
+
+
+
+if ($previsione >= $obiet) {$alsuccess=1; }
+else {$alsuccess=0;}
 
 ?>

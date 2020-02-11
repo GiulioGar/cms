@@ -87,7 +87,7 @@
     <!-- CORE JQUERY  -->
     <script src="assets/js/jquery-1.10.2.js"></script>
         <!-- BOOTSTRAP SCRIPTS  -->
-        <script src="assets/js/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
       <!-- CUSTOM SCRIPTS  -->
@@ -256,7 +256,25 @@ $(document).ready(function() {
         )
     });
 
+
+//allert
+
+$(document).ready(function() {
+  $('.alcasi').hide();
+  $('.alcasi').fadeIn(2500);
+
+  });
+
+    
+
 </script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+ 
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
 
 </body>
 
