@@ -151,7 +151,6 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
 
 $query_new = "SELECT *  FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
 $csv_mvf = mysqli_query($admin,$query_new);
-echo  $query_new;
 	
 
 
