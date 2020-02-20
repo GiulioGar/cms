@@ -44,8 +44,8 @@ require_once('function_conta_aree.php');
                         </div>
                         <div class="card-body">
 
- <form role="form" class="needs-validation" novalidate  action="conta_aree.php" method="post">
-<input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>">
+ <form class="needs-validation"  action="conta_aree.php" method="get">
+<input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>" />
 
 <div class="form-row">
 
@@ -72,7 +72,7 @@ require_once('function_conta_aree.php');
     <label class="input-group-text" for="inputGroupSelect01">Progetto:</label>
   </div>
 
-  <input class="form-control" type="text" maxlength="10" style="width:130px" value=""  name="prj">
+  <input class="form-control" type="text" maxlength="10" style="width:130px" value=""  name="prj" />
 </div>
 </div>
 
@@ -130,7 +130,6 @@ require_once('function_conta_aree.php');
     <label class="input-group-text" for="inputGroupSelect01">Sesso:</label>
   </div>
   <select class="custom-select" id="inputGroupSelect01 " name="sex_target">
-<option value="">No select</option>
 <option value="3">Uomo/Donna</option>
 <option value="1">Uomo</option>
 <option value="2">Donna</option>
@@ -141,21 +140,24 @@ require_once('function_conta_aree.php');
 
 
 <div class="form-group col-md-6">
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Età da:</label>
   </div>
-        <input class="form-control" type="text" maxlength="2" style="width:90px" value=""  name="age1_target"> anni
-        <div class="input-group-prepend">
+        <input   class="form-control" type="number" maxlength="2" style="width:90px" value="18"  name="age1_target" required />  
+</div>
+<div class="input-group mb-3">
+      <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Età a&nbsp;&nbsp;:</label>
   </div> 
-	  <input class="form-control" type="text" maxlength="2" value="" style="width:90px" name="age2_target"> anni
-       </div>
-</div>
 
-</div>
+	  <input   class="form-control" type="number" maxlength="2" value="65" style="width:90px" name="age2_target" required /> 
+  </div>
 
-<hr/>
+     </div>
+</div>
+</div>
 
 <div class="form-row">
 
@@ -164,7 +166,7 @@ require_once('function_conta_aree.php');
 <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Iscritto dal:</label>
   </div>
-	   <input class="form-control" type="text" maxlength="4"  value="2000"  name="iscrizione">
+	   <input required class="form-control" type="text" maxlength="4"  value="1990"  name="iscrizione" />
 </div>
 </div>
 
@@ -174,18 +176,52 @@ require_once('function_conta_aree.php');
 <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">N° Utenti:</label>
   </div>
-	 <input class="form-control" type="text" maxlength="4" value=""    name="goal">
+	 <input class="form-control" type="text" maxlength="4" value=""  name="goal" />
 </div>
 </div>
 
 </div>
 
-<hr/>
+<div class="form-row">
 
-<input class="btn btn-danger" type="submit" name="creaCamp" value="CREA">
-</form>
- 
+<div class="form-group col-md-12">
+<div class="input-group mb-6">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Target:</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01 " name="tag">
+  <option value="">No select</option>
+  <?php
+			while ($row = mysqli_fetch_assoc($tot_targ))
+			{
+			?>
+		    <option value="<?php echo $row['tag'];?>"><?php echo $row['tag'];?></option>
+			<?php
+			}
+			?>
+</select>
+</div>
+</div>
+<div class="input-group mb-6"></div>
+</div>
+
+</hr></hr>
+
+<div class="form-row">
+<div class="form-group col-md-12"  style="text-align:right; padding:20px;" >
+
+<input class="btn btn-primary" type="submit" name="contaDisp" value="DISPONIBILI" />
+<input class="btn btn-primary" type="submit" name="creaCamp" value="CREA" />
+
+
+</div>
+ </div>
+
+
+ </form>
+
  <?php
+ /*
 if ($creaCamp=="CREA")	
 {
 ?>
@@ -198,12 +234,12 @@ if ($creaCamp=="CREA")
 
 <?php
 }
+*/
 ?>
  
  
 </div>
 
-</div>
 </div>
 
 
@@ -213,6 +249,7 @@ if ($creaCamp=="CREA")
 
 
 
+<?php echo "<br/>Utenti disponibili: ".$dataDisp['total']; ?>
 
 
 <!--fine div8-->

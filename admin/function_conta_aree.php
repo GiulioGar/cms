@@ -1,5 +1,10 @@
 <?php
 
+	  /////Target
+	  mysqli_select_db($database_admin, $admin);
+	  $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
+	  $tot_targ = mysqli_query($admin,$query_trg) or die(mysql_error()); 
+
 $query_surv = "SELECT *  FROM t_panel_control where stato=0 AND panel<>0";
 $csv_sur = mysqli_query($admin,$query_surv) or die(mysql_error());	
 
@@ -98,10 +103,9 @@ while ($row = mysqli_fetch_assoc($csv_mvf_at))
 	if ($reView==20) { $ve++;}
    }
 
-if ($creaCamp=="CREA")	
+if ($creaCamp=="CREA" || $contaDisp=="DISPONIBILI")	
 {
 
-//echo "la ricerca è:".$sid." ".$prj;
 
 $del="DELETE FROM t_test";
 $resA = mysqli_query($admin,$del) or die(mysql_error());
@@ -110,17 +114,27 @@ $resA = mysqli_query($admin,$del) or die(mysql_error());
 $year1=$currentYear-$ag1;
 $year2=$currentYear-$ag2;
 
-
-$query_new_attivi = "SELECT * FROM t_user_info where CASE WHEN $sex_target<>3 THEN gender=".$sex_target." ELSE gender !=3 END
-AND active=1 and Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
-$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
+$addSex="";
+if($sex_target !=3) {$addSex="gender=".$sex_target." AND"; }
 
 
+$query_new_attivi = "SELECT * FROM t_user_info 
+where  
+".$addSex." active=1 and Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
+
+
+$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
+
+
+$infoInserita=false;
 
    while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
-    { 
+    {
+	$infoInserita=false;	 
 	$proView=$row['province_id'];
 	@include('cod_reg.php'); 
+
+
 	
 
 	
@@ -130,6 +144,8 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+
+		$infoInserita=true;
 	}	
 	
 	
@@ -140,18 +156,30 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+		
+		$infoInserita=true;
 	}
 	
-	
+	if ($infoInserita==false)
+	{
+		$id=$row['user_id'];
+		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
+		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+	}
 	
 	}
 
 
 	
+if ($goal=="") {$goal=100000; }
 
-$query_new = "SELECT *  FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
-$csv_mvf = mysqli_query($admin,$query_new);
-	
+
+if ($contaDisp=="DISPONIBILI")
+{
+$query_contaDisp = "SELECT COUNT(*) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
+$contaDisp= mysqli_query($admin,$query_contaDisp);
+$dataDisp=mysqli_fetch_assoc($contaDisp);
+}	
 
 
 
