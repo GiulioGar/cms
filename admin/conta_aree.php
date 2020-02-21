@@ -6,15 +6,16 @@ $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
 $areapagina = "home";
 $coldx = "no";
-@$creaCamp = $_REQUEST['creaCamp'];
+@$azione = $_REQUEST['azione'];
 $sex_target=$_REQUEST['sex_target'];
-$area=$_REQUEST['aree'];
+$aree=$_REQUEST['aree'];
 $codregione=$_REQUEST['reg'];
 $ag1=$_REQUEST['age1_target'];
 $ag2=$_REQUEST['age2_target'];
 $goal=$_REQUEST['goal'];
 $sid=$_REQUEST['sid'];
 $prj=$_REQUEST['prj'];
+$tags=$_REQUEST['tag'];
 $iscrizione=$_REQUEST['iscrizione'];
 $currentYear=date("Y");
 
@@ -44,7 +45,7 @@ require_once('function_conta_aree.php');
                         </div>
                         <div class="card-body">
 
- <form class="needs-validation"  action="conta_aree.php" method="get">
+<form action="conta_aree.php" method="get"  class="myform" >
 <input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>" />
 
 <div class="form-row">
@@ -54,7 +55,7 @@ require_once('function_conta_aree.php');
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Ricerca:</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01 " name="sid">
+  <select class="custom-select .surv" id="inputGroupSelect01 " name="sid">
   <option value="">No select</option>
 <?php
     while ($row = mysqli_fetch_assoc($csv_sur)) 
@@ -72,7 +73,7 @@ require_once('function_conta_aree.php');
     <label class="input-group-text" for="inputGroupSelect01">Progetto:</label>
   </div>
 
-  <input class="form-control" type="text" maxlength="10" style="width:130px" value=""  name="prj" />
+  <input class="form-control prj" type="text" maxlength="10" style="width:130px" value=""  name="prj" />
 </div>
 </div>
 
@@ -83,7 +84,7 @@ require_once('function_conta_aree.php');
 
 <div class="col-xl-6 col-lg-5">
 <label><h6 class="m-0 font-weight-bold text-primary">Regione:</h6></label>
-<select name="reg" class="selectpicker show-tick"  multiple title="Scegli la regione...">
+<select name="reg[]" class="selectpicker show-tick reg"  multiple title="Scegli la regione...">
   <option value="1">ABRUZZO</option>
   <option value="2">BASILICATA</option>
   <option value="3">CALABRIA</option>
@@ -109,7 +110,7 @@ require_once('function_conta_aree.php');
 
 <div class="col-xl-6 col-lg-5">
 <label><h6 class="m-0 font-weight-bold text-primary">Area:</h6></label>
-<select name="aree" class="selectpicker show-tick"  multiple title="Scegli l'area...">
+<select name="aree[]" class="selectpicker show-tick area"  multiple title="Scegli l'area...">
   <option value="1">Nord-Ovest</option>
   <option value="2">Nord-Est</option>
   <option value="3">Centro</option>
@@ -129,7 +130,7 @@ require_once('function_conta_aree.php');
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Sesso:</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01 " name="sex_target">
+  <select class="custom-select sex_target" id="inputGroupSelect01 " name="sex_target">
 <option value="3">Uomo/Donna</option>
 <option value="1">Uomo</option>
 <option value="2">Donna</option>
@@ -145,14 +146,14 @@ require_once('function_conta_aree.php');
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Età da:</label>
   </div>
-        <input   class="form-control" type="number" maxlength="2" style="width:90px" value="18"  name="age1_target" required />  
+ <input   class="form-control ag1" type="number" maxlength="2" style="width:90px" value="18"  name="age1_target" required />  
 </div>
 <div class="input-group mb-3">
       <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Età a&nbsp;&nbsp;:</label>
   </div> 
 
-	  <input   class="form-control" type="number" maxlength="2" value="65" style="width:90px" name="age2_target" required /> 
+	  <input   class="form-control ag2" type="number" maxlength="2" value="65" style="width:90px" name="age2_target" required /> 
   </div>
 
      </div>
@@ -166,7 +167,7 @@ require_once('function_conta_aree.php');
 <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Iscritto dal:</label>
   </div>
-	   <input required class="form-control" type="text" maxlength="4"  value="1990"  name="iscrizione" />
+	   <input required class="form-control iscrizione" type="text" maxlength="4"  value="1990"  name="iscrizione" />
 </div>
 </div>
 
@@ -176,7 +177,7 @@ require_once('function_conta_aree.php');
 <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">N° Utenti:</label>
   </div>
-	 <input class="form-control" type="text" maxlength="4" value=""  name="goal" />
+	 <input class="form-control goal" type="text" maxlength="4" value=""  name="goal" />
 </div>
 </div>
 
@@ -210,8 +211,8 @@ require_once('function_conta_aree.php');
 <div class="form-row">
 <div class="form-group col-md-12"  style="text-align:right; padding:20px;" >
 
-<input class="btn btn-primary" type="submit" name="contaDisp" value="DISPONIBILI" />
-<input class="btn btn-primary" type="submit" name="creaCamp" value="CREA" />
+<input class="btn btn-primary dispo" type="submit" name="azione" value="DISPONIBILI" />
+<input class="btn btn-primary genera" type="submit" name="azione" value="CREA" />
 
 
 </div>
@@ -247,10 +248,16 @@ if ($creaCamp=="CREA")
 <div class="col-xl-6 col-lg-5">
    <div class="card shadow mb-6">
 
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> DATI </h6></span>
+                        </div>
+
+<div class="card-body">                       
+
+<div class="udisp"> Utenti disponibili: <?php echo $dataDisp['total']; ?> </div>
 
 
-<?php echo "<br/>Utenti disponibili: ".$dataDisp['total']; ?>
-
+</div>
 
 <!--fine div8-->
 </div>
@@ -266,6 +273,52 @@ if ($creaCamp=="CREA")
 
 </div>
 </div>
+
+
+
+<script>
+/*
+//al click sul bottone del form
+  $(".dispo").click(function(){
+
+ let sid= $("select.surv").val();
+ let pr= $("input.prj").val();
+ let reg= $("select.reg").val();
+ let area= $("select.area").val();
+ let sex= $("select.sex_target").val();
+ let ag1= $("input.ag1").val();
+ let ag2= $("input.ag2").val();
+ let isc= $("input.iscrizione").val();
+ let goal= $("input.goal").val();
+ let tag= $("select.tag").val();
+ let act= $(this).val();
+
+  console.log("Cliccato")
+
+  //chiamata ajax
+    $.ajax({
+
+     //imposto il tipo di invio dati (GET O POST)
+      type: "GET",
+
+      //Dove devo inviare i dati recuperati dal form?
+      url: "conta_aree.php",
+
+      //Quali dati devo inviare?
+      data: "id_sur="+sid+"&prj="+pr+"sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&iscrizione="+isc+"&goal="+goal+"&tag="+ag1+"&azione="+act, 
+      dataType: "html",
+	  success: function(data) 
+	  					{ 
+							$(".udisp").html(data);
+						}
+
+    });
+  });
+
+  */
+</script>
+
+
 
 
 <?php

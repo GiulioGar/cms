@@ -103,9 +103,8 @@ while ($row = mysqli_fetch_assoc($csv_mvf_at))
 	if ($reView==20) { $ve++;}
    }
 
-if ($creaCamp=="CREA" || $contaDisp=="DISPONIBILI")	
+if ($azione=="CREA" || $azione=="DISPONIBILI")	
 {
-
 
 $del="DELETE FROM t_test";
 $resA = mysqli_query($admin,$del) or die(mysql_error());
@@ -130,41 +129,42 @@ $infoInserita=false;
 
    while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
     {
-	$infoInserita=false;	 
+
 	$proView=$row['province_id'];
 	@include('cod_reg.php'); 
 
-
-	
-
-	
-	if ($arView==$area[0] || $arView==$area[1] || $arView==$area[2] || $arView==$area[3])
+	if ( ($arView==$aree[0] || $arView==$aree[1] || $arView==$aree[2] || $arView==$aree[3]) && ($proView !=0 && $proView !=105 ))
 	{
 		
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
 
-		$infoInserita=true;
+	
+
 	}	
 	
-	
-	
-	if ($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19])
+
+
+	if (($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19]) && ($proView !=0 && $proView !=105 ))
 	{
-		
+	
+
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
-		
-		$infoInserita=true;
+	
 	}
 	
-	if ($infoInserita==false)
+
+	if ($aree=="" && $codregione=="")
+
 	{
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+
+	
 	}
 	
 	}
@@ -174,7 +174,7 @@ $infoInserita=false;
 if ($goal=="") {$goal=100000; }
 
 
-if ($contaDisp=="DISPONIBILI")
+if ($azione=="DISPONIBILI")
 {
 $query_contaDisp = "SELECT COUNT(*) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
