@@ -26,6 +26,7 @@ $full_total_story = mysqli_num_rows($story);
 			if ($row['event_info']=="Interview complete") { $event="RICERCA COMPLETATA"; }
 			if ($row['event_info']=="New user has been created") { $event="NUOVO CONCORSO";}
 			if ($row['event_info']=="bonus") { $event="BONUS";}
+			if (strpos($row['event_info'], 'livelli') !== false)  { $event=$row['event_info'];}
 			
 			
 

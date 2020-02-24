@@ -1,7 +1,6 @@
-
-
-<?php require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
+<?php 
+require_once('../Connections/admin.php'); 
+require_once('inc_auth.php'); 
 	  
 $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
@@ -13,6 +12,7 @@ $id_utente = $_REQUEST['id_utente'];
 $importo=$_REQUEST['importo'];
 $email=$_REQUEST['email'];
 @$azione = $_REQUEST['azione'];
+@$verifica = $_REQUEST['Verifica'];
 @$cifra2 = $_REQUEST['cifra2'];
 @$cifra5 = $_REQUEST['cifra5'];
 @$cifra9 = $_REQUEST['cifra9'];
@@ -46,7 +46,7 @@ $data=date("Y-m-d");
 		@$array20euro=explode("\n",$premi20euro);
 	}
 
-mysqli_select_db($database_admin, $admin);
+mysqli_select_db($admin,$database_admin);
 
 	$cerca_progetto=$_REQUEST['typ'];
 	if ($cerca_progetto==""){$cerca_progetto="0";}
@@ -58,7 +58,7 @@ require_once('inc_tagbody.php');
 //AGGIUNGO Buoni 2 euro
 if($azione=="add2")
 {
-mysqli_select_db($database_admin, $admin);
+mysqli_select_db($admin,$database_admin);
 $query_aggiorna = "UPDATE cassa_buoni SET num='$cifra2' WHERE type='euro2'";
 $add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
 }
@@ -98,6 +98,7 @@ $add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
 	
 	//echo $cloSur['tot'].' '.$cloSur2['tot'];
 
+/*
 if ($cloSur['tot'] != $cloSur2['tot'])
 {
 //COPIO HISTORY
@@ -107,16 +108,44 @@ FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_
 $query_copia_history_copy_sample = mysqli_query($admin,$query_copia_history_copy) or die(mysql_error());
 $query_copia_history_copy_sample_t = mysqli_fetch_assoc($query_copia_history_copy_sample);
 }
-
-
-
-
-
+*/
 
 $query_cerca = "SELECT * FROM t_history_copia,t_user_info where pagato like '$cerca_progetto' AND t_history_copia.user_id=t_user_info.user_id order by event_date asc";
 //$query_cerca = "SELECT * FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_id FROM t_history_copia where event_type='withdraw')";
-$cerca = mysqli_query($admin,$query_cerca) or die(mysql_error());
+$cerca = mysqli_query($admin,$query_cerca);
 
+if($verifica=="verifica")
+{
+
+$query_uid = "SELECT id,user_id FROM millebytesdb.t_history_copia where pagato=0;";
+$cerca_uid = mysqli_query($admin,$query_uid);
+
+$dataevento=0;
+
+while ($row = mysqli_fetch_assoc($cerca_uid))
+	{
+		$dataPre=0;
+
+		$query_dupicato = "SELECT * FROM millebytesdb.t_user_history where user_id='".$row['user_id']."' AND event_type='interview_complete'";
+		$cerca_duplicato = mysqli_query($admin,$query_dupicato);
+
+		$contaAnomalie=0;
+
+		while ($row2 = mysqli_fetch_assoc($cerca_duplicato))
+		{
+			$dataPre=$dataevento;
+			$dataevento=substr($row2['event_date'],0,strlen($row2['event_date'])-6);
+
+			if($dataPre==$dataevento){ $contaAnomalie++; }
+		}	
+		
+		$query_aggverifica = "UPDATE t_history_copia SET verifica=".$contaAnomalie." WHERE pagato=0 and id='".$row['id']."'";
+		$up_verifica = mysqli_query($admin,$query_aggverifica);
+
+	}
+
+
+}
 
 ?>
 
@@ -142,10 +171,12 @@ $cerca = mysqli_query($admin,$query_cerca) or die(mysql_error());
    RICHIESTE PREMI
    </div>
    
+
  <div class="panel-body recent-users-sec">
 <form  action="RichiestePremio.php" method="post">
+<input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' />
 <table style="font-size:11px"  class="table table-striped table-bordered" >
-		<tr class='intesta'> <th>Uid</th><th>Premio</th><th>Prima</th><th>Dopo</th><th>Richiesta</th><th>Codice</th><th colspan='2'>Pagamento</th></tr>
+		<tr class='intesta'> <th>Uid</th><th>Anomalie</th><th>Premio</th><th>Prima</th><th>Dopo</th><th>Richiesta</th><th>Codice</th><th colspan='2'>Pagamento</th></tr>
 
 <?php
 $pagati=0;
@@ -181,7 +212,7 @@ $contapagati20euro=0;
 			if (strstr($euroPaga,"+5 euro")) { $bacCol="#C4FCB0";}
 			if (strstr($euroPaga,"20 euro")) { $bacCol="#C4FCB0"; $contadapagati20euro=$contadapagati20euro+1;}
 		
-		  echo "<tr><td><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td>
+		  echo "<tr><td><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td><td>".$row['verifica']."</td>
 		 <td style='background:".$bacCol."'>".$euroPaga."</td><td>".$row['prev_level']."</td><td>".$row['new_level']."</td><td>".$newdate."</td>";
 		  if ($row['pagato']==0){echo "<td colspan='2'>Non assegnato</td></tr>";}
 								else
@@ -787,7 +818,9 @@ $giaM20=$gia20/$diff;
 				 
 				 <textarea class="form-control" style="text-transform:uppercase;" name="pr20euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea>
 				
-				<input class='btn btn-danger'  type='submit'  name='var_pagato' value='PAGA' /></form>
+				<input class='btn btn-danger'  type='submit'  name='var_pagato' value='PAGA' />
+				
+				</form>
 				 
 		 </div>
 	 </div>
