@@ -243,6 +243,7 @@ require_once('function_conta_locale.php');
 				<form   action="csv.php" method="post" target="_blank" >
 				<input type="hidden" name="csv" value="<?php echo $csv_attivi ?>" />
 				<input type="hidden" name="filename" value="user_list" />
+				<input type="hidden" name="filetype" value="campione" />
 				<label class="form-check-label text-center" for="inlineCheckbox1">Attivi</label>
 				<input class="form-control" type="image" value="submit" src="img/csv.png" />
 				</form>		

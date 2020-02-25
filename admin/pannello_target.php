@@ -1,13 +1,7 @@
 
-
-<?php require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
+<?php 
 	  
 
-$titolo = 'Desktop Gestionale';
-$sitowebdiriferimento = 'www.millebytes.com';
-$areapagina = "home";
-$coldx = "no";	
 @$id_sur = $_REQUEST['id_sur'];
 @$closearch = $_REQUEST['closearch'];
 @$openSearch = $_REQUEST['openSearch'];
@@ -72,8 +66,6 @@ require_once('inc_tagbody.php');
 
 ?>
 
- <div class="content-wrapper">
-<div class="container">
 
 <div class="row">
 
@@ -196,9 +188,8 @@ echo "</table>";
  </div>
 
 </div>
+</div>
 
-</div>
-</div>
 
 
  <script>
@@ -208,9 +199,3 @@ $("#datepicker").datepicker({
 });
 </script>
 
-
-
-<?php
-
-require_once('inc_footer.php'); 
-?>

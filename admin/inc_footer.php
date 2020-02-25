@@ -1,70 +1,5 @@
 
 
-<footer class="mainfooter" role="contentinfo">
-  <div class="footer-top p-y-2">
-    <div class="container-fluid">
-      <div class="row">
-        
-        <div class="col-md-12">
-          <div class="footer-title text-xs-center">
-          <h4 class="p-b-1">Altri Servizi</h4>
-        </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card card-primary ">
-          <a href="http://www.primisoft.com/primis/" target="_blank"/>
-            <div class="card-header">Primis <span class="iconFooter" style="float:right; color:#6D6D6Dff; font-size:18px;"><i class="fas fa-tasks"></i></span> </div>
-            </a>
-          </div>
-        </div><!--col-md-2-->
-          <div class="col-md-2">
-          <div class="card card-primary">
-          <a href="http://tools.primisoft.com/" target="_blank"/>
-            <div class="card-header">R.T.R - Primis Tool <span class="iconFooter" style="float:right; color:#6D6D6Dff; font-size:18px;">
-            <i class="fas fa-stream"></i></span> 
-          </div>
-            </a>
-          </div>
-        </div><!--col-md-2-->
-          <div class="col-md-2">
-          <div class="card card-primary">
-          <a href="http://ciro.interactive-mr.com/" target="_blank"/>
-            <div class="card-header">C.I.R.O <span class="iconFooter" style="float:right; color:#6D6D6Dff; font-size:18px;">
-            <i class="far fa-address-book"></i></span> 
-          </div>
-            </a>
-          </div>
-        </div><!--col-md-2-->
-          <div class="col-md-2">
-          <div class="card card-primary">
-          <a href="http://interactive-mr.com/" target="_blank"/>
-            <div class="card-header">Sito istituzionale <span class="iconFooter" style="float:right; color:#6D6D6Dff; font-size:18px;">
-            <i class="fas fa-user-tie"></i></span> 
-          </div>
-            </a>
-          </div>
-        </div><!--col-md-2-->
-          <div class="col-md-2">
-          <div class="card card-primary">
-          <a href="http://millebytes.com/" target="_blank"/>
-            <div class="card-header">Club Millebytes <span class="iconFooter" style="float:right; color:#6D6D6Dff; font-size:18px;">
-            <i class="fas fa-users"></i></span> 
-          </div>
-            </a>
-          </div>
-        </div><!--col-md-2-->
-          <div class="col-md-2">
-          <div class="card card-primary">
-          <a href="https://www.facebook.com/Interactive-Market-Research-1510718559033340" target="_blank"/>
-            <div class="card-header">Facebook <span class="iconFooter" style="float:right; color:#6D6D6Dff; font-size:18px;">
-            <i class="fab fa-facebook"></i></span> 
-          </div>
-            </a>
-          </div>
-        </div><!--col-md-2-->
-      </div>
-    </div>
-  </div>
   <div class="footer-bottom">
     <div class="container">
       <div class="row">
@@ -275,6 +210,9 @@ $(document).ready(function() {
  
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
+
+
+
 
 </body>
 

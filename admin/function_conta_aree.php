@@ -114,16 +114,18 @@ $year1=$currentYear-$ag1;
 $year2=$currentYear-$ag2;
 
 $addSex="";
-if($sex_target !=3) {$addSex="gender=".$sex_target." AND"; }
+$addTag="";
+$fromTag="";
+
+if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }
+if($tags !="") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
 
 
-$query_new_attivi = "SELECT * FROM t_user_info 
+$query_new_attivi = "SELECT * FROM t_user_info i ".$fromTag."
 where  
-".$addSex." active=1 and Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
-
+".$addSex.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
 
 $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
-
 
 $infoInserita=false;
 
@@ -173,38 +175,56 @@ $infoInserita=false;
 	
 if ($goal=="") {$goal=100000; }
 
-
 if ($azione=="DISPONIBILI")
 {
-$query_contaDisp = "SELECT COUNT(*) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
+$query_contaDisp = "SELECT COUNT(*) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 }	
 
 
+if ($azione=="CREA")
+{
+$query_crea = "SELECT *  FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
+$csv_mvf = mysqli_query($admin,$query_crea);
+$total_rows=mysqli_num_rows($csv_mvf);
+	
+
+
 
     //// ESPORTA CAMPIONE MVF IN CSV ////
 
-
     @$csv="uid;email;firstName;genderSuffix";
-    $csv .= "\n";
+	$csv .= "\n";
+
 	
 	
     while ($row = mysqli_fetch_assoc($csv_mvf)) 
     { 
             
-            $uid=$row['user_id'];		
+			$uid=$row['user_id'];		
+			
+	
             $mail=$row['email'];
-            $nome=$row['first_name'];
+			$nome=$row['first_name'];
+			$nome=str_replace('"', "", $nome);
+			$nome=str_replace("'", "", $nome);
             $sesso=$row['gender'];
             if($sesso==1){$genderTransform="o";}
             else {$genderTransform="a";}
             
             $csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj; 
-            $csv .= "\n";
+			$csv .= "\n";
+			
+			$query_abilita = "INSERT INTO t_respint VALUES ('".$sid."','".$uid."','0','-1','".$prj."')";
+			mysqli_query($admin,$query_abilita);
            
     }
 	
+
+}
+
+
 }	
 
 

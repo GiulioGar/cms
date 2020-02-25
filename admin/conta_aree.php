@@ -1,38 +1,5 @@
-<?php require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
-	  mysqli_select_db($database_admin, $admin);
 
-$titolo = 'Desktop Gestionale';
-$sitowebdiriferimento = 'www.millebytes.com';
-$areapagina = "home";
-$coldx = "no";
-@$azione = $_REQUEST['azione'];
-$sex_target=$_REQUEST['sex_target'];
-$aree=$_REQUEST['aree'];
-$codregione=$_REQUEST['reg'];
-$ag1=$_REQUEST['age1_target'];
-$ag2=$_REQUEST['age2_target'];
-$goal=$_REQUEST['goal'];
-$sid=$_REQUEST['sid'];
-$prj=$_REQUEST['prj'];
-$tags=$_REQUEST['tag'];
-$iscrizione=$_REQUEST['iscrizione'];
-$currentYear=date("Y");
 
-/*
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL | E_STRICT);
-*/
-
-require_once('inc_taghead.php');
-require_once('inc_tagbody.php');
-require_once('function_conta_aree.php');
-
-?>
-
-  <div class="content-wrapper">
-       <div class="container">
 	   
  <div class="row">
 
@@ -45,7 +12,7 @@ require_once('function_conta_aree.php');
                         </div>
                         <div class="card-body">
 
-<form action="conta_aree.php" method="get"  class="myform" >
+<form action="campioni.php" method="get"  class="myform" >
 <input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>" />
 
 <div class="form-row">
@@ -55,7 +22,7 @@ require_once('function_conta_aree.php');
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Ricerca:</label>
   </div>
-  <select class="custom-select .surv" id="inputGroupSelect01 " name="sid">
+  <select class="custom-select surv" id="inputGroupSelect01 " name="sid">
   <option value="">No select</option>
 <?php
     while ($row = mysqli_fetch_assoc($csv_sur)) 
@@ -223,18 +190,7 @@ require_once('function_conta_aree.php');
 
  <?php
  /*
-if ($creaCamp=="CREA")	
-{
-?>
-			<form  style="width: 50px" action="csv.php" method="post" target="_blank">
-				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
-				<input type="hidden" name="filename" value="user_list" />
-				<input type="image" value="submit" src="img/CSV.gif" />
-				Download
-				</form>		
 
-<?php
-}
 */
 ?>
  
@@ -254,8 +210,52 @@ if ($creaCamp=="CREA")
 
 <div class="card-body">                       
 
-<div class="udisp"> Utenti disponibili: <?php echo $dataDisp['total']; ?> </div>
+<?php
 
+if ($azione=="DISPONIBILI")
+{
+
+$totRed3=18;
+if($tags !="") { $totRed3=45; }
+$medRed3=0;
+
+$medRed3=($dataDisp['total']/100)*$totRed3;
+$medRed3=number_format($medRed3,0);
+
+?>
+
+<div class="udisp"><i class="fas fa-users"></i> Utenti disponibili: <?php echo $dataDisp['total']; ?> </div>
+<br/>
+<div class="udisp"><i class="fas fa-bullseye"></i> Casi possibili: <b><?php echo $medRed3; ?> interviste </b></div>
+
+<?php } ?>
+
+<?php
+if ($azione=="CREA")	
+{
+?>
+
+<div class="form-row">
+<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Il campione è stato abilitato!</button></h6>
+</div>
+<hr/>
+<div class="form-row">
+<div class="udisp"><i class="fas fa-users"></i> Utenti trovati: <?php echo $total_rows; ?> </div>
+<div class="form-check">
+			<form action="csv.php" method="post" target="_blank">
+				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
+				<input type="hidden" name="filename" value="user_list" />
+        <input type="hidden" name="filetype" value="campione" />
+        <input style="width:50px; height:50px;" class="form-control" type="image" value="submit" src="img/csv.png" />
+        </form>		
+
+</div>
+</div>
+
+
+
+
+<?php } ?>
 
 </div>
 
@@ -265,14 +265,12 @@ if ($creaCamp=="CREA")
 <!--fine row-->
 </div>
 
+</div>
+
 
 
 
  
-
-
-</div>
-</div>
 
 
 
@@ -316,13 +314,37 @@ if ($creaCamp=="CREA")
   });
 
   */
+
+// OBBLIGO RICERCA
+
+
+let selSid;
+let selPr;
+
+$( document ).ready(function() 
+{
+$(".genera").prop("disabled",true);
+
+});
+
+$( "select.surv" ).change(function() {
+
+selSid=$("select.surv").val();
+selPr= $("input.prj").val();
+
+if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
+else  {$(".genera").prop("disabled",true); }
+});
+
+$("input.prj").change(function() {
+
+selSid=$("select.surv").val();
+selPr= $("input.prj").val();
+
+if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
+else  {$(".genera").prop("disabled",true); }
+});
+
 </script>
 
 
-
-
-<?php
-
-require_once('inc_footer.php'); 
-
-?>

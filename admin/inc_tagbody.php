@@ -43,14 +43,11 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
       <li class="nav-item">
         <a class="nav-link" href="pannello.php"><i class="fas fa-poll-h"></i>Ricerche</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-users"></i> Campioni
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="conta_aree.php">Crea</a>
-          <a class="dropdown-item" href="pannello_target.php">Target</a>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="campioni.php"><i class="fas fa-users"></i> Campioni</a>
       </li>
+
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,7 +85,7 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
         <i class="fas fa-award"></i> Premi 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="RichiestePremio.php.php">Assegna Premi</a>
+          <a class="dropdown-item" href="RichiestePremio.php">Assegna Premi</a>
           <a class="dropdown-item" href="assegnalivello.php">Assegna Livelli</a>
       </li>       
       <?php

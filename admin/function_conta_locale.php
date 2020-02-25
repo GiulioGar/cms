@@ -11,12 +11,12 @@
     //Media redemption Panel//
 	//anno 2014
 	
-	$query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where panel=1 and stato=1 and sur_date like '2015%'";
+	$query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where panel=1 and stato=1 and sur_date like '2019%'";
 	$surClo = mysqli_query($admin,$query_conta) or die(mysql_error());
 	$cloSur = mysqli_fetch_assoc($surClo);
 	
 	
-	$query_ric = "SELECT * FROM t_panel_control where panel=1 and stato=1 and sur_date like '2015%' ";
+	$query_ric = "SELECT * FROM t_panel_control where panel=1 and stato=1 and sur_date like '2019%' ";
 	$tot_close = mysqli_query($admin,$query_ric) or die(mysql_error());
 	
 
