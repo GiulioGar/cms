@@ -1,3 +1,8 @@
+<!DOCTYPE html> 
+
+<head>
+
+
 <?php
 /*
 
@@ -6,9 +11,7 @@
  */
 
 ?>
-<!DOCTYPE html> 
 
-<head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
@@ -91,9 +94,7 @@ return true
 
 <?php
 
-require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
-	  mysqli_select_db($database_admin, $admin);
+
 
 $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';

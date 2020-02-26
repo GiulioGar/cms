@@ -71,7 +71,7 @@ $tCe=0;
 $tSu=0;
 
 $query_new_at = "SELECT * FROM t_user_info where active=1";
-$csv_mvf_at = mysqli_query($admin,$query_new_at) or die(mysql_error());
+$csv_mvf_at = mysqli_query($admin,$query_new_at);
 
 while ($row = mysqli_fetch_assoc($csv_mvf_at)) 
    { 
@@ -226,5 +226,3 @@ $total_rows=mysqli_num_rows($csv_mvf);
 
 
 }	
-
-

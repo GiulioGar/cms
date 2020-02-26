@@ -98,7 +98,7 @@ $add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
 	
 	//echo $cloSur['tot'].' '.$cloSur2['tot'];
 
-/*
+
 if ($cloSur['tot'] != $cloSur2['tot'])
 {
 //COPIO HISTORY
@@ -108,7 +108,7 @@ FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_
 $query_copia_history_copy_sample = mysqli_query($admin,$query_copia_history_copy) or die(mysql_error());
 $query_copia_history_copy_sample_t = mysqli_fetch_assoc($query_copia_history_copy_sample);
 }
-*/
+
 
 $query_cerca = "SELECT * FROM t_history_copia,t_user_info where pagato like '$cerca_progetto' AND t_history_copia.user_id=t_user_info.user_id order by event_date asc";
 //$query_cerca = "SELECT * FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_id FROM t_history_copia where event_type='withdraw')";

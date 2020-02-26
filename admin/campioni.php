@@ -1,7 +1,14 @@
 <?php
+require_once('../Connections/admin.php'); 
+require_once('inc_auth.php'); 
+
+
+
+
 
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php'); 
+
 
 
 @$azione = $_REQUEST['azione'];
@@ -17,13 +24,7 @@ $tags=$_REQUEST['tag'];
 $iscrizione=$_REQUEST['iscrizione'];
 $currentYear=date("Y");
 
-
-
-
-
 require_once('function_conta_aree.php');
-
-
 
 ?>
 

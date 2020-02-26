@@ -157,7 +157,7 @@
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Target:</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01 " name="tag">
+  <select class="custom-select tag" id="inputGroupSelect01 " name="tag">
   <option value="">No select</option>
   <?php
 			while ($row = mysqli_fetch_assoc($tot_targ))
@@ -178,8 +178,8 @@
 <div class="form-row">
 <div class="form-group col-md-12"  style="text-align:right; padding:20px;" >
 
-<input class="btn btn-primary dispo" type="submit" name="azione" value="DISPONIBILI" />
-<input class="btn btn-primary genera" type="submit" name="azione" value="CREA" />
+<input class="btn btn-primary dispo" type="button" name="azione" value="DISPONIBILI" />
+<input class="btn btn-primary genera" type="button" name="azione" value="CREA" />
 
 
 </div>
@@ -188,11 +188,6 @@
 
  </form>
 
- <?php
- /*
-
-*/
-?>
  
  
 </div>
@@ -209,53 +204,9 @@
                         </div>
 
 <div class="card-body">                       
+<div class="udisp"> </div> 
+<div class="ugenera"> </div> 
 
-<?php
-
-if ($azione=="DISPONIBILI")
-{
-
-$totRed3=18;
-if($tags !="") { $totRed3=45; }
-$medRed3=0;
-
-$medRed3=($dataDisp['total']/100)*$totRed3;
-$medRed3=number_format($medRed3,0);
-
-?>
-
-<div class="udisp"><i class="fas fa-users"></i> Utenti disponibili: <?php echo $dataDisp['total']; ?> </div>
-<br/>
-<div class="udisp"><i class="fas fa-bullseye"></i> Casi possibili: <b><?php echo $medRed3; ?> interviste </b></div>
-
-<?php } ?>
-
-<?php
-if ($azione=="CREA")	
-{
-?>
-
-<div class="form-row">
-<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Il campione è stato abilitato!</button></h6>
-</div>
-<hr/>
-<div class="form-row">
-<div class="udisp"><i class="fas fa-users"></i> Utenti trovati: <?php echo $total_rows; ?> </div>
-<div class="form-check">
-			<form action="csv.php" method="post" target="_blank">
-				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
-				<input type="hidden" name="filename" value="user_list" />
-        <input type="hidden" name="filetype" value="campione" />
-        <input style="width:50px; height:50px;" class="form-control" type="image" value="submit" src="img/csv.png" />
-        </form>		
-
-</div>
-</div>
-
-
-
-
-<?php } ?>
 
 </div>
 
@@ -269,14 +220,9 @@ if ($azione=="CREA")
 
 
 
-
- 
-
-
-
 <script>
-/*
-//al click sul bottone del form
+
+//al click dei disponibili
   $(".dispo").click(function(){
 
  let sid= $("select.surv").val();
@@ -300,20 +246,56 @@ if ($azione=="CREA")
       type: "GET",
 
       //Dove devo inviare i dati recuperati dal form?
-      url: "conta_aree.php",
+      url: "appoggio.php",
 
       //Quali dati devo inviare?
-      data: "id_sur="+sid+"&prj="+pr+"sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&iscrizione="+isc+"&goal="+goal+"&tag="+ag1+"&azione="+act, 
+      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree[]="+area+"&codregione[]="+reg+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
-							$(".udisp").html(data);
+							$("div.udisp").html(data);
 						}
 
     });
   });
 
-  */
+
+  //al click crea campione
+  $(".genera").click(function(){
+
+let sid= $("select.surv").val();
+let pr= $("input.prj").val();
+let reg= $("select.reg").val();
+let area= $("select.area").val();
+let sex= $("select.sex_target").val();
+let ag1= $("input.ag1").val();
+let ag2= $("input.ag2").val();
+let isc= $("input.iscrizione").val();
+let goal= $("input.goal").val();
+let tag= $("select.tag").val();
+let act= $(this).val();
+
+
+ //chiamata ajax
+   $.ajax({
+
+    //imposto il tipo di invio dati (GET O POST)
+     type: "POST",
+
+     //Dove devo inviare i dati recuperati dal form?
+     url: "appoggio.php",
+
+     //Quali dati devo inviare?
+     data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
+     dataType: "html",
+   success: function(data) 
+             { 
+             $("div.ugenera").html(data);
+           }
+
+   });
+ });
+
 
 // OBBLIGO RICERCA
 
