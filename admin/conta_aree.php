@@ -7,7 +7,7 @@
    <div class="col-xl-6 col-lg-5">
    <div class="card shadow mb-6">
 
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary"> CREA CAMPIONE </h6></span>
                         </div>
                         <div class="card-body">
@@ -206,7 +206,7 @@
 <div class="card-body">                       
 <div class="udisp"> </div> 
 <div class="ugenera"> </div> 
-
+<div class="alert alert-secondary mess" role="alert" style="display:none"> Caricamento in corso... </div>
 
 </div>
 
@@ -224,6 +224,8 @@
 
 //al click dei disponibili
   $(".dispo").click(function(){
+    $('.mess').fadeIn();
+ 
 
  let sid= $("select.surv").val();
  let pr= $("input.prj").val();
@@ -249,10 +251,11 @@
       url: "appoggio.php",
 
       //Quali dati devo inviare?
-      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree[]="+area+"&codregione[]="+reg+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
+      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
+                $('.mess').fadeOut(); 
 							$("div.udisp").html(data);
 						}
 
@@ -261,40 +264,45 @@
 
 
   //al click crea campione
+
   $(".genera").click(function(){
 
-let sid= $("select.surv").val();
-let pr= $("input.prj").val();
-let reg= $("select.reg").val();
-let area= $("select.area").val();
-let sex= $("select.sex_target").val();
-let ag1= $("input.ag1").val();
-let ag2= $("input.ag2").val();
-let isc= $("input.iscrizione").val();
-let goal= $("input.goal").val();
-let tag= $("select.tag").val();
-let act= $(this).val();
+    $('.mess').fadeIn();
+
+let sid2= $("select.surv").val();
+let pr2= $("input.prj").val();
+let reg2= $("select.reg").val();
+let area2= $("select.area").val();
+let sex2= $("select.sex_target").val();
+let ag12= $("input.ag1").val();
+let ag22= $("input.ag2").val();
+let isc2= $("input.iscrizione").val();
+let goal2= $("input.goal").val();
+let tag2= $("select.tag").val();
+let act2= $(this).val();
 
 
  //chiamata ajax
    $.ajax({
 
     //imposto il tipo di invio dati (GET O POST)
-     type: "POST",
+     type: "GET",
 
      //Dove devo inviare i dati recuperati dal form?
      url: "appoggio.php",
 
      //Quali dati devo inviare?
-     data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
+     data: "id_sur="+sid2+"&prj="+pr2+"&sex_target="+sex2+"&age1_target="+ag12+"&age2_target="+ag22+"&aree="+area2+"&reg="+reg2+"&iscrizione="+isc2+"&goal="+goal2+"&tag="+tag2+"&azione="+act2, 
      dataType: "html",
    success: function(data) 
              { 
+              $('.mess').fadeOut();
              $("div.ugenera").html(data);
            }
 
    });
  });
+
 
 
 // OBBLIGO RICERCA

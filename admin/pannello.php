@@ -55,7 +55,7 @@ if($openSearch=="Aggiungi")
 {
   
 $query_surv = "SELECT sur_id  FROM t_panel_control";
-$controlSur = mysqli_query($admin,$query_surv) or die(mysql_error());
+$controlSur = mysqli_query($admin,$query_surv);
 
 $duplicate=0;
 while ($row = mysqli_fetch_assoc($controlSur))
@@ -284,7 +284,7 @@ echo "</tr>";
 
 
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
-$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) or die(mysql_error());
+$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
 $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
  ?>
 

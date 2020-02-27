@@ -1,11 +1,3 @@
-<html>
-<head>
-
-</head>
-
-<body>
-
-
 
 
 
@@ -117,14 +109,15 @@ if($ss==true) { $ssiVar="&ssi=1"; }
 else { $ssiVar="";}
 ?>
 
- <div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
- <div class="panel panel-default">
-                        <div class="panel-heading">
-                          LINK:
+
+<div class="row">
+<div class="col-xl-12">
+ <div class="card shadow mb-12">
+ <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary">LINKS </h6></span>
                         </div>
 						<button class="btn btn-primary" data-clipboard-target=".lnk">Copia</button><br>
-                        <div class="panel-body">
+                        <div class="card-body">
 
 
 <div class="lnk">
@@ -135,7 +128,6 @@ if ($gt==true) {echo "<div>http://www.primisoft.com/primis/run.do?sid=".$sid."&p
 
 if ($nl>0)
 	{
-		echo "numero link:".$nl;
 	for ($i=0; $i<=$nl; ++$i) 
 		{
 		$varId="IDEX".($i+1000+$stId);
@@ -161,102 +153,143 @@ if ($nl>0)
 
 	   
 
- <div class="row">
-	   
-	   
-<div class="col-md-8 col-sm-8 col-xs-12">
-<div class="panel panel-info">
-               <div class="panel-heading">
-                          CREA LINK
+ <div class="row"> 
+<div class="col-xl-8 col-lg-8">
+<div class="card shadow mb-6">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> CREA LINK </h6></span>
                         </div>
 			
-			 <div class="panel-body">
+			 <div class="card-body">
 	  
 		    <form role="form" method="get" action="tools_link.php">
 			
-			<div class="col-md-12 col-sm-12 col-xs-12">
-		                     <div class="form-group col-md-7 col-sm-7 col-xs-12">
-                                            <label>Sid:</label>
-                                           <input class="form-control" style="text-transform:uppercase;" id="res" name="sid" type="text">
-                                            <p class="help-block">Numero ricerca.</p>
-							</div>	
+			<div class="form-row">
+
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">SID:</label>
+  			</div>
+ 			<input class="form-control" style="text-transform:uppercase;" id="res" name="sid" type="text">
+ 			</div>	
+			</div>	
 								
-							<div class="form-group col-md-5 col-sm-5 col-xs-12">
-                                            <label>Prj:</label>
-											<input class="form-control" style="text-transform:uppercase;" id="pro" name="prj" type="text">
-                                            <p class="help-block">Codice progetto.</p>
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">PRJ:</label>
+  			</div>
+			<input class="form-control" style="text-transform:uppercase;" id="pro" name="prj" type="text">
+            
                            
-							 </div>	
+			</div>	
 			</div>
+
+		<!-- form-row end -->
+		</div>
 	
 			
-			<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="form-row">
 				
-		                     <div class="form-group col-md-7 col-sm-7 col-xs-12">
-                                            <label>Start Id:</label>
-                                           <input class="form-control" id="stid" name="stid" value="0" type="text">
-                                            <p class="help-block">Id di partenza.</p>
-                             </div>		
-					
-                            <div class="form-group col-md-5 col-sm-5 col-xs-12">
-                                            <label>Info</label>
-                                            <div class="checkbox">
-                                                <label>
-                                                   <input  id="gst" name="guest" type="checkbox">Guest
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input id="ss" name="ss" type="checkbox">SSI
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input id="ot"  type="checkbox" onclick="viewOt()">Altro
-                                                </label>
-                                            </div>
-      
-                      </div>
-					  
+		<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">START ID:</label>
+  			</div>
+			<input class="form-control" id="stid" name="stid" value="0" type="text">
+			
+			</div>		
+			</div>
+
+
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">LINK DA CREARE:</label>
+  			</div>
+			<input class="form-control"  id="nLink" name="nl" type="text" onchange="soloNum();" value="0">
+			</div>
+			</div>
+			
+			
+
+			<!-- form-row end -->		  
 			</div>		  
-	 
-			
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						 <div class="form-group has-success col-md-7 col-sm-7 col-xs-12">
-                                            <label class="control-label" for="success">N&deg;Link</label>
-                                           <input class="form-control"  id="nLink" name="nl" type="text" onchange="soloNum();" value="0">&nbsp;&nbsp;<span class="alert"></span>
-                         </div>	
-						  <div class="form-group has-warning col-md-5 col-sm-5 col-xs-12">
-                                            <label class="control-label otVar" for="warning">Altre variabili:</label>
-                                            <input class="form-control" id="otVar" name="ot" type="text">
-                       </div>			
-			
-					</div>
+
 
 			
-		<div class="col-md-12 col-sm-12 col-xs-12">
-		    <input type="submit" id="crea" value="CREA">&nbsp;&nbsp;&nbsp;
-			Abilita<input id="abi" checked="checked" name="abi" type="checkbox">
-		   </div> 
-		    </form>
-		    
-		    </div>
-	  
-	  </div>
-	  
+			<div class="form-row">
 
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">ALTRE VARIABILI:</label>
+  			</div>
+             <input class="form-control" id="otVar" name="ot" type="text">
+            </div>			
+			</div>
+
+			<div class="form-group col-md-6 align-items-center">
+			<div class="col-sm-6">Opzioni</div>
+			<div class="form-check form-check-inline">
+			<input  id="gst" name="guest" type="checkbox">
+			<label class="form-check-label" for="inlineCheckbox1">&nbsp;&nbsp;GUEST</label>
+			</div>
+			<div class="form-check form-check-inline">
+			<input id="ss" name="ss" type="checkbox">
+			<label class="form-check-label" for="inlineCheckbox2"> &nbsp;&nbsp;SSI</label>
+			</div>
+			<div class="form-check form-check-inline">
+			<input id="ot"  type="checkbox" onclick="viewOt()">
+			<label class="form-check-label" for="inlineCheckbox3">&nbsp;&nbsp;ALTRO</label>
+			</div>
+			</div>
+
+			<!-- form-row end -->		
+			</div>		  
+
+
+			<div class="form-row">
+
+			<div class="form-group col-md-10">
+
+			</div>
+
+	<div class="form-group col-md-2">
+	<div class="form-row align-items-left">
+    <div class="col-auto my-1">
+      <div class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="customControlAutosizing" checked="checked">
+        <label class="custom-control-label" for="customControlAutosizing">Abilita</label>
+      </div>
+    </div>
+    <div class="col-auto my-1">
+      <button type="submit" id="crea" value="CREA" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
 
 </div>
 
+	<!-- form-row end -->	
+	 </div>
+	  
 
+	  
 
- <div class="col-md-4 col-sm-4 col-xs-12">
-<div class="panel panel-danger">
-               <div class="panel-heading">
-                          RIATTIVA ID
+	  </form>
+</div>
+
+</div>
+</div>
+
+ <div class="col-xl-4 col-lg-4">
+<div class="card shadow mb-6">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> RIATTIVA ID </h6></span>
                         </div>
 			
-<div class="panel-body">
+<div class="card-body">
 
 
 <form role="form" method="get" action="tools_link.php">
@@ -308,8 +341,6 @@ if ($nl>0)
 <?php 
 
 require_once('inc_footer.php'); 
-
-mysql_close();
 ?>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="jquery.copy-to-clipboard.js"></script>

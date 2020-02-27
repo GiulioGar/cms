@@ -11,7 +11,7 @@ $codregione=$_REQUEST['reg'];
 $ag1=$_REQUEST['age1_target'];
 $ag2=$_REQUEST['age2_target'];
 $goal=$_REQUEST['goal'];
-$sid=$_REQUEST['sid'];
+$sid=$_REQUEST['id_sur'];
 $prj=$_REQUEST['prj'];
 $tags=$_REQUEST['tag'];
 $iscrizione=$_REQUEST['iscrizione'];
@@ -32,19 +32,19 @@ $fromTag="";
 
 
 if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }
-if($tags !="undefined") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
+if($tags !="undefined" && $tags !="") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
 
 
 $query_new_attivi = "SELECT * FROM t_user_info i ".$fromTag."
 where  
 ".$addSex.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
 
-
 $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
 
-$infoInserita=false;
 
-   while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
+
+
+while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
     {
 
 	$proView=$row['province_id'];
@@ -57,7 +57,6 @@ $infoInserita=false;
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab);
 
-	
 
 	}	
 	
@@ -69,24 +68,19 @@ $infoInserita=false;
 
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
-	
-	}
-	
-
-	if ($aree=="null" && $codregione=="null")
-
-	{
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab);
 
 	
 	}
 
-    echo $inTab;
-
+	if( $codregione=="null" &&  $aree=="null")
+	{
+		$id=$row['user_id'];
+		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
+		$resTab = mysqli_query($admin,$inTab);
 	}
+	
+}
 
 
 	
@@ -125,7 +119,7 @@ echo $query_crea;
 
     //// ESPORTA CAMPIONE MVF IN CSV ////
 
-    @$csv="uid;email;firstName;genderSuffix";
+    @$csv="uid;email;firstName;genderSuffix;sid;prj";
 	$csv .= "\n";
 
 	
