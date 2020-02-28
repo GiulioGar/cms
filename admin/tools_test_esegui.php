@@ -1,15 +1,5 @@
 
-
-
-
-
-
 <?php 
-
-
-
-
-
 
 
 $sid = $_REQUEST['sid'];
@@ -59,7 +49,7 @@ $vId=strtoupper($vId);
 	
 	echo '<div class="progress progress-striped active"><div class="progress-bar progress-bar-success" style="width: '.$percentuale.'%;"></div></div>';
 	if ($fatti<=$nrtest) {echo '<span style=font-size:50px;color:green;> '.$fatti.' di '.$nrtest.' completati</span>';}
-	if ($fatti>$nrtest) {echo '<span style=font-size:50px;color:green;>TEST COMPLETATI CON SUCCESSO!!!</span>';}
+	if ($fatti>$nrtest) {echo '<span style=font-size:50px;color:green;>TEST TERMINATI!</span>';}
 	
 	if ($fatti>$nrtest) {echo "<script type='text/javascript'>mia.close(); </script>";}
 	}

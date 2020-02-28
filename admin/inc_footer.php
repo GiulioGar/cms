@@ -159,25 +159,7 @@ $.fn.dataTable.Api.register( 'clearPipeline()', function () {
     } );
 } );
  
-$(document).ready( function () {
-  $('#table_sur').show();
-  $('.mess').fadeOut();
-    $('#table_sur').DataTable( {
-        "order": [[ 11, "asc" ]],
-        "pagingType": "full_numbers",
-        "scrollY": false,
-        "scrollX": false,
-        "lengthMenu": [[10, 30, 100, -1], [10, 30, 100, "All"]],
-        "pageLength": 30,
-        'columnDefs': [ {
 
-                        'targets': [1,2,12], /* column index */
-
-                        'orderable': false, /* true or false */
-
-                        }]
-    } );
-} );
 
 </script>
 

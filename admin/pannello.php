@@ -422,3 +422,30 @@ $("#datepicker").datepicker({
 require_once('inc_footer.php'); 
 
 ?>
+
+<script>
+$(document).ready( function () {
+  $('#table_sur').show();
+  $('.mess').fadeOut();
+    $('#table_sur').DataTable( {
+        "order": [[ 11, "asc" ]],
+        "pagingType": "full_numbers",
+        "scrollY": false,
+        "scrollX": false,
+		"language": {
+      					"emptyTable": "Non sono presenti dati",
+						  "search":"Cerca:",
+						  "lengthMenu":     "Mostra _MENU_ ricerche"
+   					 },
+        "lengthMenu": [[10, 30, 100, -1], [10, 30, 100, "All"]],
+        "pageLength": 30,
+        'columnDefs': [ {
+
+                        'targets': [1,2,12], /* column index */
+
+                        'orderable': false, /* true or false */
+
+                        }]
+    } );
+} );
+</script>

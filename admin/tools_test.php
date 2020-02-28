@@ -4,6 +4,7 @@
 	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<style type="text/css">	
 		.progress-bar {
 		float: left;
@@ -114,127 +115,88 @@ $fl=0;
 	$test=0;
 
 
-
-	/*
-	if (!empty($sid) && !empty($prj) && !empty($nl)){
-		
-		$linkoriginale="http://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=GUEST&test=1";
-		
-		
-		
-		$contatti=0;
-		
-		echo '<script type="text/javascript">',
-		'function lanciatest(){',
-		'secondi='.$nl.';',
-		'millisecondi=secondi*1000;',
-		'myWindow = window.open("'.$linkoriginale.'", "myWindow", "width=250, height=250");',
-		'setTimeout(function() { myWindow.close();}, millisecondi);',
-		'}',
-		'lanciatest();',
-		'</script>';
-		
-		
-		
-		}
-	*/
-	
 	
 	
 
 ?>
-
-	
-	<script>
-		
-	</script>
-
-
-  <div class="content-wrapper">
-       <div class="container">
+<div class="content-wrapper">
+  <div class="container">
 	   
-	   
-
  <div class="row">
 	   
-	   
-<div class="col-md-8 col-sm-8 col-xs-12">
-<div class="panel panel-info">
-               <div class="panel-heading">
-                          Tool Test
+ 
+ <div class="col-xl-12 col-lg-8">
+<div class="card shadow mb-12">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> TOOL AUTO TEST </h6></span>
                         </div>
 			
-			 <div class="panel-body">
+			 <div class="card-body">
 	  
 		    <form id="iscrizione">
 			<input id="inizio" name="inizio" type="hidden" value="1">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-		                     <div class="form-group col-md-7 col-sm-7 col-xs-12">
-                                            <label>Sid:</label>
-                                           <input class="form-control" style="text-transform:uppercase;" id="sid" name="sid" type="text">
-                                            <p class="help-block">Numero ricerca.</p>
-							</div>	
-								
-							<div class="form-group col-md-5 col-sm-5 col-xs-12">
-                                            <label>Prj:</label>
-											<input class="form-control" style="text-transform:uppercase;" id="prj" name="prj" type="text">
-                                            <p class="help-block">Codice progetto.</p>
-                           
-							 </div>	
+
+			<div class="form-row">
+
+
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">SID:</label>
+			</div>
+             <input class="form-control" style="text-transform:uppercase;" id="sid" name="sid" type="text">
+			</div>	
+			</div>	
+
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">PRJ:</label>
+			</div>
+			<input class="form-control" style="text-transform:uppercase;" id="prj" name="prj" type="text">
+			</div>	
+			</div>	
+
+			<!-- END FORM ROW -->
 			</div>
 	
 			
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				
-		                	
-					
-                         
-					  
-			</div>		  
-	 
-			
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						 <div class="form-group has-success col-md-7 col-sm-7 col-xs-12">
-                                            <label class="control-label" for="success">Numero Test</label>
-                                           <input class="form-control"  id="nl" name="nl" type="text"  value="0">&nbsp;&nbsp;<span class="alert"></span>
-                         </div>	
+			<div class="form-row">  
+			<div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">Numero Test:</label>
+			</div>
+			<input class="form-control"  id="nl" name="nl" type="text"  value="0">
+             </div>	
+             </div>	
 						  	
-			
-					</div>
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<input type="submit" id="crea" value="Inizia Test">&nbsp;&nbsp;&nbsp;
-					
-				</div> 
+			 <div class="form-group col-md-6">
+			<button class="btn btn-primary" type="submit" id="crea" value="Inizia Test">START</button>
+			</div> 
 
-			
+			<!-- END FORM ROW -->
+			</div>
 		
 		    </form>
-			
-			
-		    
-		    </div>
-	    
-	  
-	  </div>
-	  
-	  
-	
-	  
 
-
+<!-- END card body -->
 </div>
 
-
-
-
-
-
-
-
-
+</div>
+</div>
 </div>
 
+<!-- BARRA RISPOSTE -->
+
+<div class="row"> 
+<div class="col-xl-12 col-lg-12">
 <div id="risposta"></div> 
+</div>
+</div>
+
+
+
 
 </div>
 </div>
@@ -245,7 +207,6 @@ $fl=0;
 
 require_once('inc_footer.php'); 
 
-mysql_close();
 ?>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="jquery.copy-to-clipboard.js"></script>

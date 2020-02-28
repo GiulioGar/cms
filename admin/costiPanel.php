@@ -13,22 +13,6 @@ $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
 $areapagina = "home";
 $coldx = "no";	
-@$id_sur = $_REQUEST['id_sur'];
-@$closearch = $_REQUEST['closearch'];
-@$openSearch = $_REQUEST['openSearch'];
-@$modSearch = $_REQUEST['modSearch'];
-$sid=$_REQUEST['sid'];
-$prj=$_REQUEST['prj'];
-$panel=$_REQUEST['panel'];
-$sex_target=$_REQUEST['sex_target'];
-$age1_target=$_REQUEST['age1_target'];
-$age2_target=$_REQUEST['age2_target'];
-$descrizione=$_REQUEST['descrizione'];
-$end_date=$_REQUEST['end_date'];
-$sur_date=$_REQUEST['sur_date'];
-$labprj=$_REQUEST['labprj'];
-$goal=$_REQUEST['goal'];
-$paese=$_REQUEST['paese'];
 $arrStime = array(1.35, 1.55, 2.05, 2.80, 3.75, 5.25, 8.00, 11.70, 14.65, 19.85, 1.60, 1.85, 2.35, 3.10, 4.05, 5.55, 8.25, 11.95, 14.95, 20.10, 1.90, 2.15, 2.65, 3.40, 4.35, 5.85, 8.60, 12.30, 15.25, 20.40, 2.20, 2.45, 2.95, 3.70, 4.65, 6.15, 8.90, 12.60, 15.55, 20.75, 2.55, 2.75, 3.25, 4.00, 4.95, 6.45, 9.20, 12.90, 15.85, 21.05, 2.85, 3.05, 3.60, 4.30, 5.30, 6.75, 9.50, 13.20, 16.15, 21.35, 3.50, 3.70, 4.20, 4.95, 5.90, 7.40, 10.15, 13.85, 16.80, 22.00, 4.05, 4.25, 4.80, 5.55, 6.50, 7.95, 10.70, 14.40, 17.35, 22.55, 4.70, 4.90, 5.40, 6.15, 7.10, 8.60, 11.35, 15.05, 18.00, 23.20, 5.10, 5.35, 5.85, 6.60, 7.55, 9.05, 11.75, 15.45, 18.45, 23.60, 5.55, 5.75, 6.30, 7.00, 8.00, 9.45, 12.20, 15.90, 18.85, 24.05, 5.95, 6.20, 6.70, 7.45, 8.40, 9.90, 12.65, 16.35, 19.30, 24.50, 6.40, 6.65, 7.15, 7.90, 8.85, 10.35, 13.05, 16.75, 19.75, 24.90 );
 
 
@@ -78,67 +62,21 @@ require_once('inc_tagbody.php');
 <div class="row">
 
 
-<div class="col-md-4 col-sm-4 col-xs-4">
-
-<div class="panel panel-default">	 
-                        <div class="panel-heading">
-                          FILTRA RICERCHE
-                        </div>
-	 <div class="panel-body text-center recent-users-sec">
-
-	<form role="form" name="modulo_cerca_prj" action="costiPanel.php" method="get">
-	<select class="form-control" name="prj">
-	<option value="">[PROGETTO]</option>
-	<option value="ABO" <?php if ($cerca_progetto=="ABO") {echo 'selected="selected"';} ?>>ABO</option>
-	<option value="ADV" <?php if ($cerca_progetto=="ADV") {echo 'selected="selected"';} ?>>ADV</option>
-	<option value="AST" <?php if ($cerca_progetto=="AST") {echo 'selected="selected"';} ?>>AST</option>
-	<option value="BRS" <?php if ($cerca_progetto=="BRS") {echo 'selected="selected"';} ?>>BRS</option>
-	<option value="CLP" <?php if ($cerca_progetto=="CLP") {echo 'selected="selected"';} ?>>CLP</option>
-	<option value="COS" <?php if ($cerca_progetto=="COS") {echo 'selected="selected"';} ?>>COS</option>
-	<option value="FAT" <?php if ($cerca_progetto=="FAT") {echo 'selected="selected"';} ?>>FAT</option>
-	<option value="FIT" <?php if ($cerca_progetto=="FIT") {echo 'selected="selected"';} ?>>FIT</option>
-	<option value="GSI" <?php if ($cerca_progetto=="GSI") {echo 'selected="selected"';} ?>>GSI</option>
-	<option value="IPS" <?php if ($cerca_progetto=="IPS") {echo 'selected="selected"';} ?>>IPS</option>
-	<option value="JTSMR" <?php if ($cerca_progetto=="JTSMR") {echo 'selected="selected"';} ?>>JTSMR</option>
-	<option value="LMI" <?php if ($cerca_progetto=="LMI") {echo 'selected="selected"';} ?>>LMI</option>
-	<option value="MRP" <?php if ($cerca_progetto=="MRP") {echo 'selected="selected"';} ?>>MRP</option>
-	<option value="MWB" <?php if ($cerca_progetto=="MWB") {echo 'selected="selected"';} ?>>MWB</option>
-	<option value="RES" <?php if ($cerca_progetto=="RES") {echo 'selected="selected"';} ?>>RES</option>
-	<option value="SIL" <?php if ($cerca_progetto=="SIL") {echo 'selected="selected"';} ?>>SIL</option>
-	<option value="SRM" <?php if ($cerca_progetto=="SRM") {echo 'selected="selected"';} ?>>SRM</option>
-	<option value="STR" <?php if ($cerca_progetto=="STR") {echo 'selected="selected"';} ?>>STR</option>
-	<option value="TNS" <?php if ($cerca_progetto=="TNS") {echo 'selected="selected"';} ?>>TNS</option>
-	</select>
-
-		
-		<select class="form-control" name="Canno">
-			<option value="<?php echo '2019' ?>">[ANNO]</option>
-			<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>
-			<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
-			<option value="2019" <?php if ($cerca_anno_originale=="2019") {echo 'selected="selected"';} ?>>2019</option>
-		</select>
-		<span class="form-group input-group-btn">
-	<p><input class="btn btn-danger" type="submit" value="Filtra"></p>
-	</span>
-	</form>
-	</div>
+<div class="col-md-6 col-md-offset-1">
+<div class="card shadow mb-6">	
+						<div class="card-heading">
+						<form role="form" name="modulo_cerca_prj" action="costiPanel.php" method="get">
+							<select class="form-control dropdown-primary Canno" name="Canno">
+								<option value="<?php echo '2020' ?>"><?php echo '2020' ?></option>
+								<option value="2019" <?php if ($cerca_anno_originale=="2019") {echo 'selected="selected"';} ?>>2019</option>
+								<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
+								<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>
+							</select>
+						</form>
+						</div>
 
 
-
-
-	
-</div>	
-
-</div>
-
-
-<div class="col-md-4 col-sm-4 col-xs-4">
-<div class="panel panel-default">	
-						<div class="panel-heading">
-                          COSTI <?php echo substr_replace($cerca_anno ,"", -1); ?>
-                        </div>
-	 <div class="panel-body text-center recent-users-sec">
-
+<div class="card-body text-center recent-users-sec">
 	 <?php
 
 while ($row = mysqli_fetch_assoc($tot_ricerche))
@@ -194,7 +132,7 @@ setlocale(LC_MONETARY, 'it_IT');
 
 		echo 
 		"
-		<table id='tabField' style='font-size:16px' class='table table-striped table-bordered table-hover'>
+		<table id='tabTotal' style='font-size:16px' class='table table-striped table-bordered table-hover'>
 		<tr>
 		<td style='font-weight:bold;'>Costi effettivi:</td>
 		<td style='font-weight:bold;'>".number_format($costoTot, 0, ',', '.')."€</td>
@@ -218,27 +156,43 @@ setlocale(LC_MONETARY, 'it_IT');
 </div>
 
 
-<div class="col-md-4 col-sm-4 col-xs-4">
-<div class="panel panel-default">	
-						<div class="panel-heading">
-                          CALCOLO COSTO INTERVISTE 
-                        </div>
-	 <div class="panel-body text-center recent-users-sec">
+<div class="col-md-6 col-md-offset-1">
+<div class="card shadow mb-6">
 
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> CALCOLO COSTO INTERVISTE </h6></span>
+ </div>
+
+
+<div class="card-body">      
+<form class="form-inline">
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Numero Interviste:</span>
+  </div>
+  <input name="nint" type="number"/> 
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Loi stimata:</span>
+  </div>
+  <input name="nint" type="number"/> 
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">IR stimata:</span>
+  </div>
+  <input name="ir" type="number"/> 
+</div>
+
+</div>
 	 
-		<table id='tabField' style='font-size:12px' class='table table-striped table-bordered table-hover'>
-		<tr>
-		<td style='font-weight:bold;'>Numero Interviste: </td>
-		<td style='font-weight:bold;'><input name="nint" type="number"/>  </td>
-		</tr>
-		<tr>
-		<td style='font-weight:bold'>Loi stimata:</td>
-		<td style='font-weight:bold; color:red;'><input name="loi" type="number"/> </td>
-		</tr>
-		<tr>
-		<td style='font-weight:bold'>IR stimata:</td>
-		<td style='font-weight:bold; color:green;'><input name="ir" type="number"/> </td>
-		</tr>
+	 
+
+	
+
 		<tr><td colspan="2">COSTI:</td></tr>
 		<tr><td>Costo per Intervista:</td>
 		<td><span class="cpi"></span> €</td></tr>
@@ -246,19 +200,19 @@ setlocale(LC_MONETARY, 'it_IT');
 		<td><span class="tot"></span> €</td></tr>
 		</table>
 
-	</div>
-
 </div>
 </div>
 
+
+</div>
 </div>
 
 
  <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="panel panel-default">
+  <div class="col-xl-12 col-lg-12">
+   <div class="card shadow mb-12">
    
-   <div class="panel-body text-center recent-users-sec">
+   <div class="card-body text-center recent-users-sec">
     <div class="table-responsive">
 <?php
 echo "<table id='tabField' style='font-size:11px' class='table table-striped table-bordered table-hover'>";
@@ -481,11 +435,49 @@ if (varLoi<3) {rows=0;}
 </script>
 
 
+<script>
+
+//al click dei disponibili
+  $("select.Canno").on('change', function() {
+
+
+let can= $("select.Canno").val();
+let tabtot;
+let tabField;
+
+$('.mess2').fadeIn();
+
+  //chiamata ajax
+    $.ajax({
+
+     //imposto il tipo di invio dati (GET O POST)
+      type: "GET",
+
+      //Dove devo inviare i dati recuperati dal form?
+      url: "function_costiPanel.php",
+
+      //Quali dati devo inviare?
+      data: "Canno="+can, 
+      dataType: "html",
+	  success: function(data) 
+	  					{ 
+							$('.mess2').fadeOut(); 
+							tabField=$(data).filter("#tabField");
+							$("#tabField").html(tabField);
+							tabtot=$(data).filter("#tabTotal");
+							$("#tabTotal").html(tabtot);
+
+						}
+
+    });
+  });
+
+</script>
+
+
 
 <?php
 
 require_once('inc_footer.php'); 
 
-
-mysql_close();
 ?>

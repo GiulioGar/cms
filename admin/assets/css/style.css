@@ -16,6 +16,17 @@
    GENERAL STYLES
  ============================================================ */
 
+ html {
+  height: 100% !important;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content-wrapper { min-height: 100% !important; }
+
 .row { padding:10px;}
 
 

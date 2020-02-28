@@ -61,52 +61,28 @@ $arrComp=array_unique($arrComp);
 
 
 
-<div class="col-md-9 col-sm-9 col-xs-9">
-
-<table style="font-size:11px"  class="table table-striped table-bordered stats" >
+<div class="col-md-8 col-md-offset-1">
 
 
-<tr> <th>Uid</th><th>Nome</th><th>Anno</th><th>Email</th><th>Complete</th><th>Inviti</th><th>%</th></tr>
+<div class="card card-default">
+<div class="card-body">
+<div class="table-responsive">
 
-<tr> <th><button id="cerca" type="button">Cerca</button></th>
-<th><button id="azzera" type="button">Azzera</button></th>
-<th>
+<table style="font-size:11px" id="table_sur"  class="table table-striped table-hover dt-responsive display dataTable no-footer" >
 
-<select id="selAnno">
-<option value="null">Anno</option>
-<?php
-$currYear=date("Y");
-
-for ($i=0; $i<=20 ; ++$i)
-{
-$mostrAnno=$currYear-$i;
-echo "<option value='".$mostrAnno."'>".$mostrAnno."</option>";
-}
-
-
-?>
-
-</select>
-
-</th>
-
-<th>&nbsp;</th>
-
-<th>
-
-<input type="number" min="0" max="999" id="selComp">
-
-</th>
-
-<th> 
-
-<input type="number"  min="0" max="999" id="selInviti">
-</th>
-
-<th><input type="number"  min="0" max="999" id="selPerc"></th>
-
+<thead>
+<tr> 
+<th>Uid</th>
+<th>Anno</th>
+<th>Email</th>
+<th>Complete</th>
+<th>Inviti</th>
+<th>%</th>
 </tr>
+</thead>
 
+
+<tbody>
 <?php
 
 	while ($row = mysqli_fetch_assoc($cerca))
@@ -125,7 +101,6 @@ echo "<option value='".$mostrAnno."'>".$mostrAnno."</option>";
           
           echo "<tr class='reg'>
           <td><a href=\"user.php?user_id=".$row['uid']."\" style=\"color:#00C; text-decoration:underline \" target='_blank'>".$row['uid']."</a></td>
-          <td>".$row['first_name']."</td>
           <td class='regan'>".substr($row['reg_date'], 0, 4)."</td>
           <td class='regmail'>".$row['email']."</td>
           <td class='regcomp'>".$row['comp']."</td>
@@ -139,20 +114,24 @@ echo "<option value='".$mostrAnno."'>".$mostrAnno."</option>";
 		}
 
 ?>
+</tbody>
 </table>
 
 </div>
+</div>
 
-<div class="col-md-3 col-sm-3 col-xs-3">
+</div>
+</div>
 
-<div class="row">
- 
-    <div class="panel panel-primary">
-   <div class="panel-heading">
-   RICERCHE
-   </div>
+<div class="col-md-4 col-md-offset-1">
+
+<div class="card shadow mb-12">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> RICERCHE </h6></span>
+ </div>
    
- <div class="panel-body  recent-users-sec"> 
+ <div class="card-body  recent-users-sec"> 
 <table style="font-size:11px"  class="table table-striped table-bordered">
 		<tr class='intesta'><th>Numero Ricerche</th><th >Utenti</th></tr>
 		<tr>
@@ -239,7 +218,34 @@ if ((leggoClass=="regan" && testotd!=sanno && sanno!=="null") || (leggoClass=="r
 
 <?php
 
-if (!isset($coldx)) {
-require_once('inc_col_dx.php');
-}
+
 require_once('inc_footer.php'); 
+
+?>
+
+<script>
+$(document).ready( function () {
+  $('#table_sur').show();
+  $('.mess').fadeOut();
+    $('#table_sur').DataTable( {
+        "order": [[ 3, "desc" ]],
+        "pagingType": "full_numbers",
+        "scrollY": false,
+        "scrollX": false,
+		"language": {
+      					"emptyTable": "Non sono presenti dati",
+						  "search":"Cerca:",
+						  "lengthMenu":     "Mostra _MENU_ utenti"
+   					 },
+        "lengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
+        "pageLength": 50,
+        'columnDefs': [ {
+
+                        'targets': [1,3], /* column index */
+
+                        'orderable': false, /* true or false */
+
+                        }]
+    } );
+} );
+</script>

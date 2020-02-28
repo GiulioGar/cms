@@ -283,6 +283,10 @@ if ($nl>0)
 </div>
 </div>
 
+	<!-- colonna link end -->	
+
+	<!-- colonna riattiva id -->	
+
  <div class="col-xl-4 col-lg-4">
 <div class="card shadow mb-6">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -294,33 +298,58 @@ if ($nl>0)
 
 <form role="form" method="get" action="tools_link.php">
 
+<div class="form-row">
 
-  <div class="form-group">
-                            <label>Sid</label>
-                            <input class="form-control" style="text-transform:uppercase;" id="res" name="sid" type="text">
-                            <p class="help-block">Numero ricerca</p>
+<div class="form-group col-md-6">
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+	<label class="input-group-text" for="inputGroupSelect01">SID:</label>
+  </div>
+<input class="form-control" style="text-transform:uppercase;" id="res" name="sid" type="text">
+                        
+  </div>
   </div>
 
-  <div class="form-group">
-                            <label>Progetto</label>
-                            <input class="form-control" style="text-transform:uppercase;" id="res" name="prj" type="text">
-                            <p class="help-block">Codice progetto</p>
+  <div class="form-group col-md-6">
+			<div class="input-group mb-3">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">PRJ:</label>
+  			</div>
+   <input class="form-control" style="text-transform:uppercase;" id="res" name="prj" type="text">
+                        
   </div>
-  
-  
-     <hr />
+  </div>
+
+<!-- end formgroup  -->
+ </div>
+ <hr />
    
-       <div class="form-group">
-       <label>Text area</label>
+ <div class="form-row">
+
+ <div class="form-group col-md-12">
+			<div class="input-group mb-6">
+ 			 <div class="input-group-prepend">
+   			 <label class="input-group-text" for="inputGroupSelect01">AGGIUNGI ID:</label>
+  			</div>
        <textarea class="form-control" style="text-transform:uppercase;" name="idval" cols="15" placeholder="Inserisci qui gli UID" rows="10"></textarea>
        </div>
+	</div>   
+
+<!-- end formgroup  -->
+</div>	
   
   <hr />
+
+  <div class="form-row">
+  <div class="form-group col-md-9">
+  </div>
+  <div class="form-group col-md-3">
 			<div style="color:red"><?php echo $messAgg;?></div>
 			<div style="color:red"><?php echo $messDel;?></div>  
-			<div style="margin-top:70px"> <input align="left" name="ctRe" type="submit" id="attiva" value="ATTIVA"></div>
-  
-
+			<button class="btn btn-success" align="left" name="ctRe" type="submit" id="attiva" value="ATTIVA">Attiva</button>
+  </div>
+<!-- end formgroup  -->
+</div>
 		    
 </form>
 

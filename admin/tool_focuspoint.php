@@ -108,13 +108,13 @@ select{
      <div class="container">
 	 
 <div class="row">
-   <div class="col-md-8 col-sm-8 col-xs-12">
-    <div class="panel panel-primary">	
-	                        <div class="panel-heading">
-                     TOOL FOCUSPOINT
+<div class="col-xl-8 col-lg-8">
+<div class="card shadow mb-6">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> TOOL FOCUS POINT </h6></span>
                         </div>
-<div class="panel-body text-center recent-users-sec">		
- 
+
+ <div class="card-body">
 <form action="stampa_risultato.php" method="POST">
 <ul class="form-style-1">
  <li><label>Urlimg <span class="required">*</span></label><input class="form-control" type="text" name="urlimg" value="" size="106" />
@@ -137,6 +137,4 @@ select{
 
 require_once('inc_footer.php'); 
 
-
-mysql_close();
 ?>

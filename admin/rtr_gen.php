@@ -1,12 +1,3 @@
-<html>
-<head>
-
-</head>
-
-<body>
-
-
-
 
 
 <?php require_once('../Connections/admin.php'); 
@@ -31,34 +22,24 @@ require_once('inc_tagbody.php');
 
 ?>
 
-
-
-
  <div class="content-wrapper">
        <div class="container">
 	   
-
-
-
-
-	
-	
-
-
-	   
-
- <div class="row">
+<div class="row">
 	   
 	   
-<div class="col-md-8 col-sm-8 col-xs-12">
-<div class="panel panel-info">
-               <div class="panel-heading">
-                         CARICA SDL
-                        </div>
+ <div class="col-xl-8 col-lg-8">
+
+
+ <div class="card shadow mb-8">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+<h6 class="m-0 font-weight-bold text-primary"> CARICA SDL </h6></span>
+</div>
 			
-			 <div class="panel-body">
+ <div class="card-body">
 	  
 <form action="rtr_gen.php" method="post" enctype="multipart/form-data">  
+
    <input type="file" name="uploaded_file">  
    <input type="submit" name="up" value="Genera Config">  
    <input type="hidden" name="tradotto" value="1" />
@@ -79,22 +60,16 @@ require_once('inc_tagbody.php');
   
   
 ?>		    
-		    </div>
+</div>
 	  
-	  </div>
-	
-<div class="panel panel-info">
-               <div class="panel-heading">
-                         SCARICA FILE DOMANDE
-                        </div>
-
-
-
-						
-<div class="panel-body ">
+<div class="card shadow mb-8">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+<h6 class="m-0 font-weight-bold text-primary"> SCARICA FILE DOMANDE </h6></span>
+</div>				
+<div class="card-body ">
 	  
 	  
-	  <?php 
+<?php 
 
 
 $pathsdl="res/".basename( $_FILES['uploaded_file']['name']);
@@ -286,25 +261,24 @@ $arr = explode("send qst;", $sdlb);
 
 ?>
   
-	    </div>
-	  
- </div>	
+</div>	  
+</div>	
 
 
 	 
 
-
+</div>
 </div>
 
 
 
- <div class="col-md-4 col-sm-4 col-xs-12">
-<div class="panel panel-danger">
-               <div class="panel-heading">
-                        CONFIGURA QUOTE 
+ <div class="col-xl-4 col-lg-4">
+ <div class="card shadow mb-6">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> CONFIGURA QUOTE </h6></span>
                         </div>
 			
-<div class="panel-body">
+<div class="card-body">
 
 
 
@@ -362,7 +336,6 @@ $arr = explode("send qst;", $sdlb);
 
 require_once('inc_footer.php'); 
 
-mysql_close();
 ?>
 
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
@@ -411,6 +384,3 @@ $( "#genera" ).on('click', function() {
 		});
 		
 	</script>
-
-</body>
-</html>

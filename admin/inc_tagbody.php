@@ -57,7 +57,7 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
           <a class="dropdown-item" href="tools_link.php">Generatore Link</a>
           <a class="dropdown-item" href="tools_test.php">Auto test</a>
           <a class="dropdown-item" href="rtr_gen.php">Rtr Converter</a>
-          <a class="dropdown-item" href="pannello_target.php">Focus Point</a>
+          <a class="dropdown-item" href="tool_focuspoint.php">Focus Point</a>
           <div class="dropdown-divider"></div>
           <a target="_blank" class="dropdown-item" href="http://mailer.primisoft.com/admin/compila_mail_gest.php">Mailer</a>
         </div>

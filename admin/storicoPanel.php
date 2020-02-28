@@ -7,21 +7,7 @@ $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
 $areapagina = "home";
 $coldx = "no";	
-@$id_sur = $_REQUEST['id_sur'];
-@$closearch = $_REQUEST['closearch'];
-@$openSearch = $_REQUEST['openSearch'];
-@$modSearch = $_REQUEST['modSearch'];
-$sid=$_REQUEST['sid'];
-$prj=$_REQUEST['prj'];
-$panel=$_REQUEST['panel'];
-$sex_target=$_REQUEST['sex_target'];
-$age1_target=$_REQUEST['age1_target'];
-$age2_target=$_REQUEST['age2_target'];
-$descrizione=$_REQUEST['descrizione'];
-$end_date=$_REQUEST['end_date'];
-$sur_date=$_REQUEST['sur_date'];
-$goal=$_REQUEST['goal'];
-$paese=$_REQUEST['paese'];
+
 
 $data=date("Y-m-d");
 
@@ -47,46 +33,53 @@ require_once('inc_tagbody.php');
 <div class="content-wrapper">
   <div class="container">
 
- <div class="row" style=" float:right; min-height:90px;">
-<div class="col-md-12 col-sm-12">   
-    <div class="form-group">
-	<form role="form" name="modulo_cerca_prj" style="height:50px; margin-left:150px; max-width:500px; position:relative; top:10px; " action="storicoPanel.php" method="get">
-		<select class="form-control" name="Canno">
-			<option value="">[ANNO]</option>
-			<option value="2014" <?php if ($cerca_anno_originale=="2014") {echo 'selected="selected"';} ?>>2014</option>
-			<option value="2015" <?php if ($cerca_anno_originale=="2015") {echo 'selected="selected"';} ?>>2015</option>
-			<option value="2016" <?php if ($cerca_anno_originale=="2015") {echo 'selected="selected"';} ?>>2016</option>
-			<option value="2017" <?php if ($cerca_anno_originale=="2015") {echo 'selected="selected"';} ?>>2017</option>
-		</select>
-		
-	<input class="btn btn-danger" type="submit" value="Filtra"></td>
-	</form>
-	</div>
-	
-</div>
-	
-</div>
-	
 
 
+</div>
 <div class="row">
-<div class="col-md-12 col-sm-12">
+<div class="col-md-2 col-md-offset-1">
+</div>
 
+<div class="col-md-8 col-md-offset-1">
+<div class="card-body">
+<div class="table-responsive">
+<table id='tabField' style='font-size:11px text-align:center' class='table table-striped table-hover'>
+<thead>
+<th colspan='1' style='font-size:18px; color:red'>Anno: <span class='stampanno'>2020</span> </th>
+<th colspan='2' >
+<form role="form" name="modulo_cerca_prj">
+
+<div class="bootstrap-select-wrapper">
+		<select class="form-control Canno" name="Canno">
+			<option value="">[ANNO]</option>
+			<option value="2016" <?php if ($cerca_anno_originale=="2016") {echo 'selected="selected"';} ?>>2016</option>
+			<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>
+			<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
+			<option value="2019" <?php if ($cerca_anno_originale=="2019") {echo 'selected="selected"';} ?>>2019</option>
+			<option value="2020" <?php if ($cerca_anno_originale=="2020") {echo 'selected="selected"';} ?>>2020</option>
+		</select>
+	</form>
+</div>
+</th>
+<th style="vertical-align:middle" colspan="7">
+<div class="alert alert-secondary mess2" role="alert" style="display:none"> Caricamento in corso... </div>
+</th>
+<tr class='intesta'>
+<td style='font-weight:bold'>Mese</td>
+<td style='font-weight:bold'>Ricerche</td>
+<td style='font-weight:bold'>Panel %</td>
+<td style='font-weight:bold'>Complete</td>
+<td style='font-weight:bold'>Costi</td>
+<td style='font-weight:bold'>Tot.Iscritti</td>
+<td style='font-weight:bold'>Attivi</td>
+<td style='font-weight:bold'>% Attivi</td>
+<td style='font-weight:bold'>Registrati</td>
+<td style='font-weight:bold'>Premi richiesti</td>
+</tr>
+</thead>
+
+<tbody>
 <?php
-echo "<table id='tabField' style='font-size:12px' class='table table-striped table-bordered'>";
-echo "<th colspan='10' style='font-size:16px; color:red'>Anno:".$cerca_anno."</th>";
-echo "<tr class='intesta'>";
-echo "<td style='font-weight:bold'>Mese</td>";
-echo "<td style='font-weight:bold'>Ricerche</td>";
-echo "<td style='font-weight:bold'>Panel %</td>";
-echo "<td style='font-weight:bold'>Complete</td>";
-echo "<td style='font-weight:bold'>Costi</td>";
-echo "<td style='font-weight:bold'>Tot.Iscritti</td>";
-echo "<td style='font-weight:bold'>Attivi</td>";
-echo "<td style='font-weight:bold'>% Attivi</td>";
-echo "<td style='font-weight:bold'>Registrati</td>";
-echo "<td style='font-weight:bold'>Premi richiesti</td>";
-echo "</tr>";
 
 $arrNum = array("01","02","03","04","05","06","07","08","09","10","11","12");
 $arrMes = array("Gennaio", "Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
@@ -157,14 +150,64 @@ foreach ($arrNum as $value)
 		$cic++;
 }
  ?>
+</tbody>
 </table>
 
 
 </div>
 </div>
 
+<div class="col-md-2 col-md-offset-1">
+</div>
+
 </div>
 </div>
+
+
+
+</div>
+</div>
+
+
+<script>
+
+//al click dei disponibili
+  $("select.Canno").on('change', function() {
+
+
+ let can= $("select.Canno").val();
+let annogiusto;
+
+$('.mess2').fadeIn();
+
+  //chiamata ajax
+    $.ajax({
+
+     //imposto il tipo di invio dati (GET O POST)
+      type: "GET",
+
+      //Dove devo inviare i dati recuperati dal form?
+      url: "function_storicoPanel.php",
+
+      //Quali dati devo inviare?
+      data: "Canno="+can, 
+      dataType: "html",
+	  success: function(data) 
+	  					{ 
+							$('.mess2').fadeOut(); 
+							$("tbody").html(data).not(".mostranno");
+							annogiusto=$(data).filter(".mostranno");
+							$('.stampanno').html(annogiusto);
+							$("tbody span.mostranno").remove();
+						}
+
+    });
+  });
+
+</script>
+
+
+
 <?php
 
 require_once('inc_footer.php'); 
