@@ -19,35 +19,9 @@ if ($mese==""){$mese=$mesecorrente;}
 $anno=$_REQUEST['anno'];
 if ($anno==""){$anno=$annocorrente;}
 
-$tipocampagna=$_REQUEST['tipocampagna'];
-if ($tipocampagna==""){$tipocampagna=1;}
 
 
-require_once('inc_taghead.php');
-require_once('inc_tagbody.php'); 
 
-if ($tipocampagna==0)
-{
-$query_nuoviutenti = "SELECT created FROM referral where referral_uid=63388";
-$esegui_query_nuoviutenti = mysqli_query($admin,$query_nuoviutenti) or die(mysql_error());
-
-
-while ($row = mysqli_fetch_assoc($esegui_query_nuoviutenti))
-{
-	$timestamp=$row['created'];
-	$ricavamese=date('m', $timestamp);
-	$ricavaanno=date('Y', $timestamp);
-	
-	if ($ricavamese==$mese && $ricavaanno==$anno){
-						   $contaiscrittimese=$contaiscrittimese+1;
-						   $iscritti[$contaiscrittimese]=$timestamp;
-						   }
-}
-
-}
-
-if ($tipocampagna==1)
-{
 
 $query_nuoviutenti = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' ";
 $esegui_query_nuoviutenti = mysqli_query($admin,$query_nuoviutenti) or die(mysql_error());
@@ -66,7 +40,7 @@ while ($row = mysqli_fetch_assoc($esegui_query_nuoviutenti))
 	}
 }
 
-}
+
 
 
 
@@ -85,84 +59,30 @@ $giorno_n=date('w',strtotime($data));
 
 $giornimese = date("t",strtotime($data));
 
-
-
+$vediMese;
+    
+if ($mese=="01") {$vediMese='ISCRITTI GENNAIO:';} 
+if ($mese=="02") {$vediMese='ISCRITTI FEBBRAIO:';} 
+if ($mese=="03") {$vediMese='ISCRITTI MARZO:';} 
+if ($mese=="04") {$vediMese='ISCRITTI APRILE:';} 
+if ($mese=="05") {$vediMese='ISCRITTI MAGGIO:';} 
+if ($mese=="06") {$vediMese='ISCRITTI GIUGNO:';} 
+if ($mese=="07") {$vediMese='ISCRITTI LUGLIO:';} 
+if ($mese=="08") {$vediMese='ISCRITTI AGOSTO:';} 
+if ($mese=="09") {$vediMese='ISCRITTI SETTEMBRE:';} 
+if ($mese=="10") {$vediMese='ISCRITTI OTTOBRE:';} 
+if ($mese=="11") {$vediMese='ISCRITTI NOVEMBRE:';} 
+if ($mese=="12") {$vediMese='ISCRITTI DICEMBRE:';} 
 
 ?>
 
-<div class="content-wrapper">
-<div class="container">
-
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-
-<div class="panel panel-warning">	
-	                        <div class="panel-heading">
-                        UTENTE
-                        </div>
-
-		<div class="panel-body text-center recent-users-sec">	
-
-<form role="form" name="modulo_cerca_mese" action="MvfDettaglioIscritti.php" method="get">
-	<select class="form-control" name="mese">
-	<option value="">[MESE]</option>
-	<option value="01" <?php if ($mese=="01") {echo 'selected="selected"';} ?>>Gennaio</option>
-	<option value="02" <?php if ($mese=="02") {echo 'selected="selected"';} ?>>Febbraio</option>
-	<option value="03" <?php if ($mese=="03") {echo 'selected="selected"';} ?>>Marzo</option>
-	<option value="04" <?php if ($mese=="04") {echo 'selected="selected"';} ?>>Aprile</option>
-	<option value="05" <?php if ($mese=="05") {echo 'selected="selected"';} ?>>Maggio</option>
-	<option value="06" <?php if ($mese=="06") {echo 'selected="selected"';} ?>>Giugno</option>
-	<option value="07" <?php if ($mese=="07") {echo 'selected="selected"';} ?>>Luglio</option>
-	<option value="08" <?php if ($mese=="08") {echo 'selected="selected"';} ?>>Agosto</option>
-	<option value="09" <?php if ($mese=="09") {echo 'selected="selected"';} ?>>Settembre</option>
-	<option value="10" <?php if ($mese=="10") {echo 'selected="selected"';} ?>>Ottobre</option>
-	<option value="11" <?php if ($mese=="11") {echo 'selected="selected"';} ?>>Novembre</option>
-	<option value="12" <?php if ($mese=="12") {echo 'selected="selected"';} ?>>Dicembre</option>
-	</select>
-	
-	
-	<select class="form-control" name="anno">
-		<option value="">[ANNO]</option>
-		<option value="2020" <?php if ($anno=="2020") {echo 'selected="selected"';} ?>>2020</option>
-		<option value="2019" <?php if ($anno=="2019") {echo 'selected="selected"';} ?>>2019</option>
-		<option value="2018" <?php if ($anno=="2018") {echo 'selected="selected"';} ?>>2018</option>
-	</select>
-	
-	
-	<input class="btn btn-danger" type="submit" value="Seleziona"></td>
-	</form>
-</div>
-
-
-<div style="height:60px;">
-
-</div>
-
-<div style="width:250px;">
-<b>
-<?php
-     
-	
-	 if ($mese=="01") {echo 'ISCRITTI GENNAIO:';} 
-	 if ($mese=="02") {echo 'ISCRITTI FEBBRAIO:';} 
-	 if ($mese=="03") {echo 'ISCRITTI MARZO:';} 
-	 if ($mese=="04") {echo 'ISCRITTI APRILE:';} 
-	 if ($mese=="05") {echo 'ISCRITTI MAGGIO:';} 
-	 if ($mese=="06") {echo 'ISCRITTI GIUGNO:';} 
-	 if ($mese=="07") {echo 'ISCRITTI LUGLIO:';} 
-	 if ($mese=="08") {echo 'ISCRITTI AGOSTO:';} 
-	 if ($mese=="09") {echo 'ISCRITTI SETTEMBRE:';} 
-	 if ($mese=="10") {echo 'ISCRITTI OTTOBRE:';} 
-	 if ($mese=="11") {echo 'ISCRITTI NOVEMBRE:';} 
-	 if ($mese=="12") {echo 'ISCRITTI DICEMBRE:';} 
-	 
-	 
-	 echo $contaiscrittimese;
-?>
-</b>
-</div>
-
-<table align="center" style="width:90%" class='table table-striped table-bordered table-hover' cellpadding="5">
+<table id="tabIscritti" class='table table-striped table-bordered table-hover' cellpadding="5">
+<thead>
+<tr><th colspan="8"> 
+<button type="button" class="btn btn-success">
+<?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
+</button> 
+</th></tr>   
 <tr><td>Lunedi'</td><td>Martedì'</td><td>Mercoledì'</td><td>Giovedì'</td><td>Venerdì'</td><td>Sabato</td><td>Domenica</td><td><b>ISCRITTI</b></td></tr>
 <?php
 for ($i = 1; $i <= 6; $i++) {
@@ -319,10 +239,4 @@ echo "<b>".$iscrittisettimana."</b>";
 }
 }
 ?>
-<table>
-
-</div>
-</div>
-</div>
-</div>
-</div>
+</table>

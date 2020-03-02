@@ -86,12 +86,13 @@ require_once('inc_tagbody.php');
  
 <div class="row">
 
- <div class="col-md-8 col-sm-8 col-xs-8">
-  <div class="panel panel-default">
-   <div class="panel-heading">
-  INSERIRE ID
-   </div> 
- <div class="panel-body recent-users-sec">
+ <div class="col-md-6">
+ <div class="card shadow mb-6">
+
+ <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> INSERIRE UID </h6></span>
+ </div>
+ <div class="card-body recent-users-sec">
 
 
 <form action="user_info.php" method="POST">
@@ -104,17 +105,18 @@ require_once('inc_tagbody.php');
 </div>
 </div>
 
- <div class="col-md-4 col-sm-4 col-xs-4">
-  <div class="panel panel-warning">
-   <div class="panel-heading">
- Seleziona i dati da visualizzare:
-   </div> 
+ <div class="col-md-6 col-sm-6 col-xs-6">
+  <div class="card card-primary shadow mb-6">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> Selezionare i dati da visualizzare:</h6></span>
+ </div>
 
- <div class="panel-body recent-users-sec">
+ <div class="card-body recent-users-sec">
+	 
  
-   <div class="checkbox">
+    <div class="form-check">
                 <label>
-                <input name="dat[0]" value="v1" type="checkbox" />&nbsp;Nome
+                <input class="form-check-input" name="dat[0]" value="v1" type="checkbox" />&nbsp;Nome
                 </label>
                  </div>
  
@@ -178,7 +180,7 @@ require_once('inc_tagbody.php');
                  </div>
 
 <input type="hidden" name="azione" value="ricerca"  /> 
-<input class="btn btn-danger" name="submit" type="submit" value="CERCA" /></div></td>
+<button class="btn btn-primary" name="submit" type="submit" value="CERCA" >CERCA</div></td>
 
 
 </form>
@@ -196,11 +198,11 @@ if ($azione =="ricerca")
 
 <div class="row">
 
- <div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="panel panel-primary">
-   <div class="panel-heading">
-  RISULTATI
-   </div> 
+ <div class="col-md-12">
+  <div class="card card-primary">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> Utenti trovati:</h6></span>
+ </div>
  <div class="panel-body recent-users-sec">
 
 <table class="table table-striped table-bordered" style="font-size:12px;" >

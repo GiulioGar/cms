@@ -92,7 +92,7 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
 								};
               ?>
       <li class="nav-item">
-        <a class="nav-link" href="costiPanel.php"><i class="fas fa-info-circle"></i>Info Utenti</a>
+        <a class="nav-link" href="user_info.php"><i class="fas fa-info-circle"></i>Info Utenti</a>
       </li>
 
       <li class="nav-item dropdown">
@@ -100,7 +100,7 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
        <i class="fas fa-bullhorn"></i> Reclutamento
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="MvfDettaglioIscritti.php.php">Conteggi</a>
+          <a class="dropdown-item" href="nuoviscritti.php">Conteggi</a>
           <a class="dropdown-item" href="conta_campagna.php">Statistiche</a>
       </li>  
 

@@ -98,7 +98,7 @@ $add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
 	
 	//echo $cloSur['tot'].' '.$cloSur2['tot'];
 
-
+/*
 if ($cloSur['tot'] != $cloSur2['tot'])
 {
 //COPIO HISTORY
@@ -108,6 +108,7 @@ FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_
 $query_copia_history_copy_sample = mysqli_query($admin,$query_copia_history_copy) or die(mysql_error());
 $query_copia_history_copy_sample_t = mysqli_fetch_assoc($query_copia_history_copy_sample);
 }
+*/
 
 
 $query_cerca = "SELECT * FROM t_history_copia,t_user_info where pagato like '$cerca_progetto' AND t_history_copia.user_id=t_user_info.user_id order by event_date asc";
@@ -152,32 +153,51 @@ while ($row = mysqli_fetch_assoc($cerca_uid))
 <div class="content-wrapper">
  <div class="container">
 
+
+
  <div class="row">
- <div class="col-md-8">
+ <div class="col-md-9">
  <form role="form" name="modulo_cerca_prj" action="RichiestePremio.php" method="get">
-	 <select class="form-control" name="typ">
+
+ <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary" type="submit" value="Filtra">Filtra</button>
+  </div>
+  <select class="form-control" name="typ">
 		 <option value="">[PAGATI/NO PAGATI]</option>
 		 <option value="0" <?php if ($cerca_progetto=="0") {echo 'selected="selected"';} ?>>NO PAGATO</option>
 		 <option value="1" <?php if ($cerca_progetto=="1") {echo 'selected="selected"';} ?>>PAGATO</option>
 		
 	 </select>
-	 
- <p><input class="btn btn-danger" type="submit" value="Filtra"></p>
- </span>
+</div>
+
  </form>
- 
-  <div class="panel panel-default">
-   <div class="panel-heading">
-   RICHIESTE PREMI
-   </div>
+
+<form  action="RichiestePremio.php" method="post">
+
+<div class="card shadow p-8 mb-8 bg-white rounded">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> RICHIESTE PREMIO</h6></span>
+	<input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' />
+ </div>
    
 
- <div class="panel-body recent-users-sec">
-<form  action="RichiestePremio.php" method="post">
-<input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' />
-<table style="font-size:11px"  class="table table-striped table-bordered" >
-		<tr class='intesta'> <th>Uid</th><th>Anomalie</th><th>Premio</th><th>Prima</th><th>Dopo</th><th>Richiesta</th><th>Codice</th><th colspan='2'>Pagamento</th></tr>
+ <div class="card-body recent-users-sec">
+<table id='table_sur' style="font-size:11px;"  class="table table-striped table-hover dt-responsive display dataTable no-footer" >
+<thead>
+<tr class='intesta'>
+	 <th style="max-width:200px;">Uid</th>
+	 <th>Check</th>
+	 <th>Premio</th>
+	 <th>Pre</th>
+	 <th>Post</th>
+	 <th>Richiesta</th>
+	 <th>Codice</th>
+	 <th>Pagamento</th>
+	</tr>
 
+</thead>	
+<tbody>	
 <?php
 $pagati=0;
 $pagati2=0;
@@ -212,12 +232,17 @@ $contapagati20euro=0;
 			if (strstr($euroPaga,"+5 euro")) { $bacCol="#C4FCB0";}
 			if (strstr($euroPaga,"20 euro")) { $bacCol="#C4FCB0"; $contadapagati20euro=$contadapagati20euro+1;}
 		
-		  echo "<tr><td><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td><td>".$row['verifica']."</td>
-		 <td style='background:".$bacCol."'>".$euroPaga."</td><td>".$row['prev_level']."</td><td>".$row['new_level']."</td><td>".$newdate."</td>";
-		  if ($row['pagato']==0){echo "<td colspan='2'>Non assegnato</td></tr>";}
+		  echo "<tr>
+		  <td style='max-width:200px;'><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td>
+		  <td>".$row['verifica']."</td>
+		 <td style='background:".$bacCol."'>".$euroPaga."</td>
+		 <td>".$row['prev_level']."</td>
+		 <td>".$row['new_level']."</td>
+		 <td>".$newdate."</td>";
+		  if ($row['pagato']==0){echo "<td>n.a.</td><td>n.p.</td></tr>";}
 								else
 								{
-									echo "<td>".$row['codice']."</td><td>Pagato</td><td>".$paydate."</td></tr>"; 
+									echo "<td>".$row['codice']."</td><td>".$paydate."</td></tr>"; 
 									 
 								}
 								
@@ -589,6 +614,7 @@ $cicli=0;
 
 		
 ?>
+</tbody>
 </table>
 </div>
 
@@ -597,17 +623,17 @@ $cicli=0;
 
 </div>
 
-<div class="col-md-4">
+<div class="col-md-3">
 
 <div class="row">
  
-    <div class="panel panel-primary">
-   <div class="panel-heading">
-   STATUS PREMI
-   </div>
+<div class="card shadow mb-12">
+<div class="card-header py-6 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> STATUS PREMI </h6></span>
+ </div>
    
- <div class="panel-body  recent-users-sec"> 
-<table style="font-size:11px"  class="table table-striped table-bordered">
+ <div class="card-body  recent-users-sec"> 
+<table style="font-size:11px; width:100%"  class="table table-striped table-bordered">
 		<tr class='intesta'><th>Premio</th><th >Rimasti</th><th>Rifornimento</th></tr>
 		<tr>
 		<td>Buoni 2 euro:</td> 
@@ -706,12 +732,13 @@ $giaM20=$gia20/$diff;
 
 <div class="row">
  
-    <div class="panel panel-danger">
-   <div class="panel-heading">
-   TOTALE PREMI
-   </div>
+<div class="card-success shadow mb-12">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> TOTALE PREMI </h6></span>
+ </div>
+
    
- <div class="panel-body  recent-users-sec"> 
+ <div class="card-body  recent-users-sec"> 
 
 
 <table style="font-size:11px"  class="table table-striped table-bordered">
@@ -756,30 +783,29 @@ $giaM20=$gia20/$diff;
 
 	 <div class="row">
 		 
-		 <div class="panel panel-danger">
-			 <div class="panel-heading">
-				 Premi 2 euro <?php echo "(".$contadapagati2euro.")";?>
-			 </div>
+		 <div class="card card-danger shadow mb-12">
+		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		 <button style="width:100%" type="button" class="btn btn-primary">
+		 Premi 2 euro <span class="badge badge-light"><?php echo "(".$contadapagati2euro.")";?></span>
+			</button>	  
+		 </div>
 			 
-			 <div class="panel-body  recent-users-sec"> 
-				 
-				 <textarea class="form-control" style="text-transform:uppercase;" name="pr2euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea>
-				
-				
-				 
+			 <div class="card-body"> 
+			 <textarea class="form-control" style="text-transform:uppercase;" name="pr2euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea> 
 		 </div>
 	 </div>
  </div>
  
  
  	 <div class="row">
-		 
-		 <div class="panel panel-danger">
-			 <div class="panel-heading">
-				 Premi 5 euro <?php echo "(".$contadapagati5euro.")";?>
+	  <div class="card card-danger shadow mb-12">
+		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		 <button style="width:100%" type="button" class="btn btn-danger">
+				 Premi 5 euro <span class="badge badge-light"><?php echo "(".$contadapagati5euro.")";?></span>
+				 </button>	
 			 </div>
 			 
-			 <div class="panel-body  recent-users-sec"> 
+			 <div class="card-body"> 
 				 
 				 <textarea class="form-control" style="text-transform:uppercase;" name="pr5euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea>
 				 
@@ -792,12 +818,13 @@ $giaM20=$gia20/$diff;
  
 	<div class="row">
 		
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				Premi 10 euro <?php echo "(".$contadapagati10euro.")";?>
+	<div class="card card-danger shadow mb-12">
+		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		 <button style="width:100%" type="button" class="btn btn-warning">
+				Premi 10 euro <span class="badge badge-light"><?php echo "(".$contadapagati10euro.")";?></span>
 			</div>
 			
-			<div class="panel-body  recent-users-sec"> 
+			<div class="card-body"> 
 				
 				<textarea class="form-control" style="text-transform:uppercase;" name="pr10euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea>
 				
@@ -809,16 +836,18 @@ $giaM20=$gia20/$diff;
 
 	 <div class="row">
 		 
-		 <div class="panel panel-danger">
-			 <div class="panel-heading">
-				 Premi 20 euro <?php echo "(".$contadapagati20euro.")";?>
+	 <div class="card card-danger shadow mb-12">
+		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		 <button style="width:100%" type="button" class="btn btn-success">
+				 Premi 20 euro  <span class="badge badge-light"><?php echo "(".$contadapagati20euro.")";?></span>
 			 </div>
 			 
-			 <div class="panel-body  recent-users-sec"> 
+			 <div class="card-body"> 
 				 
 				 <textarea class="form-control" style="text-transform:uppercase;" name="pr20euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea>
 				
-				<input class='btn btn-danger'  type='submit'  name='var_pagato' value='PAGA' />
+				 <hr>
+				<button class='btn btn-primary'  type='submit'  name='var_pagato' value='PAGA' >PAGA</button>
 				
 				</form>
 				 
@@ -839,3 +868,30 @@ $giaM20=$gia20/$diff;
 <?php
 require_once('inc_footer.php'); 
 ?>
+
+<script>
+$(document).ready( function () {
+  $('#table_sur').show();
+  $('.mess').fadeOut();
+    $('#table_sur').DataTable( {
+        "order": [[ 5, "asc" ]],
+        "pagingType": "full_numbers",
+        "scrollY": false,
+        "scrollX": false,
+		"language": {
+      					"emptyTable": "Non sono presenti dati",
+						  "search":"Cerca:",
+						  "lengthMenu":     "Mostra _MENU_ richieste"
+   					 },
+        "lengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
+        "pageLength": 50,
+        'columnDefs': [ {
+
+                        'targets': [0,1,3,4,6], /* column index */
+
+                        'orderable': false, /* true or false */
+
+                        }]
+    } );
+} );
+</script>

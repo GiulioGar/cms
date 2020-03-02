@@ -157,7 +157,7 @@ setlocale(LC_MONETARY, 'it_IT');
 
 
 <div class="col-md-6 col-md-offset-1">
-<div class="card shadow mb-6">
+<div class="card shadow mb-12">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 	<h6 class="m-0 font-weight-bold text-primary"> CALCOLO COSTO INTERVISTE </h6></span>
@@ -165,7 +165,8 @@ setlocale(LC_MONETARY, 'it_IT');
 
 
 <div class="card-body">      
-<form class="form-inline">
+
+<form class="form">
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-default">Numero Interviste:</span>
@@ -173,39 +174,39 @@ setlocale(LC_MONETARY, 'it_IT');
   <input name="nint" type="number"/> 
 </div>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Loi stimata:</span>
-  </div>
-  <input name="nint" type="number"/> 
 
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">IR stimata:</span>
-  </div>
-  <input name="ir" type="number"/> 
+  <div class="form-row">
+    <div class="col">
+      <input style="width:220px" name="loi" type="number" class="form-control" placeholder="Loi stimata minuti:">
+    </div>
+    <div class="col">
+      <input style="width:220px" name="ir" type="number" class="form-control" placeholder="IR stimata %:">
+    </div>
+</div>
+
+<p>
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  Costo per Intervista:
+    <span class="badge badge-primary badge-pill" style="font-size:14px;"><span class="cpi"></span>€</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+  Costo Totale:
+    <span class="badge badge-success badge-pill" style="font-size:15px;"><span class="tot"></span>€</span>
+  </li>
+</ul>
+</p>
+
+
 </div>
 
 </div>
-	 
-	 
-
-	
-
-		<tr><td colspan="2">COSTI:</td></tr>
-		<tr><td>Costo per Intervista:</td>
-		<td><span class="cpi"></span> €</td></tr>
-		<tr><td>Costo Totale:</span></td>
-		<td><span class="tot"></span> €</td></tr>
-		</table>
-
-</div>
 </div>
 
 
 </div>
-</div>
+
 
 
  <div class="row">
@@ -420,8 +421,8 @@ if (varLoi<3) {rows=0;}
 	//console.log("Costo Totale"+costoTot)
 	let costoTot=cpi*varInt;
 
-	$("span.cpi").html(cpi);
-	$("span.tot").html(costoTot.toFixed(0));
+	$(".cpi").html(cpi);
+	$(".tot").html(costoTot.toFixed(0));
 
 	//console.log("riga:"+rows+"\n colonna:"+cols+"\n matrice:"+matrice);
 
