@@ -16,7 +16,7 @@ $goal=$_REQUEST['goal'];
 $sid=$_REQUEST['sid'];
 $currentYear=date("Y");
 
-$startDate="2019-01-01";
+$startDate="2020-01-01";
 
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php');
@@ -92,7 +92,7 @@ $tNe=0;
 $tCe=0;
 $tSu=0;
 
-$query_new_at = "SELECT * FROM t_user_info where active=1 and reg_date >= '2017-06-14' and email not like'%.top'";
+$query_new_at = "SELECT * FROM t_user_info where active=1 and reg_date >= '2020-01-01' and email not like'%.top'";
 $csv_mvf_at = mysqli_query($admin,$query_new_at) or die(mysql_error());
 
 while ($row = mysqli_fetch_assoc($csv_mvf_at)) 
@@ -125,211 +125,223 @@ while ($row = mysqli_fetch_assoc($csv_mvf_at))
 	if ($reView==20) { $ve++;}
    }
 
-if ($creaCamp=="CREA")	
-{
 
-//echo "la ricerca è:".$sid." ".$prj;
-
-$del="DELETE FROM t_test";
-$resA = mysqli_query($admin,$del) or die(mysql_error());
-
-////Calculator
-$year1=$currentYear-$ag1;
-$year2=$currentYear-$ag2;
-
-
-$query_new_attivi = "SELECT * FROM t_user_info where CASE WHEN $sex_target<>3 THEN gender=".$sex_target." ELSE gender !=3 END
-AND active=1 and Year(birth_date)<'$year1' and Year(birth_date)>'$year2' and reg_date >= '2017-06-14' and email not like'%.top'";
-$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
-
-
-
-   while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
-    { 
-	$proView=$row['province_id'];
-	@include('cod_reg.php'); 
-	
-
-	
-	if ($arView==$area[0] || $arView==$area[1] || $arView==$area[2] || $arView==$area[3])
-	{
-		
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
-	}	
-	
-	
-	
-	if ($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19])
-	{
-		
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
-	}
-	
-	
-	
-	}
-
-
-	
-
-$query_new = "SELECT *  FROM t_user_info,t_test where t_user_info.user_id=t_test.uid AND t_user_info.user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
-$csv_mvf = mysqli_query($admin,$query_new) or die(mysql_error());
-	
-
-
-
-    //// ESPORTA CAMPIONE MVF IN CSV ////
-
-
-    @$csv="uid;email;firstName;genderSuffix";
-    $csv .= "\n";
-	
-	
-    while ($row = mysqli_fetch_assoc($csv_mvf)) 
-    { 
-            
-            $uid=$row['user_id'];
-            $mail=$row['email'];
-            $nome=$row['first_name'];
-            $sesso=$row['gender'];
-            if($sesso==1){$genderTransform="o";}
-            else {$genderTransform="a";}
-            
-            $csv .=$uid.";".$mail.";".$nome.";".$genderTransform; 
-            $csv .= "\n";
-    } 
-	
-}	
 
 
 ?>
   <div class="content-wrapper">
        <div class="container">
-	   
- <div class="row">
 
- 
-
-
-
-
-<div class="col-md-12 col-sm-12 col-xs-12">
-
-<div class="col-md-4 col-sm-4 col-xs-12">
-
-<div class="panel panel-primary">
-	<div class="panel-heading">INFO PANEL </div>
-	<div class="panel-body">
-
-				<table class="table table-striped">
-				<tr style="background-color:#FCF6DE"><td><b>Nuovi Iscritti:</b></td><td><b><?php echo $t_use['total']; ?></b> </tr>
-				<tr style="background-color:#DEF2FC"><td>Uomini:</td><td><b><?php echo $tm_use['total']; ?></b> </tr>
-				<tr style="background-color:#FCEAF3"><td>Donne:</td><td><b><?php echo $tf_use['total']; ?></b> </tr>
-				<tr style="background-color:#FCEAF3"><td colspan="2"><b>Età</b></td></tr>
-				<tr style="background-color:#F4FCEF"><td>Under 18 anni:</td><td><b><?php echo $t17_use['total']; ?></b> </tr>
-				<tr style="background-color:#F4FCEF"><td>18-24 anni:</td><td><b><?php echo $t18_use['total']; ?></b> </tr>
-				<tr style="background-color:#F4FCEF"><td>25-34 anni:</td><td><b><?php echo $t25_use['total']; ?></b> </tr>
-				<tr style="background-color:#F4FCEF"><td>35-44 anni:</td><td><b><?php echo $t35_use['total']; ?></b> </tr>
-				<tr style="background-color:#F4FCEF"><td>45-54 anni:</td><td><b><?php echo $t45_use['total']; ?></b> </tr>
-				<tr style="background-color:#F4FCEF"><td>55-64 anni:</td><td><b><?php echo $t55_use['total']; ?></b> </tr>
-				<tr style="background-color:#F4FCEF"><td>65 e Over:</td><td><b><?php echo $t65_use['total']; ?></b> </tr>
-				<tr style="background-color:#FCEAF3"><td colspan="2"><b>Aree Geografiche</b></td></tr>
-				<tr style="background-color:#EFFFFE"><td>Nord Ovest:</td><td><b><?php echo $tNo; ?></b> </tr>
-				<tr style="background-color:#EFFFFE"><td>Nord Est:</td><td><b><?php echo $tNe; ?></b> </tr>
-				<tr style="background-color:#EFFFFE"><td>Centro:</td><td><b><?php echo $tCe; ?></b> </tr>
-				<tr style="background-color:#EFFFFE"><td>Sud:</td><td><b><?php echo $tSu; ?></b> </tr>
+<div class="row">	  
 	
-				</table>
+<div class="col-xl-12">
+<div class="card shadow mb-6">
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> ISCRITTI <?php echo $currentYear; ?> </h6></span>
+ </div>
 
-	</div>
-			<div class="panel-footer">
-			&nbsp;	
-			</div>	
+<div class="card-body">      
+<div style="font-size:18px;">Nuovi Iscritti:&nbsp;</b></td><td><b><?php echo $t_use['total']; ?></b>&nbsp;&nbsp;<span style="color:gray"><i class="fas fa-user-check"></i></span></div>
+</div>
 
 </div>
 </div>
 
+</div>
+	   
+	   <div class="row">
 
-<div class="col-md-4 col-sm-4 col-xs-12">
+<div class="col-xl-6 col-lg-5">
+<div class="card shadow mb-6">
 
-<div class="panel panel-success">
-	<div class="panel-heading"><b>REGIONI</b> </div>
-	<div class="panel-body">
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> GENERE </h6></span>
+ </div>
 
-		<table class="table table-striped">
-		<tr style="background-color:#E8F8FC"><td>Abruzzo:</td><td><b><?php echo $ab; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Basilicata:</td><td><b><?php echo $ba; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Calabria:</td><td><b><?php echo $cl; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Campania:</td><td><b><?php echo $cm; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Emilia:</td><td><b><?php echo $em; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Friuli:</td><td><b><?php echo $fr; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Lazio:</td><td><b><?php echo $la; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Liguria:</td><td><b><?php echo $li; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Lombardia:</td><td><b><?php echo $lo; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Marche:</td><td><b><?php echo $ma; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Molise:</td><td><b><?php echo $mo; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Piemonte:</td><td><b><?php echo $pi; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Puglia:</td><td><b><?php echo $pu; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Sardegna:</td><td><b><?php echo $sa; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Sicilia:</td><td><b><?php echo $si; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Toscana:</td><td><b><?php echo $to; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Trentino:</td><td><b><?php echo $tr; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Umbria:</td><td><b><?php echo $um; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>V.Aosta:</td><td><b><?php echo $ao; ?></b> </tr>
-		<tr style="background-color:#E8F8FC"><td>Veneto:</td><td><b><?php echo $ve; ?></b> </tr>
-		</table>
-
-	</div>
-
+<div class="card-body">      
+<canvas id="pie-chart"></canvas>
+</div>
 
 </div>
 </div>
 
-<div class="col-md-4 col-sm-4 col-xs-12">
-	 <div class="panel panel-default">
-	                 <div class="panel-heading">
-                          <b> Attivit&agrave; nuovi iscritti</b>
-                        </div>
-				<div class="panel-body">		
-				<table class="table table-striped table-bordered" style="font-size:12px" >
-				<tr><th><b>Periodo</b></th><th><b>Tot.</b></th><th><b>%</b></th></tr>
-				<?php 
-				$incid=$tot_act6['total']/$t_use['total']*100;
-				
-				?>
-				<tr><td align="center"><b>Anno 2019</b></td><td><?php echo $tot_act6['total']; ?></td> <td><?php echo number_format($incid,2,'.','');  ?></td> </tr>
-				</table>
-				</div>
-				
-				<div class="panel-footer">
-             &nbsp;
-              </div>
-				
-	</div>	
+<div class="col-xl-6 col-lg-5">
+<div class="card shadow mb-6">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> FASCE D'ETA' </h6></span>
+ </div>
+
+<div class="card-body">      
+<canvas id="bar-chart-horizontal" ></canvas>
 
 </div>
 
-
-<!--fine div8-->
+</div>
 </div>
 
-<!--fine row-->
+<!-- close row  -->
 </div>
 
 
 
 
- 
+<div class="row">
+
+<div class="col-xl-6 col-lg-5">
+<div class="card shadow mb-6">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> REGIONI </h6></span>
+ </div>
+
+<div class="card-body">      
+<canvas id="bar-chart-horizontal2" height="400px"></canvas>
+</div>
+
+</div>
+</div>
+
+<div class="col-xl-6 col-lg-5">
+<div class="card shadow mb-6">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> AREE </h6></span>
+ </div>
+
+<div class="card-body">      
+<canvas id="pie-chart2" ></canvas>
+
+</div>
+
+</div>
+</div>
+
+<!-- close row  -->
+</div>
+
 
 
 </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+
+ // chart sesso   
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Uomini", "Donne"],
+      datasets: [{
+        label: "Utenti ",
+        backgroundColor: ["#3e95cd", "#e8c3b9"],
+        data: [<?php echo $tm_use['total']; ?>,<?php echo $tf_use['total']; ?>]
+      }]
+    },
+    options: {
+        animation:{
+        animateRotate: true,
+        render: false,
+    },
+
+    }
+});
+
+//chart età
+new Chart(document.getElementById("bar-chart-horizontal"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Under 18 anni", "18-24 anni", "25-34 anni","35-44 anni", "45-54 anni", "55-64 anni","65 e +"],
+      datasets: [
+        {
+          label: "Utenti ",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","red","green"],
+          data: [<?php echo $t17_use['total']; ?>,<?php echo $t18_use['total']; ?>,<?php echo $t25_use['total']; ?>,<?php echo $t35_use['total']; ?>,<?php echo $t45_use['total']; ?>,<?php echo $t55_use['total']; ?>,<?php echo $t65_use['total']; ?>]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Fasce di età rappresentative'
+      }
+    }
+});
+
+
+
+//chart regione
+
+new Chart(document.getElementById("bar-chart-horizontal2"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia-Romagna",
+"Friuli-Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino-Alto Adige",
+"Umbria",
+"Val d'Aosta",
+"Veneto"],
+      datasets: [
+        {
+          label: "Utenti ",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#2393d3", "#15c146","#c782cc","#e8c3b9","#fccccc","#d3a9e5", "#8e5ea2","#3cba9f","#e8c3b9","#b8b1ed","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [<?php echo $ab; ?>,<?php echo $ba; ?>,<?php echo $cl; ?>,<?php echo $cm; ?>,<?php echo $em; ?>,<?php echo $fr; ?>,<?php echo $la; ?>,<?php echo $li; ?>,<?php echo $lo; ?>,<?php echo $ma; ?>,<?php echo $mo; ?>,<?php echo $pi; ?>,<?php echo $pu; ?>,<?php echo $sa; ?>,<?php echo $si; ?>,<?php echo $to; ?>,<?php echo $tr; ?>,<?php echo $um; ?>,<?php echo $ao; ?>,<?php echo $ve; ?>]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Regioni Italiane'
+      }
+    }
+});
+
+
+ // chart aree   
+ new Chart(document.getElementById("pie-chart2"), {
+    type: 'pie',
+    data: {
+      labels: ["Nord Ovest", "Nord Est","Centro","Sud"],
+      datasets: [{
+        label: "Utenti ",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+        data: [<?php echo $tNo; ?>,<?php echo $tNe; ?>,<?php echo $tCe; ?>,<?php echo $tSu; ?>]
+      }]
+    },
+    options: {
+        animation:{
+        animateRotate: true,
+        render: false,
+    },
+
+    }
+});
+
+
+</script>
 
 
 <?php
-mysql_close();
+
+require_once('inc_footer.php'); 
+
 ?>

@@ -39,25 +39,9 @@ input[type=image]:disabled
 
 </style>
 
-<div class="content-wrapper">
-<div class="container">
-
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
 
 <?php
 
-
-/*
-$query_agginv= "INSERT INTO t_test (uid) values ('test')";
-$aggiungi = mysqli_query($admin,$query_agginv);
-
-if ($admin->query($query_agginv) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $query_agginv . "<br>" . $admin->error;
-}
-*/
 
 //leggo ultimo id
 $query_cintUltimo = "SELECT id FROM cint_lastid";
@@ -67,8 +51,6 @@ $lastview= $row["id"];
 
 
 $todaydate=date ("Y/m/d H:i:s");
-
-
 
 
 // lettura api
@@ -99,99 +81,129 @@ foreach ( $invitations as $var )
 
 
 
-    //aggiungo i dati dell'api nella tabella
+//aggiungo i dati dell'api nella tabella
     $query_agginv= "INSERT INTO cint_invites (id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,scadenza) values ('".$idunico."','".$mbId."','".$pId."','".$loi."','".$ir."','".$url."','".$arrivoC."','".$fineC."','".$scade."')";
     $aggiungi = mysqli_query($admin,$query_agginv);
 
 }
 
-    //aggiorno ultimo id salvato
+//aggiorno ultimo id salvato
     $query_aggId= "UPDATE cint_lastid SET id=$idunico";
     $aggId = mysqli_query($admin,$query_aggId);
 
 
-$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti FROM cint_invites c, t_user_info i where i.user_id=c.member_id ORDER BY id DESC";
-$cintInviti = mysqli_query($admin,$query_cintInviti);
+//aggiorna la scadenze
+$query_selScadenza = "SELECT id,expires,scadenza FROM cint_invites where inviti=0 AND scadenza <> 'Scaduto' ORDER BY id DESC";
+$selScadenza = mysqli_query($admin,$query_selScadenza);
 
-$query_contanew = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND expires >= CURDATE()";
-$csv_conta = mysqli_query($admin,$query_contanew);
-$num_rows = mysqli_num_rows($csv_conta);
+while ($row2 = mysqli_fetch_assoc($selScadenza)) 
+{
+   $fineInt=$row2["expires"];
+   $idScad=$row2["id"];
 
+   $dataOggi= new DateTime($todaydate); 
+   $fineInvito=new DateTime($fineInt); 
 
-if ($creaCamp=="CREA")	
-{  
-
-$query_new = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND expires >= CURDATE() AND inviti=0";
-$csv_mvf = mysqli_query($admin,$query_new);
-
-        //// ESPORTA CAMPIONE MVF IN CSV ////
-    
-    
-        @$csv="uid;email;firstName;genderSuffix;link;scade";
-        $csv .= "\n";
-        
-        
-        while ($row = mysqli_fetch_assoc($csv_mvf)) 
-        { 
-                
-                $uid=$row['user_id'];
-                
-                $mail=$row['email'];
-                $nome=$row['first_name'];
-                $urlsend=$row['survey_url'];
-                $sesso=$row['gender'];
-                $prid=$row['project_id'];
-                $exp=$row['expires'];
-                $scad = date("d-m-Y H:i", strtotime($exp));
-                if($sesso==1){$genderTransform="o";}
-                else {$genderTransform="a";}
-                
-                $csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$urlsend.";".$scad; 
-                $csv .= "\n";
-
-                    //aggiorno ultimo id salvato
-            $query_aggInv= "UPDATE cint_invites SET inviti=1 where member_id='$uid' and project_id='$prid'";
-            $aggInv = mysqli_query($admin,$query_aggInv);
-        
-
-        }
-
+    if($dataOggi>$fineInvito) 
+    {
+    $query_aggScadenza= "UPDATE cint_invites SET scadenza='Scaduto' where id=$idScad";
+    $aggScadenza = mysqli_query($admin,$query_aggScadenza);
     }
+
+
+
+ 
+
+}    
+
+
+
+
+
+//query inviti disponibili
+$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <> 'Scaduto' ORDER BY id DESC";
+$cintInviti = mysqli_query($admin,$query_cintInviti);
+$num_rows = mysqli_num_rows($cintInviti);
+
+$offButton="";
+if ($num_rows==0) { $offButton="disabled='disabled'"; }
+
 ?>
 
 <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="panel panel-default">
-<div style="float:left; padding:10px;">
+<div class="col-xl-12">
 
-<form role="form"  action="cint_index.php" method="post">
-<input class="btn btn-danger" type="submit" name="creaCamp" value="CREA">
+<div class="card shadow mb-12">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> PANNELLO </h6></span>
+</div>
+
+
+<div class="card-body">   
+
+<div class="bs-example">
+<form class="invForm" role="form">
+    <div class="row">
+    <div class="col-sm-2">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">IR Bassa </label>
+        </div>
+    </div>   
+
+     <div class="col-sm-2">   
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck2">
+            <label class="custom-control-label" for="customCheck2">Loi Alta </label>
+        </div>
+    </div>   
+
+    <div class="col-sm-2">   
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck3" >
+            <label class="custom-control-label" for="customCheck3">Scadenza 4H </label>
+        </div>
+    </div>    
+
+<div class="col-sm-6 controlConsole" style="text-align:right">   
+<button class="btn btn-primary creaCamp" type="button" name="creaCamp" value="CREA" <?php echo $offButton; ?>><i class="fab fa-creative-commons-sa"></i>&nbsp;CREA</button>
 </form>
+<button type='button' class='btn btn-warning download' style="display:none" value='DOWNLOAD' <?php echo $offButton; ?>><i class="fas fa-cloud-download-alt"></i>&nbsp;DOWNLOAD</button> 
+<button style="display:none" onclick="window.open('http://mailer.primisoft.com/admin/compila_mail_gest.php','_blank');" class="btn btn-success inviamail" value="INVIO" type="button"><i class="far fa-envelope"></i>&nbsp;INVIA</button>
+				
+
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="row ">
+<div class="col-xl-12 rowDisp">
+
+<div class="card shadow mb-12">
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary">INVITI DISPONIBILI <?php echo $num_rows;?> </h6></span>
+</div>
+
+
+<div class="card-body"> 
+
+<div class="table-responsive">
 <?php
-if ($creaCamp=="CREA")	
-{
-?>
-                <form  style="width: 150px" action="csv.php" method="post" target="_blank">
-				<input type="hidden" name="csv" value="<?php echo$csv ?>" />
-				<input type="hidden" name="filename" value="user_list" />
-                <?php
-                if ($num_rows==0) { echo "<input type='image' value='sumbit' src='img/down.png' disabled='disabled'/>"; } 
-                else { echo "<input type='image' value='sumbit'  src='img/down.png' />"; } 
-                ?>
-				</form>	
-<?php } ?>
-
-   </div>
-
-   <div style=" padding:10px;">
-   <a target="_blank" href="http://mailer.primisoft.com/admin/compila_mail_gest.php"/> <img src="img/mail.png"/> </a>
-   </div>
-
-
-   <div class="panel-body text-center recent-users-sec">
-    <div class="table-responsive">
-<?php
-echo "<table id='tabField' style='font-size:11px' class='table table-striped table-bordered table-hover'>";
+echo "<table id='tabInviti' style='font-size:11px' class='table table-striped table-bordered table-hover'>";
 echo "<tr class='intesta'>";
 echo "<th style='font-weight:bold'>Id Intervista</th>";
 echo "<th style='font-weight:bold'>Uid </th>";
@@ -205,32 +217,46 @@ echo "<th style='font-weight:bold'>Scadenza</th>";
 echo "<th style='font-weight:bold'>Inviti</th>";
 echo "</tr>";
 
+if ($num_rows==0)
+{
+    echo "<tr><td colspan='10' style='text-align:center'><button id='alert4' class='btn btn-alert btn-warning alcasi' type='button'>NON CI SONO INVITI DISPONIBILI !</button></td></tr>"; 
+}
 
-while ($row = mysqli_fetch_assoc($cintInviti)) {
+else 
+{
 
-    $strStart = $row['expires'];
-    $strEnd   = $todaydate; 
-    $dteStart = new DateTime($strStart);
-    $dteEnd   = new DateTime($strEnd); 
-    $dteDiff  = $dteStart->diff($dteEnd); 
+while ($row = mysqli_fetch_assoc($cintInviti)) 
+    {
+
+        $strStart = $row['expires'];
+        $strEnd   = $todaydate; 
+        $dteStart = new DateTime($strStart);
+        $dteEnd   = new DateTime($strEnd); 
+        $dteDiff  = $dteStart->diff($dteEnd); 
+        
+
+        echo "<tr>";
+
+        echo "<td>".$row['id']."</td>";
+        echo "<td>".$row['member_id']."</td>";
+        echo "<td>".$row['gender']."</td>";
+        echo "<td>".$row['email']."</td>";
+        echo "<td>".$row['project_id']."</td>";
+        echo "<td>".$row['loi']."</td>";
+        echo "<td>".$row['ir']."</td>";
+        echo "<td>".$row['survey_url']."</td>";
+        if ($dteStart>=$dteEnd )
+        { echo "<td>". $dteDiff->format("%h ore %i minuti")."</td>";}
+        else
+        { echo "<td style='color:red'>Scaduto</td>";}
+        echo "<td>".$row['inviti']."</td>";
+
+        
+
+        echo "</tr>";
     
+    }
 
-    echo "<tr>";
-    echo "<td>".$row['id']."</td>";
-    echo "<td>".$row['member_id']."</td>";
-    echo "<td>".$row['gender']."</td>";
-    echo "<td>".$row['email']."</td>";
-    echo "<td>".$row['project_id']."</td>";
-    echo "<td>".$row['loi']."</td>";
-    echo "<td>".$row['ir']."</td>";
-    echo "<td>".$row['survey_url']."</td>";
-    if ($dteStart>=$dteEnd )
-    { echo "<td>". $dteDiff->format("%h ore %i minuti")."</td>";}
-    else
-    { echo "<td style='color:red'>Scaduto</td>";}
-    echo "<td>".$row['inviti']."</td>";
-    echo "</tr>";
-  
 }
 
   echo "</table>"  ;
@@ -244,13 +270,65 @@ while ($row = mysqli_fetch_assoc($cintInviti)) {
 
 
 
-</div>
-</div>
-</div>
-</div>
 
-<?php 
 
-// require_once('inc_footer.php');
+<script>
 
-?>
+let formcsv;
+let table;
+let butVal;
+
+//al click crea campione
+$("button").on('click', function() 
+{
+
+butVal=$(this).val();
+console.log(butVal);
+console.log("Cliccato");
+
+if (butVal=="CREA") { $(".download").fadeIn();   }
+
+
+  //chiamata ajax
+    $.ajax({
+
+     //imposto il tipo di invio dati (GET O POST)
+      type: "GET",
+
+      //Dove devo inviare i dati recuperati dal form?
+      url: "function_cint_invitations.php",
+
+      //Quali dati devo inviare?
+      data: "creaCamp="+butVal, 
+      dataType: "html",
+	  success: function(data) 
+	  					{ 
+                          
+                        if (butVal=="DOWNLOAD") 
+                        {
+                        formcsv=$(data).filter("#mycsv");
+                        $(".controlConsole").append(formcsv);
+                        $("#mycsv").submit();
+
+                        $(".inviamail").fadeIn(); 
+                        }
+                        
+                        if (butVal=="INVIO") 
+                        {
+                        table=$(data).filter(".rowDisp");
+                        $(".rowDisp").html(table);
+
+                        $(".inviamail").hide(); 
+                        $(".download").hide(); 
+
+                        }    
+                        
+
+                        }    
+                
+
+    });
+  
+  });
+
+</script>
