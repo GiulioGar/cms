@@ -65,7 +65,7 @@ input[type=image]:disabled
 
   <div class="tab-pane" id="registra" role="tabpanel" aria-labelledby="registra-tab">
   
-  <?php /* require_once('cint_registra.php'); */ ?> 
+  <?php require_once('cint_registra.php'); ?> 
   
   </div>
 

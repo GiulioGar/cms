@@ -137,29 +137,43 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
 
 <div class="bs-example">
 <form class="invForm" role="form">
+
+    <div class="row"> 
+    <div class="col-sm-3">
+    <div class="flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary"> FILTRI </h6></span>
+    </div>
+    </div>
+    <div class="col-sm-9">
+    <div class="flex-row align-items-center justify-content-between">
+
+    </div>
+    </div>
+    </div>
+
     <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input ir" value="irfiltro" name="customCheck" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">IR Bassa </label>
+            <label class="custom-control-label" for="customCheck1">IR</label>
         </div>
     </div>   
 
-     <div class="col-sm-2">   
+     <div class="col-sm-1">   
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input loi" value="loifiltro" name="customCheck" id="customCheck2">
-            <label class="custom-control-label" for="customCheck2">Loi Alta </label>
+            <label class="custom-control-label" for="customCheck2">Loi</label>
         </div>
     </div>   
 
-    <div class="col-sm-2">   
+    <div class="col-sm-1">   
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input scad" value="scafiltro" name="customCheck" id="customCheck3" >
-            <label class="custom-control-label" for="customCheck3">Scadenza 4H </label>
+            <label class="custom-control-label" for="customCheck3">Scadenza</label>
         </div>
     </div>    
 
-<div class="col-sm-6 controlConsole" style="text-align:right">   
+<div class="col-sm-9 controlConsole" style="text-align:right">   
 <button class="btn btn-primary creaCamp" type="button" name="creaCamp" value="CREA" <?php echo $offButton; ?>><i class="fab fa-creative-commons-sa"></i>&nbsp;CREA</button>
 </form>
 <button type='button' class='btn btn-warning download' style="display:none" value='DOWNLOAD' <?php echo $offButton; ?>><i class="fas fa-cloud-download-alt"></i>&nbsp;DOWNLOAD</button> 
