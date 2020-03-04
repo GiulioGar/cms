@@ -110,13 +110,7 @@ while ($row2 = mysqli_fetch_assoc($selScadenza))
     $aggScadenza = mysqli_query($admin,$query_aggScadenza);
     }
 
-
-
- 
-
 }    
-
-
 
 
 
@@ -146,21 +140,21 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
     <div class="row">
     <div class="col-sm-2">
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck1">
+            <input type="checkbox" class="custom-control-input ir" value="irfiltro" name="customCheck" id="customCheck1">
             <label class="custom-control-label" for="customCheck1">IR Bassa </label>
         </div>
     </div>   
 
      <div class="col-sm-2">   
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck2">
+            <input type="checkbox" class="custom-control-input loi" value="loifiltro" name="customCheck" id="customCheck2">
             <label class="custom-control-label" for="customCheck2">Loi Alta </label>
         </div>
     </div>   
 
     <div class="col-sm-2">   
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="customCheck" id="customCheck3" >
+            <input type="checkbox" class="custom-control-input scad" value="scafiltro" name="customCheck" id="customCheck3" >
             <label class="custom-control-label" for="customCheck3">Scadenza 4H </label>
         </div>
     </div>    
@@ -278,6 +272,10 @@ let formcsv;
 let table;
 let butVal;
 
+let cVal2;
+let dataVal2="";
+let countFiltri2=0;
+
 //al click crea campione
 $("button").on('click', function() 
 {
@@ -285,6 +283,22 @@ $("button").on('click', function()
 butVal=$(this).val();
 console.log(butVal);
 console.log("Cliccato");
+
+$(":checkbox:checked").each(function() 
+{
+cVal2=$(this).val();
+
+if(countFiltri2==0) {dataVal2="&";}
+if(countFiltri2>0) {dataVal2=dataVal2+"&";}
+if (cVal2=="irfiltro")  {dataVal2=dataVal2+"filtroIr=si";}
+if (cVal2=="loifiltro") {dataVal2=dataVal2+"filtroLoi=si";}
+if (cVal2=="scafiltro") {dataVal2=dataVal2+"filtroSca=si";}
+
+countFiltri2++
+
+});
+
+console.log(dataVal2);
 
 if (butVal=="CREA") { $(".download").fadeIn();   }
 
@@ -299,7 +313,7 @@ if (butVal=="CREA") { $(".download").fadeIn();   }
       url: "function_cint_invitations.php",
 
       //Quali dati devo inviare?
-      data: "creaCamp="+butVal, 
+      data: "creaCamp="+butVal+dataVal2, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
@@ -320,7 +334,7 @@ if (butVal=="CREA") { $(".download").fadeIn();   }
 
                         $(".inviamail").hide(); 
                         $(".download").hide(); 
-
+                        $(".creaCamp").prop('disabled', true);
                         }    
                         
 
@@ -330,5 +344,62 @@ if (butVal=="CREA") { $(".download").fadeIn();   }
     });
   
   });
+
+
+
+//al click filtri
+$( ":checkbox" ).on('click', function() 
+{
+let cVal;
+let dataVal="";
+let countFiltri=0;
+let table2;
+
+$(":checkbox:checked").each(function() 
+{
+cVal=$(this).val();
+
+if(countFiltri>0) {dataVal=dataVal+"&";}
+if (cVal=="irfiltro")  {dataVal=dataVal+"filtroIr=si";}
+if (cVal=="loifiltro") {dataVal=dataVal+"filtroLoi=si";}
+if (cVal=="scafiltro") {dataVal=dataVal+"filtroSca=si";}
+
+countFiltri++
+
+});
+
+console.log(dataVal);
+
+
+  //chiamata ajax
+    $.ajax({
+
+     //imposto il tipo di invio dati (GET O POST)
+      type: "GET",
+
+      //Dove devo inviare i dati recuperati dal form?
+      url: "function_cint_invitations.php",
+
+      //Quali dati devo inviare?
+      data: dataVal, 
+      dataType: "html",
+	  success: function(data) 
+	  					{ 
+                        table=$(data).filter(".rowDisp");
+                        $(".rowDisp").html(table);
+
+
+                        }    
+                      
+                
+
+    });
+
+  });
+
+
+
+
+  
 
 </script>

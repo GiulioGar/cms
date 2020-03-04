@@ -7,6 +7,14 @@ $todaydate=date ("Y/m/d H:i:s");
 
 @$creaCamp = $_REQUEST['creaCamp'];
 
+@$filtroIr = $_REQUEST['filtroIr'];
+@$filtroLoi = $_REQUEST['filtroLoi'];
+@$filtroSca = $_REQUEST['filtroSca'];
+
+$addFiltri="";
+if ($filtroIr=="si") {$addFiltri="AND ir >10";}
+if ($filtroLoi=="si") {$addFiltri=$addFiltri." AND loi <=20";}
+if ($filtroSca=="si") {$addFiltri=$addFiltri." AND ( scadenza like '23%' or scadenza like '22%' or scadenza like '21%' or scadenza like '20%' or scadenza like '19%' or scadenza like '18%' or scadenza like '17%' or scadenza like '16%' or scadenza like '15%' or scadenza like '14%' or scadenza like '13%' or scadenza like '12%' or scadenza like '11%' or scadenza like '10%' or scadenza like '9%' or scadenza like '8%' or scadenza like '7%' )";}
 
 
 //$offButton="";
@@ -16,7 +24,7 @@ $todaydate=date ("Y/m/d H:i:s");
 if ($creaCamp=="DOWNLOAD")	
 {  
 
-$query_new = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND expires >= CURDATE() AND inviti=0";
+$query_new = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id  AND inviti=0 AND scadenza <>'Scaduto' ".$addFiltri."";
 $csv_mvf = mysqli_query($admin,$query_new);
 
         //// ESPORTA CAMPIONE MVF IN CSV ////
@@ -66,7 +74,7 @@ $csv_mvf = mysqli_query($admin,$query_new);
     }
    
 //query inviti disponibili
-$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <> 'Scaduto' ORDER BY id DESC";
+$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <>'Scaduto' ".$addFiltri." ORDER BY id DESC";
 $cintInviti = mysqli_query($admin,$query_cintInviti);
 $num_rows = mysqli_num_rows($cintInviti);    
 
@@ -77,7 +85,7 @@ $num_rows = mysqli_num_rows($cintInviti);
 
 <div class="card shadow mb-12">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary">INVITI DISPONIBILI <?php echo $num_rows;?> </h6></span>
+    <h6 class="m-0 font-weight-bold text-primary">INVITI DISPONIBILI <?php echo $num_rows;?> </h6></span><br/>
 </div>
 
 
