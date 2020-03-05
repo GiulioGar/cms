@@ -419,17 +419,33 @@ $ultima_riga=$riga[$ultima_calc];
 //divido il testo in array stabilendo come separatore il punto e virgola
 $elementi = explode(";", $prima_riga);
 $elementi_ultima = explode(";",$ultima_riga);
-//controllo status ricerca
-$statSur=$elementi[6];
 
+
+//controllo status ricerca
+
+$versionSre=$elementi[0];
+if ($versionSre==="2.0") { $statSur=$elementi[8];}
+else  { $statSur=$elementi[6];}
+
+//echo "<div>".$i."-".$statSur."</div>";
 
 
 //CALCOLO LOI
 if ($statSur==3)
 	{
 	$contaCompl++;
-	$startSur=substr($elementi[4],11,-4);
-	$endSur=substr($elementi[5],11,-4);
+	if ($versionSre==="2.0") 
+	{	
+	$startSur=substr($elementi[5],11,-4); 
+	$endSur=substr($elementi[6],11,-4);
+	}
+
+	else
+	{	
+		$startSur=substr($elementi[4],11,-4); 
+		$endSur=substr($elementi[5],11,-4);
+	}
+
 	$differenza=date_diff(date_create($endSur),date_create($startSur));  
 	
 	$saveDiff=$differenza->format('%i');
@@ -451,6 +467,7 @@ $contatori[$saveDiff2]=$varapp;
 if ($statSur==0)
 	{
 	$contaSospeso++;
+	
 	$lastQ=$elementi_ultima[1];
 	if ($sospese[$lastQ]=='') {$sospese[$lastQ]=1;}
 						 else
@@ -462,6 +479,17 @@ if ($statSur==4)
 	{
 	$contaFiltri++;
 	$lastQf=$elementi[7];
+
+	if ($versionSre==="2.0") 
+	{	
+		$lastQf=$elementi[9];
+	}
+
+	else
+	{	
+		$lastQf=$elementi[7];
+	}
+
 	if ($filtri[$lastQf]=='') {$filtri[$lastQf]=1;}
 						 else
 						 {$filtri[$lastQf]=$filtri[$lastQf]+1;}
@@ -474,19 +502,54 @@ $sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 	
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
+
+
+			if ($versionSre==="2.0") 
+			{	
+				$giorno_controllato=substr($elementi[5],0,10);
+				$conta_giorno=substr($elementi[5],0,10);
+			}
+
+			else
+			{	
+				$giorno_controllato=substr($elementi[4],0,10);
+				$conta_giorno=substr($elementi[4],0,10);
+			}
+
 			$giorno_controllato=substr($elementi[4],0,10);
-		    $conta_giorno=substr($elementi[4],0,10);
+			$conta_giorno=substr($elementi[4],0,10);
+			
+
 			$conta_giorno=str_replace('/', '-', $conta_giorno);
 			//$diario[$conta_giorno]=substr($elementi[4],3,2);
 			$diario[$conta_giorno]=strtotime($conta_giorno);
 			
 		   }
+
+
 		   else
 		   {
-		   if ((substr($elementi[4],0,10)) != ($giorno_controllato))
+			$nuovogiorno_controllato="";
+
+			if ($versionSre==="2.0") {$nuovogiorno_controllato=substr($elementi[5],0,10); }
+			else {$nuovogiorno_controllato=substr($elementi[4],0,10);}
+
+		   if (($nuovogiorno_controllato != ($giorno_controllato)))
 					{
-						$giorno_controllato=substr($elementi[4],0,10);
-						$conta_giorno=substr($elementi[4],0,10);
+						if ($versionSre=="2.0") 
+						{	
+							$giorno_controllato=substr($elementi[5],0,10);
+							$conta_giorno=substr($elementi[5],0,10);
+						}
+			
+						else
+						{	
+							$giorno_controllato=substr($elementi[4],0,10);
+							$conta_giorno=substr($elementi[4],0,10);
+						}
+
+
+
 						$conta_giorno=str_replace('/', '-', $conta_giorno);
 						//$diario[$conta_giorno]=substr($elementi[4],3,2);
 						$diario[$conta_giorno]=strtotime($conta_giorno);
@@ -496,41 +559,43 @@ if ($i==0) {
 
 
 
-if ($elementi[6]==0){
+if ($statSur==0){
 					$conta_incomplete=$conta_incomplete+1;
 					$diario_incomplete[$conta_giorno]=$diario_incomplete[$conta_giorno]+1;
 					}
-if ($elementi[6]==3){
+if ($statSur==3){
 					 $conta_complete=$conta_complete+1;
 					 $diario_complete[$conta_giorno]=$diario_complete[$conta_giorno]+1;
 					}
-if ($elementi[6]==4){
+if ($statSur==4){
 					$conta_filtrati=$conta_filtrati+1;
 					$diario_filtrati[$conta_giorno]=$diario_filtrati[$conta_giorno]+1;
 					}
-if ($elementi[6]==5){
+if ($statSur==5){
 					$conta_quotafull=$conta_quotafull+1;
 					$diario_quotafull[$conta_giorno]=$diario_quotafull[$conta_giorno]+1;
 					}
 
-$leggi_id=$elementi[3];
+if ($versionSre=="2.0") { $leggi_id=$elementi[4];}
+else  { $leggi_id=$elementi[3];}					
+
 
 $leggi_id_parziale=substr($leggi_id,0,4);
 
 //CONTA STATISTICHE SSI
-if (($elementi[6]==0)&&($leggi_id_parziale=="IDEX")){
+if (($statSur==0)&&($leggi_id_parziale=="IDEX")){
 													$conta_incomplete_ssi=$conta_incomplete_ssi+1;
 													$diario_incomplete_ssi[$conta_giorno]=$diario_incomplete_ssi[$conta_giorno]+1;
 													}
-if (($elementi[6]==3)&&($leggi_id_parziale=="IDEX")){
+if (($statSur==3)&&($leggi_id_parziale=="IDEX")){
 													$conta_complete_ssi=$conta_complete_ssi+1;
 													$diario_complete_ssi[$conta_giorno]=$diario_complete_ssi[$conta_giorno]+1;
 													}
-if (($elementi[6]==4)&&($leggi_id_parziale=="IDEX")){
+if (($statSur==4)&&($leggi_id_parziale=="IDEX")){
 													$conta_filtrati_ssi=$conta_filtrati_ssi+1;
 													$diario_filtrati_ssi[$conta_giorno]=$diario_filtrati_ssi[$conta_giorno]+1;
 													}
-if (($elementi[6]==5)&&($leggi_id_parziale=="IDEX")){
+if (($statSur==5)&&($leggi_id_parziale=="IDEX")){
 													$conta_quotafull_ssi=$conta_quotafull_ssi+1;
 													$diario_quotafull_ssi[$conta_giorno]=$diario_quotafull_ssi[$conta_giorno]+1;
 													}
@@ -539,19 +604,19 @@ if (($elementi[6]==5)&&($leggi_id_parziale=="IDEX")){
 
 
 //CONTA STATISTICHE PANEL
-if (($elementi[6]==0)&&($leggi_id_parziale<>"IDEX")){
+if (($statSur==0)&&($leggi_id_parziale<>"IDEX")){
 													$conta_incomplete_panel=$conta_incomplete_panel+1;
 													$diario_incomplete_panel[$conta_giorno]=$diario_incomplete_panel[$conta_giorno]+1;
 													}
-if (($elementi[6]==3)&&($leggi_id_parziale<>"IDEX")){
+if (($statSur==3)&&($leggi_id_parziale<>"IDEX")){
 													$conta_complete_panel=$conta_complete_panel+1;
 													$diario_complete_panel[$conta_giorno]=$diario_complete_panel[$conta_giorno]+1;
 													}
-if (($elementi[6]==4)&&($leggi_id_parziale<>"IDEX")){
+if (($statSur==4)&&($leggi_id_parziale<>"IDEX")){
 													$conta_filtrati_panel=$conta_filtrati_panel+1;
 													$diario_filtrati_panel[$conta_giorno]=$diario_filtrati_panel[$conta_giorno]+1;
 													}
-if (($elementi[6]==5)&&($leggi_id_parziale<>"IDEX")){
+if (($statSur==5)&&($leggi_id_parziale<>"IDEX")){
 													$conta_quotafull_panel=$conta_quotafull_panel+1;
 													$diario_quotafull_panel[$conta_giorno]=$diario_quotafull_panel[$conta_giorno]+1;
 													}
@@ -559,7 +624,6 @@ if (($elementi[6]==5)&&($leggi_id_parziale<>"IDEX")){
 
 if ($leggi_id_parziale=="IDEX"){$panel_esterno=$panel_esterno+1;}
 }
-
 
 
 

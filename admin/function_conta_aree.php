@@ -21,6 +21,8 @@ $queryf_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and g
 $tf_user = mysqli_query($admin,$queryf_user) or die(mysql_error());
 $tf_use = mysqli_fetch_assoc($tf_user);
 
+$currentYear=date("Y");
+
 $und18=$currentYear-17;
 $f18=$currentYear-18;
 $f24=$currentYear-24;

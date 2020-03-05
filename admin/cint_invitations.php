@@ -133,7 +133,7 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
 </div>
 
 
-<div class="card-body">   
+<div class="card-body ">   
 
 <div class="bs-example">
 <form class="invForm" role="form">
@@ -141,15 +141,17 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
     <div class="row"> 
     <div class="col-sm-3">
     <div class="flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary"> FILTRI </h6></span>
+    <h6 class="m-0 font-weight-bold text-secondary"> FILTRI </h6></span>
     </div>
     </div>
     <div class="col-sm-9">
     <div class="flex-row align-items-center justify-content-between">
+    <div class="alert alert-warning mess2" role="alert" style="display:none; text-align:center;"> Download in corso... </div>
+    </div>
+    </div>
+    </div>
 
-    </div>
-    </div>
-    </div>
+<hr>
 
     <div class="row">
     <div class="col-sm-1">
@@ -315,6 +317,7 @@ countFiltri2++
 console.log(dataVal2);
 
 if (butVal=="CREA") { $(".download").fadeIn();   }
+if (butVal=="DOWNLOAD") { $('.mess2').fadeIn();   }
 
 
   //chiamata ajax
@@ -334,6 +337,7 @@ if (butVal=="CREA") { $(".download").fadeIn();   }
                           
                         if (butVal=="DOWNLOAD") 
                         {
+                        $('.mess2').fadeOut(); 
                         formcsv=$(data).filter("#mycsv");
                         $(".controlConsole").append(formcsv);
                         $("#mycsv").submit();
