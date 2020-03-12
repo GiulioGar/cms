@@ -82,11 +82,11 @@ $t65_use = mysqli_fetch_assoc($t65_user);
 
 <div class="row">
 
-<div class="col-xl-12 col-lg-5">
-<div class="card shadow mb-12">
+<div class="col-xl-12 col-lg-5 datisync"> 
+<div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> UTENTI SINCRONIZZATI: <span style="font-size:16px;" class="badge badge-dark"><?php echo $totalone; ?></span> </h6></span>
+	<h6 class="m-0 font-weight-bold text-primary"> UTENTI SINCRONIZZATI: <span style="font-size:16px;" class="badge badge-dark totalone"><?php echo $totalone; ?></span> </h6></span>
  </div>
 
 <div class="card-body">  
@@ -132,7 +132,15 @@ $t65_use = mysqli_fetch_assoc($t65_user);
 </div>
 
 <div class="col-md-10 jumbotron">
-<div class="verificati"></div>
+<div class="verificati">
+<!-- inizio verificati -->
+
+<div class="alert alert-warning mesync" style="display:none" role="alert"><i class="fas fa-sync"></i> Sincornizzazione in corso... </div>
+<div class="alert alert-success mesok" style="display:none" role="alert"><i class="fas fa-user-check"></i> <span id="usync">Utenti sincronizzati correttamente </span> </div>
+
+
+<!-- fine verificati -->
+</div>
 </div>
 </div>
 
@@ -140,86 +148,15 @@ $t65_use = mysqli_fetch_assoc($t65_user);
 </div>
 
 </div>
+
+
+</div>
+
 
 
 <?php
 
-/*
 
-
-$row = 1;
-if (($handle = fopen("res/panel.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-
-        $mioarray= array (
-    
-            "member_id"=> $data['0'],
-            "first_name"=> $data['1'],
-            "last_name"=>$data['2'],
-            "gender"=> $data['3'],
-            "date_of_birth"=> $data['4'],
-            "postal_code"=> $data['5'],
-            "email_address"=> $data['0']."@interactivemr.com",
-            "recruitment_source"=> "panelOld",
-        
-        );
-        $registra = $client-> registerUser($mioarray);
-        print_r($registra);
-    }
-    fclose($handle);
-}
-
-
-
-
-
-
-
-
-$query="SELECT user_id,first_name,second_name,gender,code,birth_date,email FROM t_user_info  WHERE email like '%feliciadamore%' ";
-$resC = mysqli_query($admin,$query);
-$infoC= mysqli_fetch_array($resC);
-
-while($infoC<>0) 
-{
-
-   if ($infoC['gender']==1) {$genderCod="m";} 
-   if ($infoC['gender']==2) {$genderCod="f";} 
-
- 
-$mioarray= array (
-    
-    "member_id"=> $infoC['user_id'],
-    "first_name"=> $infoC['first_name'],
-    "last_name"=>$infoC['second_name'],
-    "email_address"=> $infoC['user_id']."@interactivemr.com",
-    "gender"=> $genderCod,
-    "postal_code"=> $infoC['code'],
-    "date_of_birth"=> $infoC['birth_date'],
-    "phone_number"=> "5555",
-    "street_address"=> "nd.",
-    //"payment_method_id"=> "3",
-    "recruitment_source"=> "panelOld",
-    //"variables"=> [1000,1001],
-    "tracking_consent"=> true
-
-);
-
-$registra = $client-> registerUser($mioarray);
-print_r($registra);
-
-$infoC = mysqli_fetch_array($resC); 
-
-}
-
-/*
-$query_newConta = "SELECT COUNT(user_id) as totalUser FROM t_user_info where active=1";
-$csv_mvfCount = mysqli_query($admin,$query_newConta);
-$data=mysqli_fetch_assoc($csv_mvfCount);
-
-//print_r( $data['totalUser']);
-echo $data['totalUser'];
-*/
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -269,19 +206,27 @@ new Chart(document.getElementById("bar-chart-horizontal"), {
 });
 
 
+
+
 //al click dei bottoni
 $("button").on('click', function() 
 {
 
-butVal2=$(this).val();
+let butVal2=$(this).val();
 console.log(butVal2);
+
+if (butVal2=="sync") { $(".mesync").fadeIn(); } 
+
+
 let usinc;
 let numeroUser;
-
+let numeroSync;
+let nsync;
+let alldatasync;
 
   //chiamata ajax
-    $.ajax({
-
+    $.ajax({      
+  
      //imposto il tipo di invio dati (GET O POST)
       type: "GET",
 
@@ -291,12 +236,14 @@ let numeroUser;
       //Quali dati devo inviare?
       data: "azione="+butVal2, 
       dataType: "html",
+
 	  success: function(data) 
 	  					{ 
                           
                         if (butVal2=="verifica") 
                         {
                         $(".qver").remove();
+                        $(".mesok").fadeOut();
                         usinc=$(data).filter(".qver");
                         $(".verificati").append(usinc);
                         numeroUser=$(usinc).find("span").html();
@@ -308,15 +255,37 @@ let numeroUser;
                         }
                 
                         }
-                        
-                       
 
-                        }    
+                        if (butVal2=="sync") 
+                        {
+                            $(".mesync").fadeOut();
+                            $(".qver").remove();
+
+                        nsync=$(data).filter("#usync");
+                        numeroSync=$(nsync).find("span").html();
+                        console.log(numeroSync);
+                        $("#usync").html(numeroSync);
+
+                        $("button.verifica").removeAttr('disabled'); 
+                        $("button.sync").fadeOut();
+                        $(".mesok").fadeIn();
+
+                        alldatasync=$(data).filter(".datisync2");
+                        $(".datisync").html(alldatasync);
+
+
+
+                        } 
+                }    
                 
 
-    });
+   
   
   });
 
+
+
+
+});
 
 </script>
