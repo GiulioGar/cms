@@ -52,6 +52,10 @@ input[type=image]:disabled
   <li class="nav-item">
     <a class="nav-link" id="registra-tab" data-toggle="tab" href="#registra" role="tab" aria-controls="registra" aria-selected="false">Registrati</a>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link" id="sta-tab" data-toggle="tab" href="#sta" role="tab" aria-controls="sta" aria-selected="false">Statistiche</a>
+  </li>
 </ul>
 
 <!-- Tab panes -->
@@ -66,6 +70,12 @@ input[type=image]:disabled
   <div class="tab-pane" id="registra" role="tabpanel" aria-labelledby="registra-tab">
   
   <?php require_once('cint_registra.php'); ?> 
+  
+  </div>
+
+  <div class="tab-pane" id="sta" role="tabpanel" aria-labelledby="sta-tab">
+  
+  <?php require_once('cint_stats.php'); ?> 
   
   </div>
 
