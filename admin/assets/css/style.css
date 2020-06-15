@@ -191,4 +191,20 @@ margin-left:5px;
 }
 
 
-/* CHECKBOX EFFECT */
+/* TOOLTIP */
+
+.tooltip-inner {
+  background-color: #218838;
+}
+.tooltip.bs-tooltip-right .arrow:before {
+  border-right-color: #218838 !important;
+}
+.tooltip.bs-tooltip-left .arrow:before {
+  border-right-color: #218838 !important;
+}
+.tooltip.bs-tooltip-bottom .arrow:before {
+  border-right-color: #218838 !important;
+}
+.tooltip.bs-tooltip-top .arrow:before {
+  border-right-color: #218838 !important;
+}

@@ -33,9 +33,11 @@
 
         <!-- TOOLTIP  -->   
         <script>
-          $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
+});
+
         </script>  
 
 <!-- datatables  -->   

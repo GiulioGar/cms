@@ -23,8 +23,8 @@ $lastRow = $worksheet->getHighestRow();
     {    
         $leggoStatus=$worksheet->getCell('B'.$row)->getValue();
         if ($leggoStatus=="Complete") {$completeCint++;   }
-        if ($leggoStatus=="EarlyScreenout" || $leggoStatus=="SurveyClosed" || $leggoStatus=="TimedOut" ) {$filtrateCint++;   }
-        if ($leggoStatus=="QuotaFull") {$quotaFullCint++;   }
+        if ($leggoStatus=="EarlyScreenout") {$filtrateCint++;   }
+        if ($leggoStatus=="QuotaFull" || $leggoStatus=="SurveyClosed" || $leggoStatus=="TimedOut") {$quotaFullCint++;}
     }   
 
     $contattiCint=$completeCint+$filtrateCint+$quotaFullCint;
@@ -72,7 +72,7 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
 <div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> RISPOSTA UTENTI </h6>
+	<h6 class="m-0 font-weight-bold text-primary"> RISPOSTA UTENTI &nbsp; <span style="float:right"> <i class="fas fa-user-clock"></i></span> </h6>
  </div>
 
 <div class="card-body">  
@@ -99,18 +99,13 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
     </tr>
     <tr>
 
-    <tr>
-      <th scope="row">Complete Nostro DB</th>
-      <td><?php echo $comp_use['total']; ?></td>
-      <td><?php echo (int)$irCompleteDb;?>%</td>
-    </tr>
 
       <th scope="row">Screenout</th>
       <td><?php echo $filtrateCint ?></td>
       <td><?php echo (int)$irScreenoutCint ?>%</td>
     </tr>
     <tr>
-      <th scope="row">QuotaFull</th>
+      <th scope="row">QuotaFull - Closed</th>
       <td><?php echo $quotaFullCint ?></td>
       <td><?php echo (int)$irQuotafullCint ?>%</td>
     </tr>
@@ -175,7 +170,7 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
 <div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> INTERVISTE FATTURATE </h6>
+	<h6 class="m-0 font-weight-bold text-primary">BILANCIO &nbsp; <span style="float:right"><i class="fas fa-balance-scale-right"></i></span></h6>
  </div>
 
 <div class="card-body">  
@@ -185,8 +180,9 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
 <div class="col-md-6">
 
 <table style="text-align:center" class="table table-striped">
-  <thead class="thead-light">
-    <tr>
+  <thead>
+  <tr style="text-align:left" class="table-light"><th colspan="6" scope="col">INTERVISTE FATTURATE <span style="float:right"><i class="fas fa-file-invoice-dollar"></i></span></th></tr>
+    <tr class="table-dark">
       <th scope="col">Mese</th>
       <th scope="col">N° Interviste</th>
       <th scope="col">Entrate Tot</th>
@@ -199,6 +195,11 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
 
   <?php 
   
+$contaMesi;
+$sumCpi;
+$sumCpiLordo;
+
+
   for ($row2 = 1; $row2 <= 12; $row2++) 
   {    
 
@@ -213,6 +214,10 @@ $celCpiNetto=number_format((float)$celCpiNetto, 2, '.', '');
 $entrateNetto=number_format((float)$entrateNetto, 2, '.', ''); 
 
 
+if($celInt>0) { $contaMesi++;}
+if($celCpiNetto>0) { $sumCpi=$sumCpi+$celCpiNetto; }
+if($celCpi>0) { $sumCpiLordo=$sumCpiLordo+$celCpi; }
+
 
     echo  "<tr>". 
     "<th scope='col'>".$worksheet2->getCell('A'.$row2)->getValue()."</th>".
@@ -225,9 +230,13 @@ $entrateNetto=number_format((float)$entrateNetto, 2, '.', '');
 
     $contaInterviste=$contaInterviste+$celInt;
     $contaPagate=$contaPagate+$celPago;
+    $contaPagateNetto=$contaPagateNetto+$entrateNetto;
 
   } 
-
+  $mediaCpi=$sumCpi/$contaMesi;
+  $mediaCpiLordo=$sumCpiLordo/$contaMesi;
+  $mediaCpi=number_format((float)$mediaCpi, 2, '.', ''); 
+  $mediaCpiLordo=number_format((float)$mediaCpiLordo, 2, '.', ''); 
 
   ?>
 
@@ -240,61 +249,125 @@ $entrateNetto=number_format((float)$entrateNetto, 2, '.', '');
 
 <div class="col-md-6">
 
-<table style="text-align:center" class="table striped">
-  <thead class="thead-dark">
+<table class="table striped">
+  <thead class="thead-light">
     <tr>
-      <th scope="col">TOTALE 2020</th>
+      <th colspan="2" scope="col">TOTALE ANNUO - FATTURATE<span style="float:right"><i class="fas fa-calculator"></i></span></th>
     </tr>
   </thead>
   <tbody>
 
 <tr>
 <th scope="col">N° Interviste</th>
-<td></td>
+<td><?php echo $contaInterviste ?></td>
 </tr>
 
 <tr>
-<th scope="col">Pagate </th>
-<td></td>
+<th scope="col">Entrate Lorde</th>
+<td><?php echo $contaPagate ?>€</td>
 </tr>
 
 <tr>
-<th scope="col">CPI </th>
-<td></td>
+<th scope="col">Entrate Nette</th>
+<td><?php echo $contaPagateNetto ?>€</td>
+</tr>
+
+<tr class="table-info">
+<th scope="col">CPI NETTO </th>
+<td><?php echo $mediaCpi ?>€</td>
 </tr>
 
 </tbody>
 </table>
 
+<div>&nbsp;</div>
+<!-- DA FATTURARE -->
 
-<!-- PREVISIONI -->
+<?php
 
-<table style="text-align:center" class="table striped">
+$dapagare=$completeCint-$contaInterviste;
+$stimaEntrate=$dapagare*$mediaCpiLordo;
+
+?>
+
+
+<table class="table striped">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">STIMA ENTRATE</th>
+      <th colspan="2" scope="col">DA FATTURARE <span style="float:right"><i class="fas fa-forward"></i></span> </span></th>
     </tr>
   </thead>
   <tbody>
 
 <tr>
-<th scope="col">Intervista da pagare</th>
-<td></td>
+<th scope="col">Interviste insolute</th>
+<td> <?php echo $dapagare; ?> </td>
 </tr>
 
 <tr>
-<th scope="col">Stima entrate </th>
-<td></td>
+<th scope="col">Importo previsto</th>
+<td> <?php echo $stimaEntrate; ?>€</td>
+</tr>
+
+</tbody>
+</table>
+<div>&nbsp;</div>
+
+<!-- PREVISIONI  -->
+
+<?php
+
+
+$mediaMeseInterviste=$completeCint/$contaMesi;
+
+$stimaintAnno=$mediaMeseInterviste*12;
+$stimaentAnno=$stimaintAnno*$mediaCpi;
+
+
+
+
+
+?>
+
+<table class="table striped">
+  <thead class="thead-light">
+    <tr>
+      <th colspan="2" scope="col">PROSPETTIVA ENTRATE <span style="float:right"><i class="fas fa-comments-dollar"></i></span></th>
+    </tr>
+  </thead>
+  <tbody>
+
+<tr>
+<th scope="col">Possibili Interviste annuali</th>
+<td> <?php echo $stimaintAnno; ?> </td>
+</tr>
+
+<tr style="font-size:16px" class="table-success">
+<th scope="col">Possibili Introiti annui</th>
+<td> <?php echo (int)$stimaentAnno; ?>€</td>
 </tr>
 
 </tbody>
 </table>
 
+<div>&nbsp;</div>
 </div>
 
 
+
+
+
 </div>
 </div>
 </div>
 </div>
 </div>
+
+<script>
+
+$('td').each(function() {
+    var text = $(this).text();
+    $(this).text(text.replace('nan€', '-')); 
+});
+
+</script>

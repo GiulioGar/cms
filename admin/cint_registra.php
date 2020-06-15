@@ -69,7 +69,7 @@ $query45_user = "SELECT COUNT(*) as total FROM cint_users where Year(birth_date)
 $t45_user = mysqli_query($admin,$query45_user);
 $t45_use = mysqli_fetch_assoc($t45_user);
 
-$query55_user = "SELECT COUNT(*) as total FROM t_usercint_users_info where Year(birth_date)<='$f55' and Year(birth_date)>='$f64'";
+$query55_user = "SELECT COUNT(*) as total FROM cint_users where Year(birth_date)<='$f55' and Year(birth_date)>='$f64'";
 $t55_user = mysqli_query($admin,$query55_user);
 $t55_use = mysqli_fetch_assoc($t55_user);
 

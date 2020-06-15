@@ -146,7 +146,7 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
     </div>
     <div class="col-sm-9">
     <div class="flex-row align-items-center justify-content-between">
-    <div class="alert alert-warning mess2" role="alert" style="display:none; text-align:center;"> Download in corso... </div>
+    <div class="alert alert-warning mess2" role="alert" style="display:none; text-align:center;"><i class="fas fa-cloud-download-alt"></i> &nbsp;Download in corso... </div>
     </div>
     </div>
     </div>
@@ -157,21 +157,21 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
     <div class="col-sm-1">
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input ir" value="irfiltro" name="customCheck" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">IR</label>
+            <label data-toggle="tooltip"  data-type="primary" data-placement="bottom" title="IR inferiore al 10%" class="custom-control-label" for="customCheck1">IR</label>
         </div>
     </div>   
 
      <div class="col-sm-1">   
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input loi" value="loifiltro" name="customCheck" id="customCheck2">
-            <label class="custom-control-label" for="customCheck2">Loi</label>
+            <label data-toggle="tooltip"  data-type="primary" data-placement="bottom" title="Loi superiore a 20 min." class="custom-control-label" for="customCheck2">Loi</label>
         </div>
     </div>   
 
     <div class="col-sm-1">   
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input scad" value="scafiltro" name="customCheck" id="customCheck3" >
-            <label class="custom-control-label" for="customCheck3">Scadenza</label>
+            <label data-toggle="tooltip"  data-type="primary" data-placement="bottom" title="Scadenza inferiore a 6 ore" class="custom-control-label" for="customCheck3">Scadenza</label>
         </div>
     </div>    
 
@@ -224,7 +224,7 @@ echo "<th style='font-weight:bold'>Loi</th>";
 echo "<th style='font-weight:bold'>Ir</th>";
 echo "<th style='font-weight:bold'>Link</th>";
 echo "<th style='font-weight:bold'>Scadenza</th>";
-echo "<th style='font-weight:bold'>Inviti</th>";
+echo "<th style='font-weight:bold'>Inviato</th>";
 echo "</tr>";
 
 if ($num_rows==0)
@@ -243,23 +243,29 @@ while ($row = mysqli_fetch_assoc($cintInviti))
         $dteStart = new DateTime($strStart);
         $dteEnd   = new DateTime($strEnd); 
         $dteDiff  = $dteStart->diff($dteEnd); 
+
+        if ($row['gender']==1) {$stampaSesso="Uomo";}
+        if ($row['gender']==2) {$stampaSesso="Donna";}
+
+        if ($row['inviti']==0) {$stampaInvito="No";}
+        if ($row['inviti']==1) {$stampaInvito="Si";}
         
 
         echo "<tr>";
 
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['member_id']."</td>";
-        echo "<td>".$row['gender']."</td>";
+        echo "<td>".$stampaSesso."</td>";
         echo "<td>".$row['email']."</td>";
         echo "<td>".$row['project_id']."</td>";
-        echo "<td>".$row['loi']."</td>";
-        echo "<td>".$row['ir']."</td>";
+        echo "<td>".$row['loi']."min.</td>";
+        echo "<td>".$row['ir']."%</td>";
         echo "<td>".$row['survey_url']."</td>";
         if ($dteStart>=$dteEnd )
         { echo "<td>". $dteDiff->format("%h ore %i minuti")."</td>";}
         else
         { echo "<td style='color:red'>Scaduto</td>";}
-        echo "<td>".$row['inviti']."</td>";
+        echo "<td>".$stampaInvito."</td>";
 
         
 
@@ -405,6 +411,7 @@ console.log(dataVal);
 	  					{ 
                         table=$(data).filter(".rowDisp");
                         $(".rowDisp").html(table);
+                        
 
 
                         }    

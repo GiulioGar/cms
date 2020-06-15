@@ -85,7 +85,7 @@ $num_rows = mysqli_num_rows($cintInviti);
 
 <div class="card shadow mb-12">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary">INVITI DISPONIBILI <?php echo $num_rows;?> </h6></span><br/>
+	<h6 class="m-0 font-weight-bold text-primary">INVITI DISPONIBILI <?php echo $num_rows;?> </h6></span>
 </div>
 
 
@@ -104,7 +104,7 @@ echo "<th style='font-weight:bold'>Loi</th>";
 echo "<th style='font-weight:bold'>Ir</th>";
 echo "<th style='font-weight:bold'>Link</th>";
 echo "<th style='font-weight:bold'>Scadenza</th>";
-echo "<th style='font-weight:bold'>Inviti</th>";
+echo "<th style='font-weight:bold'>Inviato</th>";
 echo "</tr>";
 
 if ($num_rows==0)
@@ -114,6 +114,7 @@ if ($num_rows==0)
 
 else 
 {
+
 while ($row = mysqli_fetch_assoc($cintInviti)) 
     {
 
@@ -122,23 +123,29 @@ while ($row = mysqli_fetch_assoc($cintInviti))
         $dteStart = new DateTime($strStart);
         $dteEnd   = new DateTime($strEnd); 
         $dteDiff  = $dteStart->diff($dteEnd); 
+
+        if ($row['gender']==1) {$stampaSesso="Uomo";}
+        if ($row['gender']==2) {$stampaSesso="Donna";}
+
+        if ($row['inviti']==0) {$stampaInvito="No";}
+        if ($row['inviti']==1) {$stampaInvito="Si";}
         
 
         echo "<tr>";
 
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['member_id']."</td>";
-        echo "<td>".$row['gender']."</td>";
+        echo "<td>".$stampaSesso."</td>";
         echo "<td>".$row['email']."</td>";
         echo "<td>".$row['project_id']."</td>";
-        echo "<td>".$row['loi']."</td>";
-        echo "<td>".$row['ir']."</td>";
+        echo "<td>".$row['loi']."min.</td>";
+        echo "<td>".$row['ir']."%</td>";
         echo "<td>".$row['survey_url']."</td>";
         if ($dteStart>=$dteEnd )
         { echo "<td>". $dteDiff->format("%h ore %i minuti")."</td>";}
         else
         { echo "<td style='color:red'>Scaduto</td>";}
-        echo "<td>".$row['inviti']."</td>";
+        echo "<td>".$stampaInvito."</td>";
 
         
 
