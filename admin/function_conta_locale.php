@@ -818,9 +818,7 @@ if ($panel_in==1 || $panel_in==2) { $contaPan++;}
 $contaIns=0;
 
 
-/// only for test da cancellare//
-$conta_complete_panel=780;
-$previsione=650;
+
 
 //////////  progresso field//////////////
 $obiet=round($lu['goal']); 
