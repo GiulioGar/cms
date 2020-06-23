@@ -54,7 +54,7 @@ require_once('func_panelDat.php');
 		
 
 <!--Panel redemption-->	
-<div class="col-xl-4 col-lg-5  shadow-sm p-3 mb-5 bg-white rounded">
+<div class="col-xl-8 col-lg-5  shadow-sm p-3 mb-5 bg-white rounded">
 <div class="card card-default ">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 <h6 class="m-0 font-weight-bold text-success">Panel Redemption </h6> 
@@ -64,22 +64,10 @@ require_once('func_panelDat.php');
 </div>
 
 			<div class="card-body">		
-					<table class="table table-striped" style="font-size:12px">
-					<thead class="thead-light">
-					<tr>
-						<th scope="col">Periodo</th>
-						<th scope="col">Tot.</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr><td><b><span style="color:red">ultimi 2 mesi</span></b></td><td><b><?php echo sprintf("%01.2f", $medRed2)."%"; ?></b></td></tr>
-					<tr><td><b>2020</b></td><td><b><?php echo sprintf("%01.2f", $medRed20)."%"; ?></b></td></tr>
-					<tr><td><b>2019</b></td><td><b><?php echo sprintf("%01.2f", $medRed19)."%"; ?></b></td></tr>
-					<tr><td><b>2018</b></td><td><b><?php echo sprintf("%01.2f", $medRed18)."%"; ?></b></td></tr>
-					<tr><td><b>2017</b></td><td><b><?php echo sprintf("%01.2f", $medRed17)."%"; ?></b></td></tr>
-					</tbody>
-					
-					</table>
+
+			<canvas id="linered" ></canvas>
+			<canvas id="barnew" ></canvas>
+
 			</div>
 
 </div>
@@ -87,36 +75,7 @@ require_once('func_panelDat.php');
 
 
 
-<div class="col-xl-4 col-lg-5  shadow-sm p-3 mb-5 bg-white rounded">
-<div class="card card-default ">
-<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-<h6 class="m-0 font-weight-bold text-danger">Nuovi Iscritti</h6> 
-<span style="font-size: 28px; color: #94d872;">
-<i class="fas fa-user-plus"></i>
-					</span> 	
-				</div>	
-			<div class="card-body">		
-			<table class="table table-striped" style="font-size:12px">
-
-			<thead class="thead-light">
-					<tr>
-						 <th scope="col">Periodo</th>
-						 <th scope="col">Iscritti</th>
-					</tr>
-			</thead>
-			<tbody>
-					<tr><td><b>2020</b></td><td><b><?php echo $totReg20['tot'];; ?></b></span></td></tr>
-					<tr><td><b>2019</b></td><td><b><?php echo $totReg19['tot'];; ?></b></span></td></tr>
-					<tr><td><b>2018</b></td><td><b><?php echo $totReg18['tot'];; ?></b></span></td></tr>
-					<tr><td><b>2017</b></td><td><b><?php echo $totReg17['tot'];; ?></b></span></td></tr>
-					<tr><td><b>2016</b></td><td><b><?php echo $totReg16['tot'];; ?></b></span></td></tr>
-			</tbody>
-					</table>
-</div>
-				
-				
-</div>		
-</div>		
+	
 
 </div>
 <!--Fine prima riga -->	
@@ -331,8 +290,52 @@ for ($i = 1; $i < 41; $i++)
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+
+ // chart redemption   
+new Chart(document.getElementById("linered"), {
+    type: 'line',
+    data: {
+      labels: ["2018", "2019", "2020"],
+      datasets: [{
+        label: "% risposta ",
+        backgroundColor: ["#ff6384", "#36a2eb" , "#cc65fe"],
+        data: [<?php echo sprintf("%01.2f", $medRed18); ?>,<?php echo sprintf("%01.2f", $medRed19); ?>,<?php echo sprintf("%01.2f", $medRed20); ?>]
+      }]
+    },
+    options: {
+        animation:{
+        animateRotate: true,
+        render: false,
+    },
+
+    }
+});
+	
+//chart età
+new Chart(document.getElementById("barnew"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["2018", "2019", "2020"],
+      datasets: [
+        {
+          label: "Utenti ",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+          data: [<?php echo $totReg18['tot']; ?>,<?php echo $totReg19['tot']; ?>,<?php echo $totReg20['tot']; ?>]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Utenti Registrati'
+      }
+    }
+});
 
 
-	
-	
+</script>	
 

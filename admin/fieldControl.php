@@ -23,6 +23,7 @@ echo "<tr style='font-weight:bold'>";
 echo "<th scope='col'>ID</th>";
 echo "<th scope='col'>Info</th>";
 echo "<th scope='col'>Andamento</th>";
+echo "<th scope='col'>Tempo</th>";
 echo "<th scope='col'>Panel</th>";
 echo "<th scope='col'>Stato</th>";
 
@@ -55,12 +56,59 @@ echo "<td>
 <div class='progress'> 
 <div class='progress-bar progress-bar-striped progress-bar-animated bg-success' role='progressbar' aria-valuenow=".$progress." aria-valuemin='0' aria-valuemax='100' style='width:0%'>".$progress."%</div>
 </div></td>";
+echo"<td>
+<div class='crono' id='countdown".$row['sur_id']."'></div>
+</td>";
+
 echo "<td>".$panel."</td>";
 echo "<td style='color:".$colSat."'>".$stato."</td>";
 echo "</tr>";
 
 $contaField++;
 
+$time=strtotime($row['end_field']);
+$meseSc=date('F', $time);
+$ggSc=date('j', $time);
+$ySc=date('Y', $time);
+?>
+
+<script>
+	$( document ).ready(function() {
+	// set the date we're counting down to
+var target_date = new Date('<?php echo $meseSc; ?>, <?php echo $ggSc; ?>, <?php echo $ySc; ?>').getTime();
+ 
+ // variables for time units
+ var days, hours, minutes, seconds;
+  
+ // get tag element
+ var countdown = document.getElementById('countdown<?php echo $row['sur_id'];?>');
+  
+ // update the tag with id "countdown" every 1 second
+ setInterval(function () {
+  
+	 // find the amount of "seconds" between now and target
+	 var current_date = new Date().getTime();
+	 var seconds_left = (target_date - current_date) / 1000;
+  
+	 // do some time calculations
+	 days = parseInt(seconds_left / 86400);
+	 seconds_left = seconds_left % 86400;
+	  
+	 hours = parseInt(seconds_left / 3600);
+	 seconds_left = seconds_left % 3600;
+	  
+	 minutes = parseInt(seconds_left / 60);
+	 seconds = parseInt(seconds_left % 60);
+	  
+	 // format countdown string + set tag value
+	 countdown.innerHTML = '<span class="days">' + days +  ' <label>Giorni</label></span> <span class="hours">' + hours + ' <label>Ore</label></span>';  
+  
+ }, 1000);
+
+});
+</script>
+
+<?php
 }
 
 
