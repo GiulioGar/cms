@@ -3,22 +3,22 @@
 	  /////Target
 	  mysqli_select_db($database_admin, $admin);
 	  $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
-	  $tot_targ = mysqli_query($admin,$query_trg) or die(mysql_error()); 
+	  $tot_targ = mysqli_query($admin,$query_trg); 
 
 $query_surv = "SELECT *  FROM t_panel_control where stato=0 AND panel<>0";
-$csv_sur = mysqli_query($admin,$query_surv) or die(mysql_error());	
+$csv_sur = mysqli_query($admin,$query_surv);	
 
 
 $query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1'";
-$t_user = mysqli_query($admin,$query_user) or die(mysql_error());
+$t_user = mysqli_query($admin,$query_user);
 $t_use = mysqli_fetch_assoc($t_user);
 
 $query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and gender=1";
-$tm_user = mysqli_query($admin,$query_user) or die(mysql_error());
+$tm_user = mysqli_query($admin,$query_user);
 $tm_use = mysqli_fetch_assoc($tm_user);
 
 $queryf_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and gender=2";
-$tf_user = mysqli_query($admin,$queryf_user) or die(mysql_error());
+$tf_user = mysqli_query($admin,$queryf_user);
 $tf_use = mysqli_fetch_assoc($tf_user);
 
 $currentYear=date("Y");
@@ -39,31 +39,31 @@ $f65=$currentYear-65;
 
 
 $query17_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)>='$und18'";
-$t17_user = mysqli_query($admin,$query17_user) or die(mysql_error());
+$t17_user = mysqli_query($admin,$query17_user);
 $t17_use = mysqli_fetch_assoc($t17_user);
 
 $query18_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f18' and Year(birth_date)>='$f24'";
-$t18_user = mysqli_query($admin,$query18_user) or die(mysql_error());
+$t18_user = mysqli_query($admin,$query18_user);
 $t18_use = mysqli_fetch_assoc($t18_user);
 
 $query25_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f25' and Year(birth_date)>='$f34'";
-$t25_user = mysqli_query($admin,$query25_user) or die(mysql_error());
+$t25_user = mysqli_query($admin,$query25_user);
 $t25_use = mysqli_fetch_assoc($t25_user);
 
 $query35_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f35' and Year(birth_date)>='$f44'";
-$t35_user = mysqli_query($admin,$query35_user) or die(mysql_error());
+$t35_user = mysqli_query($admin,$query35_user);
 $t35_use = mysqli_fetch_assoc($t35_user);
 
 $query45_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f45' and Year(birth_date)>='$f54'";
-$t45_user = mysqli_query($admin,$query45_user) or die(mysql_error());
+$t45_user = mysqli_query($admin,$query45_user);
 $t45_use = mysqli_fetch_assoc($t45_user);
 
 $query55_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f55' and Year(birth_date)>='$f64'";
-$t55_user = mysqli_query($admin,$query55_user) or die(mysql_error());
+$t55_user = mysqli_query($admin,$query55_user);
 $t55_use = mysqli_fetch_assoc($t55_user);
 
 $query65_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f65'";
-$t65_user = mysqli_query($admin,$query65_user) or die(mysql_error());
+$t65_user = mysqli_query($admin,$query65_user);
 $t65_use = mysqli_fetch_assoc($t65_user);
 
 //conta aree
@@ -109,7 +109,7 @@ if ($azione=="CREA" || $azione=="DISPONIBILI")
 {
 
 $del="DELETE FROM t_test";
-$resA = mysqli_query($admin,$del) or die(mysql_error());
+$resA = mysqli_query($admin,$del);
 
 ////Calculator
 $year1=$currentYear-$ag1;
@@ -142,7 +142,7 @@ $infoInserita=false;
 		
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+		$resTab = mysqli_query($admin,$inTab);
 
 	
 
@@ -156,7 +156,7 @@ $infoInserita=false;
 
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+		$resTab = mysqli_query($admin,$inTab);
 	
 	}
 	
@@ -166,7 +166,7 @@ $infoInserita=false;
 	{
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysql_error());
+		$resTab = mysqli_query($admin,$inTab);
 
 	
 	}

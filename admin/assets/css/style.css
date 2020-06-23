@@ -235,3 +235,9 @@ border-radius: 15px;
 #crono span:last-child {
   border-right: 1px solid #313233;
 }
+
+canvas{
+
+  width:100% !important;
+
+}

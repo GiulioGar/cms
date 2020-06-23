@@ -13,12 +13,13 @@ $mesi36=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m"),date("d"),date("Y")
 //TOT
 mysqli_select_db($admin,$database_admin);
 $query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1'";
-$tot_user = mysqli_query($admin,$query_user) or die(mysql_error());
+$tot_user = mysqli_query($admin,$query_user);
 $tot_use = mysqli_fetch_assoc($tot_user);
 //DONNE 
 $query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and gender='2'";
-$tot_userGirl = mysqli_query($admin,$query_user) or die(mysql_error());
+$tot_userGirl = mysqli_query($admin,$query_user);
 $tot_useGirl = mysqli_fetch_assoc($tot_userGirl);
+
 
 //ATTIVI//
 

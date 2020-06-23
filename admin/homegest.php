@@ -19,6 +19,12 @@ mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control order by stato,giorni_rimanenti ASC,id DESC";
 $tot_ricerche = mysqli_query($admin,$query_ricerche);
 
+//TOT
+mysqli_select_db($admin,$database_admin);
+$query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1'";
+$tot_user = mysqli_query($admin,$query_user);
+$tot_use = mysqli_fetch_assoc($tot_user);
+
 /*
 $sur_date=substr($today,0,10);
 $end_date=substr($tot_ricerche['end_field'],0,10);
@@ -94,10 +100,17 @@ if (empty($ag2)) { $ag2=65;}
 
  <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="card border-success mb-3">
+   <div class="card  mb-3">
    <h5 class="card-header">
-   Dati Panel
+   Dati Panel 
     </h5>
+    <button type="button" style="background-color:#88d899" class="btn btn-success">
+    <i class="fas fa-address-card"></i>
+  <b>ISCRITTI:</b> <span class="badge badge-light"><b><?php echo $tot_use['total']; ?></b></span>
+  
+</button>
+
+
    <div class="card-body text-center recent-users-sec">
   <?php include 'PanelDat.php'; ?> 
    </div>
