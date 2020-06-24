@@ -120,6 +120,24 @@ if (empty($ag2)) { $ag2=65;}
  
  </div>
 
+
+ <div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+   <div class="card  mb-3">
+   <h5 class="card-header">
+   Dati Ricerche
+    </h5>
+    
+
+   <div class="card-body text-center recent-users-sec">
+  <?php include 'surDat.php'; ?> 
+   </div>
+   
+   </div>
+  </div>
+ 
+ </div>
+
 </div>
 </div>
 
