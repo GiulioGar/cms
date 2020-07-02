@@ -26,6 +26,8 @@ $sur_date=$_REQUEST['sur_date'];
 $labprj=$_REQUEST['labprj'];
 $goal=$_REQUEST['goal'];
 $paese=$_REQUEST['paese'];
+$cliente=$_REQUEST['cliente'];
+$tipologia=$_REQUEST['tipologia'];
 
 
 $cerca_progetto=$_REQUEST['prj'];
@@ -71,8 +73,8 @@ if($duplicate>0) { ?>
 
 	else{
 	  
-	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese) 
-	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."')";
+	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese,cliente,tipologia) 
+	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."')";
 	mysqli_query($admin,$query_user);
 	}
 }

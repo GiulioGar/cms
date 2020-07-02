@@ -1,23 +1,21 @@
-	
-    <?php
+ <?php
     
       /////Target
 	  
 	  $query_trg = "SELECT * FROM elencotag";
-	  $tot_targ = mysqli_query($admin,$query_trg) or die(mysql_error());     
+	  $tot_targ = mysqli_query($admin,$query_trg) ;     
 	 
 	 
 	 
     //Media redemption Panel//
-	//anno 2014
 	
-	$query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where panel=1 and stato=1 and sur_date like '2019%'";
-	$surClo = mysqli_query($admin,$query_conta) or die(mysql_error());
+	$query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where panel=1 and stato=1 and sur_date like '2020%'";
+	$surClo = mysqli_query($admin,$query_conta) ;
 	$cloSur = mysqli_fetch_assoc($surClo);
 	
 	
-	$query_ric = "SELECT * FROM t_panel_control where panel=1 and stato=1 and sur_date like '2019%' ";
-	$tot_close = mysqli_query($admin,$query_ric) or die(mysql_error());
+	$query_ric = "SELECT * FROM t_panel_control where panel=1 and stato=1 and sur_date like '2020%' ";
+	$tot_close = mysqli_query($admin,$query_ric) ;
 	
 
 	while ($row = mysqli_fetch_assoc($tot_close))
@@ -28,12 +26,12 @@
 	
     // ultimi 2 mesi
 	$query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where panel=1 and stato=1 and sur_date > '$mesi2'";
-	$surClo2 = mysqli_query($admin,$query_conta) or die(mysql_error());
+	$surClo2 = mysqli_query($admin,$query_conta) ;
 	$cloSur2 = mysqli_fetch_assoc($surClo2);
 	
 	
 	$query_m2 = "SELECT * FROM t_panel_control where panel=1 and stato=1 and sur_date > '$mesi2' ";
-	$m2_close = mysqli_query($admin,$query_m2) or die(mysql_error());
+	$m2_close = mysqli_query($admin,$query_m2) ;
 	
 
 	while ($row = mysqli_fetch_assoc($m2_close))
@@ -48,34 +46,34 @@
 //ABILITATI PANEL INTERNO
 
 $query_user_abilitati = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid NOT LIKE 'IDEX%'))";
-$tot_user_abilitati = mysqli_query($admin,$query_user_abilitati) or die(mysql_error());
+$tot_user_abilitati = mysqli_query($admin,$query_user_abilitati) ;
 $tot_use_abilitati = mysqli_fetch_assoc($tot_user_abilitati);
 
 
 //ABILITATI PANEL ESTERNO
 
 $query_user_abilitati_ssi = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid LIKE 'IDEX%'))";
-$tot_user_abilitati_ssi = mysqli_query($admin,$query_user_abilitati_ssi) or die(mysql_error());
+$tot_user_abilitati_ssi = mysqli_query($admin,$query_user_abilitati_ssi) ;
 $tot_use_abilitati_ssi = mysqli_fetch_assoc($tot_user_abilitati_ssi);
 
 
 //ABILITATI TOTALE
 
 $query_user_abilitati_totali = "SELECT count(*) as total FROM t_respint where (sid='".$sid."')";
-$tot_user_abilitati_totali = mysqli_query($admin,$query_user_abilitati_totali) or die(mysql_error());
+$tot_user_abilitati_totali = mysqli_query($admin,$query_user_abilitati_totali) ;
 $tot_use_abilitati_totali = mysqli_fetch_assoc($tot_user_abilitati_totali);
 
 
 
 
 $query_new = "SELECT user_id,email,first_name,gender,birth_date  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) ORDER BY RAND() limit 50000";
-$csv_mvf = mysqli_query($admin,$query_new) or die(mysql_error());
+$csv_mvf = mysqli_query($admin,$query_new) ;
 
 
 
 
 $query_new_attivi = "SELECT *  FROM t_user_info as info, t_respint as respint,t_user_stats as story where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0') AND story.user_id=info.user_id AND story.last_update > '$mesi3' and year_surveys>0 ) limit 50000";
-$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
+$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) ;
 
 
 //// ESPORTA CAMPIONE MVF IN CSV ////
@@ -131,7 +129,7 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) or die(mysql_error());
 
 
 $query_last_update = "SELECT * FROM t_panel_control where (sur_id='".$sid."')";
-$last_update = mysqli_query($admin,$query_last_update) or die(mysql_error());
+$last_update = mysqli_query($admin,$query_last_update) ;
 $lu = mysqli_fetch_assoc($last_update);
 $data_odierna=date("Y-m-d H:i:s");
 $ultimo_aggiornamento=$lu['last_update'];
@@ -154,7 +152,7 @@ if ($stato_ricerca != 1)
 
 //ELIMINO RECORD
 $query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='".$sid."')";
-$query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) or die(mysql_error());
+$query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) ;
 $query_pulisci_respint_copy_sample_t = mysqli_fetch_assoc($query_pulisci_respint_copy_sample);
 
 //RICOPIO
@@ -162,7 +160,7 @@ $query_copia_respint_copy="INSERT t_abilitatipanel (sid, uid, prj_name)
 SELECT sid, uid, prj_name
 FROM t_respint
 WHERE sid = '".$sid."'";
-$query_copia_respint_copy_sample = mysqli_query($admin,$query_copia_respint_copy) or die(mysql_error());
+$query_copia_respint_copy_sample = mysqli_query($admin,$query_copia_respint_copy) ;
 $query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_copy_sample);
 
 
@@ -204,7 +202,7 @@ $id_sample = explode(";", $riga_sample);
 
 
 $query_aggiorna_statistiche_sample = "UPDATE t_abilitatipanel set data_abilitazione='".$data_creazione_file."' where (sid='".$sid."' and uid='".$id_sample[0]."' and ((data_abilitazione is NULL) or (data_abilitazione ='')))";
-$aggiorna_statistiche_sample = mysqli_query($admin,$query_aggiorna_statistiche_sample) or die(mysql_error());
+$aggiorna_statistiche_sample = mysqli_query($admin,$query_aggiorna_statistiche_sample) ;
 $aggiorna_statistiche_t_sample = mysqli_fetch_assoc($aggiorna_statistiche_sample);
 
 
@@ -251,7 +249,7 @@ else
 	$data=date("Y-m-d H:i:s");
 	
 	$query_aggiorna_abilitati_aggiornati = "UPDATE t_panel_control set abilitati_aggiornati='".$aggiorna_abilitati."' where sur_id='".$sid."'";
-	$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) or die(mysql_error());
+	$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) ;
 	$aggiorna_abilitati_query_esegui = mysqli_fetch_assoc($aggiorna_abilitati_query);
 	}
 }
@@ -273,7 +271,7 @@ if ($stato_ricerca != 1)
 	$aggiorna_abilitati=$tot_use_abilitati['total'];
 	
 	$query_aggiorna_abilitati_aggiornati = "UPDATE t_panel_control set abilitati_aggiornati='".$aggiorna_abilitati."', abilitati='".$aggiorna_abilitati."' where sur_id='".$sid."'";
-	$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) or die(mysql_error());
+	$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) ;
 	$aggiorna_abilitati_query_esegui = mysqli_fetch_assoc($aggiorna_abilitati_query);
 	}
 }
@@ -342,7 +340,7 @@ if ($qq <>'')
 {
 
 $query_user_disponibili =$qq ;
-$tot_user_disponibili = mysqli_query($admin,$query_user_disponibili) or die(mysql_error());
+$tot_user_disponibili = mysqli_query($admin,$query_user_disponibili) ;
 $tot_use_disponibili = mysqli_fetch_assoc($tot_user_disponibili);
 }
 

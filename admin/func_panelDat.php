@@ -817,5 +817,20 @@ $percF=$f_ric['total']/$tot_act12['total']*100;
 $percG=$g_ric['total']/$tot_act12['total']*100;
 $percH=$h_ric['total']/$tot_act12['total']*100;
 
+
+//Clienti
+
+$query_clienti = "SELECT 
+cliente, SUM(if(sur_date like '%2020%', 1, 0)) AS conta2020,SUM(if(sur_date like '%2019%', 1, 0)) AS conta2019
+FROM t_panel_control
+WHERE cliente<>''
+GROUP BY cliente
+ORDER BY cliente ASC";
+$lista_clienti = mysqli_query($admin,$query_clienti);
+$numClient = $lista_clienti->num_rows;
+
+
+
+
 ?>
 

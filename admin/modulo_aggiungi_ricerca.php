@@ -1,3 +1,13 @@
+<?php
+
+$query_clienti = "SELECT cliente
+FROM t_panel_control
+GROUP BY cliente
+ORDER BY cliente ASC";
+$lista_clienti = mysqli_query($admin,$query_clienti);
+
+?>
+
 <button type="button" class="btn btn-success apri" data-toggle="modal" data-target="#modalCrea" data-whatever="@mdo"><i class="fas fa-folder-plus" aria-hidden="true"></i> PROGETTO</button>
 
 
@@ -26,8 +36,40 @@
       <div class="input-group-prepend">
       <span class="input-group-text" id="">Codice PRJ Progetto:</span>
       </div>
-      <input required="" type="text" class="form-control" id="prj" placeholder="" name="sid">
+      <input required="" type="text" class="form-control" id="prj" placeholder="" name="prj">
       </div>
+
+<div>&nbsp; </div>
+
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+<label class="input-group-text" for="cliente">Cliente:</label>
+</div>
+<select  name="cliente" required="" class="custom-select" id="cliente">
+<?php
+while ($row = mysqli_fetch_assoc($lista_clienti))
+			{
+			?>
+		    <option value="<?php echo $row['cliente'];?>"><?php echo $row['cliente'];?></option>
+			<?php
+      }
+      ?>
+
+</select>
+</div>  
+
+<div>&nbsp; </div>
+
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+<label class="input-group-text" for="cliente">Tipologia:</label>
+</div>
+<select  name="tipologia" required="" class="custom-select" id="tipologia">
+      <option value="CAWI">CAWI</option>
+      <option value="CATI">CATI</option>
+      <option value="CAPI">CAPI</option>
+</select>
+</div> 
 
 <div>&nbsp; </div>
 
