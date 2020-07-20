@@ -168,7 +168,10 @@ $query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_cop
 
 //AGGIORNAMENTO DATA IN RESPINT//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+// RIPRISTINA DOPO PUBBLICAZIONE
+//$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+
 $contatti_sample=count($fl_sample);
 //$sid="ITA1411148";
 //echo "NUMERO CAMPIONI:".$contatti_sample."<br><br><br>";
@@ -283,25 +286,14 @@ $ore_differenza=($confrontodata/60)/60;
 //echo "<br>Differenza:".(($confrontodata/60)/60)." ore";
 
 //recupero tutti i file sre dalla cartella e li conto
-$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+
+//ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
+//$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+
+$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 $contatti=count($fl);
 
-/*
-$ftp_server="46.37.21.33";
-$ftp_user_name="primis";
-$ftp_user_pass="Imr_PrimiFields13";
-// set up basic connection
-$conn_id = ftp_connect($ftp_server);
 
-// login with username and password
-$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
-
-// get contents of the current directory
-$contents = ftp_nlist($conn_id, "/".$prj."/".$sid."/results/");
-
-
-$contatti=count($contents);
-*/
 
 
 //CALCOLO QUERY IN BASE AI TARGET
@@ -495,9 +487,17 @@ if ($statSur==4)
 
 
 //recupero file sdl
+
+/*RIPRISTINA DOPO PUBBLICAZIONE
+
 $sdl = file_get_contents('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
-	
+
+*/
+
+$sdl = file_get_contents('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
+$sdlb = file('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
+
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
 
@@ -699,8 +699,7 @@ $totale_user_abilitati=$tot_use_abilitati['total'];
 //Calcolo previsione
 $previsione=($contatti_disponibili/100)*$media_redemption_panel;
 $previsione=($previsione/100)*$redemption_field;
-$previsione=number_format($previsione, 0);
-
+$previsione=round($previsione);
 ?>
 <script type="text/javascript">
 <!--
@@ -820,6 +819,7 @@ $contaIns=0;
 
 //////////  progresso field//////////////
 $obiet=round($lu['goal']); 
+$daFare=$lu['goal']-$conta_complete;
 
 //totale
 $progressTot=$conta_complete/$obiet*100;
@@ -839,8 +839,9 @@ if ($progressExt>=100) {$progressExt=100;}
 ////////// allert stima  //////////////
 
 
-
-if ($previsione >= $obiet) {$alsuccess=1; }
+if ($previsione >= $daFare) {$alsuccess=1; }
 else {$alsuccess=0;}
+
+
 
 ?>

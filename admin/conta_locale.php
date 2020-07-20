@@ -111,6 +111,7 @@ require_once('function_conta_locale.php');
             <div class="h5 text-xs font-weight-bold text-danger text-uppercase mb-1">Info</div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Stato Field:</b> <?php echo $stato; ?></div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Loi:</b> <span style="color:red"><?php echo substr($loi,0,4); ?> minuti</span> </div>
+            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>RTR:</b><a target="_blank" href="http://tools.primisoft.com/rtr/<?php echo $sid; ?>/3"> <i class="fas fa-external-link-alt"></i>Collegati </a> </div>
           </div>
           <div class="col-auto">
 		  <span style="font-size: 28px; color: #D53343; opacity: 0.5;">
@@ -321,12 +322,12 @@ require_once('function_conta_locale.php');
 						<?php 
 						if ($alsuccess==1) {
 						?>		
-						<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Casi sufficienti per chiudere il field.</button></h6>
+						<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Utenti sufficienti per chiudere il field.</button></h6>
 						<?php 
 						}
 						if ($alsuccess==0) {
 						?>	
-						<h6 class="align-items-center justify-content-between text-center"><button id="alert4" class="btn btn-alert btn-danger alcasi" type="button">Casi insufficienti per chiudere il field.</button></h6>
+						<h6 class="align-items-center justify-content-between text-center"><button id="alert4" class="btn btn-alert btn-danger alcasi" type="button">Utenti insufficienti per chiudere il field.</button></h6>
 						<?php 
 						}
 						?>	
