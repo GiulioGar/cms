@@ -360,256 +360,107 @@ require_once('function_conta_locale.php');
 			?>
 				
 				
-				<div class="col-xl-4 col-lg-5">
+<div class="col-xl-4 col-lg-5">
                    		 <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-success"> CONTROLLO INTERVISTE FILTRATE </h6> <span style="color:gray"> <i class="fas fa-sign-out-alt fa-2x text-gray-300"></i></span>
+                        <h6 class="m-0 font-weight-bold text-success"> CONTROLLO INTERVISTE </h6> <span style="color:gray"> <i class="fas fa-cut fa-2x text-gray-300"></i></span>
                         </div>
-                        <div class="card-body">
-                      
-		<table class="table table-striped table-bordered">
-		<thead>
-		<tr>
-		<th scope="col">Domanda</td>
-		<th scope="col">Cod.</td>
-		<th scope="col">Num.</td>
-		<th scope="col">%</td>
-		</tr>
-		</thead>
-		<tbody>
-		<?php
-		$contaImm==0;
-		arsort($filtri);
-		foreach ( $filtri as $chiave => $valore) 
-				{
-				$contaImm++;
-				if ($contaImm<4) { $coltr="#F7C3C3";}
-				else { $coltr="#FFF";}
-				$contaRiga=0;
-				//cerca testo domanda
-				$ricerca=', '.trim($chiave).');'; 
-				$ricerca2='new question'; 
-				$txtdom="";
-				$txtread="";
-				$txtcompleto="";
-				$code="";
-				$codiceStampa="n/d";
-				foreach ($sdlb as $r) 
-					{
-						$contaRiga++;
-						$domain = strstr($r, $ricerca);
-						$domain2 = strstr($r, $ricerca2);
-						if ($domain !=false && $domain2 !=false) 
-							{  
-							$code=$sdlb[$contaRiga+1];
-							$trovato=strpos($code, '"code"');
-							if ($trovato != false){
-							                       $code=trim($code);
-												   $code=str_replace('qst.setProperty("code",','',$code);
-												   $code=str_replace('");','',$code);
-												   $code=str_replace('"','',$code);
-												   $codiceStampa=$code;
-												   
-												  }
-												  
-							
-							
-							$code=$sdlb[$contaRiga+2];
-							$trovato=strpos($code, '"code"');
-							if ($trovato != false){
-							                       $code=trim($code);
-												   $code=str_replace('qst.setProperty("code",','',$code);
-												   $code=str_replace('");','',$code);
-												   $code=str_replace('"','',$code);
-												   $codiceStampa=$code;
-												   
-												  }
-							
-							$code=$sdlb[$contaRiga+3];
-							$trovato=strpos($code, '"code"');
-							if ($trovato != false){
-							                       $code=trim($code);
-												   $code=str_replace('qst.setProperty("code",','',$code);
-												   $code=str_replace('");','',$code);
-												   $code=str_replace('"','',$code);
-												   $codiceStampa=$code;
-												  
-												  }
-							
-							$txtdom=$sdlb[$contaRiga]; 
-							$txtread = explode('"',$txtdom);
-							$contaT=0;
-							foreach ($txtread as $t) 
-								{
-								$contaT++;
-								if ($contaT>2)
-									{
-										$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
-										$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
-										$txtcompleto=$txtcompleto.$txtread[$contaT];
-										
-									}
-								}
-							
-							}
-						if($txtcompleto=="") { $txtstamp="Testo non disponibile";}
-						else { $txtstamp=$txtcompleto;}
-						$txtstamp=strip_tags($txtstamp);
-						$txtstamp=str_replace(");","",$txtstamp);
-					}
-				
-				if ($contaImm<10)
-					{
-					$perfDam=$valore/$contaFiltri*100;
-					echo "<tr style='background:".$coltr."'>
-					<td><a href='#' class='tooltip_default'title='".html_entity_decode($txtstamp, ENT_QUOTES,'UTF-8')."'/> q".$chiave."</a></td>
-					<td><a href='#' class='tooltip_default'title='".html_entity_decode($txtstamp, ENT_QUOTES,'UTF-8')."'/>".$codiceStampa."</a></td>
-					<td><b>".$valore."</b></td>
-					<td><b>".round($perfDam)."%</b></td></tr>";
-					}	
-					
-				}
-		$contaIns++;		
-		?>
-		</tbody>
+ <div style="min-height:440px;" class="card-body">
 
-		</table>
-			</div>
+
+						<ul class="nav nav-tabs" id="mytab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="inviti-tab" data-toggle="tab" href="#inviti" role="tab" aria-controls="inviti" aria-selected="true">Filtrate</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="registra-tab" data-toggle="tab" href="#registra" role="tab" aria-controls="registra" aria-selected="false">Sospese</a>
+						</li>
+						</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+					<div class="tab-pane active" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
+					<canvas id="bar-chart-filtrati" ></canvas>
+
+					</div>
+
+
+					<div class="tab-pane" id="registra" role="tabpanel" aria-labelledby="registra-tab">
+
+					<canvas id="bar-chart-sospese" ></canvas>
+					
+					
+					</div>
+
+					</div>
+
+	
+                      
+</div>
                         <div class="panel-footer">
                             &nbsp;
                         </div>
                     </div>
-            </div>
+</div>
 			
-			
-				<div class="col-xl-4 col-lg-5">
+<div class="col-xl-4 col-lg-5">
                    		 <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-success">  CONTROLLO INTERVISTE SOSPESE  </h6> <span style="color:gray"><i class="fas fa-cut fa-2x text-gray-300"></i></span>
+						<h6 class="m-0 font-weight-bold text-danger"> CONTROLLO QUOTE IMPOSTATE </h6> <span style="color:gray"><i class="fas fa-user-check fa-2x text-gray-300"></i></span>
                         </div>
                         <div class="card-body">
-                      
-			<table class="table table-striped table-bordered">
-			<thead>
-		<tr>
-		<th scope="col">Domanda</td>
-		<th scope="col">Cod.</td>
-		<th scope="col">Num.</td>
-		<th scope="col">%</td>
-		</tr>
-		</thead>
-		<tbody>
-		<?php
-		$contaImm2==0;
-		
-		arsort($sospese);
-		foreach ( $sospese as $chiave => $valore) 
-				{
-				$contaImm2++;
-				if ($contaImm2<4) { $coltr="#F7C3C3";}
-				else { $coltr="#FFF";}
-				$contaRiga=0;
-				//cerca testo domanda
-						
-				$ricerca=', '.trim($chiave).');'; 
-				$ricerca2='new question'; 
-				$txtdom="";
-				$txtread="";
-				$txtcompleto="";
-				$code="";
-				$codiceStampa="n/d";
-				
-				foreach ($sdlb as $r) 
-					{
-						$contaRiga++;
-						$domain = strstr($r, $ricerca);
-						$domain2 = strstr($r, $ricerca2);
-						if ($domain !=false && $domain2 !=false) 
-							{  
-							$code=$sdlb[$contaRiga+1];
-							$trovato=strpos($code, '"code"');
-							if ($trovato != false){
-							                       $code=trim($code);
-												   $code=str_replace('qst.setProperty("code",','',$code);
-												   $code=str_replace('");','',$code);
-												   $code=str_replace('"','',$code);
-												   $codiceStampa=$code;
-												   
-												  }
-												  
-							
-							
-							$code=$sdlb[$contaRiga+2];
-							$trovato=strpos($code, '"code"');
-							if ($trovato != false){
-							                       $code=trim($code);
-												   $code=str_replace('qst.setProperty("code",','',$code);
-												   $code=str_replace('");','',$code);
-												   $code=str_replace('"','',$code);
-												   $codiceStampa=$code;
-												   
-												  }
-							
-							$code=$sdlb[$contaRiga+3];
-							$trovato=strpos($code, '"code"');
-							if ($trovato != false){
-							                       $code=trim($code);
-												   $code=str_replace('qst.setProperty("code",','',$code);
-												   $code=str_replace('");','',$code);
-												   $code=str_replace('"','',$code);
-												   $codiceStampa=$code;
-												  
-												  }
-							
-							
-							$txtdom=$sdlb[$contaRiga]; 
-							$txtread = explode('"',$txtdom);
-							$contaT=0;
-							foreach ($txtread as $t) 
-								{
-								$contaT++;
-								if ($contaT>2)
-									{
-										$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
-										$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
-										$txtcompleto=$txtcompleto.$txtread[$contaT];
-									}
-								}
-							
-							}
-						if($txtcompleto=="") { $txtstamp="Testo non disponibile";}
-						else { $txtstamp=$txtcompleto;}
-						$txtstamp=strip_tags($txtstamp);
-						$txtstamp=str_replace(");","",$txtstamp);
-						
-						
-						
-					}
-				if ($contaImm2<10)
-					{
-					$perDam=$valore/$contaSospeso*100;
-					echo "<tr style='background:".$coltr."'>
-					<td><a href='#' class='tooltip_default'title='".html_entity_decode($txtstamp, ENT_QUOTES,'UTF-8')."'/> q".$chiave."</a></td>
-					<td><a href='#' class='tooltip_default'title='".html_entity_decode($txtstamp, ENT_QUOTES,'UTF-8')."'/>".$codiceStampa."</a></td>
-					<td><b>".$valore."</b></td>
-					<td><b>".round($perDam)."%</b></td></tr>";
-					}	
-					
-				}
-		$contaIns++;	
+                           <?php
+			$query_quo = "SELECT * FROM millebytesdb.t_quota_status where survey_id='$sid' and project_name='$prj' order by target_name ASC";
+			$tot_quo = mysqli_query($admin,$query_quo) or die(mysql_error());
+			$num_righe = mysqli_num_rows($tot_quo);
+			
+		if ($num_righe>0)
+		{	
 		?>
-		</tbody>
+	
+		
+				<table class="table table-striped table-bordered">
+				<thead>
+				<tr>
+				<th colspan='4'><span style="color:red"><b>QUOTE</b></span></th>
+				</tr>
+				</thead>
 
-		</table>
-					  
-					  
+				<tbody>
+				<?php
+
+				
+				echo "<tr><td><b>Target</b></td><td><b>Totale</b></td><td><b>Svolte</b></td><td><b>Da fare</b></td></tr>";
+				$sfondo="";
+				
+				
+				while ($row = mysqli_fetch_assoc($tot_quo))
+					{
+					$diffQuo=$row['current_value']-$row['target_value'];
+					if ($diffQuo>=0) { $sfondo="style='background-color:red; font-weight:bold;'";}
+					else  { $sfondo="";}
+					
+					
+					
+					  echo "<tr><td><b>".$row['target_name']."</b></td><td>".$row['target_value']."</td><td>".$row['current_value']."</td><td ".$sfondo.">".$diffQuo."</td></tr>";
+					}
+
+				?>
+				</tbody>
+				</table>
+					<?php } 
+					else  {echo "<h3>Nessuna quota impostata</h3>";}
+					?>	
+					
+					
                         </div>
                         <div class="panel-footer">
                             &nbsp;
                         </div>
-             </div>
-            </div>			
+                    </div>
+                </div>		
+		
  
+
  
 
 </div> 
@@ -964,6 +815,266 @@ $aggiorna_statistiche_costo = mysqli_query($admin,$query_aggiorna_statistiche_co
 $aggiorna_statistiche_t_costo = mysqli_fetch_assoc($aggiorna_statistiche_costo);
 }
 ?>
+
+
+<?php
+
+//creo php array da passare alla chart filtrate
+
+$labelArr=array();
+$valArr=array();
+
+$contaImm==0;
+		arsort($filtri);
+		foreach ( $filtri as $chiave => $valore) 
+				{
+				$contaImm++;
+				if ($contaImm<4) { $coltr="#F7C3C3";}
+				else { $coltr="#FFF";}
+				$contaRiga=0;
+				//cerca testo domanda
+				$ricerca=', '.trim($chiave).');'; 
+				$ricerca2='new question'; 
+				$txtdom="";
+				$txtread="";
+				$txtcompleto="";
+				$code="";
+				$codiceStampa="n/d";
+				foreach ($sdlb as $r) 
+					{
+						$contaRiga++;
+						$domain = strstr($r, $ricerca);
+						$domain2 = strstr($r, $ricerca2);
+						if ($domain !=false && $domain2 !=false) 
+							{  
+							$code=$sdlb[$contaRiga+1];
+							$trovato=strpos($code, '"code"');
+							if ($trovato != false){
+							                       $code=trim($code);
+												   $code=str_replace('qst.setProperty("code",','',$code);
+												   $code=str_replace('");','',$code);
+												   $code=str_replace('"','',$code);
+												   $codiceStampa=$code;
+												   
+												  }
+												  
+							
+							
+							$code=$sdlb[$contaRiga+2];
+							$trovato=strpos($code, '"code"');
+							if ($trovato != false){
+							                       $code=trim($code);
+												   $code=str_replace('qst.setProperty("code",','',$code);
+												   $code=str_replace('");','',$code);
+												   $code=str_replace('"','',$code);
+												   $codiceStampa=$code;
+												   
+												  }
+							
+							$code=$sdlb[$contaRiga+3];
+							$trovato=strpos($code, '"code"');
+							if ($trovato != false){
+							                       $code=trim($code);
+												   $code=str_replace('qst.setProperty("code",','',$code);
+												   $code=str_replace('");','',$code);
+												   $code=str_replace('"','',$code);
+												   $codiceStampa=$code;
+												  
+												  }
+							
+							$txtdom=$sdlb[$contaRiga]; 
+							$txtread = explode('"',$txtdom);
+							$contaT=0;
+							foreach ($txtread as $t) 
+								{
+								$contaT++;
+								if ($contaT>2)
+									{
+										$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
+										$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
+										$txtcompleto=$txtcompleto.$txtread[$contaT];
+										
+									}
+								}
+							
+							}
+						if($txtcompleto=="") { $txtstamp="Testo non disponibile";}
+						else { $txtstamp=$txtcompleto;}
+						$txtstamp=strip_tags($txtstamp);
+						$txtstamp=str_replace(");","",$txtstamp);
+					}
+
+					if ($contaImm<10)
+					{
+					$perfDam=$valore/$contaFiltri*100;
+					array_push($labelArr,$codiceStampa );
+					array_push($valArr,$valore);
+					}	
+					
+				}
+
+
+//creo php array da passare alla chart sospese
+
+$labelsArr=array();
+$valsArr=array();
+
+$contaImm2==0;
+		
+		arsort($sospese);
+		foreach ( $sospese as $chiave => $valore) 
+				{
+				$contaImm2++;
+				if ($contaImm2<4) { $coltr="#F7C3C3";}
+				else { $coltr="#FFF";}
+				$contaRiga=0;
+				//cerca testo domanda
+						
+				$ricerca=', '.trim($chiave).');'; 
+				$ricerca2='new question'; 
+				$txtdom="";
+				$txtread="";
+				$txtcompleto="";
+				$code="";
+				$codiceStampa="n/d";
+				
+				foreach ($sdlb as $r) 
+					{
+						$contaRiga++;
+						$domain = strstr($r, $ricerca);
+						$domain2 = strstr($r, $ricerca2);
+						if ($domain !=false && $domain2 !=false) 
+							{  
+							$code=$sdlb[$contaRiga+1];
+							$trovato=strpos($code, '"code"');
+							if ($trovato != false){
+							                       $code=trim($code);
+												   $code=str_replace('qst.setProperty("code",','',$code);
+												   $code=str_replace('");','',$code);
+												   $code=str_replace('"','',$code);
+												   $codiceStampa=$code;
+												   
+												  }
+												  
+							
+							
+							$code=$sdlb[$contaRiga+2];
+							$trovato=strpos($code, '"code"');
+							if ($trovato != false){
+							                       $code=trim($code);
+												   $code=str_replace('qst.setProperty("code",','',$code);
+												   $code=str_replace('");','',$code);
+												   $code=str_replace('"','',$code);
+												   $codiceStampa=$code;
+												   
+												  }
+							
+							$code=$sdlb[$contaRiga+3];
+							$trovato=strpos($code, '"code"');
+							if ($trovato != false){
+							                       $code=trim($code);
+												   $code=str_replace('qst.setProperty("code",','',$code);
+												   $code=str_replace('");','',$code);
+												   $code=str_replace('"','',$code);
+												   $codiceStampa=$code;
+												  
+												  }
+							
+							
+							$txtdom=$sdlb[$contaRiga]; 
+							$txtread = explode('"',$txtdom);
+							$contaT=0;
+							foreach ($txtread as $t) 
+								{
+								$contaT++;
+								if ($contaT>2)
+									{
+										$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
+										$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
+										$txtcompleto=$txtcompleto.$txtread[$contaT];
+									}
+								}
+							
+							}
+						if($txtcompleto=="") { $txtstamp="Testo non disponibile";}
+						else { $txtstamp=$txtcompleto;}
+						$txtstamp=strip_tags($txtstamp);
+						$txtstamp=str_replace(");","",$txtstamp);
+						
+						
+						
+					}
+				if ($contaImm2<10)
+					{
+					$perDam=$valore/$contaSospeso*100;
+					array_push($labelsArr,$codiceStampa);
+					array_push($valsArr,$valore);
+					}	
+					
+				}
+		$contaIns++;	
+
+?>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+
+ //chart filtrate
+
+ctx = document.getElementById("bar-chart-filtrati");
+ctx.height = 300;
+
+new Chart(document.getElementById("bar-chart-filtrati"), {
+    type: 'horizontalBar',
+    data: {
+      labels: [ <?php foreach ($labelArr as $lab){ echo "'".$lab."',"; } ?>  ],
+      datasets: [
+        {
+          label: "Interviste ",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","red","green"],
+          data: [<?php foreach ($valArr as $val){ echo "'".$val."',"; } ?>]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Interviste Filtrate'
+      }
+    }
+});
+
+
+ //chart sospese
+
+ctx = document.getElementById("bar-chart-sospese");
+ctx.height = 300;
+
+new Chart(document.getElementById("bar-chart-sospese"), {
+    type: 'horizontalBar',
+    data: {
+      labels: [ <?php foreach ($labelsArr as $labs){ echo "'".$labs."',"; } ?>  ],
+      datasets: [
+        {
+          label: "Interviste ",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","red","green"],
+          data: [<?php foreach ($valsArr as $vals){ echo "'".$vals."',"; } ?>]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Interviste Sospese'
+      }
+    }
+});
+
+
+</script>
 
 	<script type='text/javascript'>
 	$(document).ready(function()
