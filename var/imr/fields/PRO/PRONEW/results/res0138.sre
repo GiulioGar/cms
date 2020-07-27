@@ -1,0 +1,11 @@
+PRO;PRONEW;138;5A30SI5BYH;26/08/2019 23:05:11 CEST;26/08/2019 23:05:53 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=5A30SI5BYH;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;1
+choice;60;2;1
+choice;90;2;0
+choice;100;6;0
+choice;110;6;111110;2
+choice;120;7;0100000;1
+choice;130;9;110011100;0
+choice;150;10;0011010000;2

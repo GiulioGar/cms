@@ -1,0 +1,23 @@
+2.0;MRP;R2007091;593;YW859M2T0H;17/07/2020 20:52:36 CEST;<unknown>;0;0;170;r1=1200;sysSID=R2007091;sysPRJ=MRP;sysUID=YW859M2T0H;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;44
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;1
+choice;80;10;1010110010;8
+choice;90;6;0
+choice;100;9;101000000;0
+choice;110;9;100000000;0
+scale;120;9;5;2;4;0;4;0;2;4;1;0
+choice;125;2;1
+choice;130;1;0;comp0:kinde
+choice;140;10;1000000000;0;comp0:nessuno
+choice;150;26;11111011100111111011110100;20
+choice;160;26;00000000000000000010000000;18
+choice;170;26;18
+scale;180;6;7;2;2;2;2;2;2
+concept;190
+choice;200;6;1

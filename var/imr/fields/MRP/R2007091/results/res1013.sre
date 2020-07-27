@@ -1,0 +1,19 @@
+2.0;MRP;R2007091;1013;V5MOF74221;20/07/2020 15:55:02 CEST;20/07/2020 15:58:40 CEST;218;4;160;sysSID=R2007091;sysPRJ=MRP;sysUID=V5MOF74221;device=desktop;lang=it
+choice;10;2;0
+open;20;56
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;5
+choice;50;3;1
+choice;55;4;1
+choice;70;7;1110100;2
+choice;80;10;1010100000;0
+choice;90;6;1
+choice;100;9;100000010;0
+choice;110;9;100100000;0
+scale;120;9;5;1;4;1;1;4;3;0;3;1
+choice;125;2;1
+choice;130;1;0;comp0:Mulino Bianco
+choice;140;10;1110000000;0;comp0:Loacker;comp2:Bauli;comp1:Galbusera
+choice;150;26;10111111100110111011111000;8
+choice;160;26;00000000000000000000000001;25

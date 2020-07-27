@@ -1,0 +1,16 @@
+PRO;PRONEW;527;WUQH05T0KG;12/10/2019 09:28:52 CEST;12/10/2019 09:30:41 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=WUQH05T0KG;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;10010;0
+choice;90;2;0
+choice;100;6;3
+choice;110;6;011101;2
+choice;120;7;1111010;1
+choice;130;9;111000110;1
+choice;140;9;100000010;7
+choice;150;10;0000000001;9

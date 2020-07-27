@@ -1,0 +1,14 @@
+PRO;PRONEW;525;9XFS2O63FV;12/10/2019 08:53:15 CEST;12/10/2019 08:59:36 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=9XFS2O63FV;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;35
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;2
+choice;110;6;101110;2
+choice;120;7;1010110;0
+choice;130;9;110111000;0
+choice;150;10;0011011000;3

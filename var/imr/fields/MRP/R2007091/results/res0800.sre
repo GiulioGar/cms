@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;800;WAZIT15882;18/07/2020 15:11:49 CEST;18/07/2020 15:13:26 CEST;97;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=WAZIT15882;device=mobile;lang=it
+choice;10;2;1
+open;20;58
+choice;30;6;4
+choice;40;9;000001000;5
+choice;45;20;8
+choice;50;3;1
+choice;55;4;0
+choice;70;7;0100100;1

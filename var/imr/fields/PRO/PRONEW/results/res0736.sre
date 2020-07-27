@@ -1,0 +1,16 @@
+2.0;PRO;PRONEW;736;MLZQVAET64;15/07/2020 21:00:24 CEST;15/07/2020 21:03:21 CEST;177;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=MLZQVAET64;device=mobile;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000100;6
+choice;30;2;0
+choice;40;2;0
+choice;50;58;40
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;4
+choice;110;6;101001;0
+choice;120;7;1000011;0
+choice;130;9;100000110;7
+choice;140;9;100000000;0
+choice;150;10;1000000000;0

@@ -1,0 +1,14 @@
+PRO;PRONEW;367;I9WZDA2MAL;10/10/2019 18:19:02 CEST;10/10/2019 18:27:28 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=I9WZDA2MAL;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;41
+choice;60;2;1
+choice;90;2;1
+choice;100;6;1
+choice;110;6;101001;2
+choice;120;7;1000010;5
+choice;130;9;000000110;6
+choice;140;9;101000010;7
+choice;150;10;0000000001;9

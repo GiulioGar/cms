@@ -1,0 +1,16 @@
+PRO;PRONEW;550;8SBA433YCG;20/10/2019 01:16:37 CEST;20/10/2019 01:21:00 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=8SBA433YCG;device=desktop;lang=en
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;18
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;0
+choice;100;6;1
+choice;110;6;111000;2
+choice;120;7;0110000;1
+choice;130;9;000100010;7
+choice;140;9;110000010;0
+choice;150;10;1011000000;0

@@ -1,0 +1,11 @@
+2.0;MRP;R2007091;741;TPIJR65220;18/07/2020 09:43:38 CEST;18/07/2020 09:44:17 CEST;39;4;90;sysSID=R2007091;sysPRJ=MRP;sysUID=TPIJR65220;device=mobile;lang=it
+choice;10;2;1
+open;20;42
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;2
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111100;1
+choice;80;10;1001100010;0
+choice;90;6;4

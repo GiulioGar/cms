@@ -1,0 +1,14 @@
+2.0;MRP;R2007091;1854;PTYZ64F16U;22/07/2020 15:44:45 CEST;22/07/2020 15:47:24 CEST;159;4;120;sysSID=R2007091;sysPRJ=MRP;sysUID=PTYZ64F16U;device=desktop;lang=it
+choice;10;2;0
+open;20;47
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;4
+choice;80;10;1111111110;7
+choice;90;6;1
+choice;100;9;100000110;0
+choice;110;9;100100100;0
+scale;120;9;5;0;4;0;4;0;0;2;0;0

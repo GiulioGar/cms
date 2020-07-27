@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;731;PCCGLFYY86;18/07/2020 09:33:22 CEST;18/07/2020 09:33:25 CEST;3;3;530;sysSID=R2007091;r1=1522;sysPRJ=MRP;sysUID=PCCGLFYY86;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;51
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;12
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;1
+choice;80;10;1111111110;8
+choice;90;6;2
+choice;100;9;110001110;1
+choice;110;9;100011000;0
+scale;120;9;5;0;3;4;0;4;4;0;4;0
+choice;125;2;1
+choice;130;1;0;comp0:mulino bianco
+choice;140;10;1111100000;0;comp0:mulino bianco;comp4:Kellogs;comp3:Ferrero;comp2:Motta;comp1:balocco
+choice;150;26;11111011010111110011110000;14
+choice;160;26;11011010000111110001010000;6
+choice;170;26;15
+scale;180;6;7;1;0;0;1;1;6
+concept;190
+choice;200;6;0
+open;210;la combinazione di dolce e salutare con la presenza della frutta.la confezione   la varietà dell offerta
+open;220;la foto della donna    è orribile sembra una cosa sconcia
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;2
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;0;1;1;0;2;1;0;0;2;1;1;0;3;1;0;0
+scale;300;5;5;1;1;2;1;1
+choice;310;4;2
+choice;330;9;000011000;5
+concept;340
+choice;350;6;2
+open;360;il colore e la forma
+open;370;la figura della donna che bacia i biscotti orrenda
+scale;380;13;5;1;1;1;1;1;1;0;1;1;1;2;4;1
+ordering;390;0;3;13;11;5;12;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;7
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000100;4
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;2;2;0;3;0;3;0;3;2;0;0;1;1;2;3;2;3;3;2;0
+choice;530;3;0

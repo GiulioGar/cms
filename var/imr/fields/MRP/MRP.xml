@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MRP">
+<survey sid="FRA1509132" type="1">
+<param name="document-root" value="MRP/FRA1509132"/>
+<param name="sdl-filename" value="FRA1509132.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="1"/>
+<param name="createdOn" value="23/09/2015 09:56:54 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1509132" type="1">
+<param name="document-root" value="MRP/ITA1509132"/>
+<param name="sdl-filename" value="ITA1509132.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="1"/>
+<param name="createdOn" value="18/09/2015 16:03:09 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1411149" type="2">
+<param name="document-root" value="MRP/ITA1411149"/>
+<param name="status" value="4"/>
+<param name="createdOn" value="01/12/2014 14:21:08 CET"/>
+<param name="nextIID" value="1"/>
+<sample description="SAMPLE1417513725422">
+<param name="path" value="samples/SMP1417513725422.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="false"/>
+<param name="reminders" value="0"/>
+</sample>
+<sample description="altoAttiv">
+<param name="path" value="samples/SMP1417539597855.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="true"/>
+<param name="reminders" value="0"/>
+</sample>
+</survey>
+<survey sid="ITA1509131" type="1">
+<param name="document-root" value="MRP/ITA1509131"/>
+<param name="sdl-filename" value="ITA1509131.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="0"/>
+<param name="createdOn" value="02/10/2015 15:14:32 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1507116" type="1">
+<param name="document-root" value="MRP/ITA1507116"/>
+<param name="sdl-filename" value="ITA1507116.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="4"/>
+<param name="createdOn" value="21/08/2015 10:16:42 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1504B57" type="1">
+<param name="document-root" value="MRP/ITA1504B57"/>
+<param name="sdl-filename" value="ITA1504B57.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="4"/>
+<param name="createdOn" value="29/04/2015 12:49:39 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1504057" type="1">
+<param name="document-root" value="MRP/ITA1504057"/>
+<param name="sdl-filename" value="ITA1504057.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="0"/>
+<param name="createdOn" value="28/04/2015 12:07:17 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="BRA1509132" type="1">
+<param name="document-root" value="MRP/BRA1509132"/>
+<param name="sdl-filename" value="BRA1509132.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="1"/>
+<param name="createdOn" value="24/09/2015 12:47:54 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1507111" type="1">
+<param name="document-root" value="MRP/ITA1507111"/>
+<param name="sdl-filename" value="ITA1507111.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="4"/>
+<param name="createdOn" value="21/07/2015 14:51:08 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="GER1509132" type="1">
+<param name="document-root" value="MRP/GER1509132"/>
+<param name="sdl-filename" value="GER1509132.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="1"/>
+<param name="createdOn" value="23/09/2015 15:15:41 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1510149" type="1">
+<param name="document-root" value="MRP/ITA1510149"/>
+<param name="sdl-filename" value="ITA1510149.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="3"/>
+<param name="createdOn" value="03/11/2015 12:19:40 CET"/>
+<param name="nextIID" value="1"/>
+<sample description="soft">
+<param name="path" value="samples/SMP1447163006909.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="true"/>
+<param name="reminders" value="0"/>
+</sample>
+<sample description="lancio25k">
+<param name="path" value="samples/SMP1447244331629.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="true"/>
+<param name="reminders" value="0"/>
+</sample>
+<sample description="k25">
+<param name="path" value="samples/SMP1447339605323.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="true"/>
+<param name="reminders" value="0"/>
+</sample>
+<filter id="1">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="ITA1611151" type="1">
+<param name="document-root" value="MRP/ITA1611151"/>
+<param name="sdl-filename" value="ITA1611151.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="1"/>
+<param name="createdOn" value="15/11/2016 11:03:05 CET"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="IDN1509132" type="1">
+<param name="document-root" value="MRP/IDN1509132"/>
+<param name="sdl-filename" value="IDN1509132.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="1"/>
+<param name="createdOn" value="24/09/2015 12:48:02 CEST"/>
+<param name="nextIID" value="1"/>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+<survey sid="R2007091" type="1">
+<param name="document-root" value="MRP/R2007091"/>
+<param name="sdl-filename" value="R2007091.sdl"/>
+<param name="results-dir" value="results"/>
+<param name="status" value="2"/>
+<param name="createdOn" value="14/07/2020 14:27:33 CEST"/>
+<param name="nextIID" value="1"/>
+<sample description="soft2000">
+<param name="path" value="samples/SMP1594973758671.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="false"/>
+<param name="reminders" value="0"/>
+</sample>
+<sample description="n4000">
+<param name="path" value="samples/SMP1594995464143.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="false"/>
+<param name="reminders" value="0"/>
+</sample>
+<sample description="SAMPLE1595250742856">
+<param name="path" value="samples/SMP1595250742861.txt"/>
+<param name="fieldSep" value=";"/>
+<param name="enabled" value="true"/>
+<param name="invited" value="false"/>
+<param name="reminders" value="0"/>
+</sample>
+<filter id="1">
+<param name="qtype" value="choice"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="2">
+<param name="qtype" value="scale"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="3">
+<param name="qtype" value="ordering"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+<filter id="4">
+<param name="qtype" value="concept_eval"/>
+<param name="qid" value="-1"/>
+<param name="start-from" value="1"/>
+<param name="ascending" value="true"/>
+</filter>
+</survey>
+</project>

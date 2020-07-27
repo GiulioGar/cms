@@ -1,0 +1,15 @@
+PRO;PRONEW;41;ED8V3IWKG7;26/08/2019 18:15:08 CEST;26/08/2019 18:16:51 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=ED8V3IWKG7;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000101;6
+choice;30;2;0
+choice;40;2;0
+choice;50;58;41
+choice;60;2;0
+choice;70;5;11000;1
+choice;90;2;1
+choice;100;6;2
+choice;110;6;101001;0
+choice;120;7;1101010;3
+choice;130;9;111001100;2
+choice;150;10;0010000000;2

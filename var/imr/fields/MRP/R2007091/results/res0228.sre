@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;228;3LB9WESA7R;17/07/2020 14:25:14 CEST;17/07/2020 14:36:56 CEST;702;3;530;r1=487;sysSID=R2007091;sysPRJ=MRP;sysUID=3LB9WESA7R;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;52
+choice;30;6;3
+choice;40;9;100000000;0
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;5
+choice;80;10;1011111110;0
+choice;90;6;0
+choice;100;9;111110110;0
+choice;110;9;110100000;0
+scale;120;9;5;0;0;0;0;0;2;0;3;0
+choice;125;2;0
+choice;130;1;0;comp0:Balconi, bauli, Mulino Bianco
+choice;140;10;1000000000;0;comp0:Le tre Mariella
+choice;150;26;11111111111111111011101000;7
+choice;160;26;00000011000001011010100000;18
+choice;170;26;18
+scale;180;6;7;1;1;0;0;0;2
+concept;190
+choice;200;6;2
+open;210;Alta qualità 
+open;220;Alta qualità 
+choice;230;5;0
+scale;240;5;5;0;0;0;2;3
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;1;0;0;0;0;0;0;0;1;0;0;0;1;0;1;0
+scale;300;5;5;0;0;1;1;1
+choice;310;4;0
+choice;320;26;00000011000001001010100000;6
+choice;330;9;110110000;0
+concept;340
+choice;350;6;0
+open;360;Prodotto nuovo
+open;370;Novità, qualità, prezzo
+scale;380;13;5;2;3;1;1;1;1;2;0;1;0;0;1;0
+ordering;390;18;0;9;7;13;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;3
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;0;2;0;2;0;2;2;0;2;0;2;0;2;0;2;0;0;2;0;2;2;0
+choice;530;3;0

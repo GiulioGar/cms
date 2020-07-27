@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;754;A61JN64768;18/07/2020 10:20:21 CEST;18/07/2020 10:39:50 CEST;1169;3;540;r1=327;sysSID=R2007091;sysPRJ=MRP;sysUID=A61JN64768;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;62
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;13
+choice;50;3;1
+choice;55;4;3
+choice;70;7;1111110;3
+choice;80;10;1110011110;6
+choice;90;6;0
+choice;100;9;100000100;0
+choice;110;9;001010000;2
+scale;120;9;5;0;2;1;0;0;2;2;2;2
+choice;125;2;1
+choice;130;1;0;comp0:Ringo
+choice;140;10;1110000000;0;comp0:Bauli;comp2:Vicenzi;comp1:Mulino Bianco
+choice;150;26;10111000000101010010110000;0
+choice;160;26;00101000000100000010100000;18
+choice;170;26;2
+scale;180;6;7;1;6;2;1;6;6
+concept;190
+choice;200;6;0
+open;210;la varietà del prodotto e i componenti... sicuramente rientrano nei miei gusti
+open;220;forse il cioccolato bianco
+choice;230;5;0
+scale;240;5;5;0;0;0;1;0
+choice;250;5;2
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+scale;300;5;5;2;1;0;0;1
+choice;310;4;0
+choice;320;26;00001000000000000000000000;4
+choice;330;9;001010000;2
+concept;340
+choice;350;6;1
+open;360;viene messo in risalto il prodotto che sta all'interno
+open;370;nessuno
+scale;380;13;5;0;1;0;1;0;1;0;0;1;1;1;2;0
+ordering;390;18;6;5;0;10;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;2
+choice;410;9;6
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;3;2;1;0;2;1;3;0;2;1;1;0;1;2;0;2;3;1;3;1;1
+choice;530;3;1
+choice;540;5;0

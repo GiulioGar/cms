@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;347;HVH70ROEY7;17/07/2020 17:14:55 CEST;17/07/2020 17:16:10 CEST;75;3;530;sysSID=R2007091;r1=1981;sysPRJ=MRP;sysUID=HVH70ROEY7;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;55
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;7
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;3
+choice;80;10;1110101100;1
+choice;90;6;2
+choice;100;9;111000000;0
+choice;110;9;101000000;2
+scale;120;9;5;2;2;0;0;0;1;3;0;2
+choice;125;2;1
+choice;130;1;0;comp0:Mulino Bianco
+choice;140;10;1110000000;0;comp0:Saiwa;comp2:Ferrero;comp1:Kinder
+choice;150;26;10111011100110011011110100;6
+choice;160;26;00101000000000010000110000;15
+choice;170;26;15
+scale;180;6;7;1;1;0;1;1;6
+concept;190
+choice;200;6;1
+open;210;Le immagini sembrano molto golose
+open;220;Nessuno
+choice;230;5;1
+scale;240;5;5;0;0;0;0;0
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1
+scale;300;5;5;2;2;2;2;2
+choice;310;4;1
+choice;320;26;00101000000000010000110000;2
+choice;330;9;101000000;0
+concept;340
+choice;350;6;1
+open;360;Le immagini sono molto invitanti
+open;370;Niente
+scale;380;13;5;0;0;0;0;0;0;1;0;0;0;1;0;0
+ordering;390;0;1;2;0;11;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;4
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0000001;6
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;0;2;1;3;2;3;0;3;2;2;1;0;3;0;3;3;0;3;2;0
+choice;530;3;0

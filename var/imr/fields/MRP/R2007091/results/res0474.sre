@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;474;4fa913ec93;17/07/2020 17:42:54 CEST;17/07/2020 17:51:56 CEST;542;3;540;r1=1230;sysSID=R2007091;sysPRJ=MRP;sysUID=4fa913ec93;device=desktop;leg=1;lang=it
+choice;10;2;0
+open;20;51
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;3
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;2
+choice;80;10;1111110010;8
+choice;90;6;2
+choice;100;9;110000010;0
+choice;110;9;101010010;0
+scale;120;9;5;2;2;1;1;2;2;2;2;1
+choice;125;2;1
+choice;130;1;0;comp0:mulino biano
+choice;140;10;1110000000;0;comp0:ferrero;comp2:loacker;comp1:doria
+choice;150;26;11111011100111111011110000;12
+choice;160;26;10011000000010010000000000;12
+choice;170;26;4
+scale;180;6;7;3;1;1;6;3;6
+concept;190
+choice;200;6;1
+open;210;i vari gusti
+open;220;nessuno
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;2
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;2;1;1;1;1;1;1;2;2;1;1;0;1;1;1;1
+scale;300;5;5;1;1;1;2;2
+choice;310;4;1
+choice;320;26;10000000000000000000000000;0
+choice;330;9;101110010;0
+concept;340
+choice;350;6;1
+open;360;le immagini del prodotto
+open;370;nulla
+scale;380;13;5;1;1;1;1;1;1;2;0;1;1;1;1;1
+ordering;390;18;1;5;11;6;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000100;4
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;1;1;1;3;1;3;0;3;1;1;0;1;1;0;3;3;0;2;1;0
+choice;530;3;1
+choice;540;5;0

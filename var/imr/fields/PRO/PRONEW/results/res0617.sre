@@ -1,0 +1,16 @@
+2.0;PRO;PRONEW;617;0WS5W8SLBD;15/07/2020 15:30:03 CEST;15/07/2020 15:32:20 CEST;137;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=0WS5W8SLBD;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000010;7
+choice;30;2;0
+choice;40;2;0
+choice;50;58;7
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;4
+choice;110;6;101001;0
+choice;120;7;1010011;5
+choice;130;9;100001010;5
+choice;140;9;111000010;7
+choice;150;10;0011000000;2

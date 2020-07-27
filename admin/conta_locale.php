@@ -1,135 +1,3 @@
-<?php require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
-	  mysqli_select_db($database_admin, $admin);
-
-$titolo = 'Desktop Gestionale';
-$sitowebdiriferimento = 'www.millebytes.com';
-$areapagina = "home";
-$coldx = "no";
-$mesi2=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-2,date("d"),date("Y")));
-$mesi3=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-3,date("d"),date("Y")));
-require_once('inc_taghead.php');
-require_once('inc_tagbody.php');
-$conta_incomplete=0;
-$conta_filtrati=0;
-$conta_complete=0;
-$conta_quotafull=0;
-$conta_giorno=0;
-$panel_esterno=0;
-$loi=0;
-$sumDiff=0;
-$contaCompl=0;
-$redemption_panel=0;
-
-$esci=false;
-$sid=$_GET['sid'];
-$prj=$_GET['prj'];
-$data=date("Y-m-d H:i:s");
-//echo "la ricerca è:".$sid." ".$prj;
-
-require_once('function_conta_locale.php');   
-
-
-?>
-
-<div class="content-wrapper">
-<div class="container">
-
-<div class="row">
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card border-success shadow h-100 py-2 rounded-top">                        
-<div class="card body">
-<div class="row no-gutters align-items-center " style="min-height: 100px;">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-success text-uppercase mb-1">Ricerca</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo $sid; ?> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo $lu['description']; ?> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #94d872; opacity: 0.5;">
-		  <i class="fas fa-poll-h"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card border-primary shadow h-100 py-2 rounded-top">                        
-<div class="card body">
-<div class="row no-gutters align-items-center" style="min-height: 100px;">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-primary text-uppercase mb-1">Target</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Interviste: </b><?php echo $lu['goal']; ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Sesso: </b><?php echo $sex; ?> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Età: </b><?php echo $lu['age1_target']."-".$lu['age2_target']." anni" ?> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #007BFF; opacity: 0.5;">
-		  <i class="fas fa-bullseye"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card border-warning  shadow h-100 py-2 rounded-top">                        
-<div class="card body">
-<div class="row no-gutters align-items-center" style="min-height: 100px;">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Tempistiche</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Inizio Field:</b> <?php echo $newDateStart;  ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Fine Field:</b> <?php echo $newDate;  ?> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #F7BB07; opacity: 0.5;">
-		  <i class="fas fa-business-time"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card border-danger shadow h-100 py-2 rounded-top" style="min-height: 100px;">                        
-<div class="card body">
-<div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-danger text-uppercase mb-1">Info</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Stato Field:</b> <?php echo $stato; ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Loi:</b> <span style="color:red"><?php echo substr($loi,0,4); ?> minuti</span> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>RTR:</b><a target="_blank" href="http://tools.primisoft.com/rtr/<?php echo $sid; ?>/3"> <i class="fas fa-external-link-alt"></i>Collegati </a> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #D53343; opacity: 0.5;">
-		  <i class="fas fa-info-circle"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-
-
-
-</div>
-
 
 <div class="jumbotron jumbotron-fluid">
 
@@ -365,7 +233,7 @@ require_once('function_conta_locale.php');
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-success"> CONTROLLO INTERVISTE </h6> <span style="color:gray"> <i class="fas fa-cut fa-2x text-gray-300"></i></span>
                         </div>
- <div style="min-height:440px;" class="card-body">
+ <div style="min-height:415px;" class="card-body">
 
 
 						<ul class="nav nav-tabs" id="mytab" role="tablist">
@@ -379,15 +247,35 @@ require_once('function_conta_locale.php');
 					<!-- Tab panes -->
 					<div class="tab-content">
 					<div class="tab-pane active" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
+					<div>&nbsp;</div>
+					<?php
+					
+					if($conta_filtrati>0)
+					{
+					?>
 					<canvas id="bar-chart-filtrati" ></canvas>
+					<?php
+					}
 
+					else { echo "<br/><div class='alert alert-danger' role='alert'> Non sono presenti interviste filtrate </div>";}
+
+					?>
 					</div>
 
 
 					<div class="tab-pane" id="registra" role="tabpanel" aria-labelledby="registra-tab">
-
+					<div>&nbsp;</div>
+					<?php
+					if($conta_incomplete>0)
+					{
+					?>
 					<canvas id="bar-chart-sospese" ></canvas>
-					
+					<?php
+					}
+
+					else { echo "<br/><div class='alert alert-danger' role='alert'> Non sono presenti interviste sospese </div>";}
+
+					?>
 					
 					</div>
 
@@ -448,7 +336,7 @@ require_once('function_conta_locale.php');
 				</tbody>
 				</table>
 					<?php } 
-					else  {echo "<h3>Nessuna quota impostata</h3>";}
+					else  {echo "<div class='alert alert-danger' role='alert'> Nessuna quota impostata! </div>";}
 					?>	
 					
 					
@@ -465,320 +353,6 @@ require_once('function_conta_locale.php');
 
 </div> 
 
-
-<div class="row">
-
-<div class="col-xl-4 col-lg-5">
-                   		 <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-danger"> CONTROLLO QUOTE IMPOSTATE </h6> <span style="color:gray"><i class="fas fa-user-check fa-2x text-gray-300"></i></span>
-                        </div>
-                        <div class="card-body">
-                           <?php
-			$query_quo = "SELECT * FROM millebytesdb.t_quota_status where survey_id='$sid' and project_name='$prj' order by target_name ASC";
-			$tot_quo = mysqli_query($admin,$query_quo) or die(mysql_error());
-			$num_righe = mysqli_num_rows($tot_quo);
-			
-		if ($num_righe>0)
-		{	
-		?>
-	
-		
-				<table class="table table-striped table-bordered">
-				<thead>
-				<tr>
-				<th colspan='4'><span style="color:red"><b>QUOTE</b></span></th>
-				</tr>
-				</thead>
-
-				<tbody>
-				<?php
-
-				
-				echo "<tr><td><b>Target</b></td><td><b>Totale</b></td><td><b>Svolte</b></td><td><b>Da fare</b></td></tr>";
-				$sfondo="";
-				
-				
-				while ($row = mysqli_fetch_assoc($tot_quo))
-					{
-					$diffQuo=$row['current_value']-$row['target_value'];
-					if ($diffQuo>=0) { $sfondo="style='background-color:red; font-weight:bold;'";}
-					else  { $sfondo="";}
-					
-					
-					
-					  echo "<tr><td><b>".$row['target_name']."</b></td><td>".$row['target_value']."</td><td>".$row['current_value']."</td><td ".$sfondo.">".$diffQuo."</td></tr>";
-					}
-
-				?>
-				</tbody>
-				</table>
-					<?php } 
-					else  {echo "<h3>Nessuna quota impostata</h3>";}
-					?>	
-					
-					
-                        </div>
-                        <div class="panel-footer">
-                            &nbsp;
-                        </div>
-                    </div>
-                </div>
-
-
-
-				<div class="col-xl-8 col-lg-5">
-                   		<div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-danger">DIARIO DELLA RICERCA </h6> <span style="color:gray"><i class="fas fa-book fa-2x text-gray-300"></i> </span>
-                        </div>
-                        <div class="card-body">
-						
-						<?php if ($contaPan>1) 
-							{ ?>
-								
-							<div id="diarioTot">
-							<table class="table table-striped table-bordered" style="font-size:11px;"  >
-							<col>
-							<col span="2">
-							<col span="2">
-							<col span="2">
-							<col span="2">
-							<col>
-							<thead>
-							<th class="titleDia" colspan="11">GENERALE</th>
-							<tr><th><b>Giorno</b></th><th colspan="2"><b>Complete</b></th><th colspan="2"><b>Non in target</b></th><th colspan="2"><b>Over Quota</b></th><th colspan="2"><b>Sospese</b></th>
-							<th><b>Contatti</b></th><th><b>Incidenza</b></th></tr>
-							</thead>
-							<tbody>
-							<?php
-
-							asort($diario);
-
-
-							foreach ( $diario as $chiave => $valore) 
-							{ 
-							if ($diario_complete[$chiave]==""){$diario_complete[$chiave]=0;}
-							if ($diario_filtrati[$chiave]==""){$diario_filtrati[$chiave]=0;}
-							if ($diario_quotafull[$chiave]==""){$diario_quotafull[$chiave]=0;}
-							if ($diario_incomplete[$chiave]==""){$diario_incomplete[$chiave]=0;}
-
-							$redemption_field_giornaliero=($diario_complete[$chiave]/($diario_complete[$chiave]+$diario_filtrati[$chiave]))*100;
-							$redemption_field_giornaliero=number_format($redemption_field_giornaliero, 2);
-							$sumDiaComp=$sumDiaComp+$diario_complete[$chiave];
-							$sumDiaFilt=$sumDiaFilt+$diario_filtrati[$chiave];
-							$sumDiaQf=$sumDiaQf+$diario_quotafull[$chiave];
-							$sumDiaInc=$sumDiaInc+$diario_incomplete[$chiave];
-							$sumDiaCont=$diario_complete[$chiave]+$diario_filtrati[$chiave]+$diario_quotafull[$chiave]+$diario_incomplete[$chiave];
-							if ($diario_complete[$chiave]==0) { $redemption_field_giornaliero="N.D.";}
-							else { $redemption_field_giornaliero=$redemption_field_giornaliero."%"; }
-
-							echo "<tr><td>".$chiave."</td>
-							<td>".$diario_complete[$chiave]."</td>
-							<td><span>".$sumDiaComp."</span></td>
-							<td>".$diario_filtrati[$chiave]."</td>
-							<td><span>".$sumDiaFilt."</span></td>
-							<td>".$diario_quotafull[$chiave]."</td>
-							<td><span>".$sumDiaQf."</span></td>
-							<td>".$diario_incomplete[$chiave]."</td>
-							<td><span>".$sumDiaInc."</span></td>
-							<td><span>".$sumDiaCont."</span></td>
-							<td><b>".$redemption_field_giornaliero."</b></td>
-							</tr>";
-							}
-							?>
-							</tbody>
-							</table>
-							</div>
-							<?php  } ?>
-							
-							
-							
-							
-						
-<?php if ($panel_in==1 || $panel_in==2)
-{
-									?>
-
-									<div id="diaPan">
-									<table class="table table-striped table-bordered" style="font-size:11px;">
-									<col>
-									<col span="2">
-									<col span="2">
-									<col span="2">
-									<col span="2">
-									<col>
-									<thead>
-									<th class="titleDia" colspan="13">PANEL MILLEBYTES</th>
-									<tr><th><b>Giorno</b></th><th colspan="2"><b>Complete</b></th><th colspan="2"><b>Non in target</b></th><th colspan="2"><b>Over Quota</b></th><th colspan="2"><b>Sospese</b></th>
-									<th><b>Contatti</b></th><th><b>Incidenza</b></th><th><b>Panel %</b></th><th><b>Abilitati</b></th></tr>
-									</thead>
-									<tbody>
-									<?php
-									asort($diario);
-
-									$abilitati_totali_sample=0;
-									$contatti_totali_sample=0;
-									foreach ( $diario as $chiave => $valore) 
-									{ 
-
-
-									$giorno_due_cifre=substr($chiave,0,2);
-									$query_user_abilitati_dp = "SELECT count(*) as total FROM t_abilitatipanel where ((sid='".$sid."') AND (uid NOT LIKE 'IDEX%')AND (data_abilitazione LIKE '".$giorno_due_cifre."%'))";
-									$tot_user_abilitati_dp = mysqli_query($admin,$query_user_abilitati_dp) or die(mysql_error());
-									$tot_use_abilitati_dp = mysqli_fetch_assoc($tot_user_abilitati_dp);
-									$abilitati_totali_sample=$abilitati_totali_sample+$tot_use_abilitati_dp['total'];
-
-									if ($diario_complete_panel[$chiave]==""){$diario_complete_panel[$chiave]=0;}
-									if ($diario_filtrati_panel[$chiave]==""){$diario_filtrati_panel[$chiave]=0;}
-									if ($diario_quotafull_panel[$chiave]==""){$diario_quotafull_panel[$chiave]=0;}
-									if ($diario_incomplete_panel[$chiave]==""){$diario_incomplete_panel[$chiave]=0;}
-									$contatti_totali_sample=$contatti_totali_sample+$diario_complete_panel[$chiave]+$diario_filtrati_panel[$chiave]+$diario_quotafull_panel[$chiave]+$diario_incomplete_panel[$chiave];
-									$red_panel_sample=($contatti_totali_sample/$abilitati_totali_sample)*100;
-									$red_panel_sample=number_format($red_panel_sample, 2);
-
-									$redemption_field_giornalieroMb=($diario_complete_panel[$chiave]/($diario_complete_panel[$chiave]+$diario_filtrati_panel[$chiave]))*100;
-									$redemption_field_giornalieroMb=number_format($redemption_field_giornalieroMb, 2);
-
-									$sumPanDiaComp=$sumPanDiaComp+$diario_complete_panel[$chiave];
-									$sumPanDiaFilt=$sumPanDiaFilt+$diario_filtrati_panel[$chiave];
-									$sumPanDiaQf=$sumPanDiaQf+$diario_quotafull_panel[$chiave];
-									$sumPanDiaInc=$sumPanDiaInc+$diario_incomplete_panel[$chiave];
-									$sumPanDiaCont=$diario_complete_panel[$chiave]+$diario_filtrati_panel[$chiave]+$diario_quotafull_panel[$chiave]+$diario_incomplete_panel[$chiave];
-									if ($diario_complete_panel[$chiave]==0) { $redemption_field_giornalieroMb="N.D.";}
-									else { $redemption_field_giornalieroMb=$redemption_field_giornalieroMb."%"; }
-
-									if ($sumPanDiaCont>2 || $sumPanDiaComp>0)
-									{
-									echo "<tr><td>".$chiave."</td>
-									<td>".$diario_complete_panel[$chiave]."</td>
-									<td><span>".$sumPanDiaComp."</span></td>
-									<td>".$diario_filtrati_panel[$chiave]."</td>
-									<td><span>".$sumPanDiaFilt."</span></td>
-									<td>".$diario_quotafull_panel[$chiave]."</td>
-									<td><span>".$sumPanDiaQf."</span></td>
-									<td>".$diario_incomplete_panel[$chiave]."</td>
-									<td><span>".$sumPanDiaInc."</span></td>
-									<td><span>".$sumPanDiaCont."</span></td>
-									<td>".$redemption_field_giornalieroMb."</td>
-									<td>".$red_panel_sample."%</td>
-									<td>".$abilitati_totali_sample."</td>
-									</tr>";
-									}
-
-									}
-									?>
-									</tbody>
-									</table>
-									</div>
-									<?php
-									}
-									?>
-
-									<?php 
-									if ( $panel_esterno>0)
-									{
-									?>
-
-									<div id="diarioExt">
-									<table class="table table-striped table-bordered" style="font-size:11px;">
-									<col>
-									<col span="2">
-									<col span="2">
-									<col span="2">
-									<col span="2">
-									<col>
-									<thead>
-									<th class="titleDia" colspan="11">PANEL ESTERNO</th>
-									<tr><th><b>Giorno</b></th><th colspan="2"><b>Complete</b></th><th colspan="2"><b>Non in target</b></th><th colspan="2"><b>Over Quota</b></th><th colspan="2"><b>Sospese</b></th>
-									<th><b>Contatti</b></th><th><b>Incidenza</b></th></tr>
-									</thead>
-									<tbody>
-									<?php
-
-									asort($diario);
-
-
-									foreach ( $diario as $chiave => $valore) 
-									{ 
-									if ($diario_complete_ssi[$chiave]==""){$diario_complete_ssi[$chiave]=0;}
-									if ($diario_filtrati_ssi[$chiave]==""){$diario_filtrati_ssi[$chiave]=0;}
-									if ($diario_quotafull_ssi[$chiave]==""){$diario_quotafull_ssi[$chiave]=0;}
-									if ($diario_incomplete_ssi[$chiave]==""){$diario_incomplete_ssi[$chiave]=0;}
-
-									$redemption_field_giornalieroEx=($diario_complete_ssi[$chiave]/($diario_complete_ssi[$chiave]+$diario_filtrati_ssi[$chiave]))*100;
-									$redemption_field_giornalieroEx=number_format($redemption_field_giornalieroEx, 2);
-
-									$sumExtDiaComp=$sumExtDiaComp+$diario_complete_ssi[$chiave];
-									$sumExtDiaFilt=$sumExtDiaFilt+$diario_filtrati_ssi[$chiave];
-									$sumExtDiaQf=$sumExtDiaQf+$diario_quotafull_ssi[$chiave];
-									$sumExtDiaInc=$sumExtDiaInc+$diario_incomplete_ssi[$chiave];
-									$sumExtDiaCont=$diario_complete_ssi[$chiave]+$diario_filtrati_ssi[$chiave]+$diario_quotafull_ssi[$chiave]+$diario_incomplete_ssi[$chiave];
-
-									if($sumExtDiaCont>0)
-									{
-									echo "<tr>
-									<td>".$chiave."</td>
-									<td>".$diario_complete_ssi[$chiave]."</td>
-									<td><span>".$sumExtDiaComp."</span></td>
-									<td>".$diario_filtrati_ssi[$chiave]."</td>
-									<td><span>".$sumExtDiaFilt."</span></td>
-									<td>".$diario_quotafull_ssi[$chiave]."</td>
-									<td><span>".$sumExtDiaQf."</span></td>
-									<td>".$diario_incomplete_ssi[$chiave]."</td>
-									<td><span>".$sumExtDiaInc."</span></td>
-									<td><span>".$sumExtDiaCont."</span></td>
-									<td>".$redemption_field_giornalieroEx."%</td>
-									</tr>";
-									}
-									}
-									?>
-									</table>
-									<?php
-									}
-
-									//AGGIORNA COMPLETE DIVISE PER INTERNO ED ESTERNO
-										$loiultima=substr($loi,0,4);
-										if ($loiultima==""){$loiultima=0;}
-										
-										//echo "ciaooo".$loiultima;
-										$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_ssi."',durata='".$loiultima."' where sur_id='".$sid."'";
-										$aggiorna_compInt = mysqli_query($admin,$query_compInt) or die(mysql_error());
-										$aggiorna_compInt_esegui = mysqli_fetch_assoc($query_compInt);
-
-										
-				ksort($contatori);
-
-							echo "<table class='table table-striped table-bordered' style='font-size:11px;'><tr><td>Minuti</td><td>Casi</td></tr>";
-							foreach ( $contatori as $chiave => $valore) 
-							{ 
-							echo "<tr><td>".$chiave."</td><td>".$contatori[$chiave]."</td></tr>";
-							}										
-							echo "</tbody></table>";		
-									?>
-						
-                            
-                        </div>
-                        <div class="panel-footer">
-                            &nbsp;
-                        </div>
-                    </div>
-                </div>
-
-			
-		
-</div>
-		
-
-		
-		
-
-
-
-</div>
-</div>
-
-</div>
 
 <?php
 
@@ -1083,8 +657,4 @@ new Chart(document.getElementById("bar-chart-sospese"), {
 	});
 	</script>
 
-<?php
-
-require_once('inc_footer.php'); 
-
-?>
+</div>

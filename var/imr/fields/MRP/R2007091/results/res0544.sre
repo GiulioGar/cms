@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;544;08O1R2971O;17/07/2020 19:08:20 CEST;17/07/2020 19:19:18 CEST;658;3;540;r1=264;sysSID=R2007091;sysPRJ=MRP;sysUID=08O1R2971O;device=mobile;leg=2;lang=it
+choice;10;2;0
+open;20;46
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;5
+choice;50;3;1
+choice;55;4;1
+choice;70;7;1111110;2
+choice;80;10;0011000010;3
+choice;90;6;3
+choice;100;9;100000000;0
+choice;110;9;000010000;4
+scale;120;9;5;3;1;1;2;2;0;1;1;3
+choice;125;2;1
+choice;130;1;0;comp0:Loacker
+choice;140;10;1100000000;0;comp0:Loacker;comp1:Vicenzi
+choice;150;26;11101011100111110011000000;19
+choice;160;26;10101000000010010000000000;4
+choice;170;26;2
+scale;180;6;7;4;2;1;3;4;5
+concept;190
+choice;200;6;2
+open;210;Le diverse farciture
+open;220;Bisognerebbe provarli per trovare i pregi e i difetti d prodotti 
+choice;230;5;0
+scale;240;5;5;2;0;0;1;1
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+scale;300;5;5;1;1;1;1;1
+choice;310;4;1
+choice;320;26;00100000000010010000000000;15
+choice;330;9;000010000;4
+concept;340
+choice;350;6;1
+open;360;Le immagini dei biscotti farciti sono molto golosi
+open;370;Togliere i l immagine della ragazza
+scale;380;13;5;1;1;1;1;1;1;1;1;1;1;1;3;1
+ordering;390;18;3;1;5;6;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;2
+choice;410;9;2
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0001010;3
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;2;2;2;2;1;2;1;2;2;2;2;2;2;2;2;3;2;2;2;2;2;2
+choice;530;3;1
+choice;540;5;1

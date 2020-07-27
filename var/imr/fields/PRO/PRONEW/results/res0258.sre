@@ -1,0 +1,14 @@
+PRO;PRONEW;258;1GB4HIGCKY;09/09/2019 16:09:47 CEST;09/09/2019 16:18:54 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=1GB4HIGCKY;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;46
+choice;60;2;0
+choice;70;5;11010;3
+choice;90;2;0
+choice;100;6;1
+choice;110;6;111111;4
+choice;120;7;1111110;0
+choice;130;9;100000000;0
+choice;150;10;1000000000;0

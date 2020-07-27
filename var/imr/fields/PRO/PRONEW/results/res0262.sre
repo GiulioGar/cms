@@ -1,0 +1,16 @@
+PRO;PRONEW;262;DVZJ60PA1M;09/09/2019 16:22:38 CEST;09/09/2019 16:24:01 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=DVZJ60PA1M;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;55
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;1
+choice;100;6;1
+choice;110;6;111111;3
+choice;120;7;1010010;5
+choice;130;9;100011110;5
+choice;140;9;110000010;1
+choice;150;10;1010000000;0

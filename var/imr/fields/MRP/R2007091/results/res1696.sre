@@ -1,0 +1,18 @@
+2.0;MRP;R2007091;1696;IZ0X99BKLS;21/07/2020 23:42:31 CEST;<unknown>;0;0;125;sysSID=R2007091;sysPRJ=MRP;sysUID=IZ0X99BKLS;device=desktop;lang=it
+choice;10;2;0
+open;20;62
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;15
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;4
+choice;80;10;0011001100;7
+choice;90;6;0
+choice;100;9;101000000;0
+choice;110;9;100100000;0
+scale;120;9;5;2;1;3;0;1;2;3;1;2
+choice;125;2;1
+choice;130;1;0;comp0:Mulino Bianco
+choice;140;10;1111111000;0;comp0:Bauli;comp6:motta;comp5:ferrero;comp4:Dolciando;comp3:Galup;comp2:Pasticceria del Centro;comp1:Londi
+choice;150;26;11101011000000110011100000;7

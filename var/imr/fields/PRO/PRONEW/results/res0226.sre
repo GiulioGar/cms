@@ -1,0 +1,15 @@
+PRO;PRONEW;226;GP48A4AO73;27/08/2019 21:28:42 CEST;27/08/2019 21:29:46 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=GP48A4AO73;device=mobile;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;100100000;0
+choice;30;2;0
+choice;40;2;0
+choice;50;58;46
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;2
+choice;110;6;111010;0
+choice;120;7;0000001;6
+choice;130;9;110000000;1
+choice;150;10;0010000000;2

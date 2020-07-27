@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;952;UAVKUSA75T;20/07/2020 15:14:13 CEST;20/07/2020 15:25:58 CEST;705;3;540;r1=1088;sysSID=R2007091;sysPRJ=MRP;sysUID=UAVKUSA75T;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;39
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;5
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1111110;2
+choice;80;10;1111111110;0
+choice;90;6;0
+choice;100;9;100001110;0
+choice;110;9;011111000;1
+scale;120;9;5;1;1;1;1;1;2;2;3;4
+choice;125;2;1
+choice;130;1;0;comp0:bauli
+choice;140;10;1111000000;0;comp0:motta;comp3:tre marie;comp2:vincenzi;comp1:mulino binco
+choice;150;26;11111011010111111011111100;19
+choice;160;26;10000011000010010010000000;0
+choice;170;26;6
+scale;180;6;7;2;1;2;2;2;2
+concept;190
+choice;200;6;1
+open;210;oltre a essere buoni sembrano sani
+open;220;nulla
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;2
+choice;260;5;1
+choice;270;5;2
+choice;280;5;1
+scale;290;16;5;1;1;1;0;0;1;1;1;1;1;1;0;1;0;1;0
+scale;300;5;5;1;1;1;1;1
+choice;310;4;2
+choice;330;9;011111000;1
+concept;340
+choice;350;6;1
+open;360;tutta la scatola, dai colori alle foto dei prodotti ed i disegni
+open;370;nulla
+scale;380;13;5;0;0;0;0;1;0;0;0;0;0;0;1;0
+ordering;390;18;1;5;4;3;6;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;2
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0011000;2
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;3;3;0;2;0;2;1;3;0;2;1;0;0;0;2;0;1;1;0;2;1;0
+choice;530;3;1
+choice;540;5;0

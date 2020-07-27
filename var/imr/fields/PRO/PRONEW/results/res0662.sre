@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;662;FLEIWY3MP2;15/07/2020 16:14:01 CEST;15/07/2020 16:15:42 CEST;101;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=FLEIWY3MP2;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;43
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;1
+choice;110;6;101001;2
+choice;120;7;1000010;5
+choice;130;9;010111110;1
+choice;140;9;110000110;6
+choice;150;10;0001000000;3

@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;863;KVGP7OWP6B;19/07/2020 00:53:28 CEST;19/07/2020 01:07:21 CEST;833;3;540;r1=162;sysSID=R2007091;sysPRJ=MRP;sysUID=KVGP7OWP6B;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;34
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;1
+choice;50;3;1
+choice;55;4;3
+choice;70;7;1111110;2
+choice;80;10;0010100000;4
+choice;90;6;0
+choice;100;9;111000000;0
+choice;110;9;000100000;3
+scale;120;9;5;2;2;0;2;2;2;2;2;2
+choice;125;2;1
+choice;130;1;0;comp0:Grancereale
+choice;140;10;1111000000;0;comp0:Fiesta;comp3:Crostatine ;comp2:Tronchetti;comp1:Bounty
+choice;150;26;11111011010111110111110100;6
+choice;160;26;00001000000000100000110000;14
+choice;170;26;4
+scale;180;6;7;0;0;2;0;6;2
+concept;190
+choice;200;6;2
+open;210;Cioccolato fondente 
+open;220;Latte
+choice;230;5;1
+scale;240;5;5;2;1;1;1;1
+choice;250;5;1
+choice;260;5;1
+choice;270;5;2
+choice;280;5;2
+scale;290;16;5;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2
+scale;300;5;5;2;2;2;2;2
+choice;310;4;2
+choice;330;9;000010000;4
+concept;340
+choice;350;6;2
+open;360;Il colore
+open;370;I disegni
+scale;380;13;5;2;2;2;2;2;2;2;2;2;2;2;2;2
+ordering;390;18;14;16;15;3;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;7
+choice;420;5;3
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;1;1;0;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1
+choice;530;3;1
+choice;540;5;0

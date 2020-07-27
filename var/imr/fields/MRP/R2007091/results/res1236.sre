@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1236;IDEMZ0HPJB;20/07/2020 20:06:48 CEST;20/07/2020 20:25:06 CEST;1098;3;540;r1=963;sysSID=R2007091;sysPRJ=MRP;sysUID=IDEMZ0HPJB;device=desktop;leg=2;lang=it
+choice;10;2;1
+open;20;48
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;4
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1111110;5
+choice;80;10;1011000110;7
+choice;90;6;0
+choice;100;9;100000000;0
+choice;110;9;101001000;0
+scale;120;9;5;0;4;2;1;0;1;3;1;3
+choice;125;2;1
+choice;130;1;0;comp0:mulino bianco
+choice;140;10;1000000000;0;comp0:bahlsen
+choice;150;26;11111011110111110011110000;8
+choice;160;26;00110011100000000000000000;15
+choice;170;26;2
+scale;180;6;7;1;0;1;0;0;1
+concept;190
+choice;200;6;0
+open;210;il cioccolato prima di tutto. Poi il fatto che sono diversi l'uno con l'altro. Dalla descrizione sembrano golosi, fragranti e buoni
+open;220;forse la marca....mai sentita
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;2
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;0;0;0;0;0;0;0;1;0;0;1;0;0;0;0;0
+scale;300;5;5;2;1;1;0;1
+choice;310;4;2
+choice;330;9;001011010;2
+concept;340
+choice;350;6;0
+open;360;mi piace che si vedano tutti gli ingredienti presenti nel prodotto. Il colore arancione della confezione è molto evidente e spicca nello scaffale. Mi piace l'abbinamento dei singoli prodotti e il nome Plaisir mi sembra che sia un prodotto di alta qualità
+open;370;niente
+scale;380;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+ordering;390;18;4;2;6;3;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;2
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0000100;4
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;3;0;1;0;3;1;3;0;3;1;1;1;2;2;0;1;0;2;3;1;2
+choice;530;3;1
+choice;540;5;1

@@ -1,0 +1,15 @@
+PRO;PRONEW;489;6W3PYGNRRD;11/10/2019 10:57:26 CEST;11/10/2019 10:58:51 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=6W3PYGNRRD;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;55
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;1
+choice;110;6;101101;0
+choice;120;7;1010010;0
+choice;130;9;100001010;0
+choice;140;9;111100010;1
+choice;150;10;0010000000;2

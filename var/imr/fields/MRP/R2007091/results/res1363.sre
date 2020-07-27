@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1363;LRXGZMLWQR;21/07/2020 00:15:39 CEST;21/07/2020 00:22:57 CEST;438;3;540;r1=1442;sysSID=R2007091;sysPRJ=MRP;sysUID=LRXGZMLWQR;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;43
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;4
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1111110;5
+choice;80;10;1111111010;5
+choice;90;6;1
+choice;100;9;100001010;0
+choice;110;9;110100010;0
+scale;120;9;5;0;2;0;0;0;0;0;2;4
+choice;125;2;1
+choice;130;1;0;comp0:MULINO BIANCO
+choice;140;10;1111000000;0;comp0:BAULI;comp3:MILKA;comp2:LOACKER;comp1:BAHLSEN
+choice;150;26;11111011100111111011111000;20
+choice;160;26;11100011000001110011111000;6
+choice;170;26;15
+scale;180;6;7;2;2;1;2;1;1
+concept;190
+choice;200;6;0
+open;210;L'ABBINAMENTO DEI GUSTI, LA FORMA
+open;220;HO PAURA SIANO MOLTO CALORICI
+choice;230;5;0
+scale;240;5;5;1;0;0;0;0
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;0;0;0;0;0;0;0;1;2;0;1;0;1;1;0;0
+scale;300;5;5;1;1;1;1;1
+choice;310;4;2
+choice;330;9;110001010;0
+concept;340
+choice;350;6;2
+open;360;LA PRESENTAZIONE DEL PRODOTTO, SI CAPISCONO BENE GLI INGREDIENTI, I COLORI E I CARATTERI
+open;370;NULLA
+scale;380;13;5;0;1;0;0;1;0;0;0;0;0;1;2;0
+ordering;390;18;6;3;4;2;1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0010100;2
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;0;0;0;1;0;3;1;0;0;0;1;3;0;1;2;0;0;2;0;0;0;2
+choice;530;3;1
+choice;540;5;2

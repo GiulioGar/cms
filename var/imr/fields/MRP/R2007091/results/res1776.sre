@@ -1,0 +1,21 @@
+2.0;MRP;R2007091;1776;6EM992RHU8;22/07/2020 11:47:44 CEST;<unknown>;0;0;125;sysSID=R2007091;sysPRJ=MRP;sysUID=6EM992RHU8;device=desktop;lang=it
+choice;10;2;0
+open;20;52
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;1
+choice;55;4;0
+choice;70;7;1111100;0
+choice;80;10;1110111110;1
+choice;90;6;2
+choice;100;9;100110000;0
+choice;110;9;110010010;7
+scale;120;9;5;0;4;4;1;0;2;4;2;1
+choice;125;2;1
+choice;130;1;0;comp0:Lazzaroni
+choice;140;10;1000000000;0;comp0:Bahlsen
+choice;150;26;11111000100100011010000000;3
+choice;160;26;00000000100000011000000000;15
+choice;170;26;16
+scale;180;6;7;6;6;0;6;0;6

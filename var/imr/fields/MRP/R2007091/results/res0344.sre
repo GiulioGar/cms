@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;344;J1JOU11162;17/07/2020 16:59:26 CEST;17/07/2020 17:16:35 CEST;1029;3;540;r1=910;sysSID=R2007091;sysPRJ=MRP;sysUID=J1JOU11162;device=desktop;leg=2;lang=it
+choice;10;2;1
+open;20;47
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;4
+choice;50;3;1
+choice;55;4;1
+choice;70;7;1111110;5
+choice;80;10;1100111010;5
+choice;90;6;2
+choice;100;9;101000010;0
+choice;110;9;010110000;1
+scale;120;9;5;3;1;2;3;2;2;1;2;2
+choice;125;2;1
+choice;130;1;0;comp0:bistefani
+choice;140;10;1110000000;0;comp0:bauli;comp2:balsen;comp1:vicenzi
+choice;150;26;11110011100110101011010000;6
+choice;160;26;01000010000100001000000000;1
+choice;170;26;6
+scale;180;6;7;0;0;1;1;0;2
+concept;190
+choice;200;6;1
+open;210;gusti e d abbinamenti digusto che mi piacciono
+open;220;non so
+choice;230;5;1
+scale;240;5;5;0;1;1;2;0
+choice;250;5;2
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;0;1;1;1;0;0;0;0;0;0;0;1;1;1;1;1
+scale;300;5;5;0;0;1;1;1
+choice;310;4;1
+choice;320;26;00000010000100000000000000;6
+choice;330;9;010100010;3
+concept;340
+choice;350;6;1
+open;360;colori e carattere usato per la scatola
+open;370;nulla
+scale;380;13;5;0;1;1;0;0;0;1;1;0;1;1;0;1
+ordering;390;18;1;3;5;0;6;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;0
+choice;420;5;2
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;3;2;2;2;1;2;1;1;2;1;1;2;3;2;1;2;2;1;2;2;2
+choice;530;3;1
+choice;540;5;2

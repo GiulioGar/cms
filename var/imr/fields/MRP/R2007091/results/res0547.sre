@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;547;MIOVHXJ36J;17/07/2020 19:14:14 CEST;17/07/2020 19:17:09 CEST;175;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=MIOVHXJ36J;device=desktop;lang=it
+choice;10;2;0
+open;20;39
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;0111100;4

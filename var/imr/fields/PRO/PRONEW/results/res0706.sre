@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;706;PCCGLFYY86;15/07/2020 18:26:31 CEST;15/07/2020 18:28:59 CEST;148;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=PCCGLFYY86;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000001000;5
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;1
+choice;90;2;1
+choice;100;6;3
+choice;110;6;101001;5
+choice;120;7;1110110;2
+choice;130;9;110110110;1
+choice;140;9;110000100;6
+choice;150;10;1000000000;0

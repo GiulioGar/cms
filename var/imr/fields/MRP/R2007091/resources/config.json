@@ -1,0 +1,206 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "ssi",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://globaltestmarket.com/20/survey/finished.phtml?ac=$(ac)&sn=643371&lang=DE"
+                }, {
+                    "parameter_name": "ssi",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                    "redirect_to": "http://globaltestmarket.com/20/survey/finished.phtml?ac=$(ac)&sn=643371&lang=DE&sco=s"
+                },
+                
+                {
+                    "parameter_name": "ssi",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                    "redirect_to": "http://globaltestmarket.com/20/survey/finished.phtml?ac=$(ac)&sn=643371&lang=DE&sco=o"
+                }
+            ],
+             "ssi": {
+                "secure_key_1": 47624,
+                "secure_key_2": 43387
+            }
+        }
+    },
+	"rtr": {
+         "show_summary": true,
+            "show_status_filters": false,   
+			"legs": {
+                "enabled": true,
+                "variable_name": "leg",
+                "values": { 
+                            "1": "1",
+                            "2": "2"
+						  }
+            },
+            "questions": 
+            [
+                {
+                    "id": 10,
+                    "title": "Sesso",
+                    "labels": ["Uomo",
+                        "Donna"
+                              ],
+                    "show_table": "true",
+                    "show_chart": "true",
+                    "chart_type": "pie"
+                },
+                {
+                    "id": 30,
+                    "title": "Età",
+                    "labels": [
+                        "<25",
+                        "25-34",
+                        "35-44",
+                        "45-54",
+                        "55-65",
+                        ">65"
+                              ],
+                    "show_table": "true",
+                    "show_chart": "true",
+                    "chart_type": "pie"
+                },
+
+                {
+                    "id": 55,
+                    "title": "Area",
+                    "labels": [
+                        "Nord-Ovest ",
+                        "Nord-est",
+                        "Centro ",
+                        "Sud + Isole"
+                              ],
+                    "show_table": "true",
+                    "show_chart": "true",
+                    "chart_type": "pie"
+                },
+
+                {
+                    "id": 125,
+                    "title": "Target",
+                    "labels": [
+                        "Buongustai",
+                        "Main"
+                              ],
+                    "show_table": "true",
+                    "show_chart": "true",
+                    "chart_type": "pie"
+                },   
+                
+                {
+                    "id": 170,
+                    "title": "Mop",
+                    "labels": [
+                        "Pan di stelle",
+                        "Baiocchi",
+                        "Ringo",
+                        "Togo",
+                        "Oreo",
+                        "LU",
+                        "Oro Ciok",
+                        "Milka",
+                        "Bahlsen",
+                        "Pick up",
+                        "Hit",
+                        "Mini Snack/ Bocconcini Vicenzi (no Savoiardi)",
+                        "Grisbì",
+                        "Kinder cards",
+                        "Nutella Biscuit",
+                        "Loacker",
+                        "Lazzaroni",
+                        "Gastone Lago",
+                        "Bauli",
+                        "Balocco",
+                        "Galbusera",
+                        "Misura",
+                        "Alce Nero",
+                        "Marca del supermercato#sf",
+                        "Altra marca#sf",
+                        "Nessuna di queste#se#sf"
+                              ],
+                    "show_table": "true",
+                    "show_chart": "true",
+                    "chart_type": "pie"
+                },
+
+                {
+                    "id": 420,
+                    "title": "domanda C",
+                    "labels": [
+                        "1 persona",
+"2 persone",
+"3 persone",
+"4 persone",
+"5 o più persone"
+                              ],
+                    "show_table": "true",
+                    "show_chart": "true",
+                    "chart_type": "pie"
+                }
+                    					
+            ]  
+       
+        },
+
+		"quota": {
+		"total_interviews": 1000,
+        "total_by_leg": {
+                "variable_name": "leg",
+                "values": { 
+                            "1": 500,
+                            "2": 500
+                          }
+            },
+            "targets": [
+                {
+                    "name": "m",
+                    "description": "m",
+                    "question_id": 10,
+                    "option_id": [0],
+                    "value": 150,
+                    "leg": {
+                        "variable_name": "leg",
+                        "value": ["1","2"]
+                    }
+                },
+
+                {
+                    "name": "f",
+                    "description": "f",
+                    "question_id": 10,
+                    "option_id": [1],
+                    "value": 350,
+                    "leg": {
+                        "variable_name": "leg",
+                        "value": ["1","2"]
+                    }
+                }
+            ]
+    }
+          
+}

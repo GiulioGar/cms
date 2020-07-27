@@ -1,0 +1,14 @@
+PRO;PRONEW;534;B9YQII1U1X;13/10/2019 09:16:20 CEST;13/10/2019 09:18:04 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=B9YQII1U1X;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000100;6
+choice;30;2;0
+choice;40;2;0
+choice;50;58;7
+choice;60;2;1
+choice;90;2;0
+choice;100;6;0
+choice;110;6;001001;5
+choice;120;7;1010000;2
+choice;130;9;011010000;4
+choice;150;10;0000100000;4

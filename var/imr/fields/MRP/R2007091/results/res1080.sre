@@ -1,0 +1,12 @@
+2.0;MRP;R2007091;1080;PSX3W542EI;20/07/2020 18:03:54 CEST;20/07/2020 18:04:40 CEST;46;4;100;sysSID=R2007091;sysPRJ=MRP;sysUID=PSX3W542EI;device=mobile;lang=it
+choice;10;2;0
+open;20;41
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;17
+choice;50;3;1
+choice;55;4;2
+choice;70;7;1111110;1
+choice;80;10;0011000000;3
+choice;90;6;1
+choice;100;9;000100100;3

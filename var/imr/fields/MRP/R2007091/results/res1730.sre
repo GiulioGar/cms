@@ -1,0 +1,21 @@
+2.0;MRP;R2007091;1730;Y2FSY71668;22/07/2020 09:17:47 CEST;22/07/2020 09:19:47 CEST;120;5;180;sysSID=R2007091;sysPRJ=MRP;sysUID=Y2FSY71668;device=desktop;lang=it
+choice;10;2;0
+open;20;42
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;2
+choice;80;10;1011001110;8
+choice;90;6;2
+choice;100;9;111000000;1
+choice;110;9;011010000;4
+scale;120;9;5;2;3;2;1;2;1;3;4;3
+choice;125;2;1
+choice;130;1;0;comp0:mulino bianco
+choice;140;10;1000000000;0;comp0:kinder
+choice;150;26;01000000000000100000000000;14
+choice;160;26;01000000000000000000000000;1
+choice;170;26;1
+scale;180;6;7;1;2;3;1;2;4

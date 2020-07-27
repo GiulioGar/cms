@@ -1,0 +1,16 @@
+PRO;PRONEW;483;RCPQRDHBNZ;11/10/2019 10:12:18 CEST;11/10/2019 10:14:05 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=RCPQRDHBNZ;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000100010;3
+choice;30;2;0
+choice;40;2;0
+choice;50;58;56
+choice;60;2;0
+choice;70;5;00100;2
+choice;80;13;1
+choice;90;2;0
+choice;100;6;2
+choice;110;6;101001;0
+choice;120;7;1000110;0
+choice;130;9;010110100;6
+choice;150;10;1001010000;0

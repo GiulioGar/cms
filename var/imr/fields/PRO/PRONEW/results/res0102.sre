@@ -1,0 +1,13 @@
+PRO;PRONEW;102;MR60UYMNF4;26/08/2019 20:52:22 CEST;26/08/2019 20:53:21 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=MR60UYMNF4;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;1
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;5
+choice;110;6;100001;0
+choice;120;7;1100010;1
+choice;130;9;000000001;8
+choice;150;10;0000000001;9

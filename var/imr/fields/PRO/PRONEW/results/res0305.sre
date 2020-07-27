@@ -1,0 +1,16 @@
+PRO;PRONEW;305;N7D6LTOS63;10/09/2019 08:07:32 CEST;10/09/2019 08:09:32 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=N7D6LTOS63;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;50
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;1
+choice;100;6;2
+choice;110;6;100001;0
+choice;120;7;1101010;0
+choice;130;9;110101010;5
+choice;140;9;100000010;7
+choice;150;10;0000000001;9

@@ -1,0 +1,50 @@
+2.0;MRP;R2007091;1249;54183b1517;20/07/2020 20:23:14 CEST;20/07/2020 20:30:14 CEST;420;3;530;r1=379;sysSID=R2007091;sysPRJ=MRP;sysUID=54183b1517;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;40
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;2
+choice;80;10;1111111110;2
+choice;90;6;2
+choice;100;9;101001110;0
+choice;110;9;011101000;2
+scale;120;9;5;2;2;2;2;2;2;3;2;2
+choice;125;2;1
+choice;130;1;0;comp0:Montebovi
+choice;140;10;1100000000;0;comp0:Bauli;comp1:Bistefani
+choice;150;26;11111111110111111011010100;1
+choice;160;26;11101000100110110010000000;14
+choice;170;26;14
+scale;180;6;7;2;2;3;2;3;3
+concept;190
+choice;200;6;2
+open;210;Ingredienti golosi
+open;220;Ingredienti sani
+choice;230;5;1
+scale;240;5;5;4;2;0;3;1
+choice;250;5;2
+choice;260;5;2
+choice;270;5;2
+choice;280;5;2
+scale;290;16;5;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2
+scale;300;5;5;2;2;2;2;2
+choice;310;4;1
+choice;320;26;00001000000000000000000000;4
+choice;330;9;001000000;2
+concept;340
+choice;350;6;1
+open;360;Palle di cioccolato
+open;370;marca
+scale;380;13;5;2;2;3;2;1;2;2;2;1;2;3;2;2
+ordering;390;18;7;9;16;14;13;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;3
+choice;410;9;0
+choice;420;5;0
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+choice;530;3;0

@@ -1,0 +1,15 @@
+PRO;PRONEW;289;WOGP15IQPV;09/09/2019 20:38:42 CEST;09/09/2019 20:39:57 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=WOGP15IQPV;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;4
+choice;110;6;000010;4
+choice;120;7;0000100;4
+choice;130;9;101000100;0
+choice;150;10;0000000001;9

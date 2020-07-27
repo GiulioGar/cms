@@ -1,0 +1,21 @@
+2.0;MRP;R2007091;1732;SBD8JCU8N8;22/07/2020 09:19:01 CEST;22/07/2020 09:21:29 CEST;148;5;180;sysSID=R2007091;sysPRJ=MRP;sysUID=SBD8JCU8N8;device=desktop;lang=it
+choice;10;2;0
+open;20;53
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;15
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;2
+choice;80;10;1111110010;5
+choice;90;6;1
+choice;100;9;100000110;0
+choice;110;9;101011000;0
+scale;120;9;5;1;1;0;1;1;2;1;1;2
+choice;125;2;1
+choice;130;1;0;comp0:balsen
+choice;140;10;1111100000;0;comp0:bauli;comp4:non so;comp3:loaker;comp2:kinder;comp1:balocco
+choice;150;26;10111011100011111011100000;18
+choice;160;26;00101000100000110000000000;14
+choice;170;26;8
+scale;180;6;7;1;1;1;1;0;1

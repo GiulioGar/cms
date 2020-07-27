@@ -1,0 +1,17 @@
+PRO;PRONEW;487;ZPIB4I6FNM;11/10/2019 10:36:34 CEST;11/10/2019 10:37:35 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=ZPIB4I6FNM;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000010100;4
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;00100;2
+choice;80;13;1
+choice;90;2;0
+choice;100;6;1
+choice;110;6;111111;1
+choice;120;7;0111100;1
+choice;130;9;110010110;1
+choice;140;9;111110010;7
+choice;150;10;0111101100;2

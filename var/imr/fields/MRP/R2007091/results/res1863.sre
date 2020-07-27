@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1863;HRSF741244;22/07/2020 16:25:23 CEST;22/07/2020 16:38:12 CEST;769;3;530;r1=77;sysSID=R2007091;sysPRJ=MRP;sysUID=HRSF741244;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;47
+choice;30;6;3
+choice;40;9;000001100;5
+choice;45;20;11
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1101000;3
+choice;80;10;1111000000;2
+choice;90;6;0
+choice;100;9;101000000;0
+choice;110;9;101000000;0
+scale;120;9;5;2;3;2;1;2;2;1;1;2
+choice;125;2;1
+choice;130;1;0;comp0:loaker
+choice;140;10;1000000000;0;comp0:non so
+choice;150;26;00100000000010010000000000;15
+choice;160;26;00000000000000010000000000;15
+choice;170;26;15
+scale;180;6;7;2;2;2;6;6;6
+concept;190
+choice;200;6;1
+open;210;misto cioccolato/frutta
+open;220;niente
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;0;0;1;1;1;0;1;1;0;0;1;1;1;1;1
+scale;300;5;5;1;1;0;1;1
+choice;310;4;1
+choice;320;26;00000000000000010000000000;15
+choice;330;9;001000000;2
+concept;340
+choice;350;6;2
+open;360;molto colorata
+open;370;niente
+scale;380;13;5;1;1;1;1;0;1;2;1;1;1;2;2;1
+ordering;390;18;6;10;4;3;2;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0001000;3
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;3;2;3;1;2;3;2;2;0;2;2;1;1;2;2;0;3;2;2;3;2;2
+choice;530;3;0

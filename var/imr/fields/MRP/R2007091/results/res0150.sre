@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;150;R4FHRWK71G;17/07/2020 11:12:22 CEST;17/07/2020 11:28:13 CEST;951;3;540;r1=1398;sysSID=R2007091;sysPRJ=MRP;sysUID=R4FHRWK71G;device=desktop;leg=1;lang=it
+choice;10;2;0
+open;20;48
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;7
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;2
+choice;80;10;1111101010;3
+choice;90;6;1
+choice;100;9;100000010;0
+choice;110;9;001010000;4
+scale;120;9;5;2;4;0;0;1;1;2;2;1
+choice;125;2;0
+choice;130;1;0;comp0:lind
+choice;140;10;1111000000;0;comp0:novi;comp3:nestle';comp2:bauli;comp1:ferrero
+choice;150;26;11111011100011110011110000;15
+choice;160;26;10000010100001110001100000;13
+choice;170;26;8
+scale;180;6;7;1;1;2;6;0;6
+concept;190
+choice;200;6;0
+open;210;Adoro il cioccolato, Qui ci sono tante varianti e in tutte è presente il cioccolato. Credo proprio che li proverò
+open;220;non so, dovrei leggere gli ingredienti per capire se è un prodotto sano 
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;1;1;0;0;2;0;1;1;1;1;1;1;2;1;1
+scale;300;5;5;0;1;0;1;1
+choice;310;4;1
+choice;320;26;00000010100000000000000000;8
+choice;330;9;001010000;2
+concept;340
+choice;350;6;1
+open;360;mi piace lo sfondo della confezione arancione. La donna che bacia il biscotto crea un riferimento sessuale (inconscio)
+open;370;non mi piace il colore del logo sulla destra (avrei usato un colore più vivace)
+scale;380;13;5;1;1;0;1;1;1;1;0;0;1;0;0;1
+ordering;390;18;0;6;3;1;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0001010;3
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;3;2;1;2;1;2;1;3;1;1;1;0;0;1;1;0;1;2;1;2;1;2
+choice;530;3;1
+choice;540;5;1

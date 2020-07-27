@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1556;GBKRMY6JW2;21/07/2020 17:56:06 CEST;21/07/2020 18:05:31 CEST;565;3;530;r1=1546;sysSID=R2007091;sysPRJ=MRP;sysUID=GBKRMY6JW2;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;63
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;2
+choice;80;10;0010101000;4
+choice;90;6;2
+choice;100;9;100000000;0
+choice;110;9;000101000;3
+scale;120;9;5;1;2;1;1;3;3;1;2;0
+choice;125;2;1
+choice;130;1;0;comp0:MULINO BIANCO
+choice;140;10;1100000000;0;comp0:DIVELA;comp1:PISELLI
+choice;150;26;11111011010111111011111000;20
+choice;160;26;00101000000000110000010000;4
+choice;170;26;15
+scale;180;6;7;2;2;1;1;1;2
+concept;190
+choice;200;6;2
+open;210;CIOCCOLATO FONDENTE
+open;220;NN
+choice;230;5;1
+scale;240;5;5;1;0;2;3;1
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;2;1;1;1;1;1;1;1;2;1;1;1;1;1;1
+scale;300;5;5;1;1;1;1;1
+choice;310;4;1
+choice;320;26;00001000000000100000000000;4
+choice;330;9;000101000;5
+concept;340
+choice;350;6;2
+open;360;LA FOTO DEI BISCOTTI
+open;370;IL PROFILE DELLA DONNA
+scale;380;13;5;1;1;2;2;2;1;1;1;1;1;2;3;1
+ordering;390;18;1;10;0;6;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;6
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;3
+scale;520;22;4;2;2;0;2;1;2;1;3;0;2;1;1;0;0;2;1;2;2;2;2;2;1
+choice;530;3;0

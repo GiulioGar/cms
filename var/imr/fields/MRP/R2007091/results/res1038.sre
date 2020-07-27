@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;1038;C6GMQOTRZO;20/07/2020 17:15:45 CEST;20/07/2020 17:34:19 CEST;1114;3;540;r1=1746;sysSID=R2007091;sysPRJ=MRP;sysUID=C6GMQOTRZO;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;45
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;9
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1011010;2
+choice;80;10;0111010010;8
+choice;90;6;0
+choice;100;9;100000000;0
+choice;110;9;100100000;0
+scale;120;9;5;4;2;3;2;2;0;3;0;3
+choice;125;2;1
+choice;130;1;0;comp0:Kinder
+choice;140;10;1100000000;0;comp0:Nutella;comp1:Mulino bianco 
+choice;150;26;01101000000010110011100100;1
+choice;160;26;00100000000000100000000000;2
+choice;170;26;14
+scale;180;6;7;2;2;1;6;6;6
+concept;190
+choice;200;6;1
+open;210;Novità sui gusti...guarda dall  aspettoho l acquolina in bocca!  
+open;220;Non so..dovrei provare...forze la frutta a pezzi...ma solo x un gusto personale 
+choice;230;5;1
+scale;240;5;5;2;2;1;1;1
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;2;1;1;0;1;1;0;1;1;2;1;1;2;2;1;0
+scale;300;5;5;2;0;1;1;1
+choice;310;4;1
+choice;320;26;00100000000000000000000000;2
+choice;330;9;000001000;5
+concept;340
+choice;350;6;1
+open;360;I colori sgargianti...La espressione...Sembra di assaggiare io stessa 
+open;370;Nulla in particolare 
+scale;380;13;5;0;0;0;0;3;1;0;0;1;0;1;0;1
+ordering;390;18;11;0;2;12;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;2
+choice;410;9;2
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0000011;5
+concept;499
+concept;500
+choice;510;5;4
+scale;520;22;4;3;3;0;1;0;3;1;1;0;3;0;0;0;3;1;0;1;1;0;2;1;0
+choice;530;3;1
+choice;540;5;1

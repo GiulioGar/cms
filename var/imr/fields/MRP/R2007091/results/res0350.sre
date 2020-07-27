@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;350;M2KDSVEJXI;17/07/2020 16:35:44 CEST;17/07/2020 16:44:23 CEST;519;3;530;r1=1079;sysSID=R2007091;sysPRJ=MRP;sysUID=M2KDSVEJXI;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;52
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;3
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;4
+choice;80;10;1111111110;3
+choice;90;6;0
+choice;100;9;100000000;0
+choice;110;9;100000000;0
+scale;120;9;5;2;2;2;1;1;2;2;2;1
+choice;125;2;1
+choice;130;1;0;comp0:mulino bianco
+choice;140;10;1110000000;0;comp0:matilde vicenzi;comp2:nesquit;comp1:parmalat
+choice;150;26;11111111101111110111111000;6
+choice;160;26;01000000000100000000000000;11
+choice;170;26;1
+scale;180;6;7;1;2;0;0;0;0
+concept;190
+choice;200;6;1
+open;210;la confezione
+open;220;niente
+choice;230;5;1
+scale;240;5;5;1;0;1;1;1
+choice;250;5;2
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;0;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1
+scale;300;5;5;2;0;1;0;1
+choice;310;4;2
+choice;330;9;100010000;0
+concept;340
+choice;350;6;2
+open;360;colori e immagini
+open;370;niente
+scale;380;13;5;1;0;1;1;1;1;1;1;0;1;1;0;1
+ordering;390;18;2;0;3;8;1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0000010;5
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;1;2;2;2;2;2;2;1;1;2;2;1;1;2;2;2;2;2;1;2;2;2
+choice;530;3;0

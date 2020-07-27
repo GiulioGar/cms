@@ -1,0 +1,356 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;int reCod;
+system.setProperty("env", "stylesheet:mod.css");
+//system.setProperty("env", "debug:true");
+//system.setProperty("env", "browser:variables");
+string autotest=system.getProperty("test");
+string err;
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+
+	qst = new question("choice", 1);
+	qst.setProperty("text", "Sei:");
+	qst.setProperty("code", "q0");
+	vector q1_opts = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", q1_opts);
+	send qst;
+
+	qst = new question("choice", 10);
+	qst.setProperty("text", "Hai figli");
+	qst.setProperty("code", "q1");
+	vector q10_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q10_opts);
+	send qst;
+	
+	ansId=system.getProperty("ans10");
+	if (ansId==0)
+	{
+	qst = new question("choice", 20);
+	qst.setProperty("text", "Hai detto di avere figli in quale fascia di et&agrave;?");
+	qst.setProperty("code", "q1b");
+	qst.setProperty("selection", "multiple");
+	vector q20_opts = new vector {
+		"0-2 anni",
+		"3-4 anni",
+		"5-6 anni",
+		"7-8 anni",
+		"9-10 anni",
+		"10-11 anni",
+		"12-15 anni",
+		"16-18 anni",
+		"Pi&ugrave; di 18 anni"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+	}
+
+	qst = new question("choice", 30);
+	qst.setProperty("text", "Hai la patente?");
+	qst.setProperty("code", "q2");
+	vector q30_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q30_opts);
+	send qst;
+	
+	ansId=system.getProperty("ans30");
+	if (ansId==0)
+	{
+
+	qst = new question("choice", 40);
+	qst.setProperty("text", "Guidi un auto di tua propriet&agrave; (o di qualcuno in famiglia)?");
+	qst.setProperty("code", "q2b");
+	vector q40_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q40_opts);
+	send qst;
+	
+	ansId=system.getProperty("ans40");
+	if (ansId==0)
+	{
+	
+
+	qst = new question("choice", 50);
+	qst.setProperty("text", "Puoi indicare la marca dell’auto?");
+	qst.setProperty("code", "q2c");
+	qst.setProperty("view", "menu");
+	vector q50_opts = new vector {
+		"Abarth",
+		"Aixam",
+		"Alfa Romeo",
+		"Alpine",
+		"Aston Martin",
+		"Audi",
+		"Bentley",
+		"Bmw",
+		"Cadillac",
+		"Chevrolet",
+		"Chrysler",
+		"Citroen",
+		"Dacia",
+		"Daihatsu",
+		"Dodge",
+		"Ds",
+		"Ferrari",
+		"Fiat",
+		"Ford",
+		"Gm",
+		"Honda",
+		"Hyundai",
+		"Infiniti",
+		"Jag/Daim",
+		"Jeep",
+		"Kia",
+		"Lamborghini",
+		"Lancia",
+		"Land Rover",
+		"Lexus",
+		"Lotus",
+		"Maserati",
+		"Maybach",
+		"Mazda",
+		"Mcc",
+		"Mercedes",
+		"Mg",
+		"Mini",
+		"Mitsubishi",
+		"Morgan",
+		"Nissan",
+		"Opel",
+		"Perodua",
+		"Peugeot",
+		"Porsche",
+		"Proton",
+		"Renault",
+		"Rover",
+		"Saab",
+		"Seat",
+		"Skoda",
+		"Ssangyong",
+		"Subaru",
+		"Suzuki",
+		"Tesla",
+		"Toyota",
+		"Volkswagen",
+		"Volvo"
+	};
+	qst.setProperty("options", q50_opts);
+	send qst;
+	}
+	}
+	
+	
+	qst = new question("choice", 60);
+	qst.setProperty("text", "Hai effettuato viaggi negli ultimi 12 mesi?");
+	qst.setProperty("code", "q3");
+	vector q60_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q60_opts);
+	send qst;
+	
+	ansId=system.getProperty("ans60");
+	if (ansId==0)
+	{
+
+	qst = new question("choice", 70);
+	qst.setProperty("text", "Che tipologia di viaggio hai effettuato?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "q3b");
+	vector q70_opts = new vector {
+		"Viaggio in italia",
+		"Viaggio all’Estero",
+		"Crociera",
+		"Villaggio Turistico",
+		"Altro (specifcare)#so"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+	
+	sel=system.getProperty("ans70_2");
+	if (sel==true) 
+	{
+
+	qst = new question("choice", 80);
+	qst.setProperty("text", "Hai detto di aver effettuato una crociera, con quale compagnia hai effettuato l’ultima crociera?");
+	qst.setProperty("code", "q3c");
+	vector q80_opts = new vector {
+		"Costa Crociere",
+		"MSC Crociere",
+		"Royal Caribbean",
+		"Carnival",
+		"Norwegian cruise line (NCL)",
+		"Holland America Line",
+		"Celebrity Cruises",
+		"Pullmantur",
+		"Princess Cruises",
+		"Silversea",
+		"Starclippers",
+		"Disney Cruise Line",
+		"Altro"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+	}
+	
+	}
+	
+	qst = new question("choice", 90);
+	qst.setProperty("text", "Hai intenzione di effettuare una crociera nei prossimi 12 mesi?");
+	qst.setProperty("code", "q3d");
+	vector q90_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+
+	
+	qst = new question("choice", 100);
+	qst.setProperty("text", "Mediamente, con quale frequenza hai fatto sport/attivit&agrave;  fisica negli ultimi 12 mesi?");
+	qst.setProperty("code", "q4");
+	vector q100_opts = new vector {
+		"Tutti i giorni o quasi",
+		"3 o 4 volte a settimana",
+		"1 o 2 volte a settimana",
+		"2 o 3 volte al mese",
+		"Meno spesso",
+		"Mai"
+	};
+	qst.setProperty("options", q100_opts);
+	send qst;
+
+	qst = new question("choice", 110);
+	qst.setProperty("text", "Quali fra i seguenti prodotti possiedi e utilizzi personalmente?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q5");
+	vector q110_opts = new vector {
+		"Smartphone",
+		"Tablet/iPad",
+		"Computer fisso/portatile",
+		"E-book",
+		"Lettore mp3/iPod",
+		"Televisore"
+	};
+	qst.setProperty("options", q110_opts);
+	send qst;
+
+	qst = new question("choice", 120);
+	qst.setProperty("text", "Quali tra i seguenti mezzi di comunicazione usi con regolarit&agrave;?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q6");
+	vector q120_opts = new vector {
+	"Televisione",
+		"Quotidiani cartacei",
+		"Quotidiani online/siti web di quotidiani",
+		"Riviste settimanali/mensili cartacee",
+		"Riviste/mensili online/siti web di riviste e mensili",
+		"Radio",
+		"Altri siti web di informazione#sf"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+
+	qst = new question("choice", 130);
+	qst.setProperty("text", "Cosa fai di solito quando navighi in internet nel tuo tempo libero?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q7");
+	vector q130_opts = new vector {
+		"Leggo notizie di attualit&agrave;",
+		"Approfondisco argomenti specifici (su blog forum riviste)",
+		"Gioco",
+		"Guardo contenuti video brevi (tutorial clip divertenti ecc.)",
+		"Guardo contenuti video di almeno 30 minuti (puntate/episodi)",
+		"Guardo video musicali/ascolto musica",
+		"Faccio acquisti/guardo siti di shopping",
+		"Vado sui social network",
+		"Altro#sf"
+	};
+	qst.setProperty("options", q130_opts);
+	send qst;
+	
+	sel=system.getProperty("ans130_7");
+	if (sel==true) 
+	{
+
+	qst = new question("choice", 140);
+	qst.setProperty("text", "Quali social network usi di solito?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q7b");
+	vector q140_opts = new vector {
+		"Facebook",
+		"Instagram",
+		"Twitter",
+		"Linkedin",
+		"Snapchat",
+		"Tinder",
+		"Pinterest",
+		"Youtube",
+		"Altro(specifcare)#so#sf"
+	};
+	qst.setProperty("options", q140_opts);
+	send qst;
+	
+	}
+	
+	
+	qst = new question("choice", 150);
+	qst.setProperty("text", "Sei abbonato/usufruisci dei seguenti servizi…?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q8");
+	vector q150_opts = new vector {
+		"Sky",
+		"Now Tv (Sky online)",
+		"Netflix",
+		"Amazon Prime Video",
+		"Mediaset Premium",
+		"Infinity (Mediaset online)",
+		"Chili",
+		"Spotify",
+		"Altro#sf",
+		"Nessuno di questi#se#sf"
+	};
+	qst.setProperty("options", q150_opts);
+	send qst;
+
+}

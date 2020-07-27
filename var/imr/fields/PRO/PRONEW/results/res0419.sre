@@ -1,0 +1,13 @@
+PRO;PRONEW;419;TUUP0P53H8;10/10/2019 21:11:25 CEST;10/10/2019 21:12:45 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=TUUP0P53H8;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;1
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;1
+choice;100;6;1
+choice;110;6;101001;2
+choice;120;7;1000010;0
+choice;130;9;110000010;0
+choice;140;9;111100100;3
+choice;150;10;0000000001;9

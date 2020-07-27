@@ -1,0 +1,16 @@
+PRO;PRONEW;347;1G5LERPFAY;10/10/2019 17:54:08 CEST;10/10/2019 17:55:30 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=1G5LERPFAY;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;010000000;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;7
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;5
+choice;110;6;100001;0
+choice;120;7;1000000;0
+choice;130;9;000001110;5
+choice;140;9;110000000;0
+choice;150;10;0000000001;9

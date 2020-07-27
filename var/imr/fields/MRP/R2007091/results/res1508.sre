@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1508;W92Y1437Q0;21/07/2020 17:37:44 CEST;21/07/2020 17:38:04 CEST;20;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=W92Y1437Q0;device=desktop;lang=it
+choice;10;2;0
+open;20;30
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;10
+choice;50;3;1
+choice;55;4;3
+choice;70;7;0010100;2

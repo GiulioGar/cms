@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;472;SGR6NBQQZS;17/07/2020 17:42:17 CEST;17/07/2020 17:56:22 CEST;845;3;540;r1=595;sysSID=R2007091;sysPRJ=MRP;sysUID=SGR6NBQQZS;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;50
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;12
+choice;50;3;1
+choice;55;4;3
+choice;70;7;1111110;1
+choice;80;10;1110010010;0
+choice;90;6;2
+choice;100;9;100000000;0
+choice;110;9;101010000;0
+scale;120;9;5;2;3;2;2;2;0;1;2;2
+choice;125;2;1
+choice;130;1;0;comp0:galbusera, leo, colussi, mulino bianco
+choice;140;10;1000000000;0;comp0:galbusera
+choice;150;26;11111011110111111011111000;15
+choice;160;26;00001000000000000010100000;20
+choice;170;26;18
+scale;180;6;7;1;3;2;2;3;3
+concept;190
+choice;200;6;3
+open;210;c'e' una vasta gamma
+open;220;il colore della confezione
+choice;230;5;2
+scale;240;5;5;2;2;2;2;2
+choice;250;5;1
+choice;260;5;2
+choice;270;5;2
+choice;280;5;2
+scale;290;16;5;2;2;2;2;3;1;2;1;1;2;2;2;1;2;2;1
+scale;300;5;5;2;2;2;2;2
+choice;310;4;2
+choice;330;9;001000000;2
+concept;340
+choice;350;6;2
+open;360;Molta varieta' di scelta dal cioccolato al latte af fondente ed anche quello all'arancia!
+open;370; il colore della confezione
+scale;380;13;5;1;2;4;3;1;1;1;1;2;2;2;2;1
+ordering;390;18;5;10;0;1;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;2
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;2;3;3;1;0;2;2;1;1;2;1;2;2;1;2;0;2;1;2;3;1;0
+choice;530;3;1
+choice;540;5;1

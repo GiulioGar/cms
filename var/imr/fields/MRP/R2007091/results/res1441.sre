@@ -1,0 +1,5 @@
+2.0;MRP;R2007091;1441;CNCG1OZXTA;21/07/2020 12:13:22 CEST;<unknown>;0;0;30;sysSID=R2007091;sysPRJ=MRP;sysUID=CNCG1OZXTA;device=desktop;lang=it
+choice;10;2;1
+open;20;29
+choice;30;6;1
+choice;40;9;000000001;8

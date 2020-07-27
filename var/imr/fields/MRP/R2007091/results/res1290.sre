@@ -1,0 +1,41 @@
+2.0;MRP;R2007091;1290;F86BT1PIH1;20/07/2020 21:31:36 CEST;<unknown>;0;0;125;r1=481;sysSID=R2007091;sysPRJ=MRP;sysUID=F86BT1PIH1;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;52
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;5
+choice;80;10;0010100100;2
+choice;90;6;1
+choice;100;9;100010100;0
+choice;110;9;110000000;0
+scale;120;9;5;2;2;3;1;2;2;3;3;2
+choice;125;2;1
+choice;130;1;0;comp0:Pavesi
+choice;140;10;1110000000;0;comp0:Mulino Bianco ;comp2:Pavesi;comp1:Kinder 
+choice;150;26;11101000000001110000000000;15
+choice;160;26;11100000000001110000000000;2
+choice;170;26;13
+scale;180;6;7;2;6;0;1;6;5
+concept;190
+choice;200;6;2
+open;210;La loro semplicità e la chiarezza in cui si è spiegato questo brand 
+open;220;Non mi viene in mente molto, ma avrei preferito vedere più varietà di biscotti 🍪 
+choice;230;5;1
+scale;240;5;5;2;2;2;2;1
+choice;250;5;1
+choice;260;5;0
+choice;270;5;2
+choice;280;5;1
+scale;290;16;5;1;2;1;1;0;2;1;1;1;2;2;1;0;0;2;0
+scale;300;5;5;1;1;1;1;1
+choice;310;4;2
+choice;330;9;010100100;3
+concept;340
+choice;350;6;1
+open;360;I colori e i loro abbinamenti, la scelta della scrittura del brand 
+open;370;Che tutte le confezioni dei vari biscotto/merendine abbiano gli stessi colori
+scale;380;13;5;1;0;1;1;0;1;2;0;1;0;0;1;1
+ordering;390;18;4;0;13;2;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

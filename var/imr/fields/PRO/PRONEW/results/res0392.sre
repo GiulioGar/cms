@@ -1,0 +1,15 @@
+PRO;PRONEW;392;UR2COXGTTH;10/10/2019 19:21:51 CEST;10/10/2019 19:22:32 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=UR2COXGTTH;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;11
+choice;60;2;0
+choice;70;5;10100;0
+choice;80;13;1
+choice;90;2;0
+choice;100;6;3
+choice;110;6;111001;5
+choice;120;7;0001110;3
+choice;130;9;111100000;1
+choice;150;10;1001010000;0

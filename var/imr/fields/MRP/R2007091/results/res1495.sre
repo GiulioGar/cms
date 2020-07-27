@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1495;2WUU311169;21/07/2020 16:41:00 CEST;21/07/2020 16:41:23 CEST;23;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=2WUU311169;device=mobile;lang=it
+choice;10;2;1
+open;20;45
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;0101100;4

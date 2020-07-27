@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1822;LA66A0ESD9;22/07/2020 13:47:26 CEST;22/07/2020 13:54:26 CEST;420;3;530;r1=437;sysSID=R2007091;sysPRJ=MRP;sysUID=LA66A0ESD9;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;37
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;0
+choice;80;10;1111111110;4
+choice;90;6;0
+choice;100;9;111111110;0
+choice;110;9;111111110;2
+scale;120;9;5;4;4;4;4;4;4;4;4;4
+choice;125;2;1
+choice;130;1;0;comp0:Mulino bianco
+choice;140;10;1110000000;0;comp0:Kinder;comp2:Balconi;comp1:Ferrero
+choice;150;26;11111111111111111111111100;20
+choice;160;26;11111111111011111111111000;12
+choice;170;26;0
+scale;180;6;7;0;0;0;0;0;0
+concept;190
+choice;200;6;0
+open;210;Sembrano buoni
+open;220;Mi piace tutto 
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+scale;300;5;5;0;0;0;0;0
+choice;310;4;0
+choice;320;26;11001001101001011001100000;0
+choice;330;9;100101000;0
+concept;340
+choice;350;6;0
+open;360;Sembrano buonissimi 
+open;370;Nulla
+scale;380;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+ordering;390;18;13;8;4;5;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;4
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3
+choice;530;3;0

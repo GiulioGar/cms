@@ -1,0 +1,16 @@
+PRO;PRONEW;481;V919XGLMD1;11/10/2019 09:57:37 CEST;11/10/2019 09:59:43 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=V919XGLMD1;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;55
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;2
+choice;110;6;111111;3
+choice;120;7;0011010;3
+choice;130;9;100000110;7
+choice;140;9;100000110;6
+choice;150;10;0001000000;3

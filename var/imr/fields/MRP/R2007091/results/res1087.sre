@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1087;N9DU94GDA1;20/07/2020 18:47:20 CEST;20/07/2020 18:48:46 CEST;86;3;540;sysSID=R2007091;r1=1667;sysPRJ=MRP;sysUID=N9DU94GDA1;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;43
+choice;30;6;2
+choice;40;9;000001000;5
+choice;45;20;5
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1111110;5
+choice;80;10;1111110110;0
+choice;90;6;1
+choice;100;9;100000000;0
+choice;110;9;000100000;3
+scale;120;9;5;2;2;2;2;4;3;1;4;0
+choice;125;2;1
+choice;130;1;0;comp0:Mulino Bianco
+choice;140;10;1000000000;0;comp0:Kinder
+choice;150;26;11111011111111110011110100;20
+choice;160;26;00000000000010000000000100;12
+choice;170;26;23
+scale;180;6;7;2;2;2;2;2;6
+concept;190
+choice;200;6;2
+open;210;Mi piace che hanno il cioccolato
+open;220;Niente
+choice;230;5;2
+scale;240;5;5;2;2;2;2;2
+choice;250;5;2
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;2;2;2;1;1;1;1;1;2;1;1;2;1;2;2;1
+scale;300;5;5;2;2;2;2;2
+choice;310;4;2
+choice;330;9;000100000;3
+concept;340
+choice;350;6;2
+open;360;Sempre il cioccolato in evidenza
+open;370;Niente, forse il colore della scatola
+scale;380;13;5;1;1;1;2;1;1;1;1;1;1;1;2;1
+ordering;390;0;0;2;9;13;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0010000;2
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;2;1;0;1;0;1;1;1;0;1;1;1;1;1;1;0;1;1;0;2;1;2
+choice;530;3;1
+choice;540;5;1

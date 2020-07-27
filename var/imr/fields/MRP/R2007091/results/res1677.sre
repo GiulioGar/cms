@@ -1,0 +1,50 @@
+2.0;MRP;R2007091;1677;1GC8U58478;21/07/2020 22:10:55 CEST;21/07/2020 22:19:51 CEST;536;3;540;r1=1099;sysSID=R2007091;sysPRJ=MRP;sysUID=1GC8U58478;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;32
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;11
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;1
+choice;80;10;1111111110;6
+choice;90;6;2
+choice;100;9;100000000;0
+choice;110;9;010000000;1
+scale;120;9;5;2;2;2;2;2;2;2;2;2
+choice;125;2;1
+choice;130;1;0;comp0:vicenzi
+choice;140;10;1000000000;0;comp0:mulino bianco
+choice;150;26;10001010000101000000000000;4
+choice;160;26;00001000000100000000000000;4
+choice;170;26;4
+scale;180;6;7;6;6;6;6;6;6
+concept;190
+choice;200;6;5
+open;210;nulla
+open;220;frutta ovunque
+choice;230;5;4
+scale;240;5;5;4;4;4;4;4
+choice;250;5;2
+choice;260;5;2
+choice;270;5;3
+choice;280;5;3
+scale;290;16;5;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2
+scale;300;5;5;2;2;2;2;2
+choice;310;4;3
+concept;340
+choice;350;6;5
+open;360;nulla
+open;370;c'è troppa frutta
+scale;380;13;5;2;2;2;2;2;2;2;2;2;2;2;2;2
+ordering;390;18;0;5;4;3;1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;3
+scale;520;22;4;3;2;0;2;0;2;1;2;0;2;1;1;0;1;1;0;3;1;0;3;1;0
+choice;530;3;1
+choice;540;5;0

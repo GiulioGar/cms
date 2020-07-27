@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;537;54XVHHCX99;17/07/2020 18:56:17 CEST;17/07/2020 19:13:40 CEST;1043;3;530;r1=307;sysSID=R2007091;sysPRJ=MRP;sysUID=54XVHHCX99;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;38
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;0
+choice;80;10;1111111110;0
+choice;90;6;1
+choice;100;9;101000110;0
+choice;110;9;110101010;1
+scale;120;9;5;4;3;0;1;2;0;3;2;4
+choice;125;2;1
+choice;130;1;0;comp0:Vicenzi
+choice;140;10;1110000000;0;comp0:Bauli;comp2:Doria;comp1:Balocco
+choice;150;26;11111111110111111111000100;17
+choice;160;26;11101010000111110111000100;17
+choice;170;26;2
+scale;180;6;7;2;0;0;2;2;3
+concept;190
+choice;200;6;0
+open;210;Sono delle ricette nuove golose e sfiziose, ingolosiscono molto
+open;220;Nulla 
+choice;230;5;0
+scale;240;5;5;0;0;0;1;0
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;1;0;0;0;0;1;0;0;1;1;0;0;1;1;1;0
+scale;300;5;5;0;1;0;0;0
+choice;310;4;1
+choice;320;26;01000000000010100000000000;12
+choice;330;9;110001010;0
+concept;340
+choice;350;6;0
+open;360;L arancione che spicca molto 
+open;370;Nulla sono.molto belle
+scale;380;13;5;0;0;0;1;1;1;1;0;0;1;1;0;0
+ordering;390;18;1;5;10;0;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;4
+choice;420;5;1
+choice;430;2;0
+choice;440;7;0001000;3
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;0;0;3;1;0;0;1;0;0;0;0;1;0;0;1;3;0;0;2;1;0;0
+choice;530;3;0

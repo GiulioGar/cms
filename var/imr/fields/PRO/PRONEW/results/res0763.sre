@@ -1,0 +1,13 @@
+2.0;PRO;PRONEW;763;S4FVK5700H;16/07/2020 00:17:55 CEST;16/07/2020 00:24:40 CEST;405;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=S4FVK5700H;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;0
+choice;40;2;1
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;0
+choice;110;6;111110;1
+choice;120;7;0010111;5
+choice;130;9;111011000;1
+choice;150;10;0010000000;2

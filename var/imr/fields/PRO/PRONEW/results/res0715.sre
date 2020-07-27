@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;715;7923A94A31;15/07/2020 18:55:23 CEST;15/07/2020 18:56:43 CEST;80;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=7923A94A31;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;100000000;0
+choice;30;2;0
+choice;40;2;0
+choice;50;58;9
+choice;60;2;1
+choice;90;2;0
+choice;100;6;2
+choice;110;6;111001;0
+choice;120;7;1010111;0
+choice;130;9;111000010;2
+choice;140;9;100000000;0
+choice;150;10;0011000010;2

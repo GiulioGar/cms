@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;677;N57079WHQF;15/07/2020 16:45:55 CEST;15/07/2020 16:47:28 CEST;93;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=N57079WHQF;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;27
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;4
+choice;110;6;111101;2
+choice;120;7;1000011;0
+choice;130;9;110101110;1
+choice;140;9;110000110;6
+choice;150;10;0101011100;7

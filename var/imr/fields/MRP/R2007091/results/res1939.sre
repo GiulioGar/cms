@@ -1,0 +1,10 @@
+2.0;MRP;R2007091;1939;Q73J7NHN31;23/07/2020 09:38:12 CEST;23/07/2020 09:39:52 CEST;100;4;80;sysSID=R2007091;sysPRJ=MRP;sysUID=Q73J7NHN31;device=mobile;lang=it
+choice;10;2;1
+open;20;56
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;19
+choice;50;3;1
+choice;55;4;1
+choice;70;7;1111110;2
+choice;80;10;0000110000;4

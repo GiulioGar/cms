@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1091;9U5HZ3WY2S;20/07/2020 18:09:52 CEST;20/07/2020 18:23:33 CEST;821;3;530;r1=1014;sysSID=R2007091;sysPRJ=MRP;sysUID=9U5HZ3WY2S;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;49
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;0
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;3
+choice;80;10;1101011110;1
+choice;90;6;0
+choice;100;9;110001100;6
+choice;110;9;100000010;0
+scale;120;9;5;0;2;0;0;3;2;2;0;0
+choice;125;2;1
+choice;130;1;0;comp0:Balocco
+choice;140;10;1110000000;0;comp0:Mulino Bianco;comp2:Vicenzi;comp1:Saiwa
+choice;150;26;11111011110111111011111000;1
+choice;160;26;10010010000100110000000000;15
+choice;170;26;15
+scale;180;6;7;1;1;0;1;1;1
+concept;190
+choice;200;6;1
+open;210;Gli ingredienti sembrano golosi
+open;220;Nulla
+choice;230;5;0
+scale;240;5;5;1;0;0;0;1
+choice;250;5;2
+choice;260;5;0
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;0;0;0;0;0;0;1;1;1;0;0;0;0;0;0;0
+scale;300;5;5;0;0;0;0;0
+choice;310;4;1
+choice;320;26;00010000000000000000000000;3
+choice;330;9;010100011;1
+concept;340
+choice;350;6;2
+open;360;Le immagini degli ingredienti
+open;370;Il viso della ragazza
+scale;380;13;5;1;0;0;1;1;0;0;0;0;1;1;3;0
+ordering;390;18;1;11;5;0;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;2
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000001;6
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;2;3;2;3;2;3;2;2;0;2;2;3;2;1;3;1;2;2;1;2;3;0
+choice;530;3;0

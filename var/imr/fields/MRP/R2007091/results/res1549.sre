@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1549;K81SX7PNF1;21/07/2020 17:50:57 CEST;21/07/2020 17:51:49 CEST;52;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=K81SX7PNF1;device=desktop;lang=it
+choice;10;2;0
+open;20;34
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;15
+choice;50;3;0
+choice;55;4;2
+choice;70;7;0010100;2

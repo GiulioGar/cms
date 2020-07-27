@@ -1,0 +1,13 @@
+2.0;PRO;PRONEW;635;DVHER7LTT2;15/07/2020 15:45:40 CEST;15/07/2020 15:47:55 CEST;135;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=DVHER7LTT2;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;1
+choice;60;2;1
+choice;90;2;1
+choice;100;6;1
+choice;110;6;101000;2
+choice;120;7;0000001;6
+choice;130;9;110000001;0
+choice;150;10;0000000001;9

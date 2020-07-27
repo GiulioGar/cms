@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;459;PSXMFDSW7U;17/07/2020 17:32:04 CEST;17/07/2020 17:38:09 CEST;365;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=PSXMFDSW7U;device=desktop;lang=it
+choice;10;2;0
+open;20;40
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;0011110;4

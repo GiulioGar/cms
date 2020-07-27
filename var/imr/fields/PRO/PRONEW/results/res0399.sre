@@ -1,0 +1,15 @@
+PRO;PRONEW;399;POE0BB22WT;10/10/2019 19:33:51 CEST;10/10/2019 19:35:11 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=POE0BB22WT;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;41
+choice;60;2;0
+choice;70;5;01000;1
+choice;90;2;1
+choice;100;6;0
+choice;110;6;111111;4
+choice;120;7;1111011;3
+choice;130;9;110000110;1
+choice;140;9;110000110;6
+choice;150;10;0000000001;9

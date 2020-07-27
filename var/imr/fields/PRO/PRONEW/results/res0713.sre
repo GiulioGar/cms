@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;713;VZ2RBIBOVY;15/07/2020 18:51:51 CEST;15/07/2020 18:53:02 CEST;71;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=VZ2RBIBOVY;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;9
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;0
+choice;100;6;2
+choice;110;6;111011;1
+choice;120;7;1111111;1
+choice;130;9;111111110;7
+choice;140;9;110010010;1
+choice;150;10;0000001000;6

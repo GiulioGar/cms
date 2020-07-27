@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1430;HR9H5H6JB1;21/07/2020 11:19:55 CEST;21/07/2020 11:20:20 CEST;25;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=HR9H5H6JB1;device=desktop;lang=it
+choice;10;2;0
+open;20;63
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;11
+choice;50;3;0
+choice;55;4;0
+choice;70;7;0100010;5

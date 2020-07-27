@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;1857;TEBI9JTF9Y;22/07/2020 16:01:26 CEST;22/07/2020 16:06:51 CEST;325;3;540;r1=171;sysSID=R2007091;sysPRJ=MRP;sysUID=TEBI9JTF9Y;device=desktop;leg=1;lang=it
+choice;10;2;0
+open;20;53
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;15
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;1
+choice;80;10;1111110010;4
+choice;90;6;0
+choice;100;9;110000110;0
+choice;110;9;111111000;0
+scale;120;9;5;3;1;0;1;2;1;2;1;2
+choice;125;2;1
+choice;130;1;0;comp0:loaker
+choice;140;10;1111100000;0;comp0:balocco;comp4:non so;comp3:bauli;comp2:oreo;comp1:balsen
+choice;150;26;11111011100001110011110000;21
+choice;160;26;00000011000000010010000000;7
+choice;170;26;15
+scale;180;6;7;2;2;1;2;2;2
+concept;190
+choice;200;6;0
+open;210;credo sia buono e goloso
+open;220;niente
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;2;2;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+scale;300;5;5;1;1;1;1;1
+choice;310;4;1
+choice;320;26;00000000000000010010000000;15
+choice;330;9;100110000;0
+concept;340
+choice;350;6;1
+open;360;mi sembra una belle grafica
+open;370;niente
+scale;380;13;5;1;1;1;2;1;2;1;0;1;1;1;1;1
+ordering;390;18;2;4;1;11;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000001;6
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;2;1;1;1;1;2;1;1;0;2;1;1;0;1;2;0;2;1;0;2;2;0
+choice;530;3;1
+choice;540;5;1

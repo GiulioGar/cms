@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1293;P9JNTYEV3X;20/07/2020 21:36:43 CEST;20/07/2020 22:15:07 CEST;2304;3;540;r1=168;sysSID=R2007091;sysPRJ=MRP;sysUID=P9JNTYEV3X;device=mobile;leg=2;lang=it
+choice;10;2;0
+open;20;49
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;2
+choice;80;10;0011011110;6
+choice;90;6;0
+choice;100;9;101000000;0
+choice;110;9;110110000;0
+scale;120;9;5;1;4;1;1;0;1;2;4;2
+choice;125;2;1
+choice;130;1;0;comp0:Mulino bianco
+choice;140;10;1000000000;0;comp0:Dal colle
+choice;150;26;11111011000011110011110100;13
+choice;160;26;10100000000000110000000100;15
+choice;170;26;2
+scale;180;6;7;3;0;1;3;4;4
+concept;190
+choice;200;6;1
+open;210;Un foto vale molto di più di cento parole, se il prodotto si presenta bene sicuramente richiama l'attenzione e la curiosità delle persone. 
+open;220;Al momento non ho nulla in contrario
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;2
+choice;260;5;1
+choice;270;5;2
+choice;280;5;2
+scale;290;16;5;1;1;1;1;2;2;1;3;2;1;1;0;1;0;1;1
+scale;300;5;5;2;2;1;2;1
+choice;310;4;2
+choice;330;9;000110000;3
+concept;340
+choice;350;6;1
+open;360;La foto del prodotto che sembra ricevere un bacio da una ragazza 
+open;370;Per me è tutto carino
+scale;380;13;5;1;1;1;1;1;1;1;1;1;1;1;1;0
+ordering;390;18;0;1;5;6;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;4
+choice;430;2;0
+choice;440;7;0000011;5
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;2;2;3;2;2;1;3;0;2;1;2;0;2;1;1;2;0;0;3;2;0
+choice;530;3;1
+choice;540;5;1

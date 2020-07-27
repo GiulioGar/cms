@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1381;RS1ITJ0ONW;21/07/2020 18:08:19 CEST;21/07/2020 18:10:10 CEST;111;3;530;sysSID=R2007091;r1=619;sysPRJ=MRP;sysUID=RS1ITJ0ONW;device=mobile;leg=2;lang=it
+choice;10;2;0
+open;20;43
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;12
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;4
+choice;80;10;1111111010;3
+choice;90;6;0
+choice;100;9;111000000;0
+choice;110;9;110100000;0
+scale;120;9;5;2;4;3;2;4;3;2;3;1
+choice;125;2;1
+choice;130;1;0;comp0:Loacker
+choice;140;10;1100000000;0;comp0:Mulino bianco;comp1:Elledi
+choice;150;26;11111011110111111111111000;7
+choice;160;26;00100010000011100000110000;2
+choice;170;26;13
+scale;180;6;7;1;0;1;0;3;1
+concept;190
+choice;200;6;0
+open;210;Gli ingredienti che contengono
+open;220;Forse sono troppo dolci
+choice;230;5;1
+scale;240;5;5;3;2;3;4;1
+choice;250;5;2
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;0;1;1;1;1;1;1;1;0;1;1;1;0;0;0;0
+scale;300;5;5;0;1;1;1;2
+choice;310;4;0
+choice;320;26;00000000000001000000000000;13
+choice;330;9;001000100;2
+concept;340
+choice;350;6;1
+open;360;Mi piace la gradica
+open;370;Il colore arancio
+scale;380;13;5;1;1;1;1;2;1;2;2;2;2;1;2;1
+ordering;390;18;17;3;2;15;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;0
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000100;4
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;0;0;0;1;1;1;1;0;0;0;0;0;0;0;0;1;0;0;1;0;0;0
+choice;530;3;0

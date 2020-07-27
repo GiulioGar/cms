@@ -1,0 +1,14 @@
+2.0;PRO;PRONEW;672;AHSMB58TP7;15/07/2020 16:39:03 CEST;15/07/2020 16:40:02 CEST;59;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=AHSMB58TP7;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;13
+choice;60;2;1
+choice;90;2;1
+choice;100;6;3
+choice;110;6;001001;2
+choice;120;7;1010001;2
+choice;130;9;010100110;7
+choice;140;9;101000010;0
+choice;150;10;0001000000;3

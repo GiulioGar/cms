@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;615;4BNL48MA6K;17/07/2020 21:35:55 CEST;17/07/2020 21:52:15 CEST;980;3;540;r1=368;sysSID=R2007091;sysPRJ=MRP;sysUID=4BNL48MA6K;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;30
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;7
+choice;50;3;1
+choice;55;4;0
+choice;70;7;1111110;3
+choice;80;10;0100110000;1
+choice;90;6;1
+choice;100;9;100000000;0
+choice;110;9;100101000;0
+scale;120;9;5;1;4;3;2;1;1;4;3;2
+choice;125;2;1
+choice;130;1;0;comp0:nessuna
+choice;140;10;1000000000;0;comp0:nessuno
+choice;150;26;11111011100111111011010000;19
+choice;160;26;00010001000000001000000000;3
+choice;170;26;3
+scale;180;6;7;2;3;2;1;1;6
+concept;190
+choice;200;6;2
+open;210;la varietà
+open;220;nessuno
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;2;2;2;1;1;1;1;2;1;2;1;2;2;1;1;2
+scale;300;5;5;2;1;0;2;2
+choice;310;4;2
+choice;330;9;100101000;0
+concept;340
+choice;350;6;1
+open;360;i colori
+open;370;il nome esotico
+scale;380;13;5;1;0;0;0;1;0;0;2;0;1;0;1;0
+ordering;390;18;10;11;17;3;12;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;3
+scale;520;22;4;3;0;0;0;0;1;1;0;0;0;1;0;0;1;0;0;1;0;0;3;1;0
+choice;530;3;2
+choice;540;5;3

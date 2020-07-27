@@ -1,0 +1,15 @@
+PRO;PRONEW;165;EX60L6ON7U;27/08/2019 07:31:46 CEST;27/08/2019 07:33:24 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=EX60L6ON7U;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;43
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;0
+choice;100;6;5
+choice;110;6;111111;2
+choice;120;7;1010110;4
+choice;130;9;110100000;3
+choice;150;10;0000000001;9

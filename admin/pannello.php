@@ -246,7 +246,7 @@ else {$stObj='#02680F';}
 
 <?php
 
-echo "<td><a href='conta_locale.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
+echo "<td><a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
 echo "<td>".$row['description']."</td>";
 echo "<td>".$panel."</td>";
 echo "<td>".$row['complete']."</td>";

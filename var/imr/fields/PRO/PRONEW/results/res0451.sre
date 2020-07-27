@@ -1,0 +1,16 @@
+PRO;PRONEW;451;3Y5B5VK54T;11/10/2019 00:25:29 CEST;11/10/2019 00:27:21 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=3Y5B5VK54T;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;35
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;0
+choice;110;6;101000;2
+choice;120;7;0010010;2
+choice;130;9;110000010;1
+choice;140;9;100000100;6
+choice;150;10;0000000001;9

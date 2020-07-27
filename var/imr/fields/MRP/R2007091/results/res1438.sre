@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1438;DVHER7LTT2;21/07/2020 11:59:10 CEST;21/07/2020 12:00:30 CEST;80;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=DVHER7LTT2;device=desktop;lang=it
+choice;10;2;1
+open;20;56
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;3
+choice;50;3;0
+choice;55;4;3
+choice;70;7;0110010;1

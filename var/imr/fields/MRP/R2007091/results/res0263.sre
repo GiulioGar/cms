@@ -1,0 +1,10 @@
+2.0;MRP;R2007091;263;NNVTZE4HGO;17/07/2020 16:20:10 CEST;17/07/2020 16:21:22 CEST;72;4;80;sysSID=R2007091;sysPRJ=MRP;sysUID=NNVTZE4HGO;device=mobile;lang=it
+choice;10;2;0
+open;20;29
+choice;30;6;1
+choice;40;9;000001000;5
+choice;45;20;8
+choice;50;3;1
+choice;55;4;0
+choice;70;7;1101000;0
+choice;80;10;0000000010;8

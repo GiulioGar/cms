@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1301;2MYWKB1A91;20/07/2020 21:51:54 CEST;20/07/2020 21:52:09 CEST;15;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=2MYWKB1A91;device=desktop;lang=it
+choice;10;2;0
+open;20;49
+choice;30;6;3
+choice;40;9;000000010;7
+choice;45;20;12
+choice;50;3;1
+choice;55;4;3
+choice;70;7;0001000;3

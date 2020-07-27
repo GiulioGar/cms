@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;482;2WN8YXDWTC;17/07/2020 17:49:55 CEST;17/07/2020 18:01:00 CEST;665;3;540;r1=525;sysSID=R2007091;sysPRJ=MRP;sysUID=2WN8YXDWTC;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;30
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;1
+choice;55;4;2
+choice;70;7;1111110;3
+choice;80;10;1111110010;0
+choice;90;6;0
+choice;100;9;111000110;1
+choice;110;9;101101000;3
+scale;120;9;5;4;2;4;2;4;3;2;3;3
+choice;125;2;1
+choice;130;1;0;comp0:Bauli
+choice;140;10;1100000000;0;comp0:Cerbiatto;comp1:Mulino bianco
+choice;150;26;11110011010011110011110000;22
+choice;160;26;00110011000011110001110000;15
+choice;170;26;14
+scale;180;6;7;1;0;0;2;2;2
+concept;190
+choice;200;6;1
+open;210;Numerosità dei gusti, confezione e pacchetto, ecc... 
+open;220;Colori troppo spenti, scritte poco chiare
+choice;230;5;2
+scale;240;5;5;3;1;1;2;0
+choice;250;5;1
+choice;260;5;2
+choice;270;5;1
+choice;280;5;2
+scale;290;16;5;1;2;2;1;3;1;1;3;2;2;2;3;2;1;1;1
+scale;300;5;5;2;3;1;2;2
+choice;310;4;1
+choice;320;26;00110011000011100000000000;7
+choice;330;9;101110000;2
+concept;340
+choice;350;6;1
+open;360;La semplicità 
+open;370;Prodotto poco chiaro
+scale;380;13;5;3;3;3;1;2;1;2;4;1;2;2;2;1
+ordering;390;18;10;4;2;3;6;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;0
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;3;3;1;2;3;2;2;1;3;2;2;2;1;2;1;3;2;1;3;1;2
+choice;530;3;1
+choice;540;5;1

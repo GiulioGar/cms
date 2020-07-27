@@ -1,0 +1,11 @@
+2.0;MRP;R2007091;1160;MHVD5LI0LX;20/07/2020 18:52:07 CEST;20/07/2020 18:52:46 CEST;39;4;90;sysSID=R2007091;sysPRJ=MRP;sysUID=MHVD5LI0LX;device=desktop;lang=it
+choice;10;2;1
+open;20;42
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;1
+choice;55;4;3
+choice;70;7;1101110;3
+choice;80;10;0010000110;8
+choice;90;6;4

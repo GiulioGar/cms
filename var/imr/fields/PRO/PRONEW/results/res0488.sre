@@ -1,0 +1,14 @@
+PRO;PRONEW;488;VBHG72245M;11/10/2019 10:49:42 CEST;11/10/2019 10:51:24 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=VBHG72245M;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;55
+choice;60;2;1
+choice;90;2;1
+choice;100;6;4
+choice;110;6;111001;2
+choice;120;7;1010111;0
+choice;130;9;111100100;6
+choice;150;10;1101000000;0

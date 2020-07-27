@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1490;DZ92JIRHWH;21/07/2020 16:06:04 CEST;21/07/2020 16:19:22 CEST;798;3;540;r1=659;sysSID=R2007091;sysPRJ=MRP;sysUID=DZ92JIRHWH;device=desktop;leg=2;lang=it
+choice;10;2;1
+open;20;57
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;3
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;0
+choice;80;10;1111111110;6
+choice;90;6;0
+choice;100;9;101000000;0
+choice;110;9;101010000;0
+scale;120;9;5;1;2;1;1;1;1;2;2;2
+choice;125;2;1
+choice;130;1;0;comp0:Vicenzi
+choice;140;10;1100000000;0;comp0:Mulino Bianco;comp1:Pavesi
+choice;150;26;11111011110111111011110000;13
+choice;160;26;10000000000001000010000000;13
+choice;170;26;18
+scale;180;6;7;2;2;2;1;2;6
+concept;190
+choice;200;6;1
+open;210;Sono sicuramente tutti golosi
+open;220;Mi piacciono
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;1;1;1;1;1;1;0;1;1;0;0;1;0;0;0;0
+scale;300;5;5;1;1;1;1;1
+choice;310;4;2
+choice;330;9;101010000;0
+concept;340
+choice;350;6;2
+open;360;Le immagini dei biscotti
+open;370;I colori
+scale;380;13;5;1;1;1;1;1;1;1;1;1;1;1;1;1
+ordering;390;18;4;6;3;10;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;4
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;3;2;0;1;1;3;1;2;0;2;1;0;0;1;1;0;3;1;1;2;1;1
+choice;530;3;1
+choice;540;5;2

@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;171;KM4BB75XD1;17/07/2020 11:40:03 CEST;17/07/2020 11:54:43 CEST;880;3;540;r1=1064;sysSID=R2007091;sysPRJ=MRP;sysUID=KM4BB75XD1;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;34
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;12
+choice;50;3;1
+choice;55;4;3
+choice;70;7;1111100;2
+choice;80;10;1110110010;2
+choice;90;6;0
+choice;100;9;101000010;0
+choice;110;9;100010000;0
+scale;120;9;5;2;1;2;2;1;1;3;2;2
+choice;125;2;1
+choice;130;1;0;comp0:Loacker
+choice;140;10;1000000000;0;comp0:Mulino Bianco
+choice;150;26;11111111110111111111111110;14
+choice;160;26;01100000000000000100000110;2
+choice;170;26;17
+scale;180;6;7;3;3;1;1;3;3
+concept;190
+choice;200;6;2
+open;210;Accostamenti di gusti nuovi.
+open;220;Non saprei
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;2
+choice;260;5;2
+choice;270;5;2
+choice;280;5;1
+scale;290;16;5;2;2;2;1;2;1;1;2;2;2;2;2;1;2;1;2
+scale;300;5;5;0;0;2;1;1
+choice;310;4;2
+choice;330;9;001010000;2
+concept;340
+choice;350;6;2
+open;360;Le immagini dei biscotti
+open;370;L'immagine delle teste di ragazza
+scale;380;13;5;1;1;1;1;1;2;1;1;1;1;1;2;0
+ordering;390;18;5;10;0;6;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;7
+choice;420;5;2
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;3;2;1;2;1;3;1;3;0;2;1;1;0;2;1;0;2;3;0;2;1;0
+choice;530;3;1
+choice;540;5;0

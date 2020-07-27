@@ -1,0 +1,6 @@
+2.0;MRP;R2007091;1058;KVGNH71757;20/07/2020 18:00:57 CEST;<unknown>;0;0;30;sysSID=R2007091;sysPRJ=MRP;sysUID=KVGNH71757;device=desktop;lang=it
+choice;10;2;1
+open;20;45
+choice;30;6;3
+choice;40;9;000000010;7
+choice;50;3;0

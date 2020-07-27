@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1462;HTHM772141;21/07/2020 13:50:29 CEST;21/07/2020 14:12:14 CEST;1305;3;540;r1=313;sysSID=R2007091;sysPRJ=MRP;sysUID=HTHM772141;device=desktop;leg=2;lang=it
+choice;10;2;1
+open;20;43
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;15
+choice;50;3;1
+choice;55;4;2
+choice;70;7;1110100;2
+choice;80;10;1101100000;4
+choice;90;6;0
+choice;100;9;100000010;0
+choice;110;9;010000000;1
+scale;120;9;5;0;4;0;1;1;1;3;1;3
+choice;125;2;0
+choice;130;1;0;comp0:loaker
+choice;140;10;1110000000;0;comp0:grisbi;comp2:mulino bianco;comp1:bonne maman
+choice;150;26;11111011100110111011110000;21
+choice;160;26;00000000000010010000000000;12
+choice;170;26;12
+scale;180;6;7;3;0;1;6;2;6
+concept;190
+choice;200;6;1
+open;210;Visto che sono molto attratta dal packaging, la confezione è molto bella e il colore arancio si addice al prodotto perchè è caldo e avvolgente
+open;220;I biscotti in sè non sono molto originali
+choice;230;5;1
+scale;240;5;5;1;1;2;0;0
+choice;250;5;0
+choice;260;5;0
+choice;270;5;1
+choice;280;5;2
+scale;290;16;5;3;1;1;1;1;1;0;1;2;1;1;1;3;4;0;0
+scale;300;5;5;2;2;2;2;2
+choice;310;4;2
+choice;330;9;010000000;1
+concept;340
+choice;350;6;1
+open;360;Il colore arancio cattura l'attenzione e il profilo è ben disegnato e colorato. E' una bella confezione e invoglia ad acquistare anche senza leggere gli ingredienti
+open;370;La forma di alcuni biscotti non è molto originale
+scale;380;13;5;0;2;0;0;0;0;0;4;0;3;0;0;3
+ordering;390;18;10;6;1;0;4;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;2
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;2;3;1;1;2;2;1;2;0;3;1;1;0;1;2;1;2;1;0;3;1;0
+choice;530;3;1
+choice;540;5;2

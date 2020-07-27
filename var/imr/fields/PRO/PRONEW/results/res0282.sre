@@ -1,0 +1,12 @@
+PRO;PRONEW;282;YISN1LM4MD;09/09/2019 17:57:49 CEST;09/09/2019 17:58:56 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=YISN1LM4MD;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;1
+choice;60;2;0
+choice;70;5;01000;1
+choice;90;2;1
+choice;100;6;2
+choice;110;6;111001;2
+choice;120;7;1000010;5
+choice;130;9;000001000;5
+choice;150;10;0000000001;9

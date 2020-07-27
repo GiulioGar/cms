@@ -1,0 +1,1125 @@
+#export vars "leg"
+
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+string cpt;
+int preQid;
+int n;
+int reCod;
+int countq15=0;
+int reCodq15=0;
+
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+// system.setProperty("env", "debug:true");
+// system.setProperty("env", "browser:variables");
+string autotest=system.getProperty("test");
+string err;
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script><script> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+
+
+
+
+qst = new question("choice", 10);
+qst.setProperty("text", "Lei è…");
+qst.setProperty("code", "q1.1");
+vector q10_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+
+int sex=system.getProperty("ans10");
+
+
+qst = new question("open", 20);
+qst.setProperty("text", "Quanti anni ha? Indicare l’età precisa in anni compiuti:");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "q1.2");
+send qst;
+
+int eta=(int)system.getProperty("ans20");
+ 
+if(eta<25) { reCod=0;}
+if(eta>=25 && eta<=34) { reCod=1;}
+if(eta>=35 && eta<=44) { reCod=2;}
+if(eta>=45 && eta<=54) { reCod=3;}
+if(eta>=55 && eta<=64) { reCod=4;}
+if(eta>=65) { reCod=5;}
+
+qst = new question("choice", 30);
+qst.setProperty("text", "Anni");
+qst.setProperty("code", "q1.2x");
+vector q30_opts = new vector {
+"<25",
+"25-34",
+"35-44",
+"45-54",
+"55-65",
+">65"
+};
+qst.setProperty("options", q30_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+cmd=q30_opts.get(reCod);
+system.out("<div>Età: "+cmd+"</div>"); 
+
+int ans30 = system.getProperty("ans30");
+if (ans30==0 || ans30==5) { return 4; }
+
+
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Lei, qualcuno della sua famiglia o dei suoi amici lavora in uno dei seguenti settori?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.3");
+vector q40_opts = new vector {
+"Marketing",
+"Ricerche di mercato",
+"Pubbliche relazioni",
+"Pubblicità",
+"Giornalismo",
+"Alimentare",
+"Abbigliamento",
+"Igiene personale",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+boolean ans40_0 = system.getProperty("ans40_0");
+boolean ans40_1 = system.getProperty("ans40_1");
+boolean ans40_2 = system.getProperty("ans40_2");
+boolean ans40_3 = system.getProperty("ans40_3");
+boolean ans40_4 = system.getProperty("ans40_4");
+boolean ans40_5 = system.getProperty("ans40_5");
+//if (ans40_0==true || ans40_1==true || ans40_2==true || ans40_3==true || ans40_4==true || ans40_5==true) { return 4; }
+
+qst = new question("choice", 50);
+qst.setProperty("text", "Chi si occupa principalmente degli acquisti dei prodotti alimentari nella sua famiglia?");
+qst.setProperty("code", "q1.4");
+vector q50_opts = new vector {
+"Io personalmente",
+"Io con altre persone",
+"Altre persone"
+};
+qst.setProperty("options", q50_opts);
+send qst;
+
+int ans50 = system.getProperty("ans50");
+if (ans50==2) { return 4; }
+
+qst = new question("choice", 45);
+qst.setProperty("text", "In quale regione vive?");
+qst.setProperty("code", "q1.5");
+vector q45_opts = new vector {
+"ABRUZZO",
+"BASILICATA",
+"CALABRIA",
+"CAMPANIA",
+"EMILIA-ROMAGNA",
+"FRIULI-VENEZIA GIULIA",
+"LAZIO",
+"LIGURIA",
+"LOMBARDIA",
+"MARCHE",
+"MOLISE",
+"PIEMONTE",
+"PUGLIA",
+"SARDEGNA",
+"SICILIA",
+"TOSCANA",
+"TRENTINO-ALTO ADIGE",
+"UMBRIA",
+"VALLE D'AOSTA",
+"VENETO"
+};
+	qst.setProperty("options", q45_opts);
+	send qst;
+
+int regione=system.getProperty("ans45");
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+switch(regione)
+		{
+		case 7,8,11,18:{reCod=0;}
+		case 4,5,16,19:{reCod=1;}
+		case 6,9,15,17:{reCod=2;}
+		}	
+
+
+	qst = new question("choice", 55);
+	qst.setProperty("text", "In quale regione vive?");
+	qst.setProperty("code", "q40rec");
+	vector q55_opts = new vector {
+		"Nord-Ovest ",
+		"Nord-est",
+		"Centro ",
+		"Sud + Isole"
+	};
+	qst.setProperty("options", q55_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;	
+
+
+
+
+qst = new question("choice", 70);
+qst.setProperty("text", "Quali dei seguenti prodotti ha acquistato per lei o per la sua famiglia negli ultimi 3 mesi?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.7");
+vector q70_opts = new vector {
+"Prodotti di pasticceria e da forno confezionati (biscotti/merendine/ snack)",
+"Pasta",
+"Caffè",
+"Succhi di frutta",
+"Salumi",
+"Crackers/ salatini",
+"Nessuno di questi prodotti#se#sf"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+sel=system.getProperty("ans70_0");
+if(sel==false) {return 4;}
+
+
+qst = new question("choice", 80);
+qst.setProperty("text", "Pensando alle sue abitudini alimentari, quali tra i seguenti <b>prodotti di pasticceria e da forno confezionati</b> lei compra abitualmente?");
+qst.setProperty("code", "q1.8");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+vector q80_opts = new vector {
+"Pasticceria confezionata/ snack (tortine, wafer, wafer ricoperti al cioccolato)",
+"Biscotti farciti (con crema, marmellata, cioccolato)",
+"Biscotti al cioccolato (con gocce, ricoperti al cioccolato)",
+"Creme spalmabili",
+"Frollini",
+"Croissant",
+"Dolcetti di pasta sfoglia/ amaretti",
+"Savoiardi",
+"Merendine",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+count=0;
+for(int i=0,2)
+{
+sel=system.getProperty("ans80_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if (count==0) { return 4; }
+
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Con quale frequenza lei consuma di solito <b>i prodotti di pasticceria e da forno confezionati (Pasticcini/ Biscotti farciti/ Biscotti al cioccolato)</b> che ha detto di acquistare?");
+qst.setProperty("code", "q1.9");
+vector q90_opts = new vector {
+"Più di una volta a settimana",
+"Una volta la settimana",
+"Una volta ogni 2-3 settimane",
+"Una volta al mese",
+"Una volta ogni 2-3 mesi",
+"Meno spesso"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+int ans90 = system.getProperty("ans90");
+if (ans90==4 || ans90==5) { return 4; }
+
+
+qst = new question("choice", 100);
+qst.setProperty("text", "Dove acquista di solito <b>i prodotti di pasticceria e da forno confezionati (Pasticcini/ Biscotti farciti/ Biscotti al cioccolato)</b> che consuma più spesso?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.10");
+vector q100_opts = new vector {
+"Super/ipermercato",
+"Piccolo supermercato di prossimità/superette",
+"Discount",
+"Negozio monomarca/che vende una sola marca di dolci",
+"Outlet/spaccio dolciario",
+"Cioccolateria/negozio specializzato in cioccolato",
+"Pasticceria/ Bar",
+"Panetteria/forno",
+"Altro rivenditore#sf"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+count=0;
+for(int i=0,1)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if (count==0) { return 4; }
+
+qst = new question("choice", 110);
+qst.setProperty("text", "In quali delle seguenti occasioni consuma <b>i prodotti di pasticceria e da forno confezionati (Pasticcini/ Biscotti farciti/ Biscotti al cioccolato)</b>? ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.11");
+vector q110_opts = new vector {
+"Colazione",
+"Pausa/merenda nella mattinata",
+"Dopo pranzo",
+"Pausa/merenda nel pomeriggio",
+"Dopo cena",
+"Durante la serata (es: sul divano, ecc.)",
+"Prima/durante/dopo lo sport o altre attività (es: corsi di musica, lingue ecc.)",
+"Un momento particolare, al di fuori della normale routine (ad es. un piccolo successo, una delusione ecc.)",
+"Altre occasioni#sf"
+};
+qst.setProperty("options", q110_opts);
+send qst;
+
+
+
+qst = new question("scale", 120);
+qst.setProperty("text", "Ora vorremmo conoscere la Sua opinione circa alcune affermazioni citate da altre persone.<br><br>Per ogni coppia di affermazioni per favore indichi in che misura è d’accordo. Sposti la sua opinione a destra se è d’accordo con la frase di destra, a sinistra se è d’accordo con la frase di sinistra. Utilizzi le risposte intermedie per graduare la sua risposta.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q.1.12");
+vector q120l_rows = new vector {
+"Ho un rapporto sano e sereno con il cibo",
+"Mi piace gustare i cibi dolci da solo",
+"Mi piace provare nuovi gusti",
+"Per me il cibo è una esperienza sensoriale ed emotiva",
+"Il cibo dolce deve essere goloso ed appagante",
+"Se vedo del cibo dolce nuovo lo compro spesso di impulso",
+"Preferisco sempre prodotti salutari anche se meno golosi",
+"I prodotti dolci e golosi possono far parte di una dieta equilibrata",
+"Mangiare in modo bilanciato e moderato serve per la salute prima di tutto"
+};
+
+vector q120r_rows = new vector {
+"Ho un rapporto conflittuale con il cibo",
+"Mi piace gustare i cibi dolci in compagnia",
+"Sono abitudinario sui gusti",
+"Per me il cibo serve soprattutto per sfamarmi",
+"Il cibo dolce deve essere equilibrato senza troppe calorie né zuccheri",
+"Se vedo del cibo dolce, prima di comprarlo, verifico le calorie",
+"Preferisco sempre prodotti golosi anche se non salutari",
+"I prodotti dolci e golosi sono da limitare il più possibile ad un consumo occasionale",
+"Mangiare in modo bilanciato e moderato serve per stare in buona forma fisica"
+};
+
+qst.setProperty("rows", q120l_rows);
+qst.setProperty("right_rows", q120r_rows);
+vector q120_cols = new vector { "1", "2", "3", "4", "5" };
+qst.setProperty("cols", q120_cols);
+send qst;
+
+
+//target buongustai
+
+int countPositivo=0;
+int countNegativo=0;
+boolean buongustai;
+
+for(int i=0,8)
+{
+ansId=system.getProperty("ans120_"+i);
+if (i!=1 && i!=6)
+{
+if (ansId<2) { countPositivo=countPositivo+1; }
+if (ansId>2) { countNegativo=countNegativo+1; }
+}
+}
+
+if(countPositivo>=6 && countNegativo<=2) { buongustai=true; reCod=0;}
+else { reCod=1;}
+
+qst = new question("choice", 125);
+qst.setProperty("text", "Target");
+qst.setProperty("code", "targ");
+vector q125_opts = new vector {
+"Buongustai",
+"Main"
+};
+qst.setProperty("options", q125_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q125_opts.get(reCod);
+system.out("<div>Campione: "+cmd+"</div>"); 
+
+
+qst = new question("choice", 130);
+qst.setProperty("text", "Parliamo ora delle marche di prodotti di pasticceria e da forno confezionati (ad esempio snack, tortine, wafer, biscotti farciti o ricoperti al cioccolato).<br><br>"+
+"Qual è la prima marca di prodotti di pasticceria e da forno confezionati che le viene in mente? ");
+qst.setProperty("code", "q1.13");
+vector q130_opts = new vector { "Marca:#so" };
+qst.setProperty("options", q130_opts);
+send qst;
+
+cod="<script type='text/javascript' src='http://www.primisoft.com/fields/script/oneforone.js'></script>";
+
+qst = new question("choice", 140);
+qst.setProperty("text", cod+"E quali altre marche conosce, anche solo di nome?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.13b");
+vector q140_opts = new vector {
+"Marca 1#so",
+"Marca 2#so",
+"Marca 3#so",
+"Marca 4#so",
+"Marca 5#so",
+"Marca 6#so",
+"Marca 7#so",
+"Marca 8#so",
+"Marca 9#so",
+"Marca 10#so"
+};
+qst.setProperty("options", q140_opts);
+send qst;
+
+qst = new question("choice", 150);
+qst.setProperty("text", "Quali tra le seguenti marche <b>conosce</b> anche solo per averle sentire nominare?<br/> La preghiamo di indicare anche quelle citate precedentemente.");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q1.14");
+qst.setProperty("show_rand", true);
+vector q150_opts = new vector {
+"Pan di stelle",
+"Baiocchi",
+"Ringo",
+"Togo",
+"Oreo",
+"LU",
+"Oro Ciok",
+"Milka",
+"Bahlsen",
+"Pick up",
+"Hit",
+"Matilde Vicenzi (Mini Snack/ Bocconcini) ",
+"Grisbì",
+"Kinder cards",
+"Nutella Biscuit",
+"Loacker",
+"Lazzaroni",
+"Gastone Lago",
+"Bauli",
+"Balocco",
+"Galbusera",
+"Misura",
+"Alce Nero",
+"Marca del supermercato#sf",
+"Altra marca#sf",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q150_opts);
+send qst;
+
+sel=system.getProperty("ans150_25");
+if (sel==true) {return 4;}
+
+vector q160_opts = new vector {
+"Pan di stelle",
+"Baiocchi",
+"Ringo",
+"Togo",
+"Oreo",
+"LU",
+"Oro Ciok",
+"Milka",
+"Bahlsen",
+"Pick up",
+"Hit",
+"Mini Snack/ Bocconcini Vicenzi (no Savoiardi)",
+"Grisbì",
+"Kinder cards",
+"Nutella Biscuit",
+"Loacker",
+"Lazzaroni",
+"Gastone Lago",
+"Bauli",
+"Balocco",
+"Galbusera",
+"Misura",
+"Alce Nero",
+"Marca del supermercato#sf",
+"Altra marca#sf",
+"Nessuna di queste#se#sf"
+};
+
+for(int i=0,24)
+{
+sel=system.getProperty("ans150_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q160_opts.set(i,opt); }
+}
+
+qst = new question("choice", 160);
+qst.setProperty("text", "Quali tra queste marche ha acquistato e <b>consumato negli ultimi 3 mesi</b>?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.15");
+qst.setProperty("options", q160_opts);
+send qst;
+
+sel=system.getProperty("ans160_25");
+if (sel==true) {return 4;}
+
+
+for(int i=0,24)
+{
+sel=system.getProperty("ans160_"+i);
+if (sel==true) { countq15=countq15+1;  reCodq15=i;}
+}
+
+qst = new question("choice", 170);
+qst.setProperty("text", "Quale acquista e consuma più spesso?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.16");
+qst.setProperty("controller", 160);
+if (countq15==1)
+{
+	qst.setProperty("default_answer","{ 'selection': ["+reCodq15+"]}");
+	qst.setProperty("hidden", true);
+}
+send qst;
+
+ansId=system.getProperty("ans170");
+
+cmd=q160_opts.get(ansId);
+system.out("<div>Mop: "+cmd+"</div>"); 
+
+qst = new question("scale", 180);
+qst.setProperty("text", "Per ognuna delle seguenti marche, indichi per favore quanto le piace?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q1.17");
+vector q180_rows = new vector {
+"Galbusera",
+"Grisbì",
+"Loacker",
+"Matilde Vicenzi",
+"Bahlsen",
+"Alce Nero"
+};
+qst.setProperty("rows", q180_rows);
+vector q180_cols = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Mi piace così così",
+"Mi piace poco",
+"Non mi piace per niente",
+"Non so"
+};
+qst.setProperty("cols", q180_cols);
+send qst;
+
+
+int leg;
+system.setProperty("r1", "rand:2000");
+r1=(int)system.getProperty("r1");
+
+if (r1<=1000) { leg=1;}
+else { leg=2;}
+
+int numero_celle=2;
+
+int quotadonne=system.getProperty("quota:f_1_"+leg);
+int quotauomini=system.getProperty("quota:m_0_"+leg);
+
+boolean full;
+int contagiro=0;
+
+while (full==true || contagiro==0)
+	{
+	full=false;
+	
+	if (contagiro>numero_celle){return 5;}
+	
+	contagiro=contagiro+1;
+	
+	if (leg!=numero_celle)
+				{
+				leg=leg+1;
+				}
+				else
+				{
+				leg=1;
+				}
+	
+	
+
+	
+	if (sex==1)
+	{
+	quotadonne=system.getProperty("quota:f_1_"+leg);
+	if (quotadonne>=350){full=true;}
+	}
+
+	if (sex==0)
+	{	
+	quotauomini=system.getProperty("quota:m_0_"+leg);
+	if (quotauomini>=150){full=true;}
+	}
+	
+		
+	}
+
+
+system.setProperty("leg",leg);
+
+
+system.out("<div>: Leg "+leg+"</div>"); 
+
+link="http://www.primisoft.com/fields/MRP/R2007091/resources/c"+leg+".PNG";
+
+img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'>"+
+"<img src='"+link+"' width='450px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>";	
+
+string delay="<script src='http://www.primisoft.com/fields/ADA/ITA1907111/resources/jquery.countdown.min.js'></script>"+
+"<script>$(window).load(function() {contorovescia(20000);});</script>";
+
+qst = new question("concept", 190);
+qst.setProperty("text", delay+"Ora le mostreremo la descrizione di una nuova proposta di <b>prodotti di pasticceria confezionata (dolci e biscotti)</b>. Per favore la legga con attenzione."+
+"<p><img src='"+link+"'></img></p>");
+send qst;
+
+
+
+qst = new question("choice", 200);
+qst.setProperty("text", img+"Quanto le piace questa proposta Plaisir nel complesso?");
+qst.setProperty("code", "q2.0");
+vector q200_opts = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Mi piace così così",
+"Mi piace poco",
+"Non mi piace per niente"
+};
+qst.setProperty("options", q200_opts);
+send qst;
+
+qst = new question("open", 210);
+qst.setProperty("text", img+"Quali sono gli aspetti che le piacciono<b> di più</b>? Per favore indichi tutto ciò che le viene in mente");
+qst.setProperty("code", "q2.1");
+send qst;
+
+qst = new question("open", 220);
+qst.setProperty("text", img+"Quali sono invece gli aspetti che le piacciono <b>meno</b>? Per favore indichi tutto ciò che le viene in mente");
+qst.setProperty("code", "q2.2");
+send qst;
+
+qst = new question("choice", 230);
+qst.setProperty("text", img+"Quanto sarebbe <b>intenzionato/a ad acquistare</b> almeno un prodotto di questa linea Plaisir?");
+qst.setProperty("code", "q2.4");
+vector q230_opts = new vector {
+"Sicuramente l’acquisterei",
+"Probabilmente l’acquisterei",
+"Non so se l’acquisterei",
+"Probabilmente non l’acquisterei",
+"Sicuramente non l’acquisterei"
+};
+qst.setProperty("options", q230_opts);
+send qst;
+
+
+qst = new question("scale", 240);
+qst.setProperty("text", scriptzoom+"E quanto sarebbe <b>intenzionato/a ad acquistare</b> ciascuno dei seguenti prodotti Plaisir, se fossero disponibili nel negozio dove acquista abitualmente? <div class='info'>Clicchi sul prodotto per visualizzare i dettagli</div>");
+qst.setProperty("view", "columns");
+qst.setProperty("extras","{rand_cols:true}");
+qst.setProperty("code", "q2.5");
+vector q240_rows = new vector {
+"Baguette<br/><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/baguette2.jpg''><img width='150px' src='http://www.primisoft.com/fields/MRP/R2007091/resources/baguette2.jpg'/></a>",
+"Nuvole<br/><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/nuvole2.jpg''><img width='150px' src='http://www.primisoft.com/fields/MRP/R2007091/resources/nuvole2.jpg'/></a>",
+"Rondelle<br/><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/rondelle2.jpg''><img width='150px' src='http://www.primisoft.com/fields/MRP/R2007091/resources/rondelle2.jpg'/></a>",
+"Fiaccole<br/><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/fiaccole2.jpg''><img width='150px' src='http://www.primisoft.com/fields/MRP/R2007091/resources/fiaccole2.jpg'/></a>",
+"Cubetti<br/><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/cubetti2.jpg''><img width='150px' src='http://www.primisoft.com/fields/MRP/R2007091/resources/cubetti2.jpg'/></a>"
+};
+qst.setProperty("rows", q240_rows);
+vector q240_cols = new vector {
+"Sicuramente l’acquisterei",
+"Probabilmente l’acquisterei",
+"Non so se l’acquisterei",
+"Probabilmente non l’acquisterei",
+"Sicuramente non l’acquisterei"
+};
+qst.setProperty("cols", q240_cols);
+send qst;
+
+
+qst = new question("choice", 250);
+qst.setProperty("text", img+"Considerando ora il <b>prezzo di 1,99€ per ciascuna confezione</b> di questa linea Plaisir, quale delle seguenti affermazioni descrive meglio la sua opinione sul <b>rapporto qualità-prezzo</b> di questi prodotti? <br> <br><p><b>Per il suo prezzo questo prodotto offre un ...</b></p>");
+qst.setProperty("code", "q2.6");
+vector q250_opts = new vector {
+"ottimo rapporto qualità-prezzo",
+"buon rapporto qualità-prezzo",
+"normale rapporto qualità-prezzo",
+"rapporto qualità-prezzo piuttosto basso",
+"rapporto qualità-prezzo molto basso"
+};
+qst.setProperty("options", q250_opts);
+send qst;
+
+qst = new question("choice", 260);
+qst.setProperty("text", img+"Quanto è <b>credibile</b> per lei quello che ha letto in questa descrizione della proposta Plaisir?");
+qst.setProperty("code", "q2.7");
+vector q260_opts = new vector {
+"Molto credibile",
+"Abbastanza credibile",
+"Credibile così e così",
+"Poco credibile",
+"Per niente credibile"
+};
+qst.setProperty("options", q260_opts);
+send qst;
+
+qst = new question("choice", 270);
+qst.setProperty("text", img+"Quanto secondo lei, questa proposta Plaisir, è nel complesso <b>nuova e diversa</b> rispetto agli altri prodotti della stessa categoria che può trovare in commercio?");
+qst.setProperty("code", "q2.8");
+vector q270_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così e così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q270_opts);
+send qst;
+
+qst = new question("choice", 280);
+qst.setProperty("text", img+"Pensando alla descrizione che ha appena letto, in che misura pensa che questa linea di prodotti sia <b>coerente con il nome Plaisir</b>?");
+qst.setProperty("code", "q2.9");
+vector q280_opts = new vector {
+"Molto coerente",
+"Abbastanza coerente",
+"Così e così coerente",
+"Poco coerente",
+"Per niente coerente"
+};
+qst.setProperty("options", q280_opts);
+send qst;
+
+qst = new question("scale", 290);
+qst.setProperty("text", img+"Ora Le proporremo una serie di affermazioni che si possono riferire a questa nuova linea di dolci e biscotti Plaisir. Per ciascuna di esse ci dica quanto è d’accordo: se molto, abbastanza, così così, poco o per niente. <br> <br><div><b>Questa linea Plaisir…</b></div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.0");
+vector q290_rows = new vector {
+"ha un gusto speciale, unico",
+"ha un sapore ricercato",
+"bilancia gusto e leggerezza",
+"propone ricette con consistenze diverse",
+"è creativa, originale",
+"ha ingredienti buoni e sani",
+"l’abbinamento degli ingredienti è ben riuscito",
+"contiene importanti elementi nutrizionali (es. antiossidanti, proteine, fibre, vitamine)",
+"offre prodotti sani e genuini",
+"offre un&#39;esperienza sensoriale",
+"dà una sensazione di benessere",
+"è un premio che mi concedo",
+"è adatta per concludere il pasto",
+"è adatta per concludere la giornata",
+"è appagante",
+"offre un momento di relax"
+};
+qst.setProperty("rows", q290_rows);
+vector q290_cols = new vector {
+"Molto d’accordo",
+"Abbastanza d’accordo",
+"Così così",
+"Poco d’accordo",
+"Per niente d’accordo"
+};
+qst.setProperty("cols", q290_cols);
+qst.setProperty("extras","{header_repeat:8}");
+send qst;
+
+cod="<script type='text/javascript'>"+
+"$(document).ready(function() {"+
+"$('th:first-child').html( $('.introd') );"+
+"});</script>";	
+
+qst = new question("scale", 300);
+qst.setProperty("text", img+cod+"Questa <b>nuova linea di dolci e biscotti Plaisir</b> è proposta dalla marca <b>Gastone Lago</b>. Secondo lei, quanto ognuna delle seguenti frasi è adatta a descrivere il brand Gastone Lago? Per rispondere usi la consueta scala: molto, abbastanza, così così, poco o per niente adatta.<br><br>"+
+"<div class='introd'><b>La marca Gastone Lago…</b></div>");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q3.1");
+vector q300_rows = new vector {
+"E’ una marca di cui mi fido",
+"E&#39; adatta a proporre la linea Plaisir",
+"E’ innovativa",
+"I suoi prodotti sono fatti con ingredienti selezionati",
+"Fa prodotti sani"
+};
+qst.setProperty("rows", q300_rows);
+vector q300_cols = new vector {
+"Molto adatta",
+"Abbastanza adatta",
+"Così così adatta",
+"Poco adatta",
+"Per niente adatta"
+};
+qst.setProperty("cols", q300_cols);
+send qst;
+
+
+qst = new question("choice", 310);
+qst.setProperty("text", img+"Pensando alle impressioni che la descrizione di <b>questa nuova linea di dolci e biscotti Plaisir</b> le ha dato, indichi in che misura <b>influenzerebbero le sue abitudini</b> di acquisto e consumo di prodotti di pasticceria e da forno confezionati .<br><br><p><b>I prodotti Plaisir...</b></p>");
+qst.setProperty("code", "q.4");
+vector q310_opts = new vector {
+"sostituirebbero completamente le marche e i prodotti che solitamente compro/consumo",
+"sostituirebbero parzialmente le marche e i prodotti che solitamente compro/consumo",
+"non sostituirebbero i prodotti o le marche che compro/consumo, ma li acquisterei/consumerei in aggiunta",
+"non comprerei questi prodotti"
+};
+qst.setProperty("options", q310_opts);
+send qst;
+
+ansId=system.getProperty("ans310");
+
+if(ansId<2)
+{
+
+qst = new question("choice", 320);
+qst.setProperty("text", img+"E quale dei <b>prodotti</b> che ha detto di consumare, comprerebbe/consumerebbe quindi di meno o sostituirebbe con questi della linea Plaisir?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q.4.1");
+qst.setProperty("controller", 160);
+if(countq15==1)
+{
+	qst.setProperty("default_answer","{ 'selection': ["+reCodq15+"]}");
+	qst.setProperty("hidden", true);
+}
+send qst;
+}
+
+if (ansId!=3)
+{
+qst = new question("choice", 330);
+qst.setProperty("text", img+"In quali delle seguenti occasioni consumerebbe i prodotti della linea Plaisir?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "q4.2");
+vector q330_opts = new vector {
+"Colazione",
+"Pausa/merenda nella mattinata",
+"Dopo pranzo",
+"Pausa/merenda nel pomeriggio",
+"Dopo cena",
+"Durante la serata (es: sul divano, ecc.)",
+"Prima/durante/dopo lo sport o altre attività (es: corsi di musica, lingue ecc.)",
+"Un momento particolare, al di fuori della normale routine (ad es. un piccolo successo, una delusione ecc.)",
+"Altre occasioni"
+};
+qst.setProperty("options", q330_opts);
+send qst;
+
+}
+
+string tab=scriptzoom+"<p><table id='Table_01' width='1201' height='269' border='0' cellpadding='0' cellspacing='0'> <tr> <td colspan='5'> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_01.gif' width='1200' height='46' alt=''></td> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/spacer.gif' width='1' height='46' alt=''></td> </tr> <tr> <td colspan='2'> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_02.gif' width='100%' height='100%' alt=''></td> <td rowspan='4'> <a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/nuvole2.jpg'><img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_03.gif' width='100%' height='100%' alt=''></a></td> <td rowspan='3'> <a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/fiaccole2.jpg'><img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_04.gif' width='100%' height='100%' alt=''></a></td> <td rowspan='3'> <a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/baguette2.jpg'><img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_05.jpg' width='100%' height='100%' alt=''></a></td> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/spacer.gif' width='1' height='19' alt=''></td> </tr> <tr> <td> <a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/cubetti2.jpg'><img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_06.gif' width='100%' height='100%' alt=''></a></td> <td rowspan='2'> <a class='fancybox' rel='group' href='http://www.primisoft.com/fields/MRP/R2007091/resources/rondelle2.jpg'><img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_07.gif' width='100%' height='100%' alt=''></a></td> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/spacer.gif' width='1' height='92' alt=''></td> </tr> <tr> <td rowspan='3'> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_08.gif' width='100%' height='100%' alt=''></td> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/spacer.gif' width='1' height='10' alt=''></td> </tr> <tr> <td rowspan='2'> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_09.gif' width='100%' height='100%' alt=''></td> <td colspan='2' rowspan='2'> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_10.gif' width='100%' height='100%' alt=''></td> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/spacer.gif' width='1' height='15' alt=''></td> </tr> <tr> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/Gamma1_11.gif' width='100%' height='100%' alt=''></td> <td> <img src='http://www.primisoft.com/fields/MRP/R2007091/resources/spacer.gif' width='1' height='87' alt=''></td> </tr> </table></p><div class='info'>Può cliccare sul singolo prodotto per visualizzare i dettagli.</div>";
+
+qst = new question("concept", 340);
+qst.setProperty("text", "Si concentri ora sulle <b>confezioni</b> di questa nuova linea di dolci e biscotti Plaisir."+tab);
+send qst;
+
+qst = new question("choice", 350);
+qst.setProperty("text", tab+"Quanto <b>le piace</b> l’aspetto delle confezioni di questa nuova linea di dolci e biscotti Plaisir?");
+qst.setProperty("code", "q5.0");
+vector q350_opts = new vector {
+"Mi piace moltissimo",
+"Mi piace molto",
+"Mi piace abbastanza",
+"Mi piace così così",
+"Mi piace poco",
+"Non mi piace per niente"
+};
+qst.setProperty("options", q350_opts);
+send qst;
+
+qst = new question("open", 360);
+qst.setProperty("text", tab+"Che cosa <b>le piace</b> in particolare di queste confezioni? Motivi per favore la sua risposta fornendo più dettagli possibile.");
+qst.setProperty("code", "q5.1");
+send qst;
+
+qst = new question("open", 370);
+qst.setProperty("text", tab+"Che cosa<b> non le piace</b> in particolare? Motivi per favore la sua risposta fornendo più dettagli possibile");
+qst.setProperty("code", "q5.2 ");
+send qst;
+
+qst = new question("scale", 380);
+qst.setProperty("text", tab+"Guardi ancora queste confezioni. Indichi quanto è d’accordo o in disaccordo con ciascuna delle seguenti affermazioni riguardanti le confezioni di questa nuova linea di dolci e biscotti Plaisir. <br/>Per rispondere usi la consueta scala: molto, abbastanza, così così, poco o per niente d’accordo.");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "q5.3");
+vector q380_rows = new vector {
+"Sono adatte a questo tipo di prodotti",
+"Sono adatte al nome Plaisir",
+"I colori attraggono l’attenzione",
+"I colori sono adatti al tipo di prodotto",
+"I colori sono diversi rispetto alle confezioni di altre marche",
+"Sono facili da capire, descrivono bene il prodotto",
+"Gli ingredienti sono chiaramente visibili",
+"Il logo della marca Plaisir è chiaramente visibile",
+"Invogliano all’acquisto",
+"Invogliano a prendere in mano il prodotto e leggere il retro della confezione",
+"La grafica delle confezioni è diversa rispetto a quella delle altre marche",
+"Il profilo della donna attrae l’attenzione",
+"L’immagine del biscotto invoglia all’acquisto"
+
+};
+qst.setProperty("rows", q380_rows);
+vector q380_cols = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q380_cols);
+qst.setProperty("view", "carosello");
+send qst;
+
+
+
+qst = new question("ordering", 390);
+qst.setProperty("text", "Pensi di voler dare un suggerimento sugli ingredienti da utilizzare per questa nuova linea di dolci e biscotti Plaisir, quali sono i suoi preferiti? Esprima la sua preferenza, <b>indicando i primi 5 ingredienti</b> della lista sotto, ordinandoli da quello che preferisce maggiormente, poi il secondo e così via fino al quinto.");
+qst.setProperty("code", "q5.4");
+qst.setProperty("show_rand", true);
+qst.setProperty("sel_count", 5);
+vector q390_opts = new vector {
+"Mandorle",
+"Pistacchio",
+"Mirtillo",
+"Frutti di bosco",
+"Lampone",
+"Cocco",
+"Scorzette di arancio",
+"Semi di lino",
+"Semi di sesamo",
+"Semi di chia",
+"Cannella",
+"Zenzero",
+"Curcuma",
+"Bacche di goji",
+"Avena",
+"Farro",
+"Kamut",
+"Quinoa"
+};
+qst.setProperty("options", q390_opts);
+send qst;
+
+qst = new question("choice", 400);
+qst.setProperty("text", "Ora le chiederemo alcuni dati personali per l’intervista.<br><br>Indichi il titolo di studio conseguito più recentemente");
+qst.setProperty("code", "a");
+vector q400_opts = new vector {
+"laurea/dottorato/diploma universitario",
+"diploma di scuola media superiore",
+"licenza di scuola media inferiore",
+"licenza di scuola elementare",
+"nessun titolo"
+};
+qst.setProperty("options", q400_opts);
+send qst;
+
+qst = new question("choice", 410);
+qst.setProperty("text", "Indichi la sua attuale professione");
+qst.setProperty("code", "b");
+vector q410_opts = new vector {
+"imprenditore/ dirigente/ funzionario/libera professionista/medico",
+"impiegato/insegnante/quadro/paramedico",
+"operaio/commesso",
+"artigiano/commerciante/esercente/rappresentante",
+"casalinga",
+"studente",
+"pensionata/o",
+"non occupato/in cerca di occupazione",
+"altro (specificare) #so#sf"
+};
+qst.setProperty("options", q410_opts);
+send qst;
+
+qst = new question("choice", 420);
+qst.setProperty("text", "Da quante persone è composto il tuo nucleo famigliare?");
+qst.setProperty("code", "c");
+vector q420_opts = new vector {
+"1 persona",
+"2 persone",
+"3 persone",
+"4 persone",
+"5 o più persone"
+};
+qst.setProperty("options", q420_opts);
+send qst;
+
+ansId=system.getProperty("ans420");
+
+if(ansId !=0)
+	{
+	qst = new question("choice", 430);
+	qst.setProperty("text", "Lei ha figli che vivono con Lei?");
+	qst.setProperty("code", "d");
+	vector q430_opts = new vector {
+	"Si",
+	"No"
+	};
+	qst.setProperty("options", q430_opts);
+	send qst;
+
+	ansId=system.getProperty("ans430");
+
+	if(ansId==0)
+			{
+			qst = new question("choice", 440);
+			qst.setProperty("text", "Che età hanno i suoi figli?");
+			qst.setProperty("selection", "multiple");
+			qst.setProperty("code", "e");
+			vector q440_opts = new vector {
+			"Meno di un anno",
+			"1-2 anni",
+			"3-5 anni",
+			"6-10 anni",
+			"11-14 anni",
+			"15-18 anni",
+			"Più di 18 anni"
+			};
+			qst.setProperty("options", q440_opts);
+			send qst;
+			}
+
+	}
+
+
+
+//PARTE AGGIUNTIVA
+
+
+
+
+qst = new question("concept", 499);
+qst.setProperty("text", "L'intervista è quasi conclusa, ci dedichi ancora pochi minuti per rispondere alle ultime domande. <br><b>Le proponiamo qui seguito l’idea di un nuovo servizio di informazione.</b> <p>Legga attentamente e poi clicchi il tasto “avanti”.</p> ");
+send qst;
+
+qst = new question("concept", 500);
+qst.setProperty("text", "Per noi consumatori è sempre più importante acquistare prodotti e servizi da Imprese “sostenibili”, quelle cioè che rispettano l’ambiente, che utilizzano energia da fonti rinnovabili, attivano sistematicamente controlli su tutto il sistema produttivo (filiera), che riducono gli sprechi in azienda, che impiegano materiali riciclati e riciclabili, che investono risorse per certificare le proprie attività, che prestano particolare attenzione al benessere dei propri dipendenti, etc… Tuttavia, non è semplice trovare su questi argomenti informazioni sicure, che favorirebbero queste Imprese nei nostri acquisti. <br/><br/> Oggi è disponibile su Internet una piattaforma dove potrai trovare facilmente informazioni veritiere e approfondite sui prodotti ed i processi delle Imprese sostenibili, attraverso interviste, documentazione, campagne di comunicazione.<br/> Sulla piattaforma saranno inoltre disponibili informazioni riguardo le tematiche della  Sostenibilità in Italia e nel mondo: i problemi delle popolazioni, le possibili soluzioni, le iniziative e normative a promosse da istituzioni internazionali e governi nazionali per salvaguardare il pianeta e proteggere chi ci abita<br/> Infine, esperti in diversi settori (es: alimentazione, casa, abbigliamento, mobilità, turismo, e altri) ti forniranno suggerimenti utili a migliorare la tua vita quotidiana, con soluzioni per spendere meno e al tempo stesso salvaguardare il futuro del pianeta.<br/> <br/><br/> Questa piattaforma è essa stessa sostenibile.<br/> I suoi ospiti (Imprese, Esperti) devono garantire di rispettare la legalità e dimostrare la veridicità di quanto comunicano, sulla base di criteri di valutazione precisi e dichiarati.<br/> Le informazioni fornite riguardo le tematiche della Sostenibilità in Italia e nel mondo derivano da organizzazioni ed enti non-profit, italiani e internazionali con competenze consolidate sui temi della sostenibilità. ");
+send qst;
+
+
+qst = new question("choice", 510);
+qst.setProperty("text", "Può indicarci quanto sarebbe interessato, sapendo che è un servizio gratuito, a utilizzarlo?");
+qst.setProperty("code", "ad1");
+vector q510_opts = new vector {
+"Si molto, lo seguirei sistematicamente",
+"Si molto, ma lo consulterei di tanto in tanto",
+"Si abbastanza",
+"Non molto",
+"Per nulla"
+
+};
+qst.setProperty("options", q510_opts);
+send qst;
+
+
+qst = new question("scale", 520);
+qst.setProperty("text", "Quanto spesso adotta ciascuno di questi comportamenti nella sua vita quotidiana?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "ad2");
+vector q520_rows = new vector {
+"Mi impegno nella raccolta differenziata dei rifiuti domestici ",
+"Cerco di ridurre il più possibile il consumo dell'acqua per gli usi della vita quotidiana (es: lavatrice a carico pieno, consumo limitato per doccia/bagno/lavaggio denti etc..)",
+"Appena posso mi muovo in bicicletta ",
+"Acquisto prodotti senza coloranti, conservanti, o sostanze come nichel, parabeni, petrolati",
+"Preferisco utilizzare i trasporti pubblici (tram, autobus, treni) piuttosto che l’automobile privata",
+"Non spreco cibo, consumo tutto quello che acquisto",
+"Acquisto prodotti alimentari biologici",
+"Anche quando sono in vacanza cerco di comportarmi evitando sprechi e danni all’ambiente VIA",
+"Adotto pratiche di sharing (bike-sharing, e/o, car-sharing, e/o co-working, e/o Airbnb, etc...) ",
+"Cerco di ridurre il più possibile i consumi di elettricità in casa (es: acquisto di elettrodomestici di classe energetica A, presenza di sistemi energetici efficienti in casa, attenzione alla illuminazione e alla temperatura, etc…) ",
+"Acquisto prodotti che possiedono una certificazione ambientale (es: riguardo il rispetto delle foreste, la biodegradabilità, l’impatto delle produzioni sull’atmosfera, l’uso razionale delle risorse etc.…)",
+"Acquisto prodotti non alimentari biologici",
+"Utilizzo i Gruppi di Acquisto Solidale e/o il commercio Equo-Solidale",
+"Acquisto i prodotti alimentari direttamente dal produttore/ Privilegio i prodotti a Km 0",
+"Adotto comportamenti improntati a uno stile di vita sano (alimentazione, movimento, controllo della salute, etc…)",
+"Partecipo a raccolte di finanziamento popolare (crowdfunding)",
+"Cerco di utilizzare il meno plastica possibile e di più materiali riciclabili e naturali (es: porto la mia borsa quando faccio la spesa, non uso piatti/posate di plastica, evito frutta e verdura in vaschette se non si possono riportare al punto vendita etc…)",
+"Leggo con attenzione le etichette dei prodotti per valutare la qualità del processo di produzione, la provenienza delle materie, etc… ",
+"Preferisco investire il mio danaro  in  fondi di risparmio, conti correnti e obbligazioni che includano valore sociale ed ambientale",
+"Evito di consumare troppa carta (con bollette ed estratti conto on-line, riciclo carta, poche stampe da pc, etc…",
+"Compro prodotti con minore imballaggio/materiali di confezionamento  possibile",
+"Mi capita di acquistare abiti o altri oggetti di seconda mano "
+};
+qst.setProperty("rows", q520_rows);
+vector q520_cols = new vector {
+"Mai/Quasi Mai",
+"Talvolta",
+"Frequentemente ",
+"Sempre"
+};
+qst.setProperty("cols", q520_cols);
+qst.setProperty("extras","{header_repeat:11}");
+send qst;
+
+qst = new question("choice", 530);
+qst.setProperty("text", "Acquista / ha acquistato prodotti o servizi di aziende/marche “sostenibili”, cioè che rispettano l’ambiente, che utilizzano energia da fonti rinnovabili, attivano sistematicamente controlli su tutto il sistema produttivo (filiera), che riducono gli sprechi in azienda, che impiegano materiali riciclati e riciclabili, che investono risorse per certificare le proprie attività, che prestano particolare attenzione al benessere dei propri dipendenti, etc…?");
+qst.setProperty("code", "ad3");
+vector q530_opts = new vector {
+"Si spesso ",
+"Si ogni tanto",
+"No mai "
+};
+qst.setProperty("options", q530_opts);
+send qst;
+
+ansId=system.getProperty("ans530");
+
+if(ansId==1) {label="ha acquistato solo ogni tanto";}
+else {label="non ha mai acquistato";}
+
+if(ansId>0)
+{
+qst = new question("choice", 540);
+qst.setProperty("text", "Perché "+label+" prodotti o servizi di aziende “sostenibili”, cioè rispettano l’ambiente, che utilizzano energia da fonti rinnovabili, attivano sistematicamente controlli su tutto il sistema produttivo (filiera), che riducono gli sprechi in azienda, che impiegano materiali riciclati e riciclabili, che investono risorse per certificare le proprie attività, che prestano particolare attenzione al benessere dei propri dipendenti, etc…?");
+qst.setProperty("code", "ad4");
+vector q540_opts = new vector {
+"Perché non ho mai saputo/avuto informazioni su questo tipo di comportamenti da parte delle aziende per prodotti/servizi che potevano interessarmi",
+"Perché, anche se ho avuto informazioni su questo tipo di comportamenti, i prodotti/servizi costavano più di altri",
+"Perché, anche se ho avuto informazioni su questo tipo di comportamenti, comunque preferivo altri prodotti/servizi",
+"Perché, anche se ho avuto informazioni su questo tipo di comportamenti, non mi sembravano molto credibili",
+"Altro (specificare)#so#sf"
+
+};
+qst.setProperty("options", q540_opts);
+send qst;
+}
+
+
+
+}

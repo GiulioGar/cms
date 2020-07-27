@@ -514,8 +514,7 @@ if ($i==0) {
 				$conta_giorno=substr($elementi[4],0,10);
 			}
 
-			$giorno_controllato=substr($elementi[4],0,10);
-			$conta_giorno=substr($elementi[4],0,10);
+
 			
 
 			$conta_giorno=str_replace('/', '-', $conta_giorno);
@@ -843,5 +842,29 @@ if ($previsione >= $daFare) {$alsuccess=1; }
 else {$alsuccess=0;}
 
 
+
+
+?>
+
+
+<?php
+
+//funzioni
+
+function giornoSettimana($mese, $giorno,$anno) {
+	$jd=gregoriantojd($mese,$giorno,$anno);
+
+	$wday= jddayofweek($jd,2);
+	if($wday=="Mon") {$wday="Lun";}
+	if($wday=="Tue") {$wday="Mar";}
+	if($wday=="Wed") {$wday="Mer";}
+	if($wday=="Thu") {$wday="Gio";}
+	if($wday=="Fri") {$wday="Ven";}
+	if($wday=="Sat") {$wday="Sab";}
+	if($wday=="Sun") {$wday="Dom";}
+
+
+	return $wday;
+  }
 
 ?>

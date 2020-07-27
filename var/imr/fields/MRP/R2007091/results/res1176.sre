@@ -1,0 +1,12 @@
+2.0;MRP;R2007091;1176;NK7DVARMB6;20/07/2020 19:01:38 CEST;20/07/2020 19:02:05 CEST;27;4;100;sysSID=R2007091;sysPRJ=MRP;sysUID=NK7DVARMB6;device=mobile;lang=it
+choice;10;2;1
+open;20;62
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;3
+choice;80;10;1111111110;1
+choice;90;6;1
+choice;100;9;000000110;6

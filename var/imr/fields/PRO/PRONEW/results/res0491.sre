@@ -1,0 +1,16 @@
+PRO;PRONEW;491;BQ1L260EOR;11/10/2019 11:00:11 CEST;11/10/2019 11:00:59 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=BQ1L260EOR;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;001000000;2
+choice;30;2;0
+choice;40;2;0
+choice;50;58;12
+choice;60;2;0
+choice;70;5;00100;2
+choice;80;13;1
+choice;90;2;0
+choice;100;6;1
+choice;110;6;111111;5
+choice;120;7;1000110;4
+choice;130;9;111001000;2
+choice;150;10;0111001000;2

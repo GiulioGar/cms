@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;513;2M24C55654;17/07/2020 18:23:27 CEST;17/07/2020 18:39:07 CEST;940;3;540;r1=990;sysSID=R2007091;sysPRJ=MRP;sysUID=2M24C55654;device=desktop;leg=2;lang=it
+choice;10;2;1
+open;20;45
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;2
+choice;80;10;1111111110;2
+choice;90;6;0
+choice;100;9;110000000;0
+choice;110;9;001010010;4
+scale;120;9;5;1;4;0;0;1;0;2;0;2
+choice;125;2;0
+choice;130;1;0;comp0:Loacker
+choice;140;10;1111111111;0;comp1:Grisbi ;comp0:Bahlsen;comp9:Oreo;comp8:Ringo;comp7:Tre marie;comp6:Coop;comp5:Milka;comp4:Vitasnella;comp3:Lazzaroni;comp2:Vicenzi
+choice;150;26;11111011111111111011111100;19
+choice;160;26;01110010000110110010000100;6
+choice;170;26;15
+scale;180;6;7;1;1;1;1;2;1
+concept;190
+choice;200;6;2
+open;210;È innovativa, i prodotti sono sani e ricchi di proteine ed antiossidanti 
+open;220;Non mi piace il gusto complessivo della frutta abbinata al cioccolato, quindi proverei solo i wafer
+choice;230;5;1
+scale;240;5;5;4;4;4;4;0
+choice;250;5;2
+choice;260;5;1
+choice;270;5;0
+choice;280;5;2
+scale;290;16;5;0;1;1;1;0;1;4;0;1;1;2;1;1;1;2;1
+scale;300;5;5;2;1;1;1;1
+choice;310;4;2
+choice;330;9;001010000;2
+concept;340
+choice;350;6;2
+open;360;È semplice e fa pensare ad un prodotto abbastanza naturale, mi piace il nome, e il viso della donna che sta per mordere il prodotto 
+open;370;Nulla
+scale;380;13;5;0;0;1;0;0;0;0;0;1;0;0;0;0
+ordering;390;18;5;8;1;15;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;0;2;3;3;2;3;0;3;2;1;1;2;2;0;2;3;2;3;2;1
+choice;530;3;1
+choice;540;5;1

@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1695;CHPNX92001;21/07/2020 23:36:55 CEST;21/07/2020 23:46:21 CEST;566;3;540;r1=1895;sysSID=R2007091;sysPRJ=MRP;sysUID=CHPNX92001;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;60
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;11
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;1
+choice;80;10;1111100110;3
+choice;90;6;1
+choice;100;9;100000000;0
+choice;110;9;111111000;0
+scale;120;9;5;2;0;0;0;0;2;4;2;2
+choice;125;2;1
+choice;130;1;0;comp0:Loacker
+choice;140;10;1100000000;0;comp0:Balshen;comp1:Lu
+choice;150;26;11111111100111111011111000;5
+choice;160;26;00000000000000000000100000;20
+choice;170;26;20
+scale;180;6;7;1;2;0;2;0;6
+concept;190
+choice;200;6;3
+open;210;Che sono al cioccolato
+open;220;La confezione non è granché
+choice;230;5;2
+scale;240;5;5;0;1;2;0;1
+choice;250;5;0
+choice;260;5;1
+choice;270;5;2
+choice;280;5;0
+scale;290;16;5;2;3;2;0;2;1;0;2;2;1;0;0;0;0;0;0
+scale;300;5;5;2;0;3;2;2
+choice;310;4;2
+choice;330;9;111111000;0
+concept;340
+choice;350;6;4
+open;360;Le foto dei prodotti
+open;370;Le confezioni
+scale;380;13;5;3;0;3;4;0;1;2;0;3;3;2;2;0
+ordering;390;18;6;0;1;10;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;0
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;4
+scale;520;22;4;3;0;0;2;0;3;0;3;0;3;1;0;0;1;0;0;3;2;0;3;0;0
+choice;530;3;2
+choice;540;5;2

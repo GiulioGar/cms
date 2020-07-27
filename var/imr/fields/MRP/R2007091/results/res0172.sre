@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;172;G4TEMHB9SD;17/07/2020 11:40:34 CEST;17/07/2020 12:02:51 CEST;1337;3;540;r1=1072;sysSID=R2007091;sysPRJ=MRP;sysUID=G4TEMHB9SD;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;35
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;1
+choice;55;4;2
+choice;70;7;1111110;5
+choice;80;10;1011110010;3
+choice;90;6;1
+choice;100;9;101000000;0
+choice;110;9;100010000;0
+scale;120;9;5;1;2;0;2;2;2;1;3;0
+choice;125;2;0
+choice;130;1;0;comp0:Mulino bianco
+choice;140;10;1111100000;0;comp0:Kinder;comp4:Misura;comp3:Dolciando e Dolciando;comp2:Balconi;comp1:Ferrero
+choice;150;26;11111011010011110011111100;13
+choice;160;26;11100000000000100000000100;0
+choice;170;26;0
+scale;180;6;7;3;1;3;6;6;6
+concept;190
+choice;200;6;1
+open;210;Mi piace che siano prodotti che uniscono più gusti insieme e mi appaiono diversi rispetto alle attuali proposte in commercio. Sono prodotti delicati e sofisticati.
+open;220;Non c'è nulla che non mi piace in particolare. Penso però che non siano prodotti dietetici e ogni prodotto avrà un notevole contenuto di calorie e grassi
+choice;230;5;1
+scale;240;5;5;3;1;0;1;3
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;0;0;3;0;1;1;0;2;2;1;1;0;2;2;0;0
+scale;300;5;5;1;0;0;1;2
+choice;310;4;2
+choice;330;9;101010000;0
+concept;340
+choice;350;6;3
+open;360;Il disegno del prodotto
+open;370;Il colore arancione e il disegno della donna 
+scale;380;13;5;1;1;1;2;1;1;1;0;2;1;1;4;0
+ordering;390;18;2;5;0;1;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;5
+choice;420;5;3
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;2;1;2;0;2;1;3;0;3;1;1;0;1;3;0;3;1;0;3;2;0
+choice;530;3;1
+choice;540;5;0

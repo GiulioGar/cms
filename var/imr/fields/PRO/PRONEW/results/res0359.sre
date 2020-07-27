@@ -1,0 +1,15 @@
+PRO;PRONEW;359;XJ48WLQX9S;10/10/2019 18:07:18 CEST;10/10/2019 18:17:48 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=XJ48WLQX9S;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;010000000;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;2
+choice;110;6;111101;3
+choice;120;7;1010011;2
+choice;130;9;110110100;1
+choice;150;10;0001001000;3

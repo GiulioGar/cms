@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1646;9FFJVHQOMO;21/07/2020 21:27:00 CEST;21/07/2020 21:56:08 CEST;1748;3;540;r1=907;sysSID=R2007091;sysPRJ=MRP;sysUID=9FFJVHQOMO;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;50
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;19
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1011110;2
+choice;80;10;1110111010;6
+choice;90;6;1
+choice;100;9;101010010;0
+choice;110;9;000100010;3
+scale;120;9;5;0;2;0;0;0;2;2;0;0
+choice;125;2;0
+choice;130;1;0;comp0:Loacket
+choice;140;10;1100000000;0;comp0:Lago;comp1:Matilde vincenzi
+choice;150;26;11111011110111111111111100;15
+choice;160;26;00100000000010010000000000;12
+choice;170;26;15
+scale;180;6;7;1;0;0;1;1;1
+concept;190
+choice;200;6;2
+open;210;Varie consistenze
+open;220;Abbinata di frutta con cioccolato
+choice;230;5;1
+scale;240;5;5;4;4;0;4;0
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+scale;300;5;5;1;1;1;1;1
+choice;310;4;1
+choice;320;26;00100000000000000000000000;2
+choice;330;9;000000010;7
+concept;340
+choice;350;6;2
+open;360;Fa vedere gli ingredienti all'interno 
+open;370;Nulla
+scale;380;13;5;1;1;1;1;1;1;1;1;1;1;1;1;1
+ordering;390;18;11;7;0;14;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;2
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;2;1;2;0;3;2;3;0;3;2;2;0;2;2;0;2;2;3;2;2;0
+choice;530;3;1
+choice;540;5;0

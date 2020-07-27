@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;933;ZD28CDPLBG;20/07/2020 10:03:24 CEST;20/07/2020 10:18:43 CEST;919;3;540;r1=1993;sysSID=R2007091;sysPRJ=MRP;sysUID=ZD28CDPLBG;device=desktop;leg=1;lang=it
+choice;10;2;0
+open;20;55
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;14
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111010;3
+choice;80;10;1000110110;4
+choice;90;6;1
+choice;100;9;101000010;0
+choice;110;9;000001000;5
+scale;120;9;5;0;4;3;4;2;2;0;2;0
+choice;125;2;1
+choice;130;1;0;comp0:Ferrero
+choice;140;10;1110000000;0;comp0:Balconi;comp2:parmalat;comp1:Mulino bianco
+choice;150;26;11111011010111011011110100;3
+choice;160;26;00101000000000000000000000;4
+choice;170;26;4
+scale;180;6;7;2;6;1;2;6;6
+concept;190
+choice;200;6;2
+open;210;Il colore vivace della confezione
+open;220;Niente in particolare
+choice;230;5;1
+scale;240;5;5;2;1;1;2;0
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;0;0;1;0;0;1;1;1;1;1;1;0;1;1;0;1
+scale;300;5;5;1;1;1;1;1
+choice;310;4;1
+choice;320;26;00100000000000000000000000;2
+choice;330;9;000001000;5
+concept;340
+choice;350;6;1
+open;360;La vivacità dei colori
+open;370;Niente in particolare
+scale;380;13;5;1;0;0;0;0;0;0;0;0;0;1;1;0
+ordering;390;18;16;11;15;5;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;8;comp8:mediatore immobiliare
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000001;6
+concept;499
+concept;500
+choice;510;5;3
+scale;520;22;4;1;1;1;1;1;1;2;2;2;0;2;1;2;1;1;2;1;2;2;2;1;1
+choice;530;3;1
+choice;540;5;3

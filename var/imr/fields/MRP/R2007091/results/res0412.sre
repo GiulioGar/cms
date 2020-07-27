@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;412;W5G9769JE3;17/07/2020 17:08:25 CEST;17/07/2020 17:15:25 CEST;420;3;530;r1=239;sysSID=R2007091;sysPRJ=MRP;sysUID=W5G9769JE3;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;56
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;0
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;0
+choice;80;10;1111111110;5
+choice;90;6;0
+choice;100;9;111001100;0
+choice;110;9;111111110;0
+scale;120;9;5;0;0;0;0;0;0;0;0;0
+choice;125;2;0
+choice;130;1;0;comp0:lindt
+choice;140;10;1111000000;0;comp0:ferrero;comp3:parmalat;comp2:oro ciok;comp1:perugina
+choice;150;26;11111111111111111111111000;10
+choice;160;26;11111011000000011011000000;6
+choice;170;26;19
+scale;180;6;7;2;1;1;0;1;2
+concept;190
+choice;200;6;1
+open;210;i gusti sono vari e diversi dal solito
+open;220;non mi sembra ci siano aspetti negativi
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;1
+scale;290;16;5;1;1;2;1;1;0;1;1;1;2;0;1;0;1;1;1
+scale;300;5;5;1;0;1;1;0
+choice;310;4;1
+choice;320;26;00000001000000011001000000;19
+choice;330;9;111111110;0
+concept;340
+choice;350;6;1
+open;360;la foto del dolce è moto bella ed invitante
+open;370;il colore arancione e l'immagine della donna
+scale;380;13;5;2;1;3;2;2;2;1;1;1;2;1;2;1
+ordering;390;18;4;2;6;0;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0000110;2
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;2;2;2;3;2;2;2;2;2;2;2;2;2;2;2;2;3;2;2;2;3;2
+choice;530;3;0

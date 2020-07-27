@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1397;LXKR36I2LO;21/07/2020 08:43:55 CEST;21/07/2020 08:48:53 CEST;298;3;530;r1=151;sysSID=R2007091;sysPRJ=MRP;sysUID=LXKR36I2LO;device=mobile;leg=2;lang=it
+choice;10;2;0
+open;20;28
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;2
+choice;80;10;1111111110;8
+choice;90;6;0
+choice;100;9;110100000;0
+choice;110;9;011111110;1
+scale;120;9;5;1;1;1;1;0;1;4;2;1
+choice;125;2;0
+choice;130;1;0;comp0:Vincenzi
+choice;140;10;1111000000;0;comp0:Vincenzi;comp3:Ringo;comp2:Togo;comp1:Mulino Bianco
+choice;150;26;11111011101111111111101000;0
+choice;160;26;11111000101101110101101000;16
+choice;170;26;15
+scale;180;6;7;0;0;0;0;0;0
+concept;190
+choice;200;6;0
+open;210;I formati proposti
+open;220;Nulla
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0
+scale;300;5;5;0;0;0;0;0
+choice;310;4;1
+choice;320;26;11111000100101000100001000;1
+choice;330;9;010111100;1
+concept;340
+choice;350;6;2
+open;360;Mi piace che si vedano gli ingredienti
+open;370;Nulla
+scale;380;13;5;1;1;1;1;1;1;1;1;1;1;1;1;1
+ordering;390;18;14;1;9;13;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;1
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3
+choice;530;3;0

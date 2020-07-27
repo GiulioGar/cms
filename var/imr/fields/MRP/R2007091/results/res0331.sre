@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;331;7923A94A31;20/07/2020 15:17:34 CEST;20/07/2020 15:25:31 CEST;477;3;540;r1=784;sysSID=R2007091;sysPRJ=MRP;sysUID=7923A94A31;device=mobile;leg=2;lang=it
+choice;10;2;1
+open;20;38
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111110;0
+choice;80;10;1110011000;6
+choice;90;6;1
+choice;100;9;100000000;0
+choice;110;9;110100000;0
+scale;120;9;5;0;4;0;0;0;0;4;0;2
+choice;125;2;0
+choice;130;1;0;comp0:Bauli
+choice;140;10;1000000000;0;comp0:Mulino
+choice;150;26;11111011010011110011110000;4
+choice;160;26;00001000010000000000000000;4
+choice;170;26;9
+scale;180;6;7;2;0;6;6;6;6
+concept;190
+choice;200;6;0
+open;210;La varietà di biscotti
+open;220;Mi piace tutto
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+scale;300;5;5;0;0;1;0;1
+choice;310;4;1
+choice;320;26;00000000010000000000000000;9
+choice;330;9;010011000;1
+concept;340
+choice;350;6;0
+open;360;La figura della donna che sembra che mangia il biscotto
+open;370;La scritta bianca 
+scale;380;13;5;0;0;0;0;0;0;0;1;0;0;1;0;0
+ordering;390;18;5;1;4;3;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;1
+choice;420;5;2
+choice;430;2;0
+choice;440;7;1000000;0
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2
+choice;530;3;1
+choice;540;5;0

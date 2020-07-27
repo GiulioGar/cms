@@ -1,0 +1,14 @@
+PRO;PRONEW;325;HVH70ROEY7;21/09/2019 13:44:53 CEST;21/09/2019 13:46:18 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=HVH70ROEY7;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;1
+choice;90;2;1
+choice;100;6;5
+choice;110;6;100001;0
+choice;120;7;1000000;0
+choice;130;9;000100000;3
+choice;150;10;0010000000;2

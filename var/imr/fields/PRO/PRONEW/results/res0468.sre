@@ -1,0 +1,15 @@
+PRO;PRONEW;468;LXKR36I2LO;11/10/2019 08:00:13 CEST;11/10/2019 08:03:05 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=LXKR36I2LO;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;55
+choice;60;2;0
+choice;70;5;11000;0
+choice;90;2;0
+choice;100;6;1
+choice;110;6;111111;3
+choice;120;7;1011110;3
+choice;130;9;110101110;5
+choice;140;9;100000000;0
+choice;150;10;0011010000;5

@@ -1,0 +1,5 @@
+2.0;MRP;R2007091;254;GUEST;17/07/2020 16:13:55 CEST;<unknown>;0;0;30;device=desktop;lang=it;sysRST=1
+choice;10;2;0
+open;20;44
+choice;30;6;2
+choice;40;9;000000001;8

@@ -1,0 +1,12 @@
+2.0;PRO;PRONEW;658;YUXMREFT53;15/07/2020 16:07:42 CEST;15/07/2020 16:09:46 CEST;124;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=YUXMREFT53;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;1
+choice;60;2;1
+choice;90;2;0
+choice;100;6;2
+choice;110;6;111101;0
+choice;120;7;1010100;0
+choice;130;9;101111110;0
+choice;140;9;100000010;7
+choice;150;10;0011000100;2

@@ -1,0 +1,12 @@
+2.0;MRP;R2007091;436;CQA3WEU9Y1;17/07/2020 17:18:44 CEST;17/07/2020 17:19:39 CEST;55;4;100;sysSID=R2007091;sysPRJ=MRP;sysUID=CQA3WEU9Y1;device=mobile;lang=az
+choice;10;2;0
+open;20;57
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;9
+choice;50;3;0
+choice;55;4;2
+choice;70;7;1111010;1
+choice;80;10;1010000110;0
+choice;90;6;1
+choice;100;9;000100000;3

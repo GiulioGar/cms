@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;282;JG8CT15744;17/07/2020 16:22:39 CEST;17/07/2020 16:32:46 CEST;607;3;540;r1=119;sysSID=R2007091;sysPRJ=MRP;sysUID=JG8CT15744;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;34
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;2
+choice;80;10;1111111110;1
+choice;90;6;1
+choice;100;9;110010000;0
+choice;110;9;101110000;0
+scale;120;9;5;1;3;0;0;0;1;2;1;1
+choice;125;2;0
+choice;130;1;0;comp0:vincenzi
+choice;140;10;1100000000;0;comp0:ferrero;comp1:lindt
+choice;150;26;11111011110111111011111100;22
+choice;160;26;11101000100010110011100000;8
+choice;170;26;8
+scale;180;6;7;0;0;0;0;0;1
+concept;190
+choice;200;6;0
+open;210;è golosa
+open;220;mi piace tutto
+choice;230;5;0
+scale;240;5;5;0;0;1;1;0
+choice;250;5;1
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;290;16;5;1;0;0;0;1;1;0;0;0;1;0;0;1;0;1;1
+scale;300;5;5;1;0;0;0;0
+choice;310;4;1
+choice;320;26;00000000000010000000000000;12
+choice;330;9;001100000;2
+concept;340
+choice;350;6;0
+open;360;è gustoso
+open;370;non c'è nulla che non mi piaccia
+scale;380;13;5;0;0;1;1;0;0;0;0;0;0;0;0;1
+ordering;390;18;13;16;2;9;4;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;1
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0011000;2
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;2;2;3;2;3;2;2;2;2;3;3;3;2;2;3;3;2;3;2;2;3;2
+choice;530;3;1
+choice;540;5;2

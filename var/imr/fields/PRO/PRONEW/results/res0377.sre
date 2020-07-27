@@ -1,0 +1,16 @@
+PRO;PRONEW;377;41JXQECU50;10/10/2019 18:40:52 CEST;10/10/2019 18:42:20 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=41JXQECU50;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;010000000;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;35
+choice;60;2;0
+choice;70;5;11110;0
+choice;80;13;1
+choice;90;2;0
+choice;100;6;1
+choice;110;6;111111;5
+choice;120;7;1010010;2
+choice;130;9;000010000;4
+choice;150;10;1000000000;0

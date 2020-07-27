@@ -1,0 +1,16 @@
+2.0;PRO;PRONEW;821;UO61656J60;17/07/2020 18:47:05 CEST;17/07/2020 18:49:26 CEST;141;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=UO61656J60;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000100;6
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;1
+choice;110;6;100000;0
+choice;120;7;1010000;2
+choice;130;9;100001010;0
+choice;140;9;100100010;0
+choice;150;10;0000000001;9

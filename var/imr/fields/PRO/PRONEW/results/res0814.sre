@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;814;DQSG0YRIXU;17/07/2020 08:36:18 CEST;17/07/2020 08:37:23 CEST;65;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=DQSG0YRIXU;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;011000000;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;43
+choice;60;2;1
+choice;90;2;1
+choice;100;6;2
+choice;110;6;101001;0
+choice;120;7;1000000;0
+choice;130;9;100000110;0
+choice;140;9;100000000;0
+choice;150;10;0000000001;9

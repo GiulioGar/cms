@@ -1,0 +1,12 @@
+PRO;PRONEW;355;F36I39GEE7;10/10/2019 18:03:25 CEST;10/10/2019 18:04:55 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=F36I39GEE7;device=mobile;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;1
+choice;60;2;1
+choice;90;2;0
+choice;100;6;0
+choice;110;6;100000;0
+choice;120;7;1000001;0
+choice;130;9;100000100;0
+choice;150;10;0000000001;9

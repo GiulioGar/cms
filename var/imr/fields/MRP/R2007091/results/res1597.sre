@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1597;ZBEJJGE8YW;21/07/2020 18:55:50 CEST;21/07/2020 19:01:50 CEST;360;3;530;r1=1121;sysSID=R2007091;sysPRJ=MRP;sysUID=ZBEJJGE8YW;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;26
+choice;30;6;1
+choice;40;9;000000001;8
+choice;45;20;4
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1111110;4
+choice;80;10;1111111110;4
+choice;90;6;1
+choice;100;9;111011000;2
+choice;110;9;101000100;2
+scale;120;9;5;3;3;3;3;2;1;1;3;1
+choice;125;2;1
+choice;130;1;0;comp0:Loakef
+choice;140;10;1000000000;0;comp0:Loaker
+choice;150;26;11101011110111111101111110;11
+choice;160;26;11001010000110000001100000;0
+choice;170;26;0
+scale;180;6;7;2;2;0;1;2;1
+concept;190
+choice;200;6;0
+open;210;Mi piacciono i gusti
+open;220;Nulla
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;2
+choice;260;5;2
+choice;270;5;2
+choice;280;5;1
+scale;290;16;5;0;1;1;1;1;0;1;0;1;0;1;0;0;1;1;1
+scale;300;5;5;0;0;2;1;1
+choice;310;4;1
+choice;320;26;01000000000000000000000000;1
+choice;330;9;100001100;0
+concept;340
+choice;350;6;1
+open;360;Non so
+open;370;Non so
+scale;380;13;5;1;1;0;1;1;0;0;0;1;1;1;0;0
+ordering;390;18;5;6;4;1;2;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;7
+choice;420;5;2
+choice;430;2;1
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;1;1;1;0;1;2;2;0;1;1;1;0;0;1;1;2;0;1;2;0;0;0
+choice;530;3;0

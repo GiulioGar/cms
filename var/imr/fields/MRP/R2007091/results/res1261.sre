@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1261;XORP5GW2S1;20/07/2020 20:33:07 CEST;20/07/2020 20:43:35 CEST;628;3;530;r1=1757;sysSID=R2007091;sysPRJ=MRP;sysUID=XORP5GW2S1;device=desktop;leg=1;lang=it
+choice;10;2;0
+open;20;56
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;0
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;2
+choice;80;10;1111111110;5
+choice;90;6;0
+choice;100;9;100000000;0
+choice;110;9;111111110;0
+scale;120;9;5;0;4;0;0;0;0;4;0;3
+choice;125;2;0
+choice;130;1;0;comp0:bauli
+choice;140;10;1100000000;0;comp0:pavesi;comp1:lindt
+choice;150;26;11111111110111111011111000;3
+choice;160;26;10110011100000110010100000;2
+choice;170;26;15
+scale;180;6;7;1;1;1;1;0;1
+concept;190
+choice;200;6;0
+open;210;molto invitanti 
+open;220;nulla
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;0;0;1;1;1;1;1;1;1;1;1;1;0;1;1;0
+scale;300;5;5;1;1;1;1;0
+choice;310;4;1
+choice;320;26;00000010100000100000000000;6
+choice;330;9;111011110;0
+concept;340
+choice;350;6;1
+open;360;il colore
+open;370;nulla in particolare
+scale;380;13;5;1;1;1;0;0;0;0;1;1;1;1;2;1
+ordering;390;18;6;2;1;3;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;0
+choice;420;5;3
+choice;430;2;0
+choice;440;7;0000110;4
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;2;2;2;2;2;2;2;2;2;2;2;2;1;2;1;3;3;3;3;3;2;2
+choice;530;3;0

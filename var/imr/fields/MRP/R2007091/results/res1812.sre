@@ -1,0 +1,9 @@
+2.0;MRP;R2007091;1812;MYOHC76LQ5;22/07/2020 13:08:52 CEST;22/07/2020 13:10:24 CEST;92;4;70;sysSID=R2007091;sysPRJ=MRP;sysUID=MYOHC76LQ5;device=desktop;lang=it
+choice;10;2;0
+open;20;54
+choice;30;6;3
+choice;40;9;000001000;5
+choice;45;20;3
+choice;50;3;1
+choice;55;4;3
+choice;70;7;0111110;3

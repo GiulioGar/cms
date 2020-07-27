@@ -1,0 +1,51 @@
+2.0;MRP;R2007091;1544;N55LEE5NOE;21/07/2020 17:48:55 CEST;21/07/2020 17:57:36 CEST;521;3;530;r1=1359;sysSID=R2007091;sysPRJ=MRP;sysUID=N55LEE5NOE;device=desktop;leg=1;lang=it
+choice;10;2;1
+open;20;57
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;3
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;2
+choice;80;10;0010000010;2
+choice;90;6;1
+choice;100;9;100000000;0
+choice;110;9;100000000;0
+scale;120;9;5;3;3;1;0;4;1;0;4;0
+choice;125;2;1
+choice;130;1;0;comp0:bauli
+choice;140;10;1100000000;0;comp0:colussi;comp1:doria
+choice;150;26;11111011110111111011111100;21
+choice;160;26;01000000000000001000011000;22
+choice;170;26;21
+scale;180;6;7;0;0;0;0;0;0
+concept;190
+choice;200;6;1
+open;210;gli ingredienti e come vengono presentati
+open;220;nulla in particolare
+choice;230;5;1
+scale;240;5;5;1;1;1;1;1
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;2;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1
+scale;300;5;5;2;1;2;2;2
+choice;310;4;2
+choice;330;9;000100000;3
+concept;340
+choice;350;6;1
+open;360;il cambio di colore della carnagione della ragazza
+open;370;nulla in particolare
+scale;380;13;5;1;1;0;1;2;1;1;1;1;1;1;0;1
+ordering;390;18;0;1;2;3;4;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;4
+choice;420;5;4
+choice;430;2;0
+choice;440;7;0001010;5
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;3;3;3;2;1;3;2;3;0;3;3;2;2;2;3;1;3;3;0;3;2;1
+choice;530;3;0

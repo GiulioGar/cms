@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;1221;NNDNYZGI9H;20/07/2020 19:49:20 CEST;20/07/2020 19:59:12 CEST;592;3;540;r1=1562;sysSID=R2007091;sysPRJ=MRP;sysUID=NNDNYZGI9H;device=mobile;leg=1;lang=it
+choice;10;2;1
+open;20;43
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;12
+choice;50;3;0
+choice;55;4;3
+choice;70;7;1111110;3
+choice;80;10;1111111110;8
+choice;90;6;1
+choice;100;9;101000110;0
+choice;110;9;110110000;0
+scale;120;9;5;0;2;0;0;2;0;2;0;0
+choice;125;2;0
+choice;130;1;0;comp0:Loacker
+choice;140;10;1111000000;0;comp0:Mulino bianco;comp3:Oreo;comp2:Ringo;comp1:Milka
+choice;150;26;11111011110111111011010000;18
+choice;160;26;11111011000111110010000000;13
+choice;170;26;2
+scale;180;6;7;2;0;0;0;2;2
+concept;190
+choice;200;6;0
+open;210;Sembrano gustosi e appaganti
+open;220;Nulla
+choice;230;5;0
+scale;240;5;5;0;0;0;0;0
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;290;16;5;1;1;1;1;1;2;0;2;1;0;2;0;0;0;0;0
+scale;300;5;5;1;0;1;2;2
+choice;310;4;2
+choice;330;9;000111000;5
+concept;340
+choice;350;6;0
+open;360;Il colore e il volto femminile
+open;370;Nulla
+scale;380;13;5;0;0;0;0;0;0;1;0;1;0;0;0;0
+ordering;390;18;6;0;5;4;1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;4
+choice;420;5;4
+choice;430;2;0
+choice;440;7;0011100;2
+concept;499
+concept;500
+choice;510;5;0
+scale;520;22;4;1;2;1;1;0;2;2;3;0;1;2;2;0;1;2;0;1;1;0;2;2;0
+choice;530;3;1
+choice;540;5;0

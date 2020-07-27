@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;174;UFVA3EPSD1;17/07/2020 11:43:27 CEST;17/07/2020 12:12:50 CEST;1763;3;540;r1=121;sysSID=R2007091;sysPRJ=MRP;sysUID=UFVA3EPSD1;device=desktop;leg=2;lang=it
+choice;10;2;1
+open;20;52
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;4
+choice;50;3;0
+choice;55;4;1
+choice;70;7;1111110;0
+choice;80;10;0011110110;5
+choice;90;6;0
+choice;100;9;100000000;0
+choice;110;9;100101000;0
+scale;120;9;5;2;3;1;2;2;2;2;1;0
+choice;125;2;1
+choice;130;1;0;comp0:mulino bianco
+choice;140;10;1110000000;0;comp0:arte bianca;comp2:pavesi;comp1:pan di stelle
+choice;150;26;11111100100111111011100100;14
+choice;160;26;10101000000000010000000000;15
+choice;170;26;0
+scale;180;6;7;3;2;1;6;2;6
+concept;190
+choice;200;6;1
+open;210;Mi piace molto il mix degli ingredienti: è originale e sembra molto gustoso. Questi prodotti sembrano molto vicini a prodotti di pasticceria e molto adatti ad accompagnare il tè oppure come fine pasto/cena o, comunque, per uno sfizio. Anche i nomi sono originali.
+open;220;Sono un po' scettica non tanto sulla qualità delle materie prima, quanto sui benefici effettivi, dei quali si parla nel messaggio: antiossidanti, leggeri, apportatori di proteine/fibre.
+choice;230;5;1
+scale;240;5;5;2;3;1;2;1
+choice;250;5;1
+choice;260;5;2
+choice;270;5;0
+choice;280;5;1
+scale;290;16;5;0;0;2;0;0;1;0;2;2;0;1;0;0;0;0;0
+scale;300;5;5;1;1;0;1;1
+choice;310;4;2
+choice;330;9;001011000;5
+concept;340
+choice;350;6;2
+open;360;Le immagini degli ingredienti principali e del prodotto pronto, perchè sono molto invitanti. Mi piacciono i nomi e lo slogan: "Mordi, vivi, ama".
+open;370;Lo sfondo arancione con i puntini, perchè lo trovo poco raffinato e poco adatto al prodotto. Anche l'immagine del viso con i vari colori non mi convince: non è chiara la scelta dei vari colori in correlazione ai vari prodotti.
+scale;380;13;5;2;1;1;2;1;0;0;0;1;1;1;1;0
+ordering;390;18;0;1;5;4;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;0
+choice;410;9;4
+choice;420;5;4
+choice;430;2;0
+choice;440;7;0000011;5
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;3;3;1;2;0;3;1;3;0;3;1;0;1;1;3;0;3;2;0;3;2;0
+choice;530;3;1
+choice;540;5;2

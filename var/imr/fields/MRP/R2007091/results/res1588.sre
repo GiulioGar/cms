@@ -1,0 +1,8 @@
+2.0;MRP;R2007091;1588;W7O24OADWT;21/07/2020 18:37:55 CEST;<unknown>;0;0;55;sysSID=R2007091;sysPRJ=MRP;sysUID=W7O24OADWT;device=desktop;lang=en
+choice;10;2;0
+open;20;35
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;6
+choice;50;3;0
+choice;55;4;2

@@ -1,0 +1,16 @@
+PRO;PRONEW;448;0XTNE8I1VK;10/10/2019 23:51:43 CEST;10/10/2019 23:54:43 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=0XTNE8I1VK;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000001;8
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;4
+choice;110;6;011001;2
+choice;120;7;1100010;0
+choice;130;9;001100010;2
+choice;140;9;100000000;0
+choice;150;10;0000000001;9

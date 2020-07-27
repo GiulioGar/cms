@@ -1,0 +1,14 @@
+2.0;MRP;R2007091;1777;S4MAHOHYG4;22/07/2020 11:48:09 CEST;22/07/2020 11:50:59 CEST;170;4;120;sysSID=R2007091;sysPRJ=MRP;sysUID=S4MAHOHYG4;device=mobile;lang=it
+choice;10;2;0
+open;20;50
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;3
+choice;50;3;1
+choice;55;4;3
+choice;70;7;1111110;4
+choice;80;10;1111010110;5
+choice;90;6;0
+choice;100;9;110000000;0
+choice;110;9;001010001;2
+scale;120;9;5;1;2;0;1;1;0;3;1;2

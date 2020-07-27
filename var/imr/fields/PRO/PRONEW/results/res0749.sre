@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;749;75BFDZ92ZY;15/07/2020 22:32:18 CEST;15/07/2020 22:33:55 CEST;97;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=75BFDZ92ZY;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000010000;4
+choice;30;2;0
+choice;40;2;0
+choice;50;58;43
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;1
+choice;100;6;1
+choice;110;6;111111;1
+choice;120;7;1010111;0
+choice;130;9;101010100;0
+choice;150;10;0001000010;3

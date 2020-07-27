@@ -1,0 +1,16 @@
+2.0;PRO;PRONEW;659;7N938E0ASV;15/07/2020 16:08:18 CEST;15/07/2020 16:15:28 CEST;430;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=7N938E0ASV;device=desktop;lang=it
+choice;1;2;0
+choice;10;2;0
+choice;20;9;000000110;6
+choice;30;2;0
+choice;40;2;0
+choice;50;58;43
+choice;60;2;0
+choice;70;5;11100;0
+choice;80;13;1
+choice;90;2;0
+choice;100;6;1
+choice;110;6;101000;2
+choice;120;7;1010000;0
+choice;130;9;000010100;4
+choice;150;10;1011000000;0

@@ -1,0 +1,15 @@
+PRO;PRONEW;463;I5SN8HDCCF;11/10/2019 07:50:49 CEST;11/10/2019 07:52:23 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=I5SN8HDCCF;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;0
+choice;50;58;37
+choice;60;2;0
+choice;70;5;11000;1
+choice;90;2;1
+choice;100;6;5
+choice;110;6;111001;0
+choice;120;7;0000001;6
+choice;130;9;101010110;6
+choice;140;9;110000000;1
+choice;150;10;0011000000;2

@@ -1,0 +1,12 @@
+PRO;PRONEW;395;N7Q23WDRJT;10/10/2019 19:26:10 CEST;10/10/2019 19:27:01 CEST;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=N7Q23WDRJT;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;1
+choice;30;2;0
+choice;40;2;1
+choice;60;2;1
+choice;90;2;1
+choice;100;6;5
+choice;110;6;100000;0
+choice;120;7;0000001;6
+choice;130;9;000000100;6
+choice;150;10;0010000000;2

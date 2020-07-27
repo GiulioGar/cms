@@ -1,0 +1,53 @@
+2.0;MRP;R2007091;1522;53cfeaa428;21/07/2020 17:40:06 CEST;21/07/2020 17:53:07 CEST;781;3;540;r1=92;sysSID=R2007091;sysPRJ=MRP;sysUID=53cfeaa428;device=desktop;leg=2;lang=it
+choice;10;2;0
+open;20;61
+choice;30;6;4
+choice;40;9;000000001;8
+choice;45;20;8
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1110110;0
+choice;80;10;1111111010;5
+choice;90;6;0
+choice;100;9;100001000;0
+choice;110;9;001110000;3
+scale;120;9;5;3;0;4;3;4;2;2;2;3
+choice;125;2;1
+choice;130;1;0;comp0:Loacker
+choice;140;10;1111111111;0;comp1:Lindt;comp0:Pavesi;comp9:Balsen;comp8:Galbusera;comp7:Bauli;comp6:Doria;comp5:Vicenzi;comp4:Saiwa;comp3:Perugina;comp2:Ferrero
+choice;150;26;11111011110111111011110100;6
+choice;160;26;00111001000001110000000000;7
+choice;170;26;4
+scale;180;6;7;1;2;0;2;1;6
+concept;190
+choice;200;6;1
+open;210;Colore di fondo, evidenza del marchio, presenta bene il prodotto.
+open;220;Niente di particolare.
+choice;230;5;1
+scale;240;5;5;4;0;2;0;0
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;290;16;5;1;1;1;1;1;1;0;2;1;1;2;3;1;1;1;2
+scale;300;5;5;1;1;1;1;1
+choice;310;4;1
+choice;320;26;00000000000000010000000000;15
+choice;330;9;101010001;2
+concept;340
+choice;350;6;1
+open;360;Lo sfondo arancio che spicca molto, il prodotto è la marca bene in vista.
+open;370;Niente di particolare.
+scale;380;13;5;1;1;0;0;0;1;1;0;1;1;0;0;1
+ordering;390;18;5;4;3;1;2;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;1
+choice;410;9;6
+choice;420;5;2
+choice;430;2;0
+choice;440;7;0000001;6
+concept;499
+concept;500
+choice;510;5;1
+scale;520;22;4;3;2;1;1;2;2;1;2;0;3;1;1;0;0;2;0;2;1;1;3;1;0
+choice;530;3;1
+choice;540;5;0

@@ -1,0 +1,52 @@
+2.0;MRP;R2007091;170;Q81TSBA8A4;17/07/2020 11:37:11 CEST;17/07/2020 12:03:04 CEST;1553;3;540;r1=1612;sysSID=R2007091;sysPRJ=MRP;sysUID=Q81TSBA8A4;device=desktop;leg=1;lang=it
+choice;10;2;0
+open;20;41
+choice;30;6;2
+choice;40;9;000000001;8
+choice;45;20;11
+choice;50;3;0
+choice;55;4;0
+choice;70;7;1111110;2
+choice;80;10;1110110010;4
+choice;90;6;1
+choice;100;9;101000110;0
+choice;110;9;110101000;0
+scale;120;9;5;2;4;3;4;2;2;3;2;0
+choice;125;2;1
+choice;130;1;0;comp0:Kinder
+choice;140;10;1000000000;0;comp0:Mulino Bianco
+choice;150;26;11111011000011110011010000;15
+choice;160;26;00000000000000100000000000;14
+choice;170;26;14
+scale;180;6;7;3;0;0;6;6;6
+concept;190
+choice;200;6;3
+open;210;Nulla di che.
+open;220;Non mi ha colpito.
+choice;230;5;2
+scale;240;5;5;2;2;2;2;2
+choice;250;5;2
+choice;260;5;2
+choice;270;5;2
+choice;280;5;2
+scale;290;16;5;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2
+scale;300;5;5;2;2;2;2;2
+choice;310;4;2
+choice;330;9;000000001;8
+concept;340
+choice;350;6;3
+open;360;Nulla di che.
+open;370;Non mi ha colpito.
+scale;380;13;5;2;2;2;2;2;2;2;2;2;2;2;2;2
+ordering;390;18;3;0;5;6;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;5;2
+choice;410;9;1
+choice;420;5;3
+choice;430;2;0
+choice;440;7;1100000;0
+concept;499
+concept;500
+choice;510;5;2
+scale;520;22;4;1;3;0;2;0;2;0;3;0;3;0;3;0;1;1;0;3;0;0;3;2;0
+choice;530;3;2
+choice;540;5;0

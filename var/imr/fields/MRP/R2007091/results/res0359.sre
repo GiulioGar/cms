@@ -1,0 +1,21 @@
+2.0;MRP;R2007091;359;RTCDL16ZD0;17/07/2020 16:39:46 CEST;<unknown>;0;0;125;sysSID=R2007091;sysPRJ=MRP;sysUID=RTCDL16ZD0;device=desktop;lang=it
+choice;10;2;0
+open;20;47
+choice;30;6;3
+choice;40;9;000000001;8
+choice;45;20;11
+choice;50;3;1
+choice;55;4;0
+choice;70;7;1111110;0
+choice;80;10;1111111110;6
+choice;90;6;0
+choice;100;9;100000000;0
+choice;110;9;000010000;4
+scale;120;9;5;0;4;0;1;4;4;1;1;4
+choice;125;2;1
+choice;130;1;0;comp0:balconi
+choice;140;10;1111100000;0;comp0:bauli;comp4:motta;comp3:loacker;comp2:trevisan;comp1:vincenzi
+choice;150;26;11111111110111111111111100;12
+choice;160;26;00100000100100010000000000;15
+choice;170;26;15
+scale;180;6;7;1;1;1;1;1;1

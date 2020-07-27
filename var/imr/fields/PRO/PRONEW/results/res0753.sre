@@ -1,0 +1,14 @@
+2.0;PRO;PRONEW;753;K320T689DG;15/07/2020 23:03:09 CEST;15/07/2020 23:08:15 CEST;306;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=K320T689DG;device=desktop;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000000100;6
+choice;30;2;0
+choice;40;2;0
+choice;50;58;11
+choice;60;2;1
+choice;90;2;1
+choice;100;6;4
+choice;110;6;001001;2
+choice;120;7;0001000;3
+choice;130;9;000110000;3
+choice;150;10;0000000001;9

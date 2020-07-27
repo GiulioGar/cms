@@ -1,0 +1,15 @@
+2.0;PRO;PRONEW;571;8A3V551OCA;15/07/2020 15:10:07 CEST;15/07/2020 15:11:21 CEST;74;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=8A3V551OCA;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;001001000;2
+choice;30;2;0
+choice;40;2;0
+choice;50;58;17
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;1
+choice;110;6;101101;1
+choice;120;7;1001010;3
+choice;130;9;000100100;3
+choice;150;10;0000001000;6

@@ -1,0 +1,16 @@
+2.0;PRO;PRONEW;568;P21M5TAPLW;15/07/2020 15:09:10 CEST;15/07/2020 15:10:16 CEST;66;3;150;sysSID=PRONEW;sysPRJ=PRO;sysUID=P21M5TAPLW;device=mobile;lang=it
+choice;1;2;1
+choice;10;2;0
+choice;20;9;000100000;3
+choice;30;2;0
+choice;40;2;0
+choice;50;58;11
+choice;60;2;0
+choice;70;5;10000;0
+choice;90;2;0
+choice;100;6;2
+choice;110;6;111101;3
+choice;120;7;0000110;4
+choice;130;9;100001010;0
+choice;140;9;110000000;0
+choice;150;10;1001000000;0
