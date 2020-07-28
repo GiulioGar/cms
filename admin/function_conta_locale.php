@@ -825,15 +825,21 @@ $progressTot=$conta_complete/$obiet*100;
 
 if ($progressTot>=100) {$progressTot=100;}
 
+$progressTot=round($progressTot, 1);
+
 //millebytes
 $progress=$conta_complete_panel/$obiet*100;
 
 if ($progress>=100) {$progress=100;}
 
+$progress=round($progress, 1);
+
 //esterne
 $progressExt=$conta_complete_ssi/$obiet*100;
 
 if ($progressExt>=100) {$progressExt=100;}
+
+$progressExt=round($progressExt, 1);
 
 ////////// allert stima  //////////////
 

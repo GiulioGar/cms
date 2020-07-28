@@ -1,0 +1,12 @@
+2.0;COS;R20W1047;3523;O3XA881887;13/07/2020 23:23:41 CEST;13/07/2020 23:24:00 CEST;19;4;120;debug=false;lang=it;pae=Italy;sysPRJ=COS;sysSID=R20W1047;tar=0;tipo=null;pan=null;sysUID=O3XA881887
+choice;1;2;0
+choice;2;4;0
+concept;3
+choice;5;2;0
+choice;6;2;0
+choice;20;2;1
+choice;25;20;3
+choice;30;4;3
+open;33;31
+choice;40;4;1
+choice;120;2;1

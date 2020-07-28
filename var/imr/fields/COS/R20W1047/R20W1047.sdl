@@ -1,0 +1,1452 @@
+#export vars "rtrc"
+#export vars "iti"
+#export vars "cel"
+#export vars "Svar0"
+#export vars "Svar1"
+#export vars "Svar2"
+#export vars "Svar3"
+#export vars "Svar4"
+void main() {
+	question qst;
+	
+	int selint;
+	int selint2;
+	int selint3;
+	int selints9b;
+	boolean sel;
+	int qid;
+	int ansId;
+	int rectg;
+	string item;
+	int reCod;
+	string cmd;
+	int conta;
+	string label;
+	string nascondi_item;
+	string cod;
+	int selints14;
+	int selints15=99999;
+	boolean sels16_0;
+	int selints17;
+	int selints18;
+	int selints21;
+	int recTgtTarget;
+	int selints12;
+	string saveVar0;
+	string saveVar1;
+	string saveVar2;
+	string saveVar3;
+	
+	
+	
+	system.setProperty("env", "debug:false");
+	//system.setProperty("env", "browser:variables");
+	//system.setProperty("env", "browser:full");
+	string autotest=system.getProperty("test");
+	if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+	
+	
+	string scriptzoom="<script type='text/javascript' src='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.js?v=2.1.5'></script>";
+	string altroscript="<script type=\"text/javascript\"> $(document).ready(function() { $(\".fancybox\").fancybox();});</script>";
+	string fogliostile="<link rel='stylesheet' href='http://www.primisoft.com/fields/BRS/ITA1405062/resources/jquery.fancybox.css?v=2.1.5' type='text/css' media='screen' />";
+	string img_linea_piccola;
+	
+	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all_r="<script type='text/javascript' src='http://www.primisoft.com/fields/COS/USA2001001/resources/all_rank.js'></script>";
+	string mozCode_r="<script type='text/javascript'>$(window).load(function() {allinea_r(2,60,520,150);});</script>";
+	string allinea_r=all_r+mozCode_r;
+	
+	//allinea(colonne, margine_altezza,margine_larghezza, larg solo item)
+	string all="<script type='text/javascript' src='http://www.primisoft.com/fields/script/all.js'></script>";
+	string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,10,70,150);});</script>";
+	string allinea=all+mozCode;
+
+	string deviceType = system.getProperty("user_agent:deviceType");
+	boolean controllomob;
+ 	string s1 = deviceType.trim();
+	controllomob=s1.contains("mobile");
+	if (controllomob==true){allinea_r="";}
+
+	
+
+
+if (controllomob==true){system.setProperty("env", "stylesheet:modmob.css");}
+
+//tipologia
+string type=system.getProperty("tipo");
+system.setProperty("tipo", type);
+
+//panel
+string pan=system.getProperty("pan");
+system.setProperty("pan", pan);
+
+
+if (type=="db") { reCod=1; system.setProperty("env", "stylesheet:mod2.css"); }
+else { reCod=0; system.setProperty("env", "stylesheet:mod.css");}
+
+	qst = new question("choice", 1);
+	qst.setProperty("text", "provenienza");
+	qst.setProperty("code", "q1");
+	vector q1_opts = new vector {
+		"PANEL (Prospect)",
+		"COSTA DB (Past Guest)"
+	};
+	qst.setProperty("options", q1_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	int panel=system.getProperty("ans1");
+	system.setProperty("tar",panel);
+	cmd=q1_opts.get(panel);
+	system.out("<div>Target:"+cmd+"</div>");
+	
+
+
+	qst = new question("choice", 2);
+	qst.setProperty("text", "COUNTRY");
+	qst.setProperty("code", "q2");
+	vector q2_opts = new vector {
+		"Italy",
+		"France",
+		"Spain",
+		"Germany"
+	};
+	qst.setProperty("options", q2_opts);
+	qst.setProperty("default_answer","{ 'selection': [0]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	int paese=system.getProperty("ans2");
+	cmd=q2_opts.get(paese);
+	system.setProperty("pae",cmd);
+	system.out("<div>Paese:"+cmd+"</div>");
+
+	
+
+	//INTRO PANEL
+	if (panel==0)
+	{
+	qst = new question("concept", 3);
+	qst.setProperty("text", "Stiamo conducendo uno studio sulle abitudini e gli interessi legati ai viaggi.");
+	send qst;
+	}
+
+
+	//INTRO DB
+	if (panel==1)
+	{
+	qst = new question("concept", 4);
+	qst.setProperty("text", "Stiamo conducendo uno studio tra i Clienti Costa per migliorare l’esperienza di prenotazione e valutare la chiarezza delle offerte.");
+	send qst;
+	}
+
+	qst = new question("choice", 5);
+	qst.setProperty("text", "Ci rendiamo conto che in questo periodo, appena usciti dall’emergenza Coronavirus, può sembrare fuori luogo parlare di viaggi e vacanze ma stiamo lavorando per ripartire al meglio. <br>Non ti verranno chiesti dati personali né informazioni bancarie. Non stiamo cercando di venderti alcun prodotto o servizio, né ora né in futuro. <br>Le informazioni che ci vorrai rilasciare rimarranno strettamente confidenziali e saranno utilizzate solamente per gli scopi della ricerca. <br>Scegli un momento in cui sei libero e prenditi il tuo tempo, lo studio richiede 10 minuti circa.");
+	qst.setProperty("code", "acc");
+	vector q5_opts = new vector {
+		"Accetta",
+		"Rifiuta"
+	};
+	qst.setProperty("options", q5_opts);
+	send qst;
+	selint=system.getProperty("ans5");
+	if (selint==1){return 4;}
+
+
+	qst = new question("choice", 6);
+	qst.setProperty("text", "Partecipando a questa ricerca avrai accesso a informazioni riservate legate allo sviluppo di idee e proposte per nuovi servizi, prodotti e tariffe.<br> Ti chiediamo di impegnarti a non utilizzare o divulgare a nessuno le informazioni di cui verrai a conoscenza, non copiare, stampare o scaricare alcuna informazione accessibile nel corso di questo studio.<br> Selezionando “Accetto” qui sotto, dichiari di aver letto, compreso e accettato questi termini.<br> ");
+	qst.setProperty("code", "ris");
+	vector q6_opts = new vector {
+		"Accetta",
+		"Rifiuta"
+	};
+	qst.setProperty("options", q6_opts);
+	send qst;
+	selint=system.getProperty("ans6");
+	if (selint==1){return 4;}
+
+
+	
+	
+qst = new question("choice", 20);
+qst.setProperty("text", "Tu sei...");
+qst.setProperty("code", "s1");
+vector q20_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+ansId=system.getProperty("ans20");
+
+
+cmd=q20_opts.get(ansId);
+system.out("<div class='info'>Gender:"+cmd+"</div>");
+
+qst = new question("choice", 25);
+qst.setProperty("text", "In quale regione vivi attualmente?");
+qst.setProperty("code", "s2");
+vector q25_opts = new vector {
+"Abruzzo",
+"Basilicata",
+"Calabria",
+"Campania",
+"Emilia Romagna",
+"Friuli Venezia Giulia",
+"Lazio",
+"Liguria",
+"Lombardia",
+"Marche",
+"Molise",
+"Piemonte",
+"Puglia",
+"Sardegna",
+"Sicilia",
+"Toscana",
+"Trentino Alto Adige",
+"Umbria",
+"Valle d'Aosta",
+"Veneto"
+};
+qst.setProperty("options", q25_opts);
+send qst;
+
+ansId=system.getProperty("ans25");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+		case 6,9,15,17,13:{reCod=2;}
+        }
+
+
+
+qst = new question("choice", 30);
+qst.setProperty("text", "In quale regione vivi attualmente?");
+qst.setProperty("code", "s2rec");
+vector q30_opts = new vector {
+"Nord-Ovest (Piemonte, Val d'Aosta, Liguria, Lombardia;)",
+"Nord-est (Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna;)",
+"Centro  (Toscana, Umbria, Marche, Lazio, Sardegna)",
+"Sud  (Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria, Sicilia.)"
+};
+qst.setProperty("options", q30_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+ansId=system.getProperty("ans30");
+
+cmd=q30_opts.get(ansId);
+system.out("<div class='info'>Area:"+cmd+"</div>");
+
+qst = new question("open", 33);
+qst.setProperty("text", "Per cortesia indica la tua età:");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "s3");
+send qst;
+
+int eta=(int)system.getProperty("ans33");
+if (eta<25 || eta>70) { return 4;}
+
+	if(eta<25) { reCod=0;}
+	if(eta>=25 && eta<=50) { reCod=1;}
+	if(eta>=51 && eta<=70) { reCod=2;}
+	if(eta>70) { reCod=3;}
+	
+	
+	
+	
+
+qst = new question("choice", 40);
+qst.setProperty("text", "Per cortesia indichi la sua et&agrave;.");
+qst.setProperty("code", "s3rec");
+vector q40_opts = new vector {
+"Meno di 25 anni",
+"25-50 anni",
+"51-70 anni ",
+"Più di 70 anni"
+};
+qst.setProperty("options", q40_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+int selintage=system.getProperty("ans40");
+
+ansId=system.getProperty("ans40");
+int age=ansId;
+
+cmd=q40_opts.get(ansId);
+system.out("<div class='info'>Age:"+cmd+"</div>");
+
+
+
+
+	qst = new question("choice", 120);
+	qst.setProperty("text", "Parliamo ora di vacanze. Hai effettuato una vacanza di almeno 4 giorni negli ultimi 12 mesi?");
+	qst.setProperty("code", "s7");
+	vector q120_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+	selint=system.getProperty("ans120");
+	if (selint==1 && type!="db"){return 4;}
+
+/*
+	qst = new question("open", 130);
+	qst.setProperty("text", "Indicativamente, negli ultimi 12 mesi, qual è stata la spesa della tua famiglia per le vacanze (intendendo viaggi di piacere con <b>almeno 2 notti fuori</b>)? <br>Considera la <b>spesa complessiva</b> comprendendo trasporti, pernottamenti, cibo e bevande, shopping, intrattenimento.");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s7b");
+	send qst;
+	selint=(int)system.getProperty("ans130");
+	if (selint<500){return 4;}
+*/
+
+
+
+
+	qst = new question("choice", 140);
+	qst.setProperty("text", "Ti è capitato di andare in crociera (su una nave da crociera) negli ultimi 2 anni?");
+	qst.setProperty("code", "s8");
+	vector q140_opts = new vector {
+		"Si",
+		"No"
+	};
+	if (type=="db"){
+	qst.setProperty("hidden", true);
+	qst.setProperty("default_answer", "{ 'selection': [0] }");
+	}
+	qst.setProperty("options", q140_opts);
+	send qst;
+	selint=system.getProperty("ans140");
+	if (selint==0 && type!="db"){return 4;}
+
+
+	if (selint==1)
+	{
+	qst = new question("choice", 150);
+	qst.setProperty("text", "Immagina che i rischi e le restrizioni legati al Covid-19 vengano definitivamente superati. Come definiresti il tuo interesse ad andare in crociera <b>nei prossimi 2-3 anni</b>?");
+	qst.setProperty("code", "s9");
+	vector q150_opts = new vector {
+		"Molto interessato",
+		"Abbastanza interessato",
+		"Né interessato né disinteressato",
+		"Poco interessato",
+		"Per niente interessato"
+	};
+	qst.setProperty("options", q150_opts);
+	send qst;
+	selint2=system.getProperty("ans150");
+	if (selint2>2){return 4;}
+
+
+	qst = new question("choice", 151);
+	qst.setProperty("text", "Rispetto a 6 mesi fa diresti che il tuo interesse ad andare in crociera nei prossimi 2-3 anni è…");
+	qst.setProperty("code", "s9b");
+	vector q151_opts = new vector {
+"Molto diminuito",
+"Un po’ diminuito",
+"Rimasto uguale",
+"Un po’ aumentato",
+"Molto aumentato"
+	};
+	qst.setProperty("options", q151_opts);
+	send qst;
+	selints9b=system.getProperty("ans151");
+	if (selints9b>2 && selint2>1){return 4;}
+		
+
+
+
+	}
+	
+	
+	qst = new question("choice", 190);
+	qst.setProperty("text", "E con quale di queste compagnie non viaggeresti mai?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "s13");
+	vector q190_opts = new vector {
+		"Costa Crociere",
+		"MSC Crociere",
+		"Royal Caribbean",
+		"Norwegian Cruise Line",
+		"Altro (specificare)#so",
+		"Nessuna/ Nessuna di queste#se"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+	sel=system.getProperty("ans190_0");
+	if (sel==true){return 4;}
+	
+
+	string txtatt="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input.form-control').attr('type', 'number');"+
+    "$('input.form-control').attr({"+
+    "'min' :1"+   
+    "});"+
+	//"$('input.form-control').attr('step', '.1');"+
+ 	"});</script>";
+	
+	qst = new question("open", 200);
+	qst.setProperty("text", txtatt+"Parliamo ora dell’ultima vacanza che hai fatto, intendendo un viaggio con <b>almeno 4 pernottamenti fuori casa</b>. In quante persone eravate, te compreso (considera solo il tuo partner/nucleo familiare, non eventuali altre persone che potrebbero avere viaggiato insieme a voi)?");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s14");
+	send qst;
+	selints14=(int)system.getProperty("ans200");
+	//if (selints14<=1){return 4;}
+	
+
+		//minimo 1 solo sugli adulti
+	txtatt="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input#comp1').attr('type', 'number');"+
+    "$('input#comp1').attr({"+
+    "'min' :1"+   
+    "});"+
+	//"$('input#comp1').attr('step', '.1');"+
+ 	"});</script>";
+
+	string txtatt2="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input#comp0').attr('type', 'number');"+
+	//"$('input#comp0').attr('step', '.1');"+
+ 	"});</script>";
+
+	 int somma;
+
+
+	if (selints14>1)
+	{
+	qst = new question("choice", 210);
+	qst.setProperty("text", txtatt+txtatt2+"Di queste "+selints14+" persone quanti erano bambini/ragazzi con meno di 18 anni e quanti adulti?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "s15");
+	vector q210_opts = new vector {
+		"Bambini/Ragazzi (meno di 18)#so",
+		"Adulti#so"
+	};
+	qst.setProperty("options", q210_opts);
+	qst.setProperty("extras", "{min:2}");
+	send qst;
+	selints15=(int)system.getProperty("ans210_0_comp");
+	selint2=(int)system.getProperty("ans210_1_comp");
+
+
+
+	somma=selints15+selint2;
+
+	while (somma!=selints14) 
+	{
+	// elimina l'ultima risposta
+	system.setProperty("delete", "ans210");
+	// ripropone la domanda
+	qst.setProperty("text", txtatt+txtatt2+"<p style='color: red'>Valore incoerente <p>Di queste "+selints14+" persone quanti erano bambini/ragazzi con meno di 18 anni e quanti adulti?");
+	send qst;
+
+	selints15=(int)system.getProperty("ans210_0_comp");
+	selint2=(int)system.getProperty("ans210_1_comp");
+	somma=selints15+selint2;
+	}
+
+
+	if (selint2>1)
+	{
+	qst = new question("choice", 220);
+	qst.setProperty("text", "Chi erano le altre persone adulte che hanno viaggiato insieme a te?");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "s16");
+	vector q220_opts = new vector {
+		"Il mio partner (marito/moglie, compagno/a, fidanzato/a)",
+		"Amici",
+		"Figli (maggiorenni)",
+		"Altri parenti (es. Genitori, zii, cugini, fratelli,…)",
+		"Colleghi o membri di gruppi di cui faccio parte (es. associazioni sportive,…)",
+		"Altro#so"
+	};
+	qst.setProperty("options", q220_opts);
+	send qst;
+	sels16_0=system.getProperty("ans220_0");
+	}
+	}
+
+
+
+
+	qst = new question("scale", 230);
+	qst.setProperty("text", "Per favore indica quanto sei d’accordo con le seguenti affermazioni a proposito di vacanze");
+	qst.setProperty("code", "s17");
+	qst.setProperty("show_rand", true);
+	vector q230_rows = new vector {
+		"Cerco sempre la soluzione più economica per le mie vacanze anche a costo di qualche compromesso",
+		"Mi piace concedermi qualche lusso in vacanza",
+		"Sono sempre alla ricerca di posti nuovi da conoscere",
+		"In vacanza comfort e relax sono aspetti fondamentali"
+	};
+	qst.setProperty("rows", q230_rows);
+	vector q230_cols = new vector {
+		"1<br>Per niente d’accordo",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Totalmente d’accordo"
+	};
+	qst.setProperty("cols", q230_cols);
+	send qst;
+	selints17=system.getProperty("ans230_0");
+
+
+
+
+	qst = new question("choice", 240);
+	qst.setProperty("text", "Pensando alla tua vacanza ideale, quale tra le seguenti descrizioni si adatta di più a te?");
+	qst.setProperty("code", "s18");
+	vector q240_opts = new vector {
+		"Mi piace scoprire sempre posti nuovi",
+		"Preferisco concentrarmi su poche destinazioni e conoscere a fondo la cultura locale e la natura",
+		"Mi piace stare in un solo posto e rilassarmi"
+	};
+	qst.setProperty("options", q240_opts);
+	send qst;
+	selints18=system.getProperty("ans240");
+
+	int recDcgTarget=99;
+	if (selintage==1 && selints14==2 && selints15==0 && sels16_0==true && selints17<=7 && selints18!=2){recDcgTarget=0;}
+	if (selintage==2 && selints14>=2 && selints15==0 && selints18!=2){recDcgTarget=1;}
+	if(selints14>=2 && selints15>=1 && selints15!=99999){recDcgTarget=2;}
+
+	if (recDcgTarget==99){recDcgTarget=3;}
+
+	qst = new question("choice", 241);
+	qst.setProperty("text", "recDCG");
+	qst.setProperty("code", "recDCG");
+	vector q241_opts = new vector {
+		"EXPLORING COUPLES",
+		"SILVER EXPLORER",
+		"EXPLORING TOGETHER FAMILIES",
+		"OTHER"
+	};
+	qst.setProperty("options", q241_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+recDcgTarget+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	cmd=q241_opts.get(recDcgTarget);
+	system.out("<div>DCG:"+cmd+"</div>");
+	system.setProperty("dcg",recDcgTarget);
+
+	
+	
+	
+	qst = new question("concept", 100);
+	qst.setProperty("text", "<p><b>Immagina ora di essere interessato a fare una crociera nel Mediterraneo l’anno prossimo, nel periodo di luglio.</b></p>Abbiamo messo a punto alcuni itinerari che speriamo possano risultare interessanti e graditi dalle persone che vorranno concedersi una crociera nel prossimo futuro, vorremmo avere la sua opinione su di loro.");
+	send qst;
+	
+	
+	///estrazione cella
+	system.setProperty("cella", "rand:16");
+    int cella = (int)system.getProperty("cella");
+	cella=cella+1;
+
+
+/*controllo quote*/
+int c;
+boolean trovato;
+int numero_celle=16;
+conta=0;
+
+while (trovato==false && conta<numero_celle) 
+{
+conta=conta+1;
+c=system.getProperty("quota:total_interviews_"+cella);
+if ((c>=60 && cella!=13 && cella!=14)||(c>=120 && (cella==13 || cella==14)))
+ { 
+  if (cella==16) { cella=1;}
+  else { cella=cella+1; }
+ }
+else { trovato=true;}
+}
+
+if (trovato==false){return 5;}
+
+system.setProperty("cel",cella);
+
+system.out("<div>Cella: "+cella+"</div>");
+
+
+
+	if (cella==1)
+				{
+					system.setProperty("Svar0", "1");
+					system.setProperty("Svar1", "2");
+					system.setProperty("Svar2", "3");
+					system.setProperty("Svar3", "4");
+
+				}
+
+	if (cella==2)
+				{
+					system.setProperty("Svar0", "2");
+					system.setProperty("Svar1", "3");
+					system.setProperty("Svar2", "4");
+					system.setProperty("Svar3", "5");
+				}
+
+	if (cella==3)
+				{
+					system.setProperty("Svar0", "3");
+					system.setProperty("Svar1", "4");
+					system.setProperty("Svar2", "5");
+					system.setProperty("Svar3", "6");
+				}
+
+	if (cella==4)
+				{
+					system.setProperty("Svar0", "4");
+					system.setProperty("Svar1", "5");
+					system.setProperty("Svar2", "6");
+					system.setProperty("Svar3", "1");
+				}
+
+	if (cella==5)
+				{
+					system.setProperty("Svar0", "5");
+					system.setProperty("Svar1", "6");
+					system.setProperty("Svar2", "1");
+					system.setProperty("Svar3", "2");
+				}
+
+	if (cella==6)
+				{
+					system.setProperty("Svar0", "6");
+					system.setProperty("Svar1", "1");
+					system.setProperty("Svar2", "2");
+					system.setProperty("Svar3", "3");
+				}
+
+	if (cella==7)
+				{
+					system.setProperty("Svar0", "7");
+					system.setProperty("Svar1", "8");
+					system.setProperty("Svar2", "9");
+					system.setProperty("Svar3", "10");
+				}
+
+	if (cella==8)
+				{
+					system.setProperty("Svar0", "8");
+					system.setProperty("Svar1", "9");
+					system.setProperty("Svar2", "10");
+					system.setProperty("Svar3", "11");
+				}
+
+	if (cella==9)
+				{
+					system.setProperty("Svar0", "9");
+					system.setProperty("Svar1", "10");
+					system.setProperty("Svar2", "11");
+					system.setProperty("Svar3", "12");
+				}
+
+	if (cella==10)
+				{
+					system.setProperty("Svar0", "10");
+					system.setProperty("Svar1", "11");
+					system.setProperty("Svar2", "12");
+					system.setProperty("Svar3", "13");
+				}
+
+	if (cella==11)
+				{
+					system.setProperty("Svar0", "11");
+					system.setProperty("Svar1", "12");
+					system.setProperty("Svar2", "13");
+					system.setProperty("Svar3", "14");
+				}
+
+	if (cella==12)
+				{
+					system.setProperty("Svar0", "12");
+					system.setProperty("Svar1", "13");
+					system.setProperty("Svar2", "14");
+					system.setProperty("Svar3", "7");
+				}
+
+	if (cella==13)
+				{
+					system.setProperty("Svar0", "15");
+					system.setProperty("Svar1", "16");
+					system.setProperty("Svar2", "99");
+					system.setProperty("Svar3", "99");
+				}
+
+	if (cella==14)
+				{
+					system.setProperty("Svar0", "16");
+					system.setProperty("Svar1", "15");
+					system.setProperty("Svar2", "99");
+					system.setProperty("Svar3", "99");
+				}
+
+	if (cella==15)
+				{
+					system.setProperty("Svar0", "13");
+					system.setProperty("Svar1", "14");
+					system.setProperty("Svar2", "7");
+					system.setProperty("Svar3", "8");
+				}
+
+	if (cella==16)
+				{
+					system.setProperty("Svar0", "14");
+					system.setProperty("Svar1", "7");
+					system.setProperty("Svar2", "8");
+					system.setProperty("Svar3", "9");
+				}
+
+
+	saveVar0=system.getProperty("Svar0");
+	saveVar1=system.getProperty("Svar1");
+	saveVar2=system.getProperty("Svar2");
+	saveVar3=system.getProperty("Svar3");
+
+
+
+
+	qst = new question("choice", 2000);
+	qst.setProperty("text", "indici pescati");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("code", "recIndici");
+	vector q2000_opts = new vector {
+		"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"
+	};
+	qst.setProperty("options", q2000_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+saveVar0+","+saveVar1+","+saveVar2+","+saveVar3+"]}");
+    qst.setProperty("hidden", true);
+	send qst;
+	
+	
+	
+	
+	system.out("<div>"+saveVar0+"</div>");
+	system.out("<div>"+saveVar1+"</div>");
+	system.out("<div>"+saveVar2+"</div>");
+	system.out("<div>"+saveVar3+"</div>");
+	
+
+
+
+	
+	boolean saltablocco;
+	int containgresso;
+	int salvaindiceprimo;
+	int it;
+
+	string prezzoP1;
+	string prezzoP2;
+	string prezzoP3;
+	string prezzoP4;
+	
+	for (int i=0,3)
+	{
+	
+
+	it=(int)system.getProperty("Svar"+i);
+	
+	if (it!=99)
+	{
+
+
+if (it==1){prezzoP1="1749€"; prezzoP2="1659€"; prezzoP3="1579€"; prezzoP4="1489€";}
+if (it==2){prezzoP1="1749€"; prezzoP2="1659€"; prezzoP3="1579€"; prezzoP4="1489€";}
+if (it==3){prezzoP1="1749€"; prezzoP2="1659€"; prezzoP3="1579€"; prezzoP4="1489€";}
+if (it==4){prezzoP1="1749€"; prezzoP2="1659€"; prezzoP3="1579€"; prezzoP4="1489€";}
+if (it==5){prezzoP1="1749€"; prezzoP2="1659€"; prezzoP3="1579€"; prezzoP4="1489€";}
+if (it==6){prezzoP1="1749€"; prezzoP2="1659€"; prezzoP3="1579€"; prezzoP4="1489€";}
+if (it==7){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==8){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==9){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==10){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==11){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==12){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==13){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==14){prezzoP1="1669€"; prezzoP2="1589€"; prezzoP3="1499€"; prezzoP4="1419€";}
+if (it==15){prezzoP1="2669€"; prezzoP2="2539€"; prezzoP3="2399€"; prezzoP4="2269€";}
+if (it==16){prezzoP1="2669€"; prezzoP2="2539€"; prezzoP3="2399€"; prezzoP4="2269€";}
+
+
+
+
+
+	
+	if (i==0){label="Uno degli itinerari a cui stiamo pensando &egrave; questo.";}
+	else{label="Un altro degli itinerari a cui stiamo pensando è questo. ";}
+	
+	
+	
+	cmd="<img width='1100px'  src=http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG alt=''>";
+	img_linea_piccola=scriptzoom+fogliostile+altroscript+"<p><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'><img src='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'  height='300px' alt='' /></a><br>(clicca per ingrandire)</p>";
+
+
+	//da togliere poi
+	/*
+	cmd="<b>"+it+"</b><br>";
+	img_linea_piccola="<b>"+it+"</b><br>";
+	*/
+	//
+	
+	qid = 5000+100*i;
+	qst = new question("concept", qid);
+	qst.setProperty("text", label+"<br><br>"+cmd);
+	send qst;
+	
+	
+	
+	
+	qid = 5000+100*i+2;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"<b><u>Quanto ti piace</u></b> questo itinerario?");
+	qst.setProperty("code", "q1."+i);
+	vector q120_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q120_rows);
+	vector q120_cols = new vector {
+		"Non mi piace per niente<br>1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"Mi piace moltissimo<br>10"
+	};
+	qst.setProperty("cols", q120_cols);
+	send qst;
+	
+	
+	
+	qid = 5000+100*i+6;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"E quanto trovi <b><u>diverso/originale</u></b> questo itinerario?");
+	qst.setProperty("code", "q2."+i);
+	vector q140_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q140_rows);
+	vector q140_cols = new vector {
+		"Per niente diverso/originale<br>1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"Estremamente diverso/originale<br>10"
+	};
+	qst.setProperty("cols", q140_cols);
+	send qst;
+	
+	
+	qid = 5000+100*i+8;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Quale affermazione descrive meglio la tua <b><u>opinione rispetto al prezzo</u></b> di questo itinerario?");
+	qst.setProperty("code", "q3."+i);
+	vector q150_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q150_rows);
+	vector q150_cols = new vector {
+		"Per niente caro<br>1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"Estremamente caro<br>10"
+	};
+	qst.setProperty("cols", q150_cols);
+	send qst;
+	
+	
+	qid = 5000+100*i+10;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"Ti proporremo ora alcune frasi. Per ogni frase vorremmo sapere quanto la trovi adatta a questo itinerario.");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("code", "q4."+i);
+	vector q160_rows = new vector {
+"Offre porti di imbarco appropriati alle mie esigenze",
+"Mi piace molto il programma dell’itinerario",
+"Offre l’opportunità di godersi appieno i luoghi, senza fretta"
+	};
+	qst.setProperty("rows", q160_rows);
+	vector q160_cols = new vector {
+		"Per niente adatta<br>1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"Estremamente adatta<br>10"
+	};
+	qst.setProperty("cols", q160_cols);
+	send qst;
+	selint=system.getProperty("ans"+qid+"_3");
+	
+	
+	qid = 5000+100*i+12;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"E con quale probabilità <b><u>prenoteresti proprio questo itinerario</u></b> per la tua prossima crociera?");
+	qst.setProperty("code", "q6."+i);
+	vector q170_rows = new vector {
+" "
+};
+	qst.setProperty("rows", q170_rows);
+	vector q170_cols = new vector {
+		"Sicuramente NO",
+		"Probabilmente NO",
+		"Non so",
+		"Probabilmente SI",
+		"Sicuramente SI"
+	};
+	qst.setProperty("cols", q170_cols);
+	send qst;
+	
+
+
+	qid = 5000+100*i+14;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"<b>Considerando il prezzo di:</b><br> <b>"+prezzoP1+"</b>/persona – Cabina con balcone vista mare, Formula All Inclusive*, <b>con quale probabilità prenoteresti questo itinerario per la tua prossima crociera?</b><br> (* include: pacchetto bevande e quote di servizio) ");
+	qst.setProperty("code", "p1."+i);
+	vector q1170_rows = new vector {
+" "
+};
+	qst.setProperty("rows", q1170_rows);
+	vector q1170_cols = new vector {
+		"Sicuramente NO",
+		"Probabilmente NO",
+		"Non so",
+		"Probabilmente SI",
+		"Sicuramente SI"
+	};
+	qst.setProperty("cols", q1170_cols);
+	send qst;
+	selint=system.getProperty("ans"+qid+"_0");
+
+
+	if (selint<4)
+	{
+	qid = 5000+100*i+16;
+	qst = new question("scale", qid);
+	qst.setProperty("text", img_linea_piccola+"<b>Se il prezzo fosse:</b><br> <b>"+prezzoP2+"</b>/persona – Cabina con balcone vista mare, Formula All Inclusive*, <b>con quale probabilità prenoteresti questo itinerario per la tua prossima crociera?</b><br> ");
+	qst.setProperty("code", "p2."+i);
+	vector q171_rows = new vector {
+	" "
+	};
+	qst.setProperty("rows", q171_rows);
+	vector q171_cols = new vector {
+		"Sicuramente NO",
+		"Probabilmente NO",
+		"Non so",
+		"Probabilmente SI",
+		"Sicuramente SI"
+	};
+
+
+	for (int j=0,4)
+	{
+		if (j<selint)
+					{
+						nascondi_item="#sh"+j;
+						q171_cols.set(j, nascondi_item);
+					}
+	}
+
+
+	qst.setProperty("cols", q171_cols);
+	send qst;
+	selint2=system.getProperty("ans"+qid+"_0");
+	
+
+	if (selint2<4)
+	{
+
+	qid = 5000+100*i+18;
+	qst = new question("scale", qid); 
+	qst.setProperty("text", img_linea_piccola+"<b>Se il prezzo fosse:</b><br> <b>"+prezzoP3+"</b>/persona – Cabina con balcone vista mare, Formula All Inclusive*, <b>con quale probabilità prenoteresti questo itinerario per la tua prossima crociera?</b><br> ");
+	qst.setProperty("code", "p3."+i);
+	vector q172_rows = new vector {
+" "
+};
+	qst.setProperty("rows", q172_rows);
+	vector q172_cols = new vector {
+		"Sicuramente NO",
+		"Probabilmente NO",
+		"Non so",
+		"Probabilmente SI",
+		"Sicuramente SI"
+	};
+
+	for (int j=0,4)
+	{
+		if (j<selint2)
+					{
+						nascondi_item="#sh"+j;
+						q172_cols.set(j, nascondi_item);
+					}
+	}
+
+	qst.setProperty("cols", q172_cols);
+	send qst;
+	selint3=system.getProperty("ans"+qid+"_0");
+
+	if (selint3<4)
+	{
+
+	qid = 5000+100*i+20;
+	qst = new question("scale", qid); 
+	qst.setProperty("text", img_linea_piccola+"<b>Se il prezzo fosse:</b><br> <b>"+prezzoP4+"</b>/persona – Cabina con balcone vista mare, Formula All Inclusive*, <b>con quale probabilità prenoteresti questo itinerario per la tua prossima crociera?</b><br>");
+	qst.setProperty("code", "p4."+i);
+	vector q173_rows = new vector {
+" "
+};
+	qst.setProperty("rows", q173_rows);
+	vector q173_cols = new vector {
+		"Sicuramente NO",
+		"Probabilmente NO",
+		"Non so",
+		"Probabilmente SI",
+		"Sicuramente SI"
+	};
+
+
+	for (int j=0,4)
+	{
+		if (j<selint3)
+					{
+						nascondi_item="#sh"+j;
+						q173_cols.set(j, nascondi_item);
+					}
+	}
+
+	qst.setProperty("cols", q173_cols);
+	send qst;
+
+	}
+	}
+	}
+
+	
+	}
+	}
+	
+	
+	/*
+	qst = new question("choice", 20000000);
+	qst.setProperty("text", "Primovisto");
+	qst.setProperty("code", "recpv");
+	vector q20000000_opts = new vector {
+		"0",
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10"
+	};
+	qst.setProperty("options", q20000000_opts);
+	qst.setProperty("hidden", true);
+	qst.setProperty("default_answer", "{ 'selection': ["+salvaindiceprimo+"] }");
+	send qst;
+	
+	
+	string lblprimovisto=q20000000_opts.get(salvaindiceprimo);
+	system.out("<div>Primo Visto:"+lblprimovisto+"</div>");
+	*/
+	
+
+	
+	
+	
+	label="clicchi sulla preferita, poi sulla seconda, sulla terza, sulla quarta ed infine sulla quinta.";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	string lblimg;
+	string lblimg2;
+
+	vector q1190_link = new vector {
+		"1",
+		"2",
+		"3",
+		"4"
+	};
+	
+
+	string testochevaria;
+	if (cella==13 || cella==14){testochevaria="Ora che ha visto tutti i possibili itinerari, può dirci quali preferisci? Ti preghiamo di indicarli in ordine di preferenza: fai click sul preferito, e infine sul secondo";}
+	else{testochevaria="Ora che ha visto tutti i possibili itinerari, può dirci quali preferisci? Ti preghiamo di indicarli in ordine di preferenza: fai click sul preferito, poi sul secondo, sul terzo e infine sul quarto";}
+	
+	
+	qst = new question("ordering", 1190);
+	qst.setProperty("text", allinea_r+testochevaria);
+	qst.setProperty("code", "q7");
+	vector q1190_opts = new vector {
+		"1",
+		"2",
+		"3",
+		"4"
+	};
+	
+	it=(int)system.getProperty("Svar0");
+	if (it!=99)
+	{
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG alt='' width='450px'></div>";
+	lblimg2="<p><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'><img src='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'  height='300px' alt='' /></a><br>(clicca per ingrandire)</p>";
+	q1190_opts.set(0,lblimg);
+	q1190_link.set(0,lblimg2);
+	}
+	else{
+		q1190_opts.set(0,"#sh0");
+		q1190_link.set(0,"#sh0");
+	}
+
+	it=(int)system.getProperty("Svar1");
+	if (it!=99)
+	{
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG alt='' width='450px'></div>";
+	lblimg2="<p><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'><img src='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'  height='300px' alt='' /></a><br>(clicca per ingrandire)</p>";
+	
+	q1190_opts.set(1,lblimg);
+	q1190_link.set(1,lblimg2);	
+	}
+	else{
+		q1190_opts.set(1,"#sh1");
+		q1190_link.set(1,"#sh1");
+	}
+
+	it=(int)system.getProperty("Svar2");
+	if (it!=99)
+	{
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG alt='' width='450px'></div>";
+	lblimg2="<p><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'><img src='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'  height='300px' alt='' /></a><br>(clicca per ingrandire)</p>";
+	
+	q1190_opts.set(2,lblimg);
+	q1190_link.set(2,lblimg2);
+	}
+	else{
+		q1190_opts.set(2,"#sh2");
+		q1190_link.set(2,"#sh2");
+	}
+
+	it=(int)system.getProperty("Svar3");
+	if (it!=99)
+	{
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG alt='' width='450px'></div>";
+	lblimg2="<p><a class='fancybox' rel='group' href='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'><img src='http://www.primisoft.com/fields/COS/R20W1047/resources/"+it+".JPG'  height='300px' alt='' /></a><br>(clicca per ingrandire)</p>";
+	
+	q1190_opts.set(3,lblimg);
+	q1190_link.set(3,lblimg2);
+	}
+	else{
+		q1190_opts.set(3,"#sh3");
+		q1190_link.set(3,"#sh3");
+	}
+		
+	qst.setProperty("options", q1190_opts);
+	qst.setProperty("sel_count", 4);
+    qst.setProperty("strict_selection", true);
+	send qst;
+	
+	/*
+	
+	vector itm = new vector {
+"Porti di imbarco",
+"Le città più interessanti",
+"Il programma dell’itinerario",
+"Migliore mix tra tempo a terra e tempo in mare",
+"Rapporto qualità prezzo",
+"Perfetta durata della crociera",
+"Offre la massima sicurezza"
+};
+	
+	
+	system.setProperty("est", "rand:7");
+	int estr = (int)system.getProperty("est");  
+string lblestra;	
+	
+	for (int i=0,6)	
+	{
+	lblestra=itm.get(estr);
+	qid = 8000+100*estr;
+	
+	qst = new question("ordering", qid);
+	qst.setProperty("text", allinea_r+cod+"Infine vorremmo sapere per ognuno dei seguenti aspetti, quale alternativa di itinerario preferisce. Per favore le metta in ordine di preferenza:  "+label+"<br><span style='font-size:30px;'><b>"+lblestra+"</b></span>");
+	//qst.setProperty("show_rand", true);
+	qst.setProperty("code", "p2."+estr);
+	vector q201_opts = new vector {
+		"1",
+		"2",
+		"3",
+		"4",
+		"5"
+	};
+	
+
+	it=(int)system.getProperty("Svar0");
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/"+it+".JPG alt='' width='350px'></div>";
+	q201_opts.set(0,lblimg);
+
+	it=(int)system.getProperty("Svar1");
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/"+it+".JPG alt='' width='350px'></div>";
+	q201_opts.set(1,lblimg);	
+
+	it=(int)system.getProperty("Svar2");
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/"+it+".JPG alt='' width='350px'></div>";
+	q201_opts.set(2,lblimg);
+
+	it=(int)system.getProperty("Svar3");
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/"+it+".JPG alt='' width='350px'></div>";
+	q201_opts.set(3,lblimg);
+
+	it=(int)system.getProperty("Svar4");
+	lblimg="<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/"+it+".JPG alt='' width='350px'></div>";
+	q201_opts.set(4,lblimg);		
+	
+	qst.setProperty("options", q201_opts);
+	qst.setProperty("sel_count", 5);
+    qst.setProperty("strict_selection", true);
+	send qst;
+	
+	
+	
+if (estr<6) {
+estr = estr + 1;
+}
+else {
+estr= 0;
+}
+	
+	}
+	*/
+	
+
+	
+/*
+if (cella==1)
+{	
+	qst = new question("choice", 188);
+	qst.setProperty("text", allinea+"Immagini di dover andare in vacanza in un prossimo futuro e di avere come destinazione le <b><u>Isole Canarie</u></b>.  Quale delle seguenti tipologie di vacanza preferirebbe/sceglierebbe per questa destinazione? ");
+	qst.setProperty("code", "q12");
+	vector q188_opts = new vector {
+"Una crociera<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/it1_1.JPG alt='' width='450px'></div>",
+"Una vacanza in un resort/villaggio<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/can.JPG alt='' width='450px'></div>"
+	};
+	qst.setProperty("options", q188_opts);
+	send qst;
+}	
+	
+
+if (cella==6)
+{	
+	qst = new question("choice", 189);
+	qst.setProperty("text", allinea+"Immagini di dover andare in vacanza in un prossimo futuro e di avere come destinazione <b><u>l’Islanda</u></b>.  Quale delle seguenti tipologie di vacanza preferirebbe/sceglierebbe per questa destinazione? ");
+	qst.setProperty("code", "q13");
+	vector q189_opts = new vector {
+"Una vacanza fly & cruise<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/it6_1.JPG alt='' width='450px'></div>",
+"Una vacanza fly & drive<div><img src=http://www.primisoft.com/fields/COS/ITA1807115/resources/icel.JPG alt='' width='450px'></div>"
+};
+	qst.setProperty("options", q189_opts);
+	send qst;
+}		
+*/
+
+
+int selintpref=system.getProperty("ans1190_0");
+	string conc=q1190_link.get(selintpref);
+
+
+qst = new question("open", 1200);
+qst.setProperty("text", scriptzoom+fogliostile+altroscript+conc+"Perché preferisci questo itinerario? Scrivi tutti i motivi per cui preferisci questo itinerario rispetto agli altri.");
+qst.setProperty("code", "q7a");
+send qst;
+
+
+int selintpegg;
+if (cella==13 || cella==14){selintpegg=system.getProperty("ans1190_1");}
+else{selintpegg=system.getProperty("ans1190_3");}
+conc=q1190_link.get(selintpegg);
+
+
+qst = new question("open", 1205);
+qst.setProperty("text", scriptzoom+fogliostile+altroscript+conc+"Perché questo itinerario ti piace meno di tutti? Scrivi tutti i motivi per cui questo itinerario ti piace meno rispetto agli altri.");
+qst.setProperty("code", "q7b");
+send qst;
+
+
+
+
+	
+	
+	
+	qst = new question("choice", 450);
+	qst.setProperty("text", "Ti chiediamo infine qualche dato di classificazione. Quante persone ci sono in famiglia (te incluso)?");
+	qst.setProperty("code", "v1");
+	vector q450_opts = new vector {
+		"Uno",
+		"Due",
+		"Tre",
+		"Quattro",
+		"Cinque",
+		"Sei",
+		"Sette",
+		"Otto",
+		"Nove o più"
+	};
+	qst.setProperty("options", q450_opts);
+	send qst;
+	selint=system.getProperty("ans450");
+	int selintv14=system.getProperty("ans450");
+
+	if (selint>0)
+	{
+	qst = new question("choice", 460);
+	qst.setProperty("text", "Hai figli minori di 18 anni?");
+	qst.setProperty("code", "v2");
+	vector q460_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q460_opts);
+	send qst;
+	selint2=system.getProperty("ans460");
+
+	if (selint2==0)
+	{
+	qst = new question("choice", 470);
+	qst.setProperty("text", "E precisamente quanti figli di meno di 18 anni hai?");
+	qst.setProperty("code", "v3");
+	vector q470_opts = new vector {
+		"Uno",
+		"Due",
+		"Tre",
+		"Quattro",
+		"Cinque",
+		"Sei",
+		"Sette o più"
+	};
+
+	if (selintv14==1)
+		{
+		q470_opts.set(1,"#sh1");
+		q470_opts.set(2,"#sh2");
+		q470_opts.set(3,"#sh3");
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==2)
+		{
+		q470_opts.set(2,"#sh2");
+		q470_opts.set(3,"#sh3");
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==3)
+		{
+		q470_opts.set(3,"#sh3");
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==4)
+		{
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==5)
+		{
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==6)
+		{
+		q470_opts.set(5,"#sh5");
+		}
+
+	
+
+	qst.setProperty("options", q470_opts);
+	send qst;
+	}
+	}
+
+
+
+	qst = new question("choice", 480);
+	qst.setProperty("text", "Infine, puoi dirmi qual è il tuo titolo di studio?");
+	qst.setProperty("code", "v4");
+	vector q480_opts = new vector {
+		"Nessun titolo/Licenza elementare",
+		"Licenza media inferiore",
+		"Licenza media superiore",
+		"Laurea",
+		"Master post laurea/dottorato"
+	};
+	qst.setProperty("options", q480_opts);
+	send qst;
+
+	
+	qst = new question("choice", 490);
+	qst.setProperty("text", "E qual è la tua attuale professione?");
+	qst.setProperty("code", "v5");
+	vector q490_opts = new vector {
+		"Dirigente/Libero professionista/Imprenditore",
+		"Insegnante",
+		"Impiegato/Quadro",
+		"Operaio/Bracciante",
+		"Rappresentante/Commerciante/Negoziante",
+		"Artigiano/Lavoratore autonomo",
+		"Casalinga",
+		"Studente/ssa",
+		"In cerca di prima occupazione/Disoccupato/a",
+		"Pensionato/a"
+	};
+	qst.setProperty("options", q490_opts);
+	send qst;
+}

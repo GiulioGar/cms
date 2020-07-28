@@ -1,0 +1,2001 @@
+uid;email;firstName;genderSuffix;prj;sid
+5V605PG02L;mariachiaracometa@gmail.com;MChiara;a;COS;R20W1047
+OK5FZ17NW4;eledino622@gmail.com;Leonardo;o;COS;R20W1047
+FADQE75Z79;deboradefarias1974@gmail.com;Debora;a;COS;R20W1047
+54416df765;rotunnoantonietta@outlook.it;antonietta;a;COS;R20W1047
+5OJHY8WGIH;Beapetrera77@gmail.com;Beatrice;a;COS;R20W1047
+5404d01c64;lusyfaschon@virgilio.it;Luisa;a;COS;R20W1047
+T7COCOIM5K;Annastorino28@gmail.com;Anna;a;COS;R20W1047
+QWJ66WFOI2;marialuisatri@alice.it;Marialuisa;a;COS;R20W1047
+5416fe9bce;fracalta@hotmail.it;Francesco;o;COS;R20W1047
+LDO0T10166;pat.marras@tiscali.it;Patrizia;a;COS;R20W1047
+4Z1AB7U921;rosannafranzosi@yahoo.it;rosanna;a;COS;R20W1047
+RTTAIE20L1;patriziasul@libero.it;PATRIZIA;a;COS;R20W1047
+KU7128F7FV;robertabendoni@gmail.com;Roberta;a;COS;R20W1047
+SGD4616986;lblb193@hotmail.com;Lucia;a;COS;R20W1047
+Y52W5L1U11;manupucci65@hotmail.com;emanuela francesca;a;COS;R20W1047
+ZY8ETFOFHK;deangelisalessio@hotmail.it;antonio;o;COS;R20W1047
+IVEV0VNFVZ;sanflavia@libero.it;Francesco;o;COS;R20W1047
+VZJLS4M9IX;fiorellaruani@libero.it;fiorella;a;COS;R20W1047
+T4EQND4MW8;fannystellina@hotmail.com;Stefania;a;COS;R20W1047
+PPAV2IKY51;maria446@interfree.it;Maria;a;COS;R20W1047
+5391e6a060;adri1212@hotmail.it;adriana;a;COS;R20W1047
+D7RPKESH9Y;giovanni.macchione@gmail.com;Giovanni;o;COS;R20W1047
+O4CUA98977;acquas.min@tiscali.it;luisa;a;COS;R20W1047
+BDMHKDOBA7;Rita.dellaschiava@gmail.com;Rita ;a;COS;R20W1047
+5THOTVS601;noemigrammatica@hotmail.it;Noemi;a;COS;R20W1047
+X79K0ZGZVQ;carmela999@live.it;Carmela Alfia ;a;COS;R20W1047
+HETK16ALLJ;spiaggiarossa@hotmail.it;serena;a;COS;R20W1047
+3MY37IKB9A;fpinto1175@gmail.com;Francesca;a;COS;R20W1047
+507BP16288;cosimo.ventafridda@gmail.com;Cosimo;o;COS;R20W1047
+228H0EBA09;Tiziana.capi@gmail.com;Tiziana;a;COS;R20W1047
+SYGRVKSF3B;Geppoman@hotmail.it;Giuseppe;o;COS;R20W1047
+9PQ0IXXTB1;ciaodapat@libero.it;Patrizia;a;COS;R20W1047
+512e627eab;robertodenichilo@gmail.com;Roberto;o;COS;R20W1047
+ODPJPX5HDI;Edo70@libero.it;Alfredo;o;COS;R20W1047
+LIMXWS0NG0;leodec@hotmail.it;Leonardo;o;COS;R20W1047
+88NSHHBB25;mariapaparella77@gmail.com;Maria;a;COS;R20W1047
+0PTOCOG73U;raffaelefant@alice.it;Raffaele;o;COS;R20W1047
+PG6QDOHPYB;sari_na78@hotmail.com;Sara;a;COS;R20W1047
+9Z3ISXVXTH;krykro_90@hotmail.it;Cristina;a;COS;R20W1047
+K4DOK2RPR6;beatrice.dominoni@gmail.com;Beatrice;a;COS;R20W1047
+GKVTPA6CVF;Natassjabisol@gmail.com;Nadia;a;COS;R20W1047
+PC4SP9C5KM;arimygold@gmail.com;Arianna;a;COS;R20W1047
+OFJL485OPN;arturoorabona@libero.it;arturo;o;COS;R20W1047
+0RMJI66826;antonella.fioretto@telecomitalia.it;Antonella;a;COS;R20W1047
+0CHOUQ5SN9;francescaabbagnano5@gmail.com;Francesca;a;COS;R20W1047
+P0Z3C41169;fabrilam@libero.it;CLAUDIA;a;COS;R20W1047
+GL3U452UDQ;M.linkinpork@gmail.com;Enrico;o;COS;R20W1047
+D0O2HHC0HT;delbuonolaura@libero.it;Laura ;a;COS;R20W1047
+YOQ4QQZS41;annazaccaria@hotmail.com;anna;a;COS;R20W1047
+MNDA624403;enza22@hotmail.com;Provvidenza;a;COS;R20W1047
+XTPP3TQCFH;roscaiuliana58@yahoo.it;iuliana;a;COS;R20W1047
+3ETT32KORZ;fiorella.lanata@libero.it;fiorella;a;COS;R20W1047
+SIID3RK7QF;Jennina@my.com;Jenny;a;COS;R20W1047
+50cef56d85;marchi_ma@libero.it;marco;o;COS;R20W1047
+V3VRY74QA1;scarpino@inwind.it;luca;o;COS;R20W1047
+CUCIB74EVF;disneyana79@gmail.com;Morena;a;COS;R20W1047
+ZUG73LRL1L;niko.montevero@hotmail.it;Niko;o;COS;R20W1047
+CQSGOXVNHB;MARIAELEONORA60@YAHOO.IT;Maria Eleonora;a;COS;R20W1047
+ACO8C2VML1;dangelosav@sermetra.it;SAVINO;o;COS;R20W1047
+5J4MK3KL2D;brucio4ever@hotmail.it;Stella;a;COS;R20W1047
+57NS91SC7E;supereva0408@gmail.com;francesca;a;COS;R20W1047
+DBJFJX6C4L;bucataru-dani@yahoo.com;grecu;a;COS;R20W1047
+K1Q7V55IXQ;manuelalpm@hotmail.it;Manuela;a;COS;R20W1047
+5447b884cb;elefairy@live.it;eleonora;a;COS;R20W1047
+1SYYCGP8Q1;s.deangelis529@gmail.com;Sabrina ;a;COS;R20W1047
+FV3W5EYS57;flobo56@hotmail.com;florindo;o;COS;R20W1047
+QYO3XDDD4L;martinatacchia@libero.it;martina;a;COS;R20W1047
+9X2FV92021;mauriziopantaleo@email.it;Maurizio;o;COS;R20W1047
+58D8GUUMRP;visiame82@hotmail.it;Amedeo;o;COS;R20W1047
+GF33AHKBR3;speegola@inwind.it;Valentina;a;COS;R20W1047
+1PXWGX2C51;tallinimarilena@gmail.com;Marilena;a;COS;R20W1047
+ZY35LOLLUP;diada27@gmail.com;Amalia;a;COS;R20W1047
+0EXCTDG38V;geom.davidemarchese@virgilio.it;Davide;o;COS;R20W1047
+6B2YO5ZY6V;cristina.lacalamita@gmail.com;cristina;a;COS;R20W1047
+O14RMW5LND;lauramanf@yahoo.it;Laura;a;COS;R20W1047
+OWHEANBNHG;martinaambrogi84@gmail.com;Martina;a;COS;R20W1047
+UMG6MHO0T7;molodiuc.aliona@alice.it;Aliona;a;COS;R20W1047
+U0VODG8V6R;monica_valdrighi@hotmail.it;monica;a;COS;R20W1047
+5HYPDQ5FO1;anna.carlevati@gmail.com;Anna;a;COS;R20W1047
+0IJDO023SZ;mangela1889-19@yahoo.com;Sara;a;COS;R20W1047
+ESKEGLPVD9;maryp60@tiscali.it;maria;a;COS;R20W1047
+3K3D7YVMOS;raffy82b@hotmail.com;Raffaella;a;COS;R20W1047
+C5YYK4BV26;ale_sub@hotmail.it;alessandro;o;COS;R20W1047
+ABLG6EJOGW;cristinam1986@hotmail.it;Cristina;a;COS;R20W1047
+08BZD88710;marpe1978@hotmail.com;Maria;a;COS;R20W1047
+W6MKM3NHCE;andreamaruca@virgilio.it;Andrea;o;COS;R20W1047
+J0OAPH271W;morpheus5000@gmail.com;Tiziano;o;COS;R20W1047
+D8Q7HGZE3U;pangallo_giuseppe@yahoo.it;luciano;o;COS;R20W1047
+QG4KKHB8FB;vagial2001@yahoo.it;Giovanni;o;COS;R20W1047
+RBRAPZB86B;gpannuzzo@outlook.com;Giovanna;a;COS;R20W1047
+1UUYQ564VJ;damageacdc@hotmail.it;victoria;a;COS;R20W1047
+EFX3Y62194;s_finocchiaro@yahoo.it;Stefano;o;COS;R20W1047
+D5MS461027;luisaang@tin.it;luisa;a;COS;R20W1047
+JR5XH57AW2;ciccio77taranto@gmail.com;Macripo';o;COS;R20W1047
+AEVRPRA7WR;monica_capitani@yahoo.it;monica;a;COS;R20W1047
+KYOEMBO1CU;alessandrafontana01@gmail.com;Alessandra;a;COS;R20W1047
+N1PTEYHGQ9;emanuelafrancescato@gmail.com;Emanuela ;a;COS;R20W1047
+QJ6FTKWERZ;elviraponzo@tiscali.it;Elvira;a;COS;R20W1047
+4YJL157503;fania75@alice.it;antonella;a;COS;R20W1047
+K1QSZ62654;cynzya65@hotmail.it;cinzia;a;COS;R20W1047
+J0X30E4AMF;barbara.nieddu53@gmail.com;Barbara;a;COS;R20W1047
+AFCHJ73EUO;maria.terracciano@hotmail.it;maria;a;COS;R20W1047
+MRPLZLMCXM;erikaluciana53@yahoo.it;Luciana;a;COS;R20W1047
+ZUQXNYXBCZ;meryevans89@gmail.com;Maria;a;COS;R20W1047
+53OU92JPC9;berseckea@hotmail.it;Andrea Antonino;o;COS;R20W1047
+54199a2671;obertimonica@gmail.com;monica;a;COS;R20W1047
+0K7VEE43XG;santadantoni@hotmail.it;SANTA;a;COS;R20W1047
+TKHSPWZ1H7;macco.troy@hotmail.it;Marco;o;COS;R20W1047
+CTKE5CW8L2;baldo.sanfilippo@alice.it;Baldo;o;COS;R20W1047
+RWH6ITQR5Y;tourleadereva@libero.it;Éva;a;COS;R20W1047
+0BLKA5FRAI;sciacca-giovanni@hotmail.it;Giovanni;o;COS;R20W1047
+9J7OBBLAJ1;doreen@email.it;Socia;a;COS;R20W1047
+XZIEVR9VLJ;dichiaramonte@libero.it;Hartmut;o;COS;R20W1047
+O4SAPB084Y;2012ncv@gmail.com;Christian;o;COS;R20W1047
+3L99RGXC58;arisha78@libero.it;Raffaella;a;COS;R20W1047
+EB97RNURB1;germano.dagostino@gmail.com;Antonino Germano;o;COS;R20W1047
+UHNYDXYREY;full-service71@hotmail.com;gaetano;o;COS;R20W1047
+DUXUJUE1V0;vero4e@hotmail.com;Socia;a;COS;R20W1047
+Z5Y3M90908;maria.morello@gmail.com;MARIA;a;COS;R20W1047
+4IXI21WVOM;cristina.caporali@hotmail.it;Cristina;a;COS;R20W1047
+KGIGZMNI2D;giovanniparrella@virgilio.it;giovanni;o;COS;R20W1047
+AAQG2OCR8F;satagliatti@libero.it;sara;a;COS;R20W1047
+T4S8T9J7IU;tina_luca20@yahoo.com;Cristina;a;COS;R20W1047
+PCB17977NM;andreacambi71@gmail.com;Andrea;o;COS;R20W1047
+KTLVY23415;ennio.alberici@tiscali.it;ENNIO;o;COS;R20W1047
+YRUOFYKD1V;tonyalbert@tiscali.it;antonio alberto;o;COS;R20W1047
+GNN5O1AZS1;penzoso@tin.it;Vincenzo;o;COS;R20W1047
+DUL1T0B0GD;Domenico.rai@libero.it;Domenico;o;COS;R20W1047
+5447bd6a76;missraffy@tiscali.it;raffaella;a;COS;R20W1047
+PFFY5NZVBS;miki28861@yahoo.it;nunzio;o;COS;R20W1047
+RARSFK4AX0;mimav78@yahoo.it;Marina;a;COS;R20W1047
+05GZVXWCBC;petra.lakic@libero.it;Petra;a;COS;R20W1047
+SLOE4MZIZQ;riccmaior@tiscali.it;Riccardo;o;COS;R20W1047
+6FTNLLNV91;cafur@email.it;Carlo;o;COS;R20W1047
+1ETBR1QGYP;Ale.rvk@gmail.com;Alessandro ;o;COS;R20W1047
+FSQIFJ330A;marino.cristina73@yahoo.it;CRISTINA;a;COS;R20W1047
+VI7ROUOTZJ;jessyca1989@hotmail.it;Jessica;a;COS;R20W1047
+N0Y2R02906;focenza@yahoo.it;alessio;o;COS;R20W1047
+PJVG487Z8V;stbonline@libero.it;tancredi;o;COS;R20W1047
+IMO2N9Z8YA;danyila@inwind.it;Daniela ;a;COS;R20W1047
+FY3JITC1R1;floris.sara@libero.it;Sara;a;COS;R20W1047
+54E0GBH2ME;mamirin85@gmail.com;Laura;a;COS;R20W1047
+3P3ZD0NPZO;zagortenay1958@libero.it;Franco;o;COS;R20W1047
+GEDL1FYWXV;serginha09@gmail.com;sabrina;a;COS;R20W1047
+OUIEXP7C27;nonnasclerotica@libero.it;Anna rhea;a;COS;R20W1047
+CWB6NDHODZ;affinatidaniela@gmail.com;Daniela;a;COS;R20W1047
+9J4VSSQSQF;milenacardone5@gmail.com;Milena;a;COS;R20W1047
+5T5U696BFD;lihe@vxmail2.net;Vittorio;o;COS;R20W1047
+BH723W612R;spanleonardo@gmail.com; leonardo;o;COS;R20W1047
+EYYB2EZI0X;darionavacci91@gmail.com;Dario;o;COS;R20W1047
+BM0V6K4N6M;fabiola_porcarelli@yahoo.it;Fabiola;a;COS;R20W1047
+XBIA7LSL3O;oizirbaf76@hotmail.it;Fabrizio;o;COS;R20W1047
+PBH4W52056;umberto_zampieri@hotmail.it;umberto;o;COS;R20W1047
+FQ20ZG3KGM;annadepaola@gmail.com;anna;a;COS;R20W1047
+2VV5HP1D9M;annabrugnati@gmail.com;ANNA;a;COS;R20W1047
+FBHIG49044;agostino.coletta@alice.it;agostino;o;COS;R20W1047
+LGI565KPSA;carbone.federica@yahoo.it;Federica;a;COS;R20W1047
+3MZKA47111;masemi@hotmail.it;maria alda;a;COS;R20W1047
+VEC00X47WE;ross.zg@gmail.com;Rossano;o;COS;R20W1047
+6Y0Y2B3FSH;dibellaag@libero.it;antonia;a;COS;R20W1047
+S6R2N5JGLB;karla.68@alice.it;Carla;a;COS;R20W1047
+2JB2OJUR9N;enricaruso.ec@gmail.com;enrico;o;COS;R20W1047
+YHR1X28842;concetta.messina@libero.it;concetta;a;COS;R20W1047
+VBM9B4W7PE;Jey_art90@hotmail.it;Jessica ;a;COS;R20W1047
+DYF2EPAEZ1;annalisa79@hotmail.com;ANNALISA;a;COS;R20W1047
+RWJ951SKLV;giadaandrea2012@gmail.com;Giada;a;COS;R20W1047
+0F0RXC361P;alodleno@yahoo.it;stefano;o;COS;R20W1047
+UXSR3KMTK1;annah_eth@hotmail.com;anna;a;COS;R20W1047
+5TK1EN20P7;g.saccinto2015@libero.it;Gabriele;o;COS;R20W1047
+50bb9d9b96;antonio.alaimo-anto@libero.it;Antonio;o;COS;R20W1047
+RZXX6UEAE3;giordanodomenico@live.com;Domenico ;o;COS;R20W1047
+QE6EIN45LI;g_morara@hotmail.com;Giuseppina;a;COS;R20W1047
+341MXA7RB1;pino.mancinelli@gmail.com;pino;o;COS;R20W1047
+535c7a55ea;catycaty@vodafone.it;caterina;a;COS;R20W1047
+4C02A8JZB6;marika.cacioppo@libero.it;marika;a;COS;R20W1047
+N3OY54K0UK;davide.calusi@yahoo.it;Davide;o;COS;R20W1047
+1MDINURIQZ;frntrp@virgilio.it;MariaAngela;a;COS;R20W1047
+SA6M5PWX2H;sabry0802@gmail.com;Sabrina ;a;COS;R20W1047
+2TAE4AADDS;frefab@libero.it;Fabio;o;COS;R20W1047
+G1H72HOPH4;lilith.night@live.com;Giulia ;a;COS;R20W1047
+S322QSOP08;lorenapitera@hotmail.it;Lorena;a;COS;R20W1047
+PY12789WEI;lenca.olave@gmail.com;LENCA;a;COS;R20W1047
+CVQ677N8YX;freddyryks@gmail.com;angelo;o;COS;R20W1047
+R2FUT6SEGJ;simona716@virgilio.it;simona;a;COS;R20W1047
+HECSO0CFTO;lidiapiccioli@yahoo.it;Lidia;a;COS;R20W1047
+9J6VMUY1U0;lotcom@libero.it;ahmet;o;COS;R20W1047
+VTID8JWJ0G;Tania.carbonari79@gmail.com;Tania ;a;COS;R20W1047
+ZGL2Q9NTA2;pacaale@hotmail.it;carmelo;o;COS;R20W1047
+YS3EE0EF9K;zaccarobarba@gmail.com;Barbara;a;COS;R20W1047
+D92NTZ6ESD;cristina.sella@fastwebnet.it;cristina;a;COS;R20W1047
+53fe1baf7d;tbe2000@libero.it;enrica;a;COS;R20W1047
+EFYKX28275;enza.scherma@libero.it;Francesco;o;COS;R20W1047
+U4NI5ZNN5V;margot_lu85@live.it;Marialuisa;a;COS;R20W1047
+HYXFH24155;alexis-punk@hotmail.it;graziella;a;COS;R20W1047
+D2SD25N6DS;sandra.nugnes@libero.it;Sandra;a;COS;R20W1047
+71Y3VSD6H4;iliogaggia@gmail.com;Ilio;o;COS;R20W1047
+XKE0Y02457;o.tomasicchio@yahoo.it;Onofrio;o;COS;R20W1047
+35E4Y5A2D5;mariangelamalinverni@gmail.com;mariangela;a;COS;R20W1047
+XYSYS4724I;braik_antonio@yahoo.it;Braik;o;COS;R20W1047
+O0J7EECAH1;fpg79@yahoo.it;Francesca;a;COS;R20W1047
+546a904f08;lucianapavoni1@yahoo.it;luciana;a;COS;R20W1047
+AM1RNWI950;Francesco.varri@hotmail.it;Francesco ;o;COS;R20W1047
+8XHGN3RCRY;letiray@hotmail.it;Letizia;a;COS;R20W1047
+CFUWSQIRCJ;francescoliuzzi2312@gmail.com;Francesco;o;COS;R20W1047
+SPI1Y21112;rattalinoroberta@gmail.com;roberta;a;COS;R20W1047
+N5V3160DJU;valeale506@yahoo.it;valentina;a;COS;R20W1047
+53d933d615;mihaela84pg@gmail.com;Mihaela;a;COS;R20W1047
+4eda785b6a;francesca.menegon@live.it;francesca;a;COS;R20W1047
+HDAG7E7M9R;alexdrastiko1@yahoo.co.uk;frieda;a;COS;R20W1047
+H4R1N5MCPZ;marilla54@alice.it;Arico';a;COS;R20W1047
+MCU1VSSPB1;ciufforosso59@yahoo.it;paola;a;COS;R20W1047
+0V2PNRIQMY;angela-martino@alice.it;ANGELA;a;COS;R20W1047
+2N1I21S7JS;maria.sabrina.v@alice.it;maria sabrina;a;COS;R20W1047
+5H58KII56V;Giusolimpio@Gmail.com;Giuseppa;a;COS;R20W1047
+X7VP1NL0W5;Ct-iubi17@outlook.it;Pamela ;a;COS;R20W1047
+RCMQYY4OFK;margherita_bevilacqua@yahoo.it;Margherita;a;COS;R20W1047
+4GV0P21553;tizy85@iol.it;Tiziana;a;COS;R20W1047
+CQSSHOHQIF;Swamikenya@live.com;Roberta;a;COS;R20W1047
+723;masmac74@hotmail.com;MARCO;o;COS;R20W1047
+BZUL4QF4H5;coronagius@tiscali.it;Giuseppe;o;COS;R20W1047
+OEYGBZI53O;engel.oflove95@hotmail.it;mariana;a;COS;R20W1047
+33D9U33388;damianocatania@vodafone.it;Damiano;o;COS;R20W1047
+XUJTB4F8Y2;ludafi66@yahoo.it;Daniela;a;COS;R20W1047
+0HP0GDMI0R;patrymat57@hotmail.com;Patrizia;a;COS;R20W1047
+PBTUV20493;pietrociccarelli@alice.it;maria carla;a;COS;R20W1047
+6QHISYVD3P;re_wurm@hotmail.it;Vincenzo ;o;COS;R20W1047
+YR693LNSSS;tiziana.giampaoli73@gmail.com;tiziana;a;COS;R20W1047
+8HRU680211;saveriocampana@alice.it;renata;a;COS;R20W1047
+ZPQA228BX8;rocco.cogliandro@gmail.com;ROCCO;o;COS;R20W1047
+HAJ5Q2QP71;valentina8422@virgilio.it;maria;a;COS;R20W1047
+UO7IT39QXV;paola.aprile2@yahoo.it;paola;a;COS;R20W1047
+XL97OKQXX1;a1234b56@hotmail.com;Renato;o;COS;R20W1047
+PTYO5C7J6F;gi57an59@libero.it;Lodovico;o;COS;R20W1047
+SMTB0R5WZZ;provalabottega@hotmail.it;Marcella ;a;COS;R20W1047
+P96OYPWW5T;susi_gaby@hotmail.com;Susan;a;COS;R20W1047
+7G9IIKGEFD;plapic@tiscali.it;paola;a;COS;R20W1047
+PJWRP61292;montagna.1@libero.it;Fabio;o;COS;R20W1047
+L3F0G9L61L;gesuale.sara@gmail.com;Sara;a;COS;R20W1047
+4YY3J80L2T;framaele2@infinito.it;Elena;a;COS;R20W1047
+6RHFWXUXNG;filippone.maria2010@gmail.com;Maria;a;COS;R20W1047
+53f8d06e1b;schiavf@hotmail.com;Francesco;o;COS;R20W1047
+3PKQX121V2;spadaeva@live.it;Eva;a;COS;R20W1047
+OQO6BEVL94;marialuisa.panuccio@virgilio.it;Marialuisa;a;COS;R20W1047
+V2MIM5FFYO;chef_oldbreak77@yahoo.it;alessandro;o;COS;R20W1047
+ICOBN7FKWV;alicesantini090@gmail.com;ALICE;a;COS;R20W1047
+XNGAKAV1PM;cinzia1014@virgilio.it;cinzia;a;COS;R20W1047
+SIRBLI6CVF;zoesound@hotmail.it;krisztina;a;COS;R20W1047
+85FLR7E8B1;rache74@libero.it;RACHELE;a;COS;R20W1047
+S6H15WGU1L;Carmelamusarra42@gmail.com;Carmela;a;COS;R20W1047
+VO42U83383;aparrotta@libero.it;antonella;a;COS;R20W1047
+53d43c5da5;nab1@hotmail.it;nab;o;COS;R20W1047
+XKXCTDZ2SM;gnomo@riportiamoallaluce.org;Claudio;o;COS;R20W1047
+2VJ7L10543;giomonster@mac.com;Giovanni A.;o;COS;R20W1047
+ASSD065241;emmacialfi@yahoo.it;Emma;a;COS;R20W1047
+5418545b4e;caimi.elisa@gmail.com;elisa;a;COS;R20W1047
+5BGE6VB295;stefania_redaelli@alice.it;stefania;a;COS;R20W1047
+PUMEKUIVWG;akkagigi@libero.it;luigi;o;COS;R20W1047
+8LON731573;vania_castiglia@libero.it;Giovanna;a;COS;R20W1047
+GA8VP6QSEU;diony_82@libero.it;Denise;a;COS;R20W1047
+5283f95b4c;laurabertolazzi@yahoo.it;laura;a;COS;R20W1047
+61KVHSICH1;osirisvany86@yahoo.it;vanessa;a;COS;R20W1047
+56WO1VKTR3;g.giglioli@email.it;Gionata;o;COS;R20W1047
+53QVF97599;marar1@libero.it;Immacolata;a;COS;R20W1047
+KGNCVV42AY;isa.minervini@alice.it;elisabetta;a;COS;R20W1047
+Y71JM75529;simone895@alice.it;simone;o;COS;R20W1047
+8B08TAR2EP;l.faga@libero.it;Loredana;a;COS;R20W1047
+GB61BG65UU;nico.bort.75@gmail.com;Nicoletta;a;COS;R20W1047
+AKN11X92H1;castuit@yahoo.com;Giancarlo;o;COS;R20W1047
+X7UYXL9FGZ;kikka.piras@tiscali.it;Federica;a;COS;R20W1047
+CKB8KI5GMZ;rmontagni90@gmail.com;Roberta ;a;COS;R20W1047
+XZXB5MGTUZ;elenamelzo@libero.it;Elena;a;COS;R20W1047
+WMCE8I7B8K;chi_76@libero.it;chiara;a;COS;R20W1047
+9C1KHAKZG0;gattullipino@libero.it;Giuseppe;o;COS;R20W1047
+4TZNX6BC71;mariarosaria77@libero.it;Maria Rosaria;a;COS;R20W1047
+TZVDQ4G6TX;antoser72@gmail.com;Antonino;o;COS;R20W1047
+VAHFWCZ06Z;antony.dv@hotmail.it;maria antonia;a;COS;R20W1047
+NM62RLLV1O;daniela.cudoni@libero.it;Daniela;a;COS;R20W1047
+GE847H67Y1;pgcalo@hotmail.com;Pietro Giorgio;o;COS;R20W1047
+A52IY21256;anpollini@gmail.com;anna;a;COS;R20W1047
+NV0MGWDUU6;serenamagricdb@gmail.com;serena;a;COS;R20W1047
+WFGKJTKU01;annamaria.se@libero.it;Annamaria;a;COS;R20W1047
+MWM7NZ9EVN;b.imode@libero.it;Barbara;a;COS;R20W1047
+Z4QE2MVT21;fabiomirri@virgilio.it;fabio;o;COS;R20W1047
+NRTS1NTCUC;urbani305@gmail.com;cristina;a;COS;R20W1047
+TY7H533491;lambrotz@libero.it;Lamberto;o;COS;R20W1047
+VQJ5RYR4ZL;aurora79alba@yahoo.it;Aurora;a;COS;R20W1047
+ZLNUPTAA4N;alex-ju29ro@hotmail.it;GIOVANNI;o;COS;R20W1047
+R6V4O1ZBT1;walterino72@tiscali.it;walter;o;COS;R20W1047
+LVCO9F4PY1;dandykatia@hotmail.com;LICIA;a;COS;R20W1047
+TSF1AF7GZH;pastorellamara@gmail.com;Mara;a;COS;R20W1047
+2I2PX54ZSO;anto1959@msn.com;antonella;a;COS;R20W1047
+JSFIEDHJP9;paolino460@gmail.com;bruno;o;COS;R20W1047
+O8HI3N1ZAF;micheletto.flora@libero.it;FLORA;a;COS;R20W1047
+N6CV58BY7J;linda.orabona@libero.it;Linda;a;COS;R20W1047
+47ZJPV7USZ;enzo1barbi@msn.com;vincenzo;o;COS;R20W1047
+IGFT9NT9L8;gualucia@libero.it;Lucia;a;COS;R20W1047
+P20O1EWUGO;Pappozza@yahoo.it;Maria pina;a;COS;R20W1047
+N42B3WNDYL;verademartino@libero.it;vera;a;COS;R20W1047
+HG7GR02930;mary.merletti@libero.it;Maria;a;COS;R20W1047
+8RWQX5WAOL;federicamar97@libero.it;federica;a;COS;R20W1047
+OA9S12JV2Y;kareena@hotmail.it;baljit;a;COS;R20W1047
+OAVZ0IO6JG;chiaratroncon@hotmail.it;Chiara;a;COS;R20W1047
+0KJ2YIKQ64;beatricegatti_2009@libero.it;beatrice;a;COS;R20W1047
+05UXY62451;marzia.goffi@alice.it;marzia;a;COS;R20W1047
+XYDFPGC5LW;barby52fe@gmail.com;Barbara;a;COS;R20W1047
+2QW8SRDU8Y;emanuele.giuffreda.eg@gmail.com;Emanuele ;o;COS;R20W1047
+53fe274812;flavio.anselmi@virgilio.it;flavio;o;COS;R20W1047
+IA27FU21GI;cettycovelli@libero.it;Concetta;a;COS;R20W1047
+5409f80f36;belliardo.monica@alice.it;Monica;a;COS;R20W1047
+QFG77UES3G;emyrossi@yahoo.it;Emanuela;a;COS;R20W1047
+JU308TNGA9;t-rony@hotmail.it;Andrea;o;COS;R20W1047
+4fb8ffe969;maddalena.mal@live.it;Maddalena;a;COS;R20W1047
+L9D1Q81119;n.dav@hotmail.it;ELISA;a;COS;R20W1047
+F518FSTXKS;Tinaaiello@libero.it;Tina;a;COS;R20W1047
+GMAY8PLYCV;debora169@libero.it;Debora;a;COS;R20W1047
+MJYZ0P0JYH;arianna.ciucci@gmail.com;Arianna;a;COS;R20W1047
+JZ0V4YP55X;giancaestefy30@libero.it;giovanni carlo;o;COS;R20W1047
+7FRW2ZG2I2;tanietta94aliceposta@live.it;Tania;a;COS;R20W1047
+4fa8de7a62;rossella.rossini1973@gmail.com;Rossella;a;COS;R20W1047
+LT1G2P3DGC;lorenzo.lapecorella@fastwebnet.it;COMITE;a;COS;R20W1047
+57ALIAJ6EC;cristinadesanti78@yahoo.com;cristina;a;COS;R20W1047
+ICRTWV6I5Q;Nesqua1992@hotmail.it;Elena;a;COS;R20W1047
+GFWY7O9JH1;valevale_79@yahoo.it;Valeria;a;COS;R20W1047
+CZKON46GR0;vincenzobattista@hotmail.it;Vincenzo;o;COS;R20W1047
+9EBJMT7MG7;lacarrierics@gmail.com;Alessandra;a;COS;R20W1047
+5418d973a9;lauram.leone@gmail.com;Laura;a;COS;R20W1047
+R1JNE7YYQ5;sara.luka24@gmail.com;Sara;a;COS;R20W1047
+9RF50GMIW1;info@unagt.it;COSIMA;a;COS;R20W1047
+A1LDX23361;gianpierostroppa@gmail.com;Gianpiero;o;COS;R20W1047
+53ff9a30d5;rosarinaldi77@libero.it;Rosa;a;COS;R20W1047
+544846e91a;claudiabelli73@libero.it;claudia;a;COS;R20W1047
+7PWE1JL511;lunamiriam@libero.it;miriam;a;COS;R20W1047
+5418e8ad3c;xmorg@libero.it;claudia;a;COS;R20W1047
+1SIVJ992OE;marilu1983@hotmail.it;Marialucia;a;COS;R20W1047
+D1V5NVMZKE;raianoannamaria74@gmail.com;Anna ;a;COS;R20W1047
+NEUC056NO4;FalcoAdsl@gmail.com;Giovanni;o;COS;R20W1047
+JIJOM4YIWF;genny634@yahoo.it;Cristina;a;COS;R20W1047
+53ff6135ce;antonella.colarieti@gmail.com;Antonella;a;COS;R20W1047
+NBP371HNIP;Crystalbreeze@hotmail.it;Francesca ;a;COS;R20W1047
+54497024e0;magoafono75@gmail.com;SIMONE;o;COS;R20W1047
+8LYYFDAG5T;davide.piccolo@yahoo.it;Davide;o;COS;R20W1047
+5417bc0d23;muttonir@tiscali.it;rita;o;COS;R20W1047
+XW2HU3AV01;luigi.frojo@amici-musica.it;luigi;o;COS;R20W1047
+UO2KQM9DCA;lety87r@hotmail.it;Letizia;a;COS;R20W1047
+1IEKS2POMN;cuoreneroazzurro72@tiscali.it;chiara;a;COS;R20W1047
+VVUGOXJM89;sevludin69@gmail.com;roberta;a;COS;R20W1047
+77NYPCHDY1;aruspici@libero.it;Giuseppe;o;COS;R20W1047
+52dad19025;tartaross@libero.it;Rossana;a;COS;R20W1047
+FY584FE704;aurix33@yahoo.com;Elena;a;COS;R20W1047
+DF4S10LEVI;ficociellostefania83@gmail.com;Stefania;a;COS;R20W1047
+H46HT57852;amemuc54@hotmail.it;amelia;a;COS;R20W1047
+FXDBMDU9HT;a.mastrogiacomo@gmail.com;Antonello;o;COS;R20W1047
+WKEJGNJQGG;Francescabiosa@alice.it;Francesca;a;COS;R20W1047
+H5SHHTO1KA;arturo.aversa@libero.it;Ciro;o;COS;R20W1047
+M1985Y0H7E;felicita.starace@gmail.com;Felicita ;a;COS;R20W1047
+H89K9ZFT0V;FRIDA82@LIBERO.IT;FEDERICA;a;COS;R20W1047
+969BIWWTLZ;sebverst94@gmail.com;Sebastiano;o;COS;R20W1047
+A7KWK12471;mirimelo@libero.it;miriam;a;COS;R20W1047
+MYF0HPAARA;dimartino_giovanna@yahoo.it;Giovanna ;a;COS;R20W1047
+RQ9M8UIC8M;mailrosaria@gmail.com;maria rosaria;a;COS;R20W1047
+DOYVEWXKA3;andrea.montoli@gmail.com;Andrea;o;COS;R20W1047
+ZFFK7OQJE8;annaguarda@libero.it;Anna;a;COS;R20W1047
+Q1EWTKVWU5;anto1677@hotmail.it;antonietta;a;COS;R20W1047
+8GEN655LT7;katiusciadonofrio@virgilio.it;Katiuscia ;a;COS;R20W1047
+4HW3FHEG43;menica.dr@irgilio.it;domenica;a;COS;R20W1047
+5418efc9cb;ale210572@hotmail.it;alessandra;a;COS;R20W1047
+XS9E055310;stomp.down.killaz@live.it;VITO;o;COS;R20W1047
+1JA22Y9YWM;Farfalladivenere2015@Virgilio.It;Barbara ;a;COS;R20W1047
+1R2PQ9VYI7;manuel.scordo@gmail.com;Manuel;o;COS;R20W1047
+LTEEE7P9GZ;sechimargherita75@gmail.com;Margherita;a;COS;R20W1047
+8TVCKYF5M0;viaggiare23@libero.it;ada;a;COS;R20W1047
+4WHFA3F9SX;Angela90_2009@hotmail.it;Angela;a;COS;R20W1047
+0BOFC42507;chicla2@alice.it;Matteo;o;COS;R20W1047
+QPIJ7PDBZX;giusimassimino.gm@gmail.com;Giuseppina ;a;COS;R20W1047
+0NZMP94662;manu.genovee@libero.it;Manuela;a;COS;R20W1047
+0BBEI9UOSM;mauroricci59@gmail.com;Ricci;o;COS;R20W1047
+N79WW85246;tere631963@libero.it;Maria Teresa;a;COS;R20W1047
+L3TDZ34641;antonellamiano@hotmail.com;Antonia;a;COS;R20W1047
+D3Y9WDR3J6;yuri.cortellini@gmail.com;yuri;o;COS;R20W1047
+8YXXRIKEQE;benvenutopacella@libero.it;Benvenuto;o;COS;R20W1047
+IQ8MSHIOCK;giannicoin@libero.it;Gianni;o;COS;R20W1047
+3W87ZK4JB1;paolacossandi@infinito.it;paola;a;COS;R20W1047
+6Z58VXI3JY;filippolopes53@gmail.com;Filippo;o;COS;R20W1047
+9YH626E100;vivicom@tiscali.it;Viviana;a;COS;R20W1047
+5491a827f2;ile88bs@hotmail.it;Ile;a;COS;R20W1047
+L64Z8FGPX1;rudyvega_2000@yahoo.it;patrizia;a;COS;R20W1047
+S0MFU01110;lorena.turrini@publitalia.it;LORENA;a;COS;R20W1047
+JZA0S66288;roby1790@hotmail.it;Roberta;a;COS;R20W1047
+AIAQXVUATU;ro.sch@live.it;Roberta;a;COS;R20W1047
+QM7IF2N7IS;pourplebutterflyc8@gmail.com;Cristina;a;COS;R20W1047
+0Y8QCDOM8V;Creazioni67@Hotmail.it;Raffaela;a;COS;R20W1047
+SP7A5XAOVN;fasu911@gmail.com;Luca;o;COS;R20W1047
+BPUFCJ346X;Barbara.capatti.67@gmail.com;Barbara;a;COS;R20W1047
+3Y4Z95QWZY;ceco93@virgilio.it;Cosimo ;o;COS;R20W1047
+LCN4V82K9L;tania_1979@libero.it;tania;a;COS;R20W1047
+OTUDOKMFC4;giulia.vallorani@hotmail.it;giulia;a;COS;R20W1047
+53fcb68952;angioletto092.092@gmail.com;Barbara;a;COS;R20W1047
+MOM0MEFGTS;luiginaaudisio@gmail.com;luigina;a;COS;R20W1047
+ARUEDVVQ60;paolaperetti@yahoo.it;Paola;a;COS;R20W1047
+3SEWAEVBYJ;brunamusu@gmail.com;Bruna;a;COS;R20W1047
+VXF5D78SIQ;falag68@hotmail.it;antonella;a;COS;R20W1047
+6BEGCP8H0Y;perez49@vodafone.it;claudio;o;COS;R20W1047
+M2QO3UPY1L;titta57110@vodafone.it;giovanna;a;COS;R20W1047
+8YPAUEUSR1;carusoantonio@libero.it;Antonio;o;COS;R20W1047
+CULXFM8A91;Stefano221261@hotmail.it;Stefano;o;COS;R20W1047
+ZPAVET4VBP;zennaro.stefano@alice.it;Stefano ;o;COS;R20W1047
+HLU2T11327;vic-vic-@hotmail.com;carmy;a;COS;R20W1047
+43HP81PJA7;roby-srb@hotmail.it;Roberta ;a;COS;R20W1047
+5445842f64;mariafil.macri@libero.it;Maria Filomena;a;COS;R20W1047
+S45YVAJLBS;carmelagaliano@libero.it;Carmela;a;COS;R20W1047
+F5DX0B9WD5;piopao18@gmail.com;Pio;o;COS;R20W1047
+BP95804041;violetta.vassallo@tin.it;Violetta;a;COS;R20W1047
+JKF0FPFJJZ;mihailovageliya33@rambler.ru;Nydia;o;COS;R20W1047
+XMBKZ752B0;simoelupotto@gmail.com;Simonetta;a;COS;R20W1047
+HJF8FTGX6D;martinadr95@gmail.com;Martina;a;COS;R20W1047
+3OJF7UBVIJ;v_filipponi@hotmail.com;Valentina;a;COS;R20W1047
+WV6Y712878;patrof@infinito.it;paola;a;COS;R20W1047
+ZA8934NC35;paolino951@gmail.com;Bruno;o;COS;R20W1047
+K2IU62W2QF;pipinoilgrande@live.it;Antonio;o;COS;R20W1047
+K4XUHE7Q2K;marianna83@tin.it;Marianna;a;COS;R20W1047
+H6D3968426;cdrosato@gmail.com;Davide;o;COS;R20W1047
+PVTU821005;dimadimatteogiuseppe@libero.it;giuseppe;o;COS;R20W1047
+36XZUZOO9E;sebastiobarbara@gmail.com;barbara;a;COS;R20W1047
+VPADNZ089B;agnese.crescini@gmail.com;Agnese;a;COS;R20W1047
+DINOJ2Z3II;akire.re@gmail.com;erika;a;COS;R20W1047
+21MBZ1BE2V;antonio.ind1208@gmail.com;ANTONIO;o;COS;R20W1047
+G82VWRQRJC;spanky@tim.it;Arianna;a;COS;R20W1047
+SQG18R22E4;cicciolina.sex@libero.it;antonello;o;COS;R20W1047
+SX7Y36XWPZ;prontolegno.dba@gmail.com;claudia;a;COS;R20W1047
+QQ5MA7A79C;ellebi1972@yahoo.it;Socio;o;COS;R20W1047
+0U3O2YBC7F;debbyhc@libero.it;Deborah;a;COS;R20W1047
+TVVCKV6US3;gestefy@libero.it;stefania;a;COS;R20W1047
+UQJRWQLW4F;sonietta_91@yahoo.it;sonia;a;COS;R20W1047
+63A9UJVHK4;na_t@hotmail.it;Nathascya;a;COS;R20W1047
+0EEB6K82Z1;nmjhb@tin.it;carlo;o;COS;R20W1047
+2AKO397177;iskrainaredsky@gmail.com;rosa raffaella ;a;COS;R20W1047
+MFKQ02C4DN;ritamarika@hotmail.it;rosaria;a;COS;R20W1047
+3CMSM08625;ritastrocchi@virgilio.it;RITA;a;COS;R20W1047
+ZOHRKFSUX1;melindav@hotmail.it;melinda;a;COS;R20W1047
+54499c1744;kpinaman@gmail.com;Kelly;a;COS;R20W1047
+4RVFOZLBPV;laura.busi@hotmail.it;Laura;a;COS;R20W1047
+5Y89ERGPGS;pcrescenzi71@gmail.com;paolo;o;COS;R20W1047
+5418887957;sanminiato.pi@gmail.com;claudio;o;COS;R20W1047
+5X6M6DFMWD;elmarmirefugio@hotmail.com;Claudia;a;COS;R20W1047
+5419852787;livia.nacci@libero.it;livia;a;COS;R20W1047
+01ZIYKHOFR;Salery05@hotmail.it;VALERIA;a;COS;R20W1047
+6C25F8Y8T5;mazzottakatia@libero.it;karia;a;COS;R20W1047
+53dd5016ba;roberto.rossetti54@gmail.com;Roberto;o;COS;R20W1047
+A34XD3KKH7;ciofeka@gmail.com;Francesca;a;COS;R20W1047
+QWZ1S3R6YZ;v.draksler@virgilio.it;Vanessa;a;COS;R20W1047
+NCZB3EX8EQ;idaemme@hotmail.it;ida;a;COS;R20W1047
+M7DGA49837;edad@libero.it;davide;o;COS;R20W1047
+QYMO831357;scherma.roberto@libero.it;Roberto;o;COS;R20W1047
+HEI7R11QKG;emmegici2001@yahoo.it;MARIA;a;COS;R20W1047
+PRRXO590NH;roberta_galli@hotmail.it;Roberta;a;COS;R20W1047
+P6B8X6H6G8;arianna_bosio.ab@libero.it;arianna;a;COS;R20W1047
+ZCP3MYOB0H;pellegrino.eleonora@gmail.com;Eleonora;a;COS;R20W1047
+5447e1b84a;wlilly79@msn.com;Sara;a;COS;R20W1047
+1YAYGJO5DJ;fraromi@alice.it;Michele ;o;COS;R20W1047
+0ILVMLT0M5;lamattinaantonello1963@gmail.com;Antonello;o;COS;R20W1047
+XFE9D22JR7;daniela.piacentino@hotmail.it;DANIELA;a;COS;R20W1047
+FMJP2EFULD;almoch78@gmail.com;monica;a;COS;R20W1047
+ZNL9X6G2CJ;lupobraian@libero.it;vincenzo;o;COS;R20W1047
+SUOHTKAZL7;mariellaag@libero.it;Mariella;a;COS;R20W1047
+3NVVRPIY72;salvatore.orlando75@gmail.com;salvatore;o;COS;R20W1047
+53fdc8681b;cadoro65@gmail.com;mauro;o;COS;R20W1047
+DY5FYKI52K;daddaumpaumpa2001@yahoo.it;Davide;o;COS;R20W1047
+53fd619f62;marialeo62@libero.it;maria;a;COS;R20W1047
+L4QHAPGQEW;chieu_fedez@yahoo.it;Federica;a;COS;R20W1047
+O29CC15118;simo.albo@gmail.com;Simone;o;COS;R20W1047
+DIF7EPEPEF;annico64@libero.it;Nicola;o;COS;R20W1047
+54189aebd3;gnappa1984@libero.it;Francesca;a;COS;R20W1047
+QA6X0CAS7J;magdalena2775@libero.it;Magdalena;a;COS;R20W1047
+4f28515c85;rossana-t@libero.it;rossana;a;COS;R20W1047
+AXDPMIYJLM;pomposol@yahoo.it;Lucia;a;COS;R20W1047
+6RPHJC4YXF;prometeo1963@libero.it;antonio;o;COS;R20W1047
+8SHEFMIDK7;alberto.ianniciello@gmail.com;alberto;o;COS;R20W1047
+MHI9OY5V3S;Fab8646@me.com;Fabiola ;a;COS;R20W1047
+TGUG9FBWP1;maxcarmelo@libero.it;Domenico;o;COS;R20W1047
+AIHS176ZO9;mariodilernia@tiscali.it;Mario;o;COS;R20W1047
+9UZNZKOMFQ;monica.martino1981@gmail.com;Monica ;a;COS;R20W1047
+DH52RA3E83;sandraianno@gmail.com;sandra;a;COS;R20W1047
+CLWSBEFH01;paperboy@infinito.it;Emanuele;o;COS;R20W1047
+U72NTBUNUN;f.dibenedetto28@gmail.com;Francesco;o;COS;R20W1047
+2ZWZN0K3XN;trukulina@gmail.com;Barbara ;a;COS;R20W1047
+9OQXCZLTJ9;paperone64@gmail.com;sacco;o;COS;R20W1047
+OMEIKP5A41;sandra.mannucci@ise-srl.com;Sandra;a;COS;R20W1047
+S12K1AJD77;donipilla@libero.it;DONATELLA;a;COS;R20W1047
+0GM3K8MH5P;Pantaleon.janet@libero.it;Riccardo Luigi Mario ;o;COS;R20W1047
+GY3N0TL87F;delphin1971@libero.it;Monica;a;COS;R20W1047
+JGLPG4OD5R;Magdala6614@gmail.com;Maddalena;a;COS;R20W1047
+6GE1H9A1GG;futura.i@hotmail.it;Ilaria;a;COS;R20W1047
+TE07XRQVXY;marinapauletti7@gmail.com;marina;a;COS;R20W1047
+3XIF25WBIL;bibi.m@fastwebnet.it;Giulia;a;COS;R20W1047
+5417b80e61;vitelli.massimo@libero.it;MASSIMO;o;COS;R20W1047
+O0QWSE1ULJ;eli.jhs.nicol@gmail.com;ELISABETH;a;COS;R20W1047
+BLR2K06003;breviglieri.massimo@alice.it;Massimo;o;COS;R20W1047
+AYJFKPMRV9;monicacornalba@libero.it;monica;a;COS;R20W1047
+53e63f942c;ndrconti@libero.it;andrea;o;COS;R20W1047
+BVEVUBDECV;Ambra_mm@yahoo.it;Maria Andreea;a;COS;R20W1047
+XI5CDBMICO;francescarago54@gmail.com;Francesca;a;COS;R20W1047
+4MNM14NOL2;malu.58@libero.it;maria laura;a;COS;R20W1047
+WBWKCOQY8A;cinziamelas@alice.it;ignazina;a;COS;R20W1047
+K08O68EHTP;Frasaurel@libero.it;Francesca;a;COS;R20W1047
+4ea2f22e7d;marcotrincanato74@yahoo.it;Marco;o;COS;R20W1047
+YJ3X0E5M85;mirella_nucera@libero.it;mirella;a;COS;R20W1047
+NNM8002842;ulisse12@libero.it;rosanna;a;COS;R20W1047
+D4MJHE82AC;liselotte@hotmail.it;Manuela;a;COS;R20W1047
+G197ZAFM7I;sabrina.merola@gmail.com;Sabrina;a;COS;R20W1047
+0F2CFFMID7;andranidomenico@libero.it;domenico;o;COS;R20W1047
+7L50Y10715;mantide78@yahoo.it;Fornelli;a;COS;R20W1047
+F4UFO2GX4N;baiadegliangeli@yahoo.it;NICOLA;o;COS;R20W1047
+OTJ7HQPTXM;Nicolazampogna30@gmail.com;Nicola ;o;COS;R20W1047
+CYO90OFLRT;fatima.tarquini@alice.it;Fatima;a;COS;R20W1047
+QX4P7FW0V1;devil19@email.it;irene;a;COS;R20W1047
+R6RFUFMFCK;lucia.vecchiato@libero.it;LUCIA;a;COS;R20W1047
+TVBKHUWHXO;fortunatofc@libero.it;francesca;a;COS;R20W1047
+2VVJF12010;mara.piazzolla@gmail.com;Marisa;a;COS;R20W1047
+UWZR966GU2;ombri204@yahoo.it;Ombretta;a;COS;R20W1047
+Q0LI4QN2IO;Monicaranieri8@gmail.com;Monica;a;COS;R20W1047
+3T6848Y6NC;Palmierilucia1971@gmail.com;Lucia;a;COS;R20W1047
+HCQUD64420;formarielli@libero.it;fortunato;o;COS;R20W1047
+70G60MYJ65;lorella.orabona@virgilio.it;Lorella ;a;COS;R20W1047
+6RGE4YEUHV;agaboli@alice.it;Alessandra ;a;COS;R20W1047
+GJDIA25006;marzia110@virgilio.it;marzia;a;COS;R20W1047
+D2P4JNBFRG;Capomollacat14@gmail.com;Caterina;a;COS;R20W1047
+UNW3W20904;patriziafranchinbi@hotmail.it;florinda;a;COS;R20W1047
+R6N8792244;angela888@virgilio.it;maria angela;a;COS;R20W1047
+NOLBY0N9W5;micth80@gmail.com;Michele;o;COS;R20W1047
+X06GBOM3XO;st.certo@gmail.com;Stefano;o;COS;R20W1047
+6U0XL2YC9V;paola.missinato.71@libero.it;paola;a;COS;R20W1047
+D2TYZ61122;fortunella60@gmail.com;Fortuna;a;COS;R20W1047
+OKYRR63141;lubrika@libero.it;lucio;o;COS;R20W1047
+4C5LRN559U;montone.marco@tiscali.it;Marco;o;COS;R20W1047
+WQ5OZ05873;laislieanne@libero.it;ANNA LISA;a;COS;R20W1047
+MRS2DU9AZH;paciello.fil@gmail.com;filomena;a;COS;R20W1047
+KOA4JM54JR;c.nna1992@tiscali.it;anna;a;COS;R20W1047
+BWYQ545515;luanostini@hotmail.it;luana;a;COS;R20W1047
+4ea6c82ae0;fraualek@hotmail.it;alessia;a;COS;R20W1047
+9500SQ3XEO;klaudia-marte@hotmail.it;Claudia;a;COS;R20W1047
+8HQAZ2L49N;irenecaracchi1@libero.it;Irene;a;COS;R20W1047
+QE99AGIZG7;antonella.iacopinelli@yahoo.it;Antonella;a;COS;R20W1047
+5447ee2c78;giovannapannuzzo7@gmail.com;Giovanna;a;COS;R20W1047
+541bc0ced8;irene.patania@gmail.com;irene;a;COS;R20W1047
+5WSV5P6IZL;Ducci.erica@gmail.com;Erica;a;COS;R20W1047
+83HQB81891;optimusvir@libero.it;Paola;a;COS;R20W1047
+17SFM92890;annalisa.ciancaglini@libero.it;annalisa;a;COS;R20W1047
+U7QZEQLO8Y;Paolitas68@libero.it;Paola;a;COS;R20W1047
+BTW8X3HCBL;Ignaziaverna1784@gmail.com;Ignazia ;a;COS;R20W1047
+KO4992CP6E;vigano.mario@tiscali.it;Mario;o;COS;R20W1047
+1VG0C4RLSP;sandra.riccio1966@libero.it;Sandra;a;COS;R20W1047
+XC3Y0ENSDS;fabioandlaura@hotmail.it;Fabio;o;COS;R20W1047
+OXQML1E5VT;odessa41@gmail.com;Damiano;o;COS;R20W1047
+V0ZZ333N21;smossa@ymail.com;simonetta;a;COS;R20W1047
+WOYQ3RIITB;saratoga.fm@alice.it;maria rosa;a;COS;R20W1047
+ESP6FE9Y1Q;xloredana@live.it;Loredana;a;COS;R20W1047
+WK2BLWBPG8;gattaneve1973.a@libero.it;Alessandra;a;COS;R20W1047
+53d68be73c;l3ct3rina__@hotmail.it;antonella;a;COS;R20W1047
+YAPQ1IUX4T;manuelabertino@alice.it;manuela;a;COS;R20W1047
+PVDCQ08033;amaldifassi@gmail.com;Alessandra;a;COS;R20W1047
+TWCK7TQJY1;aleniamx@yahoo.it;mauro;o;COS;R20W1047
+LPVC1BQ0X0;sissydalmonte@yahoo.it;SILVIA;a;COS;R20W1047
+ABEYS54981;prudence67@alice.it;paola;a;COS;R20W1047
+VU0FYZ40K4;vida11@hotmail.it;daniela;a;COS;R20W1047
+FD8XM13713;tito23@hotmail.com;antonio;o;COS;R20W1047
+0HHG762596;chiara.matera@gmail.com;chiara;a;COS;R20W1047
+VHT7ZJL9Q1;paolo.francia@gruppohera.it;Paolo;o;COS;R20W1047
+W25MEQWDVV;deluccia.francesco@gmail.com;Francesco;o;COS;R20W1047
+PAEVAC6G2K;Kikka_lon@hotmail.it;Federica;a;COS;R20W1047
+5422b19858;brunabolognesi@gmail.com;bruna;a;COS;R20W1047
+NFCDE99TQA;anto81s3@gmail.com;Antonio;o;COS;R20W1047
+5400d11ecd;dragosor@yahoo.com;Sorana;a;COS;R20W1047
+512C35HPBT;anellifran@virgilio.it;francesco;o;COS;R20W1047
+5BZQ2PGADH;avagnina.veronica@libero.it;veronica;a;COS;R20W1047
+XM4VTBB3TE;carla.rinero@tiscali.it;Carla;a;COS;R20W1047
+5418ea0c06;skyzzo7@icloud.com;Erika;a;COS;R20W1047
+PCMP3N8PHU;giada.baraldo@virgilio.it;giada;a;COS;R20W1047
+C7PI8TMX23;caimanonano77@gmail.com;Maeba ;a;COS;R20W1047
+S4IW381284;elenamaffei@libero.it;ELENA;a;COS;R20W1047
+K3XUUZ3I0Q;flymax2@gmail.com;Massimiliano ;o;COS;R20W1047
+ZXROJ14248;www.sabry-1993@live.it;Sabrina;a;COS;R20W1047
+541b943546;jessicacalero@libero.it;Jessica;a;COS;R20W1047
+SN1HUVNL63;lindadilu@virgilio.it;LINDA;a;COS;R20W1047
+R0R4SNOYZ1;apanzarea@tiscali.it;Alessandro;o;COS;R20W1047
+54c8fb3cd3;reginadellaneve75@libero.it;Simona;a;COS;R20W1047
+6JHJ4OK1H3;leof@outlook.it;francesca;a;COS;R20W1047
+B3VD633333;mpmaripala@gmail.com;Mariella;a;COS;R20W1047
+AZBABBT59J;alessandro.bongallino@gmail.com;Alessandro;o;COS;R20W1047
+MBLH346141;micela.cosoli@poste.it;micela;a;COS;R20W1047
+K26NJ490C1;claudioiade@gmail.com;Claudio;o;COS;R20W1047
+7JZMXS4EM2;rossfrat@gmail.com;Rossana;a;COS;R20W1047
+FMK5ZX0JM4;zinetti73@gmail.com;Michele ;o;COS;R20W1047
+XGAKW60559;pat_97@live.it;pippo;o;COS;R20W1047
+Z3PVO54449;valter.frosio@alice.it;Valter;o;COS;R20W1047
+F2TE01WJI3;ferrarasalvatore@live.it;Salvatore Ignazio;o;COS;R20W1047
+LFBLKM35W8;Simo.dl@live.it;Simona;a;COS;R20W1047
+VQX23SPYJ1;agatamolinari@hotmail.it;Agata;a;COS;R20W1047
+871WVI3445;valentyna-91@hotmail.it;Valentina;a;COS;R20W1047
+53d7b6e53c;galpol.andy@yahoo.it;ANDREA;a;COS;R20W1047
+GCNIL1AIE1;Nidoli51@yahoo.com;daniela;a;COS;R20W1047
+FY6HKA21J8;bracciante.mario@gmail.com;Mario;o;COS;R20W1047
+G9OHET583A;giada.parola@gmail.com;Giada;a;COS;R20W1047
+M8E4T5CKY9;meribianco64@gmail.com;MARIA;a;COS;R20W1047
+EMLMDPKKJQ;elena.mole@hotmail.it;Elena;a;COS;R20W1047
+544872afa6;csalituro@libero.it;Claudia;a;COS;R20W1047
+5447a39ad1;iagonni@yahoo.it;Gelu;o;COS;R20W1047
+9696U82736;eliie85@fastwebnet.it;ernesto;o;COS;R20W1047
+M2M1HSNU6R;vale.recalcati@gmail.com;Valentina;a;COS;R20W1047
+0D8MT96084;maxcerokee@gmail.com;massimo;o;COS;R20W1047
+Z973NXODID;barbara.folegatti@tiscali.it;Barbara;a;COS;R20W1047
+53RDNE4WKM;lmlucimi2@gmail.com;lucia;a;COS;R20W1047
+WCQPF47RP7;inosob@yahoo.it;Emanuela;a;COS;R20W1047
+HDXJ351416;olviagras@gmail.com;olivia;a;COS;R20W1047
+KAWXITCBEN;paoloalloni1975@yahoo.it;paolo;o;COS;R20W1047
+HYW9S78948;lagunablu24@libero.it;Michela;a;COS;R20W1047
+4f3a87a791;pacinci@libero.it;giuseppe;o;COS;R20W1047
+0ADM943X71;m.crocco@cavannagroup.com;Maurizio;o;COS;R20W1047
+VCHF6THKKT;Robertacoretti66@gmail.com;Roberta;a;COS;R20W1047
+0UKJ61MAYX;chatestwork@gmail.com;Charlotte;a;COS;R20W1047
+4J1L02YVS5;monellina-2004@live.it;Jennifer;a;COS;R20W1047
+7T9ET1T2GA;luciana.martina76@gmail.com;Luciana;a;COS;R20W1047
+14G3X17287;brannarita@libero.it;Annarita;a;COS;R20W1047
+MYUQGTNDPT;red57rox@gmail.com;Rossana;a;COS;R20W1047
+AU2EPA7OCZ;Stefaniacretella@gmail.com;Stefania;a;COS;R20W1047
+M6D8TK3AZL;marcellosabatino@yahoo.it;marcello;o;COS;R20W1047
+NNDNYZGI9H;gpina67@yahoo.it;Giuliana;a;COS;R20W1047
+JT4AOFDWWF;avv.francescasimeoni@alice.it;Francesca;a;COS;R20W1047
+4V9QTGTYUX;eliscapi@libero.it;Elisa;a;COS;R20W1047
+0BCV8MRX7C;laura_sommadossi@hotmail.it;laura;a;COS;R20W1047
+Y5N82XAYZC;villettavittoria@gmail.com;Matteo;o;COS;R20W1047
+0T6NLVSHQH;fantasy20012015@libero.it;vittoria;a;COS;R20W1047
+KSNQA82192;franchinielisabetta@yahoo.it;ELISABETTA;a;COS;R20W1047
+BXT4981151;federicabarbieri1@virgilio.it;federica;a;COS;R20W1047
+NZ4KIQ4GA1;maxsalentina92@hotmail.it;Chiara;a;COS;R20W1047
+WG879MR4KK;eldaamprimo1959@gmail.com;ELDA;a;COS;R20W1047
+AYR7917828;detpao@libero.it;PAOLA;a;COS;R20W1047
+U8M5MDFPZA;avirgolin@gmail.com;Annalisa;a;COS;R20W1047
+7RBUEK2GQ4;daninimue@gmail.com;daniela;a;COS;R20W1047
+9V9RJ09201;andrea.righetto@email.it;Andrea;o;COS;R20W1047
+YM7MP5MSAH;mary9226@outlook.it;marilena;a;COS;R20W1047
+7KSR2290E1;tea_san@libero.it;Teresa;a;COS;R20W1047
+YGG62N4A0J;valyemiky@hotmail.it;maria;a;COS;R20W1047
+RJEIJGX9SQ;chiara171077@gmail.com;Chiara;a;COS;R20W1047
+8SSJO5QHV3;guadacos@iol.it;Maria;a;COS;R20W1047
+XT5V4OQA9J;chistefra@libero.it;MANUELA;a;COS;R20W1047
+P3D0YMWAX4;carinimanuel@gmail.com;Manuel;o;COS;R20W1047
+AE7P677902;gina.amodei@libero.it;ginetta;a;COS;R20W1047
+9O8AJA6PC0;sandra.redo@yahoo.it;Sandra;a;COS;R20W1047
+BOG0M8F3CG;laura.sguazzo@email.it;laura;a;COS;R20W1047
+WNI9Z9E71T;silvia.starrentino85@gmail.com;silvia;a;COS;R20W1047
+MF77ZXRC8X;lucamorelli10@libero.it;luca;o;COS;R20W1047
+FL3Y7DUSQM;rocry.spanarelli@gmail.com;Socia;a;COS;R20W1047
+A0TNSZ7Y4J;abateserena77@gmail.com;serena;a;COS;R20W1047
+65TPFA62GU;g.roby2002@libero.it;roberta;a;COS;R20W1047
+EQEQ1GKR91;clmicetta78@gmail.com;Chiara;a;COS;R20W1047
+KQZMO49664;mira55@libero.it;maria rosaria ;a;COS;R20W1047
+YNPMLPB1RW;fantas1afolle@gmail.com;verena;a;COS;R20W1047
+D9PL7TP081;nicobonfanti@hotmail.com;nicoletta;a;COS;R20W1047
+LTHNE2ZJ04;lamiamamma66@hotmail.it;maria;a;COS;R20W1047
+TVFGRAZTA4;pollmcalbanese@gmail.com;paolo;o;COS;R20W1047
+4OPBM97582;willow_marnie@alice.it;Alessandra;a;COS;R20W1047
+A1RW3VNZDP;veeziedioclito@gmail.com;Oclito;o;COS;R20W1047
+NDYMEN511P;antosaint@gmail.com;Antonella;a;COS;R20W1047
+9BX5N4Z7RE;bombonela_21_88@yahoo.com;Ramona ;a;COS;R20W1047
+4CMGC86I0H;mica01@hotmail.it;sonia;a;COS;R20W1047
+7O2BUZ77Y1;nancyrice@libero.it;annunziata;a;COS;R20W1047
+RR3TGR1KMJ;cescacracco@hotmail.it;Francesca;a;COS;R20W1047
+H3H0532732;paolo.paliotta@virgilio.it;paolo;o;COS;R20W1047
+2Z1DIN3ELN;giochiandrea39@gmail.com;andrea;o;COS;R20W1047
+Y9JHNX9CJT;pr@fastmind.it;Piero;o;COS;R20W1047
+542273460b;arasmari.g@libero.it;sara;a;COS;R20W1047
+W5CHBVF1ZE;roberta-lab-89@hotmail.it;Roberta;a;COS;R20W1047
+TXZTV71526;libero@simo.it;s;o;COS;R20W1047
+X2NSQ5CEL3;jessika0704@live.it;Jessica;a;COS;R20W1047
+14O6S20P25;mezzanzanica.roberto@virgilio.it;roberto;o;COS;R20W1047
+8JSA148IC1;mariarosaria.iacobelli@idrdesign.it;mariarosaria;a;COS;R20W1047
+NPUADABTLH;alberto-04@hotmail.it;Chiara;a;COS;R20W1047
+LWM7UHMUS1;nmarino1@iol.it;Nicoletta;a;COS;R20W1047
+MC71679369;simo70_2007@libero.it;simona;a;COS;R20W1047
+EAFPMQ2R5Q;ziopippo1976@yahoo.it;serena;a;COS;R20W1047
+JJ3F81P4RJ;senvy2006@gmail.com;Vincenzo;o;COS;R20W1047
+DAMBRBH4QH;loredananardin@alice.it;Loredana;a;COS;R20W1047
+GHTXI5P231;marco.dc@email.it;Marco;o;COS;R20W1047
+HMNJ26KZAI;youwithus@hotmail.it;Stefano;o;COS;R20W1047
+X13ZZBNM5U;bluberti@alice.it;bruna;a;COS;R20W1047
+H7HKSQGHIT;ver_par@libero.it;veronica;a;COS;R20W1047
+YKKX2JXEW3;apelingotti@yahoo.it;alessandro;o;COS;R20W1047
+70BOKYL9M0;sashamosky1965@gmail.com;Stefano;o;COS;R20W1047
+9D93FIXIMK;alemiraglia@libero.it;alessandra;a;COS;R20W1047
+YPK32RFCQO;dulce2177@gmail.com;anita maria ;a;COS;R20W1047
+ZO51OL1GR1;giannadaly@libero.it;gianna;a;COS;R20W1047
+50b85240dd;sigononce@hotmail.com;Gianluca;o;COS;R20W1047
+YA3PD15413;giannapetruzzelli@gmail.com;gianna;a;COS;R20W1047
+53f62c0e6c;anna.chiarap@libero.it;annachiara;a;COS;R20W1047
+BNTM4J31O1;vicfox@tiscali.it;Vincenzo;o;COS;R20W1047
+5447f8aebe;giorgiomantica@tiscali.it;giorgio;o;COS;R20W1047
+S6X7O30523;odiesseo@yahoo.it;Michele;o;COS;R20W1047
+HCC5CLK3WL;cla.tartina@virgilio.it;Patrizia;a;COS;R20W1047
+5IZ8WI1XS2;gattabsx@hotmail.it;Simyx;a;COS;R20W1047
+Z135PDTGNE;Rita020689@gmail.com;Rita;a;COS;R20W1047
+Y198ZG7DAS;serena.bracci@libero.it;Serena;a;COS;R20W1047
+542318610e;ladianasira@gmail.com;Diana;a;COS;R20W1047
+JZ7DK49384;uadisoui@yahoo.com;mohammed;o;COS;R20W1047
+L4YP8RNYS0;feddy2d.fp@gmail.com;Federica;a;COS;R20W1047
+7XAPDWSW01;maty86@alice.it;Alessandra;a;COS;R20W1047
+992QC56151;claudio.raffaeli@email.it;claudio;o;COS;R20W1047
+R3ADHNLSR8;merygra94@gmail.com;Maria Grazia;a;COS;R20W1047
+J5IVNHW2YT;vanessa12101982@libero.it;vanessa;a;COS;R20W1047
+25LX29J2I1;daele@libero.it;Paola;a;COS;R20W1047
+1G9RLTNPW7;piattifsm@gmail.com;sara;a;COS;R20W1047
+5FY9IQHG0J;ivanabuzzi@alice.it;Ivana;a;COS;R20W1047
+8PUHPSNP9S;amenniti77@hotmail.it;Andrea;o;COS;R20W1047
+BZB13G77Y1;nela.zito@virgilio.it;Nela;a;COS;R20W1047
+8S4M7EXYI7;jack_ro@tiscali.it;Roberto;o;COS;R20W1047
+PIWVYRO9ER;carinageo@yahoo.com;Mary;a;COS;R20W1047
+3QBKMJUD2C;filippooro5@gmail.com;Francesco;o;COS;R20W1047
+CRBMQBFM9X;belfiro1@tiscali.it;Rossana;a;COS;R20W1047
+1TA34UDF7D;Lauramartin260582@gmail.com;Laura ;a;COS;R20W1047
+ZNCLDBKS7L;madoekmek@gmail.com;Matteo;o;COS;R20W1047
+NKSTE18963;martasciolti@hotmail.it;Marta;a;COS;R20W1047
+545a6f583c;butterfly8311@hotmail.it;Manuela;a;COS;R20W1047
+HSD56DYDBD;alex.puppi@gmail.com;Alessandro;o;COS;R20W1047
+N2J9SQW3B1;gf.veneruso@tiscali.it;gian filippo;o;COS;R20W1047
+O20YETFQY1;Claudio.micol@gmail.com;Claudio;o;COS;R20W1047
+5ZSVEC6UIJ;andrea.mazzone71@hotmail.it;Maria Rosaria ;a;COS;R20W1047
+5ORYP01313;peggiloretta@gmail.com;Loretta;a;COS;R20W1047
+G0ZGFIFAMZ;vale_gonzalez95@yahoo.com;Valeria ;a;COS;R20W1047
+JG66X9M4CT;paschinomassimo@yahoo.it;Massimo;o;COS;R20W1047
+D82LI5IUL7;andreacricco@libero.it;Andrea;o;COS;R20W1047
+IXKC278A61;acgaliani@virgilio.it;anna chiara;a;COS;R20W1047
+0DN2YZ36XK;cristinabeccaria25@gmail.com;Cristina;a;COS;R20W1047
+E4SQFNNS7F;annacirillo210@gmail.com;anna;a;COS;R20W1047
+6545REPEX4;marinasergi6363@gmail.com;marina;a;COS;R20W1047
+8W672CVWZO;vaneccel@inwind.it;Giovanni;o;COS;R20W1047
+53fab25124;angela.santacroce@teletu.it;angela;a;COS;R20W1047
+66UXM4Q5HY;raffaella.crepaldi64@gmail.com;Raffaella ;a;COS;R20W1047
+53fcd0f273;roberto.biglino@hotmail.it;roberto;o;COS;R20W1047
+DCWC78PDU1;alessandrobeltra@tiscali.it;Sandro;o;COS;R20W1047
+U5QUSSY4WQ;robytri@alice.it;ROBERTA;a;COS;R20W1047
+QHKHNT0ADT;Ndr.rss.5@gmail.com;Andrea;o;COS;R20W1047
+5109aeeaf1;annarita_amendola@libero.it;annarita;a;COS;R20W1047
+8WDN0IWQD5;E.venuti@gmail.com;Enrico;o;COS;R20W1047
+0UI6J3066O;summerxxx@hotmail.it;Mariana;a;COS;R20W1047
+N68Q007261;lo-is@libero.it;Loris;o;COS;R20W1047
+13GRNFPFBJ;dionett_a@hotmail.com;Sonia;a;COS;R20W1047
+GDRFL39WUX;tittydp@hotmail.it;Tiziana;a;COS;R20W1047
+SGWAH65249;umpalumpa1@libero.it;Alessandro;o;COS;R20W1047
+53fd000d96;bgiulia60@libero.it;GIULIA;a;COS;R20W1047
+CH5CNODUUO;cricris75@libero.it;Cristina;a;COS;R20W1047
+1VFE0MFNS6;Giulio.galluccio@gmail.com;Giulio;o;COS;R20W1047
+K5JO1GEPR8;claudio197979@tiscali.it;claudio;o;COS;R20W1047
+SR3PEPHS47;Isabella.cignini@libero.it;isabella;a;COS;R20W1047
+OKJRD1X3ZB;maura.frances@libero.it;maura;a;COS;R20W1047
+K1QSI9D0WC;rosydurso72@gmail.com;Rosy;a;COS;R20W1047
+KT44ORD0WN;vale_roby@alice.it;Valentina;a;COS;R20W1047
+KMTF3OT9YT;claudiab77@live.it;Claudia;a;COS;R20W1047
+85H4M62YZ2;vincenzorabia@gmail.com;Vincenzo Chico;o;COS;R20W1047
+2F95V52H5X;nico.nicofenica@libero.it;federica;a;COS;R20W1047
+MG3M111141;valentisch@virgilio.it;Valentina;a;COS;R20W1047
+JDWZZOOLN7;www.nagflar@hotmail.it;Andrea;o;COS;R20W1047
+S1WB2YKOXF;Justinianaz@yahoo.com;Justine;a;COS;R20W1047
+8BZCHFTU0U;emmanuele.1995@live.it;Emmanuele;o;COS;R20W1047
+53e41b72a4;patrizia_branca@hotmail.it;patrizia;a;COS;R20W1047
+TZZ9TMV826;Raydom@tiscali.it;Raffaella;a;COS;R20W1047
+1167F02998;cinzia.baltolu@tiscali.it;Cinzia;a;COS;R20W1047
+ZM3523GC40;miriammas@alice.it;Miriam;a;COS;R20W1047
+DK3MM756Z1;monica.molinai@unimi.it;Monica;a;COS;R20W1047
+F3566Y93CG;fatina1973@tiscali.it;labori;a;COS;R20W1047
+ROAQPF31R6;t-red@hotmail.it;Antonia;a;COS;R20W1047
+544935e277;soniacorsini1@gmail.com;sonia;a;COS;R20W1047
+E68N0ERS21;sabri1966@infinito.it;sabrina;a;COS;R20W1047
+5IJ8B33222;edofrac@gmail.com;Edoardo;o;COS;R20W1047
+CX5Q25JUF2;mary_ruggia@libero.it;Mary;a;COS;R20W1047
+U924AOAL8D;e.villafranca@hotmail.it;erica;a;COS;R20W1047
+YPXP9O9D55;giony7474@yahoo.it;giovanna;a;COS;R20W1047
+0Q7FTFAPUS;antoniospadafora64@tiscali.it;ANTONIO;o;COS;R20W1047
+PF094CNLQ5;marisanociti@libero.it;marisa;a;COS;R20W1047
+E2GDZ18676;emilia.pacelli@tin.it;Emilia;a;COS;R20W1047
+BUBQY31332;cargia@email.it;Argia;a;COS;R20W1047
+6328AYZGEE;shinter@hotmail.it;michele;o;COS;R20W1047
+PHHUMCKJ4P;Luciana.beltrami62@gmail.com;luciana;a;COS;R20W1047
+IDMTYCZYVT;silviabonini2@gmail.com;Silvia;a;COS;R20W1047
+4QWRR7TXXA;rosysansone.69@hotmail.com;mario;o;COS;R20W1047
+I5WPLM2TME;fabio.coppolaf@libero.it;Fabio;o;COS;R20W1047
+MUBUJETNKE;r.mustile@lubero.it;Rosaria;a;COS;R20W1047
+50b685acec;maiellaro.p@libero.it;carmela;a;COS;R20W1047
+991AZNYSCZ;mauramusi@gmail.com;Andreina;a;COS;R20W1047
+7N56GPVJ0V;mirellachiarle@virgilio.it;MIRELLA;a;COS;R20W1047
+JV4U5CQHM3;rogirl@hotmail.it;Francesca;a;COS;R20W1047
+OXXD1M354G;niki27090@hotmail.it;Nicoletta;a;COS;R20W1047
+2E6JM2F2ZR;kikkachan@yahoo.it;Federica;a;COS;R20W1047
+UA6X813AGE;Eleonora0394@gmail.com;Eleonora;a;COS;R20W1047
+TF3O0B7OG1;alexpiacente@hotmail.com;Alessandra;a;COS;R20W1047
+C2MBNQDCZU;pmamariellina@libero.it;Maria Adriana;a;COS;R20W1047
+LFALOSSFDT;vincent.t@virgilio.it;Vincenzo;o;COS;R20W1047
+5447e9b345;effieffi@yahoo.com;EVA;a;COS;R20W1047
+53fadfa942;silvia1983625@gmail.com;silvia;a;COS;R20W1047
+6XJWRY4I5U;mare66s@libero.it;stefania;a;COS;R20W1047
+Q4LPZKJ73D;eleatti@libero.it;Eleonora ;a;COS;R20W1047
+1DZIFFDWMZ;si.visconti@gmail.com;sabrina;a;COS;R20W1047
+5B71156678;leon74@live.it;leonardo;o;COS;R20W1047
+5447a7a5c8;sfaverzani@ao.pr.it;Silvia;a;COS;R20W1047
+508cb672d6;manuelina22@gmail.com;Manuela;a;COS;R20W1047
+WMRQDRNHGZ;affinitamaria8@gmail.com;maria;a;COS;R20W1047
+JLHH2SFAA8;guadagnare79@gmail.com;Katia;a;COS;R20W1047
+54O2HI75SH;SONIA.LOCA@TISCALI.IT;SONIA;a;COS;R20W1047
+9HZ3H04YQ6;gaby74karina_luis@yahoo.it;Gabriela;a;COS;R20W1047
+FX80V77783;fracatania80@gmail.com;Francesco;o;COS;R20W1047
+XD5AMCNLYQ;nadia.1321xy@libero.it;NADIA;a;COS;R20W1047
+IUIH722224;mariarosariaserra@libero.it;MARIA ROSARIA;a;COS;R20W1047
+84DWXIRMZ8;viviana.pre@alice.it;Viviana;a;COS;R20W1047
+KI2JNYYB1X;granata.sanfilippo@gmail.com;melina;a;COS;R20W1047
+29SBD7Z7CQ;fasspa@aliceposta.it;Paolo;o;COS;R20W1047
+5W62MHCGGL;mauriziocarpino@gmail.com;Maurizio;o;COS;R20W1047
+JPL4HP6UAM;passione_canto@hotmail.it;Sandra ;a;COS;R20W1047
+DWKHRUD6A9;paulacabria@live.it;PAOLA;a;COS;R20W1047
+4f03645ead;eliofras@libero.it;Elio;o;COS;R20W1047
+DGR8ULSN9C;mariateresaind@live.it;TERESA MARIA;a;COS;R20W1047
+WG257L6JK3;gmonochio@gmail.com;germana;a;COS;R20W1047
+C1QHCYNAUN;mariarosaria.esposito@gmail.com;maria Rosaria;a;COS;R20W1047
+ZD28CDPLBG;luparello.filippo@gmail.com;Filippo ;o;COS;R20W1047
+5Q2HS507QG;voglianuova1@gmail.com;pietro;o;COS;R20W1047
+FSY4TMR5CF;rdfallenangel@gmail.com;raffaele;o;COS;R20W1047
+VO03C26571;edea77@hotmail.com;Roberta;a;COS;R20W1047
+6HEUJJJENA;paolo.baldelli@gmail.com;Paolo;o;COS;R20W1047
+DIV3U8SVS9;elliss2014@libero.it;elisa;a;COS;R20W1047
+5443a8cd87;gpellitteri@tiscalinet.it;Giuseppina;a;COS;R20W1047
+R4FHRWK71G;luridov@gmail.com;Giovanni;o;COS;R20W1047
+HHFJ5YNWYX;tmandat@hotmail.it;tiziana;a;COS;R20W1047
+KLWNAKF3WR;Stelladelmattino1986@libero.it;Giacoma;a;COS;R20W1047
+5BNQB517AD;elysianstudio16@gmail.com;Elisa;a;COS;R20W1047
+I5NIFHMNLX;ckyto@libero.it;antonio;o;COS;R20W1047
+75DJ7TIHFB;adelio58@libero.it;adelio;o;COS;R20W1047
+8NVF1KT13E;massimiliano.polidoro@mail.com;Massimiliano;o;COS;R20W1047
+IVQTRHH8PL;Euzinhoseide22@gmail.com;Carlos ;o;COS;R20W1047
+V6S6QNK0E0;mary.cimmino@hotmail.it;Maria;a;COS;R20W1047
+5CJAFZ87JF;stefania_marchio@virgilio.it;Stefania;a;COS;R20W1047
+GBMCG82RKC;antonio77_ab@libero.it;Antonio;o;COS;R20W1047
+JFS16KMI01;fededavo@gmail.com;Federico;o;COS;R20W1047
+C3O3ZV4F2P;silviaconquidi@gmail.com;Silvia;a;COS;R20W1047
+6L5EL22460;maria.fusco@yahoo.it;Maria;a;COS;R20W1047
+1GVQF2IMA8;massimoperry@yahoo.it;massimo;o;COS;R20W1047
+4OD7R31110;valentinaburgio@gmail.com;valentina;a;COS;R20W1047
+53f4d84623;shiko_olga@hotmail.it;olga;a;COS;R20W1047
+SEMWAY0PJF;mariarca.silvestri@gmail.com;Mariarca;a;COS;R20W1047
+YFBRVGVBJ7;michelina.errico@hotmail.com;Michelina;a;COS;R20W1047
+IWIYEVRHXC;terrycvl@gmail.com;Teresa;a;COS;R20W1047
+U830Q2H9UB;Padovano_mirko@hotmail.it;Mirko;o;COS;R20W1047
+FLTYGZ5VJ9;Poohissima69@yahoo.it;Annalisa;a;COS;R20W1047
+3501Q99961;kelom2@libero.it;danilo;o;COS;R20W1047
+ZIBHTJXI1B;felice.oliva1950@libero.it;FELICE;o;COS;R20W1047
+5CF6HE6E0Z;federicaluigia_leo@libero.it;federica;a;COS;R20W1047
+3EN59XSQ9C;Clarycalasanzio@hotmail.com;Clarissa;a;COS;R20W1047
+ZJTA55KGTT;carlastellam@hotmail.com;Carlastella;a;COS;R20W1047
+SD43ZO7EOC;francesca.sarno68@gmail.com;Francesca;a;COS;R20W1047
+U9MMR84NJU;lorusso.patrizio@libero.it;Patrizio;o;COS;R20W1047
+4SFKRIN16H;annaangelo43@gmail.com;Anna;a;COS;R20W1047
+6RUDURO291;cacco.mauri@tiscali.it;maurizio;o;COS;R20W1047
+WAOQH44555;elimag67@vodafone.it;Elia;o;COS;R20W1047
+0K0N77PM1T;rosaruggie1@hotmail.it;rosa;a;COS;R20W1047
+UOQJWNH8QD;valebaby77@gmail.com;valeria;a;COS;R20W1047
+4efaa85b74;eleonorabarbieri@hotmail.it;Eleonora;a;COS;R20W1047
+8T643DQ2VE;michelangelomagaldi@gmail.com;Michelangelo;o;COS;R20W1047
+JHRMND4IIF;plunkette2@gmail.com; laviero;o;COS;R20W1047
+M9P0F7J77N;gabrieleancona@live.it;gabriele;o;COS;R20W1047
+798YX7D3AR;cortesimariagra1963@libero.it;maria;a;COS;R20W1047
+44WE9AO3RY;salvo.cali@inwind.it;Salvatore;o;COS;R20W1047
+C56UBNAO4T;lunaempatica@gmail.com;chiara;a;COS;R20W1047
+PEWIL00026;3393191101@tim.it;MICHELE;o;COS;R20W1047
+P49BR6RCO2;angela.lamarca1@virgilio.it;angela;a;COS;R20W1047
+4PFCTGYU5K;Stoccolmarea@yahoo.it;Maurizio ;o;COS;R20W1047
+GBNSDUP2P1;nandavalentina@virgilio.it;nanda valentina;a;COS;R20W1047
+IYMXNNARLH;13silvia@live.it;silvia;a;COS;R20W1047
+5457d98958;sediola@hotmail.com;Manuela;a;COS;R20W1047
+SMIPA1QHVH;alessiopalmucci@libero.it;Alessio;o;COS;R20W1047
+FPD79Z3EZE;givy05@gmail.com;viviana;a;COS;R20W1047
+540075f095;danielacesarini@hotmail.it;Daniela;a;COS;R20W1047
+M0FIJIL73D;mariadomenica.germani@virgilio.it;maria domenica;a;COS;R20W1047
+5447aae669;gasparucci.luciano@libero.it;luciano;o;COS;R20W1047
+1S8V1ZJLP7;viviuccio@libero.it;VINCENZA ;a;COS;R20W1047
+DULZRHYBEJ;chiccapetri@yahoo.it;Federica;a;COS;R20W1047
+CICL0PBFQI;mancinelli.oriana@libero.it;Oriana;a;COS;R20W1047
+SEOR6KA3EY;valentina-rossini@libero.it;Valentina;a;COS;R20W1047
+4fc8b399c4;didi-86@tiscali.it;diana;a;COS;R20W1047
+F24B0JHLP8;frague3@gmail.com;Francesco;o;COS;R20W1047
+9LLK8TRCMK;feboeleonora@gmail.com;eleonora;a;COS;R20W1047
+09ENKK1QTM;esu.giuseppe@yahoo.it;giuseppe;o;COS;R20W1047
+YK3FSSTFTR;erika.marzolo@hotmail.it;Erika;a;COS;R20W1047
+3FT09RT1QO;shumilova_65@mail.ru;Tetyana;a;COS;R20W1047
+UVFZIM4FPE;c_seddaiu@tiscali.it;CATERINA;a;COS;R20W1047
+U6DLPBTQJQ;stmurta@gmail.com;Stefania;a;COS;R20W1047
+X8AWATJZIL;marsanop@gmail.com;Paola;a;COS;R20W1047
+F92XRCVUVZ;bruno_barocci@fastwebnet.it;antonella;a;COS;R20W1047
+UDV1698619;fasolatolv@libero.it;Valentina;a;COS;R20W1047
+1MD8E5DECF;angelabelgiovine@hotmail.com;Angela;a;COS;R20W1047
+AQY6051709;marzia.tavella@alice.it;Marzia;a;COS;R20W1047
+4KF6XWVVS1;valemarche@libero.it;valentina;a;COS;R20W1047
+53ffefd5ce;pamela.bellotti@libero.it;Pamela;a;COS;R20W1047
+F06QXDXPLA;Kukujanji8@yahoo.it;Fausto;o;COS;R20W1047
+IFV09I2NL1;Giuseppe.autirmma2@gmail.com;Giuseppe;o;COS;R20W1047
+FUYND82726;f.acerbo@gmail.com;francesco;o;COS;R20W1047
+LJU9N57377;amauceri@unime.it;angela;a;COS;R20W1047
+1BFOEJH461;nadoux2003@yahoo.fr;Nadia;a;COS;R20W1047
+ITP8PRQ64X;Caroladeb70@gmail.com;Carola Debora;a;COS;R20W1047
+7NGAJREA18;mangioneg@libero.it;Giuseppe;o;COS;R20W1047
+2TZ15R8VK1;valerietta55@hotmail.com;valeria;a;COS;R20W1047
+62WN0PJA1Y;patrizia.barachetti@virgilio.it;ANGELICA PATRIZIA;a;COS;R20W1047
+SI0LVH5PMA;hectormckracken@gmail.com;Hector;o;COS;R20W1047
+3L8RMSNUA0;urba1415@gmail.com;Tiffany ;a;COS;R20W1047
+N37XSMNTU1;marinasterzibarolo@virgilio.it;marina;a;COS;R20W1047
+IIRN89ATGC;albanof@libero.it;Fabio;o;COS;R20W1047
+XJS8WSZX07;carfizzi.mt@gmail.com;teresa;a;COS;R20W1047
+SNAC4SVWST;simona5408@gmail.com;Simonetta;a;COS;R20W1047
+U1FE2GE2D6;gila.lori@gmail.com;LAURETTA;a;COS;R20W1047
+RD4STAAQY4;mimmogiangreco@alice.it;Girolamo;o;COS;R20W1047
+B42RLTZ25X;michela.deibardi@libero.it;michela;a;COS;R20W1047
+XBIU8OO4GR;anamariabarsan88@gmail.com;Anamaria;a;COS;R20W1047
+9NHNGWK2CQ;valentain_2006@hotmail.it;Valentina;a;COS;R20W1047
+639BELP4KX;veleno8686@gmail.com;michel;o;COS;R20W1047
+EN20707K07;giusygiordano1595@gmail.com;Giuseppina;a;COS;R20W1047
+JW8Z6FMYOV;manuela.belli7@gmail.com;Manuela;a;COS;R20W1047
+84NGXEN3NP;emiliinadia@hotmail.com;nadia;a;COS;R20W1047
+J3DV345M20;fabiocs81@libero.it;Fabio;o;COS;R20W1047
+HRA5BY8LB4;madiebarnhart@moon.recorated.com;Madie;a;COS;R20W1047
+LZ2H67NQ8N;armellinoroberta@gmail.com;Roberta;a;COS;R20W1047
+53ef3e825e;msardo@inwind.it;monica;a;COS;R20W1047
+L8HPX24065;asteria65@yahoo.it;virginia;a;COS;R20W1047
+LJF8T91223;angelica8@hotmail.it;Angiolina;a;COS;R20W1047
+7P84U8GEEI;promised_land@hotmail.it;Daniela;a;COS;R20W1047
+939X1F5ZAJ;lucadilello@ymail.com;Luca Rosario;o;COS;R20W1047
+SGPZGT1X6H;Maryarosaria@live.it;Maria rosaria;a;COS;R20W1047
+YO2N38NKKQ;simonetta-varriale@libero.it;simonetta;a;COS;R20W1047
+URZK6OZZH1;pikkolatitti.vp@gmail.com;Valentina;a;COS;R20W1047
+5GNJL9YQEP;paolapietrazzini@gmail.com;Paola;a;COS;R20W1047
+HN5ZUVOS0V;patrizianino5@gmail.com;Patrizia;a;COS;R20W1047
+NFMW4KC09Z;Follebaff@gmail.com;Mario;o;COS;R20W1047
+J4WV1YI5V8;10minutini@gmail.com;Iacopo ;o;COS;R20W1047
+TL7XH9V9PM;anna666@fastwebnet.it;ANNAMARIA;a;COS;R20W1047
+7TD5622476;pedro34@live.it;Bellantone;o;COS;R20W1047
+VAQYEU2YHN;snaicard1@hotmail.it;Alessandro;o;COS;R20W1047
+YCEQS32905;annamastroluca@yahoo.it;anna;a;COS;R20W1047
+F0KEBLE53B;f.sacchi@interactive-mr.com;Fede;a;COS;R20W1047
+R152U35U2O;claudio-muratori1971@libero.it;claudio;o;COS;R20W1047
+Q6JJL3BXUM;listinoagentiit@yahoo.it;Domenico;o;COS;R20W1047
+6LWYM81ZCL;piccolomoncheri@libero.it;grazia;a;COS;R20W1047
+TT7MIZHS4T;vincenzodamante@gmail.com;Vincenzo;o;COS;R20W1047
+P09NVUBOG8;barbaracorradi1971@gmail.com;Barbara ;a;COS;R20W1047
+5447d8b3c7;roberta_lorenzato@hotmail.it;Roberta;a;COS;R20W1047
+5447b3a314;monopolinicoletta@yahoo.it;Nicoletta;a;COS;R20W1047
+4SK01GFFOO;ianulatanno@gmail.com;Ianula;a;COS;R20W1047
+TWTEQ9VICL;melinagrimaldi51@gmail.com;Carmela;a;COS;R20W1047
+3L830WGPA3;emanuela.pistoresi@libero.it;Emanuela;a;COS;R20W1047
+H6MXQ4I7GU;fede85_4@libero.it;Federica;a;COS;R20W1047
+4FTTR45949;smatta17@gmail.com;Monica;a;COS;R20W1047
+340B323153;manudelve@hotmail.com;n;a;COS;R20W1047
+CO03NR8HF1;sabasara@libero.it;sara;a;COS;R20W1047
+9CGSUNPP01;michelemiraglia1928@gmail.com;danilo;o;COS;R20W1047
+0Q1MLJS9JE;antonella_vannini@alice.it;antonella;a;COS;R20W1047
+3FAGWIZVT0;petrova_zdravka@mail.bg;Zdravka;a;COS;R20W1047
+SYM2F43655;gemellina.75@gmail.com;marianna;a;COS;R20W1047
+UL3R2EZ7UZ;Magnificamente81@yahoo.it;sarno;o;COS;R20W1047
+UXGZMGOIC1;dr.didomenico.gennaro@inwind.it;GENNARO;o;COS;R20W1047
+UFRLEQ5A75;rrtype@libero.it;mario;o;COS;R20W1047
+PS7UXTICT3;stellavale17@libero.it;Stella;a;COS;R20W1047
+ANDD2ZRLQE;veronicafaiella.vf@gmail.com;Veronica ;a;COS;R20W1047
+53d32a795b;tiziana-mastroianni@virgilio.it;tiziana;a;COS;R20W1047
+GXZEYQ30XS;antonio.ricariche@gmail.com;Antonio;o;COS;R20W1047
+PDLU2MN8GP;the-shade@libero.it;Akena;a;COS;R20W1047
+RZU5I6ZY36;nicadelnero1970@gmail.com;Monica;a;COS;R20W1047
+XVYWN94294;deliamartino@inwind.it;Delia;a;COS;R20W1047
+IUGDW574ID;Amal.kefi@libero.it;Amal;a;COS;R20W1047
+0ARF9OS7HE;mirimi27@virgilio.it;Miriam;a;COS;R20W1047
+HBG42SQDRK;disaverioflavia@gmail.com;Flavia;a;COS;R20W1047
+QYXX0ZVSH8;simonamenichini@libero.it;simona;a;COS;R20W1047
+2IZPL9PRYN;frosecchi.marco@gmail.com;Marco ;o;COS;R20W1047
+RTCDL16ZD0;gianlucaf12@gmail.com;Gianluca;o;COS;R20W1047
+79MKT1AOC2;cicchitto.carmela@hotmail.it;Carmela;a;COS;R20W1047
+QP45QS7JS1;andrea.gardin@hotmail.it;Andrea;o;COS;R20W1047
+5401dc9518;fri30@hotmail.it;frida;a;COS;R20W1047
+6N9C999375;erademi@libero.it;eraldo;o;COS;R20W1047
+4eb12a3eaa;proxi66@gmail.com;paola;a;COS;R20W1047
+J0WRZHZ9GN;heger.joanna@yahoo.it;Joanna;a;COS;R20W1047
+HQL4JSX0FX;Angelapapa1984@gmail.com;Angela;a;COS;R20W1047
+LENOBRKUT0;lupo666solitario@hotmail.com;Cristina;a;COS;R20W1047
+SPJWX5FCJY;giuseppe.vastola@me.com;Giuseppe;o;COS;R20W1047
+EM1TP6XBKE;Verygiuliet@gmail.com;Agata Maria;a;COS;R20W1047
+SU2PS1UTQI;frensis.p@hotmail.it;Francesca;a;COS;R20W1047
+942HH2XENV;opinione@yahoo.com;Angelo ;o;COS;R20W1047
+ZLKWXN4F35;concalli@libero.it;boassa;a;COS;R20W1047
+CA1V60FWOT;log.teresa@virgilio.it;Teresa;a;COS;R20W1047
+541b672f34;pml.messina@gmail.com;pamela;a;COS;R20W1047
+53ff17b949;icarli223@gmail.com;ilenia;a;COS;R20W1047
+LZU9QRLGSO;giuzoc56@gmail.com;giuliano;o;COS;R20W1047
+OS475QOQLN;Biachipaola@hotmail.com;Paola;a;COS;R20W1047
+GZLKDUB2E1;antonellazappala@libero.it;Antonella;a;COS;R20W1047
+IMKDLY6IQ3;mbertone1971@libero.it;Roberto;o;COS;R20W1047
+LKMB1SAD29;patrizia.mezzacasa@gmail.com;Patrizia;a;COS;R20W1047
+GK3IUE5VXW;villanianna@inwind.it;Anna;a;COS;R20W1047
+5447e1fae3;ste.celeschi@gmail.com;stefania;a;COS;R20W1047
+U8Z03QRSAO;robygandini@hotmail.com;Roberta ;a;COS;R20W1047
+54177842aa;contesandra.sc@libero.it;sandra;a;COS;R20W1047
+E2GJGPL4D1;Valymakeup@live.it;Valentina;a;COS;R20W1047
+WJ4P4U4RMG;eliana.delbeato@gmail.com;Eliana;a;COS;R20W1047
+PH0OJ5VTF0;glogiogatti@gmail.com;Giovanni;o;COS;R20W1047
+HR34S19822;crzeliana@hotmail.com;Eliana;a;COS;R20W1047
+VC0BW12023;1986leone@gmail.com;Alberto;o;COS;R20W1047
+TQR3S6B6UU;simona.massi@gmail.com;Simona;a;COS;R20W1047
+HCIZKHFUVO;emilybet@live.it;Giusi;a;COS;R20W1047
+7DW34619O1;toma5001@inwind.it;Christian;o;COS;R20W1047
+5403788e18;59anton@gmail.com;antonietta;a;COS;R20W1047
+V6DY9APUXW;massimo.delcampo@hotmail.it;Massimo;o;COS;R20W1047
+63TCA81710;alcinosiculella@libero.it;Alcino;o;COS;R20W1047
+6POAGP45M3;daviderenzetti@gmail.com;Davide;o;COS;R20W1047
+2WN8YXDWTC;Hellokittyforever89@hotmail.it;Jessica ;a;COS;R20W1047
+FW7WMMZRL1;angi29@teletu.it;angela;a;COS;R20W1047
+XWTICXY7HG;graziamodica10@gmail.com;grazia;a;COS;R20W1047
+MIXWP8ASH1;verdiaria@tiscali.it;gigliola;a;COS;R20W1047
+XF3TUZA3EF;antonella.tosi.53@gmIl.com;Antonella;a;COS;R20W1047
+EP412M3TQ1;donato.millefanti@tiscali.it;donato;o;COS;R20W1047
+5450712703;berzieri.p@libero.it;PAOLA;a;COS;R20W1047
+0TMSAMBPDK;gabri481@hotmail.it;Gabriele;o;COS;R20W1047
+XMS1QZYMJA;maximilianobarbieri@libero.it;maximiliano;o;COS;R20W1047
+3JF8MV84GI;sabato_silvia@hotmail.it;Silvia;a;COS;R20W1047
+ELLS2D0HFR;renatodisoccio@gmail.com;Renato;o;COS;R20W1047
+JXOJFVFUI3;rossana.zonza@libero.it;Rossana;a;COS;R20W1047
+V98NFUFIAH;rosssant@email.it;Rossella ;a;COS;R20W1047
+AFKTJH1JZ1;ivanovic200@inwind.it;ivanovic;o;COS;R20W1047
+OBZ6J5MZY1;bacherini@interfree.it;Edi;o;COS;R20W1047
+6G8EOQO5AK;prodottiadriano@gmail.com;Junior;o;COS;R20W1047
+YYOE1JXFVY;giusyuofi@hotmail.it;GIUSY;a;COS;R20W1047
+GDW903VSWA;dino.galanti@gmail.com;dino;o;COS;R20W1047
+RP1RNUSMX0;federicaparenti@gmail.com;FEDERICA;a;COS;R20W1047
+FYWRD12561;marco.gf.pinto@libero.it;Marco;o;COS;R20W1047
+87ZR8Q7UQV;gennyb77@gmail.com;giovanna;a;COS;R20W1047
+C2QKTRFTY0;lucia.damato@vitalbanet.it;Lucia;a;COS;R20W1047
+KELM7TDJV8;giovannamorello81@gmail.com;Giovanna;a;COS;R20W1047
+CW6MF2FG8L;marioferrario@hotmail.com;mario;o;COS;R20W1047
+C0DUCNUT72;gimmitoyo5@gmail.com;Gianmarco ;o;COS;R20W1047
+XC8TOJ5S4I;tataziavale@gmail.com;Valentina;a;COS;R20W1047
+3I4UVXK25E;paolo.capitoni@libero.it;Paolo;o;COS;R20W1047
+A1J6YRZGQ2;akid.rab@libero.it;akid;o;COS;R20W1047
+LIB7MHZ5TH;chiara.13378@hotmail.it;Chiara;a;COS;R20W1047
+SJLG1D64GD;stefangel98@hotmail.it;Stefania;a;COS;R20W1047
+NJ90OQQZ8C;mara5598@hotmail.it;MARA;a;COS;R20W1047
+OJXVIUANBO;emanuela.zerbani@gmail.com;EMANUELA;a;COS;R20W1047
+GTBCR52114;pepe-patrizia@libero.it;patrizia;a;COS;R20W1047
+KNVK866996;marimatu@tin.it;mario;o;COS;R20W1047
+10IU9SG9JM;naike88@hotmail.it;maddalena;a;COS;R20W1047
+Y42L843164;desiree.aresco@fieldjob.it;Desiree;o;COS;R20W1047
+QDHYHGRTL5;alberto.magrassi@libero.it;Alberto;o;COS;R20W1047
+YBXWNN8JBQ;francescapelliccioni@libero.it;Francesca;a;COS;R20W1047
+1NNDQ2VDRA;nuni0614@gmail.com;Annunziata ;a;COS;R20W1047
+OQC7OZ3UX5;gabriaresi@tiscali.it;Gabriella;a;COS;R20W1047
+YQBI62D3HF;toniasarno95@gmail.com;Tonia;a;COS;R20W1047
+4fa28448d0;tino1963@gmail.com;Tino;o;COS;R20W1047
+MB160CPG11;koalapc@tiscali.it;Alberto;o;COS;R20W1047
+4eda57e221;lucalaser1@hotmail.it;gianluca;o;COS;R20W1047
+N647NG0FWJ;gian_marko_90@hotmail.it;Gianmarco;o;COS;R20W1047
+WY54G079TI;robydicarluccio@hotmail.it;roberta;a;COS;R20W1047
+LEOVF9QOW1;m.marcel@tiscali.it;marcello;o;COS;R20W1047
+Z6R1WRJ0I0;whitetiger91.ms@gmail.com;Mario ;o;COS;R20W1047
+K458ZVZRYA;spidermanson@live.it;federico;o;COS;R20W1047
+449CYDPL0I;stefanian82@tiscali.it;Stefania;a;COS;R20W1047
+WN2Q1N1U8M;andrea.meloni91@gmail.com;Andrea;o;COS;R20W1047
+YKRUBK2WE1;veronelli.stefano@tin.it;stefano;o;COS;R20W1047
+IGJOHFCVIF;cavicchiolielena@yahoo.it;Elena;a;COS;R20W1047
+CLVK789B2K;lmg.antonella@gmail.com;Antonella;a;COS;R20W1047
+5447a3f44c;toniatotaro@hotmail.it;ANTONIA;a;COS;R20W1047
+SY0EDSIGSZ;dinapolimari8@gmail.com;Mariarca;a;COS;R20W1047
+BTS5NGC89F;ma.antonazzo@libero.it;Marzia Rita;a;COS;R20W1047
+J2QCBCI3N3;bensonblu74@hotmail.it;Domenico Danilo ;o;COS;R20W1047
+QE87R48K6Y;Ansaldilara@yahoo.it;Lara;a;COS;R20W1047
+9HALZ48554;lionsix@hotmail.it;roberta;a;COS;R20W1047
+C2HZCGI8FX;alberto57settembre@Gmail.com;Alberto;o;COS;R20W1047
+2LPFBLTJKJ;tatianannov1@gmail.com;Tatiana;a;COS;R20W1047
+A3WMPZBAN5;dema.64@libero.it;riccardo;o;COS;R20W1047
+17WF86EPQ9;roberta.mercuri@live.com;Roberta;a;COS;R20W1047
+8S1876RL1G;barbagiannivf@libero.it;Giovanni;o;COS;R20W1047
+HLF5NX0FY2;wannalter@alice.it;Annamaria;a;COS;R20W1047
+WN9N9MUOWN;vida626@hotmail.it;Stefano;o;COS;R20W1047
+XOVN80N5AF;elenaloiodice@gmail.com;ELENA;a;COS;R20W1047
+54190121e1;luazzo@libero.it;Daniela;a;COS;R20W1047
+CMKTLIXSRF;Giommi@gmail.com;Gianmarco ;o;COS;R20W1047
+A6MHJ19281;coccola64@yahoo.it;Eloisa;a;COS;R20W1047
+NWH9B18ZK5;veronica.colzi@virgilio.it;veronica;a;COS;R20W1047
+6ARI76FIGF;girasoleluna72@libero.it;valentina;a;COS;R20W1047
+D58FA28216;michelapol@libero.it;Michela;a;COS;R20W1047
+6HQBKNA6WJ;tatiba@libero.it;SUSANNA M.C.;a;COS;R20W1047
+W81GAQU3XV;fam.ladu@hotmail.it;francesco;o;COS;R20W1047
+N18L3JVHWH;antomerello812@gmail.com;antonella;a;COS;R20W1047
+2OHH09WBBD;gioiol80@gmail.com;Giorgia;a;COS;R20W1047
+RHPPA3PGSB;parisotto.massimo@libero.it;Massimo;o;COS;R20W1047
+PQTJTGFIXP;stefania.loretta@gmail.com;Stefania;a;COS;R20W1047
+ITM119XE69;sara_bondi@yahoo.it;Sara;a;COS;R20W1047
+3IU24E7YH1;demoncina666@gmail.com;Manuela;a;COS;R20W1047
+D287SFC0TK;cmcristinacristi@gmail.com;CRISTINA;a;COS;R20W1047
+8SY2Z4VVIU;yughe80@gmail.com;Gabriele;o;COS;R20W1047
+YEP5XXNEZ9;antonio77ab9@gmail.com;Antonio;o;COS;R20W1047
+N674Y12163;sirchia_francesca@libero.it;francesca;a;COS;R20W1047
+D3Q543BVJI;francesco.caruso1979@gmail.com;Francesco;o;COS;R20W1047
+SFLJNN1CA2;gaja.terribile@libero.it;Gaja;a;COS;R20W1047
+E1W6BO449D;fabiolascatoli@libero.it;fabiola;a;COS;R20W1047
+NVLDVX3YHX;sonianoris@tiscali.it;Sonia ;a;COS;R20W1047
+QM644AM8OT;pinodiandrea@yahoo.com;Giuseppe;o;COS;R20W1047
+53e6c7491c;morlaura1984@gmail.com;Laura;a;COS;R20W1047
+XIR5ZX9WY3;ENSALMO@VIRGILIO.IT;ANTONELLA;a;COS;R20W1047
+9507MGZBRO;redskyspirit@alice.it;Roberta ;a;COS;R20W1047
+TJJS313221;max.orefice@email.it;Massimiliano;o;COS;R20W1047
+FMSCXIS9O1;cadoriamonica@libero.it;monica;a;COS;R20W1047
+Z4JFW3UVFR;cinzia.calderaro@libero.it;Cinzia;a;COS;R20W1047
+4Y7C1I0ZB9;Irene.piccini@gmail.com;Irene;a;COS;R20W1047
+0Q1BA9L3QU;Annasinisi1976@gmail.com;Anna ;a;COS;R20W1047
+N7NAITM0UJ;apesce71@gmail.com;Angela;a;COS;R20W1047
+W3ZYGEARGZ;Rick.rt@libero.it;Riccardo;o;COS;R20W1047
+SQ7W475G4W;mariateresa1963@virgilio.it;MARIA TERESA;a;COS;R20W1047
+2YNNLDKNFO;daniela-zagari@virgilio.it;daniela;a;COS;R20W1047
+JIKN1DM7NW;sabrinasfalanca@icloud.com;Sabrina ;a;COS;R20W1047
+JIEAY7PRXP;dianarosse@msn.com;Amalia;a;COS;R20W1047
+W2DBJ06622;piccolaflo23@hotmail.it;dominga;a;COS;R20W1047
+5447aa56b8;fiulina69@hotmail.it;monica;a;COS;R20W1047
+FWHUOH36MV;carzeddam@gmail.com;Matteo;o;COS;R20W1047
+YJ8O0LKYK5;aldoeletizia@libero.it;letizia;a;COS;R20W1047
+541b2f076a;eleonoramarco@libero.it;eleonora;a;COS;R20W1047
+THVIMC0QPD;viviana.giovene@gmail.com;viviana;a;COS;R20W1047
+6O11PW4GA1;sofieleo@tiscali.it;paola;a;COS;R20W1047
+F6EOLJTFHJ;Claudia.soro81@gmail.com;Claudia ;a;COS;R20W1047
+WCO7D5JYV1;lau_85@yahoo.it;Laura;a;COS;R20W1047
+3EK6ZK3O2D;l.ruscetta87@gmail.com;Luca;o;COS;R20W1047
+SX0DWZPV49;r.piemonti@hotmail.it;Roberta;a;COS;R20W1047
+I3BAW1LD4S;lauradrizi2009@hotmail.it;Laura;a;COS;R20W1047
+5Q5QOC29AJ;Cavozzi@gmail.com;Massimo;o;COS;R20W1047
+X3DFK9FTYE;gariglio.carlo@gmail.com;Carlo;o;COS;R20W1047
+RW7E1P4Z9U;fulvio.fabrizi@hotmail.it;Fulvio;o;COS;R20W1047
+5447af1c01;fabrelloivan@libero.it;Ivan;o;COS;R20W1047
+YH5N7O59QU;gabriele.brozzetti@hotmail.it;Gabriele;o;COS;R20W1047
+Z4OLS6MJV8;giorgiomartinello54@gmail.com;Giorgio;o;COS;R20W1047
+29AOPIM5PF;mariagraziasantanoci@libero.it;maria grazia;a;COS;R20W1047
+X64UWNQU3W;vanda.mancini@outlook.it;Vanda;a;COS;R20W1047
+5419d17bc8;marina.barranu@alice.it;marina;a;COS;R20W1047
+TBPX0YZD7G;adelecarusoct@hotmail.com;Adele;a;COS;R20W1047
+IQ74RBW9PR;Alessandro1970.az@outlook.it;Alessandro;o;COS;R20W1047
+PXOYN02842;michelelusseri@alice.it;MICHELE;o;COS;R20W1047
+LVDYHB1TW3;giudigia.gdg@gmail.com;Giuseppe;o;COS;R20W1047
+E3R9H9ZNH8;marygio84@libero.it;Vita Maria;a;COS;R20W1047
+QX2XX25SSN;0809020@gmail.com;Nico;a;COS;R20W1047
+DHAJWFK1DD;nuvoletta_822@yahoo.it;barbara;a;COS;R20W1047
+S9MYIEHCZ2;trappolale86@gmail.com;Alessia;a;COS;R20W1047
+8CA2L49449;rossellatiziana@yahoo.it;rossella;a;COS;R20W1047
+LDUKPAYGW4;t.giu2008@libero.it;TERESA;a;COS;R20W1047
+ITFW7CYS3V;mariella.pes@hotmail.it;maria;a;COS;R20W1047
+YXD7U1PWXT;mauriziolibri72@libero.it;maurizio;o;COS;R20W1047
+Z8U0581MQ7;tirelli.annarita@libero.it;Anna Rita;a;COS;R20W1047
+JAZ4H6G68N;roobin.hood2810@libero.it;christian;o;COS;R20W1047
+IWGWZHOM61;martinamartelli@katamail.com;martina;a;COS;R20W1047
+VX7EX35441;marcoalbertomaggio@alice.it;Alberto MarcoAlberto;o;COS;R20W1047
+MRQJ924717;marcello.tinnirello@virgilio.it;filadelfo;o;COS;R20W1047
+2SDAN5HSA1;luckav@tiscalinet.it;Luca;o;COS;R20W1047
+544be9dd71;renzospel@tiscali.it;Renato;o;COS;R20W1047
+J1WMR02122;paolafaby_cafe@yahoo.it;fabiola;a;COS;R20W1047
+EPANWPFBX6;sonia.minutiello@libero.it;Sonia;a;COS;R20W1047
+NXY4YC5Z5V;gas-peppe@hotmail.it;Giuseppe;o;COS;R20W1047
+4ed0df7308;valeriomartello@hotmail.it;Valerio;o;COS;R20W1047
+BPDMNQ9UHT;claract@fastwebnet.it;Clara;a;COS;R20W1047
+6SLWBY4R7Q;Carla-guanais@gmail.com;Carla ;a;COS;R20W1047
+ZXCMDUCM1L;soccorsa.capone@gmail.com;soccorsa;a;COS;R20W1047
+ZGJNYXJVYP;francyfc@libero.it;Francesca ;a;COS;R20W1047
+C7TC23A8E7;amy7804@gmail.com;Amalia ;a;COS;R20W1047
+15569DJYUD;nicopanza@outlook.it;loredana;a;COS;R20W1047
+NTE9LGKIE1;stefaniagaleone@hotmail.com;Stefania;a;COS;R20W1047
+WL7FF92983;gabriele-siciliano@libero.it;GABRIELE;o;COS;R20W1047
+3HW9W1CZYL;miosogno63@hotmail.it;Paola;a;COS;R20W1047
+ZEMAS38HWT;mrcentore@fastwebnet.it;Maria Rosaria;a;COS;R20W1047
+DWE1V3P0RQ;dialisi95@gmail.com;Angela;a;COS;R20W1047
+0EO4EBIGFE;chiara.ennas14@gmail.com;Chiara;a;COS;R20W1047
+CYFHUO7RU1;claudiacla87@gmail.com;Silvana;a;COS;R20W1047
+EFM3EVNS81;carla.antognoni@libero.it;carla;a;COS;R20W1047
+OLZV7OOWGV;salvo-virgillito@hotmail.it;Salvo;o;COS;R20W1047
+5034205f3d;gferrulli70@gmail.com;Gianfranco;o;COS;R20W1047
+4RW9K19598;thescottish@deejaymail.it;Simone;o;COS;R20W1047
+SQAQ3KARQ2;morando.cartei@libero.it;Morando;o;COS;R20W1047
+8LB1077GV5;marta_montanari@hotmail.com;marta;a;COS;R20W1047
+EH9Z7ED7J0;cartotcnika63@gmail.com;Giovanna;a;COS;R20W1047
+SSE0OK2B96;marco.moda93@hotmail.it;Marco;o;COS;R20W1047
+N0NWTFCQJZ;info.gg@email.it;giovanni;o;COS;R20W1047
+NR759D66ID;elecesa10@libero.it;Elena;a;COS;R20W1047
+WOCJB6SSHH;computerland@cheapnet.it;renato;o;COS;R20W1047
+HH6CAHIE4E;simoner3_5@hotmail.com;Simone;o;COS;R20W1047
+ABSGH4YWO7;pitzalisgabriella@gmail.com;gabriella ;a;COS;R20W1047
+7K82C8FD6P;ritalandini@libero.it;Rita ;a;COS;R20W1047
+F50UV66826;roberta.letorio@gmail.com;Roberta;a;COS;R20W1047
+YL0KQ72441;coba_1961@libero.it;Rossella;a;COS;R20W1047
+WQZNCCFOLL;caterina.cirillo95@gmail.com;caterina ;a;COS;R20W1047
+1YCOTIGVLZ;bettadimitri@libero.it;ELISABETTA;a;COS;R20W1047
+A87Y1YV0X1;antonio.disanza@fastwebnet.it;Antonio;o;COS;R20W1047
+XLB9UGYI41;laura.murante@virgilio.it;laura;a;COS;R20W1047
+Z05MSPGOWX;cristinascire@gmail.com;Cristina;a;COS;R20W1047
+OHQ8DK1DXV;rododentro@alice.it;santoro;a;COS;R20W1047
+TUJ2V6737A;farfalla_066@hotmail.it;paola;a;COS;R20W1047
+JLR2EKED60;refoscodaniela@live.it;Daniela;a;COS;R20W1047
+QYWGJ8RNOG;paolo.baldini1967@gmail.com;Paolo ;o;COS;R20W1047
+SZDD0AHIVU;antonia.70@alice.it;Antonia ;a;COS;R20W1047
+A3V26J1BJ1;roncalli76@vodafone.it;Tiziano;o;COS;R20W1047
+27SRW07107;brunaombrosa@hotmail.it;Giuseppa;a;COS;R20W1047
+0LENMJRCI3;manuelarussom@gmail.com;Manuela;a;COS;R20W1047
+55RWX9KMN2;palermitanisinasce@live.it;Simona;a;COS;R20W1047
+W3DKHVZH1R;marpax@outlook.it;Mari;a;COS;R20W1047
+C3PC037245;grossettina@yahoo.it;Adele;a;COS;R20W1047
+S759RCLRP1;cris2983@yahoo.it;Cristina ;a;COS;R20W1047
+1FH26ARWZ1;alfata@libero.it;antonio;o;COS;R20W1047
+CPLTNJQ1RG;sabry88gre@gmail.com;Sabrina;a;COS;R20W1047
+5418ee163a;francy.albe@yahoo.it;francesca;a;COS;R20W1047
+PAMC3KHRJH;soulvanity@tiscali.it;flavia;a;COS;R20W1047
+HMFJWD7WJ1;pumanna@libero.it;Anna;a;COS;R20W1047
+4GZW5VU6SI;aldo_dionisio@libero.it;aldo;o;COS;R20W1047
+P9HEN270I8;Simotaller@gmail.com;Simona;a;COS;R20W1047
+KK5HRW4GJH;andreamichele.cariati@teletu.it;andrea;o;COS;R20W1047
+MYNQ4GRLOB;lucianoucci61@gmail.com;luciano;o;COS;R20W1047
+DEN0W1LJN3;g.dambrosio1988@gmail.com;Giuseppina;a;COS;R20W1047
+5H9BVD4936;asalvio76@libero.it;Serena;a;COS;R20W1047
+W3ZWZ8M4PK;giovannalavoro8@gmail.com;giovanna;a;COS;R20W1047
+DM97FN9WZE;erovetto2006@libero.it;emma;a;COS;R20W1047
+JRHPDDMTL0;beppe.braga@email.it;Giuseppe;o;COS;R20W1047
+GN5IOP2KGG;nefertari07@virgilio.it;Giuseppina;a;COS;R20W1047
+HNRR0LS4V5;iannaoriliana@gmail.com;Oriliana;a;COS;R20W1047
+LUWDZ7TVUI;teresaosada@poczta.fm;Teresa;a;COS;R20W1047
+GB902T56M8;silvyplanet@libero.it;silvia;a;COS;R20W1047
+DZ26T7KFL1;lovangy@libero.it;Socio;o;COS;R20W1047
+R11W04DOR1;claudiaz@infinito.it;Claudia;a;COS;R20W1047
+KU0FYVIOMP;nicoletaciobanu1994@gmail.com;nicoleta;a;COS;R20W1047
+8EMURFP300;pablo.1981@hotmail.it;paolo;o;COS;R20W1047
+30PGQFLUP1;francesco.orazzo@libero.it;francesco;o;COS;R20W1047
+KJNTVVTU01;fabrizio.bruini@tin.it;Fabrizio;o;COS;R20W1047
+Y0LP8CZYEY;Sabrisanna70@gmail.com;Sabrina;a;COS;R20W1047
+7KDOPICYWN;rossellaraffo@libero.it;Maria;a;COS;R20W1047
+SAZ6K32404;sefora-tony@live.it;sefora;a;COS;R20W1047
+Q8T0868ID2;letizia.atzori@hotmail.com;letizia;a;COS;R20W1047
+PJDTXL5RG8;renatomegane@libero.it;Francesco;o;COS;R20W1047
+5Z90FK8NPV;maria.forte@live.it;Maria altomare;a;COS;R20W1047
+UC7Y6GT3B5;edoardobellomo87@gmail.com;Edoardo;o;COS;R20W1047
+SFG428JVOW;animali_95@hotmail.it;Daniele;o;COS;R20W1047
+HARIZTAH6O;conirosanna@gmail.com;Rosanna ;a;COS;R20W1047
+LW8KEODTLS;albano_sonia@hotmail.it;Sonia;a;COS;R20W1047
+2P3R5W3UW1;tonucci@sci.unich.it;lucia;a;COS;R20W1047
+K8VO8ZPR76;denise.milia@live.it;Denise;a;COS;R20W1047
+OV9ZNH8VT0;gianfrj.v@libero.it;Giovanna;a;COS;R20W1047
+64SP71V15T;lisa711@alice.it;annalisa;a;COS;R20W1047
+TPL56MS7C1;milenarazzani@hotmail.it;milena;a;COS;R20W1047
+ANDVI0S484;irene.cuppone@libero.it;irene;a;COS;R20W1047
+5FSYEBKOY2;liliana.beschin@gmail.com;LILIANA;a;COS;R20W1047
+VY00UDAMB1;massimilianoscardala@virgilio.it;massimiliano;o;COS;R20W1047
+6PRJJFGN82;Pulga_935@hotmail.com;Romina;a;COS;R20W1047
+DGR3ZPL9ZC;bethezor@hotmail.it;Fabio;o;COS;R20W1047
+5GVAZBTOAP;vickyannait@yahoo.it;Anna;a;COS;R20W1047
+3UN10COYXA;antonella.hella70@gmail.com;Antonella;a;COS;R20W1047
+K69KU8TX41;gilbertoaquilante@gmail.com;Gilberto;o;COS;R20W1047
+508c35c1c2;cr.chicca@libero.it;Cristina;a;COS;R20W1047
+GKZO2DRCZ1;lavinia2@virgilio.it;LAVINIA;a;COS;R20W1047
+6Y99743JWV;kallegarin@gmail.com;Luca;o;COS;R20W1047
+3NUGZYS7FK;dav90dpp@live.it;Davide;o;COS;R20W1047
+J1JCXG4UF7;fra.bit22@gmail.com;Francesca;a;COS;R20W1047
+53d4f4d860;francy_monetti@libero.it;Francesca;a;COS;R20W1047
+5BPLHQMFIY;antonioalbo@yahoo.it;Antonio;o;COS;R20W1047
+E84E71D3R1;cliacca@tin.it;Claudia;a;COS;R20W1047
+A669717011;ilabruco@fastwebnet.it;Ilaria;a;COS;R20W1047
+M1UTM2HSPR;carmenfranceska@gmail.com;Carmen;a;COS;R20W1047
+71Z46SDNSF;federicaferroni@alice.it;Federica ;a;COS;R20W1047
+666SVV8ANM;Giulia.diblasi@gmail.com;Giulia;a;COS;R20W1047
+174MUESU6N;genteancora@gmail.com;Angela;a;COS;R20W1047
+DF5Q634ZNP;ilenia.paniccia@hotmail.it;Ilenia;a;COS;R20W1047
+4LOUS3VZYO;sabarota@hotmail.com;saba;a;COS;R20W1047
+WIO5CQQ6PK;lilianadegobbi@virgilio.it;Liliana;a;COS;R20W1047
+9JOT20EJA1;serebau@hotmail.it;serena;a;COS;R20W1047
+4UPH7SBWMI;annaeaniello@libero.it ;Aniello;a;COS;R20W1047
+WJHH5GLNGZ;nicoleta1974@hotmail.it;Nicoleta;a;COS;R20W1047
+B47UCA36DX;peppino3057@libero.it;antonio;o;COS;R20W1047
+SFE8C7I7DE;tulipano24@tiscali.it;giovanna;a;COS;R20W1047
+654HVFOY51;paolodeste@katamail.com;PaoloAntonino;o;COS;R20W1047
+4ENAITE7T1;agneletta@hotmail.com;angela;a;COS;R20W1047
+XT69N00191;gvalsuani@libero.it;gino;o;COS;R20W1047
+17ISU2TNJI;vincenzo-polito@virgilio.it;Vincenzo;o;COS;R20W1047
+IFJRVDN6B3;tuvz@teletu.it;Giordano;o;COS;R20W1047
+DDFKQK59YJ;Antonella.paiano27@gmail.com;Antonella;a;COS;R20W1047
+TW8GQ28552;yellow_sheep24@yahoo.it;erika;a;COS;R20W1047
+U7K9114654;geomarcof@libero.it;marco;o;COS;R20W1047
+PZAJLVYFW1;francori19@libero.it;FRANCESCO;o;COS;R20W1047
+BBTU8IBKG0;daniele.pituello@fastwebnet.it;daniele;o;COS;R20W1047
+QTI0544311;giorgio.golia@yahoo.it;GIORGIO;o;COS;R20W1047
+1N0EZJ6MFA;santo.martino@libero.it;liliana;a;COS;R20W1047
+QT3GDXA2K1;gimsa@libero.it;bruno;o;COS;R20W1047
+511149fe97;marcopaolis@gmail.com;Marco;o;COS;R20W1047
+TITIRZDT4T;ffravolini@gmail.com;Francesco;o;COS;R20W1047
+IEQP6IKGL4;adrianaparrocchetti@libero.it;Adriana;a;COS;R20W1047
+Q5M0082854;qanber@tin.it;marco;o;COS;R20W1047
+SW3325HQO1;annasor44@hotmail.it;rosanna;a;COS;R20W1047
+DCQF7FFRE1;matteo.buratti@tin.it;matteo;o;COS;R20W1047
+SC80U31231;reggidoririta@libero.it;rita;a;COS;R20W1047
+8O05BX1AMQ;Sara.frangini@gmail.com;Sara;a;COS;R20W1047
+HE5AE94589;lanfy@tiscali.it;elena;a;COS;R20W1047
+4AVB0KWXMN;ngm270189@gmail.com;Natale Giuliano;o;COS;R20W1047
+HI88K74744;claudia.dicecco@gmail.com;claudia ;a;COS;R20W1047
+5O96792RG1;sakura__@libero.it;Roberta;a;COS;R20W1047
+54184a66a8;luanabilato@yahoo.it;LUANA;a;COS;R20W1047
+D72L1XYU1V;ilbortolotti@hotmail.it;andrea;o;COS;R20W1047
+X6BAMELHF1;andrea.fuma.1988@tiscali.it;andrea;o;COS;R20W1047
+RORBO6AP49;jessy.pera.93@gmail.com;Jessica;a;COS;R20W1047
+PA8XXG4VK9;maya.battaglia@alice.it;Maya;a;COS;R20W1047
+UVGOHQ6O71;komj@libero.it;federica;a;COS;R20W1047
+V46FTMZSMC;ermi62@hotmail.co.uk;ERMINIA;a;COS;R20W1047
+E8RYYVLMAT;mariaantoniagatti8@gmail.com;Maria Antonia;a;COS;R20W1047
+OODDY83485;cobaltiger@gmail.com;Emanuele;o;COS;R20W1047
+VJM7471654;irene.gruffe@tiscali.it;MARISA;a;COS;R20W1047
+VAU0QL0XQK;Superchi66@yahoo.it;Battista;o;COS;R20W1047
+G03BI7DQG6;simona_lioti@hotmail.it;Simona;a;COS;R20W1047
+2N3HAK8CUA;filipettodaniela@libero.it;Daniela;a;COS;R20W1047
+46SPK0N9AB;venusia16@gmail.com;teresa;a;COS;R20W1047
+HLLOEJ464X;Mery.coppola@libero.it;Marianna;a;COS;R20W1047
+BXPR8MO5O2;giulio.zani01@gmail.com;Giulio;o;COS;R20W1047
+34QJ5W8N0G;acilegnaven@gmail.com;Angy;a;COS;R20W1047
+78ONMLBI0Z;pasqualerosaria4@gmail.com;ROSARIA;a;COS;R20W1047
+JHJEXOMJJ6;fenix_95@hotmail.it;Giammarco;o;COS;R20W1047
+TF38B3SUPI;lorisgiuseppe.si53@gmail.com;stefania;a;COS;R20W1047
+P3OH844353;monaca2706@libero.it;ombretta;a;COS;R20W1047
+C4KD41LK9Z;fstrinna2@gmail.com;Fabiana;a;COS;R20W1047
+SG3QQ8M6BW;sntlng67@gmail.com;laura;a;COS;R20W1047
+SNGO621018;cava-89@hotmail.it;Luca;o;COS;R20W1047
+5422bd7b07;cry.ely@libero.it;CRISTINA;a;COS;R20W1047
+3GZN7YD6LG;nickelback86@gmail.com;Claudio;o;COS;R20W1047
+8NMSWD18TJ;lindalinari@gmail.com;Linda;a;COS;R20W1047
+7H3NDRDGWE;flavia.verga@libero.it;Flavia;a;COS;R20W1047
+MNM71KM2UI;cetty.seggio94@hotmail.it;Cetty;a;COS;R20W1047
+GHQ9CC45DK;teresapolizzi89@gmail.com;Teresa;a;COS;R20W1047
+QOY4VSX7CV;ritamattana66@libero.it;ANNA RITA;a;COS;R20W1047
+COV99TI6GF;selam.aklilu.seyoum@gmail.com;selamawit aklilu;a;COS;R20W1047
+T7ATUFK2J2;giovanni.celardo93@gmail.com;Giovanni;o;COS;R20W1047
+8CGH3XDZ4U;arjolamarku1982@gmail.com;Marku;a;COS;R20W1047
+HQWBO52345;flamipad@hotmail.it;flaminia;a;COS;R20W1047
+Z1IYTBCBRG;lumia710ca@live.it;Alessio;o;COS;R20W1047
+53eb6d2e3a;s.barbati@alice.it;sabatino;o;COS;R20W1047
+VU8KS103CK;karinaxx92@hotmail.it;Jessica;a;COS;R20W1047
+ZS9NJT6JUS;messaggiospedito@gmail.com;Luca;o;COS;R20W1047
+NPI3Y1RP36;mariannafalanga1102@libero.it;marianna;a;COS;R20W1047
+HYQK7LCWB1;ccampigli@kpmg.it;cinzia;a;COS;R20W1047
+VLWCF6JZD6;luca@idnet.it;luca;o;COS;R20W1047
+DAZOFS6JF8;franco.del.prete@alice.it;francesco;o;COS;R20W1047
+LSY7V99194;francesco.pisacane@email.it;francesco;o;COS;R20W1047
+WWSYMBJ0S1;bergamascosalvatore@libero.it;bergamasco;o;COS;R20W1047
+RJLCSV2ZN7;valentinarusso@supportopsicologico.it;Valentina;a;COS;R20W1047
+ALT1GIUI40;varanasi82@hotmail.it;Marilù;a;COS;R20W1047
+1CYOENV9XK;dinoda71@hotmail.com;Gerardo;o;COS;R20W1047
+U3XXU5KAXV;sara.trucano.1987@gmail.com;Sara;a;COS;R20W1047
+O6KBXGDJ8A;henryfod@tiscali.it;nunziata;a;COS;R20W1047
+HNH2MB1FTR;enricaludovici@libero.it;enrica;a;COS;R20W1047
+931T0QXTRR;valebono84@gmail.com;valeria;o;COS;R20W1047
+SFSLQ12520;mara_falcade@yahoo.it;Mara;a;COS;R20W1047
+53d70cd0d0;mario1072@hotmail.it;Mario;a;COS;R20W1047
+TOATDXPMK7;elena.ramella@yahoo.it;Elena;a;COS;R20W1047
+8DM4TFKM51;Dileogiovanna@hotmail.it;Giovanna ;a;COS;R20W1047
+SI5O8MKKCX;crondiww@gmail.com;claudia;a;COS;R20W1047
+4fa913ec93;maxgiulian@gmail.com;Massimo;o;COS;R20W1047
+07WVJYMIT7;carrozzo.daniela@libero.it;DANIELA;a;COS;R20W1047
+RSVLZU0O7L;veronicalaruffa87@gmail.com;Veronica;a;COS;R20W1047
+U93Y0HV6KE;rspinacce@libero.it;rita;a;COS;R20W1047
+ONEAND0OPE;loredana.solinas@gmail.com;loredana;a;COS;R20W1047
+H6BIZGQY8U;sebastianopulvirenti@outlook.it;Sebastiano;o;COS;R20W1047
+FS0QCH1HI0;vittoriomantero@libero.it;vittorio;o;COS;R20W1047
+XORP5GW2S1;paola.mar1@virgilio.it;paola;a;COS;R20W1047
+UGJUE8S1LM;gliaristogatti10@yahoo.it;marianna;a;COS;R20W1047
+KAHTOLBYYI;babeon63@gmail.com;Paolo;o;COS;R20W1047
+OFPN61TZPY;ludovico.nap@gmail.com;Ludovico;o;COS;R20W1047
+RNRZH01296;michelepoletti@alice.it;savina;a;COS;R20W1047
+N8Z7IJ2MHH;nefertiti9@libero.it;domenico;o;COS;R20W1047
+OHZM6EXMY8;provenzale2004@libero.it;nunzio;o;COS;R20W1047
+4RQZ20QHST;totorelamberti92@hotmail.it;Salvatore;o;COS;R20W1047
+Y76N9LYL7T;Luzesmail@gmail.com;Maria;a;COS;R20W1047
+0X269UV8S0;puiutz_luw@yahoo.com;Miha;a;COS;R20W1047
+OYRNFXOX21;brigante@elbrigante.it;Valerio Agostino;o;COS;R20W1047
+NOPDH14488;domenicomonaco6@virgilio.it;DOMENICO;o;COS;R20W1047
+3DOUCAFHBP;Katy.rossi80.kr@gmail.com;Katia;a;COS;R20W1047
+VOE4Q45666;phantasmata@email.it;ENRICO;o;COS;R20W1047
+UPJPEEGMUA;moira_paciucci@yahoo.it;Moira;a;COS;R20W1047
+2BYO6SL68W;Giusy133@hotmail.it;Giusy;a;COS;R20W1047
+GGIY65K8AJ;fbrandano@gmail.com;ananio;o;COS;R20W1047
+0A3YO42N30;biady@hotmail.it;Bianca Maria;a;COS;R20W1047
+V1S83OF5VH;c.ilaria82@gmail.com;Ilaria;a;COS;R20W1047
+5418471fa9;paola.zolfo@gmail.com;Paola;a;COS;R20W1047
+BWN2HOK9ZU;liana.lezzi@gmail.com;Liana;a;COS;R20W1047
+K6ADO26WBM;MARINA_CERRI@libero.it;Marina;a;COS;R20W1047
+0HVV9ZKF65;svetulja74@yahoo.it;Svetlana;a;COS;R20W1047
+L5Q8RZTXT0;catia.rosati@hotmail.it;Catia;a;COS;R20W1047
+TMP7N9RHNQ;martaghezzi13@gmail.com;Marta;a;COS;R20W1047
+6C8RLNVFO1;DORISDORIS@LIBERO.IT;DORIANA;a;COS;R20W1047
+IVA007DUEJ;eleuterisara536@gmail.com;Sara;a;COS;R20W1047
+4LDFM17VD2;cp.iannuzzi@gmail.com;Carmela Paola;a;COS;R20W1047
+LV06915PMQ;tsuki.ga.sora.ni.takaidesu@gmail.com;Renato;o;COS;R20W1047
+OBJMWV4DBC;dianagrande@libero.it;Diana;a;COS;R20W1047
+C4DU96O6WE;fede80rica@alice.it;federica;a;COS;R20W1047
+DGHFG8J45G;cosminutza007@yahoo.com;Aura;a;COS;R20W1047
+JU9SMU1EM1;francmi@libero.it;gianfranco;o;COS;R20W1047
+48KXEHAUF1;lallapats@yahoo.it;Laura;a;COS;R20W1047
+E1XU4ZQB44;emcoron74@gmail.com;Fede;o;COS;R20W1047
+5400e8f337;santuariese@hotmail.it;Pierluigi;o;COS;R20W1047
+EP33022822;chiaradibenedetto74@alice.it;chiara;a;COS;R20W1047
+54198b97f2;ivangiannone@hotmail.it;Jvano;o;COS;R20W1047
+OBQI9049U1;silvialittera@virgilio.it;silvia;a;COS;R20W1047
+FTJWX6ABQ9;cristina.longato.pv@gmail.com;Cristina;a;COS;R20W1047
+MTUB051584;nuvola61@libero.it;paola;a;COS;R20W1047
+WI3CNBKF6B;erasma63@virgilio.it;erasma;a;COS;R20W1047
+0QLQS32414;filo.petrozzieloo@alice.it;Filomena;a;COS;R20W1047
+CRDMM18SR1;danieleblack@libero.it;daniele;o;COS;R20W1047
+U1ABW87597;maxeketj@yahoo.it;massimo;o;COS;R20W1047
+QDL0CVBQG1;cristina_rigato@libero.it;Cristina;a;COS;R20W1047
+4fc2a859c9;bagpipe2009@alice.it;maurizia;a;COS;R20W1047
+HM2ZM6G702;Teresa_frungillo@libero.it;Teresa;a;COS;R20W1047
+QR0MNE44XJ;alessiamp@inwind.it;alessia;a;COS;R20W1047
+3DQOOPZSEU;beatricecasalino@yahoo.com;beatrice;a;COS;R20W1047
+W30S5LPUD1;valentina.chianc@alice.it;valentina;a;COS;R20W1047
+305L2W677I;mapi.frasca@libero.it;Giuseppina;a;COS;R20W1047
+3L1IKFDIC2;mammaro86@gmail.com;Rosanna;a;COS;R20W1047
+9WU00D71IG;Iosuboanaelena94@gmail.com;Oana elena;a;COS;R20W1047
+KW6CJC5R2C;paola_riccio@alice.it;Paola;a;COS;R20W1047
+54485c3d9a;dan.a@hotmail.it;antonella;a;COS;R20W1047
+2LFXS301IJ;sandrabevilacqua@libero.it;sandra;a;COS;R20W1047
+N652H4SI3D;r.mariapia@yahoo.it;maria pia;a;COS;R20W1047
+HOIR522105;martamtt@yahoo.com;Marta;a;COS;R20W1047
+53d06fb882;maddox1@alice.it;maurizio;o;COS;R20W1047
+RHT7Q19771;nicola@libero.it;gianni;o;COS;R20W1047
+HEJ5NAWHBF;dory.teo@tiscali.it;Agar;a;COS;R20W1047
+J3GZU22173;lucia.gio83@gmail.com;Lucia;a;COS;R20W1047
+5447df7309;serena_dondoli@yahoo.it;serena;a;COS;R20W1047
+HZW5724670;irene.boschi@yahoo.it;irene;a;COS;R20W1047
+5RYYIK20WQ;frapafil@alice.it;gianluca;o;COS;R20W1047
+6YK2MBVDDW;banshees@tim.it;roberta;a;COS;R20W1047
+GAH5X07516;costantinogabriela@yahoo.it;postolache;o;COS;R20W1047
+Q112PBRXVB;Menapas@tin.it;Mena;a;COS;R20W1047
+6A3UWOCXZ7;westlife@hotmail.it;linda;a;COS;R20W1047
+4CRK32Q7GU;antonuccimau1979@libero.it;maurizio;o;COS;R20W1047
+G5VLC38737;elemathe82@alice.it;elena;a;COS;R20W1047
+CIGMEIMC3V;mimmuzza23@gmail.com;mimmi;a;COS;R20W1047
+53fb7b7f20;dada040866@yahoo.it;daniela;a;COS;R20W1047
+IC4BRD1JF9;iviana@alice.it;iviana;a;COS;R20W1047
+SSA1URUJSD;rosacataneo1963@libero.it;Rosa;a;COS;R20W1047
+M84XG4LY5C;adrco@libero.it;LOREDANA;a;COS;R20W1047
+ITYS6P1N9C;Maccioni.manuela@libero.it;Manuela ;a;COS;R20W1047
+2B03QW8Z1W;vito-fierro@virgilio.it;Vito;o;COS;R20W1047
+94R3TPBI4L;Langolodellacreativita2@gmail.com;Francesca;a;COS;R20W1047
+OVUT52WWAK;Federica.ferracane@icloud.com;Federica;a;COS;R20W1047
+6508320VW3;dun67@live.it;Maria Antonia;a;COS;R20W1047
+4KMH657646;marzia.bonetti@gmail.com;marzia;a;COS;R20W1047
+2SHH1A3PUO;squinzilla@hotmail.it;Luana;a;COS;R20W1047
+53f47b5e92;scicopeppe@vodafone.it;giuseppe;o;COS;R20W1047
+I3OSNLB9H1;spigabarilla@libero.it;Claudio;o;COS;R20W1047
+BKN2Z29103;foresta1965@alice.it;Salvatore;o;COS;R20W1047
+CYGF9ZRO8P;chef.oscar82@gmail.com;oscar;o;COS;R20W1047
+0VO2K5YP01;alberto.gabbiani@tin.it;ANNARITA;a;COS;R20W1047
+IP2BH3DWBU;paoloeugy@alice.it;Eugenia ;a;COS;R20W1047
+6MYIZ1FUA1;totirizzo@libero.it;Salvatore;o;COS;R20W1047
+WK20J37Y1Y;concettariccio@libero.it;Concetta;a;COS;R20W1047
+L48C4USD94;tetoucha.belhadj1@gmail.com;Farah;a;COS;R20W1047
+PRUYLTE5CB;biancodan@alice.it;Daniela;a;COS;R20W1047
+4BKB4EUW0Y;rgiaffreda@yahoo.it;luigi;o;COS;R20W1047
+TTITFSRYXM;janettearba@live.com;Janette;a;COS;R20W1047
+E6AMRTYQ3X;emanuela.barone@hotmail.com;emanuela;a;COS;R20W1047
+31BEXC9NF1;mannuce@alice.it;ENRICA;a;COS;R20W1047
+UP5IVC8OH1;rotalaura72@gmail.com;LAURA;a;COS;R20W1047
+KV08332071;patcaf61@gmail.com;PATRIZIA;a;COS;R20W1047
+UOZJ8JK71W;lo.presti.laura@outlook.it;LAURA;a;COS;R20W1047
+H51OXQ5H89;francescogenesia@yahoo.it;francesco;o;COS;R20W1047
+4f929f1b0a;giorgiovicari2000@libero.it;Giorgio;o;COS;R20W1047
+VW1FLYTY1B;fragolina_m@yahoo.it;Michela;a;COS;R20W1047
+XKZCFR1S5P;pieroficcadenti@ymail.com;Ildiko;a;COS;R20W1047
+53fe078e36;gpiemontino@gmail.com;Gloriana;a;COS;R20W1047
+VQ9Y18ME81;laviaggeria1@virgilio.it;Cinzia;a;COS;R20W1047
+OGO4L95129;crivellonunzia@alice.it;nunzia;a;COS;R20W1047
+KPZ0IHHVTW;giannettigiorgio@gmail.com;Piergiorgio;o;COS;R20W1047
+SLMD9ZM53H;iosonolisac@gmail.com;luisa;a;COS;R20W1047
+YU8Q4YX4DU;miriamanelli@gmail.com;Miriam;a;COS;R20W1047
+NLT5QY3POL;profumofranse@hotmail.it;Anna;a;COS;R20W1047
+V3T4T02356;ciampa7@libero.it;sonia;a;COS;R20W1047
+23V6SF0AQ6;ma.mantoani@yahoo.it;Marco;o;COS;R20W1047
+IGZ6TVDBAJ;monicabelloni18@gmail.com;Monica ;a;COS;R20W1047
+KNZ09VD97T;Elisabettac86@hotmail.it;Elisabetta;a;COS;R20W1047
+8ODBBURBM5;je_jenny_@hotmail.it;jennifer vanessa;a;COS;R20W1047
+51f97cca16;luca.buzzelli@gmail.com;Luca;o;COS;R20W1047
+9GUGHM3OP3;cerbiatto.gioioso@hotmail.it;Grazia;a;COS;R20W1047
+ROF789DIY1;luisades@libero.it;Luisa;a;COS;R20W1047
+JUHRJOM6J1;s.stronati@tiscali.it;Stefano;o;COS;R20W1047
+C2FAIKA7J8;goldmass@libero.it;Massimiliano;o;COS;R20W1047
+YZ873VX2KU;mariagabriellapi@gmail.com;Mariella;a;COS;R20W1047
+QXP7F0L09B;monicapintori@hotmail.it;Monica;a;COS;R20W1047
+YZ8KFTH87W;danielemallia88@gmail.com;Daniele;o;COS;R20W1047
+0N8Z98NLFL;giovy86g@gmail.com;giovanna;a;COS;R20W1047
+UEAPCK0EZZ;albanese.veronica1@gmail.com;veronica;a;COS;R20W1047
+FC25W8H79Z;khofthesouls@hotmail.it;Mariaceleste;a;COS;R20W1047
+O9WBN64A8G;Annamariebono@gmail.com;Anna Marie;a;COS;R20W1047
+81ZMGCPGI4;manu74at@yahoo.it;Emanuela ;a;COS;R20W1047
+R182285905;pascianna@teletu.it;anna;a;COS;R20W1047
+8PJBBCC87H;massimopaga@yahoo.it;Massimo;o;COS;R20W1047
+4f79f903e6;ilariafattore@yahoo.it;Ilaria;a;COS;R20W1047
+DIR806J16M;micmaggi@gmail.com;Michele;o;COS;R20W1047
+NFCDB43100;brikkio@libero.it;fabrizio;o;COS;R20W1047
+5447da97b4;ritaasciutto@hotmail.com;RITA;a;COS;R20W1047
+7TPUN2T7TF;susannagiachetti55@gmail.com;Susanna;a;COS;R20W1047
+Y2LD30BJQQ;mary94pischedda@gmail.com;mariana;a;COS;R20W1047
+KTAB712020;pimpa_96@yahoo.it;giuseppe;o;COS;R20W1047
+W1QRG65424;giovager@tiscali.it;Giovanni;o;COS;R20W1047
+UIIIIHLSMH;marino.licata@live.it;Beatrice;a;COS;R20W1047
+GXJS06YRWB;peverini160170@gmail.com;Stefania ;a;COS;R20W1047
+N6AWTORW6E;lisa.bergonzoni@gmail.com;Lisa;a;COS;R20W1047
+53fd09e145;algre50@libero.it;nello;o;COS;R20W1047
+3DASU870QV;giovannilupo1982@gmail.com;Giovanni;o;COS;R20W1047
+3G26BXBSU0;genesa@hotmail.it;Sandra;a;COS;R20W1047
+UVMJ9POHHX;mariangelaematteo@libero.it;Mariangela;a;COS;R20W1047
+XIADAWLJG2;silviabartoli59@libero.it;silvia;a;COS;R20W1047
+KR9FU1AZTB;bozzi.2468.cristina@gmail.comcom;Cristina Giovanna ;a;COS;R20W1047
+540337f9e9;bernardo.vitulano@gmail.com;Bernardo;o;COS;R20W1047
+5447ada840;carmine622@tiscali.it;Carmine;a;COS;R20W1047
+HS8CI4RG21;amedepep@tin.it;Amerigo;o;COS;R20W1047
+6LC0IL5S6Y;carla.basile@yahoo.it;Carla;a;COS;R20W1047
+R51XAC04X1;gioacchinosan@tiscali.it;GIOACCHINO;o;COS;R20W1047
+544810e2c7;scarletgirl@libero.it;Rossella;a;COS;R20W1047
+1YOQE1AOU1;prixen1@yahoo.it;Ornella;a;COS;R20W1047
+53ec54ed10;annaelisadegregorio@gmail.com;Anna;a;COS;R20W1047
+UQQBB0BTWA;muromanierosanero@libero.it;Anna;a;COS;R20W1047
+53e76fee5b;itiosan@hotmail.com;Fabrizio;o;COS;R20W1047
+194PU5OPQS;angelicavescio@live.it;Angelica ;a;COS;R20W1047
+TQJ6EUEK21;anna8180@hotmail.it;Anna;a;COS;R20W1047
+IL55DVEWM2;malali193014@gmail.com;Marta;a;COS;R20W1047
+SKDA322630;Posta@giuliopieralli.it;Giulio;o;COS;R20W1047
+UAIEBO9EX2;antoniettadellacorte@yahoo.it;ANTONIETTA;a;COS;R20W1047
+PVJ5QSJHNU;pi.stefano68@libero.it;pietro;o;COS;R20W1047
+I6L96KZYT1;valentinaparco3@gmail.com;valentina;a;COS;R20W1047
+4WW73MD7A1;nikilitti@yahoo.it;nicoletta;a;COS;R20W1047
+BPF8G7Z39U;lucianacervi0983@gmail.com;luciana;a;COS;R20W1047
+0K8V1KTV2J;silviamarczak31@gmail.com;kinga sylwia;a;COS;R20W1047
+WVHWA1WK9Y;claudia.argrntieri.71@gmail.com;Claudia;a;COS;R20W1047
+T61F767169;antonella130@alice.it;antonella;a;COS;R20W1047
+CNP9XYOF3C;betta_mancini@libero.it;elisabetta;a;COS;R20W1047
+53ea6bdebe;rosariamete87@live.it;Rosaria;a;COS;R20W1047
+AQPNHOS3R1;cinziagl@libero.it;Cinzia;a;COS;R20W1047
+I964P8V3T1;simona.sco@inwind.it;Simona;a;COS;R20W1047
+32JE6M0DO1;giusy_bagazzini@hotmail.it;giuseppina;a;COS;R20W1047
+N1SKB78732;lombardiletizia@gmail.com;LETIZIA;a;COS;R20W1047
+53f5f74660;angelagaiba73@gmail.com;angela;a;COS;R20W1047
+QHRTFDOXXY;del_valle08@hotmail.com;MARIA DEL VALLE;a;COS;R20W1047
+QYTPESKH6X;ettore.cardillo@gmail.com;Ettore ;o;COS;R20W1047
+JX665RJUN5;beara1981@libero.it;Wioletta Beata;a;COS;R20W1047
+669M9E5B8C;miacappadonna@gmail.com;Miia;a;COS;R20W1047
+J3FL6WPGBE;diliddo.tabita@libero.it;Tabita;a;COS;R20W1047
+L12JGMS5ET;Sasa9408@icloud.it;Salvatore;o;COS;R20W1047
+54514e298a;feffe-m-85@hotmail.it;Federica;a;COS;R20W1047
+R1VSDF5BWG;cla.d@hotmail.it;Claudia;a;COS;R20W1047
+1GF8E7BMW2;giuliano.paolinelli@enel.it;Socio;o;COS;R20W1047
+O1OV0LJ6EI;inana86@live.com;Ivana;a;COS;R20W1047
+1KCMT65999;ziopeperone@virgilio.it;roberto;o;COS;R20W1047
+4F2NWXA7G8;Beppegiu86@hotmail.it;Giuseppe ;o;COS;R20W1047
+AT8UHN5D6O;Lancianeser@katamail.com;Roberta ;a;COS;R20W1047
+HXYYNZYMYU;valentina.coniglio@virgilio.it;valentina;a;COS;R20W1047
+47BAY2BBE1;lorenz_70@hotmail.com;Lorenzo;o;COS;R20W1047
+X7A1YVD65B;Ire___92@hotmail.it;Irene;a;COS;R20W1047
+3BYNE5O7YL;cyndi.b@tiscalinet.it;Cinzia;a;COS;R20W1047
+72Z9TQMV6N;marco.online2015@gmail.com;Marco;o;COS;R20W1047
+E1ADHQYM01;vaniact85@libero.it;Sebastiana;a;COS;R20W1047
+0W866U0Z91;frog18@virgilio.it;micaela;a;COS;R20W1047
+N20WFGTMZ5;siciliana_impazzita2009@yahoo.it;Giorgia ;a;COS;R20W1047
+WEGRP1WDPH;Veramonza1990@libero.it;Veronica;a;COS;R20W1047
+IALYFZVWHU;francesca_mao@libero.it;Francesca;a;COS;R20W1047
+V3QKIQ4ISO;diamante99@alice.it;alessandra;a;COS;R20W1047
+EZ5W861264;lopilochoh@libero.it;marco;o;COS;R20W1047
+DF4FSZKQ1U;aless_cami@hotmail.com;Alessandra ;a;COS;R20W1047
+5447ac3dc8;frabettaz@libero.it;mariagrazia;a;COS;R20W1047
+0HX6AEP006;Only1975@gmail.com;Barbara ;a;COS;R20W1047
+TVFZ231LDO;lucyanto84@gmail.com;Lucia;a;COS;R20W1047
+5478c66cec;alexis-punk@hotmail.it;Alexis W.;a;COS;R20W1047
+CYCXHKNS4B;teresadinardo@hotmail.it;teresa;a;COS;R20W1047
+BVFOSA41GF;antonella.covato@tiscali.it;antonella;a;COS;R20W1047
+5419ed52e2;ciocco979@hotmail.it;Rosalia;a;COS;R20W1047
+8ZUT99OA0L;toddyevans@gmail.com;Fabio;o;COS;R20W1047
+JW0TAVXHS1;enrica.alisio@virgilio.it;Enrica;a;COS;R20W1047
+CMI4D9DYD1;sabiman@libero.it;sabina;a;COS;R20W1047
+8T8O5BAX4S;francesca.benny87@virgilio.it;Francesca;a;COS;R20W1047
+5447db37b3;ambrogetti.simona@libero.it;simona;a;COS;R20W1047
+M5JEZ4T7YM;giorgialupano@libero.it;Giorgia;a;COS;R20W1047
+GMR7TS0SGU;giuseppe_16_95_@hotmail.it;Giuseppe;o;COS;R20W1047
+VH0EALONK1;nazy1981@libero.it;Nazarah;a;COS;R20W1047
+5RPEVH3YNK;susy195@yahoo.it;Susanna ;a;COS;R20W1047
+0N6DY93070;luke705@libero.it;luca ;o;COS;R20W1047
+547e0d73df;raffastella61@libero.it;Raffaella;a;COS;R20W1047
+9Q70B60D91;pasquale_valente2002@yahoo.it;pasquale;o;COS;R20W1047
+L8BSHX4A0V;archimedesr53@gmail.com;gaetano;o;COS;R20W1047
+3EBQNXIHEC;patty987@virgilio.it;Patrizia;a;COS;R20W1047
+U40ES4KJCE;jemba98@libero.it;jessica;a;COS;R20W1047
+RVZAL20BQB;nicholasnobile@outlook.it;Nicholas John Angelo;o;COS;R20W1047
+2VTZ058700;miciona74@hotmail.it;carla;a;COS;R20W1047
+W2RP6W5B9S;ioan.napa68@yahoo.it;ioAN;o;COS;R20W1047
+0CCOQIA1SL;lovecchiomicky@libero.it;Costanza;a;COS;R20W1047
+JEW34XSVRN;gabriellamazzocchi2018@gmail.com;gabriella;a;COS;R20W1047
+49EZ4U2O86;federica74@live.it;Federica;a;COS;R20W1047
+0UOVCI2I8H;dellopreite.stefania@gmail.com;stefania;a;COS;R20W1047
+Q36WD79JMO;3383577117@tim.it;MARCO;o;COS;R20W1047
+O1ZCYY2IDU;ione.danyela23@gmail.com;Ionela Daniela ;a;COS;R20W1047
+EKZ8S03035;taurellileoni@libero.it;BARBARA;a;COS;R20W1047
+T4EZIHMVXH;laura@marcodevincentis.it;Laura;a;COS;R20W1047
+3K5ZDX4553;giorgiopondi@gmail.com;Giorgio;o;COS;R20W1047
+2FTC7C6L30;tragni.nicola@alice.it;Nicola Antonio;o;COS;R20W1047
+8OH7XB417B;lidiacrosa@alice.it;lidia;a;COS;R20W1047
+6S8XWLXV3L;bostor_flade@live.it;marco;o;COS;R20W1047
+BYPEP3LDU1;fm1701e@libero.it;angela;a;COS;R20W1047
+N36UG32282;elenadoglio@tim.it;elena;a;COS;R20W1047
+J4P8R7101Z;anna.manganoni@gmail.com;anna;a;COS;R20W1047
+KK5P1G9P36;domenica.sasso@libero.it;domenica;a;COS;R20W1047
+K9QJHCVTLI;princess.peach.90@gmail.com;Alessandra;a;COS;R20W1047
+1EA60A6DK1;paolo.ballabene@libero.it;paolo;o;COS;R20W1047
+8SU8405797;francesca.d@infinito.it;Francesca;a;COS;R20W1047
+KSF7HY4CME;edgardo.perani@gmail.com;edi;o;COS;R20W1047
+6E9ZW99932;saramail.90@gmail.com;Sara;a;COS;R20W1047
+VPVCL97909;alberto.guerra74@gmail.com;alberto;o;COS;R20W1047
+X2CUQT4D3I;muliani@libero.it;marco;o;COS;R20W1047
+8Y0IEC1WMH;battpippo@hotmail.com;Peppe;o;COS;R20W1047
+K51PJ98N01;emmapicerno@libero.it;emma;a;COS;R20W1047
+OFI4MUPT3O;simonavisconti1978@libero.it;simona;a;COS;R20W1047
+BYIP18FQGU;kikka8222@gmail.com;Veronica;a;COS;R20W1047
+Z5BMVSVYDS;davide.fregni@gmail.com;Davide;o;COS;R20W1047
+MWEQC04CG7;silvia.firenzuola@alice.it;Silvia;a;COS;R20W1047
+LPQ2LUZEBO;viola.giulio30@gmail.com;Socia;a;COS;R20W1047
+R7DJGW3DGE;andreasensen@katamail.com;Andrea;o;COS;R20W1047
+QM7TN0RAA4;wewew@mail.it;dfd;o;COS;R20W1047
+544171657e;pitiponci@libero.it;ANGELA;a;COS;R20W1047
+RONY0OR0LY;sergiorita5460@hotmail.it;sergio;o;COS;R20W1047
+LJSZHD4S8W;alippi.cristina@gmail.com;CRISTINA;a;COS;R20W1047
+4K5RCOQQMS;robertabianco1994@gmail.com;Roberta;a;COS;R20W1047
+IHNUPT4LI6;cisterslandsnowteam@gmail.com;veronica;a;COS;R20W1047
+OANDCDJ8PT;marika38@hotmail.com;Patrizia ;a;COS;R20W1047
+OYFZ1UO9V1;tiffany83@libero.it;Paola;a;COS;R20W1047
+N70Y78ZSVR;mascolavecchi@gmail.com;massimiliano;o;COS;R20W1047
+E6KXVIUQZ3;mario.08@alice.it;mario;o;COS;R20W1047
+90YXCVNK14;Lagunaps94@hotmail.com;santina;a;COS;R20W1047
+RAJT4WQ39U;Gardelo@hotmail.it;Stefano ;o;COS;R20W1047
+JXK84JRSG9;giampaolo.fortunati@gmail.com;Giampaolo;o;COS;R20W1047
+D9T17WP9J2;Danigrazioso@libero.it;DANIELA;a;COS;R20W1047
+P2QWD77271;wla621@gmail.com;wladimiro;o;COS;R20W1047
+YPJFCVR01Q;ilariagambaretti@gmail.com;Ilaria;a;COS;R20W1047
+9CSIRWIYL0;sarafalletta945@hotmail.com;sara;a;COS;R20W1047
+GKALB22812;alexiel85@gmail.com;Ilaria;a;COS;R20W1047
+0H4DXYHH78;angelamarana@libero.it;Angela;a;COS;R20W1047
+N87ONFM1B3;RIOKY69@ALICE.IT;MONICA;a;COS;R20W1047
+KO978290RD;ibrahim.lisa1995@icloud.com;Lisa ;a;COS;R20W1047
+F1AZ466668;matopeico@yahoo.it;andrea;o;COS;R20W1047
+5749RGYLF3;torio_111.8989@yahoo.it;vittorio;o;COS;R20W1047
+Y55UTALXG1;fernanda.leitao@gmail.com;Fernanda;a;COS;R20W1047
+NDTK4R1PV1;f_panico@alice.it;Ferdinando;o;COS;R20W1047
+NDY9KTOJ13;marcobacciu@yahoo.it;marco;o;COS;R20W1047
+528a78c894;zuappa@gmail.com;Martina;a;COS;R20W1047
+RCM5VFWSM2;antocecca01@gmail.com;antonella;a;COS;R20W1047
+508f8c8b12;informavita@yahoo.it;GENNARO;o;COS;R20W1047
+SCZBN493W1;gpcusy@yahoo.it;Gianpaolo;o;COS;R20W1047
+DUFBI74281;rosariogenio@yahoo.it;giusi;o;COS;R20W1047
+RNI097K8KB;fedmos83@gmail.com;Federico;o;COS;R20W1047
+XCGUUDKUEN;simoeinini@hotmail.it;simona;a;COS;R20W1047
+544877df74;angelvicky78@gmail.com;Vittoria;a;COS;R20W1047
+EHWQWMQI9E;Maxgiannoccaro@alice.it;Emanuela;a;COS;R20W1047
+59U5K3Y5BG;fesito@libero.it;federica;a;COS;R20W1047
+129UCV2FBI;laura.lussignoli@live.it;Laura;a;COS;R20W1047
+SAY2E62561;gianpiamato@hotmail.it;Gianpiero;o;COS;R20W1047
+O13NCOZ77C;elesms64@gmail.com;Eleonora;a;COS;R20W1047
+BEGZF9W6UY;david_romina@libero.it;romina;a;COS;R20W1047
+ZU9F7EW6B9;tizianaincollingo@gmail.it;Tiziana;a;COS;R20W1047
+OGINJP2NFP;barbaradipi@libero.it;barbara;a;COS;R20W1047
+RIAO441XZV;antonietta6@libero.it;Antonietta Anna;a;COS;R20W1047
+QUC8P0B4E2;l_corradini@hotmail.com;Luca;o;COS;R20W1047
+VM4P2R09KX;nunziogallo@inwind.it;Nunzio;o;COS;R20W1047
+51c610a9c5;sofiamax16@yahoo.it;pierpaola;a;COS;R20W1047
+I3JDED1WTV;scandaliato.gaspare@libero.it;Gaspare;o;COS;R20W1047
+Z5QR76790B;19lino87@gmail.com;Pasqualino;o;COS;R20W1047
+ERIBL1H5BK;valma1982@libero.it;valentina;a;COS;R20W1047
+QQ0EI12202;serenaferrara.psy@gmail.com;serena;a;COS;R20W1047
+R6TZT23LXF;anna.emmavincenzi@alice.it;Graziella;a;COS;R20W1047
+5400e19333;s.cacciamani@email.it;silvia;a;COS;R20W1047
+LZ3IY5RKG1;rookina@gmail.com;Federica;a;COS;R20W1047
+5449588262;martyna.nastri@gmail.com;Martina;a;COS;R20W1047
+752C2YZ6N0;sav3@hotmail.it;saveria;a;COS;R20W1047
+GSY4FRWMWQ;seltz86@libero.it;salve;o;COS;R20W1047
+GXDEO51155;flora77@hotmail.it;LUCIA;a;COS;R20W1047
+XBBYV49765;tremax71@msn.com;Massimo;o;COS;R20W1047
+78AYHZD9Z1;mmaresa@hotmail.com;Mariateresa;a;COS;R20W1047
+5447b3deb4;marcellostefania@virgilio.it;Stefania;a;COS;R20W1047
+7GTP41IBCB;anna.cavall@gmail.com;Anna;a;COS;R20W1047
+LFDT44GQR8;albertofranceschetti@outlook.it;Alberto;o;COS;R20W1047
+2LMNNMMAW1;ampadue@tiscali.it;ROBERTO;o;COS;R20W1047
+40PG2YQBAS;boffinimaruska@hotmail.it;Maruska;a;COS;R20W1047
+18MH4HSZWQ;marialuisacalderone83@gmail.com;Marialuisa;a;COS;R20W1047
+53f4f86746;sempreverde110@gmail.com;Fiammetta;a;COS;R20W1047
+S5N4Z83935;ignazio2804@libero.it;elisabetta;a;COS;R20W1047
+KPKD373316;estrum@tin.it;Emanuela;a;COS;R20W1047
+8MSIKKCVE1;drago859@inwind.it;Valentina;a;COS;R20W1047
+6QVI5H5A1J;elenaxyw@libero.it;Elena;a;COS;R20W1047
+8CZ21K8M7K;annagaby197911@gnail.com;matei;a;COS;R20W1047
+T4A1HNN6LV;marco.raino981@gmail.com;Marco;o;COS;R20W1047
+UHTTJ7Z8CG;kevinedanilo@Hotmail.it;giada;a;COS;R20W1047
+541e059f24;rlngpp@gmail.com;Giuseppe;o;COS;R20W1047
+89BVYQ4TU9;p.fresi@yahoo.it;Paola;a;COS;R20W1047
+5T445ZM0Q0;brunabattocchio@gmail.com;bruna;a;COS;R20W1047
+F86BT1PIH1;Raffaella@astorgarden.com;Raffaella;a;COS;R20W1047
+OUKGE6GY7U;ansilvan@libero.it;Anna;a;COS;R20W1047
+IDP3QHMSBJ;rita.lupattelli@libero.it;rita;a;COS;R20W1047
+UO9MP71662;portaportese@msn.com;Patrizia;a;COS;R20W1047
+XIF1N96881;pat69mor@hotmail.com;Socio;o;COS;R20W1047
+UX8SUCOBCY;ruscianodino@tiscali.it;dino;o;COS;R20W1047
+MPE2AFB3J1;gianpiero.manica@yahoo.it;Gian Piero;o;COS;R20W1047
+7U7334KQE1;sagitta58@iol.it;mariella;a;COS;R20W1047
+ZSQ8RPDNLD;Radice.paola@virgilio.it;Paola ;a;COS;R20W1047
+LA36BP6317;roberta.terraneo@tiscali.it;Roberta;a;COS;R20W1047
+1RLYN0YV3Y;sandra19.sindia@gmail.com;Sandra;a;COS;R20W1047
+PWO3RHXRW1;m.merlo72@gmail.com;Manuela;a;COS;R20W1047
+R5MREA03NL;sarapazza79@libero.it;sara;a;COS;R20W1047
+39IZC8VB5F;plsilvestri@gmail.com;Socio;o;COS;R20W1047
+OAZG4G05NP;ritageracitano@libero.it;Rita;a;COS;R20W1047
+84JTI6EEZH;virgyn80@libero.it;Virginia;a;COS;R20W1047
+5SD1GK6Z28;pinap@hotmail.co.uk;pina;a;COS;R20W1047
+6OM6D9SRKX;mp_mar@libero.it;maria ignazia;a;COS;R20W1047
+YGKWHFSFHN;patrizia.curcio@tiscali.it;patrizia;a;COS;R20W1047
+0BHNE19111;massimo.stradi@tin.it;Massimo;o;COS;R20W1047
+53fd3b3e3d;marialuana79@libero.it;Marialuana;a;COS;R20W1047
+TV2R5G7DKN;Margoferrari45@gmail.com;Margo;a;COS;R20W1047
+ZGMEJ4UKW1;abbatig@inwind.it;Grazia;a;COS;R20W1047
+BAR6044841;raffaella.calligher@gmail.com;raffaella;a;COS;R20W1047
+53e4e55d5c;testa883@libero.it;Daniel;o;COS;R20W1047
+5418525bcd;luigimediat@libero.it;Luigi;o;COS;R20W1047
+2GXPR9RPQR;Fegu@live.it;Federico ;o;COS;R20W1047
+538860a5da;magnificorosanna@libero.it;Rosanna;a;COS;R20W1047
+W4CX747794;ecgecg@alice.it;Ester;a;COS;R20W1047
+Q6R7YT5XNC;ANGELO.MOTTA90@YAHOO.COM;ANGELO;o;COS;R20W1047
+HMWJPTEFVP;claudiobergy@gmail.com;Claudio ;o;COS;R20W1047
+OGOSPLBVJO;intruso.a@live.com;Samantha ;a;COS;R20W1047
+OBMZNX85JV;grzpatafi@alice.it;graziella;a;COS;R20W1047
+E12VON0PXM;luisamario@yahoo.ot;Maria Luisa ;a;COS;R20W1047
+QTDDZ4USX5;maria_andreeaioneanu@yahoo.it;Maria;a;COS;R20W1047
+QAG7IAQ1YK;mertoli.rosario@email.it;rosario;o;COS;R20W1047
+49VO4ZY420;s_dallafior@virgilio.it;Silvia;a;COS;R20W1047
+ZMNOY7ULRZ;pontecorvobeghi@alice.it;Anna;a;COS;R20W1047
+RLY7X62298;francyguery@hotmail.it;Francesca;a;COS;R20W1047
+H4SAPPTPS4;farmababa@farmaciababando.191.it;massimo;o;COS;R20W1047
+7E6IB8WAXC;Caronitiarchitetto@gmail.com;Gabriele;o;COS;R20W1047
+FHS140HX4T;Giuseppeb2011@hotmail.it;Veronica ;a;COS;R20W1047
+FVV7YRUU9C;vittoria.sec@gmail.com;Vittoria ;a;COS;R20W1047
+4PVD12JWKB;emanuele.petrachi@gmail.com;Emanuele;o;COS;R20W1047
+7XBV5V2MBA;elenarensi@yahoo.it;elena;a;COS;R20W1047
+541906e269;elenapatrocchi@virgilio.it;Elena;a;COS;R20W1047
+53e006d199;francesca.giuliano@email.it;Francesca;a;COS;R20W1047
+OJ5OCCIVIY;larima@inwind.it;Lara;a;COS;R20W1047
+KT3IQOD11T;filo.oo@libero.it;Rosaria;a;COS;R20W1047
+PGDQ844904;prosciuttino87@hotmail.com;marco;o;COS;R20W1047
+V47B4Q50OK;saby_hsm@hotmail.it;Sabina;a;COS;R20W1047
+84NPJECZ1L;lupetta2011@gmail.com;Francesca ;a;COS;R20W1047
+RFNGSBODA1;lorenzo.uguccioni@gmail.com;lorenzo;o;COS;R20W1047
+HCP84A1DP4;nancy.fornasari8@gmail.com;Nancy;a;COS;R20W1047
+VNO7IXJYD6;c_fiorani@yahoo.it;Claudio;o;COS;R20W1047
+M2Z1REFO4U;d.monty@alice.it;domenico;o;COS;R20W1047
+544820a66e;slechiancole@gmail.com;stefania;a;COS;R20W1047
+IIBLSNEJR4;michydanio@libero.it;michy;a;COS;R20W1047
+8S2CCZILE9;valentinacostanzomatri@yahoo.it;Valentina;a;COS;R20W1047
+FLTZX4Y2HQ;cica63@tiscali.it;Loredana;a;COS;R20W1047
+2T4KS1KOR4;billomark@gmail.com;marco;o;COS;R20W1047
+5447aede6a;susannapurita@hotmail.it;susanna;a;COS;R20W1047
+A5S2ZTIMAD;julian91p@libero.it;Julian;o;COS;R20W1047
+EN49GGLWU1;simonamonferrato@virgilio.it;simona;a;COS;R20W1047
+HZQPZZZKWB;mazzu994@gmail.com;Andrea;o;COS;R20W1047
+W5G9769JE3;martingiorgio@virgilio.it;antonello;o;COS;R20W1047
+96GBS47T3U;sil631@yahoo.it;silvana;a;COS;R20W1047
+544488648d;tonino7913@libero.it;Antonio;o;COS;R20W1047
+QAEDLY1MYO;iolandarefaldi@gmail.com;iolanda;a;COS;R20W1047
+ZWXTRLRFMG;fabiocirillo.b@gmail.com;Fabio;o;COS;R20W1047
+HH108QPB89;copisteriabieffe@gmail.com;Bea;a;COS;R20W1047
+RSIGD1I0AA;Cegnacarla@yahoo.it;Carla;a;COS;R20W1047
+E08NQ2WT5K;printmac@live.it;Pier Luigi;o;COS;R20W1047
+E8EAAW57DY;giusy.pasqua@gmail.com;Giusy;a;COS;R20W1047
+9EX7UX2AO1;fra.barbero@virgilio.it;Socio;o;COS;R20W1047
+5447d446d7;colavito.domenico@libero.it;antonia;a;COS;R20W1047
+XQR7X9Q79T;andre46@live.it;andrea;o;COS;R20W1047
+FRSIW84OOF;angelacovato@hotmail.it;Angela;a;COS;R20W1047
+N6M3Q8MSH1;bubblebobble85@hotmail.it;Giulio;o;COS;R20W1047
+YPYK8L62JC;Lucagarava@libero.it;Luca ;o;COS;R20W1047
+VM71LMRL06;Caluca87@hotmail.it;Luca;o;COS;R20W1047
+SDC3Z9IPN1;laura.guardiera@libero.it;laura;a;COS;R20W1047
+R33TPHD7K6;camodei@alice.it;Caterina;a;COS;R20W1047
+U9YM781232;rossellagirotti@alpilaghi.it;rossella;a;COS;R20W1047
+6FY1K8WI4M;inescarducci65@gmail.com;Ines;a;COS;R20W1047
+2USMICGEWE;Wwwuespo@gmail.com;Andrea;o;COS;R20W1047
+11O4L02KBM;mat.cas.88@gmail.com;Matteo;o;COS;R20W1047
+QZLWY2U5U1;dallapiccola.very@libero.it;fausto;o;COS;R20W1047
+CTS5WYAGAE;monica.cm@libero.it;Monica;a;COS;R20W1047
+PR9SS63567;giudiami@libero.it;giuditta;a;COS;R20W1047
+P230PPX9DC;Cristinaborroni69@icloud.com;Cristina ;a;COS;R20W1047
+W1JKIEH24P;fatone.giuseppe@tiscali.it;giuseppe;o;COS;R20W1047
+YPJ4JX94OB;raggiodiluna1980@hotmail.it;Donatella;a;COS;R20W1047
+VRGCV41195;crestie@libero.it;ELENA;a;COS;R20W1047
+I8KVBG34ZB;pesci_738@hotmail.it;sara;a;COS;R20W1047
+K758JH4JO1;harturo15@yahoo.it;Elena;a;COS;R20W1047
+UO7RZKLH5N;claudiofava@hotmail.it;Claudio;o;COS;R20W1047
+9YMFCU5QZA;leonardo_valerio90@libero.it;valerio;o;COS;R20W1047
+O65HV04600;rodolfo.rutigliano@cnh.com;rodolfo;o;COS;R20W1047
+4FP8EFK30J;claudiomarino92@libero.it;santolo;o;COS;R20W1047
+QHVI0FOW7L;terry15_3@libero.it;Teresa;a;COS;R20W1047
+E78Y7T72L1;cristina.ciani@hotmail.it;Cristina;a;COS;R20W1047
+UC8DH9KWNK;francy.p65@libero.it;Francesca;a;COS;R20W1047
+9ON62J0GI3;giorgiosf@virgilio.it;Giorgio ;o;COS;R20W1047
+SFYTV9L39V;maria_fourmi@yahoo.com;ramona maria;a;COS;R20W1047
+53c69e8726;mirea77@hotmail.it;Mikaela;a;COS;R20W1047
+3VYQY6ESKF;soniaarchi@libero.it;Sonia;a;COS;R20W1047
+UBUZZML8FQ;ilariariz86@gmail.com;ilaria;a;COS;R20W1047
+1S683IDI3A;frency_mo2002@yahoo.it;francesca;a;COS;R20W1047
+FBZCJ71822;lucry.m@libero.it;michele;o;COS;R20W1047
+ICCBCH7Y0H;mariachiaracovani@gmail.com;Maria Chiara;a;COS;R20W1047
+OOWH8Q64FP;ippo62@hotmail.it;filippo;o;COS;R20W1047
+BZG8BHY75T;bello85@outlook.it;Mario;o;COS;R20W1047
+CPHFQE8J5B;simonetta.daner1960@libero.it;Simonetta;a;COS;R20W1047
+5MUH46EHUE;j3sssyy@gmail.com;Jessica;a;COS;R20W1047
+DTV9ICS3EM;Androsigliomary83@gmail.com;Francesca ;a;COS;R20W1047
+Z3OEW42412;pinuccioforever@libero.it;alessandra;a;COS;R20W1047
+QBM5GANXVY;giovanni.abatee@libero.it;Giovanni;o;COS;R20W1047
+TUP8MBUHIX;angelacicorelli@yahoo.it;Angela;a;COS;R20W1047
+FW17Y1X6N9;sespas@libero.it;Pasquale;o;COS;R20W1047
+N8OLYLJLER;alessiacavataio@gmail.com;Alessia;a;COS;R20W1047
+1C27H35271;fernando.ghisolfi@yahoo.it;fernando;o;COS;R20W1047
+DIPGEWGCAE;macriser2004@libero.it;maria cristina;a;COS;R20W1047
+KWOCYL47H6;frau.giovan@alice.it;Giovanni;o;COS;R20W1047
+SY3V2D0H1L;lzwork1994@gmail.com;Luca;o;COS;R20W1047
+87ZMI0TCKE;paraizo3@hotmail.it;tania aparecida;a;COS;R20W1047
+MR1KHLSMF2;beppe4820@libero.it;giuseppe;o;COS;R20W1047
+5447f9841e;jonnyejenny@gmail.com;jennifer;a;COS;R20W1047
+23ODL37245;franca.strega@tin.it;Franca;a;COS;R20W1047
+51d9672bc4;sveva979@libero.it;Sveva;a;COS;R20W1047
+5419eef556;nicola--87@hotmail.it;Nicola;o;COS;R20W1047
+A29TBROO31;m.monti.1980@hotmail.it;Massimiliano;o;COS;R20W1047
+543eae781c;alicia.mantoan@libero.it;ALICIA;a;COS;R20W1047
+LDJQ0UY0L1;arianna72@virgilio.it;Ludovica;a;COS;R20W1047
+GWRM07BBB2;luna07@libero.it;Antonia;a;COS;R20W1047
+4YF63G1XY2;email2_2014@libero.it;Enrica;a;COS;R20W1047
+S3HGOZK1TX;Elvira-barbieri@libero.it;Elvira;a;COS;R20W1047
+V9DKZI5YKS;blue_marta@hotmail.it;Marta;a;COS;R20W1047
+IJSYITTU4H;giovanni.terraroli@gmail.com;Giovanni;o;COS;R20W1047
+Q1KSZZONXM;federica.lasi@gmail.com;Federica;a;COS;R20W1047
+0R8IOR7SMV;ioanavesa4@gmail.com;Ioana;a;COS;R20W1047
+FVFVKUQC9S;giampaola_goi@fwceu.com;giampaola;a;COS;R20W1047
+R4TB5N7JKF;giugie2001@yahoo.it;maria;a;COS;R20W1047
+541ac79114;christian8484@gmail.com;CHRISTIAN;o;COS;R20W1047
+OZDLZOCYI7;r_migliorini@email.it;Rosalba;a;COS;R20W1047
+U39VSYP4DA;tipatogaa@virgilio.it;Natascia;a;COS;R20W1047
+MYIE5NRMAF;angela6519@outlook.it;angela;a;COS;R20W1047
+UH071S2P8D;rossssy83@yahoo.it;Rossella;a;COS;R20W1047
+XJOYGM1EMD;ghisuroberta@gmail.com;ROBERTA;a;COS;R20W1047
+53fd3fa548;gianpi54@libero.it;Gianfranco;o;COS;R20W1047
+0GLPD1YMPR;roberto.rotondi@hotmail.com;Roberto;o;COS;R20W1047
+WMKF533031;verovero79@hotmail.it;VERONICA;a;COS;R20W1047
+RFQ2T08AQV;giusti.emilia@liberp.it;Emilia;a;COS;R20W1047
+BYSD3ZRKPE;irene@inides.com;Irene;a;COS;R20W1047
+YHDB8GCRUR;ritchellematosmaiara@hotmail.it;ritchelle;a;COS;R20W1047
+9POZ1XUH24;barretos@live.it;Erika;a;COS;R20W1047
+WZ82IHZEUF;catebad@libero.it;caterina;a;COS;R20W1047
+Y7QNUR30NV;maxteel.mt@libero.it;massimo;o;COS;R20W1047
+PCRBK6OVU5;mattiagenova@live.it;Mattia;o;COS;R20W1047
+URN2ON8EES;Eduard22@hotmail.it;Eduard;o;COS;R20W1047
+B710A9OKQY;info.sprintservice@gmail.com;FRANCESCO;o;COS;R20W1047
+N3YBAHG3O6;Simocaney@outlook.it;Simona ;a;COS;R20W1047
+N2F6361939;fifa07fifa@hotmail.it;vincenzo;o;COS;R20W1047
+541c3a9f54;c.ruggieri78@gmail.com;Caterina;a;COS;R20W1047
+GZJK617CVL;lecreazionidijiji@gmail.com;Ilaria;a;COS;R20W1047
+S613BH4G08;armandodeglinnocenti@yahoo.it;armando;o;COS;R20W1047
+5GV0826114;barbaraoddone@fastwebnet.it;BARBARA;a;COS;R20W1047
+Y6O2MBONSG;marziamarinelli85@gmail.com;Marzia;a;COS;R20W1047
+OATJJCD8BB;Katy.10@hotmail.it;Katj ;a;COS;R20W1047
+TJHR542727;perroneflavia@yahoo.it;Flavia;a;COS;R20W1047
+320GIGSI17;alicea79@live.it;Alice;a;COS;R20W1047
+XSRIMVDXNV;gianluca.cimolino@libero.it;gianluca;o;COS;R20W1047
+WYRO0Q1XY4;rosa.57tr@libero.it;Rosa;a;COS;R20W1047
+FIGOZ50352;grandescarpi@libero.it;marco;o;COS;R20W1047
+2ME4DUQ9TT;trillysaitta@hotmail.it;Patrizia;a;COS;R20W1047
+5357de4ce4;peppearci@hotmail.it;Giuseppe;o;COS;R20W1047
+8JZLNRHEFL;vincenza81_1@libero.it;vincenza;a;COS;R20W1047
+G25TL61614;cora04@libero.it;CORA;a;COS;R20W1047
+509a8fda78;g.celent77@libero.it;Giuseppe;o;COS;R20W1047
+QCFOFLFFAJ;roberto.damora@yahoo.it;Roberto;o;COS;R20W1047
+23KB193719;simonaferro70@yahoo.it;simona;a;COS;R20W1047
+ST9YJ35131;annagrazia.manno@gmail.com;ANNA GRAZIA;a;COS;R20W1047
+53d95ad80e;cobra100@hotmail.it;luciano;o;COS;R20W1047
+QVBWZQ3769;diamante.voice@inwind.it;Patrizia;a;COS;R20W1047
+544d1148ab;momaiocchi@gmail.com;Monica;a;COS;R20W1047
+ABQ0JU6XP5;simonalovisetto@gmail.com;simona;a;COS;R20W1047
+DQS5U48117;chidan@virgilio.it;Chiara;a;COS;R20W1047
+5LJ212P79R;Vfilippo28@gmail.com;Veronica;a;COS;R20W1047
+6UU1S3EUYB;grigri1951@hotmail.com;Bruno;o;COS;R20W1047
+EYQGF88226;marta.motta@hotmail.it;MARTA;a;COS;R20W1047
+17YOEF44G2;francocastaldo61@libero.it;francesco;o;COS;R20W1047
+545a47c0a2;diamanteblu2000@gmail.com;Roberta;a;COS;R20W1047
+J1O3DE4YPI;giulia.pouli@hotmail.it;Giulia;a;COS;R20W1047
+KDPZ2GN9BG;Carlomassaroni@gmail.com;Carlo;o;COS;R20W1047
+BE9OT4SFX1;MARIO.DINELLI@TISCALI.IT;MARIO;o;COS;R20W1047
+4XELKTUGVW;Luciacavallaro82@gmail.com;Lucia ;a;COS;R20W1047
+D9IYXV0VEC;briseide.babi@gmail.com;Barbara;a;COS;R20W1047
+PG2FDWDAP1;mrossi59@libero.it;marco;o;COS;R20W1047
+BJUOFYLCY5;beaTRICE.ROCCA@LIBERO.IT;BEATRICE;a;COS;R20W1047
+E41KU1FPD3;stefymoss@live.it;Stefania;a;COS;R20W1047
+GWG878ZAF1;barni1980@libero.it;barbara;a;COS;R20W1047
+8IFFA66669;marialaura.cirillo@gmail.com;Marialaura;a;COS;R20W1047
+S7FER7SNEP;Luciazappala64@gmail.com;Lucia;a;COS;R20W1047
+8O1W7ZL0P9;marinella2603@hotmail.com;Maria;a;COS;R20W1047
+UPNWLN22B3;Arenzim@gmail.com;Manuel;o;COS;R20W1047
+541b6b8328;rossellazocchi@gmail.com;rosa;a;COS;R20W1047
+DDCVKQQPHF;aurorateani@gmail.com;Aurora;a;COS;R20W1047
+Y2SBG6YKLW;nig.it@hotmail.it;Nicola;o;COS;R20W1047
+ENS987HKVC;giuliettan91@hotmail.it;Giulia;a;COS;R20W1047
+7W5IN11081;camie@inwind.it;Elena;a;COS;R20W1047
+337KYV96N1;fm1701e@yahoo.com;fabrizio;o;COS;R20W1047
+DKYUUPWFG7;tresy.88@hotmail.it;Teresa;a;COS;R20W1047
+RHYZLOB0Y1;alfiozappala@tiscalinet.it;Alfio;o;COS;R20W1047
+CWTLD96N0E;cavallarisimona75@gmail.com;Simona ;a;COS;R20W1047
+L2K4AWA1F6;yashanero@hotmail.com;Marco;o;COS;R20W1047
+54490c9082;nunzia.mancuso@gmail.com;Nunziata;a;COS;R20W1047
+5417190188;hotstuffcoolpeople@hotmail.com;andreamarco;o;COS;R20W1047
+SUOAKMT2B1;niaaccopoti@yahoo.co.uk;Daniela;a;COS;R20W1047
+K0VWY12SC4;slauram@hotmail.com;laura;a;COS;R20W1047
+5447b88b71;paolagriva@gmail.com;PAOLA;a;COS;R20W1047
+K9WSS31989;maverluc@tin.it;mario;o;COS;R20W1047
+8ZFS9KWXN8;nadia.sibilia@libero.it;nadia;a;COS;R20W1047
+JJHRM53373;dariorik85@hotmail.it;DARIO;o;COS;R20W1047
+PYYAPLXEEE;giovannicorreddu@tiscali.it;Giovanni;o;COS;R20W1047
+50H6NZC7NN;Vivianacampora@hotmail.it;Viviana;a;COS;R20W1047
+V0J28T9847;Francescocirillo85@gmail.com;Francesco ;o;COS;R20W1047
+Q4RZ4QM4D1;Barbara.delgiacco@gmail.com;Barbara ;a;COS;R20W1047
+3B23UBOUSX;studiotateo@libero.it;maria concetta;a;COS;R20W1047
+DQGBK92122;giusealt@gmail.com;lucio;o;COS;R20W1047
+4f39278424;crisfilu@tiscali.it;Cristiano;o;COS;R20W1047
+9OOBWA9C3S;fedel.dani@gmail.com;Daniele;o;COS;R20W1047
+SL01EKNC07;hellokitty.taty88@gmail.com;tatiana;a;COS;R20W1047
+1M4PEF8LNF;SaraPiersanti87@tiscali.it;Sara;a;COS;R20W1047
+BAYHVLNHF1;guerriero72@teletu.it;Giovanni Marino;o;COS;R20W1047
+GMDDE7DC93;bigio-95@hotmail.it;Alessandro;o;COS;R20W1047
+CAMUQ6KQCR;bandinufederica@tiscali.it;Federica;a;COS;R20W1047
+8XD816B901;giocriste@tin.it;stefano;o;COS;R20W1047
+53ecd2f374;cattynoir@virgilio.it;valentina;a;COS;R20W1047
+90X8VZTUJ1;franck56ct@alice.it;francesco;o;COS;R20W1047
+Y7NUZ16140;giusyp87@hotmail.it;Giuseppa;a;COS;R20W1047
+FS28EUGGGS;t.alizzio@hotmail.it;concetta;a;COS;R20W1047
+FH7V4UDLRW;Alba_fedon@yahoo.it;Alba;a;COS;R20W1047
+BIGM8SD5DR;marina59a@yahoo.it;emanuela;a;COS;R20W1047
+TR5C9YCQBK;cidamaria2009@Outlook.it;maria aparecida ;a;COS;R20W1047
+FANXE2I12D;cozcar@alice.it;Carmine;o;COS;R20W1047
+RJ6RQUAJUY;galeazzifamily@gmail.com;Patrizia;a;COS;R20W1047
+53d3b7392f;cifanifederica@yahoo.it;federica;a;COS;R20W1047
+W7KHWFGIA1;papen82it@gmail.com;Daniele;o;COS;R20W1047
+5419993e58;b16127@live.it;barbara;a;COS;R20W1047
+1NN89XMIG9;mari80.madeo@libero.it;MARIA ASSUNTA;a;COS;R20W1047
+0YS0G4LFXH;Chantal.boschelli@gmail.com;Chantal;a;COS;R20W1047
+3SCCIFQZE2;a11lisa@virgilio.it;TIZIANA;a;COS;R20W1047
+THF2ER5WET;dima.l@infinito.it;Dima;a;COS;R20W1047
+IHIJR47411;fiorellafonda@virgilio.it;Fiorella;a;COS;R20W1047
+FOEWG13839;rosariodifalco@libero.it;Rosario;a;COS;R20W1047
+UONQ3JZVIN;aynwen86@live.it;senay;a;COS;R20W1047
+XPKK213792;lunastyle@live.it;manuela;a;COS;R20W1047
+1503K26881;lnegrisolo@gmail.com;Luisa;a;COS;R20W1047
+T1QVPB90QL;mazzolari.lara@hotmail.it;Lara;a;COS;R20W1047
+6TQTHYF5GI;pipcho@libero.it;maria francesca;a;COS;R20W1047
+D3GR81VK9P;oroleo@libero.it;ORONZO;o;COS;R20W1047
+TVI0VIGKDC;littleonutza@yahoo.com;stefania;a;COS;R20W1047
+PC9HZVFW2S;tindi75@live.it;Rosa;a;COS;R20W1047
+8J96V41797;gior.cap@tin.it;Giorgio;o;COS;R20W1047
+8EGY6JTYKD;feretotip@email.it;Fulvio;o;COS;R20W1047
+E958A22SIZ;raffaele.capone@gmail.com;Raffaele;o;COS;R20W1047
+WKCHPP23LZ;stefy.stefy1968@libero.it;stefania;a;COS;R20W1047
+37C4615181;giozen92@hotmail.it;Giorgio;o;COS;R20W1047
+VRB0HYDBL2;riccia62@tiscali.it;Rosaria;a;COS;R20W1047
+UNFH4GU4J1;lauradefilippi@tiscali.it;laura;a;COS;R20W1047
+0ZMJ6M9C41;virgy73@yahoo.it;virginia;a;COS;R20W1047
+5CD0POL83P;pinopast@gmail.com;Giuseppe;o;COS;R20W1047
+TENXXUDX0B;angelascuderi@outlook.it;Angela;a;COS;R20W1047
+T1T886PF1A;Francescagargo@hotmail.it;Francesca;a;COS;R20W1047
+WBQ3V96588;marcheseit@hotmail.com;Rosaria;a;COS;R20W1047
+57KFUI6UPM;Ruffolover@live.it;Mauro;o;COS;R20W1047
+LM2QA19520;francescavivone@libero.it;francesca;a;COS;R20W1047
+X3MJ7NIN07;pocegiuliana@yahoo.it;Giuliana;a;COS;R20W1047
+B0YFBBNQNM;johnsweet76@libero.it;Luca;o;COS;R20W1047
+D0P3RWCUGG;alessandra.gargano@hotmail.it;ALESSANDRA;a;COS;R20W1047
+SLC67199NI;pasmatarazzo83@gmail.com;chiara;a;COS;R20W1047
+7HW97WUH2D;aledpe@gmail.com;Alessia;a;COS;R20W1047
+IF4VHEEA2B;heikeursula@gmail.com;heike;a;COS;R20W1047
+5675IPO4ZB;Ross.labionda@gmail.com;Rosaria ;a;COS;R20W1047
+T2X1DZT58J;probo72@gmail.com;monica;a;COS;R20W1047
+UXHO7H35S7;g.selvaggio1967@gmail.com;Giuseppe;o;COS;R20W1047
+3LJW868QXR;loredanatermine@gmail.com;loredana;a;COS;R20W1047
+W0JNKEZR9C;mariellatrani@yahoo.it;mariella;a;COS;R20W1047
+2EOTZN8CA1;m.altomare@tin.it;Marco;o;COS;R20W1047
+BQC8BA3BXR;varsha.shelke+test@cityit.in;Priyanka;a;COS;R20W1047
+8V10O8LJEK;baicanvalentin1@gmail.com;Cornelia Antonia;a;COS;R20W1047
+PY6Z784171;raimondo_petagna@yahoo.it;Raimondo;o;COS;R20W1047
+ZAWJ75EH57;valentina.nardo@gmail.com;Valentina;a;COS;R20W1047
+4S8OZ6V7NV;Martyna95dg@gmail.com;Martina;a;COS;R20W1047
+2IZ5HGXX27;michele.michele78@hotmail.it;Michele;o;COS;R20W1047
+4DKE5MFDR2;cirlilli67@gmail.com;miotti ;a;COS;R20W1047
+L7Y4UWMMUH;mariolitorossi15@gmail.com;Mario;o;COS;R20W1047
+T8PLR21432;earnsite23@yahoo.it;Marco;o;COS;R20W1047
+FBDOR22227;maurapati@hotmail.it;Maura;a;COS;R20W1047

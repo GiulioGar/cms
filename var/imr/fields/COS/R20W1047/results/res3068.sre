@@ -1,0 +1,12 @@
+2.0;COS;R20W1047;3068;IDEX1873;13/07/2020 13:40:05 CEST;13/07/2020 13:41:13 CEST;68;4;120;debug=false;lang=it;pae=Italy;sysPRJ=COS;sysSID=R20W1047;tar=0;tipo=null;pan=cint;sysUID=IDEX1873
+choice;1;2;0
+choice;2;4;0
+concept;3
+choice;5;2;0
+choice;6;2;0
+choice;20;2;0
+choice;25;20;19
+choice;30;4;1
+open;33;61
+choice;40;4;2
+choice;120;2;1

@@ -1,0 +1,21 @@
+2.0;COS;R20W1047;3633;929QOK7X31;17/07/2020 09:07:13 CEST;17/07/2020 09:08:05 CEST;52;5;100;debug=false;lang=it;pae=Italy;sysPRJ=COS;sysSID=R20W1047;tar=0;tipo=null;dcg=3;pan=null;sysUID=929QOK7X31
+choice;1;2;0
+choice;2;4;0
+concept;3
+choice;5;2;0
+choice;6;2;0
+choice;20;2;1
+choice;25;20;8
+choice;30;4;0
+open;33;38
+choice;40;4;1
+concept;100
+choice;120;2;0
+choice;140;2;1
+choice;150;5;1
+choice;151;5;1
+choice;190;6;000001;5
+open;200;1
+scale;230;4;10;4;7;7;7
+choice;240;3;0
+choice;241;4;3

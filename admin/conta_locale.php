@@ -142,7 +142,6 @@
 						</div>
 					
 								<table class="table table-striped table-bordered">
-								<tr class="intesta"><th colspan='2'>Panel esterno</th></tr> 
 								<tr> <td> Complete: </td> <td> <b><?php echo  $conta_complete_ssi; ?></b> </td> </tr>
 								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati_ssi; ?></b> </td> </tr> 
 								<tr> <td> Over Quota: </td> <td> <b><?php echo  $conta_quotafull_ssi; ?></b> </td> </tr>

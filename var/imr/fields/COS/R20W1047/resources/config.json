@@ -1,0 +1,185 @@
+{
+     "interview": {
+        "development": {},
+         "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				
+				{
+                    "parameter_name": "tipo",
+                    "parameter_value": "db",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/fields/COS/ITA2001001/resources/final.html"
+                },
+				{
+                    "parameter_name": "tipo",
+                    "parameter_value": "db",
+                    "exit_code": 4,
+                    "redirect_to": "http://www.primisoft.com/fields/COS/ITA2001001/resources/final.html"
+                },
+				{
+                    "parameter_name": "tipo",
+                    "parameter_value": "db",
+                    "exit_code": 5,
+                    "redirect_to": "http://www.primisoft.com/fields/COS/ITA2001001/resources/final.html"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "cint",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=43143616-8443-4982-a3d1-4baf5797cc36"
+                }, {
+                    "parameter_name": "pan",
+                    "parameter_value": "cint",
+                    "exit_code": 4,
+                    "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=90174f74-480c-1d9f-cbe7-5d5ede4e6a0f"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "cint",
+                    "exit_code": 5,
+                    "redirect_to": "https://s.cint.com/Survey/QuotaFull?ProjectToken=90174f74-480c-1d9f-cbe7-5d5ede4e6a0f"
+                }
+            ],
+             "ssi": {
+                "secure_key_1": 54418,
+                "secure_key_2": 49433
+            }
+    }
+    },
+	"rtr": {
+         "show_summary": true,
+            "show_status_filters": false,
+			"legs": {
+                "enabled": true,
+                "variable_name": "cel",
+                "values": { 
+                            "1": "rotazione 1",
+                            "2": "rotazione 2",
+                            "3": "rotazione 3",
+                            "4": "rotazione 4",
+                            "5": "rotazione 5",
+                            "6": "rotazione 6",
+                            "7": "rotazione 7",
+                            "8": "rotazione 8",
+                            "9": "rotazione 9",
+                            "10": "rotazione 10",
+                            "11": "rotazione 11",
+                            "12": "rotazione 12",
+                            "13": "rotazione 13",
+                            "14": "rotazione 14",
+                            "15": "rotazione 15",
+                            "16": "rotazione 16"
+							
+						 }
+            },
+            "questions": [
+			 {
+                        "id": 20,
+                        "title": "Sesso",
+                        "labels": [ 
+						"Uomo",
+						"Donna"
+								  ],
+                        "show_table": "true",
+                        "show_chart": "true",
+                        "chart_type": "pie"
+                    },
+					{
+                        "id": 30,
+                        "title": "Area",
+                        "labels": ["Nord-Ovest (Piemonte, Val d Aosta, Liguria, Lombardia;)",
+                            "Nord-est (Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna;)",
+                            "Centro  (Toscana, Umbria, Marche, Lazio, Sardegna)",
+                            "Sud  (Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria, Sicilia.)"
+								  ],
+                        "show_table": "true",
+                        "show_chart": "true",
+                        "chart_type": "pie"
+                    },
+                     {
+                        "id": 40,
+                        "title": "Eta",
+                        "labels": ["Meno di 25 anni",
+                            "25-50 anni",
+                            "51-70 anni ",
+                            "Più di 70 anni"
+								  ],
+                        "show_table": "true",
+                        "show_chart": "true",
+                        "chart_type": "pie"
+                    },
+					      
+   	
+                    {
+                        "id": 241,
+                        "title": "Target",
+                        "labels": [		"EXPLORING COUPLES",
+                            "SILVER EXPLORER",
+                            "EXPLORING TOGETHER FAMILIES",
+                            "OTHER"
+								  ],
+                        "show_table": "true",
+                        "show_chart": "true",
+                        "chart_type": "pie"
+                    },	
+                    {
+                        "id": 2000,
+                        "title": "Indici estratti",
+                        "labels": [ "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"
+								  ],
+                        "show_table": "true",
+                        "show_chart": "true",
+                        "chart_type": "pie"
+                    }							
+                ]  
+       
+        },
+
+        "quota": {
+            "total_interviews": 1080,
+            "total_by_leg": {
+                "variable_name": "cel",
+                "values": { 
+                            "1": 60,
+                            "2": 60,
+                            "3": 60,
+                            "4":60,
+                            "5":60,
+                            "6":60,
+                            "7":60,
+                            "8":60,
+                            "9":60,
+                            "10":60,
+                            "11":60,
+                            "12":60,
+                            "13":120,
+                            "14":120,
+                            "15":60,
+                            "16":60
+                            
+                          }
+                        }
+        
+        }
+   
+}

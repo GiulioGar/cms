@@ -1,0 +1,10 @@
+2.0;COS;R20W1047;2087;P16GQ2V6E1;11/07/2020 20:34:29 CEST;11/07/2020 20:37:02 CEST;153;4;33;debug=false;lang=it;pae=Italy;sysPRJ=COS;sysSID=R20W1047;tar=0;tipo=null;pan=null;sysUID=P16GQ2V6E1
+choice;1;2;0
+choice;2;4;0
+concept;3
+choice;5;2;0
+choice;6;2;0
+choice;20;2;1
+choice;25;20;11
+choice;30;4;0
+open;33;6

@@ -50,7 +50,7 @@ if ($progress>=100) {$progress=100;}
 
 
 echo "<tbody><tr>";
-echo "<td><a href='conta_locale.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
+echo "<td><a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
 echo "<td>".$row['description']."</td>";
 echo "<td> 
 <div class='progress'> 

@@ -1,0 +1,14 @@
+2.0;COS;R20W1047;716;AVM2E43412;09/07/2020 12:16:45 CEST;09/07/2020 12:17:46 CEST;61;4;150;debug=false;lang=it;pae=Italy;sysPRJ=COS;sysSID=R20W1047;tar=0;tipo=null;pan=null;sysUID=AVM2E43412
+choice;1;2;0
+choice;2;4;0
+concept;3
+choice;5;2;0
+choice;6;2;0
+choice;20;2;0
+choice;25;20;8
+choice;30;4;0
+open;33;61
+choice;40;4;2
+choice;120;2;0
+choice;140;2;1
+choice;150;5;3

@@ -1,0 +1,13 @@
+2.0;COS;R20W1047;1374;ATHQGRDXPF;10/07/2020 04:57:43 CEST;10/07/2020 05:05:33 CEST;470;4;140;debug=false;lang=ru;pae=Italy;sysPRJ=COS;sysSID=R20W1047;tar=0;tipo=null;pan=null;sysUID=ATHQGRDXPF
+choice;1;2;0
+choice;2;4;0
+concept;3
+choice;5;2;0
+choice;6;2;0
+choice;20;2;0
+choice;25;20;6
+choice;30;4;2
+open;33;31
+choice;40;4;1
+choice;120;2;0
+choice;140;2;0
