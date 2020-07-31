@@ -70,7 +70,7 @@
 								</table>
 							<?php 
 							$contaIns++;  }
-			else  { echo "<h3>Non utilizzato</h3>"; } ?>
+			else  { echo "<div class='alert alert-danger' role='alert'> Non utilizzato</div>"; } ?>
 								
                             
                         </div>
@@ -103,20 +103,11 @@
 			<form action="csv.php" method="post" target="_blank">
 				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
 				<input type="hidden" name="filename" value="user_list" />
-				<label class="form-check-label text-center" for="inlineCheckbox1">Random</label>
-				<input class="form-control" type="image" value="submit" src="img/csv.png" />
+				<label class="form-check-label text-center" style="font-size:12px;" for="inlineCheckbox1">Follow Up</label>
+				<input style="height:45px;" class="form-control" type="image" value="submit" src="img/csv.png" />
 				</form>
 			</div>
 
-			<div class="form-check form-check-inline">
-				<form   action="csv.php" method="post" target="_blank" >
-				<input type="hidden" name="csv" value="<?php echo $csv_attivi ?>" />
-				<input type="hidden" name="filename" value="user_list" />
-				<input type="hidden" name="filetype" value="campione" />
-				<label class="form-check-label text-center" for="inlineCheckbox1">Attivi</label>
-				<input class="form-control" type="image" value="submit" src="img/csv.png" />
-				</form>		
-			</div>
 </div>	
                         </div>
                     </div>
@@ -154,12 +145,34 @@
 								
 					<?php 
 							$contaIns++;  }
-			else  { echo "<h3>Non utilizzato</h3>"; } ?>
+			else  { echo "<div class='alert alert-danger' role='alert'> Non utilizzato</div>"; } ?>
                             
                         </div>
                         <div class="card-footer">
-                            &nbsp;
-                        </div>
+
+						<?php if ($panel_esterno>0) 		
+						{ ?>						
+
+						<div class="form-check form-check-inline">
+
+						<div class="form-check form-check-inline ">
+							
+							<form action="csv.php" method="post" target="_blank">
+								<input type="hidden" name="csv" value="<?php echo $csv_sta ?>" />
+								<input type="hidden" name="filename" value="status_list<?php echo $sid ?>" />
+								<input type="hidden" name="filetype" value="status" />
+								<label style="font-size:12px;" class="form-check-label text-center" for="inlineCheckbox1">Status Uid</label>
+								<input style="height:45px;" class="form-control" type="image" value="submit" src="img/csv.png" />
+								</form>
+							</div>
+
+
+						</div>	
+						<?php 
+						}			
+						?>
+
+                 		</div>
                     </div>
                 </div>
 			

@@ -123,9 +123,32 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) ;
     } 
 
 
+//ESPORTA STATUS INTERVISTE ESTERNE
+
+$query_status = "SELECT * FROM t_respint WHERE sid='$sid' and uid like 'IDEX%'";
+$csv_status = mysqli_query($admin,$query_status) ;
 
 
+@$csv_sta="uid;stato;stato";
+$csv_sta .= "\n";
 
+while ($row = mysqli_fetch_assoc($csv_status)) 
+{ 
+	$uid=$row['uid'];
+	$status=$row['status'];
+	if ($status==1) { $status2="suspended";}
+	if ($status==3) { $status2="complete";}
+	if ($status==4) { $status2="screen out";}
+	if ($status==5) { $status2="quotafull";}
+
+	if ($status !=0) 
+	{
+	$csv_sta .=$uid.";".$status.";".$status2; 
+    $csv_sta .= "\n";
+	}
+
+
+}	
 
 
 $query_last_update = "SELECT * FROM t_panel_control where (sur_id='".$sid."')";
