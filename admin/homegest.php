@@ -104,11 +104,13 @@ if (empty($ag2)) { $ag2=65;}
    <h5 class="card-header">
    Dati Panel 
     </h5>
-    <button type="button" style="background-color:#88d899" class="btn btn-success">
-    <i class="fas fa-address-card"></i>
-  <b>ISCRITTI:</b> <span class="badge badge-light"><b><?php echo $tot_use['total']; ?></b></span>
-  
-</button>
+
+      <button type="button" style="background-color:#88d899; margin:5px;" class="btn btn-success">
+      <i class="fas fa-address-card"></i>
+    <b>ISCRITTI:</b> <span class="badge badge-light"><b><?php echo $tot_use['total']; ?></b></span>
+    
+  </button>
+
 
 
    <div class="card-body text-center recent-users-sec">
