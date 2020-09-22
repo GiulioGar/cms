@@ -1,13 +1,14 @@
 <?php
 function select_options($the_array, $pre_value){
-			while (list($value,$description) = each($the_array)){
+	foreach($the_array as $value => $description) {
 			if ($pre_value == $value){$selected = "selected=\"selected\""; } else {$selected = "";}
-			@$result .= '<option value="'.$value.'" '.$selected.'>'.$description.'</option>'."\n";}
+			@$result .= '<option value="'.$value.'" '.$selected.'>'.$description.'</option>'."\n";
+			}
 			return $result;
 			}
 			
 function convert_array($the_array, $pre_value) {
-			while (list($value,$description) = each($the_array)){
+	foreach($the_array as $value => $description) {
 			if ($pre_value == $value){ $result = $description; } }
 			return @$result;
 			}
