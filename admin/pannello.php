@@ -115,6 +115,7 @@ require_once('inc_tagbody.php');
 ?>
 
 
+
 <script type='text/javascript'>
 /*
   $(document).ready(function() 
@@ -279,72 +280,119 @@ echo "<td>€".$costo."</td>";
 
 
 
+
+<td>
+	<div class="apriMod" id="<?php echo $sid; ?>" data-toggle="modal" data-target="#modalMod<?php echo $sid?>" data-whatever="@mdo"><i class='fas fa-pen'></i></div>
+</td>
+
+</tr>
+
 <?php
-
-echo "<td><div class='apriMod' id='$sid'><i class='fas fa-pen'></i></div></td>";
-echo "</tr>";
-
 
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
 $aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
 $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
  ?>
 
- 
 
-<div align="left" class="modifica" id="<?php echo $sid; ?>">
-<div style="padding:30px; font-size:16px;">
+<div class="modal fade" id="modalMod<?php echo $sid?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Modifica dati ricerca: <?php echo $sid;?></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
 <form  action="pannello.php" method="get">
-<div><b>Modifica dati ricerca: <?php echo $sid;?></b></div>
 <input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>">
-<div style="float:left;">Prj:</div><div style="margin-left:130px;"><input type="text" style="width:40px" value="<?php echo $row['prj'];?>"  name="labprj"></div>
-<div style="float:left;">Panel:</div><div style="margin-left:130px;"> <select name="panel"><option selected="selected" value="<?php echo $row['panel'];?>"> <?php echo $panel;?> </option><option value="1">Millebytes</option><option value="0">Esterno</option></select></div>
-<div style="float:left;">Target Sesso:</div> <div style="margin-left:130px;"><select name="sex_target"><option value="<?php echo $row['sex_target'];?>" selected="selected"> <?php echo $sex; ?><option value="1">Uomo</option><option value="2">Donna</option><option value="3">Uomo/Donna</option></select></div>
-<div style="float:left;">Target Età:</div><div style="margin-left:130px;"><input type="text" maxlength="2" style="width:40px" value="<?php echo $row['age1_target'];?>"  name="age1_target">-<input type="text" maxlength="2" value="<?php echo $row['age2_target'];?>" style="width:40px" name="age2_target"></div>
-<div style="float:left;">N°Interviste:</div><div style="margin-left:130px;"><input type="text" maxlength="4" value="<?php echo $row['goal'];?>" style="width:80px" id="goal" name="goal"></div>
-<div style="float:left;">Start Field:</div><div style="margin-left:130px;"><input type="text" id="datepicker" value="<?php echo $sur_date; ?>" name="sur_date"></div>
-<div style="float:left;">End Field:</div><div style="margin-left:130px;"><input type="text" id="datepicker" value="<?php echo $end_date; ?>" name="end_date"></div>
-<div style="float:left;">Descrizione:</div><div style="margin-left:130px;"><input type="text" name="descrizione" value="<?php echo $row['description'];?>"></div>
 
-<div><input type="submit" name="modSearch" value="Modifica"></div>
+<div class="input-group">
+      <div class="input-group-prepend">
+    <span class="input-group-text" id="">Codice SID Progetto:</span>
+      </div>
+      <input required="" type="text" value="<?php echo $row['prj'];?>"  name="labprj"  class="form-control" id="sid" placeholder="">
+	  </div>
+	  
+	  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+    <label class="input-group-text" for="panel">Panel:</label>
+    </div>
+      <select  name="panel" required="" class="custom-select" id="panel">
+	  <option selected="selected" value="<?php echo $row['panel'];?>"> <?php echo $panel;?> </option>
+      <option value="1">Millebytes</option>
+      <option value="0">Esterno</option>
+      <option value="2">Target</option>
+      </select>
+	  </div>
+	  
+	  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+    <label class="input-group-text" for="panel">Genere:</label>
+    </div>
+      <select required="" name="sex_target" required="" class="custom-select" id="sex_target">
+	  <option value="<?php echo $row['sex_target'];?>" selected="selected"> <?php echo $sex; ?>
+      <option value="1">Uomo</option>
+      <option value="2">Donna</option>
+      <option value="3">Uomo/Donna</option>
+      </select>
+	  </div>
+	  
+	<div class="form-row input-group">
+  	<div class="input-group-prepend">
+      <span class="input-group-text" id="">Età:</span>
+      </div>
+    <div class="col">
+    <input name="age1_target" value="<?php echo $row['age1_target'];?>" type="number" class="form-control">
+    </div>
+    <div class="col">
+    <input name="age2_target" type="number" value="<?php echo $row['age2_target'];?>" class="form-control">
+    </div>
+  </div>
+
+  <div class="input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text" id="">Interviste:</span>
+      </div>
+      <input required="" type="number" value="<?php echo $row['goal'];?>" class="form-control" id="goal" placeholder="0" name="goal">
+   </div>
+
+   <div class="input-group date">
+   <div class="input-group-prepend">
+      <span class="input-group-text" id="">Chiusura Field:</span>
+      </div>
+    <input type="date" value="<?php echo $end_date; ?>"  id="date" class="form-control" name="end_date" >
+</div>
+
+<div class="input-group">
+<div class="input-group-prepend">
+      <span class="input-group-text" id="">Descrizione:</span>
+      </div>
+      <input required="" type="text" value="<?php echo $row['description'];?>" class="form-control" id="descrizione"  name="descrizione">
+      </div>
+
+
+</div>
+<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" value="Modifica"  name="modSearch" class="btn btn-primary">Modifica</button>
+</form>
+      </div>
 </form>
 </div>
-<p class="chiudi">X</p>
+</div>	
+</div>	
 
-</div>
-
-<div class="overlay" id="overlay" style="display:none;"></div>
-<script>
-$(".apriMod#<?php echo $sid; ?>").click(
-     function(){
-         $('#overlay').fadeIn('fast');
-         $('.modifica#<?php echo $sid; ?>').fadeIn('slow');
-		 
-     });
- 
-     $(".chiudi").click(
-     function(){
-     $('#overlay').fadeOut('fast');
-		$('.modifica#<?php echo $sid; ?>').hide();
-     });
- 
-     //chiusura emergenza
-     $("#overlay").click(
-     function(){
-     $(this).fadeOut('fast');
-		$('.modifica#<?php echo $sid; ?>').hide();
-     });
- 
-</script>
 <?php
 
 }
 
-
-
 ?>
 </tbody>
 </table>
+
+
 
 </div>
 

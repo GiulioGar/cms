@@ -7,6 +7,10 @@ require_once('inc_auth.php');
 
 
 require_once('inc_taghead.php');
+?>
+  <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+
+<?php
 require_once('inc_tagbody.php'); 
 
 
@@ -28,8 +32,33 @@ require_once('function_conta_locale.php');
 
 ?>
 
-<div class="content-wrapper">
-<div class="container">
+
+
+<div class="content-wrapper toggled d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Ricerche in corso </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+<div class="container" id="page-content-wrapper">
+
+<nav class="navbar navlateral navbar-expand-lg">
+        <button class="btn btn-secondary" id="menu-toggle">Ricerche</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+</nav>
 
 <div class="row">
 
@@ -126,6 +155,7 @@ require_once('function_conta_locale.php');
 
 </div>
 
+
 <div class="row">
 <div class="col-md-12 col-sm-12">
 
@@ -164,9 +194,16 @@ require_once('function_conta_locale.php');
 
 </div>
 </div>
-
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 
 <?php 
+
 
 require_once('inc_footer.php');
 

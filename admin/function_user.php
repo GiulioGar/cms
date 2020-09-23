@@ -49,10 +49,14 @@ $crm2 = mysqli_query($admin,$query_crm2) ;
 $complSur=0;
 $premiRic=0;
 
+$infoStory = []; //create array
+
 		while ($row = mysqli_fetch_assoc($crm2))
 		{
 			if ($row['event_type']=="interview_complete" || $row['event_type']=="interview_complete_cint") { $complSur++;}
 			if ($row['event_type']=="withdraw") { $premiRic++;}
+
+			$infoStory[] = $row;
 		}	
 
 
@@ -74,6 +78,32 @@ while ($row = mysqli_fetch_assoc($story2))
     $infoPremi[] = $row;
 
 }	
+
+
+//lettura respint
+mysqli_select_db($admin,$database_admin);
+$query_resp = "SELECT * FROM millebytesdb.t_respint WHERE uid ='$user_id' ORDER BY sid DESC";
+$resp= mysqli_query($admin,$query_resp);
+$full_total_resp = mysqli_num_rows($resp);
+
+$staInv=$full_total_resp;
+
+$staSosp=0;
+$staNone=0;
+$staComp=0;
+$staFil=0;
+$staQuot=0;
+
+while ($row = mysqli_fetch_assoc($resp))
+{
+
+	if ($row['status']==0) { $staNone++;}
+	if ($row['status']==1) { $staSosp++;}
+	if ($row['status']==3) { $staComp++; }
+	if ($row['status']==4) { $staFil++;}
+	if ($row['status']==5) { $staQuot++;}
+
+}
 
 
 	
