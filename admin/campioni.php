@@ -36,27 +36,28 @@ require_once('function_conta_aree.php');
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="mytab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="inviti-tab" data-toggle="tab" href="#inviti" role="tab" aria-controls="inviti" aria-selected="true">Dati Panel</a>
+<li class="nav-item">
+    <a class="nav-link active" id="registra-tab" data-toggle="tab" href="#registra" role="tab" aria-controls="registra" aria-selected="false">Campione <i class="fas fa-users-cog"></i> </a>
   </li>
+  
   <li class="nav-item">
-    <a class="nav-link" id="registra-tab" data-toggle="tab" href="#registra" role="tab" aria-controls="registra" aria-selected="false">Crea Campione</a>
+    <a class="nav-link" id="inviti-tab" data-toggle="tab" href="#inviti" role="tab" aria-controls="inviti" aria-selected="true">Target <i class="fas fa-bullseye"></i></a>
   </li>
+
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
-  <?php  require_once('chart.php');  ?> 
 
+  <div class="tab-pane active" id="registra" role="tabpanel" aria-labelledby="registra-tab">
+  <?php  require_once('conta_aree.php');  ?> 
   </div>
 
+  <div class="tab-pane" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
+  <?php    
+  require_once('pannello_target.php');
+  ?> 
 
-  <div class="tab-pane" id="registra" role="tabpanel" aria-labelledby="registra-tab">
-
-  <?php  require_once('conta_aree.php');  ?> 
- 
-  
   </div>
 
 </div>

@@ -39,7 +39,6 @@ $contaFatture= mysqli_num_rows($selFatture);
 <table style="text-align:center" class="table table-striped">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Download</th>
       <th scope="col">Fattura</th>
       <th scope="col">Mese</th>
@@ -63,7 +62,6 @@ while ($row3= mysqli_fetch_assoc($selFatture))
 
 <tr>
     
-    <th scope="row"><?php echo $row3["id"]; ?></th>
     <td><button onclick="window.open('res/<?php echo $nomeFile; ?>');" class="btn"><i class="fa fa-download"></i></button></td>
     <td><?php echo $row3["etichetta"]; ?></td>
     <td><?php echo $row3["mese"]; ?></td>

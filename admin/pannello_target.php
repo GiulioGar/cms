@@ -8,58 +8,24 @@
 @$modSearch = $_REQUEST['modSearch'];
 $sid=$_REQUEST['sid'];
 $prj=$_REQUEST['prj'];
-$tag=$_REQUEST['tag'];
+
 $tag_csv=$_REQUEST['tag_csv'];
 
 
 	  /////Target
-	  mysqli_select_db($database_admin, $admin);
 	  $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
-	  $tot_targ = mysqli_query($admin,$query_trg) or die(mysql_error());     
+	  $tot_targ = mysqli_query($admin,$query_trg);     
 
 ?>
 
 
 
-
-
 <?php
-if($openSearch=="Aggiungi")
-{
-mysqli_select_db($database_admin, $admin);	  
-$query_surv = "SELECT tag  FROM elencotag";
-$controlSur = mysqli_query($admin,$query_surv) or die(mysql_error());
-
-$duplicate=0;
-while ($row = mysqli_fetch_assoc($controlSur))
-{
-	$verId=$row['tag'];
-	if ($verId==$tag) { $duplicate=$duplicate+1;}
-}
-if($duplicate>0) { ?> 
 
 
 
-<div title="Attenzione!" class="dialog-message">Attenzione questo tag &egrave; gi&agrave; stato inserito!</div>
-
- <?php  }
-
-	else{
-	mysqli_select_db($database_admin, $admin);	  
-	$query_user = "INSERT INTO elencotag (tag) 
-	VALUES ('".$tag."')";
-	mysqli_query($admin,$query_user) or die(mysql_error());
-	}
-}
-
-
-
-
-
-
-mysqli_select_db($database_admin, $admin);
 $query_ricerche = "SELECT * FROM elencotag  ORDER BY tag ASC";
-$tot_ricerche = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+$tot_ricerche = mysqli_query($admin,$query_ricerche) ;
 
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php'); 
@@ -68,20 +34,31 @@ require_once('inc_tagbody.php');
 
 
 <div class="row">
-
-<?php require_once('modulo_aggiungi_tag.php'); ?>
-</div>
+	 <div class="col col-xs-6">
+	</div>
+	<div class="col col-xs-6 text-right">
+	<?php require_once('modulo_aggiungi_tag.php'); ?>
+	</div>
+	</div>
 
 
 <div class="row">
  <div class="col-md-12 col-sm-12 col-xs-12">
-<div class="panel panel-default">
- <div class="panel-body text-center recent-users-sec">
+<div class="card card-default">
+ <div class="card-body">
   <div class="table-responsive">
+
+	<table id='table_tar' class='table table-striped table-hover dt-responsive display dataTable no-footer'>
+	<thead>
+	<th style='font-weight:bold'>Tag</th>
+	<th style='font-weight:bold'>Utenti</th>
+	</thead>
+
+
+<tbody>
 <?php
 
 
-echo "<table class='table table-striped table-bordered' ><tr>";
 
 
 //AGGIORNO INFO GIORNI RIMANENTI IN DB
@@ -89,26 +66,17 @@ echo "<table class='table table-striped table-bordered' ><tr>";
 
 
 //STAMPO LE RICERCHE DOPO AGGIORNAMENTO DEI GIORNI RIMANENTI
-$tot_ricerche = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+$tot_ricerche = mysqli_query($admin,$query_ricerche) ;
 $numResults = mysqli_num_rows($tot_ricerche);
 $contastamp=0;
-$counter=0;
+
 
 while ($row = mysqli_fetch_assoc($tot_ricerche))
 {
-	if ($contastamp==0) 
-	{	
-	echo "<td>";
-	echo "<table class='table table-striped table-bordered'>"; 
-	echo "<tr class='intesta'>";
-	echo "<td  style='font-weight:bold'>Tag</td>";
-	echo "<td style='font-weight:bold'>Utenti</td>";
-	echo "</tr>";
-	}
-	
+
 $tagInfo=$row['tag'];
 $query_user = "SELECT COUNT(*) as total FROM utenti_target where target='$tagInfo'";
-$tot_user = mysqli_query($admin,$query_user) or die(mysql_error());
+$tot_user = mysqli_query($admin,$query_user) ;
 $tot_use = mysqli_fetch_assoc($tot_user);
 	
 echo "<tr class='rowSur' style='background:".$colRow."'>";
@@ -116,12 +84,7 @@ echo "<td><a target='_blank' href='esporta_campione.php?tag_csv=".$row['tag']."'
 echo "<td>".$tot_use['total']."</td>";
 echo "</tr>";
 
-$counter++;
 
-if ( $contastamp==9) {	echo "</table></td>"; $contastamp=0;}
-else { $contastamp++;}
-
-if ( $counter==$numResults) {	echo "</table></td>"; }
 
 
 ?>
@@ -130,10 +93,13 @@ if ( $counter==$numResults) {	echo "</table></td>"; }
 <?php
 }
 
-echo "</tr>";
-echo "</table>";
 
 ?>
+
+</th>
+</tbody>	
+</table>
+
 
  </div>
  
@@ -197,5 +163,29 @@ $("#datepicker").datepicker({
   dateFormat: "yy-mm-dd",
   altFormat: "yy-mm-dd"
 });
+
+$(".vaii").click(function(){
+ //chiamata ajax
+ $.ajax({
+
+//imposto il tipo di invio dati (GET O POST)
+ type: "GET",
+
+ //Dove devo inviare i dati recuperati dal form?
+ url: "function_target.php",
+
+ //Quali dati devo inviare?
+ data: "tag="+tag+"&openSearch="+pr, 
+ dataType: "html",
+success: function(data) 
+		 { 
+	   		}
+
+});
+});
+
+
+
+
 </script>
 

@@ -1,62 +1,34 @@
 
-<div class="apri">Aggiungi Tag</div>
+<button type="button" class="btn btn-success apri" data-toggle="modal" data-target="#modalCrea" data-whatever="@mdo"><i class="fas fa-folder-plus" aria-hidden="true"></i> AGGIUNGI TAG</button>
 
-<div align="left" id="aggiungi">
+<div class="modal fade" id="modalCrea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nuovo Tag</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
 <form  action="pannello_target.php" method="get">
-<div style="padding:30px; font-size:16px;">
-<div><b>Nuovo Tag:</b></div>
-<div style="float:left;">Inserisci Tag:</div><div style="margin-left:130px;"><input type="text" name="tag"></div>
-<div><input type="submit" name="openSearch" value="Aggiungi"></div>
-</form>
+
+<div class="input-group">
+      <div class="input-group-prepend">
+    <span class="input-group-text" id="">Inserisci Tag:</span>
+      </div>
+      <input required="" type="text" class="form-control" id="tag" placeholder="" name="tag">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button  type="button" value="Aggiungi"  name="openSearch" class="btn btn-primary vaii">Aggiungi</button>
+      </div>
+    </div>
+  </div>
 </div>
-<p class="chiudi">X</p>
 </div>
+</form>     
 
-<div class="overlay" id="overlay" style="display:none;"></div>
-
- <script>
-
-
-$("#datepicker").datepicker({ 
-  dateFormat: "yy-mm-dd",
-  altFormat: "yy-mm-dd"
-});
-
-
-</script>
-
-<script type='text/javascript'>
-$(document).ready(function() {
-    $("input,select").on("focusin", function()
-                  { $(this).css("border-color","red").parent().prev().css("font-weight","bold"); }
-                 );   
-        $("input,select").on("focusout", function()
-                  { $(this).css("border-color","").parent().prev().css("font-weight",""); }
-                 );  
-
-});
-
-
-</script>
-
-<script>
-$(".apri").click(
-     function(){
-         $('#overlay').fadeIn('fast');
-         $('#aggiungi').fadeIn('slow');
-     });
- 
-     $(".chiudi").click(
-     function(){
-     $('#overlay').fadeOut('fast');
-     $('#aggiungi').hide();
-     });
- 
-     //chiusura emergenza
-     $("#overlay").click(
-     function(){
-     $(this).fadeOut('fast');
-     $('#aggiungi').hide();
-     });
- 
-</script>

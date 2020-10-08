@@ -107,7 +107,7 @@ $up_ricercha = mysqli_query($admin,$query_aggiorna);
 mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel like '$cerca_panel' and sur_date like '$cerca_anno' order by stato,id DESC";
 $query_ricerche_aggiornate = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel like '$cerca_panel' and sur_date like '$cerca_anno' order by stato,giorni_rimanenti ASC,id DESC";
-$tot_ricerche = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+$tot_ricerche = mysqli_query($admin,$query_ricerche);
 
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php'); 

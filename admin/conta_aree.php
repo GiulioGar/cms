@@ -10,7 +10,7 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary"> CREA CAMPIONE </h6></span>
                         </div>
-                        <div class="card-body">
+   <div class="card-body">
 
 <form action="campioni.php" method="get"  class="myform" >
 <input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>" />
@@ -127,7 +127,7 @@
 </div>
 </div>
 
-<div class="form-row">
+<div style="padding:5px" class="form-row">
 
 <div class="form-group col-md-6">
 <div class="input-group mb-3">
@@ -150,7 +150,7 @@
 
 </div>
 
-<div class="form-row">
+<div style="padding:5px" class="form-row">
 
 <div class="form-group col-md-12">
 <div class="input-group mb-6">

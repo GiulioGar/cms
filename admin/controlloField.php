@@ -30,6 +30,8 @@ $currentYear=date("Y");
 
 require_once('function_conta_locale.php');  
 
+
+
 ?>
 
 
@@ -38,14 +40,20 @@ require_once('function_conta_locale.php');
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Ricerche in corso </div>
+      <div class="sidebar-heading"> <i class="fas fa-poll-h"></i> Ricerche in corso </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+
+      <?php
+      while ($row = mysqli_fetch_assoc($tot_ricerche))
+      {
+        if($sid <> $row['sur_id'])
+        {
+       echo " <a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."' class='list-group-item list-group-item-action bg-light'> <img style='position:relative; top:-3px;' width='25px' src='img/live.gif'/>".$row['sur_id']."</a>";
+        }
+      }  
+
+      ?>
+
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -53,7 +61,7 @@ require_once('function_conta_locale.php');
 <div class="container" id="page-content-wrapper">
 
 <nav class="navbar navlateral navbar-expand-lg">
-        <button class="btn btn-secondary" id="menu-toggle">Ricerche</button>
+        <button class="btn btn-secondary" id="menu-toggle"><i class="fas fa-list-ul"></i></button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -112,9 +120,10 @@ require_once('function_conta_locale.php');
 <div class="card body">
 <div class="row no-gutters align-items-center" style="min-height: 100px;">
           <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Tempistiche</div>
+            <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Timing e Costi</div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Inizio Field:</b> <?php echo $newDateStart;  ?></div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Fine Field:</b> <?php echo $newDate;  ?> </div>
+            <div class="h6 mb-0 font-weight-bold text-gray-800"><span style="color:navy"><b>CPI stimato:</b> <?php echo $arrStime[$matrice2];  ?>€</i></span> </div>
           </div>
           <div class="col-auto">
 		  <span style="font-size: 28px; color: #F7BB07; opacity: 0.5;">
@@ -203,7 +212,6 @@ require_once('function_conta_locale.php');
   </script>
 
 <?php 
-
 
 require_once('inc_footer.php');
 
