@@ -118,10 +118,16 @@ $stimate=ceil(($tot_use['total']/100)*55);
 
 <tr class='rowSur' style='background:"<?php echo $colRow; ?>"'>
 
+<?php
+
+$tagClass=trim($row['tag']);
+$tagClass= str_replace(' ', '', $tagClass);
+
+?>
 
 <td style="width:35%"> <?php echo $row['tag']; ?> </td>
-<td> <?php echo $tot_use['total']; ?></td>
-<td> <b><?php echo $stimate; ?></b></td>
+<td class="tot<?php echo $tagClass; ?>"> <?php echo $tot_use['total']; ?></td>
+<td class="sti<?php echo $tagClass; ?>"> <b><?php echo $stimate; ?></b></td>
 
 
 <td>
@@ -196,7 +202,7 @@ let formDati=$('#aggTag').serialize();
 success: function(data) 
 		{ 
 		$("#modalCrea").modal('hide');
-	
+		location.reload(); 
         }
 
 });
@@ -210,6 +216,7 @@ $(document).on('click', 'button.addUsers', function()
 
 let formDati2=$('#aggUse').serialize();
 let nuoviUser;
+let nuovaStima;
 
 
 
@@ -232,8 +239,12 @@ let nuoviUser;
 success: function(data) 
 		{ 
 		$("#modalUsers").modal('hide');
-		nuoviUser=$(data).filter("span#newVal");
-		console.log(nuoviUser);
+		nuoviUser=$(data).filter("div#newVal");
+		nuovaStima=$(data).filter("div#newSti");
+		var classes = $(data).filter("div#newVal").attr("class");
+		var classes2 = $(data).filter("div#newSti").attr("class");
+		$("#table_tar td."+classes).html(nuoviUser);
+		$("#table_tar td."+classes2).html(nuovaStima);
 			
         }
 

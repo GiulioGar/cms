@@ -67,7 +67,12 @@ $query_user = "SELECT COUNT(*) as total FROM utenti_target where target='$trg'";
 $tot_user = mysqli_query($admin,$query_user) ;
 $tot_use = mysqli_fetch_assoc($tot_user);
 
-	
+$tagClass=trim($trg);
+$tagClass= str_replace(' ', '', $tagClass);
+
+$stimate=ceil(($tot_use['total']/100)*55);
 ?>
 
-<div id="newVal"><?php echo $tot_use['total']; ?></div>
+<div class="tot<?php echo $tagClass; ?>" id="newVal"><?php echo $tot_use['total']; ?></div>
+<div class="sti<?php echo $tagClass; ?>" id="newSti"><b><?php echo $stimate; ?></b></div>
+
