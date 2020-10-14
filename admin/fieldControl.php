@@ -23,7 +23,7 @@ echo "<tr style='font-weight:bold'>";
 echo "<th scope='col'>ID</th>";
 echo "<th scope='col'>Info</th>";
 echo "<th scope='col'>Andamento</th>";
-echo "<th scope='col'>Tempo</th>";
+echo "<th scope='col'>Tempistica</th>";
 echo "<th scope='col'>Panel</th>";
 echo "<th scope='col'>Stato</th>";
 
@@ -56,7 +56,7 @@ echo "<td>
 <div class='progress'> 
 <div class='progress-bar progress-bar-striped progress-bar-animated bg-success' role='progressbar' aria-valuenow=".$progress." aria-valuemin='0' aria-valuemax='100' style='width:0%'>".$progress."%</div>
 </div></td>";
-echo"<td>
+echo"<td class='crono2'>
 <div class='crono' id='countdown".$row['sur_id']."'></div>
 </td>";
 
@@ -101,7 +101,18 @@ var target_date = new Date('<?php echo $meseSc; ?>, <?php echo $ggSc; ?>, <?php 
 	 seconds = parseInt(seconds_left % 60);
 	  
 	 // format countdown string + set tag value
-	 countdown.innerHTML = '<span class="days">' + days +  ' <label>Giorni</label></span> <span class="hours">' + hours + ' <label>Ore</label></span>';  
+
+	 if(days<=0 && hours<=0)
+	 {
+		countdown.innerHTML = '<div class="alert alert-danger" role="alert"> Scaduta </div>';  
+	 }
+	 else 
+	 {
+		countdown.innerHTML = '<div class="alert alert-success" style="color:#515151; font-weight:bold;" role="alert"> '+ days+ ' giorni' + hours + ' ore <i class="fas fa-hourglass-half"></i></div>';
+	 }
+	 
+	
+	 
   
  }, 1000);
 

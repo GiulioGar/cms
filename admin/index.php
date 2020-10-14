@@ -1,42 +1,17 @@
-<?php require_once('../Connections/admin.php'); ?>
-
+<title>Log In</title>
 <?php
- 
-/*
-if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+error_reporting(0);
 
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
-}
-*/
+require_once('../Connections/admin.php'); 
+
 ?>
 
+
 <?php
+
+
+
 // *** Validate request to login to this site.
 if (!isset($_SESSION)) {
   session_start();
@@ -58,10 +33,7 @@ if (isset($_GET['username'])) {
   $MM_redirecttoReferrer = true;
   mysqli_select_db($database_admin, $admin);
   
-  /*
-  $LoginRS__query=sprintf("SELECT name, password, roles FROM t_users WHERE name=%s AND password=%s",
-  GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
- */
+
 
   $LoginRS__query="SELECT * FROM t_users WHERE name='$loginUsername' AND password='$password'"; 
   //$LoginRS__query="SELECT * FROM t_users"; 
@@ -77,11 +49,7 @@ if (isset($_GET['username'])) {
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
     $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
-    /*
-    if (isset($_SESSION['PrevUrl']) && true) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
-    }
-    */
+
     header("Location: " . $MM_redirectLoginSuccess );
   }
   else {
@@ -97,25 +65,7 @@ $error="";
 $success="";
 $sub=htmlspecialchars($sub);
 
-/*
-if($sub="ACCEDI"){
-  if($uname=="admin"){
-    if($pass=="Giu\$Giu$1926"){
-      $error="";
-      $success="Welcome Admin";
-    }
-    else{
-      $error="Invalid Password!";
-      $success="";
-    }
-  }
-  else{
-    $error="Invalid Username!";
-    $succes="";
-  }
 
-}
-*/
 
 
 require_once('inc_taghead.php');
@@ -128,33 +78,44 @@ require_once('inc_tagbody.php');
   <div class="content-wrapper">
        <div class="container">
 
- <div class="row">
-  <div class="col-md-8 col-sm-8 col-xs-8">
-<div class="panel panel-info">
-   <div class="panel-heading">
+ <div class="row justify-content-center">
+  <div class="col-md-8">
+<div class="card card-info">
+   <div class="card-header">
                          LOGIN
                         </div>
-  <div class="panel-body">						
+  <div class="card-body">	
+
+
   <form role="form" id="form1" name="form1" method="get" >
-                                         <div class="form-group">
-                                            <label>Nome utente</label>
-                                            <input class="form-control" name="username" type="text" id="username" size="40" required />
-                                            <p class="help-block">Inserisci nome utente</p>
-                                        </div>
-										<div class="form-group">
-                                            <label>Password</label>
-                                            <input class="form-control" name="password" type="password" id="password" size="40"  required/>
-                                            <p class="help-block">Inserisci password</p>
-                                        </div>
-    <input type="submit" name="sumbit" class="btn btn-info" value="ACCEDI" /></td>
+
+	
+     <div class="input-group">
+           <div class="input-group-prepend">
+    <span class="input-group-text" id="">Username:</span>
+      </div>
+                                            <input required class="form-control" name="username" type="text" id="username"   />
+      </div>
+    <br/>
+
+			<div class="input-group">
+                    <div class="input-group-prepend">
+    <span class="input-group-text" id="">Password:</span>
+      </div>
+                                            <input class="form-control" name="password" type="password" id="password" size="40"  />
+                                         
+     </div>
+
+     <br/>
+     
+    <input type="submit" name="sumbit" class="btn btn-success" value="ACCEDI" /></td>
   </form>
+
+
   <p><?php echo $error; ?></p>
   <p><?php echo $success; ?></p>
   <p><?php echo $uname; ?></p>
   <p><?php echo $pass; ?></p>
-  <p><?php echo $password; ?></p>
-  <p><?php echo $password2; ?></p>
-  <p><?php echo $password3; ?></p>
   </div>
  </div> 
  </div>

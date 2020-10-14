@@ -105,7 +105,8 @@ if (empty($ag2)) { $ag2=65;}
    Dati Panel 
     </h5>
 
-      <button type="button" style="background-color:#88d899; margin:5px;" class="btn btn-success">
+    
+  <button type="button" style="background-color:#88d899; margin:5px;" class="btn btn-success">
       <i class="fas fa-address-card"></i>
     <b>ISCRITTI:</b> <span class="badge badge-light"><b><?php echo $tot_use['total']; ?></b></span>
     

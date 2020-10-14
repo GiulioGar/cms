@@ -238,7 +238,19 @@ new Chart(document.getElementById("barnew"), {
       title: {
         display: true,
         text: 'Utenti Registrati'
-      }
+      },
+      scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    maxRotation: 180
+                }
+            }]
+        }
     }
 });
 

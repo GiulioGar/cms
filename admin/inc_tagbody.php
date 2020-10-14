@@ -8,19 +8,19 @@
 	
 	
 $query_new = "SELECT count('nid') as tot FROM millebytesdb.support_ticket where state='1';";
-$new_crm = mysqli_query($admin,$query_new) or die(mysql_error());
+$new_crm = mysqli_query($admin,$query_new);
 $crm_new = mysqli_fetch_assoc($new_crm);
 
 $query_new = "SELECT count('nid') as tot FROM millebytesdb.support_ticket where state='2' or state='3';";
-$sosp_crm = mysqli_query($admin,$query_new) or die(mysql_error());
+$sosp_crm = mysqli_query($admin,$query_new);
 $crm_sosp = mysqli_fetch_assoc($sosp_crm);
 
 $query_cerca1 = "SELECT COUNT('user_id') as tot1 FROM t_user_history where event_type='withdraw'";
-$cerca1 = mysqli_query($admin,$query_cerca1) or die(mysql_error());
+$cerca1 = mysqli_query($admin,$query_cerca1);
 $crm_cerca1 = mysqli_fetch_assoc($cerca1);
 
 $query_cerca = "SELECT COUNT('user_id') as tot FROM t_history_copia where pagato=1 order by event_date desc";
-$cerca = mysqli_query($admin,$query_cerca) or die(mysql_error());
+$cerca = mysqli_query($admin,$query_cerca) ;
 $crm_cerca = mysqli_fetch_assoc($cerca);
 
 ?>
@@ -29,11 +29,19 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d2ffbc;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9DCE6B;">
+
   <a class="navbar-brand" href="#"><img width="150px" src="img/logo.png"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
+<?php
+
+if ($_SESSION['MM_Username']!=""){
+
+?>
+
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -148,10 +156,11 @@ $crm_cerca = mysqli_fetch_assoc($cerca);
 					} 
 
 					else {?><div><span class="badge badge-pill badge-light">Light</span> Nessuna nuova richiesta da leggere </span></div><?php } ?>
-					</div>
+          </div>
+          
+        <?php } ?>
   </div>
 </nav>
 
-
-
+     
 	

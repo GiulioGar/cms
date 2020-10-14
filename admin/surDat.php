@@ -168,7 +168,7 @@ new Chart(document.getElementById("barPaesi"), {
     while ($row = mysqli_fetch_assoc($lista_clienti))
 			{
         
-          $sumPrj=$row['conta2019']+$row['conta2020'];
+          $sumPrj=$row['conta2018']+$row['conta2019']+$row['conta2020'];
 
           if($sumPrj>0)
           {
@@ -176,17 +176,21 @@ new Chart(document.getElementById("barPaesi"), {
 
           $label=$label."'";
           $label=$label.$row['cliente'];
+          $data18=$data18.$row['conta2018'];
+          $color18=$color18."'#d6987c'";
           $data19=$data19.$row['conta2019'];
-          $color19=$color19."'#ceefbd'";
+          $color19=$color19."'#dbd07f'";
           $data20=$data20.$row['conta2020'];
-          $color20=$color20."'#ffd789'";
+          $color20=$color20."'#9DCE6B'";
           $label=$label=$label."'";
     
           if($numClient != $conta) 
           {
             $label=$label.",";  
+            $data18=$data18.",";  
             $data19=$data19.",";  
             $data20=$data20.",";
+            $color18=$color18.",";
             $color19=$color19.",";
             $color20=$color20.",";
           }
@@ -224,6 +228,16 @@ new Chart(document.getElementById("barClienti"), {
           data: 
           [
              <?php echo $data19; ?> 
+
+          ]
+        },
+
+        {
+          label:  ["2018"],
+          backgroundColor: [<?php echo $color18; ?>],
+          data: 
+          [
+             <?php echo $data18; ?> 
 
           ]
         },
