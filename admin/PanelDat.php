@@ -228,6 +228,7 @@ new Chart(document.getElementById("barnew"), {
       datasets: [
         {
           label: "Utenti ",
+          fill:true,
           backgroundColor: ["#a7cde2", "#bf8bd6","#3cba9f"],
           data: [<?php echo $totReg18['tot']; ?>,<?php echo $totReg19['tot']; ?>,<?php echo $totReg20['tot']; ?>]
         }

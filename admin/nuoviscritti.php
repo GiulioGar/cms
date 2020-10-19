@@ -6,9 +6,20 @@ mysqli_select_db($database_admin, $admin);
 $contaiscrittimese=0;
 
 $mesecorrente=date(m);
-
-
 $annocorrente=date(Y);
+
+$contaGennaio=0;
+$contaFebbraio=0;
+$contaMarzo=0;
+$contaAprile=0;
+$contaMaggio=0;
+$contaGiugno=0;
+$contaLuglio=0;
+$contaAgosto=0;
+$contaSettembre=0;
+$contaOttobre=0;
+$contaNovembre=0;
+$contaDicembre=0;
 
 //echo "Giorno: ".$giorno." Mese: ".$mese." Anno: ".$anno;
 
@@ -28,7 +39,7 @@ require_once('inc_tagbody.php');
 
 
 $query_nuoviutenti = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' ";
-$esegui_query_nuoviutenti = mysqli_query($admin,$query_nuoviutenti) or die(mysql_error());
+$esegui_query_nuoviutenti = mysqli_query($admin,$query_nuoviutenti) ;
 
 
 while ($row = mysqli_fetch_assoc($esegui_query_nuoviutenti))
@@ -38,12 +49,14 @@ while ($row = mysqli_fetch_assoc($esegui_query_nuoviutenti))
 	$ricavamese=date('m', $timestamp);
 	$ricavaanno=date('Y', $timestamp);
 	
-	if ($ricavamese==$mese && $ricavaanno==$anno){
+	if ($ricavamese==$mese && $ricavaanno==$anno)
+	{
 		$contaiscrittimese=$contaiscrittimese+1;
 		$iscritti[$contaiscrittimese]=$timestamp;
+
+
 	}
 }
-
 
 
 
@@ -77,7 +90,7 @@ $giornimese = date("t",strtotime($data));
 <div class="card shadow mb-12">
 
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> ISCRITTI PER SETTIMANA </h6></span>
+	<h6 class="m-0 font-weight-bold text-primary"> <i class="fas fa-calendar-week"></i> ISCRITTI PER SETTIMANA </h6></span>
  </div>
 
 
@@ -116,18 +129,18 @@ $giornimese = date("t",strtotime($data));
      
     $vediMese;
     
-	 if ($mese=="01") {$vediMese='ISCRITTI GENNAIO:';} 
-	 if ($mese=="02") {$vediMese='ISCRITTI FEBBRAIO:';} 
-	 if ($mese=="03") {$vediMese='ISCRITTI MARZO:';} 
-	 if ($mese=="04") {$vediMese='ISCRITTI APRILE:';} 
-	 if ($mese=="05") {$vediMese='ISCRITTI MAGGIO:';} 
-	 if ($mese=="06") {$vediMese='ISCRITTI GIUGNO:';} 
-	 if ($mese=="07") {$vediMese='ISCRITTI LUGLIO:';} 
-	 if ($mese=="08") {$vediMese='ISCRITTI AGOSTO:';} 
-	 if ($mese=="09") {$vediMese='ISCRITTI SETTEMBRE:';} 
-	 if ($mese=="10") {$vediMese='ISCRITTI OTTOBRE:';} 
-	 if ($mese=="11") {$vediMese='ISCRITTI NOVEMBRE:';} 
-	 if ($mese=="12") {$vediMese='ISCRITTI DICEMBRE:';} 
+	 if ($mese=="01") {$vediMese='GENNAIO:';} 
+	 if ($mese=="02") {$vediMese='FEBBRAIO:';} 
+	 if ($mese=="03") {$vediMese='MARZO:';} 
+	 if ($mese=="04") {$vediMese='APRILE:';} 
+	 if ($mese=="05") {$vediMese='MAGGIO:';} 
+	 if ($mese=="06") {$vediMese='GIUGNO:';} 
+	 if ($mese=="07") {$vediMese='LUGLIO:';} 
+	 if ($mese=="08") {$vediMese='AGOSTO:';} 
+	 if ($mese=="09") {$vediMese='SETTEMBRE:';} 
+	 if ($mese=="10") {$vediMese='OTTOBRE:';} 
+	 if ($mese=="11") {$vediMese='NOVEMBRE:';} 
+	 if ($mese=="12") {$vediMese='DICEMBRE:';} 
 	 
 	 
 
@@ -138,7 +151,7 @@ $giornimese = date("t",strtotime($data));
 <thead>
 <tr><th colspan="8"> 
 <button type="button" class="btn btn-success">
-<?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
+<i class="fas fa-user-plus"></i> <?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
 </button> 
 </th></tr>   
 <tr><td>Lunedi'</td><td>Martedì'</td><td>Mercoledì'</td><td>Giovedì'</td><td>Venerdì'</td><td>Sabato</td><td>Domenica</td><td><b>ISCRITTI</b></td></tr>
@@ -308,10 +321,63 @@ echo "<b>".$iscrittisettimana."</b>";
 
 </div>
 
+<!-- STATISTICHE MENSILI -->
+
+<div class="row">
+
+<div class="col-md-12 ">
+<div class="card shadow mb-12">
+
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"><i class="far fa-calendar-alt"></i> ANDAMENTO ISCRITTI MENSILE </h6></span>
+ </div>
+
+
+<div class="card-body">	
+<canvas width="100%" id="linered"></canvas>
+</div>
+</div>
+</div>
+
+</div>
+
+
 
 
 </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<?php
+
+$query_mese = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and reg_date like '%".$anno."%' ";
+$esegui_queryMese = mysqli_query($admin,$query_mese);
+
+while ($row2 = mysqli_fetch_assoc($esegui_queryMese))
+{
+	$giornoiscrizione2=$row2['reg_date'];
+	$timestamp2=strtotime($giornoiscrizione2);
+	$ricavamese2=date('m', $timestamp2);
+
+	if($ricavamese2==1) { $contaGennaio++; }
+	if($ricavamese2==2) { $contaFebbraio++; }
+	if($ricavamese2==3) { $contaMarzo++; }
+	if($ricavamese2==4) { $contaAprile++; }
+	if($ricavamese2==5) { $contaMaggio++; }
+	if($ricavamese2==6) { $contaGiugno++; }
+	if($ricavamese2==7) { $contaLuglio++; }
+	if($ricavamese2==8) { $contaAgosto++; }
+	if($ricavamese2==9) { $contaSettembre++; }
+	if($ricavamese2==10) { $contaOttobre++; }
+	if($ricavamese2==11) { $contaNovembre++; }
+	if($ricavamese2==12) { $contaDicembre++; }
+
+}	
+
+echo $contaGennaio;
+
+?>
 
 
 <script>
@@ -350,7 +416,72 @@ $('.mess2').fadeIn();
     });
   });
 
+
+
+
+window.onload = function() 
+{
+
+ // chart redemption   
+ new Chart(document.getElementById("linered"), {
+    type: 'line',
+    data: {
+      labels: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto" , "Settembre" , "Ottobre", "Novembre", "Dicembre"],
+	
+      datasets: [{
+        label: "ISCRITTI MESE ",
+		borderColor: "#9DCE6B",
+            pointBorderColor: "#9DCE6B",
+            pointBackgroundColor: "#9DCE6B",
+            pointHoverBackgroundColor: "#9DCE6B",
+            pointHoverBorderColor: "#9DCE6B",
+            pointBorderWidth: 6,
+            pointHoverRadius: 6,
+            pointHoverBorderWidth: 1,
+            pointRadius: 3,
+            fill: false,
+            borderWidth: 2,
+        data: [
+				<?php echo $contaGennaio; ?>,<?php echo $contaFebbraio; ?>,<?php echo $contaMarzo; ?>,<?php echo $contaAprile; ?>,<?php echo $contaMaggio; ?>,<?php echo $contaGiugno; ?>
+				,<?php echo $contaLuglio; ?>,<?php echo $contaAgosto; ?>,<?php echo $contaSettembre; ?>,<?php echo $contaOttobre; ?>,<?php echo $contaNovembre; ?>,<?php echo $contaDicembre; ?>
+			 ]
+      }]
+    },
+    options: {
+        legend: {
+            position: "bottom"
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold",
+                    beginAtZero: true,
+                    maxTicksLimit: 5,
+                    padding: 20
+                },
+                gridLines: {
+                    drawTicks: false,
+                    display: false
+                }}],
+            xAxes: [{
+                gridLines: {
+                    zeroLineColor: "transparent"},
+                ticks: {
+                    padding: 20,
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold"
+                }
+            }]
+        }
+    }
+});
+
+}
+
 </script>
+
+
 
 
 
