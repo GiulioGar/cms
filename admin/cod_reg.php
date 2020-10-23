@@ -9,8 +9,8 @@ $reView=0;
 //abr
 
 case 24:
-case 40:
-case 65:
+case 41:
+case 66:
 case 88:
 
 
@@ -23,8 +23,8 @@ case 88:
 
 //bas
 
-case 51:
-case 70:
+case 52:
+case 71:
 
 	$reView=2;
 	$arView=4;
@@ -38,9 +38,8 @@ case 70:
 case 23:
 case 26:
 case 28:
-case 74:
-case 101:
 case 75:
+case 101:
 
 
 	$reView=3;
@@ -55,7 +54,7 @@ case 75:
 case 8:
 case 11:
 case 21:
-case 55:
+case 56:
 case 81:
 
 
@@ -71,10 +70,10 @@ case 81:
 case 14:
 case 31:
 case 34:
-case 54:
-case 61:
-case 66:
-case 73:
+case 55:
+case 62:
+case 67:
+case 74:
 case 76:
 case 78:
 
@@ -90,7 +89,7 @@ case 78:
 //fri
 
 case 37:
-case 69:
+case 70:
 case 94:
 case 95:
 
@@ -106,7 +105,7 @@ case 95:
 //laz
 
 case 35:
-case 42:
+case 43:
 case 77:
 case 79:
 case 103:
@@ -126,7 +125,7 @@ case 103:
 
 case 36:
 case 39:
-case 41:
+case 42:
 case 83:
 
 
@@ -144,11 +143,12 @@ case 12:
 case 16:
 case 25:
 case 27:
-case 44:
-case 46:
-case 49:
-case 53:
-case 62:
+case 45:
+case 47:
+case 50:
+case 54:
+case 61:
+case 63:
 case 86:
 case 96:
 
@@ -164,11 +164,11 @@ case 96:
 
 //Marche
 
-case 2:
-case 5:
-case 104:
-case 48:
-case 64:
+case 3:
+case 6:
+case 105:
+case 49:
+case 65:
 
 
 	$reView=10;
@@ -183,7 +183,7 @@ case 64:
 //Molise
 
 case 20:
-case 39:
+case 40:
 
 	$reView=11;
 	$arView=4;
@@ -197,11 +197,11 @@ case 39:
 
 //Piemonte
 
-case 1:
+case 2:
 case 7:
 case 13:
 case 29:
-case 56:
+case 57:
 case 90:
 case 98:
 case 99:
@@ -218,11 +218,11 @@ case 99:
 //Puglia
 
 case 9:
-case 106:
 case 17:
 case 33:
-case 43:
+case 44:
 case 87:
+case 106:	
 
 
 	$reView=13;
@@ -236,8 +236,8 @@ case 87:
 //Sardegna
 
 case 18:
-case 57:
 case 58:
+case 59:
 case 82:
 
 
@@ -255,12 +255,12 @@ case 82:
 case 19:
 case 22:
 case 30:
-case 52:
-case 60:
-case 72:
+case 53:
+case 61:
+case 73:
 case 85:
 case 91:
-case 6:
+case 1:
 
 	$reView=15;
 	$arView=4;
@@ -272,15 +272,15 @@ case 6:
 	
 //Toscana
 
-case 4:
+case 5:
 case 32:
 case 38:
-case 45:
-case 47:
-case 50:
-case 67:
+case 46:
+case 48:
+case 51:
 case 68:
-case 71:
+case 69:
+case 72:
 case 84:
 
 	$reView=16;
@@ -306,7 +306,8 @@ case 92:
 	
 //Umbria
 
-case 63:
+case 46:
+case 64:
 case 89:
 
 	$reView=18;
@@ -317,7 +318,7 @@ case 89:
 	break;
 
 //Aosta
-case 3:
+case 4:
 
 	$reView=19;
 	$arView=1;
@@ -330,7 +331,7 @@ case 3:
 //Veneto
 
 case 10:
-case 59:
+case 60:
 case 80:
 case 93:
 case 97:
@@ -343,6 +344,8 @@ case 102:
 
 	$reStamp="Veneto";
 	$arStamp="Nord Est";
+
+	
 
 
 	}

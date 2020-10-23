@@ -1,5 +1,17 @@
  <?php
 
+$conta_incomplete=0;
+$conta_filtrati=0;
+$conta_complete=0;
+$conta_quotafull=0;
+$conta_giorno=0;
+$panel_esterno=0;
+$loi=0;
+$sumDiff=0;
+$contaCompl=0;
+$redemption_panel=0;
+
+
  //array prezzi cint
  $arrStime = array(1.35, 1.55, 2.05, 2.80, 3.75, 5.25, 8.00, 11.70, 14.65, 19.85, 1.60, 1.85, 2.35, 3.10, 4.05, 5.55, 8.25, 11.95, 14.95, 20.10, 1.90, 2.15, 2.65, 3.40, 4.35, 5.85, 8.60, 12.30, 15.25, 20.40, 2.20, 2.45, 2.95, 3.70, 4.65, 6.15, 8.90, 12.60, 15.55, 20.75, 2.55, 2.75, 3.25, 4.00, 4.95, 6.45, 9.20, 12.90, 15.85, 21.05, 2.85, 3.05, 3.60, 4.30, 5.30, 6.75, 9.50, 13.20, 16.15, 21.35, 3.50, 3.70, 4.20, 4.95, 5.90, 7.40, 10.15, 13.85, 16.80, 22.00, 4.05, 4.25, 4.80, 5.55, 6.50, 7.95, 10.70, 14.40, 17.35, 22.55, 4.70, 4.90, 5.40, 6.15, 7.10, 8.60, 11.35, 15.05, 18.00, 23.20, 5.10, 5.35, 5.85, 6.60, 7.55, 9.05, 11.75, 15.45, 18.45, 23.60, 5.55, 5.75, 6.30, 7.00, 8.00, 9.45, 12.20, 15.90, 18.85, 24.05, 5.95, 6.20, 6.70, 7.45, 8.40, 9.90, 12.65, 16.35, 19.30, 24.50, 6.40, 6.65, 7.15, 7.90, 8.85, 10.35, 13.05, 16.75, 19.75, 24.90 );
     
@@ -199,8 +211,8 @@ $query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_cop
 //AGGIORNAMENTO DATA IN RESPINT//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // RIPRISTINA DOPO PUBBLICAZIONE
-//$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
-$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+//$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
 
 $contatti_sample=count($fl_sample);
 //$sid="ITA1411148";
@@ -318,9 +330,11 @@ $ore_differenza=($confrontodata/60)/60;
 //recupero tutti i file sre dalla cartella e li conto
 
 //ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
-//$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
-$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+
+//$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+
 $contatti=count($fl);
 
 
@@ -518,15 +532,17 @@ if ($statSur==4)
 
 //recupero file sdl
 
-/*RIPRISTINA DOPO PUBBLICAZIONE
+
 
 $sdl = file_get_contents('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
 
-*/
+/*RIPRISTINA PER TEST
 
 $sdl = file_get_contents('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
+
+*/
 
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
@@ -877,6 +893,20 @@ $progressExt=round($progressExt, 1);
 if ($previsione >= $daFare) {$alsuccess=1; }
 else {$alsuccess=0;}
 
+//AGGIORNA COMPLETE DIVISE PER INTERNO ED ESTERNO
+$loiultima=substr($loi,0,4);
+if ($loiultima==""){$loiultima=0;}
+
+//echo "ciaooo".$loiultima;
+$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_ssi."',durata='".$loiultima."' where sur_id='".$sid."'";
+$aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
+$aggiorna_compInt_esegui = mysqli_fetch_assoc($query_compInt);
+
+
+
+
+if (is_numeric($redemption_panel)){ $redemption_panel=number_format( $redemption_panel, 2); }
+else  { $redemption_panel=0; }
 
 
 

@@ -4,8 +4,6 @@ require_once('inc_auth.php');
 
 
 
-
-
 require_once('inc_taghead.php');
 ?>
   <link href="assets/css/simple-sidebar.css" rel="stylesheet">
@@ -30,7 +28,8 @@ $currentYear=date("Y");
 
 require_once('function_conta_locale.php');  
 
-
+if($conta_complete>9) { $cpiStima=$arrStime[$matrice2]; }
+else { $cpiStima="N.D"; }
 
 ?>
 
@@ -48,7 +47,8 @@ require_once('function_conta_locale.php');
       {
         if($sid <> $row['sur_id'])
         {
-       echo " <a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."' class='list-group-item list-group-item-action bg-light'> <img style='position:relative; top:-3px;' width='25px' src='img/live.gif'/>".$row['sur_id']."</a>";
+       echo " <a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."' class='list-group-item list-group-item-action bg-light'> <img style='position:relative; top:-3px;' width='25px' src='img/live.gif'/>".$row['sur_id']."
+       <br/><span style='font-size:12px; margin-left:20px;'><i>".$row['description']."</i></span></a>";
         }
       }  
 
@@ -123,7 +123,7 @@ require_once('function_conta_locale.php');
             <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Timing e Costi</div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Inizio Field:</b> <?php echo $newDateStart;  ?></div>
             <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Fine Field:</b> <?php echo $newDate;  ?> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><span style="color:navy"><b>CPI stimato:</b> <?php echo $arrStime[$matrice2];  ?>€</i></span> </div>
+            <div class="h6 mb-0 font-weight-bold text-gray-800"><span style="color:navy"><b>CPI stimato:</b> <?php echo $cpiStima;  ?>€</i></span> </div>
           </div>
           <div class="col-auto">
 		  <span style="font-size: 28px; color: #F7BB07; opacity: 0.5;">

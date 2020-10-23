@@ -5,15 +5,15 @@ $contaField=0;
 
 mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control where stato=0 order by stato,giorni_rimanenti ASC,id DESC";
-$tot_attive = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+$tot_attive = mysqli_query($admin,$query_ricerche) ;
 
 mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control where stato=1 and panel=1 order by id DESC ";
-$tot_inattive = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+$tot_inattive = mysqli_query($admin,$query_ricerche) ;
 
 	
 $query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where stato=0";
-$surOp = mysqli_query($admin,$query_conta) or die(mysql_error());
+$surOp = mysqli_query($admin,$query_conta) ;
 $opSur = mysqli_fetch_assoc($surOp);
 
 
@@ -50,8 +50,8 @@ if ($progress>=100) {$progress=100;}
 
 
 echo "<tbody><tr>";
-echo "<td><a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
-echo "<td>".$row['description']."</td>";
+echo "<td style='font-size:16px;'><a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."'> <i class='far fa-folder-open'></i> ".$row['sur_id']."</a><br></td>";
+echo "<td style='font-size:14px;'>".$row['description']."</td>";
 echo "<td> 
 <div class='progress'> 
 <div class='progress-bar progress-bar-striped progress-bar-animated bg-success' role='progressbar' aria-valuenow=".$progress." aria-valuemin='0' aria-valuemax='100' style='width:0%'>".$progress."%</div>
@@ -70,6 +70,10 @@ $time=strtotime($row['end_field']);
 $meseSc=date('F', $time);
 $ggSc=date('j', $time);
 $ySc=date('Y', $time);
+
+
+$originalDate=($row['end_field']);
+$newDate = date("d-m-Y", strtotime($originalDate));
 ?>
 
 <script>
@@ -99,16 +103,19 @@ var target_date = new Date('<?php echo $meseSc; ?>, <?php echo $ggSc; ?>, <?php 
 	  
 	 minutes = parseInt(seconds_left / 60);
 	 seconds = parseInt(seconds_left % 60);
+
+
 	  
 	 // format countdown string + set tag value
+	 
 
 	 if(days<=0 && hours<=0)
 	 {
-		countdown.innerHTML = '<div class="alert alert-danger" role="alert"> Scaduta </div>';  
+		countdown.innerHTML = '<div style="height:35px; vertical-align:middle;" class="alert alert-danger timing" role="alert"> <?php echo $newDate;?> <i class="far fa-stop-circle"></i> </div>';  
 	 }
 	 else 
 	 {
-		countdown.innerHTML = '<div class="alert alert-success" style="color:#515151; font-weight:bold;" role="alert"> '+ days+ ' giorni' + hours + ' ore <i class="fas fa-hourglass-half"></i></div>';
+		countdown.innerHTML = '<div style="height:35px; vertical-align:middle;" class="alert alert-success" style="color:#515151; font-weight:bold;" role="alert"> '+ days+ ' giorni ' + hours + ':00 <i class="fas fa-hourglass-half"></i></div>';
 	 }
 	 
 	

@@ -49,11 +49,11 @@ require_once('function_conta_aree.php');
 <!-- Tab panes -->
 <div class="tab-content">
 
-  <div class="tab-pane " id="registra" role="tabpanel" aria-labelledby="registra-tab">
+  <div class="tab-pane active" id="registra" role="tabpanel" aria-labelledby="registra-tab">
   <?php  require_once('conta_aree.php');  ?> 
   </div>
 
-  <div class="tab-pane active" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
+  <div class="tab-pane" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
   <?php    
   require_once('pannello_target.php');
   ?> 

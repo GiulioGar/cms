@@ -83,7 +83,7 @@ if (empty($ag2)) { $ag2=65;}
    <div class="card card-default">
    <div class="">
    <h5 class="card-header">
-   <span style="float:left;">Progetti in corso</span>
+   <span style="float:left;"><i class="fas fa-satellite-dish"></i> Progetti in corso</span>
    <a href='pannello.php'><button style="float:right;" type="button" class="btn btn-primary btn-sm">MOSTRA TUTTI</button></a>
    
    <span style="clear: both;">&nbsp;</span>
@@ -102,6 +102,7 @@ if (empty($ag2)) { $ag2=65;}
   <div class="col-md-12 col-sm-12 col-xs-12">
    <div class="card  mb-3">
    <h5 class="card-header">
+   <i class="fas fa-server"></i>
    Dati Panel 
     </h5>
 
@@ -128,6 +129,7 @@ if (empty($ag2)) { $ag2=65;}
   <div class="col-md-12 col-sm-12 col-xs-12">
    <div class="card  mb-3">
    <h5 class="card-header">
+   <i class="fas fa-poll"></i>
    Dati Ricerche
     </h5>
     

@@ -109,6 +109,7 @@ background-color:#D2FFBC;
 
 .table { font-size: small;}
 
+
   
   
 
@@ -214,7 +215,7 @@ label {
   display: block;
 }
 
-td.crono2  { width: 20%!important; }
+td.crono2  { width: 17%!important; }
 
 
 canvas{
@@ -222,3 +223,5 @@ canvas{
   width:100% !important;
 
 }
+
+.table-bordered th, .table-bordered td { vertical-align: middle;}

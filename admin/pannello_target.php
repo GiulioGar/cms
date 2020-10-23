@@ -187,7 +187,7 @@ let formDati=$('#aggTag').serialize();
  $.ajax({
 
 //imposto il tipo di invio dati (GET O POST)
- type: "GET",
+ type: "POST",
 
  //Dove devo inviare i dati recuperati dal form?
  url: "function_target.php",
@@ -224,7 +224,7 @@ let nuovaStima;
  $.ajax({
 
 //imposto il tipo di invio dati (GET O POST)
- type: "GET",
+ type: "POST",
 
  //Dove devo inviare i dati recuperati dal form?
  url: "function_target.php",

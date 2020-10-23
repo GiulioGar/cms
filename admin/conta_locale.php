@@ -200,12 +200,12 @@
                         </div>
                         <div class="card-body">
 						<?php 
-						if ($alsuccess==1) {
+						if ($alsuccess==1 && $contatti>50) {
 						?>		
 						<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Utenti sufficienti per chiudere il field.</button></h6>
 						<?php 
 						}
-						if ($alsuccess==0) {
+						if ($alsuccess==0 && $contatti>50) {
 						?>	
 						<h6 class="align-items-center justify-content-between text-center"><button id="alert4" class="btn btn-alert btn-danger alcasi" type="button">Utenti insufficienti per chiudere il field.</button></h6>
 						<?php 
@@ -310,7 +310,7 @@
                         <div class="card-body">
                            <?php
 			$query_quo = "SELECT * FROM millebytesdb.t_quota_status where survey_id='$sid' and project_name='$prj' order by target_name ASC";
-			$tot_quo = mysqli_query($admin,$query_quo) or die(mysql_error());
+			$tot_quo = mysqli_query($admin,$query_quo) ;
 			$num_righe = mysqli_num_rows($tot_quo);
 			
 		if ($num_righe>0)
@@ -369,10 +369,6 @@
 <?php
 
 
-if (is_numeric($redemption_panel)){ $redemption_panel=number_format( $redemption_panel, 2); }
-else  { $redemption_panel=0; }
-
-
 
 
 
@@ -384,7 +380,7 @@ if ($stato_ricerca != 1)
 {
 
 $query_aggiorna_statistiche = "UPDATE t_panel_control set abilitati='".$totale_user_abilitati."', contatti='".$contatti_panel."', filtrati='".$conta_filtrati."', quota_full='".$conta_quotafull."',incomplete='".$conta_incomplete."',panel_interno='".$contatti_panel."',contatti_totali='".$contatti."',panel_esterno='".$panel_esterno."', red_panel='".$redemption_panel."', last_update='".$data."', complete='".$conta_complete."', red_surv='".$redemption_field."' where sur_id='".$sid."' AND id <> '' ";
-$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) or die(mysqli_error());
+$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) ;
 $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 
 
@@ -397,7 +393,7 @@ $costo=$conta_complete_panel*0.31;
 
 
 $query_aggiorna_statistiche_costo = "UPDATE t_panel_control set costo='".$costo."' where sur_id='".$sid."'";
-$aggiorna_statistiche_costo = mysqli_query($admin,$query_aggiorna_statistiche_costo) or die(mysqli_error());
+$aggiorna_statistiche_costo = mysqli_query($admin,$query_aggiorna_statistiche_costo) ;
 $aggiorna_statistiche_t_costo = mysqli_fetch_assoc($aggiorna_statistiche_costo);
 }
 ?>

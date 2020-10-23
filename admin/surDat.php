@@ -245,7 +245,20 @@ new Chart(document.getElementById("barClienti"), {
       ]
     },
     options: {
+      responsive: true,
       legend: { display: true },
+      scales: {
+        xAxes: [{
+            gridLines: {
+                color: "rgb(178, 178, 178)",
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: "rgb(178, 178, 178)",
+            }   
+        }]
+    },
       title: {
         display: true,
         text: 'Numero di ricerche CAWI per cliente'

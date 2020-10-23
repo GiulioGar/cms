@@ -224,7 +224,11 @@
 
 //al click dei disponibili
   $(".dispo").click(function(){
+
+    $('div.ugenera').fadeOut(); 
+    $('div.udisp').fadeOut(); 
     $('.mess').fadeIn();
+
  
 
  let sid= $("select.surv").val();
@@ -255,7 +259,9 @@
       dataType: "html",
 	  success: function(data) 
 	  					{ 
-                $('.mess').fadeOut(); 
+              $('.mess').fadeOut(); 
+              $('div.ugenera').fadeIn(); 
+              $('div.udisp').fadeIn(); 
 							$("div.udisp").html(data);
 						}
 
@@ -267,7 +273,10 @@
 
   $(".genera").click(function(){
 
+    $('div.ugenera').fadeOut(); 
+    $('div.udisp').fadeOut(); 
     $('.mess').fadeIn();
+
 
 let sid2= $("select.surv").val();
 let pr2= $("input.prj").val();
@@ -297,6 +306,7 @@ let act2= $(this).val();
    success: function(data) 
              { 
               $('.mess').fadeOut();
+              $('div.ugenera').fadeIn(); 
              $("div.ugenera").html(data);
            }
 

@@ -84,8 +84,9 @@ if($modSearch=="Modifica")
 {
 	  
 	$query_user = "UPDATE t_panel_control set panel='".$panel."',age1_target='".$age1_target."',age2_target='".$age2_target."',prj='".$labprj."',
-	sur_date='".$sur_date."',end_field='".$end_date."',description='".$descrizione."',goal='".$goal."',sex_target='".$sex_target."',paese='".$paese."' where sur_id='".$id_sur."'";
-	mysqli_query($admin,$query_user);
+	end_field='".$end_date."',description='".$descrizione."',goal='".$goal."',sex_target='".$sex_target."',paese='".$paese."' where sur_id='".$id_sur."'";
+  mysqli_query($admin,$query_user);
+  
 
 }
  
@@ -181,7 +182,7 @@ require_once('inc_tagbody.php');
 <td style='font-weight:bold'>Complete</td>
 <td style='font-weight:bold'>% Panel</td>
 <td style='font-weight:bold'>% Ricerca</td>
-<td style='font-weight:bold'>N° Interviste</td>
+<td style='font-weight:bold'>N° Int.</td>
 <td style='font-weight:bold'>Durata</td>
 <td style='font-weight:bold'>Start</td>
 <td style='font-weight:bold'>Giorni</td>
@@ -190,7 +191,6 @@ require_once('inc_tagbody.php');
 <td style='font-weight:bold'>&nbsp;</td>
 </tr>
 </thead>
-
 <tbody>
 
 

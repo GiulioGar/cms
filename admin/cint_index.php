@@ -80,7 +80,7 @@ input[type=image]:disabled
 
   <div class="tab-pane" id="sta" role="tabpanel" aria-labelledby="sta-tab">
   
-  <?php require_once('cint_stats.php'); ?> 
+  <?php //require_once('cint_stats.php'); ?> 
   
   </div>
 

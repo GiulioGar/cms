@@ -6,8 +6,8 @@ mysqli_select_db($database_admin, $admin);
 
 @$azione = $_REQUEST['azione'];
 $sex_target=$_REQUEST['sex_target'];
-$aree=$_REQUEST['aree'];
-$codregione=$_REQUEST['reg'];
+$caree=$_REQUEST['aree'];
+$codreg=$_REQUEST['reg'];
 $ag1=$_REQUEST['age1_target'];
 $ag2=$_REQUEST['age2_target'];
 $goal=$_REQUEST['goal'];
@@ -16,6 +16,10 @@ $prj=$_REQUEST['prj'];
 $tags=$_REQUEST['tag'];
 $iscrizione=$_REQUEST['iscrizione'];
 $currentYear=date("Y");
+
+$codregione= explode(",", $codreg);
+$aree= explode(",", $caree);
+
 
 
 $del="DELETE FROM t_test";
@@ -30,7 +34,6 @@ $addTag="";
 $fromTag="";
 
 
-
 if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }
 if($tags !="undefined" && $tags !="") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
 
@@ -43,14 +46,13 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
 
 
 
-
 while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
     {
 
 	$proView=$row['province_id'];
 	@include('cod_reg.php'); 
 
-	if ( ($arView==$aree[0] || $arView==$aree[1] || $arView==$aree[2] || $arView==$aree[3]) && ($proView !=0 && $proView !=105 ))
+	if ( ($arView==$aree[0] || $arView==$aree[1] || $arView==$aree[2] || $arView==$aree[3]) && ($proView !=0 && $proView !=104 ))
 	{
 		
 		$id=$row['user_id'];
@@ -62,10 +64,10 @@ while ($row = mysqli_fetch_assoc($csv_mvf_attivi))
 	
 
 
-	if (($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19]) && ($proView !=0 && $proView !=105 ))
+	if (($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19]) && ($proView !=0 && $proView !=104 ))
 	{
 	
-
+		//echo "<div>".$codregione[1]."</div>";
 		$id=$row['user_id'];
 		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
 		$resTab = mysqli_query($admin,$inTab);
@@ -113,8 +115,6 @@ if ($azione=="CREA")
 $query_crea = "SELECT *  FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  LIMIT ".$goal." ";
 $csv_mvf = mysqli_query($admin,$query_crea);
 $total_rows=mysqli_num_rows($csv_mvf);
-	
-echo $query_crea;
 
 
     //// ESPORTA CAMPIONE MVF IN CSV ////
@@ -155,7 +155,7 @@ echo $query_crea;
 if ($azione=="CREA")	
 {
 ?>
-
+<hr/>
 <div class="form-row">
 <h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Il campione è stato abilitato!</button></h6>
 </div>
@@ -167,7 +167,7 @@ if ($azione=="CREA")
 				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
 				<input type="hidden" name="filename" value="user_list" />
         <input type="hidden" name="filetype" value="campione" />
-        <input style="width:50px; height:50px;" class="form-control" type="image" value="submit" src="img/csv.png" />
+        <input  class="form-control" type="image" value="submit" src="img/csv.png" />
         </form>		
 
 </div>
