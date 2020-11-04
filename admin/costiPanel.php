@@ -293,7 +293,7 @@ while ($row = mysqli_fetch_assoc($tot_ricerche))
 
 
 echo "<tr class='rowSur' style='background:".$colRow."'>";
-echo "<td><a href='conta_locale.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
+echo "<td><a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
 echo "<td>".$row['description']."</td>";
 echo "<td>".$row['complete_int']."</td>";
 echo "<td>".$row['red_surv']."%</td>";

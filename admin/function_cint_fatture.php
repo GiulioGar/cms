@@ -76,8 +76,10 @@ echo nl2br("\n");
 if ($filepresente==false)
 {
 //aggiungo i dati nella tabella cint_fatture
-$query_aggfatt= "INSERT INTO cint_fatture (etichetta,nomefile,mese,importo) values ('".$etichetta."','".$_FILES['file']['name']."','".$mese."',".$importo.")";
+$query_aggfatt= "INSERT INTO cint_fatture (etichetta,nomefile,mese,importo,emessa,pagata) values ('".$etichetta."','".$_FILES['file']['name']."','".$mese."',".$importo.",'No','Non ricevuto')";
 $aggiungiFatt = mysqli_query($admin,$query_aggfatt);
+
+echo $query_aggfatt;
 
 } 
 

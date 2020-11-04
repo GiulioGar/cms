@@ -22,25 +22,25 @@ require_once('inc_taghead.php');
 require_once('inc_tagbody.php');
 
 $query_surv = "SELECT *  FROM t_panel_control where stato=0 AND panel<>0";
-$csv_sur = mysqli_query($admin,$query_surv) or die(mysql_error());	
+$csv_sur = mysqli_query($admin,$query_surv) ;	
 
 //attività nuovi iscritti
 mysqli_select_db($database_admin, $admin);
 $query_user = "SELECT count(distinct story.user_id) as total FROM millebytesdb.t_user_history  as story, t_user_info as info where info.active='1' and reg_date >= $currentYear AND story.user_id=info.user_id 
 AND story.event_type <>'subscribe'   order by story.event_date";
-$tot_att6 = mysqli_query($admin,$query_user) or die(mysql_error());
+$tot_att6 = mysqli_query($admin,$query_user) ;
 $tot_act6 = mysqli_fetch_assoc($tot_att6);
 
 $query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and reg_date >= '$currentYear' and email not like'%.top'";
-$t_user = mysqli_query($admin,$query_user) or die(mysql_error());
+$t_user = mysqli_query($admin,$query_user) ;
 $t_use = mysqli_fetch_assoc($t_user);
 
 $query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and gender=1 and reg_date >= '$currentYear' and email not like'%.top'";
-$tm_user = mysqli_query($admin,$query_user) or die(mysql_error());
+$tm_user = mysqli_query($admin,$query_user) ;
 $tm_use = mysqli_fetch_assoc($tm_user);
 
 $queryf_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and gender=2 and reg_date >= '$currentYear' and email not like'%.top'";
-$tf_user = mysqli_query($admin,$queryf_user) or die(mysql_error());
+$tf_user = mysqli_query($admin,$queryf_user) ;
 $tf_use = mysqli_fetch_assoc($tf_user);
 
 $und18=$currentYear-17;
@@ -59,31 +59,31 @@ $f65=$currentYear-65;
 
 
 $query17_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)>='$und18' and reg_date >= '$startDate' and email not like'%.top'";
-$t17_user = mysqli_query($admin,$query17_user) or die(mysql_error());
+$t17_user = mysqli_query($admin,$query17_user) ;
 $t17_use = mysqli_fetch_assoc($t17_user);
 
 $query18_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f18' and Year(birth_date)>='$f24' and reg_date >= '$startDate' and email not like'%.top'";
-$t18_user = mysqli_query($admin,$query18_user) or die(mysql_error());
+$t18_user = mysqli_query($admin,$query18_user) ;
 $t18_use = mysqli_fetch_assoc($t18_user);
 
 $query25_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f25' and Year(birth_date)>='$f34' and reg_date >= '$startDate' and email not like'%.top'";
-$t25_user = mysqli_query($admin,$query25_user) or die(mysql_error());
+$t25_user = mysqli_query($admin,$query25_user) ;
 $t25_use = mysqli_fetch_assoc($t25_user);
 
 $query35_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f35' and Year(birth_date)>='$f44' and reg_date >= '$startDate' and email not like'%.top'";
-$t35_user = mysqli_query($admin,$query35_user) or die(mysql_error());
+$t35_user = mysqli_query($admin,$query35_user) ;
 $t35_use = mysqli_fetch_assoc($t35_user);
 
 $query45_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f45' and Year(birth_date)>='$f54' and reg_date >= '$startDate' and email not like'%.top'";
-$t45_user = mysqli_query($admin,$query45_user) or die(mysql_error());
+$t45_user = mysqli_query($admin,$query45_user) ;
 $t45_use = mysqli_fetch_assoc($t45_user);
 
 $query55_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f55' and Year(birth_date)>='$f64' and reg_date >= '$startDate' and email not like'%.top'";
-$t55_user = mysqli_query($admin,$query55_user) or die(mysql_error());
+$t55_user = mysqli_query($admin,$query55_user) ;
 $t55_use = mysqli_fetch_assoc($t55_user);
 
 $query65_user = "SELECT COUNT(*) as total FROM t_user_info where active='1' and Year(birth_date)<='$f65' and reg_date >= '$startDate' and email not like'%.top'";
-$t65_user = mysqli_query($admin,$query65_user) or die(mysql_error());
+$t65_user = mysqli_query($admin,$query65_user) ;
 $t65_use = mysqli_fetch_assoc($t65_user);
 
 //conta aree
@@ -93,7 +93,7 @@ $tCe=0;
 $tSu=0;
 
 $query_new_at = "SELECT * FROM t_user_info where active=1 and reg_date >= '2020-01-01' and email not like'%.top'";
-$csv_mvf_at = mysqli_query($admin,$query_new_at) or die(mysql_error());
+$csv_mvf_at = mysqli_query($admin,$query_new_at) ;
 
 while ($row = mysqli_fetch_assoc($csv_mvf_at)) 
    { 

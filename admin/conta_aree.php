@@ -27,7 +27,7 @@
 <?php
     while ($row = mysqli_fetch_assoc($csv_sur)) 
     {
-	 echo "<option value='".$row['sur_id']."'>".$row['sur_id']."</option>";
+	 echo "<option class='".$row['prj']."' data-age1='".$row['age1_target']."' data-age2='".$row['age2_target']."' data-sesso='".$row['sex_target']."' value='".$row['sur_id']."'>".$row['sur_id']."</option>";
 	}
 ?>
 </select>
@@ -344,6 +344,27 @@ selPr= $("input.prj").val();
 if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
 else  {$(".genera").prop("disabled",true); }
 });
+
+//AUTO IMPUTAZIONE RICERCA
+
+$( "select.surv" ).change(function() {
+ let leggoClasse;
+ let leggoAge1;
+ let leggoAge2;
+ let leggoSesso;
+
+ leggoClasse= $("option:selected").attr("class");
+ leggoAge1= $("option:selected").attr("data-age1");
+ leggoAge2= $("option:selected").attr("data-age2");
+ leggoSesso= $("option:selected").attr("data-sesso");
+ $("input.prj").val(leggoClasse);
+ $("input.ag1").val(leggoAge1);
+ $("input.ag2").val(leggoAge2);
+ $("select.sex_target").val(leggoSesso);
+ console.log(leggoClasse);
+
+});
+
 
 </script>
 

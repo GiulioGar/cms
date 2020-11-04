@@ -1,10 +1,8 @@
 <?php
 
-/*
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL | E_STRICT);
-*/
+
+
+ini_set('memory_limit', '-1');
 
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
@@ -67,7 +65,8 @@ input[type=image]:disabled
 <div class="tab-content">
   <div class="tab-pane active" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
 
-    <?php  require_once('cint_invitations.php');  ?> 
+   <?php  require_once('cint_invitations.php');  ?> 
+ 
 
   </div>
 
@@ -79,8 +78,8 @@ input[type=image]:disabled
   </div>
 
   <div class="tab-pane" id="sta" role="tabpanel" aria-labelledby="sta-tab">
-  
-  <?php //require_once('cint_stats.php'); ?> 
+  <?php require_once('cint_stats.php'); ?> 
+ 
   
   </div>
 

@@ -97,7 +97,6 @@ if($closearch=="CLOSE" || $closearch=="OPEN")
 if ($closearch=="CLOSE") {$statoSur=0;}
 else {$statoSur=1;}
 
-mysqli_select_db($admin,$database_admin);
 $query_aggiorna = "UPDATE t_panel_control SET stato=$statoSur WHERE id='".$id_sur."'";
 $up_ricercha = mysqli_query($admin,$query_aggiorna);
 
@@ -105,9 +104,8 @@ $up_ricercha = mysqli_query($admin,$query_aggiorna);
 
 
 
-mysqli_select_db($admin,$database_admin);
-$query_ricerche = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel like '$cerca_panel' and sur_date like '$cerca_anno' order by stato,id DESC";
-$query_ricerche_aggiornate = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel like '$cerca_panel' and sur_date like '$cerca_anno' order by stato,giorni_rimanenti ASC,id DESC";
+$query_ricerche = "SELECT * FROM t_panel_control order by stato,id DESC";
+$query_ricerche_aggiornate = "SELECT * FROM t_panel_control  order by stato,giorni_rimanenti ASC,id DESC";
 $tot_ricerche = mysqli_query($admin,$query_ricerche);
 
 require_once('inc_taghead.php');
@@ -478,6 +476,7 @@ $(document).ready( function () {
   $('#table_sur').show();
   $('.mess').fadeOut();
     $('#table_sur').DataTable( {
+      "bProcessing":true,
         "order": [[ 11, "asc" ]],
         "pagingType": "full_numbers",
         "scrollY": false,

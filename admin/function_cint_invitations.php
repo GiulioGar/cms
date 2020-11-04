@@ -40,7 +40,12 @@ $csv_mvf = mysqli_query($admin,$query_new);
                 $uid=$row['user_id'];
                 
                 $mail=$row['email'];
-                $nome=$row['first_name'];
+                $from = array( "à","è","ì","ò","ù","á","é", "í","ó","ú", "'");
+                $to = array( "a", "e", "i", "o", "u", "a", "e", "i", "o", "u", "" );
+
+                $nome=str_replace($from, $to, $row['first_name']);
+
+
                 $urlsend=$row['survey_url'];
                 $sesso=$row['gender'];
                 $prid=$row['project_id'];
@@ -54,9 +59,6 @@ $csv_mvf = mysqli_query($admin,$query_new);
 
 
 
-            //aggiorno ultimo id salvato
-            $query_aggInv= "UPDATE cint_invites SET inviti=1 where member_id='$uid' and project_id='$prid'";
-            $aggInv = mysqli_query($admin,$query_aggInv);
         
 
         }
@@ -72,7 +74,23 @@ $csv_mvf = mysqli_query($admin,$query_new);
 
 <?php
     }
-   
+
+
+    if ($creaCamp=="INVIO")	
+    {  
+
+        $query_aggInv= "UPDATE cint_invites SET inviti=1 where inviti=0";
+        $aggInv = mysqli_query($admin,$query_aggInv);
+        
+    
+      }
+            ?>
+    
+
+    
+    
+<?php
+    
 //query inviti disponibili
 $query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <>'Scaduto' ".$addFiltri." ORDER BY id DESC";
 $cintInviti = mysqli_query($admin,$query_cintInviti);

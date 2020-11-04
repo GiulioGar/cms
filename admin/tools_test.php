@@ -2,7 +2,7 @@
 <head>
 
 	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<style type="text/css">	
@@ -167,7 +167,7 @@ $fl=0;
  			 <div class="input-group-prepend">
    			 <label class="input-group-text" for="inputGroupSelect01">Numero Test:</label>
 			</div>
-			<input class="form-control"  id="nl" name="nl" type="text"  value="0">
+			<input class="form-control"  id="nl" name="nl" type="text"  value="0"><span class="alert"></span>
              </div>	
              </div>	
 						  	
@@ -201,15 +201,15 @@ $fl=0;
 </div>
 </div>
 
-
+<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="jquery.copy-to-clipboard.js"></script>
 
 <?php 
 
 require_once('inc_footer.php'); 
 
 ?>
-<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
-<script src="jquery.copy-to-clipboard.js"></script>
+
 
 
 

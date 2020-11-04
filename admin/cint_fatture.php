@@ -9,8 +9,13 @@ $selFatture = mysqli_query($admin,$query_fatture);
 $contaFatture= mysqli_num_rows($selFatture);
 
 
+
 ?>
 
+
+<?php
+//phpinfo();
+?>
 
 <div class="row">
 	 <div class="col col-xs-6">

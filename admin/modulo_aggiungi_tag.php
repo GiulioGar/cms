@@ -14,7 +14,7 @@
       <div class="modal-body">
 
 
-<form id="aggTag" action="pannello_target.php" method="get">
+<form id="aggTag" action="pannello_target.php" method="POST">
 <input type="hidden" id="aTag" name="azione" value="aggiungiTag">
 
 <div class="input-group">
@@ -26,7 +26,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button  type="button" value="Aggiungi" id="openSearch"  name="openSearch" class="btn btn-primary add">Aggiungi</button>
+        <button  type="button" value="aggiungiTag" id="openSearch"  name="openSearch" class="btn btn-primary add">Aggiungi</button>
       </div>
     </div>
   </div>

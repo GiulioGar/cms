@@ -1,14 +1,20 @@
 
 <?php
+
+error_reporting(E_ALL);
+
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
+
+
 
 $action=$_REQUEST['azione'];
 $tag=$_REQUEST['tag'];
 
-//aggiungi uids
-$trg=$_GET['Tag'];
-@$nome=$_REQUEST["idval"];
+//aggiungi tag
+$trg=$_REQUEST['Tag'];
+$nome=$_REQUEST["idval"];
+ 
 
 if($action=="aggiungiTag")
 {
@@ -50,14 +56,19 @@ if ($nome<>"")
 
 
 
+
 if ($Carr<> 0)
 {	
   
 	foreach($array as $arrV)  
 	{
-	 $query_inserisci_utente_target="INSERT INTO utenti_target (uid,target) SELECT '".$arrV."','".$trg."' FROM DUAL WHERE NOT EXISTS (SELECT uid FROM utenti_target WHERE uid='".$arrV."' AND target='".$trg."');";
+	$inserisciUid=trim($arrV);
+
+	 $query_inserisci_utente_target="INSERT INTO utenti_target (uid,target) SELECT '".$inserisciUid."','".$trg."' FROM DUAL WHERE NOT EXISTS (SELECT uid FROM utenti_target WHERE uid='".$arrV."' AND target='".$trg."');";
 	 $query_inserisci_utente_target_q = mysqli_query($admin,$query_inserisci_utente_target) ;
 	 $query_inserisci_utente_target_q_t = mysqli_fetch_assoc($query_inserisci_utente_target_q);
+
+
 	}
 }
 

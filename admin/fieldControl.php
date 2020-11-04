@@ -3,13 +3,9 @@
 $data=date("Y-m-d");
 $contaField=0;
 
-mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control where stato=0 order by stato,giorni_rimanenti ASC,id DESC";
 $tot_attive = mysqli_query($admin,$query_ricerche) ;
 
-mysqli_select_db($admin,$database_admin);
-$query_ricerche = "SELECT * FROM t_panel_control where stato=1 and panel=1 order by id DESC ";
-$tot_inattive = mysqli_query($admin,$query_ricerche) ;
 
 	
 $query_conta = "SELECT COUNT(sur_id) as tot  FROM t_panel_control where stato=0";
@@ -93,6 +89,7 @@ var target_date = new Date('<?php echo $meseSc; ?>, <?php echo $ggSc; ?>, <?php 
 	 // find the amount of "seconds" between now and target
 	 var current_date = new Date().getTime();
 	 var seconds_left = (target_date - current_date) / 1000;
+	 let qtext;
   
 	 // do some time calculations
 	 days = parseInt(seconds_left / 86400);
@@ -113,9 +110,17 @@ var target_date = new Date('<?php echo $meseSc; ?>, <?php echo $ggSc; ?>, <?php 
 	 {
 		countdown.innerHTML = '<div style="height:35px; vertical-align:middle;" class="alert alert-danger timing" role="alert"> <?php echo $newDate;?> <i class="far fa-stop-circle"></i> </div>';  
 	 }
+
+	 else if (days==0 )
+	 {
+		countdown.innerHTML = '<div style="height:35px; vertical-align:middle;" class="alert alert-warning timing" role="alert"> Ulitmo giorno <i class="fas fa-exclamation-circle"></i> </div>';  
+	 }
+
 	 else 
 	 {
-		countdown.innerHTML = '<div style="height:35px; vertical-align:middle;" class="alert alert-success" style="color:#515151; font-weight:bold;" role="alert"> '+ days+ ' giorni ' + hours + ':00 <i class="fas fa-hourglass-half"></i></div>';
+	   if(days==1) { qtext="giorno" }		 
+	   else  { qtext="giorni" }		 
+		countdown.innerHTML = '<div style="height:35px; vertical-align:middle;" class="alert alert-success" style="color:#515151; font-weight:bold;" role="alert"> '+ days+ ' '+qtext+' ' + hours + ':00 <i class="fas fa-hourglass-half"></i></div>';
 	 }
 	 
 	

@@ -29,9 +29,9 @@ require_once('inc_tagbody.php');
 
 
 $query_cerca = "SELECT res.uid, SUM(res.status=3) as comp ,SUM(res.status=0) as cont,info.email,first_name,reg_date
-FROM t_respint as res, t_user_info as info where info.user_id=res.uid and info.active=1
+FROM t_respint as res, t_user_info as info where info.user_id=res.uid and info.active=1 AND res.uid NOT LIKE 'IDEX%'
 GROUP BY res.uid ORDER BY comp DESC";
-$cerca = mysqli_query($admin,$query_cerca) or die(mysql_error());
+$cerca = mysqli_query($admin,$query_cerca);
 
 /*
 // CREO GLI ARRAY

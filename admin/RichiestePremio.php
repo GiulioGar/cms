@@ -60,7 +60,7 @@ if($azione=="add2")
 {
 mysqli_select_db($admin,$database_admin);
 $query_aggiorna = "UPDATE cassa_buoni SET num='$cifra2' WHERE type='euro2'";
-$add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+$add_euro = mysqli_query($admin,$query_aggiorna) ;
 }
 
 //AGGIUNGO Buoni 5 euro
@@ -68,7 +68,7 @@ if($azione=="add5")
 {
 mysqli_select_db($database_admin, $admin);
 $query_aggiorna = "UPDATE cassa_buoni SET num='$cifra5' WHERE type='euro5'";
-$add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+$add_euro = mysqli_query($admin,$query_aggiorna) ;
 }
 
 //AGGIUNGO Buoni 9 euro
@@ -76,7 +76,7 @@ if($azione=="add9")
 {
 mysqli_select_db($database_admin, $admin);
 $query_aggiorna = "UPDATE cassa_buoni SET num='$cifra9' WHERE type='euro9'";
-$add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+$add_euro = mysqli_query($admin,$query_aggiorna) ;
 }
 
 //AGGIUNGO Buoni 15 euro
@@ -84,31 +84,31 @@ if($azione=="add15")
 {
 mysqli_select_db($database_admin, $admin);
 $query_aggiorna = "UPDATE cassa_buoni SET num='$cifra15' WHERE type='euro15'";
-$add_euro = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+$add_euro = mysqli_query($admin,$query_aggiorna) ;
 }
 
 
 	$query_conta = "SELECT COUNT(user_id) as tot FROM t_history_copia where event_type='withdraw'";
-	$surClo = mysqli_query($admin,$query_conta) or die(mysql_error());
+	$surClo = mysqli_query($admin,$query_conta) ;
 	$cloSur = mysqli_fetch_assoc($surClo);
 	
 	$query_conta2 = "SELECT COUNT(user_id) as tot FROM t_user_history where event_type='withdraw'";
-	$surClo2 = mysqli_query($admin,$query_conta2) or die(mysql_error());
+	$surClo2 = mysqli_query($admin,$query_conta2) ;
 	$cloSur2 = mysqli_fetch_assoc($surClo2);	
 	
 	//echo $cloSur['tot'].' '.$cloSur2['tot'];
+	$cloSurB2=$cloSur2['tot']-1;
 
-/*
-if ($cloSur['tot'] != $cloSur2['tot'])
+if ($cloSur['tot'] !=$cloSurB2)
 {
 //COPIO HISTORY
 $query_copia_history_copy="INSERT t_history_copia (user_id, event_date, event_type, event_info, prev_level, new_level)
 SELECT user_id, event_date, event_type, event_info, prev_level, new_level
 FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_id FROM t_history_copia where t_history_copia.event_date=t_user_history.event_date)";
-$query_copia_history_copy_sample = mysqli_query($admin,$query_copia_history_copy) or die(mysql_error());
+$query_copia_history_copy_sample = mysqli_query($admin,$query_copia_history_copy) ;
 $query_copia_history_copy_sample_t = mysqli_fetch_assoc($query_copia_history_copy_sample);
 }
-*/
+
 
 
 $query_cerca = "SELECT * FROM t_history_copia,t_user_info where pagato like '$cerca_progetto' AND t_history_copia.user_id=t_user_info.user_id order by event_date asc";
@@ -265,7 +265,7 @@ $contapagati20euro=0;
 				
 				mysqli_select_db($database_admin, $admin);
 				$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
-				$up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+				$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 				
 				
 				
@@ -347,7 +347,7 @@ $contapagati20euro=0;
 					
 					mysqli_select_db($database_admin, $admin);
 					$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
-					$up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
 					
@@ -428,7 +428,7 @@ $contapagati20euro=0;
 					
 					mysqli_select_db($database_admin, $admin);
 					$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
-					$up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
 					
@@ -510,7 +510,7 @@ $contapagati20euro=0;
 					
 					mysqli_select_db($database_admin, $admin);
 					$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
-					$up_ricercha = mysqli_query($admin,$query_aggiorna) or die(mysql_error());
+					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
 					
@@ -585,7 +585,7 @@ $contapagati20euro=0;
 /* premi in cassa */
 
 $query_cassa = "SELECT * FROM millebytesdb.field_data_field_number_of_prizes order by entity_id ASC;";
-$cassaRim = mysqli_query($admin,$query_cassa) or die(mysql_error());
+$cassaRim = mysqli_query($admin,$query_cassa) ;
 
 $cicli=0;
 	while ($row = mysqli_fetch_assoc($cassaRim))
@@ -599,7 +599,7 @@ $cicli=0;
 		}
 		
 $query_cassa = "SELECT * FROM millebytesdb.field_data_field_refill_date order by entity_id ASC;";
-$cassaRim = mysqli_query($admin,$query_cassa) or die(mysql_error());
+$cassaRim = mysqli_query($admin,$query_cassa) ;
 
 $cicli=0;
 	while ($row = mysqli_fetch_assoc($cassaRim))
@@ -672,35 +672,35 @@ $cicli=0;
 $cyear=date("Y");
 
 $query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 2 Euro' and event_date LIKE '".$cyear."%' ";
-$t_PAGO = mysqli_query($admin,$query_pago) or die(mysql_error());
+$t_PAGO = mysqli_query($admin,$query_pago) ;
 $data2=mysqli_fetch_assoc($t_PAGO);
 
 $query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 5 Euro' and event_date LIKE '".$cyear."%' ";
-$t_PAGO = mysqli_query($admin,$query_pago) or die(mysql_error());
+$t_PAGO = mysqli_query($admin,$query_pago) ;
 $data5=mysqli_fetch_assoc($t_PAGO);
 
 $query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 10 Euro' and event_date LIKE '".$cyear."%'";
-$t_PAGO = mysqli_query($admin,$query_pago) or die(mysql_error());
+$t_PAGO = mysqli_query($admin,$query_pago) ;
 $data10=mysqli_fetch_assoc($t_PAGO);
 
 $query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 20 Euro'  and event_date LIKE '".$cyear."%'";
-$t_PAGO = mysqli_query($admin,$query_pago) or die(mysql_error());
+$t_PAGO = mysqli_query($admin,$query_pago) ;
 $data20=mysqli_fetch_assoc($t_PAGO);
 
 $query_bud= "SELECT * FROM millebytesdb.cassa_buoni where type='euro2'";
-$t_bud = mysqli_query($admin,$query_bud) or die(mysql_error());
+$t_bud = mysqli_query($admin,$query_bud) ;
 $bud2=mysqli_fetch_assoc($t_bud);
 
 $query_bud= "SELECT * FROM millebytesdb.cassa_buoni where type='euro5'";
-$t_bud = mysqli_query($admin,$query_bud) or die(mysql_error());
+$t_bud = mysqli_query($admin,$query_bud) ;
 $bud5=mysqli_fetch_assoc($t_bud);
 
 $query_bud= "SELECT * FROM millebytesdb.cassa_buoni where type='euro10'";
-$t_bud = mysqli_query($admin,$query_bud) or die(mysql_error());
+$t_bud = mysqli_query($admin,$query_bud) ;
 $bud10=mysqli_fetch_assoc($t_bud);
 
 $query_bud= "SELECT * FROM millebytesdb.cassa_buoni where type='euro20'";
-$t_bud = mysqli_query($admin,$query_bud) or die(mysql_error());
+$t_bud = mysqli_query($admin,$query_bud) ;
 $bud20=mysqli_fetch_assoc($t_bud);
 
 $gia2=$bud2['num']-$data2['total'];

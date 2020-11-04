@@ -50,10 +50,12 @@ require_once('inc_tagbody.php');
 
 	<table style="text-align:center" id='table_tar' class='table table-striped table-bordered'>
 	<thead>
-	<th style='font-weight:bold'>Target</th>
-	<th style='font-weight:bold'>Users Disponibili</th>
-	<th style='font-weight:bold'><i class="far fa-thumbs-up"></i> Interviste Possibili</th>
-	<th style='font-weight:bold'>Download</th>
+	<tr>	
+	<th style='font-weight:bold;  width: 170px;'>Target</th>
+	<th style='font-weight:bold;  width: 242px;'>Users Disponibili</th>
+	<th style='font-weight:bold; width: 220px;'><i class="far fa-thumbs-up"></i> Interviste Possibili</th>
+	<th style='font-weight:bold; width: 212px;'>Download</th>
+	</tr>
 	</thead>
 
 
@@ -116,7 +118,7 @@ $stimate=ceil(($tot_use['total']/100)*55);
 ?>
 
 
-<tr class='rowSur' style='background:"<?php echo $colRow; ?>"'>
+<tr class='rowSur'>
 
 <?php
 
@@ -151,8 +153,6 @@ $tagClass= str_replace(' ', '', $tagClass);
 
 
 ?>
-
-</th>
 </tbody>	
 </table>
 
@@ -187,7 +187,7 @@ let formDati=$('#aggTag').serialize();
  $.ajax({
 
 //imposto il tipo di invio dati (GET O POST)
- type: "POST",
+ type: "GET",
 
  //Dove devo inviare i dati recuperati dal form?
  url: "function_target.php",
@@ -224,7 +224,7 @@ let nuovaStima;
  $.ajax({
 
 //imposto il tipo di invio dati (GET O POST)
- type: "POST",
+ type: "GET",
 
  //Dove devo inviare i dati recuperati dal form?
  url: "function_target.php",
@@ -275,6 +275,7 @@ $(document).ready( function () {
 
 						}]
     } );
+	$('.dataTables_scrollHeadInner,.dataTables_scrollHeadInner table').width("100%");	
 } );
 
 </script>

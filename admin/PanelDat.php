@@ -201,20 +201,52 @@ new Chart(document.getElementById("pie-chart2"), {
 new Chart(document.getElementById("linered"), {
     type: 'line',
     data: {
-      labels: ["2018", "2019", "2020"],
+      labels: ["<?php echo $pastYear4; ?>","<?php echo $pastYear3; ?>","<?php echo $pastYear2; ?>", "<?php echo $pastYear1; ?>", "<?php echo $actualYear; ?>"],
       datasets: [{
         label: "% risposta ",
+        borderColor:["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointBorderColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointBackgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointHoverBackgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointHoverBorderColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointBorderWidth: 6,
+            pointHoverRadius: 6,
+            pointHoverBorderWidth: 1,
+            pointRadius: 3,
+            fill: false,
+            borderWidth: 2,
 		fill:false,
-        backgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe"],
-        data: [<?php echo sprintf("%01.2f", $medRed18); ?>,<?php echo sprintf("%01.2f", $medRed19); ?>,<?php echo sprintf("%01.2f", $medRed20); ?>]
+        backgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+        data: [<?php echo sprintf("%01.2f", $medRed16); ?>,<?php echo sprintf("%01.2f", $medRed17); ?>,<?php echo sprintf("%01.2f", $medRed18); ?>,<?php echo sprintf("%01.2f", $medRed19); ?>,<?php echo sprintf("%01.2f", $medRed20); ?>]
       }]
     },
     options: {
-        animation:{
-        animateRotate: true,
-        render: false,
-    },
-
+        legend: {
+            position: "bottom"
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold",
+                    beginAtZero: true,
+                    maxTicksLimit: 8,
+                    padding: 20
+                },
+                gridLines: {
+                    drawTicks: false,
+                    display: false
+                }}],
+            xAxes: [{
+                gridLines: {
+                    zeroLineColor: "transparent"},
+                ticks: {
+                    padding: 20,
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold"
+                }
+            }]
+        }
     }
 });
 	
@@ -224,13 +256,13 @@ new Chart(document.getElementById("linered"), {
 new Chart(document.getElementById("barnew"), {
     type: 'bar',
     data: {
-      labels: ["2018", "2019", "2020"],
+      labels: ["<?php echo $pastYear4; ?>","<?php echo $pastYear3; ?>","<?php echo $pastYear2; ?>", "<?php echo $pastYear1; ?>", "<?php echo $actualYear; ?>"],
       datasets: [
         {
           label: "Utenti ",
           fill:true,
-          backgroundColor: ["#a7cde2", "#bf8bd6","#3cba9f"],
-          data: [<?php echo $totReg18['tot']; ?>,<?php echo $totReg19['tot']; ?>,<?php echo $totReg20['tot']; ?>]
+          backgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+          data: [<?php echo $totReg16['tot']; ?>,<?php echo $totReg17['tot']; ?>,<?php echo $totReg18['tot']; ?>,<?php echo $totReg19['tot']; ?>,<?php echo $totReg20['tot']; ?>]
         }
       ]
     },

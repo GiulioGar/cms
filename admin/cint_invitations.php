@@ -147,6 +147,7 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
     <div class="col-sm-9">
     <div class="flex-row align-items-center justify-content-between">
     <div class="alert alert-warning mess2" role="alert" style="display:none; text-align:center;"><i class="fas fa-cloud-download-alt"></i> &nbsp;Download in corso... </div>
+    <div class="alert alert-danger mess3" role="alert" style="display:none; text-align:center;"><i class="fas fa-user-edit"></i></i> &nbsp;Aggiornamento Utenti... </div>
     </div>
     </div>
     </div>
@@ -171,7 +172,7 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
     <div class="col-sm-1">   
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input scad" value="scafiltro" name="customCheck" id="customCheck3" >
-            <label data-toggle="tooltip"  data-type="primary" data-placement="bottom" title="Scadenza inferiore a 6 ore" class="custom-control-label" for="customCheck3">Scadenza</label>
+            <label data-toggle="tooltip"  data-type="primary" data-placement="bottom" title="Scadenza inferiore a 6 ore" class="custom-control-label" for="customCheck3">Sc.</label>
         </div>
     </div>    
 
@@ -324,6 +325,7 @@ console.log(dataVal2);
 
 if (butVal=="CREA") { $(".download").fadeIn();   }
 if (butVal=="DOWNLOAD") { $('.mess2').fadeIn();   }
+if (butVal=="INVIO") { $('.mess3').fadeIn();   }
 
 
   //chiamata ajax
@@ -353,6 +355,7 @@ if (butVal=="DOWNLOAD") { $('.mess2').fadeIn();   }
                         
                         if (butVal=="INVIO") 
                         {
+                        $('.mess3').fadeOut();
                         table=$(data).filter(".rowDisp");
                         $(".rowDisp").html(table);
 

@@ -97,19 +97,24 @@ new Chart(document.getElementById("barSur"), {
         {
           label:  ["Totali"],
           backgroundColor: ["#ffd789","#ffd789"],
-          data: [<?php echo $totSur16['tot']; ?>,<?php echo $totSur['tot']; ?>]
+          data: [<?php echo $totSur['tot']; ?>,<?php echo $totSur16['tot']; ?>]
         },
 
         {
           label:  ["Interne"],
           backgroundColor: ["#ceefbd","#ceefbd"],
-          data: [<?php echo $contaInt16; ?>,<?php echo $contaInt; ?>]
+          data: [<?php echo $contaInt; ?>,<?php echo $contaInt16; ?>]
         },
 
         {
           label:  ["Esterne"],
           backgroundColor: ["#7fbee2", "#7fbee2"],
-          data: [<?php echo $contaExt16; ?>,<?php echo $contaExt; ?>]
+          data: [<?php echo $contaExt; ?>,<?php echo $contaExt16; ?>]
+        },
+        {
+          label:  ["Da Lista"],
+          backgroundColor: ["#BF8BD6", "#BF8BD6"],
+          data: [<?php echo $contaTar; ?>,<?php echo $contaTar16; ?>]
         }
 
       ]
@@ -131,14 +136,14 @@ new Chart(document.getElementById("barPaesi"), {
       labels: ["Italia", "UK", "Germania", "Francia", "Spagna", "Resto del mondo"],
       datasets: [
         {
-          label:  ["2020"],
+          label:  ["<?php echo $actualYear; ?>"],
           backgroundColor: ["#ceefbd","#ceefbd","#ceefbd","#ceefbd","#ceefbd","#ceefbd"],
-          data: [<?php echo $italia_c2017['complete_ext']; ?>,<?php echo $uk_c2017['complete_ext']; ?>,<?php echo $germania_c2017['complete_ext']; ?>,<?php echo $francia_c2017['complete_ext']; ?>,<?php echo $spagna_c2017['complete_ext']; ?>,<?php echo $altro_c2017['complete_ext']; ?>]
+          data: [<?php echo $italia_c2018['complete_ext']; ?>,<?php echo $uk_c2018['complete_ext']; ?>,<?php echo $germania_c2018['complete_ext']; ?>,<?php echo $francia_c2018['complete_ext']; ?>,<?php echo $spagna_c2018['complete_ext']; ?>,<?php echo $altro_c2018['complete_ext']; ?>]
         },
         {
-          label:  ["2019"],
+          label:  ["<?php echo $pastYear1; ?>"],
           backgroundColor: ["#ffd789","#ffd789","#ffd789","#ffd789","#ffd789","#ffd789"],
-          data: [<?php echo $italia_c2018['complete_ext']; ?>,<?php echo $uk_c2018['complete_ext']; ?>,<?php echo $germania_c2018['complete_ext']; ?>,<?php echo $francia_c2018['complete_ext']; ?>,<?php echo $spagna_c2018['complete_ext']; ?>,<?php echo $altro_c2018['complete_ext']; ?>]
+          data: [<?php echo $italia_c2016['complete_ext']; ?>,<?php echo $uk_c2016['complete_ext']; ?>,<?php echo $germania_c2016['complete_ext']; ?>,<?php echo $francia_c2016['complete_ext']; ?>,<?php echo $spagna_c2016['complete_ext']; ?>,<?php echo $altro_c2016['complete_ext']; ?>]
         },
 
       ]

@@ -18,6 +18,7 @@ require_once('inc_tagbody.php');
 @$prj = $_REQUEST['prj'];
 @$gt = $_REQUEST['guest'];
 @$ss = $_REQUEST['ss'];
+@$cint = $_REQUEST['cint'];
 @$ot = $_REQUEST['ot'];
 @$nl = $_REQUEST['nl'];
 @$abi = $_REQUEST['abi'];
@@ -31,6 +32,9 @@ $sid=strtoupper($sid);
 $prj=strtoupper($prj);
 $vId=strtoupper($vId);
 
+$addLinks="";
+$genLink="";
+$genId="";
 
 
 
@@ -61,7 +65,7 @@ $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 		foreach($array as $arrV)  
 		{
 		$sql="update t_respint set status='0', iid='-1' where sid='".$sid."' and uid='".trim($arrV)."'";
-		mysqli_query($admin,$sql) or die(mysql_error());
+		mysqli_query($admin,$sql);
 
 		if (mysqli_affected_rows()=="1") {$aggCont++;}
 		$contaDel=0;
@@ -106,6 +110,7 @@ $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 if ($nl>0 || $gt==true)
 {
 if($ss==true) { $ssiVar="&ssi=1"; }
+if($cint==true) { $ssiVar="&cint=1"; }
 else { $ssiVar="";}
 ?>
 
@@ -124,6 +129,8 @@ else { $ssiVar="";}
 
 <?php
 
+
+
 if ($gt==true) {echo "<div>http://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=GUEST".$ssiVar.$ot."\n</div>";}
 
 if ($nl>0)
@@ -131,7 +138,11 @@ if ($nl>0)
 	for ($i=0; $i<=$nl; ++$i) 
 		{
 		$varId="IDEX".($i+1000+$stId);
-		echo "<div>http://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$varId.$ssiVar.$ot."\n</div>";
+		$genId=$varId;
+		$genLink="http://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$varId.$ssiVar.$ot;
+		echo "<div>".$genLink."</div>";
+		$addLinks.=$genLink.";".$genId."\n";
+		
 		if($abi==true)
 		    {
 		    $query_insid = "INSERT INTO t_respint VALUES ('$sid','$varId',0,-1,'$prj')";
@@ -141,6 +152,37 @@ if ($nl>0)
 	}?>	
 	
 </div>
+
+<?php
+
+// csv per download campione
+
+
+
+@$csv="Url;Code";
+$csv .= "\n";
+
+if ($cint==true) 
+{
+	$csv .= "Do not remove;123456789";
+	$csv .= "\n";
+	$csv .= "Do not remove;abcdefgh";
+	$csv .= "\n";
+}
+
+$csv .=$addLinks; 
+//fine csv
+
+?>
+
+<form action="csv.php" method="post" target="_blank">
+				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
+				<input type="hidden" name="filename" value="links" />
+				<input type="hidden" name="filetype" value="links" />
+				<button type="submit" class="btn btn-secondary"> <span><i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i></span> </button>
+
+				</form>	
+
 </div>
 </div>
 	
@@ -229,25 +271,30 @@ if ($nl>0)
              <input class="form-control" id="otVar" name="ot" type="text">
             </div>			
 			</div>
-
+		<!-- form-row end -->		
+			</div>
+			<div class="form-row">	
 			<div class="form-group col-md-6 align-items-center">
-			<div class="col-sm-6">Opzioni</div>
 			<div class="form-check form-check-inline">
 			<input  id="gst" name="guest" type="checkbox">
 			<label class="form-check-label" for="inlineCheckbox1">&nbsp;&nbsp;GUEST</label>
 			</div>
 			<div class="form-check form-check-inline">
+			<input id="cint" name="cint" type="checkbox">
+			<label class="form-check-label" for="inlineCheckbox2"> &nbsp;&nbsp;CINT</label>
+			</div>
+			<div class="form-check form-check-inline">
 			<input id="ss" name="ss" type="checkbox">
-			<label class="form-check-label" for="inlineCheckbox2"> &nbsp;&nbsp;SSI</label>
+			<label class="form-check-label" for="inlineCheckbox3"> &nbsp;&nbsp;SSI</label>
 			</div>
 			<div class="form-check form-check-inline">
 			<input id="ot"  type="checkbox" onclick="viewOt()">
-			<label class="form-check-label" for="inlineCheckbox3">&nbsp;&nbsp;ALTRO</label>
+			<label class="form-check-label" for="inlineCheckbox4">&nbsp;&nbsp;ALTRO</label>
 			</div>
 			</div>
-
-			<!-- form-row end -->		
-			</div>		  
+		<!-- form-row end -->		
+			</div>
+		  
 
 
 			<div class="form-row">
@@ -260,7 +307,7 @@ if ($nl>0)
 	<div class="form-row align-items-left">
     <div class="col-auto my-1">
       <div class="custom-control custom-checkbox mr-sm-2">
-        <input type="checkbox" class="custom-control-input" id="customControlAutosizing" checked="checked">
+        <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="abi" checked="checked">
         <label class="custom-control-label" for="customControlAutosizing">Abilita</label>
       </div>
     </div>
