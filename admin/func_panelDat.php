@@ -643,7 +643,7 @@ $percH=$h_ric['total']/$tot_act12['total']*100;
 //Clienti
 
 $query_clienti = "SELECT 
-cliente, SUM(if(sur_date like '%2020%', 1, 0)) AS conta2020,SUM(if(sur_date like '%2019%', 1, 0)) AS conta2019 ,SUM(if(sur_date like '%2018%', 1, 0)) AS conta2018
+cliente, SUM(if(sur_date like '%$actualYear%', 1, 0)) AS conta2020,SUM(if(sur_date like '%$pastYear1%', 1, 0)) AS conta2019 ,SUM(if(sur_date like '%$pastYear2%', 1, 0)) AS conta2018
 FROM t_panel_control
 WHERE cliente<>''
 GROUP BY cliente

@@ -92,7 +92,7 @@ if ($goal=="") {$goal=100000; }
 
 if ($azione=="DISPONIBILI")
 {
-$query_contaDisp = "SELECT COUNT(*) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
+$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 

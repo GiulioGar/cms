@@ -10,6 +10,8 @@
  ini_set ('display_startup_errors', 1);
  */
 
+header("Cache-Control: no-cache, must-revalidate");
+
 ?>
 
 <meta charset="UTF-8">

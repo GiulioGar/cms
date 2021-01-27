@@ -187,3 +187,8 @@ while ($row3= mysqli_fetch_assoc($selFatture))
     </tbody>
 </table>
 
+
+<!-- FUNZIONE ANNO STATISTICHE -->
+
+
+

@@ -6,6 +6,10 @@ $titolo = 'Info utenti';
 $areapagina = "iscritti";
 $coldx = "no";
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL | E_STRICT);
+
 require_once('inc_taghead.php');
 
 @$cLdat=$_REQUEST["dat"];
@@ -28,7 +32,7 @@ if ($azione == "ricerca")
 	if ($Carr<> 0)
 	{
 		$del="DELETE FROM t_test";
-		$resA = mysqli_query($admin,$del) or die(mysqli_error());
+		$resA = mysqli_query($admin,$del) ;
 		
 		for($i=0; $i<$Carr;$i++) 
 		{
@@ -37,7 +41,7 @@ if ($azione == "ricerca")
 		$arrV=trim($arrV);
 		
 		$inTab="INSERT INTO t_test(uid) VALUES('$arrV')";
-		$resTab = mysqli_query($admin,$inTab) or die(mysqli_error());
+		$resTab = mysqli_query($admin,$inTab) ;
 	
 	
 		
@@ -47,13 +51,13 @@ if ($azione == "ricerca")
 	}
 	
 	$query="SELECT user_id,first_name,second_name,gender,birth_date,(extract(year from now()) - extract(year from (birth_date))) as age, work_id,instr_level_id,province_id,mar_status_id,email,code FROM t_user_info where user_id in (select uid from t_test order by id) ORDER by user_id";
-	$resC = mysqli_query($admin,$query) or die(mysqli_error());
+	$resC = mysqli_query($admin,$query) ;
 	$infoC= mysqli_fetch_array($resC);
 	$counter = mysqli_num_rows($resC);
 	
 /*  
 
-$csvsql = mysqli_query($admin,$query) or die(mysqli_error());
+$csvsql = mysqli_query($admin,$query) ;
 $tot_campi = mysqli_num_fields($csvsql);
 
 

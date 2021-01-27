@@ -92,7 +92,7 @@ require_once('function_conta_aree.php');
 new Chart(document.getElementById("barSur"), {
     type: 'bar',
     data: {
-      labels: ["2020", "2019"],
+      labels: ["<?php echo $actualYear; ?>", "<?php echo $pastYear1; ?>"],
       datasets: [
         {
           label:  ["Totali"],
@@ -220,7 +220,7 @@ new Chart(document.getElementById("barClienti"), {
       ],
       datasets: [
         {
-          label:  ["2020"],
+          label:  ["<?php echo $actualYear; ?>"],
           backgroundColor: [<?php echo $color20; ?>],
           data: 
           [
@@ -228,7 +228,7 @@ new Chart(document.getElementById("barClienti"), {
           ]
         },
         {
-          label:  ["2019"],
+          label:  ["<?php echo $pastYear1; ?>"],
           backgroundColor: [<?php echo $color19; ?>],
           data: 
           [
@@ -238,7 +238,7 @@ new Chart(document.getElementById("barClienti"), {
         },
 
         {
-          label:  ["2018"],
+          label:  ["<?php echo $pastYear2; ?>"],
           backgroundColor: [<?php echo $color18; ?>],
           data: 
           [

@@ -393,7 +393,11 @@ $conta_complete_panel=0;
 $conta_filtrati_panel=0;
 $conta_quotafull_panel=0;
 $contaSospeso=0;
+$contaSospeso2=0;
+$contaSospeso3=0;
 $contaFiltri=0;
+$contaFiltri2=0;
+$contaFiltri3=0;
 $contaCompl=0;
 
 
@@ -461,6 +465,14 @@ $versionSre=$elementi[0];
 if ($versionSre==="2.0") { $statSur=$elementi[8];}
 else  { $statSur=$elementi[6];}
 
+$uidSurv="";
+
+
+if ($versionSre=="2.0") { $leggi_id=$elementi[4];}
+else  { $leggi_id=$elementi[3];}					
+
+$leggi_id_parziale=substr($leggi_id,0,4);
+
 //echo "<div>".$i."-".$statSur."</div>";
 
 
@@ -497,18 +509,9 @@ $contatori[$saveDiff2]=$varapp;
 	$sumDiff=$sumDiff+$saveDiff;
 	}
 	
-//TRACCIA SOSPESI
-if ($statSur==0)
-	{
-	$contaSospeso++;
+
 	
-	$lastQ=$elementi_ultima[1];
-	if ($sospese[$lastQ]=='') {$sospese[$lastQ]=1;}
-						 else
-						 {$sospese[$lastQ]=$sospese[$lastQ]+1;}
-	}
-	
-//TRACCIA FILTRATI
+//TRACCIA FILTRATI TOT
 if ($statSur==4)
 	{
 	$contaFiltri++;
@@ -528,6 +531,63 @@ if ($statSur==4)
 						 else
 						 {$filtri[$lastQf]=$filtri[$lastQf]+1;}
 	}
+
+
+	
+//TRACCIA FILTRATI INTERNE
+if ($statSur==4 && $leggi_id_parziale !="IDEX")
+	{
+	$contaFiltri2++;
+
+	if ($filtri2[$lastQf]=='') {$filtri2[$lastQf]=1;}
+						 else
+						 {$filtri2[$lastQf]=$filtri2[$lastQf]+1;}
+	}
+
+//TRACCIA FILTRATI ESTERNE
+if ($statSur==4 && $leggi_id_parziale =="IDEX")
+	{
+	$contaFiltri3++;
+
+	if ($filtri3[$lastQf]=='') {$filtri3[$lastQf]=1;}
+						 else
+						 {$filtri3[$lastQf]=$filtri3[$lastQf]+1;}
+	}
+
+//TRACCIA SOSPESI  TOT
+if ($statSur==0)
+	{
+	$contaSospeso++;
+	
+	$lastQ=$elementi_ultima[1];
+	if ($sospese[$lastQ]=='') {$sospese[$lastQ]=1;}
+						 else
+						 {$sospese[$lastQ]=$sospese[$lastQ]+1;}
+	}
+
+//TRACCIA SOSPESI INTERNE
+if ($statSur==0 && $leggi_id_parziale !="IDEX")
+	{
+	$contaSospeso2++;
+	
+	$lastQ=$elementi_ultima[1];
+	if ($sospese2[$lastQ]=='') {$sospese2[$lastQ]=1;}
+						 else
+						 {$sospese2[$lastQ]=$sospese2[$lastQ]+1;}
+	}	
+
+//TRACCIA SOSPESI  ESTERNE
+if ($statSur==0 && $leggi_id_parziale =="IDEX")
+	{
+	$contaSospeso3++;
+	
+	$lastQ=$elementi_ultima[1];
+	if ($sospese3[$lastQ]=='') {$sospese3[$lastQ]=1;}
+						 else
+						 {$sospese3[$lastQ]=$sospese3[$lastQ]+1;}
+	}
+	
+
 
 
 //recupero file sdl
@@ -619,11 +679,7 @@ if ($statSur==5){
 					$diario_quotafull[$conta_giorno]=$diario_quotafull[$conta_giorno]+1;
 					}
 
-if ($versionSre=="2.0") { $leggi_id=$elementi[4];}
-else  { $leggi_id=$elementi[3];}					
 
-
-$leggi_id_parziale=substr($leggi_id,0,4);
 
 //CONTA STATISTICHE SSI
 if (($statSur==0)&&($leggi_id_parziale=="IDEX")){

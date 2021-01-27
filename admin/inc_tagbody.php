@@ -155,7 +155,12 @@ if ($_SESSION['MM_Username']!=""){
 
 					} 
 
-					else {?><div><span class="badge badge-pill badge-light">Light</span> Nessuna nuova richiesta da leggere </span></div><?php } ?>
+					else {
+            if ($_SESSION['MM_Username']=="g_garofalo") 
+            {
+            ?><div><span class="badge badge-pill badge-light">Light</span> Nessuna nuova richiesta da leggere </span></div>
+            
+            <?php }} ?>
           </div>
           
         <?php } ?>

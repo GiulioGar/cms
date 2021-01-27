@@ -41,7 +41,7 @@ $data=date("Y-m-d");
 mysqli_select_db($database_admin, $admin);
 $query_ricerche = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel=1  and sur_date like '$cerca_anno' AND stato=1 order by id asc";
 $query_ricerche_aggiornate = "SELECT * FROM t_panel_control where prj like '$cerca_progetto' and panel =1 and sur_date like '$cerca_anno' AND stato=1 order by id ASC";
-$tot_ricerche = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+$tot_ricerche = mysqli_query($admin,$query_ricerche) ;
 
 //echo $query_ricerche;
 
@@ -67,7 +67,8 @@ require_once('inc_tagbody.php');
 						<div class="card-heading">
 						<form role="form" name="modulo_cerca_prj" action="costiPanel.php" method="get">
 							<select class="form-control dropdown-primary Canno" name="Canno">
-								<option value="<?php echo '2020' ?>"><?php echo '2020' ?></option>
+								<option value="<?php echo '2021' ?>"><?php echo '2021' ?></option>
+								<option value="2020" <?php if ($cerca_anno_originale=="2020") {echo 'selected="selected"';} ?>>2020</option>
 								<option value="2019" <?php if ($cerca_anno_originale=="2019") {echo 'selected="selected"';} ?>>2019</option>
 								<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
 								<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>

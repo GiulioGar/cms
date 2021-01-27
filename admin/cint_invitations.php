@@ -115,7 +115,7 @@ while ($row2 = mysqli_fetch_assoc($selScadenza))
 
 
 //query inviti disponibili
-$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <> 'Scaduto' ORDER BY id DESC";
+$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <> 'Scaduto' AND i.active=1 ORDER BY id DESC";
 $cintInviti = mysqli_query($admin,$query_cintInviti);
 $num_rows = mysqli_num_rows($cintInviti);
 
