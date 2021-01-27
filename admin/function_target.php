@@ -64,10 +64,17 @@ if ($Carr<> 0)
 	{
 	$inserisciUid=trim($arrV);
 
-	 $query_inserisci_utente_target="INSERT INTO utenti_target (uid,target) SELECT '".$inserisciUid."','".$trg."' FROM DUAL WHERE NOT EXISTS (SELECT uid FROM utenti_target WHERE uid='".$arrV."' AND target='".$trg."');";
+	$sql_verificaUser="SELECT uid FROM utenti_target WHERE uid='".$inserisciUid."' AND target='".$trg."'";
+	$tot_ver = mysqli_query($admin,$sql_verificaUser) ;
+	$esiste = mysqli_num_rows($tot_ver);
+
+
+	if($esiste==0)
+	{	
+	 $query_inserisci_utente_target="INSERT INTO utenti_target (uid,target) VALUES('".$inserisciUid."','".$trg."')";
 	 $query_inserisci_utente_target_q = mysqli_query($admin,$query_inserisci_utente_target) ;
 	 $query_inserisci_utente_target_q_t = mysqli_fetch_assoc($query_inserisci_utente_target_q);
-
+	}
 
 	}
 }
