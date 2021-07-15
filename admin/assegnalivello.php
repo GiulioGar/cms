@@ -43,6 +43,9 @@ $data=date("Y-m-d H:i:s");
 	@$Carr=count($array);
 	}
 	
+
+
+
 	if ($Carr<> 0)
 	{
 		
@@ -50,7 +53,7 @@ $data=date("Y-m-d H:i:s");
 		foreach($array as $arrV)  
 		{
 			
-	//echo $Carr;
+	echo $Carr;
 	
 $query_cerca_livello = "SELECT t_user_info.user_id,field_data_field_user_level.entity_id,field_user_level_value FROM field_data_field_user_id, t_user_info,field_data_field_user_level where t_user_info.email='".$arrV."' AND t_user_info.user_id=field_data_field_user_id.field_user_id_value AND field_data_field_user_id.entity_id=field_data_field_user_level.entity_id";
 $cerca_livello = mysqli_query($admin,$query_cerca_livello) ;

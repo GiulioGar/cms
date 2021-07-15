@@ -74,7 +74,7 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
 
 <div class="row">
 
-<div class="col-md-6">
+<div class="col-md-12">
 
 <!-- TABELLA DATI  DA  ENGAGE-->
 
@@ -113,37 +113,6 @@ $tassoPart=($contattiCint/$inviti_use['total'])*100;
 
 
 
-<div class="col-md-6">
-
-<!-- TABELLA DATI  DA  ENGAGE-->
-
-<table class="table">
-
-<thead class="thead-dark">
-    <tr>
-      <th scope="col" colspan="2" >Generiche</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <th scope="row">Email Inviate</th>
-      <td><?php echo $inviti_use['total']; ?></td>
-    </tr>
-    <tr>
-
-    <tr>
-      <th scope="row">Tasso di partecipazione</th>
-      <td><?php echo (int)$tassoPart;?>%</td>
-    </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-</div>
 
 </div>
 
@@ -280,7 +249,8 @@ if($celCpi>0) { $sumCpiLordo=$sumCpiLordo+$celCpi; }
 
 <?php
 
-$dapagare=$completeCint-$contaInterviste;
+$insolutoPrec=2349;
+$dapagare=($completeCint-$contaInterviste)+$insolutoPrec;
 $stimaEntrate=$dapagare*$mediaCpiLordo;
 
 ?>

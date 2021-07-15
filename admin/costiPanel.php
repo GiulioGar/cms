@@ -241,7 +241,7 @@ else { $daysField="n.d.";}
 if ($daysField<0) {$daysField=0;}
 $sid=$row['sur_id'];
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
-$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) or die(mysql_error());
+$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
 $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 
 
@@ -249,7 +249,7 @@ $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 
 
 //STAMPO LE RICERCHE DOPO AGGIORNAMENTO DEI GIORNI RIMANENTI
-$tot_ricerche = mysqli_query($admin,$query_ricerche_aggiornate) or die(mysql_error());
+$tot_ricerche = mysqli_query($admin,$query_ricerche_aggiornate);
 
 
 while ($row = mysqli_fetch_assoc($tot_ricerche))
@@ -291,6 +291,7 @@ while ($row = mysqli_fetch_assoc($tot_ricerche))
 	$costoX2=$row['complete_int']*$arrStime[$matrice2];
 	$saved2=$costoX2-$costo;
 	
+	$costoVirgola=str_replace(".", ",", $costo);
 
 
 echo "<tr class='rowSur' style='background:".$colRow."'>";
@@ -300,7 +301,7 @@ echo "<td>".$row['complete_int']."</td>";
 echo "<td>".$row['red_surv']."%</td>";
 echo "<td>".$row['durata']." min.</td>";
 if ($costo==""){$costo=0;}
-echo "<td>€".$costo."</td>";
+echo "<td>€".$costoVirgola."</td>";
 echo "<td>€".$arrStime[$matrice2]."</td>";
 echo "<td>€".number_format($costoX2, 0, ',', '.')."</td>";
 echo "<td><span style='color:green; font-weight:bold'>€".number_format($saved2, 0, ',', '.')."</span></td>";

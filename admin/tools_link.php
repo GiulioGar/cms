@@ -109,8 +109,8 @@ $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 
 if ($nl>0 || $gt==true)
 {
-if($ss==true) { $ssiVar="&ssi=1"; }
-if($cint==true) { $ssiVar="&cint=1"; }
+if($ss==true) { $ssiVar="&pan=2"; }
+if($cint==true) { $ssiVar="&pan=1"; }
 else { $ssiVar="";}
 ?>
 
@@ -131,7 +131,7 @@ else { $ssiVar="";}
 
 
 
-if ($gt==true) {echo "<div>http://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=GUEST".$ssiVar.$ot."\n</div>";}
+if ($gt==true) {echo "<div>https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=GUEST".$ssiVar.$ot."\n</div>";}
 
 if ($nl>0)
 	{
@@ -139,7 +139,7 @@ if ($nl>0)
 		{
 		$varId="IDEX".($i+1000+$stId);
 		$genId=$varId;
-		$genLink="http://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$varId.$ssiVar.$ot;
+		$genLink="https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$varId.$ssiVar.$ot;
 		echo "<div>".$genLink."</div>";
 		$addLinks.=$genLink.";".$genId."\n";
 		

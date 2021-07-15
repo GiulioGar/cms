@@ -21,70 +21,65 @@ $codregione= explode(",", $codreg);
 $aree= explode(",", $caree);
 
 
-
-$del="DELETE FROM t_test";
-$resA = mysqli_query($admin,$del);
-
 ////Calculator
 $year1=$currentYear-$ag1;
 $year2=$currentYear-$ag2;
 
 $addSex="";
+$addArea="";
+if($aree[0]=="null") { $numArea=0;}
+else { $numArea=sizeof($aree); }
+$addReg="";
+if($codregione[0]=="null") {$numReg=0;}
+else {$numReg=sizeof($codregione);}
 $addTag="";
 $fromTag="";
 
+$contArea=1;
+
+// Condition to check array is empty or not
+
+
+if ($numArea>0)
+{
+foreach ($aree as $valore) 
+	{
+	if($contArea>1 && $contArea<= $numArea) { $addArea=$addArea." OR "; }
+	if($numArea>1 && $contArea==1) { $addArea=$addArea."("; }
+	$addArea=$addArea."area=".$valore." ";
+	if($numArea>1 && $contArea==$numArea) { $addArea=$addArea.")"; }
+	$contArea++;
+
+	}
+}
+
+
+if($numReg>0)
+{
+$contRegione=1;
+foreach ($codregione as $valore) 
+	{
+	if($contRegione>1 && $contRegione<= $numReg) { $addReg=$addReg." OR "; }
+	if($numReg>1 && $contRegione==1) { $addReg=$addReg."("; }
+	$addReg=$addReg."reg=".$valore." ";
+	if($numReg>1 && $contRegione==$numReg) { $addReg=$addReg.")"; }
+	$contRegione++;
+
+	}
+}
+
 
 if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }
+if($numArea>0) {$addArea=$addArea." AND ";}
+if($numReg >0) { $addReg=$addReg." AND "; }
 if($tags !="undefined" && $tags !="") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
 
 
 $query_new_attivi = "SELECT * FROM t_user_info i ".$fromTag."
 where  
-".$addSex.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
+".$addSex.$addArea.$addReg.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
 
 $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
-
-
-
-while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
-    {
-
-	$proView=$row['province_id'];
-	@include('cod_reg.php'); 
-
-	if ( ($arView==$aree[0] || $arView==$aree[1] || $arView==$aree[2] || $arView==$aree[3]) && ($proView !=0 && $proView !=104 ))
-	{
-		
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab);
-
-
-	}	
-	
-
-
-	if (($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19]) && ($proView !=0 && $proView !=104 ))
-	{
-	
-		//echo "<div>".$codregione[1]."</div>";
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab);
-
-	
-	}
-
-	if ($codregione[0]=="null" && $aree[0]=="null") 
-	{
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab);
-
-	
-	}
-	
-}
 
 
 	
@@ -92,14 +87,14 @@ if ($goal=="") {$goal=100000; }
 
 if ($azione=="DISPONIBILI")
 {
-$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
+$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 
+echo $query_contaDisp;
 
-
-$totRed3=18;
-if($tags !="") { $totRed3=45; }
+$totRed3=13;
+if($tags !="") { $totRed3=35; }
 $medRed3=0;
 
 $medRed3=($dataDisp['total']/100)*$totRed3;
@@ -115,7 +110,7 @@ $medRed3=number_format($medRed3,0);
 
 if ($azione=="CREA")
 {
-$query_crea = "SELECT *  FROM t_user_info i,t_test t where t.uid=i.user_id and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ORDER BY RAND()  LIMIT ".$goal."";
+$query_crea = "SELECT *  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ORDER BY RAND()  LIMIT ".$goal."";
 $csv_mvf = mysqli_query($admin,$query_crea);
 $total_rows=mysqli_num_rows($csv_mvf);
 

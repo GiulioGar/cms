@@ -23,6 +23,7 @@
 								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati; ?></b> </td> </tr>
 								<tr> <td> Over Quota: </td> <td> <b><?php echo  $conta_quotafull; ?></b> </td> </tr>
 								<tr> <td> Sospese: </td> <td> <b><?php echo  $conta_incomplete; ?></b> </td> </tr>
+								<tr> <td> Bloccate: </td> <td> <b><?php echo  $conta_bloccate; ?></b> </td> </tr>
 								<tr> <td> Contatti: </td> <td> <b><?php echo  $contatti; ?></b> </td>
 								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_totali['total']; ?></b> </td> </tr>
 								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field."%"; ?></b> </td> </tr> 
@@ -64,6 +65,7 @@
 								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati_panel; ?></b> </td> </tr> 
 								<tr> <td> Over Quota: </td> <td> <b><?php echo  $conta_quotafull_panel; ?></b> </td> </tr>
 								<tr> <td> Sospese: </td> <td> <b><?php echo  $conta_incomplete_panel; ?></b> </td> </tr>
+								<tr> <td> Bloccate: </td> <td> <b><?php echo  $conta_bloccate_panel; ?></b> </td> </tr>
 								<tr> <td> Contatti: </td> <td> <b><?php echo  $contatti_panel; ?></b> </td>
 								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati['total']; ?></b> </td> </tr>
 								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_panel."%"; ?></b> </td> </tr>
@@ -142,6 +144,7 @@
 								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati_ssi; ?></b> </td> </tr> 
 								<tr> <td> Over Quota: </td> <td> <b><?php echo  $conta_quotafull_ssi; ?></b> </td> </tr>
 								<tr> <td> Sospese: </td> <td> <b><?php echo  $conta_incomplete_ssi; ?></b> </td> </tr>
+								<tr> <td> Bloccate: </td> <td> <b><?php echo  $conta_bloccate_ssi; ?></b> </td> </tr>
 								<tr> <td> Contatti: </td> <td> <b><?php echo   $panel_esterno; ?></b> </td>
 								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_ssi['total']; ?></b> </td> </tr>
 								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_ssi."%"; ?></b> </td> </tr>

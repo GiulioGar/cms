@@ -108,16 +108,31 @@ while ($row = mysqli_fetch_assoc($csv_mvf_at))
 if ($azione=="CREA" || $azione=="DISPONIBILI")	
 {
 
-$del="DELETE FROM t_test";
-$resA = mysqli_query($admin,$del);
 
 ////Calculator
 $year1=$currentYear-$ag1;
 $year2=$currentYear-$ag2;
 
 $addSex="";
+$addArea="";
+$numArea=count($aree);
+$addReg="";
+$numReg=count($codregione);
 $addTag="";
 $fromTag="";
+
+$contArea=0;
+
+foreach ($aree as $valore) 
+	{
+	$addArea=$addArea+"area="+$valore+" ";
+	if($contArea>0 && $contArea< $numArea) { $addArea=$addArea+" OR "; }
+	$contArea++;
+
+	}
+
+echo $addArea;
+
 
 if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }
 if($tags !="") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
@@ -131,47 +146,6 @@ $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
 
 $infoInserita=false;
 
-   while ($row = mysqli_fetch_assoc($csv_mvf_attivi)) 
-    {
-
-	$proView=$row['province_id'];
-	@include('cod_reg.php'); 
-
-	if ( ($arView==$aree[0] || $arView==$aree[1] || $arView==$aree[2] || $arView==$aree[3]) && ($proView !=0 && $proView !=105 ))
-	{
-		
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab);
-
-	
-
-	}	
-	
-
-
-	if (($reView==$codregione[0] || $reView==$codregione[1] || $reView==$codregione[2] || $reView==$codregione[3] || $reView==$codregione[4] || $reView==$codregione[5] || $reView==$codregione[6] || $reView==$codregione[7] || $reView==$codregione[8] || $reView==$codregione[9] || $reView==$codregione[10] || $reView==$codregione[11] || $reView==$codregione[12] || $reView==$codregione[13] || $reView==$codregione[14] || $reView==$codregione[15] || $reView==$codregione[16] || $reView==$codregione[17] || $reView==$codregione[18] || $reView==$codregione[19]) && ($proView !=0 && $proView !=105 ))
-	{
-	
-
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab);
-	
-	}
-	
-
-	if ($aree=="" && $codregione=="")
-
-	{
-		$id=$row['user_id'];
-		$inTab="INSERT INTO t_test(uid) VALUES('$id')";
-		$resTab = mysqli_query($admin,$inTab);
-
-	
-	}
-	
-	}
 
 
 	

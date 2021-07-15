@@ -52,12 +52,15 @@ $lastview= $row["id"];
 
 $todaydate=date ("Y/m/d H:i:s");
 
-
+echo "ultimo:".$lastview;
 // lettura api
-$invitations = $client->fetchInvitations($lastview, 1000);
+$invitations = $client->fetchInvitations($lastview, 10000);
 
 foreach ( $invitations as $var )
 {
+
+
+
     $idunico=$var['id'];
     $mbId=$var['content']['invitation']['member_id'];
     $pId=$var['content']['invitation']['project_id'];
@@ -66,6 +69,8 @@ foreach ( $invitations as $var )
     $url=$var['content']['invitation']['survey_url'];
     $arrivo=$var['content']['invitation']['date_to_send'];
     $fine=$var['content']['invitation']['expires'];
+
+
 
     //converto le date
     $arrivoC= date('Y-m-d H:i:s', strtotime($arrivo));
@@ -180,8 +185,9 @@ if ($num_rows==0) { $offButton="disabled='disabled'"; }
 <button class="btn btn-primary creaCamp" type="button" name="creaCamp" value="CREA" <?php echo $offButton; ?>><i class="fab fa-creative-commons-sa"></i>&nbsp;CREA</button>
 </form>
 <button type='button' class='btn btn-warning download' style="display:none" value='DOWNLOAD' <?php echo $offButton; ?>><i class="fas fa-cloud-download-alt"></i>&nbsp;DOWNLOAD</button> 
-<button style="display:none" onclick="window.open('http://mailer.primisoft.com/admin/compila_mail_gest.php','_blank');" class="btn btn-success inviamail" value="INVIO" type="button"><i class="far fa-envelope"></i>&nbsp;INVIA</button>
+<button style="display:none" onclick="window.open('http://mailer.interactive-mr.com/admin/compila_mail_gest.php','_blank');" class="btn btn-success inviamail" value="INVIO" type="button"><i class="far fa-envelope"></i>&nbsp;INVIA</button>
 				
+                
 
 
 </div>

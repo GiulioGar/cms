@@ -1,5 +1,5 @@
  <?php
-
+$conta_bloccate=0;
 $conta_incomplete=0;
 $conta_filtrati=0;
 $conta_complete=0;
@@ -17,7 +17,7 @@ $redemption_panel=0;
     
       /////Target
 	  
-	  $query_trg = "SELECT * FROM elencotag";
+	  $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
 	  $tot_targ = mysqli_query($admin,$query_trg) ;     
 	 
 //RICERCHE IN CORSO
@@ -380,14 +380,17 @@ $tot_user_disponibili = mysqli_query($admin,$query_user_disponibili) ;
 $tot_use_disponibili = mysqli_fetch_assoc($tot_user_disponibili);
 }
 
+$conta_bloccate=0;
 $conta_incomplete=0;
 $conta_complete=0;
 $conta_filtrati=0;
 $conta_quotafull=0;
+$conta_bloccate_ssi=0;
 $conta_incomplete_ssi=0;
 $conta_complete_ssi=0;
 $conta_filtrati_ssi=0;
 $conta_quotafull_ssi=0;
+$conta_bloccate_panel=0;
 $conta_incomplete_panel=0;
 $conta_complete_panel=0;
 $conta_filtrati_panel=0;
@@ -678,7 +681,9 @@ if ($statSur==5){
 					$conta_quotafull=$conta_quotafull+1;
 					$diario_quotafull[$conta_giorno]=$diario_quotafull[$conta_giorno]+1;
 					}
-
+					if ($statSur==7)    {
+						$conta_bloccate=$conta_bloccate+1;
+						}
 
 
 //CONTA STATISTICHE SSI
@@ -699,7 +704,10 @@ if (($statSur==5)&&($leggi_id_parziale=="IDEX")){
 													$diario_quotafull_ssi[$conta_giorno]=$diario_quotafull_ssi[$conta_giorno]+1;
 													}
 
-
+													if (($statSur==7)&&($leggi_id_parziale=="IDEX")){
+														$conta_bloccate_ssi=$conta_bloccate_ssi+1;
+													
+												}
 
 
 //CONTA STATISTICHE PANEL
@@ -720,6 +728,11 @@ if (($statSur==5)&&($leggi_id_parziale<>"IDEX")){
 													$diario_quotafull_panel[$conta_giorno]=$diario_quotafull_panel[$conta_giorno]+1;
 													}
 
+
+													if (($statSur==7)&&($leggi_id_parziale<>"IDEX"))    {
+														$conta_bloccate_panel=$conta_bloccate_panel+1;
+			
+														}
 
 if ($leggi_id_parziale=="IDEX"){$panel_esterno=$panel_esterno+1;}
 }
@@ -757,28 +770,28 @@ $contatti_panel=$contatti-$panel_esterno;
 if ($lu['abilitati'] != 0)
 {
 
-if (($ore_differenza>=3)&&($ore_differenza<6)&&($aggiornamento==true))
+if (($ore_differenza>=3)&&($ore_differenza<12)&&($aggiornamento==true))
 {
-$redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*30)/100)))*100;
+$redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*10)/100)))*100;
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$salva_abilitati;
 //$totale_user_abilitati=$lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*30)/100);
 }
-if (($ore_differenza>=6)&&($ore_differenza<10)&&($aggiornamento==true))
+if (($ore_differenza>=12)&&($ore_differenza<18)&&($aggiornamento==true))
 {
-$redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*50)/100)))*100;
+$redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*20)/100)))*100;
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$salva_abilitati;
 //$totale_user_abilitati=$lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*50)/100);
 }
-if (($ore_differenza>=10)&&($ore_differenza<16)&&($aggiornamento==true))
+if (($ore_differenza>=18)&&($ore_differenza<24)&&($aggiornamento==true))
 {
-$redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*70)/100)))*100;
+$redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*30)/100)))*100;
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$salva_abilitati;
 //$totale_user_abilitati=$lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*70)/100);
 }
-if (($ore_differenza>=16)&&($aggiornamento==true))
+if (($ore_differenza>=24)&&($aggiornamento==true))
 {
 $redemption_panel=($contatti_panel/$tot_use_abilitati['total'])*100;
 $redemption_panel=number_format($redemption_panel,2);

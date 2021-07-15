@@ -67,7 +67,7 @@ if ($_SESSION['MM_Username']!=""){
           <a class="dropdown-item" href="rtr_gen.php">Rtr Converter</a>
           <a class="dropdown-item" href="tool_focuspoint.php">Focus Point</a>
           <div class="dropdown-divider"></div>
-          <a target="_blank" class="dropdown-item" href="http://mailer.primisoft.com/admin/compila_mail_gest.php">Mailer</a>
+          <a target="_blank" class="dropdown-item" href="http://mailer.interactive-mr.com/admin/compila_mail_gest.php">Mailer</a>
         </div>
       </li>
 
