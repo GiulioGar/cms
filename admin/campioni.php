@@ -44,6 +44,10 @@ require_once('function_conta_aree.php');
     <a class="nav-link" id="inviti-tab" data-toggle="tab" href="#inviti" role="tab" aria-controls="inviti" aria-selected="true">Target <i class="fas fa-bullseye"></i></a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Info <i class="far fa-address-book"></i></a>
+  </li>
+
 </ul>
 
 <!-- Tab panes -->
@@ -56,6 +60,11 @@ require_once('function_conta_aree.php');
   <div class="tab-pane" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
   <?php    
   require_once('pannello_target.php');
+  ?> 
+
+<div class="tab-pane" id="info" role="tabpanel" aria-labelledby="info-tab"> 
+  <?php    
+  require_once('infopanel.php');
   ?> 
 
   </div>

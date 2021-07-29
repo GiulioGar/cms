@@ -131,7 +131,6 @@ foreach ($aree as $valore)
 
 	}
 
-echo $addArea;
 
 
 if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }

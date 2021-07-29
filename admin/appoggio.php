@@ -91,7 +91,6 @@ $query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info 
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 
-echo $query_contaDisp;
 
 $totRed3=13;
 if($tags !="") { $totRed3=35; }
