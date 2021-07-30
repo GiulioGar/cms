@@ -8,6 +8,7 @@ mysqli_select_db($database_admin, $admin);
 $sex_target=$_REQUEST['sex_target'];
 $caree=$_REQUEST['aree'];
 $codreg=$_REQUEST['reg'];
+$codAmp=$_REQUEST['ampiezza'];
 $ag1=$_REQUEST['age1_target'];
 $ag2=$_REQUEST['age2_target'];
 $goal=$_REQUEST['goal'];
@@ -19,6 +20,7 @@ $currentYear=date("Y");
 
 $codregione= explode(",", $codreg);
 $aree= explode(",", $caree);
+$codAmpiezza= explode(",", $codAmp);
 
 
 ////Calculator
@@ -34,14 +36,17 @@ if($codregione[0]=="null") {$numReg=0;}
 else {$numReg=sizeof($codregione);}
 $addTag="";
 $fromTag="";
+if($codAmpiezza[0]=="null") {$numAmp=0;}
+else {$numAmp=sizeof($codAmpiezza);}
+$addAmp="";
 
-$contArea=1;
 
 // Condition to check array is empty or not
 
 
 if ($numArea>0)
 {
+$contArea=1;
 foreach ($aree as $valore) 
 	{
 	if($contArea>1 && $contArea<= $numArea) { $addArea=$addArea." OR "; }
@@ -68,16 +73,39 @@ foreach ($codregione as $valore)
 	}
 }
 
+if($numAmp>0)
+{
+$contAmpiezza=1;
+$valPeople;
+
+foreach ($codAmpiezza as $valore) 
+	{
+	if($valore==1) { $valPeople="(amp>=0 AND amp <=149999)"; }
+	if($valore==2) { $valPeople="(amp>=150000 AND amp <=499999)"; }
+	if($valore==3) { $valPeople="(amp>=500000 AND amp <=999999)"; }
+	if($valore==4) { $valPeople="(amp>=1000000)"; }
+	
+
+	if($contAmpiezza>1 && $contAmpiezza<= $numAmp) { $addAmp=$addAmp." OR "; }
+	if($numAmp>1 && $contAmpiezza==1) { $addAmp=$addAmp."("; }
+	$addAmp=$addAmp.$valPeople." ";
+	if($numAmp>1 && $contAmpiezza==$numAmp) { $addAmp=$addAmp.")"; }
+	$contAmpiezza++;
+
+	}
+}
+
 
 if($sex_target !=3) {$addSex="gender=".$sex_target." AND "; }
 if($numArea>0) {$addArea=$addArea." AND ";}
 if($numReg >0) { $addReg=$addReg." AND "; }
+if($numAmp >0) { $addAmp=$addAmp." AND "; }
 if($tags !="undefined" && $tags !="") {$fromTag=", utenti_target t";   $addTag="target='".$tags."' AND i.user_id=t.uid AND "; }
 
 
 $query_new_attivi = "SELECT * FROM t_user_info i ".$fromTag."
 where  
-".$addSex.$addArea.$addReg.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
+".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2'";
 
 $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi);
 
@@ -87,7 +115,7 @@ if ($goal=="") {$goal=100000; }
 
 if ($azione=="DISPONIBILI")
 {
-$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
+$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 
@@ -109,7 +137,7 @@ $medRed3=number_format($medRed3,0);
 
 if ($azione=="CREA")
 {
-$query_crea = "SELECT *  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ORDER BY RAND()  LIMIT ".$goal."";
+$query_crea = "SELECT *  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ORDER BY RAND()  LIMIT ".$goal."";
 $csv_mvf = mysqli_query($admin,$query_crea);
 $total_rows=mysqli_num_rows($csv_mvf);
 

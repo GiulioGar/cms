@@ -49,7 +49,7 @@
 <hr/>
 <div class="form-row">
 
-<div class="col-xl-6 col-lg-5">
+<div class="col-xl-6 col-lg-6">
 <label><h6 class="m-0 font-weight-bold text-primary">Regione:</h6></label>
 <select name="reg[]" class="selectpicker show-tick reg"  multiple title="Scegli la regione...">
   <option value="1">ABRUZZO</option>
@@ -75,6 +75,8 @@
 </select>
 </div>
 
+
+
 <div class="col-xl-6 col-lg-5">
 <label><h6 class="m-0 font-weight-bold text-primary">Area:</h6></label>
 <select name="aree[]" class="selectpicker show-tick area"  multiple title="Scegli l'area...">
@@ -82,6 +84,20 @@
   <option value="2">Nord-Est</option>
   <option value="3">Centro</option>
   <option value="4">Sud</option>
+</select>
+</div>
+
+
+</div>
+
+<div class="form-row">
+<div class="col-xl-6 col-lg-5">
+<label><h6 class="m-0 font-weight-bold text-primary">Ampiezza:</h6></label>
+<select name="ampiezza[]" class="selectpicker show-tick amp"  multiple title="Scegli l'ampiezza...">
+  <option value="1">1-149.999</option>
+  <option value="2">150.000-499.999</option>
+  <option value="3">500.000-999.9999</option>
+  <option value="4">1 milione e oltre</option>
 </select>
 </div>
 
@@ -235,6 +251,7 @@
  let pr= $("input.prj").val();
  let reg= $("select.reg").val();
  let area= $("select.area").val();
+ let amp= $("select.amp").val();
  let sex= $("select.sex_target").val();
  let ag1= $("input.ag1").val();
  let ag2= $("input.ag2").val();
@@ -255,7 +272,7 @@
       url: "appoggio.php",
 
       //Quali dati devo inviare?
-      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
+      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&ampiezza="+amp+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
@@ -282,6 +299,7 @@ let sid2= $("select.surv").val();
 let pr2= $("input.prj").val();
 let reg2= $("select.reg").val();
 let area2= $("select.area").val();
+let amp2= $("select.amp").val();
 let sex2= $("select.sex_target").val();
 let ag12= $("input.ag1").val();
 let ag22= $("input.ag2").val();
@@ -301,7 +319,7 @@ let act2= $(this).val();
      url: "appoggio.php",
 
      //Quali dati devo inviare?
-     data: "id_sur="+sid2+"&prj="+pr2+"&sex_target="+sex2+"&age1_target="+ag12+"&age2_target="+ag22+"&aree="+area2+"&reg="+reg2+"&iscrizione="+isc2+"&goal="+goal2+"&tag="+tag2+"&azione="+act2, 
+     data: "id_sur="+sid2+"&prj="+pr2+"&sex_target="+sex2+"&age1_target="+ag12+"&age2_target="+ag22+"&aree="+area2+"&reg="+reg2+"&ampiezza="+amp2+"&iscrizione="+isc2+"&goal="+goal2+"&tag="+tag2+"&azione="+act2, 
      dataType: "html",
    success: function(data) 
              { 
