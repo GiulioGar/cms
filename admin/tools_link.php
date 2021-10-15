@@ -5,6 +5,10 @@
 	  require_once('inc_auth.php'); 
 	  mysqli_select_db($database_admin, $admin);
 
+	  ini_set('display_errors', 1);
+	  ini_set('display_startup_errors', 1);
+	  error_reporting(E_ALL);
+
 $sitowebdiriferimento = 'www.millebytes.com';
 $titolo = 'Strumenti Utenti';
 $areapagina = "tools";
@@ -45,13 +49,13 @@ $fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 $contatti=count($fl);
 
 //connetti ftp
-$ftp_server="46.37.21.33";
-$ftp_user_name="primis";
-$ftp_user_pass="Imr_PrimiFields13";
-// set up basic connection
-$conn_id = ftp_connect($ftp_server);
-// login with username and password
-$login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+// $ftp_server="46.37.21.33";
+// $ftp_user_name="primis";
+// $ftp_user_pass="Imr_PrimiFields13";
+// // set up basic connection
+// $conn_id = ftp_connect($ftp_server);
+// // login with username and password
+// $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 
 	if ($nome<>"")
 	{
@@ -67,21 +71,24 @@ $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 		$sql="update t_respint set status='0', iid='-1' where sid='".$sid."' and uid='".trim($arrV)."'";
 		mysqli_query($admin,$sql);
 
-		if (mysqli_affected_rows()=="1") {$aggCont++;}
+		//if (mysqli_affected_rows()=="1") {$aggCont++;}
 		$contaDel=0;
 		//delete file
 		for ($i = 0; $i < $contatti; $i++) 
 				{  
+			
+
 				$riga = file($fl[$i]);
 				$fileName=substr($fl[$i], -11);
 				$prima_riga=$riga[0]; 
 				$elementi = explode(";", $prima_riga);
-				$readId=$elementi[3];
+				$readId=$elementi[4];
 				$delId=trim($arrV);
 				//echo $fileName."<br>";
 				if ($readId==$delId && $contaDel==0)
 					{ 
-					$delete=ftp_delete($conn_id, "/".$prj."/".$sid."/results/".$fileName."");
+					//$delete=ftp_delete($conn_id, "/".$prj."/".$sid."/results/".$fileName."");
+					$delete=unlink("/var/imr/fields/$prj/$sid/results/$fileName");
 					$contaDel++;
 					$delConta++;
 					}
