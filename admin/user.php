@@ -57,6 +57,7 @@ require_once('function_user.php');
           <ul class="list-group">
             <li class="list-group-item text-muted">ATTIVITA' <i class="far fa-list-alt"></i></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Livello Attuale:</strong></span> <?php echo $row_user2['new_level'] ?></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Punti Millebytes:</strong></span> <?php echo $row_user['points'] ?></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Livelli Guadagnati:</strong></span> <?php echo $complSur; ?></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Premi richiesti:</strong></span> <?php echo $premiRic; ?></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Partecipazione:</strong></span>  <?php echo $levAct; ?> </li>

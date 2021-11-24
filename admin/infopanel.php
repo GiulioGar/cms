@@ -68,7 +68,7 @@ array("null","426658", "175566", "126883", "344374", "105000", "105000", "216677
                             </table>
 
  <?php  
-                       
+/*                       
 $selAmp=0;
 $selUid;
 
@@ -84,5 +84,5 @@ while ($row = mysqli_fetch_assoc($csv_sel))
     $query_up = "UPDATE t_user_info SET amp =$selAmp where user_id='$selUid' and amp is null";
     $csv_up = mysqli_query($admin,$query_up);   
 }    
-
+*/
 ?>
