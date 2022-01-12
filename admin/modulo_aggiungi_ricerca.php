@@ -85,6 +85,45 @@ while ($row = mysqli_fetch_assoc($lista_clienti))
       </div>
 
       <div>&nbsp; </div>
+
+    <div id="infoRicerca">
+
+  <div class="form-row input-group">
+
+  <div class="input-group-prepend">
+  <span class="input-group-text" id="">Ir:</span>
+      </div>
+    <div class="col">
+    <input name="ir"  required="" type="number" class="form-control" >
+    </div>
+    <div class="input-group-prepend">
+  <span class="input-group-text" id="">Durata:</span>
+      </div>
+    <div class="col">
+    <input name="loi"  required="" type="number" class="form-control" >
+    </div>
+
+    <div class="input-group-prepend">
+  <span class="input-group-text" id="">Punti:</span>
+      </div>
+    <div class="col">
+    <input name="point"  required="" type="number" class="form-control" placeholder="" >
+    </div>
+
+  </div>
+  <br/>
+
+  <div class="input-group">
+<div class="input-group-prepend">
+      <span class="input-group-text" id="">Argomento:</span>
+      </div>
+      <input required="" type="text" value="<?php echo $row['argomento'];?>" class="form-control" id="argomento"  name="argomento">
+      </div>
+
+  <div>&nbsp; </div>
+
+
+      </div>
       
       <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -170,6 +209,53 @@ while ($row = mysqli_fetch_assoc($lista_clienti))
 
 <script>
 
+
+$( "#panel" ).change(function() {
+  let valPanel=$(this).val();
+
+  console.log("entrato");
+
+  if(valPanel!=1) { 
+    $("#infoRicerca").hide();  $("#infoRicerca").hide();
+    $('input[name="ir"]').val(0);
+    $('input[name="loi"]').val(0);
+    $('input[name="point"]').val(0);
+    $('input[name="argomento"]').val("null");
+    $('input[name="ir"]').attr('required', false); 
+    $('input[name="loi"]').attr('required', false); 
+    $('input[name="point"]').attr('required', false); 
+    $('input[name="argomento"]').attr('required', false); 
+  
+  }
+  else { 
+    $("#infoRicerca").show(); 
+  
+    $('input[name="ir"]').attr('required', true); 
+    $('input[name="loi"]').attr('required', true); 
+    $('input[name="point"]').attr('required', true); 
+    $('input[name="argomento"]').attr('required', true); 
+  }
+
+});
+
+
+
+$(document).on('change', 'input', function() {
+
+    let valIr=$('input[name="ir"]').val();
+    let valLoi=$('input[name="loi"]').val();
+
+    let points=valLoi*20+(1000/valIr);
+    points=Math.round(points);
+    $('input[name="point"]').attr("placeholder", points);
+
+    console.log("Ir:"+valIr);
+    console.log("Loi:"+valLoi);
+    console.log("Punti:"+points);
+  
+ 
+
+});
 
 
 </script>

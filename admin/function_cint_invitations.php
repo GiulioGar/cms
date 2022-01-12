@@ -24,7 +24,7 @@ if ($filtroSca=="si") {$addFiltri=$addFiltri." AND ( scadenza like '23%' or scad
 if ($creaCamp=="DOWNLOAD")	
 {  
 
-$query_new = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id  AND inviti=0 AND scadenza <>'Scaduto' ".$addFiltri."";
+$query_new = "SELECT * FROM cint_invites c, t_user_info i where i.user_id=c.member_id  AND i.active=1 AND inviti=0 AND scadenza <>'Scaduto' ".$addFiltri."";
 $csv_mvf = mysqli_query($admin,$query_new);
 
         //// ESPORTA CAMPIONE MVF IN CSV ////
@@ -92,7 +92,7 @@ $csv_mvf = mysqli_query($admin,$query_new);
 <?php
     
 //query inviti disponibili
-$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND scadenza <>'Scaduto' ".$addFiltri." ORDER BY id DESC";
+$query_cintInviti = "SELECT id,member_id,project_id,loi,ir,survey_url,date_to_send,expires,email,gender,inviti,scadenza FROM cint_invites c, t_user_info i where i.user_id=c.member_id AND inviti=0 AND i.active=1 AND scadenza <>'Scaduto' ".$addFiltri." ORDER BY id DESC";
 $cintInviti = mysqli_query($admin,$query_cintInviti);
 $num_rows = mysqli_num_rows($cintInviti);    
 

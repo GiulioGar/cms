@@ -17,6 +17,9 @@ $coldx = "no";
 $sid=$_REQUEST['sid'];
 $prj=$_REQUEST['prj'];
 $panel=$_REQUEST['panel'];
+$loi=$_REQUEST['loi'];
+$argomento=$_REQUEST['argomento'];
+$points=$_REQUEST['point'];
 $sex_target=$_REQUEST['sex_target'];
 $age1_target=$_REQUEST['age1_target'];
 $age2_target=$_REQUEST['age2_target'];
@@ -76,6 +79,24 @@ if($duplicate>0) { ?>
 	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese,cliente,tipologia) 
 	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."')";
 	mysqli_query($admin,$query_user);
+
+  if ($panel==1)
+  {
+
+  $query_loi = "INSERT INTO t_surveys_env (prj_name,sid,name,value,store) 
+	VALUES ('".$prj."','".$sid."','length_of_interview','".$loi."','0')";
+	mysqli_query($admin,$query_loi);
+
+  $query_argomento = "INSERT INTO t_surveys_env (prj_name,sid,name,value,store) 
+	VALUES ('".$prj."','".$sid."','survey_object','".$argomento."','0')";
+	mysqli_query($admin,$query_argomento);
+
+  $query_punti = "INSERT INTO t_surveys_env (prj_name,sid,name,value,store) 
+	VALUES ('".$prj."','".$sid."','prize_complete','".$points."','0')";
+	mysqli_query($admin,$query_punti);
+  }
+
+
 	}
 }
 
