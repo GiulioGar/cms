@@ -5,9 +5,9 @@
 	  require_once('inc_auth.php'); 
 	  mysqli_select_db($database_admin, $admin);
 
-	//   ini_set('display_errors', 1);
-	//   ini_set('display_startup_errors', 1);
-	//   error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 
 $sitowebdiriferimento = 'www.millebytes.com';
 $titolo = 'Strumenti Utenti';
@@ -152,7 +152,7 @@ if ($nl>0)
 		
 		if($abi==true)
 		    {
-		    $query_insid = "INSERT INTO t_respint VALUES ('$sid','$varId',0,-1,'$prj')";
+		    $query_insid = "INSERT INTO t_respint VALUES ('$sid','$varId',0,-1,'$prj',0)";
 		    $ininrespint = mysqli_query($admin,$query_insid);
 		    }
 		}
