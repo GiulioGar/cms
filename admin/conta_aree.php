@@ -260,7 +260,6 @@
  let tag= $("select.tag").val();
  let act= $(this).val();
 
-  console.log("Cliccato")
 
   //chiamata ajax
     $.ajax({
@@ -331,7 +330,25 @@ let act2= $(this).val();
    });
  });
 
+//AUTO IMPUTAZIONE RICERCA
 
+$( "select.surv" ).change(function() {
+ let leggoClasse;
+ let leggoAge1;
+ let leggoAge2;
+ let leggoSesso;
+
+ leggoClasse= $("option:selected").attr("class");
+ leggoAge1= $("option:selected").attr("data-age1");
+ leggoAge2= $("option:selected").attr("data-age2");
+ leggoSesso= $("option:selected").attr("data-sesso");
+ $("input.prj").val(leggoClasse);
+ $("input.ag1").val(leggoAge1);
+ $("input.ag2").val(leggoAge2);
+ $("select.sex_target").val(leggoSesso);
+ 
+
+});
 
 // OBBLIGO RICERCA
 
@@ -350,6 +367,9 @@ $( "select.surv" ).change(function() {
 selSid=$("select.surv").val();
 selPr= $("input.prj").val();
 
+console.log("sid"+selSid);
+console.log("pr"+selPr);
+
 if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
 else  {$(".genera").prop("disabled",true); }
 });
@@ -363,25 +383,7 @@ if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
 else  {$(".genera").prop("disabled",true); }
 });
 
-//AUTO IMPUTAZIONE RICERCA
 
-$( "select.surv" ).change(function() {
- let leggoClasse;
- let leggoAge1;
- let leggoAge2;
- let leggoSesso;
-
- leggoClasse= $("option:selected").attr("class");
- leggoAge1= $("option:selected").attr("data-age1");
- leggoAge2= $("option:selected").attr("data-age2");
- leggoSesso= $("option:selected").attr("data-sesso");
- $("input.prj").val(leggoClasse);
- $("input.ag1").val(leggoAge1);
- $("input.ag2").val(leggoAge2);
- $("select.sex_target").val(leggoSesso);
- console.log(leggoClasse);
-
-});
 
 
 </script>

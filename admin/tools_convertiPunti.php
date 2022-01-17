@@ -51,7 +51,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 		{
 			$usid=$row['user_id'];
 
-			$query_user2 ="SELECT * FROM millebytesdb.t_user_history where user_id='$usid'  order by event_date DESC limit 1  ;";
+			$query_user2 ="SELECT * FROM millebytesdb.t_user_history where user_id='$usid'  order by event_date DESC ;";
 			$user2 = mysqli_query($admin,$query_user2) ;
 			$row_user2 = mysqli_fetch_assoc($user2);
 			$totalRows_user2 = mysqli_num_rows($user2);

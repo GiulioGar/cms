@@ -165,12 +165,29 @@ $query_crea = "SELECT *  FROM t_user_info i,t_test t where t.uid=i.user_id and r
 $csv_mvf = mysqli_query($admin,$query_crea);
 $total_rows=mysqli_num_rows($csv_mvf);
 	
+//lettura punteggio da assegnare
+$query_cerca_punteggio = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
+$cerca_punteggio = mysqli_query($admin,$query_cerca_punteggio);
+$punteggio = mysqli_fetch_assoc($cerca_punteggio);
 
+//lettura argomento da assegnare
+$query_cerca_argo = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='survey_object'";
+$cerca_argo = mysqli_query($admin,$query_cerca_argo);
+$argomento = mysqli_fetch_assoc($cerca_argo);
+
+//lettura punteggio da assegnare
+$query_cerca_loi = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='length_of_interview'";
+$cerca_loi = mysqli_query($admin,$query_cerca_loi);
+$durata = mysqli_fetch_assoc($cerca_loi);
+
+$bytes=$punteggio['value'];
+$argo=$argomento['value'];
+$loi=$durata['value'];
 
 
     //// ESPORTA CAMPIONE MVF IN CSV ////
 
-    @$csv="uid;email;firstName;genderSuffix";
+    @$csv="uid;email;firstName;genderSuffix;sid;prj;argo;bytes;loi";
 	$csv .= "\n";
 
 	
@@ -189,7 +206,7 @@ $total_rows=mysqli_num_rows($csv_mvf);
             if($sesso==1){$genderTransform="o";}
             else {$genderTransform="a";}
             
-            $csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj; 
+            $csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj.";".$argo.";".$bytes.";".$loi; 
 			$csv .= "\n";
 			
 			$query_abilita = "INSERT INTO t_respint VALUES ('".$sid."','".$uid."','0','-1','".$prj."')";
