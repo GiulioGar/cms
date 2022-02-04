@@ -7,21 +7,11 @@
 
 	
 	
-$query_new = "SELECT count('nid') as tot FROM millebytesdb.support_ticket where state='1';";
-$new_crm = mysqli_query($admin,$query_new);
-$crm_new = mysqli_fetch_assoc($new_crm);
 
-$query_new = "SELECT count('nid') as tot FROM millebytesdb.support_ticket where state='2' or state='3';";
-$sosp_crm = mysqli_query($admin,$query_new);
-$crm_sosp = mysqli_fetch_assoc($sosp_crm);
-
-$query_cerca1 = "SELECT COUNT('user_id') as tot1 FROM t_user_history where event_type='withdraw'";
+$query_cerca1 = "SELECT COUNT('user_id') as tot1 FROM t_user_history where event_type='withdraw' and pagato=0";
 $cerca1 = mysqli_query($admin,$query_cerca1);
 $crm_cerca1 = mysqli_fetch_assoc($cerca1);
 
-$query_cerca = "SELECT COUNT('user_id') as tot FROM t_history_copia where pagato=1 order by event_date desc";
-$cerca = mysqli_query($admin,$query_cerca) ;
-$crm_cerca = mysqli_fetch_assoc($cerca);
 
 ?>
 
@@ -129,20 +119,7 @@ if ($_SESSION['MM_Username']!=""){
 
 					if ( $sum > 0 && $_SESSION['MM_Username']=="g_garofalo") 
 					{
-							 if ( $total_crm == 1) {$ric="richiesta";}
-							 else { $ric="richieste";}
-					?>
-            <?php if ($total_crm>0){?> 
-              <div>
-              <span class="badge badge-pill badge-light">Hai <b><a href="http://www.millebytes.com/it/support/test_millebytes/new"><?php echo $total_crm." ".$ric; ?></a>
-            </b> da leggere </span></div> 
-            <?php } ?>
-
-            <?php if ($sosp_crm>0){?>
-              <div>
-              <span class="badge badge-pill badge-light">Hai <b><a href="http://www.millebytes.com/it/support/test_millebytes"><?php echo $sosp_crm." ".$ric; ?></a></b> in sospeso </span>
-            </div> 
-              <?php } ?>
+?>
 
 
 					<?php   if ($cer>0) { if ( $cer == 1) {$ric="richiesta";} 	else { $ric="richieste";} 	?>
