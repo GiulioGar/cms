@@ -26,6 +26,8 @@ $data=date("Y-m-d");
 @$premi10euro=$_REQUEST["pr10euro"];
 @$premi20euro=$_REQUEST["pr20euro"];
 
+
+
 	if ($premi2euro<>"")
 	{
 		@$array2euro=explode("\n",$premi2euro);
@@ -55,98 +57,11 @@ mysqli_select_db($admin,$database_admin);
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php');
 
-//AGGIUNGO Buoni 2 euro
-if($azione=="add2")
-{
-mysqli_select_db($admin,$database_admin);
-$query_aggiorna = "UPDATE cassa_buoni SET num='$cifra2' WHERE type='euro2'";
-$add_euro = mysqli_query($admin,$query_aggiorna) ;
-}
-
-//AGGIUNGO Buoni 5 euro
-if($azione=="add5")
-{
-mysqli_select_db($database_admin, $admin);
-$query_aggiorna = "UPDATE cassa_buoni SET num='$cifra5' WHERE type='euro5'";
-$add_euro = mysqli_query($admin,$query_aggiorna) ;
-}
-
-//AGGIUNGO Buoni 9 euro
-if($azione=="add9")
-{
-mysqli_select_db($database_admin, $admin);
-$query_aggiorna = "UPDATE cassa_buoni SET num='$cifra9' WHERE type='euro9'";
-$add_euro = mysqli_query($admin,$query_aggiorna) ;
-}
-
-//AGGIUNGO Buoni 15 euro
-if($azione=="add15")
-{
-mysqli_select_db($database_admin, $admin);
-$query_aggiorna = "UPDATE cassa_buoni SET num='$cifra15' WHERE type='euro15'";
-$add_euro = mysqli_query($admin,$query_aggiorna) ;
-}
 
 
-	$query_conta = "SELECT COUNT(user_id) as tot FROM t_history_copia where event_type='withdraw'";
-	$surClo = mysqli_query($admin,$query_conta) ;
-	$cloSur = mysqli_fetch_assoc($surClo);
-	
-	$query_conta2 = "SELECT COUNT(user_id) as tot FROM t_user_history where event_type='withdraw'";
-	$surClo2 = mysqli_query($admin,$query_conta2) ;
-	$cloSur2 = mysqli_fetch_assoc($surClo2);	
-	
-	//echo $cloSur['tot'].' '.$cloSur2['tot'];
-	$cloSurB2=$cloSur2['tot']-1;
-
-if ($cloSur['tot'] !=$cloSurB2)
-{
-//COPIO HISTORY
-$query_copia_history_copy="INSERT t_history_copia (user_id, event_date, event_type, event_info, prev_level, new_level)
-SELECT user_id, event_date, event_type, event_info, prev_level, new_level
-FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_id FROM t_history_copia where t_history_copia.event_date=t_user_history.event_date)";
-$query_copia_history_copy_sample = mysqli_query($admin,$query_copia_history_copy) ;
-$query_copia_history_copy_sample_t = mysqli_fetch_assoc($query_copia_history_copy_sample);
-}
-
-
-
-$query_cerca = "SELECT * FROM t_history_copia,t_user_info where pagato like '$cerca_progetto' AND t_history_copia.user_id=t_user_info.user_id order by event_date asc";
-//$query_cerca = "SELECT * FROM t_user_history where event_type='withdraw' and user_id NOT IN (SELECT user_id FROM t_history_copia where event_type='withdraw')";
+$query_cerca = "SELECT * FROM t_user_history,t_user_info where pagato like '$cerca_progetto' AND t_user_history.user_id=t_user_info.user_id AND event_type='withdraw' order by event_date asc";
 $cerca = mysqli_query($admin,$query_cerca);
 
-if($verifica=="verifica")
-{
-
-$query_uid = "SELECT id,user_id FROM millebytesdb.t_history_copia where pagato=0;";
-$cerca_uid = mysqli_query($admin,$query_uid);
-
-$dataevento=0;
-
-while ($row = mysqli_fetch_assoc($cerca_uid))
-	{
-		$dataPre=0;
-
-		$query_dupicato = "SELECT * FROM millebytesdb.t_user_history where user_id='".$row['user_id']."' AND event_type='interview_complete'";
-		$cerca_duplicato = mysqli_query($admin,$query_dupicato);
-
-		$contaAnomalie=0;
-
-		while ($row2 = mysqli_fetch_assoc($cerca_duplicato))
-		{
-			$dataPre=$dataevento;
-			$dataevento=substr($row2['event_date'],0,strlen($row2['event_date'])-6);
-
-			if($dataPre==$dataevento){ $contaAnomalie++; }
-		}	
-		
-		$query_aggverifica = "UPDATE t_history_copia SET verifica=".$contaAnomalie." WHERE pagato=0 and id='".$row['id']."'";
-		$up_verifica = mysqli_query($admin,$query_aggverifica);
-
-	}
-
-
-}
 
 ?>
 
@@ -187,8 +102,8 @@ while ($row = mysqli_fetch_assoc($cerca_uid))
 <thead>
 <tr class='intesta'>
 	 <th style="max-width:200px;">Uid</th>
-	 <th>Check</th>
 	 <th>Premio</th>
+	 <th>Valore</th>
 	 <th>Pre</th>
 	 <th>Post</th>
 	 <th>Richiesta</th>
@@ -223,18 +138,24 @@ $contapagati20euro=0;
 			$newdate = substr($row['event_date'],0,strlen($row['event_date'])-8);
 			$paydate = substr($row['giorno_paga'],0,strlen($row['giorno_paga'])-8);
 			$euroPaga=substr($row['event_info'], -7, 7);
+			$tipoPremio=substr($row['event_info'], -14,7);
 		
-			if (strstr($euroPaga,"2 Euro")){ $bacCol="#D1E8FC"; $contadapagati2euro=$contadapagati2euro+1;}
-			if (strstr($euroPaga,"5 Euro")) { $bacCol="#FCC4C4"; $contadapagati5euro=$contadapagati5euro+1;}
-			if (strstr($euroPaga,"9 Euro")) { $bacCol="#F1F9B3";}
-			if (strstr($euroPaga,"+1 Euro")) { $bacCol="#F1F9B3";}
-			if (strstr($euroPaga,"10 Euro")) { $bacCol="#F1F9B3"; $contadapagati10euro=$contadapagati10euro+1;}
-			if (strstr($euroPaga,"+5 euro")) { $bacCol="#C4FCB0";}
-			if (strstr($euroPaga,"20 euro")) { $bacCol="#C4FCB0"; $contadapagati20euro=$contadapagati20euro+1;}
-		
+			if (strstr($euroPaga,"2 euro")&&(strstr($tipoPremio,"Amazon"))){ $bacCol="#D1E8FC"; $contadapagati2euro=$contadapagati2euro+1;}
+			if (strstr($euroPaga,"5 euro")&&(strstr($tipoPremio,"Amazon"))) { $bacCol="#FCC4C4"; $contadapagati5euro=$contadapagati5euro+1;}
+			if (strstr($euroPaga,"9 Euro")&&(strstr($tipoPremio,"Amazon"))) { $bacCol="#F1F9B3";}
+			if (strstr($euroPaga,"+1 Euro")&&(strstr($tipoPremio,"Amazon"))) { $bacCol="#F1F9B3";}
+			if (strstr($euroPaga,"10 euro")&&(strstr($tipoPremio,"Amazon"))) { $bacCol="#F1F9B3"; $contadapagati10euro=$contadapagati10euro+1;}
+			if (strstr($euroPaga,"+5 euro")&&(strstr($tipoPremio,"Amazon"))) { $bacCol="#C4FCB0";}
+			if (strstr($euroPaga,"20 euro")&&(strstr($tipoPremio,"Amazon"))) { $bacCol="#C4FCB0"; $contadapagati20euro=$contadapagati20euro+1;}
+
+			if (strstr($euroPaga,"2 euro")&&(strstr($tipoPremio,"Paypal"))){ $bacCol="#99d1ff"; }
+			if (strstr($euroPaga,"5 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ff8989"; }
+			if (strstr($euroPaga,"10 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ffdcbc"; }
+	
+
 		  echo "<tr>
 		  <td style='max-width:200px;'><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td>
-		  <td>".$row['verifica']."</td>
+		 <td style='background:".$bacCol."'>".$tipoPremio."</td>
 		 <td style='background:".$bacCol."'>".$euroPaga."</td>
 		 <td>".$row['prev_level']."</td>
 		 <td>".$row['new_level']."</td>
@@ -249,22 +170,20 @@ $contapagati20euro=0;
 			$montDate=date("m",strtotime($row['event_date']));
 			$yearDate=date("y",strtotime($row['event_date']));
 			
-			if($yearDate==16)
-			{	
-	
-		
-			}
+
 			
-			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"2 Euro")))
+			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"2 euro"))&&(strstr($tipoPremio,"Amazon")))
 			{
 				
 			$code=$array2euro[$contapagati2euro];	
-				
+			//echo "<div>2 euro:".$code."</div>";
+
 			if ($code!="")	
 				{
-				
-				mysqli_select_db($database_admin, $admin);
-				$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+				echo "entrato2";
+
+				mysqli_select_db($admin,$database_admin );
+				$query_aggiorna = "UPDATE t_user_history SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 				$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 				
 				
@@ -273,7 +192,8 @@ $contapagati20euro=0;
 				$header = "MIME-Version: 1.0\r\n";
 				$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
 				$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
-				$destinatario = $row['email'];
+				//$destinatario = $row['email'];
+				$destinatario = "millebytes@interactive-mr.com";
 				$oggetto = "Club Millebytes: Ecco il tuo buono regalo!";
 				$messaggio = '
 				<html>
@@ -337,16 +257,18 @@ $contapagati20euro=0;
 			
 			
 			
-			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"5 Euro")))
+			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"5 euro"))&&(strstr($tipoPremio,"Amazon")))
 			{
-				
-				$code=$array5euro[$contapagati5euro];	
+			
+				$code=$array5euro[$contapagati5euro];
+				//echo "<div>5 euro:".$code."</div>";
 				
 				if ($code!="")	
 				{
-					
-					mysqli_select_db($database_admin, $admin);
-					$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+					echo "entrato5";
+
+					mysqli_select_db($admin,$database_admin);
+					$query_aggiorna = "UPDATE t_user_history SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
@@ -355,7 +277,8 @@ $contapagati20euro=0;
 					$header = "MIME-Version: 1.0\r\n";
 					$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
 					$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
-					$destinatario = $row['email'];
+					//$destinatario = $row['email'];
+					$destinatario = "millebytes@interactive-mr.com";
 					$oggetto = "Club Millebytes: Ecco il tuo buono regalo!";
 					$messaggio = '
 					<html>
@@ -418,16 +341,18 @@ $contapagati20euro=0;
 			}	
 			
 			
-			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"10 Euro")))
+			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"10 euro"))&&(strstr($tipoPremio,"Amazon")))
 			{
 				
 				$code=$array10euro[$contapagati10euro];	
+				//echo "<div>10 euro:".$code."</div>";
 				
 				if ($code!="")	
 				{
-					
-					mysqli_select_db($database_admin, $admin);
-					$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+					echo "entrato10";
+
+					mysqli_select_db($admin,$database_admin);
+					$query_aggiorna = "UPDATE t_user_history SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
@@ -436,7 +361,8 @@ $contapagati20euro=0;
 					$header = "MIME-Version: 1.0\r\n";
 					$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
 					$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
-					$destinatario = $row['email'];
+										//$destinatario = $row['email'];
+										$destinatario = "millebytes@interactive-mr.com";
 					$oggetto = "Club Millebytes: Ecco il tuo buono regalo!";
 					$messaggio = '
 					<html>
@@ -500,16 +426,19 @@ $contapagati20euro=0;
 			
 
 
-			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"20 euro")))
+			if(($var_pagato=="PAGA")&&(strstr($euroPaga,"20 euro"))&&(strstr($tipoPremio,"Amazon")))
 			{
-				
-				$code=$array20euro[$contapagati20euro];	
+			
+
+				$code=$array20euro[$contapagati20euro];
+				//echo "<div>20 euro:".$code."</div>";
 				
 				if ($code!="")	
 				{
-					
-					mysqli_select_db($database_admin, $admin);
-					$query_aggiorna = "UPDATE t_history_copia SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+					echo "entrato20";
+
+					mysqli_select_db($admin,$database_admin);
+					$query_aggiorna = "UPDATE t_user_history SET pagato=1, codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
@@ -518,7 +447,8 @@ $contapagati20euro=0;
 					$header = "MIME-Version: 1.0\r\n ";
 					$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
 					$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
-					$destinatario = $row['email'];
+					//$destinatario = $row['email'];
+					$destinatario = "millebytes@interactive-mr.com";
 					$oggetto = "Club Millebytes: Ecco il tuo buono regalo!";
 					$messaggio = '
 					<html>
@@ -671,19 +601,19 @@ $cicli=0;
 
 $cyear=date("Y");
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 2 Euro' and event_date LIKE '".$cyear."%' ";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 2 Euro' and event_date LIKE '".$cyear."%' ";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data2=mysqli_fetch_assoc($t_PAGO);
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 5 Euro' and event_date LIKE '".$cyear."%' ";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 5 Euro' and event_date LIKE '".$cyear."%' ";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data5=mysqli_fetch_assoc($t_PAGO);
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 10 Euro' and event_date LIKE '".$cyear."%'";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 10 Euro' and event_date LIKE '".$cyear."%'";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data10=mysqli_fetch_assoc($t_PAGO);
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_history_copia where event_info='Buono regalo da 20 Euro'  and event_date LIKE '".$cyear."%'";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 20 Euro'  and event_date LIKE '".$cyear."%'";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data20=mysqli_fetch_assoc($t_PAGO);
 
@@ -734,7 +664,7 @@ $giaM20=$gia20/$diff;
  
 <div class="card-success shadow mb-12">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> TOTALE PREMI </h6></span>
+	<h6 class="m-0 font-weight-bold text-primary"> TOTALE PREMI PAGATI</h6></span>
  </div>
 
    
@@ -742,24 +672,13 @@ $giaM20=$gia20/$diff;
 
 
 <table style="font-size:11px"  class="table table-striped table-bordered">
-		<tr class='intesta'><th><a target='_blank' href='http://www.millebytes.com/en/add_level_point'/>ADD</a></th><th >&euro; 2</th><th >&euro;5</th><th >&euro;10</th><th> &euro;20 </th></tr>
-		<tr class=''>
-		<td style="vertical-align : middle; text-align:center;" rowspan="2">Budget</td><td><?php echo $bud2['num']; ?></td><td><?php echo $bud5['num']; ?></td><td><?php echo $bud10['num']; ?></td><td><?php echo $bud20['num']; ?></td>
-		</tr>
-		<tr class=''>
-		<td><?php echo $bud2['num']*2; ?>€</td><td><?php echo $bud5['num']*5; ?>€</td><td><?php echo $bud10['num']*10; ?>€</td><td><?php echo $bud20['num']*20; ?>€</td>
-		</tr>
+		<tr class='intesta'><th></th><th >&euro; 2</th><th >&euro;5</th><th >&euro;10</th><th> &euro;20 </th></tr>
+
 		<tr class=''>
 		<td style="vertical-align : middle; text-align:center;" rowspan="2">Pagati</td><td><?php echo $data2['total']; ?></td><td><?php echo $data5['total']; ?></td><td><?php echo $data10['total']; ?></td><td><?php echo $data20['total']; ?></td>
 		</tr>
 		<tr>
 		<td><?php echo $data2['total']*2; ?>€</td><td><?php echo $data5['total']*5; ?>€</td><td><?php echo $data5['total']*5; ?>€</td><td><?php echo $data20['total']*20; ?>€</td>
-		</tr>
-		<tr class=''>
-		<td style="vertical-align : middle; text-align:center;" rowspan="2">Giacenza</td><td><?php echo $gia2; ?></td><td><?php echo $gia5; ?></td><td><?php echo $gia10; ?></td><td><?php echo $gia20; ?></td>
-		</tr>
-		<tr class=''>
-		<td><?php echo $gia2*2; ?>€</td><td><?php echo $gia5*5; ?>€</td><td><?php echo $gia10*10; ?>€</td><td><?php echo $gia20*20; ?>€</td>
 		</tr>
 		<tr class=''>
 		<td style="vertical-align : middle; text-align:center;"><b>Pagati</b></td>
@@ -786,7 +705,7 @@ $giaM20=$gia20/$diff;
 		 <div class="card card-danger shadow mb-12">
 		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 		 <button style="width:100%" type="button" class="btn btn-primary">
-		 Premi 2 euro <span class="badge badge-light"><?php echo "(".$contadapagati2euro.")";?></span>
+		Buoni Amazon 2 euro <span class="badge badge-light"><?php echo "(".$contadapagati2euro.")";?></span>
 			</button>	  
 		 </div>
 			 
@@ -801,7 +720,7 @@ $giaM20=$gia20/$diff;
 	  <div class="card card-danger shadow mb-12">
 		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 		 <button style="width:100%" type="button" class="btn btn-danger">
-				 Premi 5 euro <span class="badge badge-light"><?php echo "(".$contadapagati5euro.")";?></span>
+		 Buoni Amazon 5 euro <span class="badge badge-light"><?php echo "(".$contadapagati5euro.")";?></span>
 				 </button>	
 			 </div>
 			 
@@ -821,7 +740,7 @@ $giaM20=$gia20/$diff;
 	<div class="card card-danger shadow mb-12">
 		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 		 <button style="width:100%" type="button" class="btn btn-warning">
-				Premi 10 euro <span class="badge badge-light"><?php echo "(".$contadapagati10euro.")";?></span>
+		 Buoni Amazon 10 euro <span class="badge badge-light"><?php echo "(".$contadapagati10euro.")";?></span>
 			</div>
 			
 			<div class="card-body"> 
@@ -839,7 +758,7 @@ $giaM20=$gia20/$diff;
 	 <div class="card card-danger shadow mb-12">
 		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 		 <button style="width:100%" type="button" class="btn btn-success">
-				 Premi 20 euro  <span class="badge badge-light"><?php echo "(".$contadapagati20euro.")";?></span>
+		 Buoni Amazon 20 euro  <span class="badge badge-light"><?php echo "(".$contadapagati20euro.")";?></span>
 			 </div>
 			 
 			 <div class="card-body"> 
@@ -847,7 +766,7 @@ $giaM20=$gia20/$diff;
 				 <textarea class="form-control" style="text-transform:uppercase;" name="pr20euro" cols="15" placeholder="Inserisci qui i codici" rows="10"></textarea>
 				
 				 <hr>
-				<button class='btn btn-primary'  type='submit'  name='var_pagato' value='PAGA' >PAGA</button>
+				<button class='btn btn-primary' style="min-width:214px;" type='submit'  name='var_pagato' value='PAGA' >PAGA</button>
 				
 				</form>
 				 
