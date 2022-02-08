@@ -6,6 +6,10 @@
 	  require_once('inc_auth.php'); 
 	  mysqli_select_db($admin,$database_admin);	
 
+//     error_reporting(E_ALL);
+// ini_set('display_errors', TRUE);
+// ini_set('display_startup_errors', TRUE);
+
 $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
 $areapagina = "home";
@@ -25,7 +29,6 @@ $age1_target=$_REQUEST['age1_target'];
 $age2_target=$_REQUEST['age2_target'];
 $descrizione=$_REQUEST['descrizione'];
 $end_date=$_REQUEST['end_date'];
-$sur_date=$_REQUEST['sur_date'];
 $labprj=$_REQUEST['labprj'];
 $goal=$_REQUEST['goal'];
 $paese=$_REQUEST['paese'];
@@ -76,8 +79,8 @@ if($duplicate>0) { ?>
 
 	else{
 	  
-	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese,cliente,tipologia) 
-	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."')";
+	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese,cliente,tipologia,bytes) 
+	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."','".$points.")";
 	mysqli_query($admin,$query_user);
 
   if ($panel==1)
@@ -201,11 +204,10 @@ require_once('inc_tagbody.php');
 <td style='font-weight:bold'>Complete</td>
 <td style='font-weight:bold'>% Panel</td>
 <td style='font-weight:bold'>% Ricerca</td>
-<td style='font-weight:bold'>N° Int.</td>
-<td style='font-weight:bold'>Durata</td>
 <td style='font-weight:bold'>Start</td>
 <td style='font-weight:bold'>Giorni</td>
 <td style='font-weight:bold'>Costo Panel</td>
+<td style='font-weight:bold'>Bytes</td>
 <td style='font-weight:bold'>Stato</td>
 <td style='font-weight:bold'>&nbsp;</td>
 </tr>
@@ -272,14 +274,13 @@ echo "<td>".$panel."</td>";
 echo "<td>".$row['complete']."</td>";
 echo "<td>".$row['red_panel']."%</td>";
 echo "<td>".$row['red_surv']."%</td>";
-echo "<td>".$row['goal']."</td>";
-echo "<td>".$row['durata']." min.</td>";
 echo "<td>".$sur_date."</td>";
 if ($daysField==0 && $end_date==$today ){echo "<td><span class='".$dayClass."'>Ultimo<span></td>";}else{echo "<td><span class='".$dayClass."'>".$daysField."<span></td>";}
 
 $costo=$row['costo'];
 if ($costo==""){$costo=0;}
 echo "<td>€".$costo."</td>";
+echo "<td>".$row['bytes']." bytes.</td>";
 ?>
 
 
