@@ -289,7 +289,7 @@ echo "<td>".$row['bytes']." bytes</td>";
 <form id="<?php echo $row['id'] ?>" class="myform" name="modulo2" >
 <input type="hidden" id="id_sur<?php echo $row['id'] ?>" name="id_sur" value="<?php echo $row['id'] ?>">
 <input type="hidden" id="costo<?php echo $row['id'] ?>" name="costo" value="<?php echo $row['bytes'] ?>">
-<input type="hidden" id="compl<?php echo $row['id'] ?>" name="compl" value="<?php echo $row['complete'] ?>">
+<input type="hidden" id="compl<?php echo $row['id'] ?>" name="compl" value="<?php echo $row['complete_int'] ?>">
 <input id="stato<?php echo $row['id'] ?>" data-item-id="<?php echo $row['id'] ?>"  type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-size="xs" data-onstyle="success" data-offstyle="danger">
 </form>
 </td>
