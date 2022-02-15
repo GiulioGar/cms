@@ -528,12 +528,14 @@ $aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 
 if (($stato_ricerca == 1)&&(($panel_in==1)||($panel_in==2))) 
 {
+
 $costo=$conta_complete_panel*0.31;
 
 
 $query_aggiorna_statistiche_costo = "UPDATE t_panel_control set costo='".$costo."' where sur_id='".$sid."'";
 $aggiorna_statistiche_costo = mysqli_query($admin,$query_aggiorna_statistiche_costo) ;
 $aggiorna_statistiche_t_costo = mysqli_fetch_assoc($aggiorna_statistiche_costo);
+
 }
 ?>
 

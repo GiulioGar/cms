@@ -34,7 +34,7 @@ $goal=$_REQUEST['goal'];
 $paese=$_REQUEST['paese'];
 $cliente=$_REQUEST['cliente'];
 $tipologia=$_REQUEST['tipologia'];
-
+$costoSur=$_REQUEST['costoSur'];
 
 $cerca_progetto=$_REQUEST['prj'];
 if ($cerca_progetto==""){$cerca_progetto="%";}
@@ -52,8 +52,6 @@ if ($cerca_anno==""){$cerca_anno="%";}
 					else
 					{$cerca_anno=$cerca_anno."%";}
 					
-					
-	
 
 
 
@@ -80,8 +78,10 @@ if($duplicate>0) { ?>
 	else{
 	  
 	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese,cliente,tipologia,bytes) 
-	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."','".$points.")";
+	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."',".$points.")";
 	mysqli_query($admin,$query_user);
+
+ 
 
   if ($panel==1)
   {
@@ -118,11 +118,12 @@ if($modSearch=="Modifica")
 
 if($closearch=="CLOSE" || $closearch=="OPEN")
 {
-if ($closearch=="CLOSE") {$statoSur=0;}
+if ($closearch=="CLOSE") { $statoSur=0; }
 else {$statoSur=1;}
 
-$query_aggiorna = "UPDATE t_panel_control SET stato=$statoSur WHERE id='".$id_sur."'";
+$query_aggiorna = "UPDATE t_panel_control SET stato=$statoSur,costo=$costoSur WHERE id='$id_sur'";
 $up_ricercha = mysqli_query($admin,$query_aggiorna);
+
 
 }
 
@@ -280,13 +281,15 @@ if ($daysField==0 && $end_date==$today ){echo "<td><span class='".$dayClass."'>U
 $costo=$row['costo'];
 if ($costo==""){$costo=0;}
 echo "<td>€".$costo."</td>";
-echo "<td>".$row['bytes']." bytes.</td>";
+echo "<td>".$row['bytes']." bytes</td>";
 ?>
 
 
 <td>
 <form id="<?php echo $row['id'] ?>" class="myform" name="modulo2" >
 <input type="hidden" id="id_sur<?php echo $row['id'] ?>" name="id_sur" value="<?php echo $row['id'] ?>">
+<input type="hidden" id="costo<?php echo $row['id'] ?>" name="costo" value="<?php echo $row['bytes'] ?>">
+<input type="hidden" id="compl<?php echo $row['id'] ?>" name="compl" value="<?php echo $row['complete'] ?>">
 <input id="stato<?php echo $row['id'] ?>" data-item-id="<?php echo $row['id'] ?>"  type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-size="xs" data-onstyle="success" data-offstyle="danger">
 </form>
 </td>
@@ -448,6 +451,8 @@ $("#datepicker").datepicker({
 <?php if ($row['stato']==0) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('on')	<?php } ?>
 <?php if ($row['stato']==1) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('off')	<?php } ?>
 
+
+
   //al click sul bottone del form
   $(".myform").click(function(){
 	
@@ -459,23 +464,29 @@ $("#datepicker").datepicker({
     //associo variabili
     let id_sur = $("#id_sur"+idVal).val();
     let selezionato="";
+    let coSur=$("#costo"+idVal).val();
+    let compSur=$("#compl"+idVal).val();
+    coSur=coSur/1000;
+    coSur=compSur*coSur;
 
-	console.log("tog "+id_sur+":"+togStatus);
+
+	console.log("costo "+coSur);
 
 	if(togStatus==false) { selezionato="CLOSE";}
 	else  { selezionato="OPEN";} 
+
 
   //chiamata ajax
     $.ajax({
 
      //imposto il tipo di invio dati (GET O POST)
-      type: "POST",
+      type: "GET",
 
       //Dove devo inviare i dati recuperati dal form?
       url: "pannello.php",
 
       //Quali dati devo inviare?
-      data: "id_sur=" + id_sur + "&closearch=" + selezionato,
+      data: "id_sur=" + id_sur + "&closearch=" + selezionato + "&costoSur=" + coSur,
       dataType: "html",
 	  success: function() 
 	  					{ 
@@ -484,6 +495,7 @@ $("#datepicker").datepicker({
 
     });
   });
+
 </script>
 
 
