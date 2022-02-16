@@ -5,9 +5,7 @@
 	  require_once('inc_auth.php'); 
 	  mysqli_select_db($database_admin, $admin);
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+
 
 $sitowebdiriferimento = 'www.millebytes.com';
 $titolo = 'Strumenti Utenti';

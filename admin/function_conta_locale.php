@@ -10,6 +10,12 @@ $loi=0;
 $sumDiff=0;
 $contaCompl=0;
 $redemption_panel=0;
+$totRed=0;
+$totRed2=0;
+$mesi2=0;
+$mesi3=0;
+$contatori;
+
 
 
  //array prezzi cint
@@ -211,7 +217,7 @@ if ($stato_ricerca != 1)
 
 
 //ELIMINO RECORD
-$query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='".$sid."')";
+$query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='.$sid.')";
 $query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) ;
 $query_pulisci_respint_copy_sample_t = mysqli_fetch_assoc($query_pulisci_respint_copy_sample);
 
@@ -785,11 +791,18 @@ $redemption_field_panel=number_format($redemption_field_panel, 2);
 
 $contatti_panel=$contatti-$panel_esterno;
 //REDEMPTION PANEL
+// echo "<p>Abilitati".$lu['abilitati']."</p>";
+// echo "<p>oRE".$ore_differenza."</p>";
 if ($lu['abilitati'] != 0)
 {
 
 if (($ore_differenza>=3)&&($ore_differenza<12)&&($aggiornamento==true))
 {
+// echo "<p>Contatti Panel".$contatti_panel."</p>";
+// echo "<p>Abilitati".$lu['abilitati']."</p>";
+// echo "<p>tot abilitati".$tot_use_abilitati['total']."</p>";
+
+
 $redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*10)/100)))*100;
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$salva_abilitati;
