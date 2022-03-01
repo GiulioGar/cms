@@ -150,7 +150,8 @@ if ($nl>0)
 		
 		if($abi==true)
 		    {
-		    $query_insid = "INSERT INTO t_respint VALUES ('$sid','$varId',0,-1,'$prj',0)";
+			
+		    $query_insid = "INSERT INTO t_respint VALUES ('$sid','$varId',0,-1,'$prj')";
 		    $ininrespint = mysqli_query($admin,$query_insid);
 		    }
 		}

@@ -93,7 +93,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 <div class="card shadow p-8 mb-8 bg-white rounded">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 	<h6 class="m-0 font-weight-bold text-primary"> RICHIESTE PREMIO</h6></span>
-	<input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' />
+	<!-- <input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' /> -->
  </div>
    
 

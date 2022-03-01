@@ -511,7 +511,7 @@ $(document).ready( function () {
   $('.mess').fadeOut();
     $('#table_sur').DataTable( {
       "bProcessing":true,
-        "order": [[ 11, "asc" ]],
+        "order": [[ 10, "asc" ]],
         "pagingType": "full_numbers",
         "scrollY": false,
         "scrollX": false,
@@ -524,7 +524,7 @@ $(document).ready( function () {
         "pageLength": 30,
         'columnDefs': [ {
 
-                        'targets': [1,2,12], /* column index */
+                        'targets': [1,2,11], /* column index */
 
                         'orderable': false, /* true or false */
 

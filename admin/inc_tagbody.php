@@ -84,7 +84,8 @@ if ($_SESSION['MM_Username']!=""){
         <i class="fas fa-award"></i> Premi 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="RichiestePremio.php">Assegna Premi</a>
+          <a class="dropdown-item" href="RichiestePremio.php">Assegna Premi Amazon</a>
+          <a class="dropdown-item" href="RichiestePaypal.php">Assegna Premi Paypal</a>
           <a class="dropdown-item" href="assegnalivello.php">Assegna Livelli</a>
       </li>       
       <?php
