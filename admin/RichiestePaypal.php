@@ -87,7 +87,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 <tbody>	
 <?php
 
-
+$contaInviate=0;
 
 	while ($row = mysqli_fetch_assoc($cerca))
 		{
@@ -96,7 +96,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 			$euroPaga=substr($row['event_info'], -7, 7);
 			$tipoPremio=substr($row['event_info'], -14,7);
 		
-			if($row['paypalEmail']=="null") { $contaMailNulle++;}
+			if($row['paypalEmail']===NULL) { $contaMailNulle++;}
 			if (strstr($euroPaga,"5 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ff8989"; $contadapagati5euro=$contadapagati5euro+1;}
 			if (strstr($euroPaga,"10 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ffdcbc"; $contadapagati10euro=$contadapagati10euro+1;}
 	
@@ -121,14 +121,14 @@ $cerca = mysqli_query($admin,$query_cerca);
 			$yearDate=date("y",strtotime($row['event_date']));
 
 
-			if($var_email=="EMAIL" && $row['paypalEmail']=="null" )
+			if($var_email=="EMAIL" && $row['paypalEmail']===NULL && $contaInviate<3 )
 			{
 			
 				$header = "MIME-Version: 1.0\r\n";
 				$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
 				$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
-				//$destinatario = $row['email'];
-				$destinatario = "millebytes@interactive-mr.com";
+				$destinatario = $row['email'];
+				//$destinatario = "millebytes@interactive-mr.com";
 				$oggetto = "Club Millebytes: Richiesta ricarica Paypal!";
 				$messaggio = '
 				<html>
@@ -149,20 +149,21 @@ $cerca = mysqli_query($admin,$query_cerca);
 				Ti preghiamo di fornircelo quanto prima, dopo qualche giorno riceverai la ricarica che ti spetta.
 
 				Collegati al seguente link per lasciarci il tuo indirizzo:
-
-				<a href="https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'"/>https://millebytes.com/res/complete_it.php?user_id='.$row['user_id'].'</a>
+				<br>
+				<a href="https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'"/>https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'</a>
 				</p>
 				<br>
 				
 	
 				
 				<p>
-				Lascia un commento sulla nostra pagina facebook !<a href="https://www.facebook.com/pages/Millebytes/1474771096088455">https://www.facebook.com/pages/Millebytes/1474771096088455</a>
+				Lascia un commento sulla nostra pagina facebook !<br/><a href="https://www.facebook.com/pages/Millebytes/1474771096088455">https://www.facebook.com/pages/Millebytes/1474771096088455</a>
 				</p>
 				
 				<br>
+				<br>
 				<p>
-				<i>*La tua email paypal sarà utilizzata esclusivamente per pagare il premio, non invieremo sondaggi/comunicazioni su questa email.</i>
+				<i>*La tua email paypal sar&agrave; utilizzata esclusivamente per pagare il premio, non invieremo sondaggi/comunicazioni su questa email.</i>
 				</p>
 				
 				
@@ -171,7 +172,8 @@ $cerca = mysqli_query($admin,$query_cerca);
 				</html>
 				';
 				mail($destinatario, $oggetto, $messaggio, $header);
-			
+				
+				$contaInviate++;
 			}
 		}			
 ?>
