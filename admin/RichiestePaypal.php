@@ -60,7 +60,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 
  </form>
 
-<form  action="RichiestePaypal.php" method="post">
+
 
 <div class="card shadow p-8 mb-8 bg-white rounded">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -87,7 +87,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 <tbody>	
 <?php
 
-$contaInviate=0;
+@$csv="uid;email;";
 
 	while ($row = mysqli_fetch_assoc($cerca))
 		{
@@ -121,59 +121,69 @@ $contaInviate=0;
 			$yearDate=date("y",strtotime($row['event_date']));
 
 
-			if($var_email=="EMAIL" && $row['paypalEmail']===NULL && $contaInviate<3 )
+			if($row['paypalEmail']===NULL )
 			{
-			
-				$header = "MIME-Version: 1.0\r\n";
-				$header .= "Content-type: text/html; charset=iso-8859-1\r\n";
-				$header .= 'From: "Millebytes" <millebytes@interactive-mr.com>';
-				$destinatario = $row['email'];
-				//$destinatario = "millebytes@interactive-mr.com";
-				$oggetto = "Club Millebytes: Richiesta ricarica Paypal!";
-				$messaggio = '
-				<html>
-				<head>
-				<title>Club Millebytes: Un ultimo passo e avrai la tua ricarica!</title>
-				<style type="text/css">
-				body {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; font-weight:normal; color:#000000;}
-				</style>
-				</head>
-				<body>
+			    //// ESPORTA CAMPIONE MVF IN CSV ////
+				$csv .= "\n";
+				$csv .=$row['user_id'].";".$row['email']; 
+				//$csv .= "\n";
+
+
+				//INVIO EMAIL DEPRECATO //
+
+
+				// $header = "MIME-Version: 1.0\r\n";
+				// $header .= "Content-type: text/html; charset=utf-8\r\n";
+				// $header .= 'From: "Millebytes" <sondaggi@interactive-mr.com>';
+				// $destinatario = $row['email'];
+				// //$destinatario = "millebytes@interactive-mr.com";
+				// $oggetto = "Club Millebytes: Richiesta ricarica Paypal!";
+				// $messaggio = '
+				// <html>
+				// <head>
+				// <title>Club Millebytes: Un ultimo passo e avrai la tua ricarica!</title>
+				// <style type="text/css">
+				// body {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; font-weight:normal; color:#000000;}
+				// </style>
+				// </head>
+				// <body>
 					
-				<p>
-				Caro utente, <br/>
+				// <p>
+				// Caro utente, <br/>
 
-				per poter effettuare la ricarica paypal da te richiesta abbiamo bisogno dell indirizzo email* legato al tuo conto Paypyal.
-				<br/>
-				<br/>
-				Ti preghiamo di fornircelo quanto prima, dopo qualche giorno riceverai la ricarica che ti spetta.
+				// per poter effettuare la ricarica paypal da te richiesta abbiamo bisogno dell indirizzo email* legato al tuo conto Paypyal.
+				// <br/>
+				// <br/>
+				// Ti preghiamo di fornircelo quanto prima, dopo qualche giorno riceverai la ricarica che ti spetta.
 
-				Collegati al seguente link per lasciarci il tuo indirizzo:
-				<br>
-				<a href="https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'"/>https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'</a>
-				</p>
-				<br>
+				// Collegati al seguente link per lasciarci il tuo indirizzo:
+				// <br>
+				// <a href="https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'"/>https://millebytes.com/res/paypalMail.php?user_id='.$row['user_id'].'</a>
+				// </p>
+				// <br>
 				
 	
 				
-				<p>
-				Lascia un commento sulla nostra pagina facebook !<br/><a href="https://www.facebook.com/pages/Millebytes/1474771096088455">https://www.facebook.com/pages/Millebytes/1474771096088455</a>
-				</p>
+				// <p>
+				// Lascia un commento sulla nostra pagina facebook !<br/><a href="https://www.facebook.com/pages/Millebytes/1474771096088455">https://www.facebook.com/pages/Millebytes/1474771096088455</a>
+				// </p>
 				
-				<br>
-				<br>
-				<p>
-				<i>*La tua email paypal sar&agrave; utilizzata esclusivamente per pagare il premio, non invieremo sondaggi/comunicazioni su questa email.</i>
-				</p>
+				// <br>
+				// <br>
+				// <p>
+				// <i>*La tua email paypal sar&agrave; utilizzata esclusivamente per pagare il premio, non invieremo sondaggi/comunicazioni su questa email.</i>
+				// </p>
 				
 				
 				
-				</body>
-				</html>
-				';
-				mail($destinatario, $oggetto, $messaggio, $header);
+				// </body>
+				// </html>
+				// ';
+				// mail($destinatario, $oggetto, $messaggio, $header);
 				
-				$contaInviate++;
+				// $contaInviate++;
+
+
 			}
 		}			
 ?>
@@ -291,10 +301,15 @@ $month2 = date('m', $ts2);
 				</div>
 				
 				<div class="card-body"> 
-					
-					<input type="hidden" class="form-control" name="pr10euro" cols="15" placeholder="Buoni da pagare" rows="1"></input>
-					<button class='btn btn-danger' style="min-width:214px;" type='submit'  name='var_email' value='EMAIL' >INVIA RICHIESTA</button>
-					
+
+				<div  class="formCsv">
+				<form style="text-align:center" action="csv.php" method="post" target="_blank">
+				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
+				<input type="hidden" name="filename" value="mailPaypal" />
+				<input type="hidden" name="filetype" value="mailPay" />
+				<input style="height: 80px; width:80px;" class="form-control" type="image" value="submit" src="img/csv.png" />
+				</form>	
+				</div>
 					
 				
 			</div>
@@ -304,7 +319,6 @@ $month2 = date('m', $ts2);
 	
 	</div>
 
-</form>
 
 </div>
 
@@ -323,6 +337,9 @@ require_once('inc_footer.php');
 $(document).ready( function () {
   $('#table_sur').show();
   $('.mess').fadeOut();
+
+
+
     $('#table_sur').DataTable( {
         "order": [[ 5, "asc" ]],
         "pagingType": "full_numbers",
