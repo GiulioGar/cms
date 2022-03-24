@@ -13,6 +13,7 @@ $id_utente = $_REQUEST['id_utente'];
 $importo=$_REQUEST['importo'];
 $email=$_REQUEST['email'];
 @$azione = $_REQUEST['azione'];
+@$id_pre = $_REQUEST['id_pre'];
 @$verifica = $_REQUEST['Verifica'];
 $data=date("Y-m-d");
 
@@ -35,6 +36,8 @@ $query_cerca = "SELECT * FROM t_user_history,t_user_info where pagato like '$cer
 $cerca = mysqli_query($admin,$query_cerca);
 
 
+
+
 ?>
 
 <div class="content-wrapper">
@@ -43,7 +46,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 
 
  <div class="row">
- <div class="col-md-9">
+ <div class="col-md-12">
  <form role="form" name="modulo_cerca_prj" action="RichiestePaypal.php" method="get">
 
  <div class="input-group mb-3">
@@ -62,7 +65,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 
 
 
-<div class="card shadow p-8 mb-8 bg-white rounded">
+<div class="card shadow p-12 mb-12 bg-white rounded">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 	<h6 class="m-0 font-weight-bold text-primary"> RICHIESTE PAYPAL</h6></span>
 	<!-- <input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' /> -->
@@ -81,6 +84,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 	 <th>Richiesta</th>
 	 <th>Email paypal</th>
 	 <th>Pagamento</th>
+	 <th>Paga</th>
 	</tr>
 
 </thead>	
@@ -108,15 +112,21 @@ $cerca = mysqli_query($admin,$query_cerca);
 		 <td>".$row['prev_level']."</td>
 		 <td>".$row['new_level']."</td>
 		 <td>".$newdate."</td>
-		 <td>".$row['paypalEmail']."</td>
-		 ";
-		  if ($row['pagato']==0){echo "<td>n.p.</td></tr>";}
+		 <td>".$row['paypalEmail']."</td>";
+		  if ($row['pagato']==0){echo "<td>n.p.</td>";}
 								else
 								{
 									echo "<td>".$paydate."</td></tr>"; 
 									 
 								}
-								
+			if ($row['pagato']==0){					
+			echo "<td>
+			<form  action='RichiestePaypal.php' method='POST'>
+			<input name='id_pre' type='hidden' value='".$row['id']."' >
+			<button class='btn btn-primary' style='min-width:54px;' type='submit'  name='var_pagato' value='PAGA' >PAGA</button>
+			</form>
+			</td></tr>	";	
+			}
 			$montDate=date("m",strtotime($row['event_date']));
 			$yearDate=date("y",strtotime($row['event_date']));
 
@@ -248,7 +258,7 @@ $month2 = date('m', $ts2);
 
 
  
- 	 <div class="row">
+ 	 <!-- <div class="row">
 	  <div class="card card-danger shadow mb-12">
 		 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 		 <button style="width:100%" type="button" class="btn btn-danger">
@@ -280,7 +290,7 @@ $month2 = date('m', $ts2);
 				<input type="number" class="form-control" name="pr10euro" cols="15" placeholder="Buoni da pagare" rows="1"></input>
 				
 				<hr>
-				<button class='btn btn-primary' style="min-width:214px;" type='submit'  name='var_pagato' value='PAGA' >PAGA</button>
+				
 				
 				
 			
@@ -320,7 +330,7 @@ $month2 = date('m', $ts2);
 	</div>
 
 
-</div>
+</div> -->
 
 
 
@@ -330,6 +340,33 @@ $month2 = date('m', $ts2);
 </div>
 </div>
 <?php
+
+if($var_pagato=="PAGA")
+{
+
+		mysqli_select_db($admin,$database_admin);
+		$query_aggiorna = "UPDATE t_user_history SET  giorno_paga='$data', pagato=1 WHERE pagato=0 and id='".$id_pre."'";
+		$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
+?>
+
+
+<script>
+
+window.onload = function() {
+	if(!window.location.hash) {
+		window.location = window.location + '#loaded';
+		window.location.reload();
+	}
+}
+
+</script>
+
+
+	
+		
+	
+<?php }	
+
 require_once('inc_footer.php'); 
 ?>
 

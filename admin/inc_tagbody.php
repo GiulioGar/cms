@@ -76,21 +76,18 @@ if ($_SESSION['MM_Username']!=""){
         <i class="fas fa-search-dollar"></i> Costi Panel</a>
       </li>
 
-      <?php
-							if ($_SESSION['MM_Username']=="g_garofalo"){
-              ?>
+  
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-award"></i> Premi 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="RichiestePremio.php">Assegna Premi Amazon</a>
+        <?php
+			if ($_SESSION['MM_Username']=="g_garofalo"){?>   <a class="dropdown-item" href="RichiestePremio.php">Assegna Premi Amazon</a>       <?php }; ?>
           <a class="dropdown-item" href="RichiestePaypal.php">Assegna Premi Paypal</a>
-          <a class="dropdown-item" href="assegnalivello.php">Assegna Livelli</a>
+          <?php   if ($_SESSION['MM_Username']=="g_garofalo"){?>    <a class="dropdown-item" href="assegnalivello.php">Assegna Livelli</a>  <?php }; ?>
       </li>       
-      <?php
-								};
-              ?>
+
       <li class="nav-item">
         <a class="nav-link" href="user_info.php"><i class="fas fa-info-circle"></i>Info Utenti</a>
       </li>
