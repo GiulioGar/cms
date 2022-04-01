@@ -148,170 +148,7 @@ $giornimese = date("t",strtotime($data));
 <hr>
 
 <table id="tabIscritti" class='table table-striped table-bordered table-hover' cellpadding="5">
-<thead>
-<tr><th colspan="8"> 
-<button type="button" class="btn btn-success">
-<i class="fas fa-user-plus"></i> <?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
-</button> 
-</th></tr>   
-<tr><td>Lunedi'</td><td>Martedì'</td><td>Mercoledì'</td><td>Giovedì'</td><td>Venerdì'</td><td>Sabato</td><td>Domenica</td><td><b>ISCRITTI</b></td></tr>
-</thead>
-<?php
-for ($i = 1; $i <= 6; $i++) {
-$iscrittisettimana=0;
-if ($giorno<=$giornimese)
-{
-?>
-<tr>
-<td>
-<?php 
-if ($giorno_n==1 && $giorno<=$giornimese) {
-				  for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-					                                           //echo $giorno_iscritto;
-					                                           if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }	
-				  echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-				  $giorno=$giorno+1; 
-				  $data = "".$anno."-".$mese."-".$giorno; 
-				  $giorno_n=date('w',strtotime($data));
-				  } 
-?>
-</td>
-<td>
-<?php 
-if ($giorno_n==2 && $giorno<=$giornimese) {
-				  for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-															   //echo $giorno_iscritto;
-															   if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }
-				  echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-				  $giorno=$giorno+1; 
-				  $data = "".$anno."-".$mese."-".$giorno; 
-				  $giorno_n=date('w',strtotime($data));
-				  } 
-?>
-</td>
-<td>
-<?php 
-if ($giorno_n==3 && $giorno<=$giornimese) {
-				  for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-															   //echo $giorno_iscritto;
-															   if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }
-				  echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-				  $giorno=$giorno+1; 
-				  $data = "".$anno."-".$mese."-".$giorno; 
-				  $giorno_n=date('w',strtotime($data));
-				  } 
-?>
-</td>
-<td>
-<?php 
-if ($giorno_n==4 && $giorno<=$giornimese) {
-				  for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-															   //echo $giorno_iscritto;
-															   if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }
-															   
-				  echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-				  $giorno=$giorno+1; 
-				  $data = "".$anno."-".$mese."-".$giorno; 
-			 	  $giorno_n=date('w',strtotime($data));
-				  } 
-?>
-</td>
-</td>
-<td>
-<?php 
-if ($giorno_n==5 && $giorno<=$giornimese) {
-				  for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-					                                           //echo $giorno_iscritto;
-					                                           if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }
-															   
-				  echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-				  $giorno=$giorno+1; 
-				  $data = "".$anno."-".$mese."-".$giorno; 
-				  $giorno_n=date('w',strtotime($data));
-				  } 
-?>
-</td>
-<td>
-<?php 
-if ($giorno_n==6 && $giorno<=$giornimese) {
-			      for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-															   //echo $giorno_iscritto;
-					                                           if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }
-				  echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-				  $giorno=$giorno+1; 
-				  $data = "".$anno."-".$mese."-".$giorno; 
-				  $giorno_n=date('w',strtotime($data));
-			      } 
-?>
-</td>
-<td>
-<?php 
-if ($giorno_n==0 && $giorno<=$giornimese) {
-				  for ($k = 1; $k <= $contaiscrittimese; $k++) {
-															   $timestamp_iscritto=$iscritti[$k];
-															   $giorno_iscritto = date('d', $timestamp_iscritto);
-															   $giorno_iscritto= intval($giorno_iscritto);
-															   //echo $giorno_iscritto;
-					                                           if ($giorno_iscritto==$giorno){$iscrittisettimana=$iscrittisettimana+1;}
-															   
-															   }
- 			      echo $giorno; 
-				  //if ($iscrittisettimana>0) {echo " (".$iscrittisettimana.")";}
-			      $giorno=$giorno+1; 
-			      $data = "".$anno."-".$mese."-".$giorno; 
-			      $giorno_n=date('w',strtotime($data));
-				  } 
-?>
-</td>
-<td>
-<?php
-echo "<b>".$iscrittisettimana."</b>"; 
-?>
-</td>
-
-</tr>
-
-<?php
-}
-}
-?>
-</table>
+</table>	
 </div>
 
 </div>
@@ -335,6 +172,8 @@ echo "<b>".$iscrittisettimana."</b>";
 
 <div class="card-body">	
 <canvas width="100%" id="linered"></canvas>
+
+
 </div>
 </div>
 </div>
@@ -421,6 +260,28 @@ $('.mess2').fadeIn();
 
 window.onload = function() 
 {
+
+//carico tabella principale
+$.ajax({
+
+//imposto il tipo di invio dati (GET O POST)
+ type: "GET",
+
+ //Dove devo inviare i dati recuperati dal form?
+ url: "functions_nuoviscritti.php",
+
+ //Quali dati devo inviare?
+ data: "mese=<?php echo $mesecorrente; ?>&anno=<?php echo $annocorrente ?>",
+ dataType: "html",
+ success: function(data) 
+					 { 
+					   tabField=$(data).filter("#tabIscritti");
+					   $("#tabIscritti").html(tabField);
+
+				   }
+
+});
+
 
  // chart redemption   
  new Chart(document.getElementById("linered"), {
