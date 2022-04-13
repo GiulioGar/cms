@@ -11,7 +11,7 @@
 
 <?php require_once('../Connections/admin.php'); 
 	  require_once('inc_auth.php'); 
-	  mysqli_select_db($database_admin, $admin);
+	  mysqli_select_db($admin,$database_admin);
 
 $sitowebdiriferimento = 'www.millebytes.com';
 $titolo = 'Strumenti Utenti';
@@ -24,6 +24,7 @@ require_once('inc_tagbody.php');
 
 @$nome=$_REQUEST["idval"];
 $numliv=$_REQUEST["numliv"];
+$motliv=$_REQUEST["motliv"];
 
 //Tutto maiuscolo//
 $sid=strtoupper($sid);
@@ -33,59 +34,52 @@ $vId=strtoupper($vId);
 $data=date("Y-m-d H:i:s");
 
 
-
-
-
-
 	if ($nome<>"")
 	{
 	@$array=explode("\n",$nome);
+	$array=array_map('trim', $array);
 	@$Carr=count($array);
 	}
 	
 
+// echo $Carr;
+
+if ($Carr<> 0) 
+{
+		
 
 
-	if ($Carr<> 0)
-	{
-		
-		
-		foreach($array as $arrV)  
-		{
+foreach($array as $arrV)  
+{
 			
-	echo $Carr;
 	
-$query_cerca_livello = "SELECT t_user_info.user_id,field_data_field_user_level.entity_id,field_user_level_value FROM field_data_field_user_id, t_user_info,field_data_field_user_level where t_user_info.email='".$arrV."' AND t_user_info.user_id=field_data_field_user_id.field_user_id_value AND field_data_field_user_id.entity_id=field_data_field_user_level.entity_id";
+$query_cerca_livello = "SELECT * FROM t_user_info where user_id='$arrV' ";
 $cerca_livello = mysqli_query($admin,$query_cerca_livello) ;
 $lvl = mysqli_fetch_assoc($cerca_livello);
 
 
 
-
 //$query_aggiorna = "UPDATE field_data_field_user_level SET field_user_level_value=field_user_level_value+1 WHERE entity_id='".$lvl['entity_id']."'";
-$query_aggiorna = "UPDATE field_data_field_user_level SET field_user_level_value=field_user_level_value+$numliv WHERE entity_id='".$lvl['entity_id']."'";
+$query_aggiorna = "UPDATE t_user_info SET points=points+$numliv WHERE user_id='$arrV'";
 $add_livello = mysqli_query($admin,$query_aggiorna) ;
-//$lvlagg = mysqli_fetch_assoc($add_livello);
-$livelloaggiornato=$lvl['field_user_level_value'];
 
-echo "ciaooo ".$arrV." ".$numliv." ".$livelloaggiornato." ".$lvl['entity_id']."<br>";
+echo $query_aggiorna."<br/>";
+
+$livelloaggiornato=$lvl['points'];
 
 $uidletto=$lvl['user_id'];
 
-			if ($uidletto != "")
-			{
-			
-			for ($i = 1; $i <= $numliv; $i++) {
-				
+
+
+if ($uidletto != "")
+			{	
 $livelloprecedente=$livelloaggiornato;
-$livelloaggiornato=$livelloaggiornato+1;
-				
-			//$query_aggiorna = "UPDATE field_data_field_user_level SET field_user_level_value=field_user_level_value+1 WHERE entity_id='".$lvl['entity_id']."'";
+$livelloaggiornato=$livelloaggiornato+$numliv;
+
 		
-			$query_aggbonus= "INSERT INTO t_user_history (user_id, event_date, event_type, event_info, prev_level, new_level) values ('".$lvl['user_id']."', '".$data."','Bonus','Livello Bonus',".$livelloprecedente.",".$livelloaggiornato.")";
-			$aggiungihistory = mysqli_query($admin,$query_aggbonus) ;
-			}
-			
+$query_aggbonus= "INSERT INTO t_user_history (user_id, event_date, event_type, event_info, prev_level, new_level) values ('".$lvl['user_id']."', '".$data."','Bonus','$motliv',".$livelloprecedente.",".$livelloaggiornato.")";
+$aggiungihistory = mysqli_query($admin,$query_aggbonus) ;
+
 			}
 			
 		$pulisci = mysqli_query($admin,"TRUNCATE TABLE cache") ;
@@ -100,10 +94,11 @@ $livelloaggiornato=$livelloaggiornato+1;
 		$pulisci = mysqli_query($admin,"TRUNCATE TABLE cache_path;") ;
 		$pulisci = mysqli_query($admin,"TRUNCATE TABLE cache_token;") ;
 		$pulisci = mysqli_query($admin,"TRUNCATE TABLE cache_update;") ;	
+
+
 			
 		}
 		
-		//$query_aggiorna = "UPDATE field_data_field_user_level SET field_user_level_value=field_user_level_value+1 WHERE entity_id='".$lvl['entity_id']."'";
 		
 		
 		
@@ -123,7 +118,7 @@ $livelloaggiornato=$livelloaggiornato+1;
 
 <div class="col-md-12">
 <div class="card shadow mb-6">
- <div style="padding:10px; font-size:18px;" class="m-0 font-weight-bold text-success"> ASSEGNAZIONE LIVELLI <i class="fas fa-level-up-alt"></i></div>
+ <div style="padding:10px; font-size:18px;" class="m-0 font-weight-bold text-success"> ASSEGNAZIONE BYTES <i class="fas fa-level-up-alt"></i></div>
 			
 <div class="card-body">
 
@@ -132,16 +127,23 @@ $livelloaggiornato=$livelloaggiornato+1;
   
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span style="width:173px;" class="input-group-text" id="basic-addon1">Numero Livelli</span>
+    <span style="width:173px;" class="input-group-text" id="basic-addon1">Numero Bytes</span>
   </div>
   <input type="number" name="numliv" style="width: 500px;">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span style="width:173px;" class="input-group-text" id="basic-addon2">Motivazione:</span>
+  </div>
+  <input type="text" name="motliv" style="width: 500px;">
 </div>
  
 <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">Utenti da incentivare</span>
   </div>
-  <textarea class="form-control" style="text-transform:uppercase;" name="idval" placeholder="Inserisci qui gli indirizzi email" rows="10"></textarea>
+  <textarea class="form-control" style="text-transform:uppercase;" name="idval" placeholder="Inserisci qui gli uid" rows="10"></textarea>
 </div>
 
       
@@ -174,5 +176,14 @@ require_once('inc_footer.php');
 ?>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="jquery.copy-to-clipboard.js"></script>
+
+<script>
+
+
+       
+</script>
+
+
+
 </body>
 </html>

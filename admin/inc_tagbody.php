@@ -98,6 +98,7 @@ if ($_SESSION['MM_Username']!=""){
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="nuoviscritti.php">Conteggi</a>
+          <a class="dropdown-item" href="conteggioIscritti.php">Dettagli</a>
           <a class="dropdown-item" href="conta_campagna.php">Statistiche</a>
       </li>  
 
