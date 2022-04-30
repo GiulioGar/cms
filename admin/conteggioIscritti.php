@@ -156,67 +156,9 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
       <th scope="col">Download</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">2 - Facebook</th>
-      <td><?php echo $num_ref2 ?></td>
-      <td><?php echo $num_ref2a ?></td>
-      <td><?php echo $perc_ref2 ?></td>
-      <td>
-      <form action="csv.php" method="post" target="_blank">
-				<input type="hidden" name="csv" value="<?php echo $csv ?>" />
-				<input type="hidden" name="filename" value="bonusFacebook" />
-        <input type="hidden" name="filetype" value="campione" />
-        <input style="width:60px; height:50px"  class="form-control" type="image" value="submit" src="img/csv.png" />
-        </form>	    
-    </td>
-    </tr>
-    <tr>
+  <tbody class="reference">
 
-
-      <th scope="row">3 - MVF</th>
-      <td><?php echo $num_ref3 ?></td>
-      <td><?php echo $num_ref3a ?></td>
-      <td><?php echo $perc_ref3 ?></td>
-      <td>
-      <form action="csv.php" method="post" target="_blank">
-				<input type="hidden" name="csv" value="<?php echo $csv3 ?>" />
-				<input type="hidden" name="filename" value="bonusMVF" />
-        <input type="hidden" name="filetype" value="campione" />
-        <input style="width:60px; height:50px"  class="form-control" type="image" value="submit" src="img/csv.png" />
-        </form>	  
-        </td>
-    </tr>
-
-    <tr>
-
-
-      <th scope="row">4 -GRUPPO FACEBOOK</th>
-      <td><?php echo $num_ref4 ?></td>
-      <td><?php echo $num_ref4a ?></td>
-      <td><?php echo $perc_ref4 ?></td>
-      <td>
-      <form action="csv.php" method="post" target="_blank">
-				<input type="hidden" name="csv" value="<?php echo $csv4 ?>" />
-				<input type="hidden" name="filename" value="bonusEmy" />
-        <input type="hidden" name="filetype" value="bonusEmy" />
-        <input style="width:60px; height:50px"  class="form-control" type="image" value="submit" src="img/csv.png" />
-        </form>	  
-        </td>
-    </tr>
-
-    <tr>
-
-
-<th scope="row">R - RIATTIVAZIONI</th>
-<td><?php echo $num_refR ?></td>
-<td><?php echo $num_refRa ?></td>
-<td><?php echo $perc_refR ?></td>
-<td>
-  N.D.
-  </td>
-</tr>
-
+   
   </tbody>
 </table>
 
@@ -238,200 +180,13 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 </div>
 
  <!-- DETTAGLI CAMPANGE -->
-<div class="row">
+<div class="row details">
 
- <!-- REF 2 -->
-<div class="col-xl-3 col-lg-5 datisync"> 
-<div class="card shadow mb-12 ">
+ <!-- REF  -->
 
-   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> facebook <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fab fa-facebook"></i></span> </h6>
- </div>
+ <!-- REF  -->
 
-<div class="card-body">  
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Azioni</th>
-        <th scope="col">Utenti</th>
-        <th scope="col">%</th>
-      </tr>
-    </thead>
-
-  <tbody>
-  <?php
-  while ($row = mysqli_fetch_assoc($esegui_query_azioni2a)) 
-      {
-      $perc_refAct2=ceil($row["nref2"]/$num_ref2*100);
-      ?>
-
-     <tr>
-     <td><?php echo $row["cref2"]; ?></td>
-     <td><?php echo $row["nref2"]; ?></td>
-     <td><?php echo $perc_refAct2; ?>%</td>
-    </tr>   
-  
-
-
-
-    <?php 
-    }
-
-      ?>
-
-    </tbody>
-
-  </table>
-
-</div>
-</div>
-</div>
- <!-- REF 2 -->
-
-  <!-- REF 3 -->
-<div class="col-xl-3 col-lg-5 datisync"> 
-<div class="card shadow mb-12 ">
-
-   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> MVF <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-server"></i></span> </h6>
- </div>
-
-<div class="card-body">  
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Azioni</th>
-        <th scope="col">Utenti</th>
-        <th scope="col">%</th>
-      </tr>
-    </thead>
-
-  <tbody>
-  <?php
-  while ($row = mysqli_fetch_assoc($esegui_query_azioni3a)) 
-      {
-      $perc_refAct3=ceil($row["nref3"]/$num_ref3*100);
-      ?>
-
-     <tr>
-     <td><?php echo $row["cref3"]; ?></td>
-     <td><?php echo $row["nref3"]; ?></td>
-     <td><?php echo $perc_refAct3; ?>%</td>
-    </tr>   
-  
-
-
-
-    <?php 
-    }
-
-      ?>
-
-    </tbody>
-
-  </table>
-
-</div>
-</div>
-</div>
- <!-- REF 3 -->
-
-
-   <!-- REF 4 -->
-<div class="col-xl-3 col-lg-5 datisync"> 
-<div class="card shadow mb-12 ">
-
-   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> Gruppo facebook <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fab fa-facebook-messenger"></i></i></span> </h6>
- </div>
-
-<div class="card-body">  
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Azioni</th>
-        <th scope="col">Utenti</th>
-        <th scope="col">%</th>
-      </tr>
-    </thead>
-
-  <tbody>
-  <?php
-  while ($row = mysqli_fetch_assoc($esegui_query_azioni4a)) 
-      {
-      $perc_refAct4=ceil($row["nref4"]/$num_ref4*100);
-      ?>
-
-     <tr>
-     <td><?php echo $row["cref4"]; ?></td>
-     <td><?php echo $row["nref4"]; ?></td>
-     <td><?php echo $perc_refAct4; ?>%</td>
-    </tr>   
-  
-
-
-
-    <?php 
-    }
-
-      ?>
-
-    </tbody>
-
-  </table>
-
-</div>
-</div>
-</div>
- <!-- REF 4 -->
-
-    <!-- REF REACT -->
-<div class="col-xl-3 col-lg-5 datisync"> 
-<div class="card shadow mb-12 ">
-
-   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> Riattivazionie <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-undo-alt"></i></span> </h6>
- </div>
-
-<div class="card-body">  
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Azioni</th>
-        <th scope="col">Utenti</th>
-        <th scope="col">%</th>
-      </tr>
-    </thead>
-
-  <tbody>
-  <?php
-  while ($row = mysqli_fetch_assoc($esegui_query_azioniRa)) 
-      {
-      $perc_refActR=ceil($row["nrefR"]/$num_refR*100);
-      ?>
-
-     <tr>
-     <td><?php echo $row["crefR"]; ?></td>
-     <td><?php echo $row["nrefR"]; ?></td>
-     <td><?php echo $perc_refActR; ?>%</td>
-    </tr>   
-  
-
-
-
-    <?php 
-    }
-
-      ?>
-
-    </tbody>
-
-  </table>
-
-</div>
-</div>
-</div>
- <!-- REF 4 -->
+ 
 
 
 
@@ -443,6 +198,214 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 
 </div>
 
+<script>
+ function addrows()
+ {
+   let info1;
+   let info2;
+   let info3;
+   let price;
+   let csv;
+
+  $.getJSON('referal.json', function(data) 
+    {
+  
+      $.each(data.referal, function(key, val) 
+      {
+
+      if (val.id==2) 
+      {
+        info1=<?php echo $num_ref2 ?>;
+        info2=<?php echo $num_ref2a ?>;
+        info3=<?php echo $perc_ref2 ?>;
+        csv="$csv";
+      }
+
+      if (val.id==3) 
+      {
+        info1=<?php echo $num_ref3 ?>;
+        info2=<?php echo $num_ref3a ?>;
+        info3=<?php echo $perc_ref3 ?>;
+        csv="$csv3";
+      }
+
+      if (val.id==4) 
+      {
+        info1=<?php echo $num_ref4 ?>;
+        info2=<?php echo $num_ref4a ?>;
+        info3=<?php echo $perc_ref4 ?>;
+        csv="$csv4";
+      }
+
+      if (val.id=="R") 
+      {
+        info1=<?php echo $num_refR ?>;
+        info2=<?php echo $num_refRa ?>;
+        info3=<?php echo $perc_refR ?>;
+        csv="$csvR";
+      }
+        
+        $("tbody.reference").append(
+          `
+        <tr>
+        <th scope="row">`+val.id+` - `+val.title+`</th>
+      <td>`+info1+`</td>
+      <td>`+info2+`</td>
+      <td>`+info3+`</td>
+      <td>
+      <form action="csv.php" method="post" target="_blank">
+				<input type="hidden" name="csv" value="<?php echo `+csv+` ?>" />
+				<input type="hidden" name="filename" value="bonusFacebook" />
+        <input type="hidden" name="filetype" value="campione" />
+        <input style="width:60px; height:50px"  class="form-control" type="image" value="submit" src="img/csv.png" />
+        </form>	    
+    </td>
+    </tr>
+    `
+         );
+
+      
+      });
+
+
+    });
+ }
+
+
+ function addDetails()
+ {
+   let info4;
+
+
+  $.getJSON('referal.json', function(data) 
+    {
+  
+      $.each(data.referal, function(key, val) 
+      {
+
+      if (val.id==2) 
+      {
+     info4=`
+        <?php
+       while ($row = mysqli_fetch_assoc($esegui_query_azioni2a)) 
+      {
+      $perc_refAct2=ceil($row["nref2"]/$num_ref2*100);
+      ?>
+
+     <tr>
+     <td><?php echo $row["cref2"]; ?></td>
+     <td><?php echo $row["nref2"]; ?></td>
+     <td><?php echo $perc_refAct2; ?>%</td>
+     </tr>   
+    <?php } ?> 
+    `;
+
+    
+      }
+
+      if (val.id==3) 
+      {
+      info4=`
+      <?php
+       while ($row = mysqli_fetch_assoc($esegui_query_azioni3a)) 
+      {
+      $perc_refAct3=ceil($row["nref3"]/$num_ref3*100);
+      ?>
+
+     <tr>
+     <td><?php echo $row["cref3"]; ?></td>
+     <td><?php echo $row["nref3"]; ?></td>
+     <td><?php echo $perc_refAct3; ?>%</td>
+     </tr>   
+    <?php } ?> 
+    `;
+
+
+      }
+
+      if (val.id==4) 
+      {
+        info4=`
+        <?php
+       while ($row = mysqli_fetch_assoc($esegui_query_azioni4a)) 
+      {
+      $perc_refAct4=ceil($row["nref4"]/$num_ref4*100);
+      ?>
+
+     <tr>
+     <td><?php echo $row["cref4"]; ?></td>
+     <td><?php echo $row["nref4"]; ?></td>
+     <td><?php echo $perc_refAct4; ?>%</td>
+     </tr>   
+    <?php } ?> 
+    `;
+
+      }
+
+      if (val.id=="R") 
+      {
+      info4=`
+        <?php
+       while ($row = mysqli_fetch_assoc($esegui_query_azioniRa)) 
+      {
+      $perc_refActR=ceil($row["nrefR"]/$num_refR*100);
+      ?>
+
+     <tr>
+     <td><?php echo $row["crefR"]; ?></td>
+     <td><?php echo $row["nrefR"]; ?></td>
+     <td><?php echo $perc_refActR; ?>%</td>
+     </tr>   
+    <?php } ?> 
+    `;
+  
+
+      }
+        
+        $("div.details").append(
+          `
+          <div class="col-xl-3 col-lg-5 datisync"> 
+<div class="card shadow mb-12 ">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-primary"> `+val.title+` <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="`+val.icon+`"></i></span> </h6>
+ </div>
+
+<div class="card-body">  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Azioni</th>
+        <th scope="col">Utenti</th>
+        <th scope="col">%</th>
+      </tr>
+    </thead>
+
+  <tbody>
+
+  `+info4+`
+
+    </tbody>
+
+  </table>
+
+</div>
+</div>
+</div>
+    `
+         );
+
+      
+      });
+
+
+    });
+ }
+
+
+ addrows(); 
+ addDetails(); 
+</script>
 
 <?php 
 

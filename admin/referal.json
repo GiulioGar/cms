@@ -1,0 +1,38 @@
+{
+    "referal":
+    [
+        {
+            "id":2,
+            "ref":"ref2",
+            "title":"Facebook",
+            "icon":"fab fa-facebook",
+            "spesa":300
+        },
+
+        {
+            "id":3,
+            "ref":"ref3",
+            "title":"MVF",
+            "spesa":300
+        },
+
+        {
+            "id":4,
+            "ref":"ref4",
+            "title":"Facebook Gruppo Emy",
+            "spesa":300
+        },
+
+        {
+            "id":"R",
+            "ref":"refR",
+            "title":"Riattivazioni",
+            "spesa":300
+        }
+
+
+
+    ]
+    
+    
+    }
