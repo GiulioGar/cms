@@ -13,23 +13,27 @@
             "id":3,
             "ref":"ref3",
             "title":"MVF",
+            "icon":"fas fa-envelope-open-text",
             "spesa":300
         },
 
         {
             "id":4,
             "ref":"ref4",
-            "title":"Facebook Gruppo Emy",
+            "title":"Gruppo Emy",
+            "icon":"fab fa-facebook-messenger",
             "spesa":300
         },
+    
 
         {
             "id":"R",
             "ref":"refR",
             "title":"Riattivazioni",
+            "icon":"fas fa-chalkboard-teacher",
             "spesa":300
         }
-
+   
 
 
     ]

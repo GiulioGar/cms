@@ -27,6 +27,7 @@ $esegui_query_azioni2a = mysqli_query($admin,$query_azioni2a);
 
 
 
+
 //MVF - ref 3
 $query_nuoviutenti3 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref3') and reg_date like '%".$annocorrente."%'  ";
 $esegui_query_nuoviutenti3 = mysqli_query($admin,$query_nuoviutenti3);
@@ -135,7 +136,10 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 <div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> ISCRITTI <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-user-clock"></i></span> </h6>
+	<div col-xs-6><h6 class="m-0 font-weight-bold text-primary"> ISCRITTI <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-user-clock"></i></span> </h6></div>
+  <div class="col col-xs-6 text-right">
+	<?php require_once('modifica_ref.php'); ?>
+	</div>
  </div>
 
 <div class="card-body">  
@@ -146,13 +150,16 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 
 <!-- TABELLA DATI  DA  ENGAGE-->
 
-<table class="table">
+<table  class="table table-striped">
   <thead class="thead-light">
     <tr>
       <th scope="col">Referente</th>
       <th scope="col">Registrati</th>
       <th scope="col">Attivi</th>
       <th scope="col">%</th>
+      <th scope="col">CPI TOT</th>
+      <th scope="col">CPI REALE</th>
+      <th scope="col">Costo</th>
       <th scope="col">Download</th>
     </tr>
   </thead>
@@ -204,6 +211,9 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
    let info1;
    let info2;
    let info3;
+   let info5;
+   let info6;
+   let info7;
    let price;
    let csv;
 
@@ -218,6 +228,11 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
         info1=<?php echo $num_ref2 ?>;
         info2=<?php echo $num_ref2a ?>;
         info3=<?php echo $perc_ref2 ?>;
+        info5=val.spesa/<?php echo $num_ref2 ?>;
+        info5 = info5.toFixed(2);
+        info6=val.spesa/<?php echo $num_ref2a ?>;
+        info6 = info6.toFixed(2);
+        info7=val.spesa;
         csv="$csv";
       }
 
@@ -226,6 +241,11 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
         info1=<?php echo $num_ref3 ?>;
         info2=<?php echo $num_ref3a ?>;
         info3=<?php echo $perc_ref3 ?>;
+        info5=val.spesa/<?php echo $num_ref3 ?>;
+        info5 = info5.toFixed(2);
+        info6=val.spesa/<?php echo $num_ref3a ?>;
+        info6 = info6.toFixed(2);
+        info7=val.spesa;
         csv="$csv3";
       }
 
@@ -234,6 +254,11 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
         info1=<?php echo $num_ref4 ?>;
         info2=<?php echo $num_ref4a ?>;
         info3=<?php echo $perc_ref4 ?>;
+        info5=val.spesa/<?php echo $num_ref4 ?>;
+        info5 = info5.toFixed(2);
+        info6=val.spesa/<?php echo $num_ref4a ?>;
+        info6 = info6.toFixed(2);
+        info7=val.spesa;
         csv="$csv4";
       }
 
@@ -242,6 +267,11 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
         info1=<?php echo $num_refR ?>;
         info2=<?php echo $num_refRa ?>;
         info3=<?php echo $perc_refR ?>;
+        info5=val.spesa/<?php echo $num_refR ?>;
+        info5 = info5.toFixed(2);
+        info6=val.spesa/<?php echo $num_refRa ?>;
+        info6 = info6.toFixed(2);
+        info7=val.spesa;
         csv="$csvR";
       }
         
@@ -252,12 +282,15 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
       <td>`+info1+`</td>
       <td>`+info2+`</td>
       <td>`+info3+`</td>
+      <td>`+info5+`€</td>
+      <td>`+info6+`€</td>
+      <td>`+info7+`€</td>
       <td>
       <form action="csv.php" method="post" target="_blank">
 				<input type="hidden" name="csv" value="<?php echo `+csv+` ?>" />
 				<input type="hidden" name="filename" value="bonusFacebook" />
         <input type="hidden" name="filetype" value="campione" />
-        <input style="width:60px; height:50px"  class="form-control" type="image" value="submit" src="img/csv.png" />
+        <input style="width:40px; height:30px"  class="form-control" type="image" value="submit" src="img/csv.png" />
         </form>	    
     </td>
     </tr>
@@ -287,17 +320,52 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
       {
      info4=`
         <?php
+        $NactA=0;
+        $NactB=0;
+        $NactC=0;
+        $NactD=0;
+        $NactE=0;
+
        while ($row = mysqli_fetch_assoc($esegui_query_azioni2a)) 
       {
-      $perc_refAct2=ceil($row["nref2"]/$num_ref2*100);
-      ?>
+      if($row["cref2"]==0) { $NactA=$NactA+$row["nref2"];  $perc_NactA=ceil($NactA/$num_ref2*100);}
+      if($row["cref2"]>=1 && $row["cref2"]<=2) { $NactB=$NactB+$row["nref2"];; $perc_NactB=ceil($NactB/$num_ref2*100);}
+      if($row["cref2"]>=3 && $row["cref2"]<=5) { $NactC=$NactC+$row["nref2"]; $perc_NactC=ceil($NactC/$num_ref2*100);}
+      if($row["cref2"]>=6 && $row["cref2"]<=9) { $NactD=$NactD+$row["nref2"]; $perc_NactD=ceil($NactD/$num_ref2*100);}
+      if($row["cref2"]>9) {  $NactE=$NactE+$row["nref2"]; $perc_NactE=ceil($NactE/$num_ref2*100);}
+   } 
+   ?> 
 
-     <tr>
-     <td><?php echo $row["cref2"]; ?></td>
-     <td><?php echo $row["nref2"]; ?></td>
-     <td><?php echo $perc_refAct2; ?>%</td>
-     </tr>   
-    <?php } ?> 
+     <tr style="background-color:#f9aeae">
+     <td>Nessuna(0) </td>
+     <td><?php echo $NactA; ?></td>
+     <td><b><?php echo $perc_NactA; ?>%</b></td>
+     </tr>  
+     
+     <tr style="background-color:#ffde7c">
+     <td>Bassa(1-2) </td>
+     <td><?php echo $NactB; ?></td>
+     <td><b><?php echo $perc_NactB; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#ffff7c">
+     <td>Media(3-5) </td>
+     <td><?php echo $NactC; ?></td>
+     <td><b><?php echo $perc_NactC; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#cfff7c">
+     <td>Buona(6-9) </td>
+     <td><?php echo $NactD; ?></td>
+     <td><b><?php echo $perc_NactD; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#9DCE6B">
+     <td>Ottima(+9) </td>
+     <td><?php echo $NactE; ?></td>
+     <td><b><?php echo $perc_NactE; ?>%</b></td>
+     </tr>
+
     `;
 
     
@@ -307,17 +375,56 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
       {
       info4=`
       <?php
+        $NactA=0;
+        $NactB=0;
+        $NactC=0;
+        $NactD=0;
+        $NactE=0;
+        $perc_NactA=0;
+        $perc_NactB=0;
+        $perc_NactC=0;
+        $perc_NactD=0;
+        $perc_NactE=0;
+
        while ($row = mysqli_fetch_assoc($esegui_query_azioni3a)) 
       {
-      $perc_refAct3=ceil($row["nref3"]/$num_ref3*100);
-      ?>
+      if($row["cref3"]==0) { $NactA=$NactA+$row["nref3"];  $perc_NactA=ceil($NactA/$num_ref3*100);}
+      if($row["cref3"]>=1 && $row["cref3"]<=2) { $NactB=$NactB+$row["nref3"];  $perc_NactB=ceil($NactB/$num_ref3*100);}
+      if($row["cref3"]>=3 && $row["cref3"]<=5) { $NactC=$NactC+$row["nref3"]; $perc_NactC=ceil($NactC/$num_ref3*100);}
+      if($row["cref3"]>=6 && $row["cref3"]<=9) { $NactD=$NactD+$row["nref3"]; $perc_NactD=ceil($NactD/$num_ref3*100);}
+      if($row["cref3"]>9) {  $NactE=$NactE+$row["nref3"];  $perc_NactE=ceil($NactE/$num_ref3*100);}
+   } 
+   ?> 
 
-     <tr>
-     <td><?php echo $row["cref3"]; ?></td>
-     <td><?php echo $row["nref3"]; ?></td>
-     <td><?php echo $perc_refAct3; ?>%</td>
-     </tr>   
-    <?php } ?> 
+     <tr style="background-color:#f9aeae">
+     <td>Nessuna(0) </td>
+     <td><?php echo $NactA; ?></td>
+     <td><b><?php echo $perc_NactA; ?>%</b></td>
+     </tr>  
+     
+     <tr style="background-color:#ffde7c">
+     <td>Bassa(1-2) </td>
+     <td><?php echo $NactB; ?></td>
+     <td><b><?php echo $perc_NactB; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#ffff7c">
+     <td>Media(3-5) </td>
+     <td><?php echo $NactC; ?></td>
+     <td><b><?php echo $perc_NactC; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#cfff7c">
+     <td>Buona(6-9) </td>
+     <td><?php echo $NactD; ?></td>
+     <td><b><?php echo $perc_NactD; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#9DCE6B">
+     <td>Ottima(+9) </td>
+     <td><?php echo $NactE; ?></td>
+     <td><b><?php echo $perc_NactE; ?>%</b></td>
+     </tr>
     `;
 
 
@@ -327,36 +434,115 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
       {
         info4=`
         <?php
+        $NactA=0;
+        $NactB=0;
+        $NactC=0;
+        $NactD=0;
+        $NactE=0;
+        $perc_NactA=0;
+        $perc_NactB=0;
+        $perc_NactC=0;
+        $perc_NactD=0;
+        $perc_NactE=0;
+
        while ($row = mysqli_fetch_assoc($esegui_query_azioni4a)) 
       {
-      $perc_refAct4=ceil($row["nref4"]/$num_ref4*100);
-      ?>
+      if($row["cref4"]==0) { $NactA=$NactA+$row["nref4"];  $perc_NactA=ceil($NactA/$num_ref4*100);}
+      if($row["cref4"]>=1 && $row["cref4"]<=2) { $NactB=$NactB+$row["nref4"];  $perc_NactB=ceil($NactB/$num_ref4*100);}
+      if($row["cref4"]>=3 && $row["cref4"]<=5) { $NactC=$NactC+$row["nref4"]; $perc_NactC=ceil($NactC/$num_ref4*100);}
+      if($row["cref4"]>=6 && $row["cref4"]<=9) { $NactD=$NactD+$row["nref4"]; $perc_NactD=ceil($NactD/$num_ref4*100);}
+      if($row["cref4"]>9) {  $NactE=$NactE+$row["nref4"];  $perc_NactE=ceil($NactE/$num_ref4*100);}
+   } 
+   ?> 
 
-     <tr>
-     <td><?php echo $row["cref4"]; ?></td>
-     <td><?php echo $row["nref4"]; ?></td>
-     <td><?php echo $perc_refAct4; ?>%</td>
-     </tr>   
-    <?php } ?> 
+     <tr style="background-color:#f9aeae">
+     <td>Nessuna(0) </td>
+     <td><?php echo $NactA; ?></td>
+     <td><b><?php echo $perc_NactA; ?>%</b></td>
+     </tr>  
+     
+     <tr style="background-color:#ffde7c">
+     <td>Bassa(1-2) </td>
+     <td><?php echo $NactB; ?></td>
+     <td><b><?php echo $perc_NactB; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#ffff7c">
+     <td>Media(3-5) </td>
+     <td><?php echo $NactC; ?></td>
+     <td><b><?php echo $perc_NactC; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#cfff7c">
+     <td>Buona(6-9) </td>
+     <td><?php echo $NactD; ?></td>
+     <td><b><?php echo $perc_NactD; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#9DCE6B">
+     <td>Ottima(+9) </td>
+     <td><?php echo $NactE; ?></td>
+     <td><b><?php echo $perc_NactE; ?>%</b></td>
+     </tr>
     `;
+   
 
       }
 
       if (val.id=="R") 
       {
       info4=`
-        <?php
+      <?php
+        $NactA=0;
+        $NactB=0;
+        $NactC=0;
+        $NactD=0;
+        $NactE=0;
+        $perc_NactA=0;
+        $perc_NactB=0;
+        $perc_NactC=0;
+        $perc_NactD=0;
+        $perc_NactE=0;
+
        while ($row = mysqli_fetch_assoc($esegui_query_azioniRa)) 
       {
-      $perc_refActR=ceil($row["nrefR"]/$num_refR*100);
-      ?>
+      if($row["crefR"]==0) { $NactA=$NactA+$row["nrefR"];  $perc_NactA=ceil($NactA/$num_refR*100);}
+      if($row["crefR"]>=1 && $row["crefR"]<=2) { $NactB=$NactB+$row["nrefR"];  $perc_NactB=ceil($NactB/$num_refR*100);}
+      if($row["crefR"]>=3 && $row["crefR"]<=5) { $NactC=$NactC+$row["nrefR"]; $perc_NactC=ceil($NactC/$num_refR*100);}
+      if($row["crefR"]>=6 && $row["crefR"]<=9) { $NactD=$NactD+$row["nrefR"]; $perc_NactD=ceil($NactD/$num_refR*100);}
+      if($row["crefR"]>9) {  $NactE=$NactE+$row["nrefR"];  $perc_NactE=ceil($NactE/$num_refR*100);}
+   } 
+   ?> 
 
-     <tr>
-     <td><?php echo $row["crefR"]; ?></td>
-     <td><?php echo $row["nrefR"]; ?></td>
-     <td><?php echo $perc_refActR; ?>%</td>
-     </tr>   
-    <?php } ?> 
+     <tr style="background-color:#f9aeae">
+     <td>Nessuna(0) </td>
+     <td><?php echo $NactA; ?></td>
+     <td><b><?php echo $perc_NactA; ?>%</b></td>
+     </tr>  
+     
+     <tr style="background-color:#ffde7c">
+     <td>Bassa(1-2) </td>
+     <td><?php echo $NactB; ?></td>
+     <td><b><?php echo $perc_NactB; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#ffff7c">
+     <td>Media(3-5) </td>
+     <td><?php echo $NactC; ?></td>
+     <td><b><?php echo $perc_NactC; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#cfff7c">
+     <td>Buona(6-9) </td>
+     <td><?php echo $NactD; ?></td>
+     <td><b><?php echo $perc_NactD; ?>%</b></td>
+     </tr>
+
+     <tr style="background-color:#9DCE6B">
+     <td>Ottima(+9) </td>
+     <td><?php echo $NactE; ?></td>
+     <td><b><?php echo $perc_NactE; ?>%</b></td>
+     </tr>
     `;
   
 
@@ -375,7 +561,7 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th scope="col">Azioni</th>
+        <th scope="col">Attività</th>
         <th scope="col">Utenti</th>
         <th scope="col">%</th>
       </tr>
