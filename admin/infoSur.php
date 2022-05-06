@@ -89,7 +89,8 @@ $arrComp=array_unique($arrComp);
 		{
            $contatti=$row['comp']+$row['cont'];
            $partec=($row['comp']/$contatti)*100;
-            $partec=round($partec);
+           $partec=round($partec);
+		   $azioniSvolte=$row['comp'];
           
 
            if($row['comp']>100) {$u100++;}
@@ -112,7 +113,7 @@ $arrComp=array_unique($arrComp);
 
         </tr>";
 
-		$query_aggiorna = "UPDATE t_user_info SET actions=$contatti WHERE user_id='".$row['uid']."'";
+		$query_aggiorna = "UPDATE t_user_info SET actions=$azioniSvolte WHERE user_id='".$row['uid']."'";
 		$add_actions = mysqli_query($admin,$query_aggiorna) ;
 
 		//echo $query_aggiorna;

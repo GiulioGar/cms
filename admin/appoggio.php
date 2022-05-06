@@ -164,7 +164,7 @@ echo $query_cerca_punteggio;
 
     //// ESPORTA CAMPIONE MVF IN CSV ////
 
-	@$csv="uid;email;firstName;genderSuffix;sid;prj;argo;bytes;loi";
+	@$csv="uid;email;firstName;genderSuffix;sid;prj;argo;bytes;loi;token";
 	$csv .= "\n";
 
 	
@@ -180,10 +180,11 @@ echo $query_cerca_punteggio;
 			$nome=str_replace('"', "", $nome);
 			$nome=str_replace("'", "", $nome);
             $sesso=$row['gender'];
+            $tok=$row['token'];
             if($sesso==1){$genderTransform="o";}
             else {$genderTransform="a";}
             
-			$csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj.";".$argo.";".$bytes.";".$loi; 
+			$csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj.";".$argo.";".$bytes.";".$loi.";".$tok; 
 			$csv .= "\n";
 			
 			$query_abilita = "INSERT INTO t_respint VALUES ('".$sid."','".$uid."','0','-1','".$prj."')";

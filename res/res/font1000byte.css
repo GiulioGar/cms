@@ -1,0 +1,99 @@
+A.menu {
+	COLOR: #FFFFFF; TEXT-DECORATION: none
+}
+A.menu:link {
+	COLOR: rgb(255, 255, 255); TEXT-DECORATION: none
+}
+A.menu:visited {
+	COLOR: #E8531B; TEXT-DECORATION: none
+}
+A.menu:hover {
+	COLOR: #E8531B; TEXT-DECORATION: none
+}
+A.menu_small {
+	COLOR: #E8531B; TEXT-DECORATION: none
+}
+A.menu_small:link {
+	COLOR: #E8531B; TEXT-DECORATION: none
+}
+A.menu_small:visited {
+	COLOR: #E8531B; TEXT-DECORATION: none
+}
+A.menu_small:hover {
+	COLOR: #ffff00; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A:hover {
+	TEXT-DECORATION: underline;
+	color: #E85319;
+}
+TD.h4townindex {
+	BACKGROUND-COLOR: #126699
+}
+FONT {
+	FONT-SIZE: 12px; COLOR: #FFFFFF; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TABLE {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	border: 0;
+	border-top-color: #000000;
+	border-right-color: #000000;
+}
+INPUT {
+	FONT-SIZE: 10px;
+	COLOR: #000000;
+	BACKGROUND-COLOR: #FFFFFF;
+	font-face: arial;
+	border: 1pt solid #2FACF7;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	border-bottom-color: #000000;
+	border-left-color: #000000;
+	border-color: #000000;
+}
+TEXTAREA {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	BACKGROUND-COLOR: #FFFFFF;
+	font-face: arial;
+	border: 1pt solid #000000;
+
+}
+SELECT {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-FAMILY: Arial;
+	BACKGROUND-COLOR: #FFFFFF;
+	border: 1px solid #2183BE;
+
+}
+.form {
+	FONT-SIZE: 12px;
+	COLOR: #ffffff;
+	BACKGROUND-COLOR: #2284C0;
+	font-face: arial;
+	border: 1pt solid #2284C0;
+
+}
+.pagetitle {
+	FONT-SIZE: 12px; FONT-FAMILY: arial
+}
+.paratitle {
+	FONT-SIZE: 18px; FONT-FAMILY: arial
+}
+.menu {
+	FONT-SIZE: 10px; FONT-FAMILY: arial
+}
+.menu_small {
+	FONT-SIZE: 12px; FONT-FAMILY: arial
+}
+img {
+	border: #FFFFFF;
+}

@@ -24,7 +24,7 @@ if (!(empty($email))){
     $conn->real_escape_string($email));
     $results=$conn->query($sql_insert);
 
-    echo "Cancellazione riuscita. Il tuo indirizzo e-mail è stato rimosso dall'elenco selezionato.";
+    echo "<b>Cancellazione riuscita.<br>Il tuo indirizzo e-mail è stato rimosso dall'elenco selezionato.</b>";
 
 }else{
     echo "Errore, il campo email è vuoto";

@@ -4,7 +4,7 @@ $data = json_decode($jsonString, true);
 ?>
 
 
-<button type="button" class="btn btn-success apri" data-toggle="modal" data-target="#modalCrea" data-whatever="@mdo"><i class="fas fa-folder-plus" aria-hidden="true"></i> <?php echo $data['referal'][0]['title']; ?></button>
+<button type="button" class="btn btn-success apri" data-toggle="modal" data-target="#modalCrea" data-whatever="@mdo"><i class="fas fa-edit"></i> Costi</button>
 
 
 <div class="modal fade" id="modalCrea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -20,18 +20,27 @@ $data = json_decode($jsonString, true);
       <form  action="conteggioIscritti.php" method="get">
 
       <?php 
-      foreach($data as $key => $val)
+      foreach($data['referal'] as $val)
       {
-        echo "<div>".$data()."</div>"
-      }
+        ?>
 
-      ?>
+      <div class="input-group">
+      <div class="input-group-prepend">
+      <span class="input-group-text" id=""> <?php echo $val['title']; ?> </span>
+      </div>
+      <input required type="number" value="<?php echo $val['spesa']; ?>" class="form-control" id="eti" placeholder="" name="eti<?php echo $val['id']; ?>">
+      </div>
+       
+
+   <?php 
+   }
+  ?>
 
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" value="Aggiungi"  name="openSearch" class="btn btn-primary">Aggiungi</button>
+        <button type="submit" value="Modifica"  name="modCosti" class="btn btn-primary">Modifica</button>
       </div>
     </div>
   </div>

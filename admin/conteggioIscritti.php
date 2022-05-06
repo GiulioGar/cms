@@ -8,6 +8,36 @@ require_once('inc_tagbody.php');
 $mesecorrente=date(m);
 $annocorrente=date(Y);
 
+@$modCosti = $_REQUEST['modCosti'];
+$eti2=$_REQUEST['eti2'];
+$eti3=$_REQUEST['eti3'];
+$eti4=$_REQUEST['eti4'];
+$etiR=$_REQUEST['etiR'];
+
+$jsonString = file_get_contents('referal.json');
+$data = json_decode($jsonString, true);
+
+// MODIFICA JSON
+
+$sumSpesa=$data['referal'][0]["spesa"]+$data['referal'][1]["spesa"]+$data['referal'][2]["spesa"]+$data['referal'][3]["spesa"];
+$difSpesa=15000-$sumSpesa;
+
+if ($modCosti=="Modifica")
+{
+  if (!empty($eti2)) { $data['referal'][0]["spesa"]=$eti2; }
+  if (!empty($eti3)) { $data['referal'][1]["spesa"]=$eti3; }
+  if (!empty($eti4)) { $data['referal'][2]["spesa"]=$eti4; }
+  if (!empty($etiR)) { $data['referal'][3]["spesa"]=$etiR; }
+
+}
+
+$newJsonString = json_encode($data);
+file_put_contents('referal.json', $newJsonString);
+
+
+
+// QUERY DI LETTURA DATI
+
 //FACEBOOK - ref 2
 $query_nuoviutenti2 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website') and reg_date like '%".$annocorrente."%'  ";
 $esegui_query_nuoviutenti2 = mysqli_query($admin,$query_nuoviutenti2);
@@ -23,9 +53,6 @@ $perc_ref2=ceil($num_ref2a/$num_ref2*100);
 //CONTA AZIONI - FACEBOOK
 $query_azioni2a = "SELECT DISTINCT(actions) as cref2,  COUNT(DISTINCT user_id) AS nref2 FROM t_user_info where active=1 and (provenienza ='ref2' or provenienza ='website') and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
 $esegui_query_azioni2a = mysqli_query($admin,$query_azioni2a);
-
-
-
 
 
 //MVF - ref 3
@@ -77,8 +104,22 @@ $perc_refR=ceil($num_refRa/$num_refR*100);
 $query_azioniRa = "SELECT DISTINCT(actions) as crefR,  COUNT(DISTINCT user_id) AS nrefR FROM t_user_info where active=1 and provenienza ='react' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
 $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 
+ // somma iscritti
+ $sommaIscritti=$num_ref2+$num_ref3+$num_ref4+$num_refR;
+  // somma attivi
+$sommaIscrittiA=$num_ref2a+$num_ref3a+$num_ref4a+$num_refRa;
+//% attivi
+$mediaAct=($sommaIscrittiA/$sommaIscritti)*100;
+$mediaAct=round($mediaAct, 2);
 
-    //// ESPORTA CAMPIONE FACEBOOK IN CSV ////
+ //cpi Medio
+ $mediaCpi=$sumSpesa/$sommaIscritti;
+ $mediaCpi=round($mediaCpi, 2);
+
+ $mediaCpiA=$sumSpesa/$sommaIscrittiA;
+ $mediaCpiA=round($mediaCpiA, 2);
+
+//// ESPORTA CAMPIONE FACEBOOK IN CSV ////
 
     @$csv="uid;email;firstName;type;points";
     $csv .= "\n";
@@ -127,6 +168,7 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 
 ?>
 
+
 <div class="content-wrapper">
 <div class="container">
 
@@ -136,7 +178,7 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 <div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<div col-xs-6><h6 class="m-0 font-weight-bold text-primary"> ISCRITTI <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-user-clock"></i></span> </h6></div>
+	<div col-xs-6><h6 class="m-0 font-weight-bold text-primary"> COSTI - ISCRITTI <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-euro-sign"></i></span> </h6></div>
   <div class="col col-xs-6 text-right">
 	<?php require_once('modifica_ref.php'); ?>
 	</div>
@@ -148,10 +190,40 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 
 <div class="col-md-12">
 
+<table  class="table">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">Budget</th>
+      <th scope="col">Speso</th>
+      <th scope="col">Resto</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">Isritti</th>
+      <th scope="col">CPI Medio</th>
+      <th scope="col">Attivi</th>
+      <th scope="col">%</th>
+      <th scope="col">CPA Medio</th>
+    </tr>
+  </thead>
+  <tbody class="">
+<tr>
+<td><b>15.000€</b></td>
+<td><b><?php echo $sumSpesa ?>€ </b></td>
+<td><b><?php echo $difSpesa ?>€</b></td>
+<td>&nbsp;</td>
+<td><b><?php echo $sommaIscritti ?></b></td>
+<td><b><?php echo $mediaCpi ?>€</b></td>
+<td><b><?php echo $sommaIscrittiA ?></b></td>
+<td><b><?php echo $mediaAct ?>%</b></td>
+<td><b><?php echo $mediaCpiA ?>€</b></td>
+</tr>
+   
+  </tbody>
+</table>
+
 <!-- TABELLA DATI  DA  ENGAGE-->
 
 <table  class="table table-striped">
-  <thead class="thead-light">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Referente</th>
       <th scope="col">Registrati</th>
@@ -187,7 +259,22 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 </div>
 
  <!-- DETTAGLI CAMPANGE -->
+ <div class="row">
+
+<div class="col-xl-12 col-lg-5 datisync"> 
+<div class="card shadow mb-12 ">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<div col-xs-6><h6 class="m-0 font-weight-bold text-primary"> DETTAGLI - CAMPAGNE <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-info-circle"></i></span> </h6></div>
+  <div class="col col-xs-6 text-right">
+	<?php require_once('modifica_ref.php'); ?>
+	</div>
+ </div>
+
+<div class="card-body">  
+
 <div class="row details">
+  
 
  <!-- REF  -->
 
@@ -198,6 +285,10 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
 
 
  <!-- DETTAGLI CAMPANGE -->
+</div>
+
+</div>
+</div>
 </div>
 
 
@@ -272,7 +363,7 @@ $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
         info6=val.spesa/<?php echo $num_refRa ?>;
         info6 = info6.toFixed(2);
         info7=val.spesa;
-        csv="$csvR";
+        csv="N.D.";
       }
         
         $("tbody.reference").append(
