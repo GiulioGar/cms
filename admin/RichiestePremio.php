@@ -364,19 +364,19 @@ $cicli=0;
 
 $cyear=date("Y");
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 2 Euro' and event_date LIKE '".$cyear."%' ";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono Amazon 2 euro' and event_date LIKE '".$cyear."%' ";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data2=mysqli_fetch_assoc($t_PAGO);
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 5 Euro' and event_date LIKE '".$cyear."%' ";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono Amazon 5 Euro' and event_date LIKE '".$cyear."%' ";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data5=mysqli_fetch_assoc($t_PAGO);
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 10 Euro' and event_date LIKE '".$cyear."%'";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono Amazon 10 Euro' and event_date LIKE '".$cyear."%'";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data10=mysqli_fetch_assoc($t_PAGO);
 
-$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono regalo da 20 Euro'  and event_date LIKE '".$cyear."%'";
+$query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_user_history where event_info='Buono Amazon 20 Euro'  and event_date LIKE '".$cyear."%'";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
 $data20=mysqli_fetch_assoc($t_PAGO);
 

@@ -61,7 +61,7 @@ $infoStory = []; //create array
 
 
 mysqli_select_db($admin,$database_admin);
-$query_story = "SELECT * FROM millebytesdb.t_history_copia WHERE  user_id='$user_id' ORDER BY event_date DESC";
+$query_story = "SELECT * FROM t_user_history WHERE  user_id='$user_id' and event_type='withdraw' ORDER BY event_date DESC";
 $story2 = mysqli_query($admin,$query_story) ;
 $conta_story = mysqli_num_rows($story2);
 
@@ -82,7 +82,7 @@ while ($row = mysqli_fetch_assoc($story2))
 
 //lettura respint
 mysqli_select_db($admin,$database_admin);
-$query_resp = "SELECT * FROM millebytesdb.t_respint WHERE uid ='$user_id' ORDER BY sid DESC";
+$query_resp = "SELECT * FROM millebytesdb.t_respint WHERE uid ='$user_id'  ORDER BY sid DESC";
 $resp= mysqli_query($admin,$query_resp);
 $full_total_resp = mysqli_num_rows($resp);
 

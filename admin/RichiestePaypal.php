@@ -209,7 +209,6 @@ $month2 = date('m', $ts2);
 	 <th>Richiesta</th>
 	 <th>Email paypal</th>
 	 <th>Pagamento</th>
-	 <th>Paga</th>
 	</tr>
 
 </thead>	

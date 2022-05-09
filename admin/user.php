@@ -202,8 +202,10 @@ require_once('function_user.php');
                 $contaInseriti++;
 
                 if ($row['event_info']=="User has been canceled") { $event="CANCELLAZIONE";}
-                if (strstr($row['event_info'],"Buono")) { $event="<b>RICHIESTA PREMIO</b>";}
+                if (strstr($row['event_info'],"Buono")) { $event="<b>Buono Amazon</b>";}
+                if (strstr($row['event_info'],"Ricarica")) { $event="<b>Ricarica Paypal</b>";}
                 if ($row['event_info']=="Interview complete") { $event="RICERCA COMPLETATA"; }
+                if ($row['event_info']=="Interview Complete Cint") { $event="RICERCA CINT"; }
                 if ($row['event_info']=="New user has been created") { $event="NUOVO CONCORSO";}
                 if ($row['event_info']=="bonus") { $event="BONUS";}
                 if (strpos($row['event_info'], 'livelli') !== false)  { $event=$row['event_info'];}
