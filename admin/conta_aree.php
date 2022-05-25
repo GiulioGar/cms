@@ -195,7 +195,7 @@
 <div class="form-group col-md-12"  style="text-align:right; padding:20px;" >
 
 <input class="btn btn-primary dispo" type="button" name="azione" value="DISPONIBILI" />
-<input class="btn btn-primary genera" type="button" name="azione" value="CREA" />
+<input class="btn btn-primary aggiungo" type="button" name="azione" value="AGGIUNGI" />
 
 
 </div>
@@ -211,26 +211,49 @@
 </div>
 
 
-
+<!-- Seconda colonna -->
 <div class="col-xl-6 col-lg-5">
-   <div class="card shadow mb-6">
+
+<!-- Box Campione -->
+<div class="card shadow mb-6">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary"> DATI </h6></span>
-                        </div>
+						<h6 class="m-0 font-weight-bold text-primary"> CAMPIONE </h6></span>
+    </div>
 
 <div class="card-body">                       
 <div class="udisp"> </div> 
 <div class="ugenera"> </div> 
-<div class="alert alert-secondary mess" role="alert" style="display:none"> Caricamento in corso... </div>
+<div class="alert alert-secondary messCampione" role="alert" style="display:none"> Caricamento in corso... </div>
 
 </div>
 
-<!--fine div8-->
+<!--fine box campione-->
 </div>
 
-<!--fine row-->
+<BR/>
+
+<!-- Box Dati-->
+<div class="card shadow mb-6">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary"> DATI </h6></span>
+    </div>
+
+<div class="card-body">                       
+<div class="udisp"> </div> 
+<div class="ug2"> </div> 
+<div class="alert alert-secondary messDati" role="alert" style="display:none"> Caricamento in corso... </div>
+
 </div>
+
+<!--fine box dati-->
+</div>
+
+<!--fine seconda colonna-->
+</div>
+
+
 
 </div>
 
@@ -243,7 +266,7 @@
 
     $('div.ugenera').fadeOut(); 
     $('div.udisp').fadeOut(); 
-    $('.mess').fadeIn();
+    $('.messDati').fadeIn();
 
  
 
@@ -287,11 +310,12 @@
 
   //al click crea campione
 
-  $(".genera").click(function(){
+  $(".aggiungo").click(function()
+  {
 
     $('div.ugenera').fadeOut(); 
     $('div.udisp').fadeOut(); 
-    $('.mess').fadeIn();
+    $('.messCampione').fadeIn();
 
 
 let sid2= $("select.surv").val();
@@ -309,6 +333,7 @@ let act2= $(this).val();
 
 
  //chiamata ajax
+ let sumQuery;
    $.ajax({
 
     //imposto il tipo di invio dati (GET O POST)
@@ -322,9 +347,12 @@ let act2= $(this).val();
      dataType: "html",
    success: function(data) 
              { 
-              $('.mess').fadeOut();
+              $('.messCampione').fadeOut();
               $('div.ugenera').fadeIn(); 
-             $("div.ugenera").html(data);
+//             $("div.ugenera").html(data);
+            sumQuery=sumQuery+data;
+            $("div.ugenera").append(sumQuery);
+            console.log(sumQuery);
            }
 
    });
@@ -332,7 +360,8 @@ let act2= $(this).val();
 
 //AUTO IMPUTAZIONE RICERCA
 
-$( "select.surv" ).change(function() {
+$( "select.surv" ).change(function() 
+{
  let leggoClasse;
  let leggoAge1;
  let leggoAge2;

@@ -135,7 +135,7 @@ $medRed3=number_format($medRed3,0);
 
 <?php }
 
-if ($azione=="CREA")
+if ($azione=="AGGIUNGI")
 {
 $query_crea = "SELECT *  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' and reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ORDER BY RAND()  LIMIT ".$goal."";
 $csv_mvf = mysqli_query($admin,$query_crea);
@@ -160,7 +160,8 @@ $bytes=$punteggio['value'];
 $argo=$argomento['value'];
 $loi=$durata['value'];
 
-echo $query_cerca_punteggio;
+
+
 
     //// ESPORTA CAMPIONE MVF IN CSV ////
 
@@ -195,6 +196,7 @@ echo $query_cerca_punteggio;
 
 }
 
+echo $csv;
 ?>
 
 <?php
