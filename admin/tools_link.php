@@ -30,7 +30,7 @@ require_once('inc_tagbody.php');
 @$nome=$_REQUEST["idval"];
 
 //Tutto maiuscolo//
-$sid=strtoupper($sid);
+//$sid=strtoupper($sid);
 $prj=strtoupper($prj);
 $vId=strtoupper($vId);
 
@@ -219,7 +219,7 @@ $csv .=$addLinks;
  			 <div class="input-group-prepend">
    			 <label class="input-group-text" for="inputGroupSelect01">SID:</label>
   			</div>
- 			<input class="form-control" style="text-transform:uppercase;" id="res" name="sid" type="text">
+ 			<input class="form-control"  id="res" name="sid" type="text">
  			</div>	
 			</div>	
 								
@@ -358,7 +358,7 @@ $csv .=$addLinks;
   <div class="input-group-prepend">
 	<label class="input-group-text" for="inputGroupSelect01">SID:</label>
   </div>
-<input class="form-control" style="text-transform:uppercase;" id="res" name="sid" type="text">
+<input class="form-control"  id="res" name="sid" type="text">
                         
   </div>
   </div>
@@ -384,7 +384,7 @@ $csv .=$addLinks;
  			 <div class="input-group-prepend">
    			 <label class="input-group-text" for="inputGroupSelect01">AGGIUNGI ID:</label>
   			</div>
-       <textarea class="form-control" style="text-transform:uppercase;" name="idval" cols="15" placeholder="Inserisci qui gli UID" rows="10"></textarea>
+       <textarea class="form-control" name="idval" cols="15" placeholder="Inserisci qui gli UID" rows="10"></textarea>
        </div>
 	</div>   
 
