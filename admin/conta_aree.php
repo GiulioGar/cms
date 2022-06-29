@@ -1,6 +1,13 @@
 
+<style>
 
+.task:nth-child(odd) { background:#e5e5e5; width:100%; padding:10px; margin-bottom:5px; border:1px solid gray;}
+.task:nth-child(even) { background:#9DCE6B; width:100%; padding:10px; margin-bottom:5px; border:1px solid gray;}
+.campSel { color:#9b0017;}
+</style>
 	   
+ 
+ 
  <div class="row">
 
  
@@ -145,7 +152,7 @@
 
 <div style="padding:5px" class="form-row">
 
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
 <div class="input-group mb-3">
 <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Iscritto dal:</label>
@@ -154,15 +161,6 @@
 </div>
 </div>
 
-
-<div class="form-group col-md-6">
-<div class="input-group mb-3">
-<div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">N° Utenti:</label>
-  </div>
-	 <input class="form-control goal" type="text" maxlength="4" value=""  name="goal" />
-</div>
-</div>
 
 </div>
 
@@ -174,7 +172,7 @@
     <label class="input-group-text" for="inputGroupSelect01">Target:</label>
   </div>
   <select class="custom-select tag" id="inputGroupSelect01 " name="tag">
-  <option value="">No select</option>
+  <option value="0">No select</option>
   <?php
 			while ($row = mysqli_fetch_assoc($tot_targ))
 			{
@@ -195,7 +193,7 @@
 <div class="form-group col-md-12"  style="text-align:right; padding:20px;" >
 
 <input class="btn btn-primary dispo" type="button" name="azione" value="DISPONIBILI" />
-<input class="btn btn-primary aggiungo" type="button" name="azione" value="AGGIUNGI" />
+<input class="btn btn-primary addInfo" type="button" name="azione" value="AGGIUNGI" />
 
 
 </div>
@@ -222,8 +220,37 @@
     </div>
 
 <div class="card-body">                       
-<div class="udisp"> </div> 
-<div class="ugenera"> </div> 
+
+<div class="ugenera"> 
+<form action="campioni.php" method="get"  class="formC" >
+<div class="ubody"> 
+
+</div>
+
+    <div style="padding:5px" class="form-row">
+
+    <div class="form-group col-md-8">
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">N° Utenti:</label>
+      </div>
+      <input class="form-control goal" type="text" maxlength="5" value=""  name="goal" />
+    </div>
+
+    </div>
+    <div class="form-group col-md-4">
+    <input style="float:right" class="btn btn-primary creaCamp" type="button" name="azione" value="CREA" />
+   
+
+
+    </div>
+
+    </div>
+
+</form>
+</div> 
+
+
 <div class="alert alert-secondary messCampione" role="alert" style="display:none"> Caricamento in corso... </div>
 
 </div>
@@ -260,6 +287,7 @@
 
 
 <script>
+ $('.formC').hide(); 
 
 //al click dei disponibili
   $(".dispo").click(function(){
@@ -279,7 +307,6 @@
  let ag1= $("input.ag1").val();
  let ag2= $("input.ag2").val();
  let isc= $("input.iscrizione").val();
- let goal= $("input.goal").val();
  let tag= $("select.tag").val();
  let act= $(this).val();
 
@@ -291,14 +318,14 @@
       type: "GET",
 
       //Dove devo inviare i dati recuperati dal form?
-      url: "appoggio.php",
+      url: "appoggio2.php",
 
       //Quali dati devo inviare?
       data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&ampiezza="+amp+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
-              $('.mess').fadeOut(); 
+              $('.messDati').fadeOut(); 
               $('div.ugenera').fadeIn(); 
               $('div.udisp').fadeIn(); 
 							$("div.udisp").html(data);
@@ -308,55 +335,257 @@
   });
 
 
-  //al click crea campione
+//AGGIUNGO LE INFO
+let nCamp=0;
+let allInfo="";
+$(".addInfo").click(function()
+{
 
-  $(".aggiungo").click(function()
-  {
+if(nCamp>=0) { $('.formC').fadeIn(); }
 
-    $('div.ugenera').fadeOut(); 
-    $('div.udisp').fadeOut(); 
-    $('.messCampione').fadeIn();
+nCamp++;
 
-
-let sid2= $("select.surv").val();
-let pr2= $("input.prj").val();
 let reg2= $("select.reg").val();
 let area2= $("select.area").val();
 let amp2= $("select.amp").val();
 let sex2= $("select.sex_target").val();
-let ag12= $("input.ag1").val();
-let ag22= $("input.ag2").val();
 let isc2= $("input.iscrizione").val();
-let goal2= $("input.goal").val();
 let tag2= $("select.tag").val();
 let act2= $(this).val();
+let goal= $("input.goal").val();
+
+let sid3= $("select.surv").val();
+let pr3= $("input.prj").val();
+let reg3= $("select.reg").find(":selected").text();
+let area3= $("select.area").find(":selected").text();
+let amp3= $("select.amp").find(":selected").text();
+let sex3= $('.sex_target').find(":selected").text();
+let ag13= $("input.ag1").val();
+let ag23= $("input.ag2").val();
+let isc3= $("input.iscrizione").find(":selected").text();
+let tag3= $("select.tag").find(":selected").text();
+
+// parte testuale
+let selRegione="";
+let selAmpiezza="";
+let selArea="";
+let selIscritti="";
+let selTarget="";
+if(reg3.length >0) { selRegione="<b>Regione</b>: "+reg3+"<br/>";}
+if(area3.length >0) { selArea="<b>Area</b>: "+area3+"<br/>";}
+if(amp3.length >0) { selAmpiezza="<b>Ampiezza</b>: "+amp3+"<br/>";}
+if(isc3.length >0) { selIscritti="<b>Iscritti dal:</b>: "+isc3+"<br/>";}
+if(tag3 != "No select") { selTarget="<b>Target:</b>: "+tag3+"<br/>";}
+// input hidden
+
+
+
+
+allInfo=`<div id="cmp`+nCamp+`" class="task">
+<div class="campSel"><u><b>Campione:`+nCamp+`</b></u></div>
+<b>Genere</b>:`+sex3+`<br/>
+<b>Età</b>: `+ag13+` anni - `+ag23+` anni<br/>`
++selRegione+selArea+selAmpiezza+selIscritti+selTarget+`
+</div>
+<input id="idsur" class="ids`+nCamp+`" name="id_sur`+nCamp+`" type="hidden" value=`+sid3+` />
+<input id="prsur" class="prs`+nCamp+`" name="prj`+nCamp+`" type="hidden" value=`+pr3+` />
+<input id="se" class="se`+nCamp+`" name="sex`+nCamp+`" type="hidden" value=`+sex2+` />
+<input id="ag" class="age`+nCamp+`" name="aged`+nCamp+`" type="hidden" value=`+ag13+` />
+<input id="agb" class="ageb`+nCamp+`" name="agedb`+nCamp+`" type="hidden" value=`+ag23+` />
+<input id="re" class="re`+nCamp+`" name="red`+nCamp+`" type="hidden" value=`+reg2+` />
+<input id="are" class="are`+nCamp+`" name="ared`+nCamp+`" type="hidden" value=`+area2+` />
+<input id="am" class="amp`+nCamp+`" name="ampd`+nCamp+`" type="hidden" value=`+amp2+` />
+<input id="is" class="iscr`+nCamp+`" name="iscrd`+nCamp+`" type="hidden" value=`+isc2+` />
+<input id="tg" class="tgr`+nCamp+`" name="tgrd`+nCamp+`" type="hidden" value=`+tag2+` />
+`
+
+
+
+
+$("div.ubody").append(allInfo);
 
 
  //chiamata ajax
- let sumQuery;
+
+ });
+
+
+  //al click crea campione
+
+  $(".creaCamp").click(function()
+  {
+
+    //$('div.ugenera').fadeOut(); 
+   // $('div.udisp').fadeOut(); 
+   // $('.messCampione').fadeIn();
+
+   const currentYear = new Date().getFullYear();
+
+// creo la query
+ let sumQuery="";
+ let nc=0;
+
+ let campSel=$(".task").length;
+  
+ let getTarget;
+ let fromTag="";
+ let infoQuery="";
+ let addSex;
+ let year1;
+ let year2;
+ let addArea;
+ let addReg;
+ let addAmp;
+ let addTag;
+ let iscrizione;
+ let goal;
+ let sid;
+
+ let itemArea="";
+ let nitemArea;
+ let valPeople;
+ let queryTag="";
+let idx;
+
+ var areaArr;
+ var regArr;
+ var ampArr;
+
+ $( ".task" ).each(function( index ) {
+
+idx++;
+
+  getTarget=$("#tg"+idx).val();
+  addSex=$("#se"+idx).val(); 
+  y1=$("#ag"+idx).val(); 
+  y2=$("#agb"+idx).val(); 
+  year1=currentYear-y1;
+  year2=currentYear-y2;
+  addArea=$("#are"+idx).val(); 
+  addReg=$("#re"+idx).val(); 
+  addAmp=$("#am"+idx).val(); 
+  addTag=$("#tg"+idx).val(); 
+  iscrizione=$("#is"+idx).val(); 
+  goal=$(".goal").val(); 
+  sid=$("#idsur"+idx).val(); 
+
+  if(goal.length ==0) { goal=99999;}
+console.log("id:"+index+" Area: "+addArea);
+
+
+if (addSex !=3) { infoQuery="gender="+addSex;  }
+else { infoQuery="gender!= 0 ";  }
+
+if(addArea !="null")
+{
+  nitemArea=0;
+  itemArea="";
+  areaArr= addArea.split(',');
+  nitemArea= areaArr.length-1;
+
+
+  jQuery.each( areaArr, function( i, val ) {
+
+
+
+    if(i==0) { itemArea=" (area="+val; }
+    else {itemArea=itemArea+" OR area="+val; }
+    if(i==nitemArea) { itemArea=itemArea+")"; }
+
+
+    });
+
+  infoQuery=infoQuery+" AND" +itemArea;
+
+}
+
+if(addReg!="null")
+{
+  nitemArea=0;
+  itemArea="";
+  areaReg= addReg.split(',');
+  nitemArea= areaReg.length-1;
+
+
+  jQuery.each( areaReg, function( i, val ) {
+
+
+
+    if(i==0) { itemArea=" (reg="+val; }
+    else {itemArea=itemArea+" OR reg="+val; }
+    if(i==nitemArea) { itemArea=itemArea+")"; }
+
+
+    });
+
+  infoQuery=infoQuery+" AND" +itemArea;
+}
+
+
+if(addAmp!="null")
+{
+
+  nitemArea=0;
+  itemArea="";
+  areaAmp= addAmp.split(',');
+  nitemArea= areaAmp.length-1;
+
+
+  jQuery.each( areaAmp, function( i, val ) {
+
+    if(val==1) { valPeople="(amp>=0 AND amp <=149999)"; }
+	  if(val==2) { valPeople="(amp>=150000 AND amp <=499999)"; }
+	  if(val==3) { valPeople="(amp>=500000 AND amp <=999999)"; }
+	  if(val==4) { valPeople="(amp>=1000000)"; }
+
+    if(i==0) { itemArea="("+valPeople; }
+    else {itemArea=itemArea+" OR "+valPeople; }
+    if(i==nitemArea) { itemArea=itemArea+")"; }
+
+
+    });
+
+  infoQuery=infoQuery+"AND "+itemArea;
+}
+
+
+if(getTarget!=0) {fromTag=", utenti_target t"; queryTag=="target='"+addTag+"' AND i.user_id=t.uid AND "; }
+
+  sumQuery=`SELECT * FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid+`')  ORDER BY RAND()  LIMIT `+goal+` `;
+  console.log("query:"+sumQuery);
+});
+
+/*
+addArea+addReg+addAmp+addTag+
+
+ //chiamata ajax
    $.ajax({
 
     //imposto il tipo di invio dati (GET O POST)
      type: "GET",
 
      //Dove devo inviare i dati recuperati dal form?
-     url: "appoggio.php",
+     url: "appoggio2.php",
 
      //Quali dati devo inviare?
      data: "id_sur="+sid2+"&prj="+pr2+"&sex_target="+sex2+"&age1_target="+ag12+"&age2_target="+ag22+"&aree="+area2+"&reg="+reg2+"&ampiezza="+amp2+"&iscrizione="+isc2+"&goal="+goal2+"&tag="+tag2+"&azione="+act2, 
      dataType: "html",
    success: function(data) 
              { 
+        
               $('.messCampione').fadeOut();
-              $('div.ugenera').fadeIn(); 
-//             $("div.ugenera").html(data);
-            sumQuery=sumQuery+data;
-            $("div.ugenera").append(sumQuery);
+              $('div.udisp').fadeIn(); 
+              $("div.udisp").append(data);
             console.log(sumQuery);
            }
 
    });
+    */
+
  });
+
+ 
+
 
 //AUTO IMPUTAZIONE RICERCA
 

@@ -12,6 +12,7 @@ $annocorrente=date(Y);
 $eti2=$_REQUEST['eti2'];
 $eti3=$_REQUEST['eti3'];
 $eti4=$_REQUEST['eti4'];
+$eti6=$_REQUEST['eti6'];
 $etiR=$_REQUEST['etiR'];
 
 $jsonString = file_get_contents('referal.json');
@@ -19,7 +20,7 @@ $data = json_decode($jsonString, true);
 
 // MODIFICA JSON
 
-$sumSpesa=$data['referal'][0]["spesa"]+$data['referal'][1]["spesa"]+$data['referal'][2]["spesa"]+$data['referal'][3]["spesa"];
+$sumSpesa=$data['referal'][0]["spesa"]+$data['referal'][1]["spesa"]+$data['referal'][2]["spesa"]+$data['referal'][3]["spesa"]+$data['referal'][4]["spesa"];
 $difSpesa=15000-$sumSpesa;
 
 if ($modCosti=="Modifica")
@@ -27,7 +28,7 @@ if ($modCosti=="Modifica")
   if (!empty($eti2)) { $data['referal'][0]["spesa"]=$eti2; }
   if (!empty($eti3)) { $data['referal'][1]["spesa"]=$eti3; }
   if (!empty($eti4)) { $data['referal'][2]["spesa"]=$eti4; }
-  if (!empty($eti6)) { $data['referal'][3]["spesa"]=$eti4; }
+  if (!empty($eti6)) { $data['referal'][3]["spesa"]=$eti6; }
   if (!empty($etiR)) { $data['referal'][4]["spesa"]=$etiR; }
 
 ?>
