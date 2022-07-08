@@ -229,15 +229,6 @@
 
     <div style="padding:5px" class="form-row">
 
-    <div class="form-group col-md-8">
-    <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">N° Utenti:</label>
-      </div>
-      <input class="form-control goal" type="text" maxlength="5" value=""  name="goal" />
-    </div>
-
-    </div>
     <div class="form-group col-md-4">
     <input style="float:right" class="btn btn-primary creaCamp" type="button" name="azione" value="CREA" />
    
@@ -386,6 +377,17 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 <b>Genere</b>:`+sex3+`<br/>
 <b>Età</b>: `+ag13+` anni - `+ag23+` anni<br/>`
 +selRegione+selArea+selAmpiezza+selIscritti+selTarget+`
+<br/>
+<div class="form-group col-md-12">
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+    <label class="input-group-text" style="background-color:#CE3200!important; font-weight:bold; color:#fff" for="inputGroupSelect01"><i class="fas fa-users"> </i> &nbsp; Utenti:</label>
+  </div>
+	 <input class="form-control goal`+nCamp+`" type="text" maxlength="4" value=""  name="goal" />
+</div>
+</div>
+
+
 </div>
 <input id="idsur" class="ids`+nCamp+`" name="id_sur`+nCamp+`" type="hidden" value=`+sid3+` />
 <input id="prsur" class="prs`+nCamp+`" name="prj`+nCamp+`" type="hidden" value=`+pr3+` />
@@ -397,6 +399,11 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 <input id="am" class="amp`+nCamp+`" name="ampd`+nCamp+`" type="hidden" value=`+amp2+` />
 <input id="is" class="iscr`+nCamp+`" name="iscrd`+nCamp+`" type="hidden" value=`+isc2+` />
 <input id="tg" class="tgr`+nCamp+`" name="tgrd`+nCamp+`" type="hidden" value=`+tag2+` />
+
+
+
+
+
 `
 
 
@@ -422,6 +429,7 @@ $("div.ubody").append(allInfo);
    const currentYear = new Date().getFullYear();
 
 // creo la query
+ let idxQuery="";
  let sumQuery="";
  let nc=0;
 
@@ -440,12 +448,14 @@ $("div.ubody").append(allInfo);
  let iscrizione;
  let goal;
  let sid;
+ let y1=18;
+ let y2=99;
 
  let itemArea="";
  let nitemArea;
  let valPeople;
  let queryTag="";
-let idx;
+let idx=0;
 
  var areaArr;
  var regArr;
@@ -455,28 +465,30 @@ let idx;
 
 idx++;
 
-  getTarget=$("#tg"+idx).val();
-  addSex=$("#se"+idx).val(); 
-  y1=$("#ag"+idx).val(); 
-  y2=$("#agb"+idx).val(); 
+  getTarget=$(".tg"+idx).val();
+  addSex=$(".se"+idx).val(); 
+  y1=$(".age"+idx).val(); 
+  y2=$(".ageb"+idx).val(); 
   year1=currentYear-y1;
   year2=currentYear-y2;
-  addArea=$("#are"+idx).val(); 
-  addReg=$("#re"+idx).val(); 
-  addAmp=$("#am"+idx).val(); 
-  addTag=$("#tg"+idx).val(); 
-  iscrizione=$("#is"+idx).val(); 
-  goal=$(".goal").val(); 
-  sid=$("#idsur"+idx).val(); 
+  addArea=$(".are"+idx).val(); 
+  addReg=$(".re"+idx).val(); 
+  addAmp=$(".amp"+idx).val(); 
+  addTag=$(".tg"+idx).val(); 
+  iscrizione=$(".iscr"+idx).val(); 
+  goal=$(".goal"+idx).val(); 
+  sid=$(".ids"+idx).val(); 
 
   if(goal.length ==0) { goal=99999;}
-console.log("id:"+index+" Area: "+addArea);
+  if(iscrizione.length ==0) { iscrizione="1900-01-01";}
+
+console.log("id:"+idx+" iscrizione: "+addArea);
 
 
 if (addSex !=3) { infoQuery="gender="+addSex;  }
 else { infoQuery="gender!= 0 ";  }
 
-if(addArea !="null")
+if(addArea!="null")
 {
   nitemArea=0;
   itemArea="";
@@ -551,7 +563,12 @@ if(addAmp!="null")
 
 if(getTarget!=0) {fromTag=", utenti_target t"; queryTag=="target='"+addTag+"' AND i.user_id=t.uid AND "; }
 
-  sumQuery=`SELECT * FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid+`')  ORDER BY RAND()  LIMIT `+goal+` `;
+if (idx>1) {sumQuery += "UNION DISTINCT";}
+
+  idxQuery=`(SELECT * FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid+`')  ORDER BY RAND()  LIMIT `+goal+` )`;
+
+  sumQuery +=idxQuery;
+
   console.log("query:"+sumQuery);
 });
 
