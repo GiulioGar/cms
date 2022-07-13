@@ -24,7 +24,7 @@
 
 <div class="form-row">
 
-<div class="form-group col-md-6">
+<div class="form-group col-md-12">
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Ricerca:</label>
@@ -34,26 +34,20 @@
 <?php
     while ($row = mysqli_fetch_assoc($csv_sur)) 
     {
-	 echo "<option class='".$row['prj']."' data-age1='".$row['age1_target']."' data-age2='".$row['age2_target']."' data-sesso='".$row['sex_target']."' value='".$row['sur_id']."'>".$row['sur_id']."</option>";
+	 echo "<option class='".$row['prj']."' data-age1='".$row['age1_target']."' data-age2='".$row['age2_target']."' data-sesso='".$row['sex_target']."' value='".$row['sur_id']."'>".$row['sur_id']." (".$row['prj'].") - ".$row['description']."</option>";
 	}
 ?>
 </select>
+
 </div>
+<input class="form-control prj" type="hidden" value=""  name="prj" />
 </div>
 
-<div class="form-group col-md-6">
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Progetto:</label>
-  </div>
-
-  <input class="form-control prj" type="text" maxlength="10" style="width:130px" value=""  name="prj" />
-</div>
-</div>
 
 </div>
 
-<hr/>
+<hr />
+
 <div class="form-row">
 
 <div class="col-xl-6 col-lg-6">
@@ -172,7 +166,7 @@
     <label class="input-group-text" for="inputGroupSelect01">Target:</label>
   </div>
   <select class="custom-select tag" id="inputGroupSelect01 " name="tag">
-  <option value="0">No select</option>
+  <option value="">No select</option>
   <?php
 			while ($row = mysqli_fetch_assoc($tot_targ))
 			{
@@ -216,7 +210,8 @@
 <div class="card shadow mb-6">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary"> CAMPIONE </h6></span>
+						<span><h6 class="m-0 font-weight-bold text-primary"> CAMPIONE </h6></span> <span style="cursor:pointer" class="deltask"><i style="color:#007bff" class="fas fa-trash"></i></span>
+            
     </div>
 
 <div class="card-body">                       
@@ -227,7 +222,16 @@
 
 </div>
 
-    <div style="padding:5px" class="form-row">
+  <div style="padding:5px" class="form-row">
+
+    <div class="form-group col-md-8">
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+    <label class="input-group-text" style="background-color:#0050CE!important; font-weight:bold; color:#fff" for="inputGroupSelect01"><i class="fas fa-users"> </i> &nbsp; Utenti:</label>
+  </div>
+	 <input class="form-control goal" type="text" maxlength="4" value=""  name="goal" />
+</div>
+</div>
 
     <div class="form-group col-md-4">
     <input style="float:right" class="btn btn-primary creaCamp" type="button" name="azione" value="CREA" />
@@ -281,7 +285,8 @@
  $('.formC').hide(); 
 
 //al click dei disponibili
-  $(".dispo").click(function(){
+$(".dispo").click(function()
+{
 
     $('div.ugenera').fadeOut(); 
     $('div.udisp').fadeOut(); 
@@ -309,10 +314,10 @@
       type: "GET",
 
       //Dove devo inviare i dati recuperati dal form?
-      url: "appoggio2.php",
+      url: "appoggio.php",
 
       //Quali dati devo inviare?
-      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&ampiezza="+amp+"&iscrizione="+isc+"&goal="+goal+"&tag="+tag+"&azione="+act, 
+      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&ampiezza="+amp+"&iscrizione="+isc+"&tag="+tag+"&azione="+act, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
@@ -331,8 +336,10 @@ let nCamp=0;
 let allInfo="";
 $(".addInfo").click(function()
 {
-
-if(nCamp>=0) { $('.formC').fadeIn(); }
+ $(".creaCamp").prop("disabled", true);
+ $('div.udisp').fadeOut(); 
+ $('div.udisp').html(""); 
+if(nCamp>=0) { $('.formC').fadeIn();   $("#golP").val(0).prop("disabled", false);}
 
 nCamp++;
 
@@ -378,12 +385,12 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 <b>Età</b>: `+ag13+` anni - `+ag23+` anni<br/>`
 +selRegione+selArea+selAmpiezza+selIscritti+selTarget+`
 <br/>
-<div class="form-group col-md-12">
+<div style="padding-left:0" class="form-group col-md-12">
 <div class="input-group mb-3">
 <div class="input-group-prepend">
-    <label class="input-group-text" style="background-color:#CE3200!important; font-weight:bold; color:#fff" for="inputGroupSelect01"><i class="fas fa-users"> </i> &nbsp; Utenti:</label>
+    <label class="input-group-text" style="background-color:#CE3200!important; font-weight:bold; color:#fff" for="inputGroupSelect01"><i class="fas fa-percentage"></i> &nbsp; Campione:</label>
   </div>
-	 <input class="form-control goal`+nCamp+`" type="text" maxlength="4" value=""  name="goal" />
+	 <input id="golP" class="form-control goalPerc`+nCamp+`" style="max-width:110px"  type="number" max="100" maxlength="3" value=""   name="goalPerc" />
 </div>
 </div>
 
@@ -406,9 +413,6 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 
 `
 
-
-
-
 $("div.ubody").append(allInfo);
 
 
@@ -426,6 +430,9 @@ $("div.ubody").append(allInfo);
    // $('div.udisp').fadeOut(); 
    // $('.messCampione').fadeIn();
 
+let sid2= $("#idsur").val();
+let pr2= $("#prsur").val();
+ 
    const currentYear = new Date().getFullYear();
 
 // creo la query
@@ -447,23 +454,25 @@ $("div.ubody").append(allInfo);
  let addTag;
  let iscrizione;
  let goal;
- let sid;
  let y1=18;
  let y2=99;
+ let limit=0;
 
  let itemArea="";
  let nitemArea;
  let valPeople;
  let queryTag="";
 let idx=0;
+let act2= $(this).val();
 
  var areaArr;
  var regArr;
  var ampArr;
 
- $( ".task" ).each(function( index ) {
+ $( ".task" ).each(function( index ) 
+ {
 
-idx++;
+  idx++;
 
   getTarget=$(".tg"+idx).val();
   addSex=$(".se"+idx).val(); 
@@ -476,13 +485,18 @@ idx++;
   addAmp=$(".amp"+idx).val(); 
   addTag=$(".tg"+idx).val(); 
   iscrizione=$(".iscr"+idx).val(); 
-  goal=$(".goal"+idx).val(); 
-  sid=$(".ids"+idx).val(); 
+  totalgoal=$(".goal").val(); 
+  goalPerc=$(".goalPerc"+idx).val(); 
 
-  if(goal.length ==0) { goal=99999;}
+  if(totalgoal.length ==0) { totalgoal=99999;}
   if(iscrizione.length ==0) { iscrizione="1900-01-01";}
+  limit=totalgoal-(totalgoal/100)*goalPerc;
+  limit=Math.ceil(limit);
+  limit=totalgoal-limit;
 
-console.log("id:"+idx+" iscrizione: "+addArea);
+console.log("totalgoal:"+totalgoal);  
+console.log("goalPerc:"+goalPerc);
+console.log("limit:"+limit);
 
 
 if (addSex !=3) { infoQuery="gender="+addSex;  }
@@ -565,15 +579,14 @@ if(getTarget!=0) {fromTag=", utenti_target t"; queryTag=="target='"+addTag+"' AN
 
 if (idx>1) {sumQuery += "UNION DISTINCT";}
 
-  idxQuery=`(SELECT * FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid+`')  ORDER BY RAND()  LIMIT `+goal+` )`;
+  idxQuery=`(SELECT * FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid2+`')  ORDER BY RAND()  LIMIT `+limit+` )`;
 
   sumQuery +=idxQuery;
 
-  console.log("query:"+sumQuery);
+
 });
 
-/*
-addArea+addReg+addAmp+addTag+
+
 
  //chiamata ajax
    $.ajax({
@@ -582,10 +595,10 @@ addArea+addReg+addAmp+addTag+
      type: "GET",
 
      //Dove devo inviare i dati recuperati dal form?
-     url: "appoggio2.php",
+     url: "appoggio.php",
 
      //Quali dati devo inviare?
-     data: "id_sur="+sid2+"&prj="+pr2+"&sex_target="+sex2+"&age1_target="+ag12+"&age2_target="+ag22+"&aree="+area2+"&reg="+reg2+"&ampiezza="+amp2+"&iscrizione="+isc2+"&goal="+goal2+"&tag="+tag2+"&azione="+act2, 
+     data:"que="+sumQuery+"&azione="+act2+"&id_sur="+sid2+"&prj="+pr2, 
      dataType: "html",
    success: function(data) 
              { 
@@ -597,7 +610,7 @@ addArea+addReg+addAmp+addTag+
            }
 
    });
-    */
+   
 
  });
 
@@ -625,6 +638,10 @@ $( "select.surv" ).change(function()
 
 });
 
+
+ 
+
+
 // OBBLIGO RICERCA
 
 
@@ -642,24 +659,49 @@ $( "select.surv" ).change(function() {
 selSid=$("select.surv").val();
 selPr= $("input.prj").val();
 
-console.log("sid"+selSid);
-console.log("pr"+selPr);
 
-if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
-else  {$(".genera").prop("disabled",true); }
-});
-
-$("input.prj").change(function() {
-
-selSid=$("select.surv").val();
-selPr= $("input.prj").val();
 
 if (selSid !="" && selPr !="") {$(".genera").prop("disabled",false); }
 else  {$(".genera").prop("disabled",true); }
 });
 
 
+let opz=0;
+let sum=0;
+let nTask=0;
 
+$(document).on('change', '#golP', function(){
+sum=0;
+nTask=$(".task").length;
+
+
+
+
+    if (nTask==1)
+    {
+       $("#golP").val(100).prop("disabled", true);
+
+    }
+    for (let i = 1; i <= nTask; i++) {
+        sum+=Number($(".goalPerc"+i).val());
+    }
+
+
+    if(sum !=100) { $(".creaCamp").prop("disabled", true); }
+    else { $(".creaCamp").prop("disabled", false); }
+
+//console.log("Somma:"+sum);
+
+});
+
+
+function delTask()
+{
+  nCamp=0;
+  $(".ugenera").empty().append("<div class=\"ubody\"></div>");
+}
+
+$(".deltask").click(function() { delTask(); });
 
 </script>
 
