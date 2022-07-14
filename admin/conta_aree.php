@@ -222,9 +222,9 @@
 
 </div>
 
-  <div style="padding:5px" class="form-row">
+  <div style="padding:5px" class="form-row uform">
 
-    <div class="form-group col-md-8">
+<div class="form-group col-md-8">
 <div class="input-group mb-3">
 <div class="input-group-prepend">
     <label class="input-group-text" style="background-color:#0050CE!important; font-weight:bold; color:#fff" for="inputGroupSelect01"><i class="fas fa-users"> </i> &nbsp; Utenti:</label>
@@ -336,7 +336,9 @@ let nCamp=0;
 let allInfo="";
 $(".addInfo").click(function()
 {
+ $(".uform").show();
  $(".creaCamp").prop("disabled", true);
+ $('div.uform').fadeIn(); 
  $('div.udisp').fadeOut(); 
  $('div.udisp').html(""); 
 if(nCamp>=0) { $('.formC').fadeIn();   $("#golP").val(0).prop("disabled", false);}
@@ -361,7 +363,7 @@ let sex3= $('.sex_target').find(":selected").text();
 let ag13= $("input.ag1").val();
 let ag23= $("input.ag2").val();
 let isc3= $("input.iscrizione").find(":selected").text();
-let tag3= $("select.tag").find(":selected").text();
+let tag3= $("select.tag").val();
 
 // parte testuale
 let selRegione="";
@@ -373,14 +375,14 @@ if(reg3.length >0) { selRegione="<b>Regione</b>: "+reg3+"<br/>";}
 if(area3.length >0) { selArea="<b>Area</b>: "+area3+"<br/>";}
 if(amp3.length >0) { selAmpiezza="<b>Ampiezza</b>: "+amp3+"<br/>";}
 if(isc3.length >0) { selIscritti="<b>Iscritti dal:</b>: "+isc3+"<br/>";}
-if(tag3 != "No select") { selTarget="<b>Target:</b>: "+tag3+"<br/>";}
+if(tag3 != "") { selTarget="<b>Target:</b>: "+tag3+"<br/>";}
 // input hidden
 
 
 
 
 allInfo=`<div id="cmp`+nCamp+`" class="task">
-<div class="campSel"><u><b>Campione:`+nCamp+`</b></u></div>
+<div class="campSel"><i class="fas fa-dot-circle"> </i><u><b>Campione:`+nCamp+`</b></u></div>
 <b>Genere</b>:`+sex3+`<br/>
 <b>Età</b>: `+ag13+` anni - `+ag23+` anni<br/>`
 +selRegione+selArea+selAmpiezza+selIscritti+selTarget+`
@@ -405,7 +407,7 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 <input id="are" class="are`+nCamp+`" name="ared`+nCamp+`" type="hidden" value=`+area2+` />
 <input id="am" class="amp`+nCamp+`" name="ampd`+nCamp+`" type="hidden" value=`+amp2+` />
 <input id="is" class="iscr`+nCamp+`" name="iscrd`+nCamp+`" type="hidden" value=`+isc2+` />
-<input id="tg" class="tgr`+nCamp+`" name="tgrd`+nCamp+`" type="hidden" value=`+tag2+` />
+<input id="tg" class="tgr`+nCamp+`" name="tgrd`+nCamp+`" type="hidden" value="`+tag2+`" />
 
 
 
@@ -474,7 +476,7 @@ let act2= $(this).val();
 
   idx++;
 
-  getTarget=$(".tg"+idx).val();
+  getTarget=$(".tgr"+idx).val();
   addSex=$(".se"+idx).val(); 
   y1=$(".age"+idx).val(); 
   y2=$(".ageb"+idx).val(); 
@@ -574,15 +576,19 @@ if(addAmp!="null")
   infoQuery=infoQuery+"AND "+itemArea;
 }
 
+console.log("T: "+getTarget);
 
-if(getTarget!=0) {fromTag=", utenti_target t"; queryTag=="target='"+addTag+"' AND i.user_id=t.uid AND "; }
+
+if(getTarget !="" )  { fromTag=", utenti_target t"; queryTag="and target='"+getTarget+"' AND i.user_id=t.uid "; }
+
 
 if (idx>1) {sumQuery += "UNION DISTINCT";}
 
-  idxQuery=`(SELECT * FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid2+`')  ORDER BY RAND()  LIMIT `+limit+` )`;
+  idxQuery=`(SELECT user_id,email,first_name,gender,token FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` `+queryTag+`  and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid2+`')  ORDER BY RAND()  LIMIT `+limit+` )`;
 
   sumQuery +=idxQuery;
 
+  console.log("Q: "+sumQuery);
 
 });
 
@@ -610,7 +616,7 @@ if (idx>1) {sumQuery += "UNION DISTINCT";}
            }
 
    });
-   
+
 
  });
 
@@ -698,7 +704,10 @@ nTask=$(".task").length;
 function delTask()
 {
   nCamp=0;
-  $(".ugenera").empty().append("<div class=\"ubody\"></div>");
+  $(".ubody").empty();
+  $(".udisp").empty();
+  $(".uform").hide();
+
 }
 
 $(".deltask").click(function() { delTask(); });

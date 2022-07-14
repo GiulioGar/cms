@@ -5,7 +5,7 @@
 	  $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
 	  $tot_targ = mysqli_query($admin,$query_trg); 
 
-$query_surv = "SELECT *  FROM t_panel_control where stato=0 AND panel<>0";
+$query_surv = "SELECT *  FROM t_panel_control where stato=0 AND panel=1";
 $csv_sur = mysqli_query($admin,$query_surv);	
 
 

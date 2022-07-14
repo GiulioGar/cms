@@ -145,7 +145,7 @@ $query_crea =$readQuery;
 $csv_mvf = mysqli_query($admin,$query_crea);
 $total_rows=mysqli_num_rows($csv_mvf);
 
-echo "test= ".$query_crea;
+//echo "test= ".$query_crea;
 
 //lettura punteggio da assegnare
 $query_cerca_punteggio = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
@@ -207,7 +207,7 @@ if ($azione=="CREA")
 ?>
 <hr/>
 <div class="form-row">
-<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button">Il campione è stato abilitato!</button></h6>
+<h6 class="align-items-center justify-content-between text-center"><button id="alert1" class="btn btn-alert btn-success alcasi" type="button"><i class="fas fa-check-double"></i> Il campione è stato abilitato!</button></h6>
 </div>
 <hr/>
 <div class="form-row">
