@@ -362,7 +362,7 @@ let amp3= $("select.amp").find(":selected").text();
 let sex3= $('.sex_target').find(":selected").text();
 let ag13= $("input.ag1").val();
 let ag23= $("input.ag2").val();
-let isc3= $("input.iscrizione").find(":selected").text();
+let isc3= $("input.iscrizione").val();
 let tag3= $("select.tag").val();
 
 // parte testuale
@@ -382,7 +382,7 @@ if(tag3 != "") { selTarget="<b>Target:</b>: "+tag3+"<br/>";}
 
 
 allInfo=`<div id="cmp`+nCamp+`" class="task">
-<div class="campSel"><i class="fas fa-dot-circle"> </i><u><b>Campione:`+nCamp+`</b></u></div>
+<div class="campSel"><b>Campione:`+nCamp+`</b></u></div>
 <b>Genere</b>:`+sex3+`<br/>
 <b>Età</b>: `+ag13+` anni - `+ag23+` anni<br/>`
 +selRegione+selArea+selAmpiezza+selIscritti+selTarget+`
