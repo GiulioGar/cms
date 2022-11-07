@@ -16,6 +16,7 @@ $sid=$_REQUEST['id_sur'];
 $prj=$_REQUEST['prj'];
 $tags=$_REQUEST['tag'];
 $iscrizione=$_REQUEST['iscrizione'];
+$escludi=$_REQUEST['sidesc'];
 $currentYear=date("Y");
 $readQuery=$_REQUEST['que'];
 
@@ -115,7 +116,7 @@ if ($goal=="") {$goal=100000; }
 
 if ($azione=="DISPONIBILI")
 {
-$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."')  ";
+$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."') and user_id NOT IN (SELECT uid FROM t_respint where sid='".$escludi."' and status=3) ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 
@@ -129,7 +130,9 @@ $medRed3=($dataDisp['total']/100)*$totRed3;
 $medRed3=number_format($medRed3,0);
 
 
+//echo $query_contaDisp;
 ?>
+
 
 <div class="udisp"><i class="fas fa-users"></i> Utenti disponibili: <span class="udisp"> </span> <?php echo $dataDisp['total']; ?> </div>
 <br/>

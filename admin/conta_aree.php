@@ -146,13 +146,28 @@
 
 <div style="padding:5px" class="form-row">
 
-<div class="form-group col-md-12">
+<div class="form-group col-md-4">
 <div class="input-group mb-3">
 <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Iscritto dal:</label>
   </div>
 	   <input required class="form-control iscrizione" type="text" maxlength="4"  value="1990"  name="iscrizione" />
 </div>
+
+
+
+</div>
+
+<div class="form-group col-md-8">
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Escludi ricerca:</label>
+  </div>
+	   <input required class="form-control sidesc" type="text"  value="" placeholder="Inserire codice ricerca"  name="sidesc" />
+</div>
+
+
+
 </div>
 
 
@@ -303,6 +318,7 @@ $(".dispo").click(function()
  let ag1= $("input.ag1").val();
  let ag2= $("input.ag2").val();
  let isc= $("input.iscrizione").val();
+ let esc= $("input.sidesc").val();
  let tag= $("select.tag").val();
  let act= $(this).val();
 
@@ -317,7 +333,7 @@ $(".dispo").click(function()
       url: "appoggio.php",
 
       //Quali dati devo inviare?
-      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&ampiezza="+amp+"&iscrizione="+isc+"&tag="+tag+"&azione="+act, 
+      data: "id_sur="+sid+"&prj="+pr+"&sex_target="+sex+"&age1_target="+ag1+"&age2_target="+ag2+"&aree="+area+"&reg="+reg+"&ampiezza="+amp+"&iscrizione="+isc+"&sidesc="+esc+"&tag="+tag+"&azione="+act, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
@@ -350,6 +366,7 @@ let area2= $("select.area").val();
 let amp2= $("select.amp").val();
 let sex2= $("select.sex_target").val();
 let isc2= $("input.iscrizione").val();
+let esc2= $("input.sidesc").val();
 let tag2= $("select.tag").val();
 let act2= $(this).val();
 let goal= $("input.goal").val();
@@ -363,6 +380,7 @@ let sex3= $('.sex_target').find(":selected").text();
 let ag13= $("input.ag1").val();
 let ag23= $("input.ag2").val();
 let isc3= $("input.iscrizione").val();
+let esc3= $("input.sidesc").val();
 let tag3= $("select.tag").val();
 
 // parte testuale
@@ -370,11 +388,13 @@ let selRegione="";
 let selAmpiezza="";
 let selArea="";
 let selIscritti="";
+let selEsclusi="";
 let selTarget="";
 if(reg3.length >0) { selRegione="<b>Regione</b>: "+reg3+"<br/>";}
 if(area3.length >0) { selArea="<b>Area</b>: "+area3+"<br/>";}
 if(amp3.length >0) { selAmpiezza="<b>Ampiezza</b>: "+amp3+"<br/>";}
 if(isc3.length >0) { selIscritti="<b>Iscritti dal:</b>: "+isc3+"<br/>";}
+if(esc3.length >0) { selEsclusi="<b>Escludi ricerca:</b>: "+esc3+"<br/>";}
 if(tag3 != "") { selTarget="<b>Target:</b>: "+tag3+"<br/>";}
 // input hidden
 
@@ -385,7 +405,7 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 <div class="campSel"><b>Campione:`+nCamp+`</b></u></div>
 <b>Genere</b>:`+sex3+`<br/>
 <b>Età</b>: `+ag13+` anni - `+ag23+` anni<br/>`
-+selRegione+selArea+selAmpiezza+selIscritti+selTarget+`
++selRegione+selArea+selAmpiezza+selIscritti+selEsclusi+selTarget+`
 <br/>
 <div style="padding-left:0" class="form-group col-md-12">
 <div class="input-group mb-3">
@@ -407,6 +427,7 @@ allInfo=`<div id="cmp`+nCamp+`" class="task">
 <input id="are" class="are`+nCamp+`" name="ared`+nCamp+`" type="hidden" value=`+area2+` />
 <input id="am" class="amp`+nCamp+`" name="ampd`+nCamp+`" type="hidden" value=`+amp2+` />
 <input id="is" class="iscr`+nCamp+`" name="iscrd`+nCamp+`" type="hidden" value=`+isc2+` />
+<input id="esc" class="sesc`+nCamp+`" name="sidescd`+nCamp+`" type="hidden" value=`+esc2+` />
 <input id="tg" class="tgr`+nCamp+`" name="tgrd`+nCamp+`" type="hidden" value="`+tag2+`" />
 
 
@@ -455,6 +476,7 @@ let pr2= $("#prsur").val();
  let addAmp;
  let addTag;
  let iscrizione;
+ let escludi;
  let goal;
  let y1=18;
  let y2=99;
@@ -487,6 +509,7 @@ let act2= $(this).val();
   addAmp=$(".amp"+idx).val(); 
   addTag=$(".tg"+idx).val(); 
   iscrizione=$(".iscr"+idx).val(); 
+  escludi=$(".sesc"+idx).val(); 
   totalgoal=$(".goal").val(); 
   goalPerc=$(".goalPerc"+idx).val(); 
 
@@ -584,7 +607,7 @@ if(getTarget !="" )  { fromTag=", utenti_target t"; queryTag="and target='"+getT
 
 if (idx>1) {sumQuery += "UNION DISTINCT";}
 
-  idxQuery=`(SELECT user_id,email,first_name,gender,token FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` `+queryTag+`  and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid2+`')  ORDER BY RAND()  LIMIT `+limit+` )`;
+  idxQuery=`(SELECT user_id,email,first_name,gender,token FROM t_user_info i `+fromTag+` where `+infoQuery+` AND  active=1 AND Year(birth_date)<'`+year1+`' and Year(birth_date)>'`+year2+`' and reg_date >= `+iscrizione+` `+queryTag+`  and user_id NOT IN (SELECT uid FROM t_respint where sid='`+sid2+`') and user_id NOT IN (SELECT uid FROM t_respint where sid='`+escludi+`' and status=3) ORDER BY RAND()  LIMIT `+limit+` )`;
 
   sumQuery +=idxQuery;
 
