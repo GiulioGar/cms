@@ -1,0 +1,34 @@
+2.0;FER;R2301021;2377;IDEX1773;15/12/2022 15:42:45 CET;15/12/2022 15:45:45 CET;180;7;3382;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1773;mok36=si;mob=1;lang=it;pan=1
+choice;10;20;15
+choice;20;4;3
+choice;21;2;1
+open;30;38
+choice;40;7;3
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;1;-1;-1;-1;-1
+choice;85;3;1
+choice;90;15;010000100010010;1
+choice;100;10;1000000000;0;comp0:Santa Claus 
+scale;110;7;5;1;1;1;1;1;1;1
+choice;120;2;0
+choice;130;9;000001100;5
+choice;140;3;100;0
+scale;150;2;6;000000010000
+choice;179;2;1
+choice;180;2;0
+choice;190;9;000000100;6
+concept;200
+choice;210;2;0
+choice;220;12;010000000000;1
+concept;410
+choice;420;2;0
+choice;430;9;000001000;5
+concept;440
+choice;450;5;2
+choice;460;5;1
+choice;510;17;00010010000000000;3
+choice;520;5;1
+open;530;L armonia 
+open;540;Delle feste 
+choice;550;10;9

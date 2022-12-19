@@ -1,0 +1,50 @@
+2.0;FER;R2301021;404;8DLAX79VQ3;14/12/2022 15:18:12 CET;14/12/2022 15:24:58 CET;406;3;770;sysSID=R2301021;sysPRJ=FER;cel=2;sysUID=8DLAX79VQ3;mok36=si;mob=1;lang=it;cella=1
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;46
+choice;40;7;4
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;1;-1;-1;-1;-1
+choice;85;3;1
+choice;90;15;000000000000100;12
+choice;100;10;1111000000;0;comp0:Babbo natale ;comp3:Renne;comp2:Befana ;comp1:Elfi
+scale;110;7;5;2;3;0;1;0;3;2
+choice;120;2;1
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;0
+choice;220;12;000000000100;9
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;3
+choice;510;17;00000000000000100;14
+choice;520;5;2
+open;530;Poco niente 
+open;540;Poco niente 
+choice;550;10;5
+choice;570;2;1
+choice;600;5;2
+choice;610;5;2
+choice;620;5;2
+choice;630;5;2
+choice;650;5;2
+choice;660;5;2
+choice;720;2;0
+choice;730;7;2
+choice;740;7;4
+choice;750;3;0
+choice;760;9;1
+choice;770;10;8
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204

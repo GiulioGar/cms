@@ -1,0 +1,35 @@
+2.0;FER;R2301021;840;IDEX1059;14/12/2022 18:04:04 CET;<unknown>;0;0;179;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1059;mok36=si;mob=1;lang=it;pan=1;mok712=si
+choice;10;20;7
+choice;20;4;1
+choice;21;2;1
+open;30;38
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;2;1;-1;-1;-1
+choice;85;3;0
+choice;90;15;001001000000100;2
+choice;100;10;1111100000;0;comp0:Renna;comp4:Bue;comp3:Asinello;comp2:Babbo natale ;comp1:Elfo
+scale;110;7;5;0;2;0;0;0;2;0
+choice;120;2;1
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;3
+choice;510;17;00000000000100000;11
+choice;520;5;2
+open;530;La caccia all'elfo
+open;540;Non è una cosa che ci rappresenta 
+choice;550;10;2
+choice;570;2;1
+choice;600;5;1
+choice;610;5;1
+choice;620;5;0
+choice;630;5;2
+composed;3382
+concept;3380
+open;3381;0

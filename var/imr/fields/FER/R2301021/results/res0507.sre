@@ -1,0 +1,48 @@
+2.0;FER;R2301021;507;9OFQX4Y5DT;14/12/2022 16:09:27 CET;14/12/2022 16:16:58 CET;451;3;770;sysSID=R2301021;sysPRJ=FER;cel=1;sysUID=9OFQX4Y5DT;mob=1;lang=it;cella=0;mok712=si
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;50
+choice;40;7;4
+choice;50;2;0
+choice;70;6;2
+scale;80;5;8;7;5;3;-1;-1
+choice;85;3;1
+choice;90;15;011000000000100;12
+choice;100;10;1111100000;0;comp0:Babbo natale ;comp4:Gesù bambino ;comp3:Maria;comp2:Giuseppe ;comp1:Elfo
+scale;110;7;5;0;0;1;0;0;3;1
+choice;120;2;1
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;1
+choice;520;5;2
+open;530;La conosco poco 
+open;540;Non saprei 
+choice;550;10;9
+choice;570;2;1
+choice;600;5;2
+choice;610;5;1
+choice;620;5;1
+choice;630;5;1
+choice;650;5;2
+choice;660;5;2
+choice;720;2;1
+choice;730;7;3
+choice;740;7;3
+choice;750;3;0
+choice;760;9;0
+choice;770;10;9
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204

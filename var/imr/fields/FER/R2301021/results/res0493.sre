@@ -1,0 +1,7 @@
+2.0;FER;R2301021;493;TVMHBS4XZD;14/12/2022 16:02:14 CET;14/12/2022 16:02:43 CET;29;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=TVMHBS4XZD;mob=1;lang=it
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;57
+choice;40;7;5
+choice;50;2;1

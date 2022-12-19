@@ -1,0 +1,72 @@
+2.0;FER;R2301021;2027;1MR22UCCX9;15/12/2022 06:13:26 CET;15/12/2022 06:37:50 CET;1464;3;770;Svar7=7;Svar6=1;Svar5=3;Svar4=4;Svar3=0;Svar2=5;Svar1=2;sysSID=R2301021;Svar0=6;sysUID=1MR22UCCX9;sysPRJ=FER;cella=1;r7=0;r6=0;r5=1;r4=2;r3=0;r2=4;r1=2;r0=6;mok712=si;cel=2;mob=1;lang=it
+choice;10;20;6
+choice;20;4;1
+choice;21;2;1
+open;30;37
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;4;2;-1;-1;-1
+choice;85;3;1
+choice;90;15;110101011100110;8
+choice;100;10;1111111111;0;comp1:La moglie di babbo natale ;comp0:Babbo natale ;comp9:Presepe;comp8:Renne;comp7:Krampus ;comp6:San nikolaud;comp5:Bambini;comp4:Pupazzi di neve;comp3:Grinc;comp2:Elfi
+scale;110;7;5;1;1;1;0;0;2;2
+choice;120;2;0
+choice;130;9;000000010;7
+choice;140;3;110;1
+scale;150;2;6;001001100100
+open;151;Calendario dell'avvento di coppia giochi adulti
+scale;160;2;14;0000000000000010000000001100
+choice;170;4;0
+choice;179;2;0
+choice;180;2;0
+choice;190;9;000111000;5
+concept;200
+choice;210;2;0
+choice;220;12;001100100000;2
+choice;230;2;1
+choice;261;3;2
+choice;270;5;0
+choice;280;13;0000010000001;12;comp12:Solitamente la facciamo quando iniziano le vacanze di natale e siamo tutti in casa
+choice;290;5;0
+choice;300;5;1
+choice;310;5;0
+choice;340;5;0
+choice;350;5;0
+concept;360
+concept;361
+choice;370;5;0
+open;380;Noi amiamo Kinder e la collaborazione con PNP fa sentire piccini anche noi adulti, la magia del Natale è sempre coinvolgente e unisce e scalda il cuore delle famiglie. Quindi Si lo faremo ogni anno. 
+open;390;Mi piace tutto
+open;400;Magari aggiungerei il nome Dell animaletto di casa con qualche foto
+concept;410
+choice;420;2;0
+choice;430;9;000111000;3
+choice;720;2;1
+choice;730;7;5
+choice;740;7;2
+choice;750;3;0
+choice;760;9;0
+choice;770;10;8
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204
+scale;25000;1;102;99
+scale;25100;1;102;98
+scale;25200;1;102;99
+scale;25300;1;102;95
+scale;25400;1;102;98
+scale;25500;1;102;98
+scale;25600;1;102;94
+scale;25700;1;102;98
+scale;35000;1;102;99
+scale;35100;1;102;95
+scale;35200;1;102;96
+scale;35300;1;102;98
+scale;35400;1;102;99
+scale;35500;1;102;96
+scale;35600;1;102;98
+scale;35700;1;102;94

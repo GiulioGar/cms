@@ -1,0 +1,9 @@
+2.0;FER;R2301021;2297;DB069VT1RG;15/12/2022 14:00:22 CET;15/12/2022 14:00:54 CET;32;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=DB069VT1RG;mob=1;lang=it
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;54
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;7;4;-1;-1;-1

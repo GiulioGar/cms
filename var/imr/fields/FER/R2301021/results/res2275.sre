@@ -1,0 +1,36 @@
+2.0;FER;R2301021;2275;QYLDIILOTM;15/12/2022 13:42:55 CET;<unknown>;0;0;179;sysSID=R2301021;sysPRJ=FER;sysUID=QYLDIILOTM;mob=1;lang=it;mok712=si
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;48
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;2;2;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000000000001;14
+choice;100;10;1111000000;0;comp0:Babbo natale ;comp3:Presepe;comp2:Elfi;comp1:Befana
+scale;110;7;5;0;0;0;0;0;0;0
+choice;120;2;0
+choice;130;9;000100000;3
+choice;140;3;100;0
+scale;150;2;6;000000100000
+scale;160;2;14;0000000000000000000000000010
+choice;170;4;2
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;3
+choice;510;17;00000010000000000;6
+choice;520;5;2
+open;530;Non lo so
+open;540;Non lo so
+choice;550;10;9
+choice;570;2;1
+composed;3382
+concept;3380
+open;3381;0

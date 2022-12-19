@@ -1,0 +1,19 @@
+2.0;FER;R2301021;924;IDEX1137;14/12/2022 18:07:06 CET;<unknown>;0;0;40;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1137;mob=1;lang=it;pan=1;mok712=si
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;34
+choice;40;7;2
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;3;-1;-1;-1;-1
+choice;85;3;1
+choice;90;15;100101011000000;7
+choice;100;10;1111000000;0;comp0:Rudolph La Renna;comp3:Gesù bambino;comp2:Elfi;comp1:Babbo Natale
+scale;110;7;5;0;0;0;0;0;1;0
+choice;120;2;0
+choice;130;9;000000001;8;comp8:Da bambina ne avevo uno a scuola
+choice;140;3;010;1
+scale;150;2;6;100000000000
+choice;180;2;1
+concept;200

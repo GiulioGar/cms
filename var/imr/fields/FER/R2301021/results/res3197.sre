@@ -1,0 +1,9 @@
+2.0;FER;R2301021;3197;U6TXBDLSO1;17/12/2022 12:44:41 CET;17/12/2022 12:46:57 CET;136;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=U6TXBDLSO1;lang=it
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;55
+choice;40;7;5
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;4;-1;-1;-1;-1

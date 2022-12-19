@@ -1,0 +1,15 @@
+2.0;FER;R2301021;2285;38EPQ1IVZ1;15/12/2022 13:50:06 CET;16/12/2022 09:04:03 CET;69237;5;;sysSID=R2301021;sysPRJ=FER;sysUID=38EPQ1IVZ1;mob=1;lang=it;mok712=si
+choice;10;20;19
+choice;20;4;3
+choice;21;2;1
+open;30;45
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;2;4;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000000000100;12
+choice;100;10;1100000000;0;comp0:Babbo natale ;comp1:Elfi
+scale;110;7;5;0;0;0;0;0;0;0
+choice;120;2;0
+choice;130;9;001100010;2

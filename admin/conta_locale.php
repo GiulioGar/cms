@@ -13,7 +13,8 @@
                         <div class="card-body">
 
 						<div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?php echo $progressTot ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" 
+  aria-valuenow="<?php echo $progressTot ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
   <?php echo $progressTot ?>%
   </div>
 </div>
@@ -56,7 +57,8 @@
 						{ ?>
 
 <div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?php echo $progress ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" 
+  aria-valuenow="<?php echo $progress ?>" aria-valuemin="0" aria-valuemax="100" style="width:0%">
   <?php echo $progress ?>%
   </div>
 </div>
@@ -126,7 +128,13 @@
 				<div class="col-xl-4 col-lg-5">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary">  PANEL ESTERNO </h6> <span style="color:gray"><i class="fas fa-external-link-alt fa-2x text-gray-300"></i></span>
+						<h6 class="m-0 font-weight-bold text-primary"> 
+							 PANEL ESTERNO <br/>
+							<b> <span style="font-size:14px; color:gray">(<?php echo $usePanelext;  ?>)</span></b>
+
+						</h6>
+					
+						<span style="color:gray"><i class="fas fa-external-link-alt fa-2x text-gray-300"></i></span>
                         </div>
                         <div class="card-body">
 						

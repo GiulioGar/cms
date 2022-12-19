@@ -1,0 +1,9 @@
+2.0;FER;R2301021;699;S30DI4TN59;14/12/2022 16:57:58 CET;14/12/2022 16:58:22 CET;24;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=S30DI4TN59;mob=1;lang=it
+choice;10;20;15
+choice;20;4;3
+choice;21;2;1
+open;30;31
+choice;40;7;2
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;0;-1;-1;-1;-1

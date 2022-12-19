@@ -1,0 +1,9 @@
+2.0;FER;R2301021;616;0LOFFSI4NG;14/12/2022 16:37:09 CET;14/12/2022 16:37:49 CET;40;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=0LOFFSI4NG;mob=1;lang=it
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;52
+choice;40;7;4
+choice;50;2;0
+choice;70;6;2
+scale;80;5;8;4;6;7;-1;-1

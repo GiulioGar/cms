@@ -1,0 +1,66 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=70f5d6c2-17c1-440c-87f4-ba6f727f4a20"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=c1e618ec-df4f-a3f9-5a49-f2cb63d6be2f"
+                },
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "https://s.cint.com/Survey/QuotaFull?ProjectToken=c1e618ec-df4f-a3f9-5a49-f2cb63d6be2f"
+                }                
+					
+			
+						
+			 ]
+    }
+          
+},
+   "quota": {
+    "total_interviews": 1100,
+
+        "targets": [
+        {
+            "name": "rectarget",
+            "description": "rectarget",
+            "question_id": 179,
+            "option_id": [0,1],
+            "value": 550
+        }
+
+                    
+         ]
+}
+
+}

@@ -1,0 +1,7 @@
+2.0;FER;R2301021;1512;IDEX1636;14/12/2022 19:17:57 CET;14/12/2022 19:18:33 CET;36;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1636;mob=1;lang=it;pan=1
+choice;10;20;19
+choice;20;4;3
+choice;21;2;1
+open;30;39
+choice;40;7;3
+choice;50;2;1

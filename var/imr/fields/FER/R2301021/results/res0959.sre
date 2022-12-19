@@ -1,0 +1,54 @@
+2.0;FER;R2301021;959;IDEX1171;14/12/2022 18:07:47 CET;14/12/2022 18:19:44 CET;717;3;770;lang=it;sysPRJ=FER;sysSID=R2301021;mok712=si;cel=1;cella=0;pan=1;mob=1;sysUID=IDEX1171
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;41
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;4;3;-1;-1;-1
+choice;85;3;1
+choice;90;15;111100111110100;12
+choice;100;10;1111111111;0;comp1:Renna;comp0:Elfo;comp9:Pastorelli;comp8:Maria;comp7:San Giuseppe ;comp6:Angeli;comp5:Mamma Natale;comp4:Re magi;comp3:Gesù bambino;comp2:Babbo Natale
+scale;110;7;5;0;2;0;0;0;2;1
+choice;120;2;0
+choice;130;9;000000010;7
+choice;140;3;001;2
+choice;179;2;1
+choice;180;2;0
+choice;190;9;010001000;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;0
+choice;430;9;110000000;0
+concept;440
+choice;450;5;2
+choice;460;5;0
+choice;510;17;00100000000000000;2
+choice;520;5;0
+open;530;La magia e l'aspettativa che crea nei bambini, oltre al divertimento nell'inventare sempre scherzi e situazioni nuove per i piccoli
+open;540;Mi piace tutto
+choice;550;10;5
+choice;570;2;1
+choice;600;5;0
+choice;610;5;0
+choice;620;5;0
+choice;630;5;1
+choice;650;5;0
+choice;660;5;0
+choice;720;2;0
+choice;730;7;3
+choice;740;7;3
+choice;750;3;0
+choice;760;9;1
+choice;770;10;9
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;1
+concept;5204

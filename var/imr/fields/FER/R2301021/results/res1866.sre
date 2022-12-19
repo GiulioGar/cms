@@ -1,0 +1,9 @@
+2.0;FER;R2301021;1866;GL59PSLW1A;14/12/2022 22:32:52 CET;14/12/2022 22:33:34 CET;42;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=GL59PSLW1A;lang=it
+choice;10;20;7
+choice;20;4;1
+choice;21;2;1
+open;30;64
+choice;40;7;5
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;7;-1;-1;-1;-1

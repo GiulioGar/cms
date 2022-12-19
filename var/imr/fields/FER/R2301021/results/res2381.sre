@@ -1,0 +1,54 @@
+2.0;FER;R2301021;2381;IDEX1778;15/12/2022 15:42:50 CET;15/12/2022 15:47:18 CET;268;3;770;lang=it;sysPRJ=FER;sysSID=R2301021;cel=1;cella=0;mok36=si;pan=1;mob=1;sysUID=IDEX1778
+choice;10;20;19
+choice;20;4;3
+choice;21;2;1
+open;30;30
+choice;40;7;2
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;1;0;-1;-1;-1
+choice;85;3;0
+choice;90;15;001100010110100;2
+choice;100;10;1110000000;0;comp0:Babbo Natale ;comp2:Befana ;comp1:Elfo
+scale;110;7;5;0;0;0;0;0;0;1
+choice;120;2;0
+choice;130;9;000001000;5
+choice;140;3;100;0
+scale;150;2;6;000000100000
+scale;160;2;14;0000000000000010000000000000
+choice;170;4;0
+choice;179;2;1
+choice;180;2;0
+choice;190;9;001000000;2
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;0
+choice;520;5;0
+open;530;La curiosità che stimola nei bambini 
+open;540;Mi piace tutto 
+choice;550;10;2
+choice;570;2;1
+choice;600;5;1
+choice;610;5;1
+choice;620;5;1
+choice;630;5;1
+choice;650;5;0
+choice;660;5;0
+choice;720;2;0
+choice;730;7;3
+choice;740;7;3
+choice;750;3;0
+choice;760;9;1
+choice;770;10;8
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;2
+concept;5204

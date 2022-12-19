@@ -1,0 +1,7 @@
+2.0;FER;R2301021;3181;DZ19FEYNHY;17/12/2022 08:39:34 CET;17/12/2022 08:39:48 CET;14;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=DZ19FEYNHY;mob=1;lang=it
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;62
+choice;40;7;5
+choice;50;2;1

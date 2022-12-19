@@ -1,0 +1,28 @@
+2.0;FER;R2301021;138;U75WR26529;14/12/2022 12:57:20 CET;<unknown>;0;0;179;sysSID=R2301021;sysPRJ=FER;sysUID=U75WR26529;mob=1;lang=it;mok712=si
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;51
+choice;40;7;4
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;3;-1;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000000000001;14
+choice;100;10;1100000000;0;comp0:Babbo natale;comp1:Elfo
+scale;110;7;5;1;2;0;1;0;1;2
+choice;120;2;0
+choice;130;9;000100000;3
+choice;140;3;100;0
+scale;150;2;6;000000100000
+scale;160;2;14;0000000000000001000000000000
+choice;170;4;1
+choice;179;2;1
+choice;180;2;0
+choice;190;9;000010000;4
+concept;200
+choice;210;2;1
+choice;270;5;1
+choice;290;5;1
+choice;300;5;1
+choice;310;5;1

@@ -1,0 +1,61 @@
+2.0;FER;R2301021;2222;IDEX1750;15/12/2022 12:22:01 CET;15/12/2022 12:29:45 CET;464;7;720;Svar7=5;Svar6=4;Svar5=6;Svar4=7;Svar3=1;mok36=si;Svar2=3;Svar1=2;sysSID=R2301021;Svar0=0;sysUID=IDEX1750;sysPRJ=FER;cella=0;r7=0;pan=1;r6=0;r5=2;r4=3;r3=0;r2=1;r1=1;r0=0;cel=1;mob=1;lang=it
+choice;10;20;3
+choice;20;4;0
+choice;21;2;1
+open;30;38
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;1;1;-1;-1;-1
+choice;85;3;0
+choice;90;15;101101001100100;2
+choice;100;10;1110000000;0;comp0:Elfo;comp2:Renne;comp1:Babbo natale
+scale;110;7;5;0;0;0;0;0;1;1
+choice;120;2;0
+choice;130;9;000001000;5
+choice;140;3;100;0
+scale;150;2;6;000000100000
+scale;160;2;14;0000000000000000000001000000
+choice;170;4;1
+choice;179;2;0
+choice;180;2;0
+choice;190;9;100000000;0
+concept;200
+choice;210;2;1
+choice;270;5;1
+choice;290;5;1
+choice;300;5;1
+choice;310;5;1
+choice;340;5;0
+choice;350;5;1
+concept;360
+concept;361
+choice;370;5;1
+open;380;Messaggio di babbo natale personalizzato 
+open;390;Il videomessaggio è lo stesso ogni anno 
+open;400;Varietà del messaggio 
+concept;410
+choice;420;2;0
+choice;430;9;001010000;2
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;1
+concept;5204
+scale;25000;1;102;57
+scale;25100;1;102;77
+scale;25200;1;102;72
+scale;25300;1;102;72
+scale;25400;1;102;81
+scale;25500;1;102;90
+scale;25600;1;102;71
+scale;25700;1;102;63
+scale;35000;1;102;85
+scale;35100;1;102;77
+scale;35200;1;102;86
+scale;35300;1;102;66
+scale;35400;1;102;88
+scale;35500;1;102;95
+scale;35600;1;102;72
+scale;35700;1;102;75

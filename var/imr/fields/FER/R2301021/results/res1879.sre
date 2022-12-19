@@ -1,0 +1,9 @@
+2.0;FER;R2301021;1879;Q54VH449BT;14/12/2022 22:45:56 CET;14/12/2022 22:46:58 CET;62;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=Q54VH449BT;lang=it
+choice;10;20;18
+choice;20;4;3
+choice;21;2;1
+open;30;55
+choice;40;7;5
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;7;7;-1;-1;-1

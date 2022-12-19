@@ -1,0 +1,7 @@
+2.0;FER;R2301021;3090;QSOHC1IMF9;16/12/2022 18:08:05 CET;16/12/2022 18:08:26 CET;21;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=QSOHC1IMF9;mob=1;lang=it
+choice;10;20;4
+choice;20;4;1
+choice;21;2;1
+open;30;22
+choice;40;7;1
+choice;50;2;1

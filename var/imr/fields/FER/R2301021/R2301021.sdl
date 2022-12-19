@@ -1,0 +1,1734 @@
+#export vars "mok36"
+#export vars "mok712"
+#export vars "cel"
+#export vars "mob"
+#export vars "pan"
+void main() {
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int selint;
+int selintb;
+int selintc;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selb;
+string cpt;
+int preQid;
+int conta;
+int n;
+int reCod;
+int salvai;
+string nascondi_item;
+boolean mok36;
+boolean mok712;
+int quota;
+int recTg=1;
+int selintA1;
+int selintC1;
+boolean selintC3_0;
+boolean selintC3_1;
+boolean selintC3_2;
+boolean selBambiniAvvento;
+boolean calendarioKinder;
+int recuser=99;
+int Nran;
+int r;
+string optB;
+int indiceDomanda;
+int contaestratti;
+int selintE1;
+int selintE3=99;
+int selintE4=99;
+int cella;
+ 
+///LEGGERE VARIABILI DI SISTEMA
+string uid = system.getProperty("sysUID");
+string prj = system.getProperty("sysPRJ");
+string sid = system.getProperty("sysSID");
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+ 
+string autotest=system.getProperty("test");
+ 
+string cod_concept="<script type='text/javascript' src='https://www.primisoft.com/fields/script/dinNone.js'></script>";
+ 
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+ 
+ 
+if (autotest=="1" || uid=="GUEST" || uid=="null") {
+	system.setProperty("env", "debug:false");  
+	//system.setProperty("env", "browser:variables");
+}
+ 
+//allinea(colonne, margine_altezza,margine_larghezza)
+string all="<script type='text/javascript' src='https://www.primisoft.com/fields/script/all.js'></script>";
+string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,40,140,250);});</script>";
+string allinea=all+mozCode;
+ 
+//allinea(colonne, margine_altezza,margine_larghezza)
+string all_r="<script type='text/javascript' src='https://www.primisoft.com/fields/FER/ITA1903059/resources/all_rank.js'></script>";
+string mozCode_r="<script type='text/javascript'>$(window).load(function() {allinea_r(2,40,600);});</script>";
+string allinea_r=all_r+mozCode_r;	
+ 
+string scriptzoom="<script type='text/javascript' src='https://www.primisoft.com/fields/PRO/MBL047/resources/jquery.fancybox.js?v=2.1.5'></script>";
+string altroscript="<script type='text/javascript'> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+string fogliostile="<link rel='stylesheet' href='https://www.primisoft.com/fields/PRO/MBL047/resources/jquery.fancybox.css?v=2.1.5' type='text/css' media='screen' />";
+ 
+string imgpiccola=scriptzoom+fogliostile+altroscript+"<p class='info'><a class='fancybox' rel='group' href='https://www.primisoft.com/fields/FER/ITA1902033/resources/Diapositiva6.JPG'><img src='https://www.primisoft.com/fields/FER/ITA1902033/resources/Diapositiva6.JPG'  width='450px' alt='' /></a><br>clicca per ingrandire</p>";
+ 
+ 
+ 
+string inputStringToNumeric="<script type='text/javascript'>$(document).ready(function() {"+
+"$('input.form-control').attr('type', 'number');"+
+"$('input.form-control').attr('step', '.01');"+
+"$('input.form-control').attr({"+
+"'min' : 1,"+  
+"'max' : 99,"+  
+"});"+
+"});</script>";
+ 
+string deviceType = system.getProperty("user_agent:deviceType");
+string osType = system.getProperty("user_agent:osType");
+string browserType = system.getProperty("user_agent:browserType");
+ 
+/*
+qtext = "<p>System Information</p>"+
+		"<ul>"+
+			"<li>OS Type: "+osType+"</li>"+
+			"<li>Browser Type: "+browserType+"</li>"+
+			"<li>Device Type: "+deviceType+"</li>"+
+		"</ul>";
+qst = new question("concept", 5);
+qst.setProperty("text", qtext);
+send qst;
+*/
+ 
+boolean controllomob;
+ 
+string s1 = deviceType.trim();
+ 
+ 
+controllomob=s1.contains("mobile");
+if (controllomob==true){
+allinea_r="";
+allinea="";
+system.setProperty("mob", "1");
+//system.setProperty("env", "stylesheet:modmob.css");
+}
+
+
+
+	string delay="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('#console').hide();"+
+    "setTimeout(function() { $('#video').delay(57000).empty(); $('#console').show(); }, 57000);"+
+    "});</script>";
+	string movieCode="<video width=\"100%\"  autoplay controls>"+
+					 "<source src=\"https://www.primisoft.com/fields/FER/R2301021/resources/video.mp4\" type=\"video/mp4\">"+
+					 "<source src=\"https://www.primisoft.com/fields/FER/R2301021/resources/video.ogg\" type=\"video/ogg\">"+
+					 "Il tuo browser non supporta i contenuti video HTML5"+
+				     "</video>";
+
+
+
+
+mozCode="<script>$(window).load(function() {barColor(); });</script>";
+
+	// Q10: CHOICE
+	qst = new question("choice", 10);
+	qst.setProperty("text", "In quale regione vive?");
+	qst.setProperty("code", "s1");
+	qst.setProperty("show_rand", false);
+	vector q10_opts = new vector {
+		"Valle d’Aosta",
+		"Piemonte",
+		"Lombardia",
+		"Liguria",
+		"Veneto",
+		"Friuli V.G.",
+		"Trentino A.A.",
+		"Emilia Romagna",
+		"Toscana",
+		"Marche",
+		"Umbria",
+		"Lazio",
+		"Abruzzo",
+		"Molise",
+		"Campania",
+		"Puglia",
+		"Basilicata",
+		"Sardegna",
+		"Calabria",
+		"Sicilia"
+	};
+	qst.setProperty("options", q10_opts);
+	send qst;
+ansId=system.getProperty("ans10");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 0,1,2,3:{reCod=0;}
+        case 4,5,6,7:{reCod=1;}
+		case 8,9,10,11:{reCod=2;}
+        }
+
+
+
+qst = new question("choice", 20);
+qst.setProperty("text", "Ricodifica");
+qst.setProperty("code", "s1rec");
+vector q20_opts = new vector {
+"Nord Ovest",
+"Nord est",
+"Centro",
+"Sud + Isole"
+};
+qst.setProperty("options", q20_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q20_opts.get(reCod);
+system.out("<div>Area geografica: "+cmd+"</div>"); 
+
+
+
+	// Q20: CHOICE
+	qst = new question("choice", 21);
+	qst.setProperty("text", "Lei è..");
+	qst.setProperty("code", "s2");
+	qst.setProperty("show_rand", false);
+	vector q21_opts = new vector {
+		"Uomo",
+		"Donna"
+	};
+	qst.setProperty("options", q21_opts);
+	send qst;
+	selint=system.getProperty("ans21");
+	if (selint==0){ return 4; }
+
+
+
+	// Q30: CONCEPT
+	qst = new question("open", 30);
+	qst.setProperty("text", "Indichi la sua età");
+	qst.setProperty("code", "s3");
+	qst.setProperty("view", "numeric");
+	send qst;
+	int eta=(int)system.getProperty("ans30");
+	if (eta<18 || eta>65) { return 4;}
+
+	if(eta<18) { reCod=0; }
+	if(eta>=18 && eta<=24) { reCod=1;}
+	if(eta>=25 && eta<=34) { reCod=2;}
+	if(eta>=35 && eta<=44) { reCod=3;}
+	if(eta>=45 && eta<=55) { reCod=4;}
+	if(eta>=55 && eta<=65) { reCod=5;}
+	if(eta>65 ) { reCod=6;}
+
+	send qst;
+	// Q40: CHOICE
+	qst = new question("choice", 40);
+	qst.setProperty("text", "RICODIFICA NELLE SEGUENTI FASCE");
+	qst.setProperty("code", "s3rec");
+	qst.setProperty("show_rand", false);
+	vector q40_opts = new vector {
+		"Meno di 18 anni",
+		"18-24 anni",
+		"25-34 anni",
+		"35-44 anni",
+		"45-54 anni",
+		"55-65 anni",
+		"Più di 65 anni"
+	};
+	qst.setProperty("options", q40_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+
+	// Q50: CHOICE
+	qst = new question("choice", 50);
+	qst.setProperty("text", "Ha figli?");
+	qst.setProperty("code", "s4");
+	qst.setProperty("show_rand", false);
+	vector q50_opts = new vector {
+		"Sì",
+		"No"
+	};
+	qst.setProperty("options", q50_opts);
+	send qst;
+	selint=system.getProperty("ans50");
+	if (selint==1){ return 4; }
+
+if (selint==0)
+	{
+
+	// Q70: CHOICE
+	qst = new question("choice", 70);
+	qst.setProperty("text", "Quanti figli ha?");
+	qst.setProperty("code", "S.4B");
+	qst.setProperty("show_rand", false);
+	vector q70_opts = new vector {
+		"Uno",
+		"Due",
+		"Tre",
+		"Quattro",
+		"Cinque",
+		"Più di cinque"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+
+	ansId=system.getProperty("ans70");
+
+		vector q80_rows = new vector {
+		"1° figlio/a",
+		"2° figlio/a",
+		"3° figlio/a",
+		"4° figlio/a",
+		"5° figlio/a"
+	};
+
+	count=0;
+	for (int i=0,4)
+	{
+	if (i>ansId)
+				{
+				opt="nascondi#sh"+i;
+				q80_rows.set(i, opt);
+				count=count+1;
+				}
+	
+	}
+	
+	if (count==4){qtext="Qual è l’età di suo figlio/a? ";}
+	else {qtext="Qual &egrave; l’et&agrave; di ciascuno dei suoi figli?";}
+
+	// Q80: SCALE
+	qst = new question("scale", 80);
+	qst.setProperty("text", qtext+"</br>Se non ha ancora compiuto l’anno metta 0.");
+	qst.setProperty("code", "q80");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("rows", q80_rows);
+	vector q80_cols = new vector {
+		"Da 0 a 2 anni",
+		"Da 3 a 6 anni",
+		"Da 7 a 9 anni",
+		"Da 10 a 12 anni",
+		"Da 13 a 17 anni",
+		"Da 18 a 21 ani",
+		"Da 22 a 25 anni",
+		"26 anni o più"
+	};
+	qst.setProperty("cols", q80_cols);
+	if (controllomob==true){
+		qst.setProperty("view", "onebyone");
+	}
+	send qst;
+
+	for(int i=0,4){
+		selint=system.getProperty("ans80_"+i);
+		if (selint==1 || selint==2 || selint==3){ 
+			if (selint==1){ mok36=true; }
+			if (selint==2 || selint==3){ mok712=true; }
+		 }
+	}
+
+	}
+
+
+
+	if (mok36==false && mok712==false){ return 4; }
+	if (mok36==true){ system.setProperty("mok36", "si"); }
+	if (mok712==true){ system.setProperty("mok712", "si"); }
+
+
+
+	// Q80: CHOICE
+	qst = new question("choice", 85);
+	qst.setProperty("text", "Chi si occupa dell’acquisto di prodotti alimentari nella sua famiglia?");
+	qst.setProperty("code", "s5");
+	qst.setProperty("show_rand", false);
+	vector q85_opts = new vector {
+		"Io personalmente",
+		"Io e il mio coniuge/altre persone insieme",
+		"Il mio coniuge/altre persone"
+	};
+	qst.setProperty("options", q85_opts);
+	send qst;
+	selint=system.getProperty("ans85");
+	if (selint==2){ return 4; }
+
+
+	// Q90: CHOICE
+	qst = new question("choice", 90);
+	qst.setProperty("text", "Parleremo ora del Natale e dei personaggi e tradizioni che accompagnano questo periodo dell’anno</br><br>Quali delle seguenti attività è solita fare nel <u>periodo Natalizio</u>?");
+	qst.setProperty("code", "r1");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	vector q90_opts = new vector {
+		"Preparo dolci a tema",
+		"Organizzo pranzi/cene speciali",
+		"Acquisto dei prodotti tipici dolci",
+		"Acquisto prodotti tipici al cioccolato",
+		"Organizzo giochi e scherzi seguendo la tradizione dell’Elfo (Elf on the shelf)",
+		"Acquisto uno o più Calendari dell’Avvento",
+		"Confeziono personalmente il Calendario dell’Avvento",
+		"Acquisto/confeziono regali per me stesso/familiari/parenti/amici/conoscenti",
+		"Acquisto abbigliamento e accessori da indossare a tema natalizio",
+		"Visito negozi per cercare regali /alimenti per festeggiare il Natale",
+		"Scarico video messaggi digitali personalizzati da parte di Babbo Natale",
+		"Scarico app a tema natalizio",
+		"Addobbo casa a tema natalizio",
+		"Organizzo tombolate o giochi a tema natalizio per bambini",
+		"Nessuna di queste cose#se#sf"
+	};
+	qst.setProperty("options", q90_opts);
+	send qst;
+
+string onefor="<script type='text/javascript' src='https://www.primisoft.com/fields/script/oneforone.js'></script>";
+	// Q100: CHOICE
+	qst = new question("choice", 100);
+	qst.setProperty("text", onefor+"Quali personaggi associa al Natale? Indichi tutti quelli che le vengono in mente.");
+	qst.setProperty("code", "r2");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("selection", "multiple");
+	vector q100_opts = new vector {
+		"1#so",
+		"2#so",
+		"3#so",
+		"4#so",
+		"5#so",
+		"6#so",
+		"7#so",
+		"8#so",
+		"9#so",
+		"10#so"
+	};
+	qst.setProperty("options", q100_opts);
+	send qst;
+
+
+	// Q110: SCALE
+	qst = new question("scale", 110);
+	qst.setProperty("text", "Adesso leggerà una lista di personaggi, per ciascuno di essi indichi quanto lei personalmente li associa al Natale.");
+	qst.setProperty("code", "r3");
+	qst.setProperty("show_rand", true);
+	vector q110_rows = new vector {
+		"Elfo",
+		"Pan di Zenzero",
+		"Renne",
+		"Presepe, Natività",
+		"Babbo Natale",
+		"Lo Schiaccianoci",
+		"Grinch"
+	};
+	qst.setProperty("rows", q110_rows);
+	vector q110_cols = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("cols", q110_cols);
+	if (controllomob==true){
+		qst.setProperty("view", "onebyone");
+	}
+	send qst;
+
+
+
+
+
+	// Q120: CHOICE
+	qst = new question("choice", 120);
+	qst.setProperty("text", "Lei conosce la tradizione natalizia del Calendario dell’Avvento?");
+	qst.setProperty("code", "c1");
+	qst.setProperty("show_rand", false);
+	vector q120_opts = new vector {
+		"Sì",
+		"No"
+	};
+	qst.setProperty("options", q120_opts);
+	send qst;
+	selintC1=system.getProperty("ans120");
+
+	if (selintC1==0)
+	{
+	// Q130: CHOICE
+	qst = new question("choice", 130);
+	qst.setProperty("text", "E come è venuto a conoscenza della tradizione natalizia del Calendario dell’Avvento?");
+	qst.setProperty("code", "c2");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{max:3}");
+	vector q130_opts = new vector {
+		"Qualcuno (amico/familiare/conoscente) me ne ha parlato",
+		"Ne ho sentito parlare sui social networks/internet",
+		"L’ho conosciuto attraverso storie e/o reels di influencers che seguo",
+		"L’ho conosciuto grazie all’esposizione o alla pubblicità all’interno dei punti vendita",
+		"Ho visto/sentito le pubblicità in tv/radio",
+		"E’ stato regalato a me/ai miei bambini/a mio marito",
+		"Ne ho sentito parlare durante un viaggio all’estero",
+		"L’ho sempre fatto/ Nella mia famiglia si è sempre seguita questa tradizione",
+		"Altro#so#sf"
+	};
+	qst.setProperty("options", q130_opts);
+	send qst;
+
+
+	// Q140: CHOICE
+	qst = new question("choice", 140);
+	qst.setProperty("text", "Quest’anno ha acquistato uno o più calendari dell’avvento per lei e/o per i suoi bambini?</br>Attenzione ci riferiamo a prodotti già confezionati e acquistabili nei negozi/supermercati, non calendari fai da te!");
+	qst.setProperty("code", "c3");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("selection", "multiple");
+	vector q140_opts = new vector {
+		"Sì, l’ho acquistato per i miei bambini",
+		"Sì, l’ho acquistato per me/ altri adulti",
+		"No, non l’ho acquistato#se#sf"
+	};
+	qst.setProperty("options", q140_opts);
+	send qst;
+	selintC3_0=system.getProperty("ans140_0");
+	selintC3_1=system.getProperty("ans140_1");
+	selintC3_2=system.getProperty("ans140_2");
+
+	if (selintC3_0==true || selintC3_1==true)
+	{
+	// Q150: SCALE
+	qst = new question("scale", 150);
+	qst.setProperty("text", "Che tipologia di calendari dell’avvento ha acquistato per questo Natale?");
+	qst.setProperty("code", "c3.1");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{min:1}");
+	vector q150_rows = new vector {
+		"Per sé/ altri adulti",
+		"Per bambini"
+	};
+
+	if (selintC3_1==false){ q150_rows.set(0,"#sh0"); }
+	if (selintC3_0==false){ q150_rows.set(1,"#sh1"); }
+
+	qst.setProperty("rows", q150_rows);
+	vector q150_cols = new vector {
+		"Calendari dell'Avvento con cioccolato/ prodotti dolci",
+		"Calendari dell’ Avvento con prodotti alimentari non dolci",
+		"Calendario dell'Avvento beauty (es. con cosmetici)",
+		"Calendari dell'Avvento con giochi",
+		"Calendario dell'Avvento con gioielli",
+		"Altri calendari dell’Avvento (specificare)#sf"
+	};
+
+	if (controllomob==true){
+		q150_cols.set(0,"<span style='font-size:12px'>Calendari dell'Avvento con cioccolato/ prodotti dolci</span>");
+		q150_cols.set(1,"<span style='font-size:12px'>Calendari dell’ Avvento con prodotti alimentari non dolci</span>");
+		q150_cols.set(2,"<span style='font-size:12px'>Calendario dell'Avvento beauty (es. con cosmetici)</span>");
+		q150_cols.set(3,"<span style='font-size:12px'>Calendari dell'Avvento con giochi</span>");
+		q150_cols.set(4,"<span style='font-size:12px'>Calendario dell'Avvento con gioielli</span>");
+		q150_cols.set(5,"<span style='font-size:12px'>Altri calendari dell’Avvento (specificare)#sf</span>");
+	}
+
+	qst.setProperty("cols", q150_cols);
+	if (controllomob==true){
+		qst.setProperty("view", "onebyone");
+		qst.setProperty("extras","{rand_cols:true}");
+	}
+	else{
+		qst.setProperty("view", "columns");
+		qst.setProperty("show_rand", true);
+	}
+	send qst;
+
+	for (int i=0,1)
+	{
+		sel=system.getProperty("ans150_"+i+"_5");
+		if (sel==true)
+					{
+					qid=151+i;
+					label=q150_rows.get(i);
+					qst = new question("open", qid);
+					qst.setProperty("text", "Specifichi altra tipologia <b>"+label+"</b>");
+					qst.setProperty("code", "c3.1.altro."+i);
+					send qst;
+					}
+	}
+
+	selBambiniAvvento=system.getProperty("ans150_1_0");
+
+	if (selBambiniAvvento==true)
+	{
+
+	// Q160: SCALE
+	qst = new question("scale", 160);
+	qst.setProperty("text", "Quali marche di <b>Calendario dell’Avvento con cioccolato/ prodotti dolci</b> ha acquistato?");
+	qst.setProperty("code", "c4");
+	//qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	vector q160_rows = new vector {
+		"Per sé/ altri adulti",
+		"Per bambini"
+	};
+
+	sel=system.getProperty("ans150_0_0");
+	if (sel==false){ q160_rows.set(0,"#sh0"); }
+
+	sel=system.getProperty("ans150_1_0");
+	if (sel==false){ q160_rows.set(1,"#sh1"); }
+
+	vector q160_cols = new vector {
+		"Kinder",
+		"Lindt",
+		"Novi",
+		"Walcor",
+		"Baci Perugina",
+		"Haribo",
+		"Loacker",
+		"KitKat",
+		"Smarties",
+		"M&M’s",
+		"Ferrero Rocher",
+		"Milka",
+		"Marca del supermercato#sf",
+		"Altra marca#sf"
+	};
+	qst.setProperty("rows", q160_rows);
+	qst.setProperty("cols", q160_cols);
+	if (controllomob==true){
+		qst.setProperty("view", "onebyone");
+		qst.setProperty("extras","{rand_cols:true}");
+	}
+	else{
+		qst.setProperty("view", "columns");
+		qst.setProperty("show_rand", true);
+	}
+	send qst;
+	sel=system.getProperty("ans160_0_0");
+	if (sel==true){ calendarioKinder=true; }
+	sel=system.getProperty("ans160_1_0");
+	if (sel==true){ calendarioKinder=true; }
+
+	// Q170: CHOICE
+	qst = new question("choice", 170);
+	qst.setProperty("text", "Pensando alle diverse proposte di Calendario dell’Avvento per i bambini, in quale di questi comportamenti si riconosce di più?");
+	qst.setProperty("code", "c5");
+	qst.setProperty("show_rand", false);
+	vector q170_opts = new vector {
+		"Non vedo l'ora di acquistarlo per i miei figli, sono entusiasta di vedere come attendono il Natale scoprendo ogni giorno una casella",
+		"Mi piace che i miei figli facciano il Calendario dell’Avvento, preferisco andare comunque sul pratico con qualcosa di già fatto",
+		"Reputo il Calendario dell’Avvento una cosa simpatica per i miei figli, ma non ci ripongo troppo interesse",
+		"Mi interessa poco"
+	};
+	qst.setProperty("options", q170_opts);
+	send qst;
+	}
+	}
+	}
+
+
+
+	// Q180: CHOICE
+	qst = new question("choice", 180);
+	qst.setProperty("text", "Lei conosce i servizi del sito di videomessaggi di Babbo Natale personalizzati <u>Polo Nord Portatile (PNP)</u>?<br><br><img src='https://www.primisoft.com/fields/FER/R2301021/resources/sectionp1.png' class='img-responsive'>");
+	qst.setProperty("code", "p1");
+	qst.setProperty("show_rand", false);
+	vector q180_opts = new vector {
+		"Sì",
+		"No"
+	};
+	qst.setProperty("options", q180_opts);
+	send qst;
+	selint=system.getProperty("ans180");
+
+	if (selint==0)
+	{
+	// Q190: CHOICE
+	qst = new question("choice", 190);
+	qst.setProperty("text", "E come è venuta a conoscenza del sito di videomessaggi personalizzati <u>Polo Nord Portatile (PNP)</u>?");
+	qst.setProperty("code", "p2");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("extras", "{max:3}");
+	qst.setProperty("selection", "multiple");
+	vector q190_opts = new vector {
+		"Qualcuno (amico/familiare/conoscente) me ne ha parlato",
+		"Ne ho sentito parlare sui social networks/internet",
+		"L’ho conosciuto attraverso storie e/o reels di influencers",
+		"L’ho conosciuto grazie all’esposizione o alla pubblicità all’interno dei punti vendita",
+		"Ho visto/sentito le pubblicità in tv/radio",
+		"L’ho ricevuto/ mio figlio lo ha ricevuto a sorpresa come regalo da parte di un amico/parente",
+		"Ne ho sentito parlare durante un viaggio all’estero",
+		"L’ho scoperto grazie a Kinder",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q190_opts);
+	send qst;
+	}
+
+
+	// Q200: CONCEPT
+	qst = new question("concept", 200);
+	qst.setProperty("text", "<center>Quest’anno, insieme ai Calendari dell’avvento, <b>Kinder</b> propone di scoprire una sorpresa in più per il suo/suoi bambini: potrebbe rendere l’attesa ancora più magica grazie ai video messaggi personalizzati e inviati da Babbo Natale in persona!<br></br>Scansionando il QR Code presente sul retro dei pack di tutti i calendari dell’avvento sarà possibile creare quattro video personalizzati per i propri figli o nipoti.<br><br><img src='https://www.primisoft.com/fields/FER/R2301021/resources/concettop3.png' class='img-responsive'></center>");
+	send qst;
+
+
+	// Q210: CHOICE
+	qst = new question("choice", 210);
+	qst.setProperty("text", "Lei era a conoscenza di questa iniziativa di Kinder in collaborazione con <u>Polo Nord Portatile (PNP)</u>?");
+	qst.setProperty("code", "p3");
+	qst.setProperty("show_rand", false);
+	vector q210_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q210_opts);
+	send qst;
+	selint=system.getProperty("ans210");
+
+	if (selint==0)
+	{
+	// Q220: CHOICE
+	qst = new question("choice", 220);
+	qst.setProperty("text", "Come ne è venuta conoscenza?");
+	qst.setProperty("code", "p4");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{max:3}");
+	vector q220_opts = new vector {
+		"Qualcuno (amico/familiare/conoscente) me ne ha parlato",
+		"Ne ho sentito parlare sui social networks/internet",
+		"L’ho visto sulle confezioni del Calendario dell’Avvento Kinder",
+		"L’ho visto su comunicazioni Social di Kinder",
+		"L’ho visto su comunicazioni Social di Polo Nord Portatile (PNP)",
+		"L’ho visto sul sito di Kinder",
+		"L’ho visto sul sito/app di Polo Nord Portatile (PNP)",
+		"L’ho conosciuto attraverso storie e/o reels di influencers",
+		"L’ho conosciuto grazie all’esposizione o alla pubblicità all’interno dei punti vendita",
+		"Ho visto/sentito le pubblicità in tv/radio",
+		"E’ stato inviato un video ai miei bambini",
+		"Altro#so#sf"
+	};
+	qst.setProperty("options", q220_opts);
+	send qst;
+	}
+
+
+	quota=system.getProperty("quota:rectarget_0"); 
+
+	if (selBambiniAvvento==true && quota<508){ recTg=0; }
+
+	// Q180: CHOICE
+	qst = new question("choice", 179);
+	qst.setProperty("text", "rectarget");
+	qst.setProperty("code", "rectarget");
+	vector q179_opts = new vector {
+		"Calendario",
+		"Elfo"
+	};
+	qst.setProperty("options", q179_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+recTg+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+	
+
+	if (recTg==0)
+	{
+	if (calendarioKinder==true)
+	{
+	// Q230: CHOICE
+	qst = new question("choice", 230);
+	qst.setProperty("text", "Lei ha detto di aver acquistato il <b>Calendario dell’Avvento Kinder</b>, ha scansionato il QR code sul retro della confezione del Calendario o sull’espositore sul punto vendita per questa iniziativa di Kinder in collaborazione con <u>Polo Nord Portatile (PNP)</u>?");
+	qst.setProperty("code", "a1");
+	qst.setProperty("show_rand", false);
+	vector q230_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q230_opts);
+	send qst;
+	selintA1=system.getProperty("ans230");
+	if (selintA1==1){ recuser=2;}
+
+
+
+	if (selintA1==0)
+	{
+	// Q240: CHOICE
+	qst = new question("choice", 240);
+	qst.setProperty("text", "E dopo aver scansionato il QR code ha poi partecipato all’iniziativa di Kinder in collaborazione con Polo Nord Portatile (PNP)?");
+	qst.setProperty("code", "a1.1");
+	qst.setProperty("show_rand", false);
+	vector q240_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q240_opts);
+	send qst;
+	selintb=system.getProperty("ans240");
+	if (selintb==1){ recuser=1; }
+	if (selintb==0)
+	{
+	// Q250: CHOICE
+	qst = new question("choice", 250);
+	qst.setProperty("text", "Quanti video ha personalizzato fino ad oggi?");
+	qst.setProperty("code", "a1.2");
+	qst.setProperty("show_rand", false);
+	vector q250_opts = new vector {
+		"1",
+		"2",
+		"3"
+	};
+	qst.setProperty("options", q250_opts);
+	send qst;
+	selintc=system.getProperty("ans250");
+	if (selintc==0){ recuser=1; }
+	if (selintc>0){ recuser=0; }
+	if (selintc==0)
+	{
+	// Q260: CHOICE
+	qst = new question("choice", 260);
+	qst.setProperty("text", "Per quale/i motivi non ha ancora personalizzato gli altri video?");
+	qst.setProperty("code", "a1.3");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	vector q260_opts = new vector {
+		"Non ho ancora avuto tempo, ma lo farò nei prossimi giorni",
+		"La procedura di personalizzazione è troppo lunga/impegnativa da compilare",
+		"A mio figlio non è piaciuto il primo video",
+		"L’app non funziona più/non riesco a personalizzare gli altri video",
+		"C’è troppo poca possibilità di personalizzazione",
+		"Non avevo capito che posso personalizzare altri video",
+		"Il primo video mi ha delusa, mi aspettavo qualcosa di diverso",
+		"Il primo video era troppo da bambini piccoli",
+		"Il primo video era troppo da bambini grandi",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q260_opts);
+	send qst;
+	}
+	}
+	}
+
+	qst = new question("choice", 261);
+	qst.setProperty("text", "recuser");
+	qst.setProperty("code", "recuser");
+	vector q261_opts = new vector {
+		"USER",
+		"ABANDONER",
+		"NON USER"
+	};
+	qst.setProperty("options", q261_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+recuser+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+	}
+
+	if (calendarioKinder==false || selintA1==1)
+	{
+	// Q270: CHOICE
+	qst = new question("choice", 270);
+	qst.setProperty("text", "In che misura lei sarebbe interessata a partecipare a questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>?");
+	qst.setProperty("code", "a2");
+	qst.setProperty("show_rand", false);
+	vector q270_opts = new vector {
+		"Molto interessata",
+		"Abbastanza interessata",
+		"Così così interessata",
+		"Poco interessata",
+		"Per niente interessata"
+	};
+	qst.setProperty("options", q270_opts);
+	send qst;
+	selint=system.getProperty("ans270");
+
+	//promemoria
+	//se non ha partecipato e non è interessato diamo priorità nel testo al non interessato su indicazione di Maurizio
+	if (selintA1==1){ qtext="non ha partecipato"; }
+	if (selint>1){ qtext="non è interessata a partecipare"; }
+
+	if (selintA1==1 || selint>1)
+	{
+	// Q280: CHOICE
+	qst = new question("choice", 280);
+	qst.setProperty("text", "Per quale motivo lei <b>"+qtext+"</b> a questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>?");
+	qst.setProperty("code", "a3");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	vector q280_opts = new vector {
+		"Non mi interessa l’iniziativa",
+		"Non la conoscevo/ non avevo fatto caso alla promo sulla confezione",
+		"Mio figlio è troppo grande per questa iniziativa",
+		"Mio figlio è troppo piccolo per questa iniziativa",
+		"Non ho dimestichezza con la tecnologia",
+		"L’ho fatta già negli anni scorsi",
+		"L’ho già fatta indipendentemente dal Calendario dell’Avvento Kinder",
+		"E’ banale",
+		"Non voglio registrare i miei dati",
+		"La procedura di personalizzazione è troppo impegnativa/lunga da compilare",
+		"La procedura non è chiara, non ho capito come partecipare",
+		"Ho provato a partecipare, ma il sito/ l’app si blocca",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q280_opts);
+	send qst;
+	}
+	}
+
+
+	// Q290: CHOICE
+	qst = new question("choice", 290);
+	qst.setProperty("text", "In generale, quanto le piace questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>?");
+	qst.setProperty("code", "a4");
+	qst.setProperty("show_rand", false);
+	vector q290_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q290_opts);
+	send qst;
+
+
+	// Q300: CHOICE
+	qst = new question("choice", 300);
+	qst.setProperty("text", "Secondo lei, quanto l’iniziativa Polo Nord Portatile è <b>adatta al brand Kinder</b>?");
+	qst.setProperty("code", "a7");
+	qst.setProperty("show_rand", false);
+	vector q300_opts = new vector {
+		"E’ molto adatta",
+		"Abbastanza adatta",
+		"Così così adatta",
+		"Poco adatta",
+		"Per niente adatta"
+	};
+	qst.setProperty("options", q300_opts);
+	send qst;
+
+
+	// Q310: CHOICE
+	qst = new question("choice", 310);
+	qst.setProperty("text", "Quanto l’iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b> aggiunge valore a Kinder?");
+	qst.setProperty("code", "a8");
+	qst.setProperty("show_rand", false);
+	vector q310_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q310_opts);
+	send qst;
+
+vector punt100 = new vector { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "#sh101" }; 
+
+
+
+// slider ciclico
+	vector selRan = new vector { "1#sh", "2#sh", "3#sh", "4#sh", "5#sh", "6#sh", "7#sh", "8#sh"};  
+	vector ind = new vector { "0", "1", "2", "3", "4", "5", "6", "7"};  
+			
+			
+	Nran=8;
+	contaestratti=0;
+
+			for (int i=0,7)
+			{   
+			system.setProperty("r"+i, "rand:"+Nran);
+			r = (int)system.getProperty("r"+i); 
+			optB=ind.get(r);
+			selRan.set(contaestratti,optB);
+			system.setProperty("Svar"+contaestratti, optB);			
+			contaestratti=contaestratti+1;
+			ind.remove(r);
+			Nran=Nran-1;
+			}
+
+
+
+	vector itemb = new vector {
+		"Fa sentire vicino il Natale",
+		"E’ coinvolgente",
+		"E’ innovativo",
+		"E’ unico",
+		"Rende il Natale magico",
+		"E’ adatto ai bambini",
+		"E’ moderno",
+		"E’ social"
+	};
+
+for (int i=0,7)
+{ 
+
+	indiceDomanda=(int)selRan.get(i);
+	cmd=itemb.get(indiceDomanda);
+	qid=25000+indiceDomanda*100;
+	qst = new question("scale", qid);
+	qst.setProperty("text", mozCode+"<center><img src='https://www.primisoft.com/fields/FER/R2301021/resources/logoKinder.png' class='img-responsive'></center><br><br>Le mostreremo ora alcune frasi che possono descrivere <b>Kinder</b><br></br>Indichi quanto ciascuna di queste è adatta a descrivere <b>Kinder</b> utilizzando un punteggio da 0 a 100 - dove 0 significa “per niente” adatta e 100 significa “moltissimo” adatta.</br><br>Clicchi in un punto della barra per attribuire il punteggio che ritieni più opportuno.<i class='happy fa fa-smile-o fa-2x' aria-hidden='true'></i><i class='sad fa fa-frown-o fa-2x' aria-hidden='true'></i>");
+	if (controllomob==true){
+	qst.setProperty("text", mozCode+"<center><img src='https://www.primisoft.com/fields/FER/R2301021/resources/logoKinder.png' class='img-responsive'></center><br><br>Le mostreremo ora alcune frasi che possono descrivere <b>Kinder</b><br></br>Indichi quanto ciascuna di queste è adatta a descrivere <b>Kinder</b> utilizzando un punteggio da 0 a 100 - dove 0 significa “per niente” adatta e 100 significa “moltissimo” adatta.</br><br>Clicchi in un punto della barra per attribuire il punteggio che ritieni più opportuno.");
+	}
+	qst.setProperty("show_rand", false);
+	qst.setProperty("code", "a9."+indiceDomanda);
+	vector q320_rows = new vector {
+		"item"
+	};
+	q320_rows.set(0,cmd);
+	qst.setProperty("rows", q320_rows);
+	qst.setProperty("cols", punt100);
+	qst.setProperty("view", "sliders");
+	send qst;
+
+	//inserito in maniera fittizia solo per l'explode del datafile, ma ad inizio ciclo viene ricavato l'indice della domanda da mostrare
+	if (indiceDomanda!=7){ indiceDomanda=indiceDomanda+1; }
+	else{ indiceDomanda=0; }
+
+	}
+
+for (int i=0,7)
+{ 
+	// Q330: SCALE
+	indiceDomanda=(int)selRan.get(i);
+	cmd=itemb.get(indiceDomanda);
+	qid=35000+indiceDomanda*100;
+	qst = new question("scale", qid);
+	qst.setProperty("text", mozCode+"<center><img src='https://www.primisoft.com/fields/FER/R2301021/resources/sectionp1.png' class='img-responsive'></center><br><br>Le mostreremo ora alcune frasi che possono descrivere <b>Polo Nord Portatile (PNP)</b></br>Indichi quanto ciascuna di queste è adatta a descrivere <b>Polo Nord Portatile (PNP)</b> utilizzando un punteggio da 0 a 100 - dove 0 significa “per niente” adatta e 100 significa “moltissimo” adatta.</br>Clicchi in un punto della barra per attribuire il punteggio che ritieni più opportuno.<i class='happy fa fa-smile-o fa-2x' aria-hidden='true'></i><i class='sad fa fa-frown-o fa-2x' aria-hidden='true'></i>");
+	if (controllomob==true){
+		qst.setProperty("text", mozCode+"<center><img src='https://www.primisoft.com/fields/FER/R2301021/resources/sectionp1.png' class='img-responsive'></center><br><br>Le mostreremo ora alcune frasi che possono descrivere <b>Polo Nord Portatile (PNP)</b></br>Indichi quanto ciascuna di queste è adatta a descrivere <b>Polo Nord Portatile (PNP)</b> utilizzando un punteggio da 0 a 100 - dove 0 significa “per niente” adatta e 100 significa “moltissimo” adatta.</br>Clicchi in un punto della barra per attribuire il punteggio che ritieni più opportuno.");
+	}
+
+	
+	qst.setProperty("code", "a10."+indiceDomanda);
+	qst.setProperty("show_rand", false);
+	vector q330_rows = new vector {
+		"item"
+	};
+	q330_rows.set(0,cmd);
+	qst.setProperty("rows", q330_rows);
+	qst.setProperty("cols", punt100);
+	qst.setProperty("view", "sliders");
+	send qst;
+	//inserito in maniera fittizia solo per l'explode del datafile, ma ad inizio ciclo viene ricavato l'indice della domanda da mostrare
+	if (indiceDomanda!=7){ indiceDomanda=indiceDomanda+1; }
+	else{ indiceDomanda=0; }
+
+}
+
+
+	// Q340: CHOICE
+	qst = new question("choice", 340);
+	qst.setProperty("text", "Ora che ha visto questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>, qual è la sua intenzione ad acquistare un calendario dell&#39;avvento <b><u>Kinder</u></b> l’anno prossimo?");
+	qst.setProperty("code", "a11");
+	qst.setProperty("show_rand", false);
+	vector q340_opts = new vector {
+		"Sicuramente l’acquisterei",
+		"Probabilmente l’acquisterei",
+		"Non so se l’acquisterei",
+		"Probabilmente non l’acquisterei",
+		"Sicuramente non l’acquisterei"
+	};
+	qst.setProperty("options", q340_opts);
+	send qst;
+
+
+	// Q350: CHOICE
+	qst = new question("choice", 350);
+	qst.setProperty("text", "In che misura l’iniziativa <b>Polo Nord Portatile (PNP)</b> la fa sentire vicina alla marca <b>Kinder</b>?");
+	qst.setProperty("code", "a12");
+	qst.setProperty("show_rand", false);
+	vector q350_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q350_opts);
+	send qst;
+
+
+
+
+	// Q360: CONCEPT
+	qst = new question("concept", 360);
+	qst.setProperty("text", "Le mostreremo ora un breve video legato all’iniziativa “Polo Nord Portatile” (PNP), in collaborazione con Kinder.</br>Per cortesia lo guardi e prosegua rispondendo alle domande</br>Per favore si assicuri di avere l&#39;audio del suo dispositivo acceso prima di proseguire.");
+	qst.setProperty("code", "q360");
+	send qst;
+
+
+
+	// Q360: CONCEPT
+	qst = new question("concept", 361);
+	qst.setProperty("text", delay+movieCode);
+	send qst;
+
+	// Q370: CHOICE
+	qst = new question("choice", 370);
+	qst.setProperty("text", "Ora che ha visto il video, quanto <u>le piace</u> questa iniziativa natalizia di Kinder in collaborazione con il Polo Nord Portatile (PNP)?");
+	qst.setProperty("code", "q370");
+	qst.setProperty("show_rand", false);
+	vector q370_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q370_opts);
+	send qst;
+
+
+	// Q380: CONCEPT
+	qst = new question("open", 380);
+	qst.setProperty("text", "Cosa <u>le piace</u> di questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>?");
+	qst.setProperty("code", "a14");
+	send qst;
+
+	// Q390: CONCEPT
+	qst = new question("open", 390);
+	qst.setProperty("text", "E cosa <u>non le piace</u> di questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>?");
+	qst.setProperty("code", "a15");
+	send qst;
+
+	// Q400: CONCEPT
+	qst = new question("open", 400);
+	qst.setProperty("text", "Ci sono secondo lei delle aree di miglioramento o ha dei suggerimenti da riportare in merito a questa iniziativa di <b>Kinder</b> in collaborazione con <b>Polo Nord Portatile (PNP)</b>?");
+	qst.setProperty("code", "a16");
+	send qst;
+
+	}
+	
+
+	// Q410: CONCEPT
+	qst = new question("concept", 410);
+	qst.setProperty("text", "Parliamo ora di una tradizione americana legata al periodo che precede il Natale: l’arrivo dell’Elfo, anche conosciuta con il suo nome originale “Elf on the shelf”.");
+	send qst;
+
+
+
+
+	// Q420: CHOICE
+	qst = new question("choice", 420);
+	qst.setProperty("text", "Lei ha mai sentito parlare della tradizione natalizia chiamata “Elf on the Shelf”? <br><br><img src='https://www.primisoft.com/fields/FER/R2301021/resources/concettoe1.png' class='img-responsive'>");
+	qst.setProperty("code", "e1");
+	qst.setProperty("show_rand", false);
+	vector q420_opts = new vector {
+		"Sì",
+		"No"
+	};
+	qst.setProperty("options", q420_opts);
+	send qst;
+	selintE1=system.getProperty("ans420");
+
+	if (selintE1==0)
+	{
+	// Q430: CHOICE
+	qst = new question("choice", 430);
+	qst.setProperty("text", "E come è venuto a conoscenza della tradizione “<b>Elf on the Shelf</b>”?");
+	qst.setProperty("code", "e2");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{max:3}");
+	vector q430_opts = new vector {
+		"Qualcuno (amico/familiare/conoscente) me ne ha parlato",
+		"Ne ho sentito parlare sui social networks/internet",
+		"L’ho conosciuta attraverso storie e/o reels di influencers che seguo",
+		"Attraverso i libri",
+		"L’ho conosciuta grazie all’esposizione o alla pubblicità all’interno del punto vendita",
+		"Ho visto/sentito la pubblicità in tv/radio",
+		"E’ una tradizione di famiglia da generazioni",
+		"Ne ho sentito parlare durante un viaggio all’estero",
+		"Altro#so#sf"
+	};
+	qst.setProperty("options", q430_opts);
+	send qst;
+	}
+
+
+
+	if (recTg==1)
+	{
+	// Q440: CONCEPT
+	qst = new question("concept", 440);
+	qst.setProperty("text", "<center>Il concetto di “Elf on the shelf” è una tradizione americana che si sta diffondendo velocemente anche in Italia.</br>La storia vuole che i fidati elfi di Babbo Natale facciano visita ai bambini a partire dal primo Dicembre fino alla vigilia di Natale per “controllare” che i bambini si comportino bene nell’attesa del Natale: ogni giorno l’Elfo rimane immobile e “studia” l’operato della famiglia che lo ha adottato per poi animarsi di notte, quando tutti dormono, tornare al Polo Nord tramite l’apposita porta elfica e riportare a Babbo Natale le azioni, buone e cattive, che hanno avuto luogo durante la giornata.</br>Prima che la famiglia si svegli ogni mattina, l’Elfo torna nella casa e si nasconde in un posto nuovo, facendo vari scherzi. Ogni giorno i piccoli di casa hanno il compito di scoprire il nascondiglio sempre diverso dell’Elfo, e le sue marachelle. Dall’1 al 24 Dicembre, quindi, i genitori si divertono ogni notte a spostare l’elfo, trovando nuovi nascondigli e ideando scherzetti originali e divertenti per i propri bambini.<br><br><img src='https://www.primisoft.com/fields/FER/R2301021/resources/sezioneE.png' class='img-responsive'></center>");
+	send qst;
+
+	if (selintE1==0)
+	{
+	// Q450: CHOICE
+	qst = new question("choice", 450);
+	qst.setProperty("text", "Lei ha detto di conoscere la tradizione  “Elf on the Shelf”, ha mai organizzato questa attività per i suoi bambini?");
+	qst.setProperty("code", "e3");
+	qst.setProperty("show_rand", false);
+	vector q450_opts = new vector {
+		"Sì, l’ho organizzata quest’anno per la prima volta",
+		"Sì, l’ho organizzata quest’anno ed anche in passato",
+		"Non quest’anno, ma l’ho organizzata in passato",
+		"Non quest’anno e non l’ho mai organizzata neanche in passato",
+		"Non l’ho mai organizzata anche se avevo pensato di farlo"
+	};
+	qst.setProperty("options", q450_opts);
+	send qst;
+	selintE3=system.getProperty("ans450");
+	}
+
+	if (selintE1==1 || selintE3==2 || selintE3==3 || selintE3==4)
+	{
+	// Q460: CHOICE
+	qst = new question("choice", 460);
+	qst.setProperty("text", "In che misura sarebbe interessata ad organizzare questa attività natalizia in futuro?");
+	qst.setProperty("code", "e4");
+	qst.setProperty("show_rand", false);
+	vector q460_opts = new vector {
+		"Molto interessata",
+		"Abbastanza interessata",
+		"Così così interessata",
+		"Poco interessata",
+		"Per niente interessata"
+	};
+	qst.setProperty("options", q460_opts);
+	send qst;
+	selintE4=system.getProperty("ans460");
+	}
+
+	if (selintE3==0 || selintE3==1)
+	{
+	// Q470: CHOICE
+	qst = new question("choice", 470);
+	qst.setProperty("text", "Che tipo di attività prepara l’Elfo per i suoi bambini?");
+	qst.setProperty("code", "e5");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	vector q470_opts = new vector {
+		"Fa scherzi e marachelle",
+		"Osserva il comportamento dei bimbi e cambia posto in casa",
+		"Propone giochi o attività da far fare ai bambini",
+		"Porta  piccoli regali come giochini o accessori",
+		"Porta dolcetti o prodotti al cioccolato",
+		"Porta il Calendario dell’Avvento il 1 Dicembre",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q470_opts);
+	send qst;
+	
+
+	// Q480: CHOICE
+	qst = new question("choice", 480);
+	qst.setProperty("text", "Quali delle seguenti attività ha fatto per prepararsi all’arrivo dell’Elfo nella sua famiglia?");
+	qst.setProperty("code", "e6");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	vector q480_opts = new vector {
+		"Ho preparato personalmente una porta degli elfi",
+		"Ho preparato insieme ai miei figli una porta degli elfi",
+		"Ho acquistato una porta degli elfi in un negozio",
+		"Ho acquistato una porta degli elfi online",
+		"Ho dato un nome all’Elfo",
+		"I miei figli hanno dato un nome all’Elfo",
+		"Ho acquistato appositamente oggetti/gadget/prodotti per organizzare gli scherzetti",
+		"Ho utilizzato/utilizzo oggetti e prodotti che ho già a disposizione in casa per organizzare gli scherzetti",
+		"Ho acquistato prodotti al cioccolato da fare portare all’elfo in dono",
+		"Ho acquistato prodotti dolci da fare portare all’elfo in dono",
+		"Ho acquistato regalini/giochini/accessori da fare portare all’elfo in dono"
+	};
+	qst.setProperty("options", q480_opts);
+	send qst;
+	
+	// Q490: CONCEPT
+	qst = new question("choice", 490);
+	qst.setProperty("text", "E dove ha cercato ispirazione per organizzare gli scherzetti/le nuove posizioni dell’Elfo?");
+	qst.setProperty("code", "e7");
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("show_rand", true);
+	vector q490_opts = new vector {
+"Su Instagram",
+"Sui gruppi Facebook",
+"Su Pinterest",
+"Su Internet (siti, blog ecc.)",
+"Su altri canali social",
+"Su Youtube",
+"Sul sito Kinder",
+"Altro (specificare)#so#sf ",
+"Li ho ideati tutti da sola#se#sf"
+	};
+	qst.setProperty("options", q490_opts);	
+	send qst;
+	}
+
+	if (selintE3==2 || selintE3==3 || selintE3==4){ qtext="non ha organizzato"; }
+	if (selintE4==3 || selintE4==4){ qtext="non è interessata ad organizzare"; }
+
+	if ((selintE3==2 || selintE3==3 || selintE3==4) || (selintE4==3 || selintE4==4))
+	{
+	// Q510: CHOICE
+	qst = new question("choice", 510);
+	qst.setProperty("text", "Per quale motivo lei <b>"+qtext+"</b> l’“Elf on the Shelf” per i suoi bambini?");
+	qst.setProperty("code", "e8");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{max:3}");
+	vector q510_opts = new vector {
+		"Non mi piacciono le tradizioni straniere",
+		"Non mi interessa quest’attività",
+		"Mio figlio è troppo grande per questa attività",
+		"Mio figlio è troppo piccolo per questa attività",
+		"Non mi piace questa tradizione",
+		"E’ banale",
+		"Non ho tempo/voglia di organizzarla",
+		"Quando l’ho organizzata, in passato, non è piaciuta",
+		"Quando l’ho organizzata, in passato, mi è costata troppo tempo",
+		"I miei figli sono cresciuti/non ci credono più",
+		"Non ho capito cosa fare",
+		"Non interessa ai miei figli/non me la chiedono",
+		"Non ho un ambiente adatto",
+		"Mi sembra complessa da organizzare",
+		"Non ho tante idee per organizzarla",
+		"E’ poco credibile/ i miei figli non ci credono o non ci crederebbero",
+		"Altro (specificare)#so#sf"
+	};
+
+	if (selintE3!=2){
+		q510_opts.set(7,"#sh7");
+		q510_opts.set(8,"#sh8");
+		q510_opts.set(9,"#sh9");
+	}
+
+	qst.setProperty("options", q510_opts);
+	send qst;
+	}
+
+
+	// Q520: CHOICE
+	qst = new question("choice", 520);
+	qst.setProperty("text", "In generale, quanto le piace la tradizione natalizia dell’ <u>“Elf on the Shelf”</u>?");
+	qst.setProperty("code", "e9");
+	qst.setProperty("show_rand", false);
+	vector q520_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q520_opts);
+	send qst;
+
+	// Q530: CONCEPT
+	qst = new question("open", 530);
+	qst.setProperty("text", "Cosa <u>le piace</u> della tradizione natalizia dell’ <u>“Elf on the Shelf”</u>?");
+	qst.setProperty("code", "e10");
+	send qst;
+
+	// Q540: CONCEPT
+	qst = new question("open", 540);
+	qst.setProperty("text", "E cosa <u>non le piace</u> della tradizione natalizia dell’ <u>“Elf on the Shelf”</u>?");
+	qst.setProperty("code", "e11");
+	send qst;
+
+
+	// Q550: CHOICE
+	qst = new question("choice", 550);
+	qst.setProperty("text", "Secondo lei, fino a che età dei bambini è adatta la tradizione dell’Elfo?");
+	qst.setProperty("code", "e11.1");
+	qst.setProperty("show_rand", false);
+	vector q550_opts = new vector {
+		"Fino ai 4 anni",
+		"Fino ai 5 anni",
+		"Fino ai 6 anni",
+		"Fino ai 7 anni",
+		"Fino agli 8 anni",
+		"Fino ai 9 anni",
+		"Fino ai 10 anni",
+		"Fino agli 11 anni",
+		"Fino ai 12 anni",
+		"E’ adatta a tutte le fasce di età#se#sf"
+	};
+	qst.setProperty("options", q550_opts);
+	send qst;
+
+	
+string codeother="<script type='text/javascript'>$(window).load(function() { $('#cmp3381').hide(); $('#q3381_ans').val('0');}); function theFunction () { $('#q3381_ans').val('1');  }</script>";
+
+
+	question c120 = new question("concept", 3380);
+	c120.setProperty("text", codeother+"<center>Per accompagnare le famiglie nell’attesa magica del Natale, Kinder ha lanciato una piattaforma immersiva nella quale propone prima di tutto di costruire il proprio elfo e poi suggerisce 24 attività da svolgere per sorprendere i propri figli, facendo leva sulla tradizione dell’elfo.</br>Le attività variano tra giochi, filastrocche, filtri Instagram, messaggi a sorpresa o scherzi… spesso facendo leva sulle bontà Kinder (rigorosamente portate dall’elfo)<br><br><img src='https://www.primisoft.com/fields/FER/R2301021/resources/sezioneE12.png' class='img-responsive'><br><br><a href='https://www.kinder.com/it/it/xp/kinderklub/natale-kinder-elfo-alfio/' target='_blank' onclick='return theFunction();'>https://www.kinder.com/it/it/xp/kinderklub/natale-kinder-elfo-alfio/</a><br><a href='https://www.kinder.com/it/it/xp/kinderklub/attivita-natale-elfo-alfio-kinder/' target='_blank' onclick='return theFunction();'>https://www.kinder.com/it/it/xp/kinderklub/attivita-natale-elfo-alfio-kinder/</a></center>");
+	c120.setProperty("code", "q2.8");
+	//send c120;
+
+	question c130 = new question("open", 3381);
+    c130.setProperty("code", "reclick");
+    c130.setProperty("text", "reclick");
+    
+
+	qst = new question("composed", 3382);
+    vector q180_comps = new vector { "3380", "3381"};
+    qst.setProperty("components", q180_comps);
+    send qst;
+
+
+
+
+
+	// Q570: CHOICE
+	qst = new question("choice", 570);
+	qst.setProperty("text", "Lei era a conoscenza della piattaforma dedicata alle attività di Alfio, l’Elfo di <b>Kinder</b>?");
+	qst.setProperty("code", "e12");
+	qst.setProperty("show_rand", false);
+	vector q570_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q570_opts);
+	send qst;
+	selint=system.getProperty("ans570");
+
+	if ((selintE3==0 || selintE3==1) && (selint==0))
+	{
+	// Q580: CHOICE
+	qst = new question("choice", 580);
+	qst.setProperty("text", "Lei ha organizzato l’attività  “<b>Elf on the Shelf</b>” con l’aiuto della piattaforma dedicata di <b>Kinder</b>?");
+	qst.setProperty("code", "e13");
+	qst.setProperty("show_rand", false);
+	vector q580_opts = new vector {
+		"Si",
+		"No"
+	};
+	qst.setProperty("options", q580_opts);
+	send qst;
+	selintb=system.getProperty("ans580");
+	
+
+	if (selintb==1)
+	{
+	// Q590: CHOICE
+	qst = new question("choice", 590);
+	qst.setProperty("text", "E per quali motivi non ha utilizzato/non utilizza la piattaforma di <b>Kinder</b> per organizzare l’attività dell’Elfo?");
+	qst.setProperty("code", "e13.1");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("selection", "multiple");
+	qst.setProperty("extras", "{max:3}");
+	vector q590_opts = new vector {
+		"Le attività proposte mi sembrano banali",
+		"Le attività proposte non sono divertenti per i miei figli",
+		"Le attività proposte sono troppo impegnative",
+		"Ho già trovato idee su altri canali/siti",
+		"Il sito/la piattaforma è lenta",
+		"Il sito/la piattaforma è difficile da navigare",
+		"Le attività proposte sono troppo da bambini piccoli",
+		"Le attività proposte sono troppo da bambini grandi",
+		"Altro (specificare)#so#sf"
+	};
+	qst.setProperty("options", q590_opts);
+	send qst;
+	}
+	}
+
+	// Q600: CHOICE
+	qst = new question("choice", 600);
+	qst.setProperty("text", "Quanto le piace questa piattaforma di <b>Kinder</b> ispirata alla tradizione dell’“<b><u>Elf on the Shelf</u></b>”?");
+	qst.setProperty("code", "e14");
+	qst.setProperty("show_rand", false);
+	vector q600_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q600_opts);
+	send qst;
+
+
+	// Q610: CHOICE
+	qst = new question("choice", 610);
+	qst.setProperty("text", "Quanto, secondo lei, questa iniziativa aggiunge valore a <b>Kinder</b>?");
+	qst.setProperty("code", "e15");
+	qst.setProperty("show_rand", false);
+	vector q610_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q610_opts);
+	send qst;
+
+
+
+	// Q620: CHOICE
+	qst = new question("choice", 620);
+	qst.setProperty("text", "Secondo lei, quanto la tradizione dell’Elfo è adatta al brand <b>Kinder</b>?");
+	qst.setProperty("code", "e16");
+	qst.setProperty("show_rand", false);
+	vector q620_opts = new vector {
+		"E’ molto adatta",
+		"Abbastanza adatta",
+		"Così così adatta",
+		"Poco adatta",
+		"Per niente adatta"
+	};
+	qst.setProperty("options", q620_opts);
+	send qst;
+
+
+	// Q630: CHOICE
+	qst = new question("choice", 630);
+	qst.setProperty("text", "L’elfo di Kinder si chiama Alfio; secondo lei quanto il nome Alfio è adatto all’Elfo Kinder?");
+	qst.setProperty("code", "e17");
+	qst.setProperty("show_rand", false);
+	vector q630_opts = new vector {
+		"E’ molto adatto",
+		"Abbastanza adatto",
+		"Così così adatto",
+		"Poco adatto",
+		"Per niente adatto"
+	};
+	qst.setProperty("options", q630_opts);
+	send qst;
+	selint=system.getProperty("ans630");
+
+	if (selint>2)
+	{
+	// Q640: CONCEPT
+	qst = new question("open", 640);
+	qst.setProperty("text", "Quale nome darebbe all’Elfo Kinder?");
+	qst.setProperty("code", "e17.1");
+	send qst;
+	}
+
+
+	// Q650: CHOICE
+	qst = new question("choice", 650);
+	qst.setProperty("text", "E secondo lei, quanto è importante che la tradizione dell’Elfo sia abbinata ai prodotti di cioccolato Kinder?");
+	qst.setProperty("code", "e18");
+	qst.setProperty("show_rand", false);
+	vector q650_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così Così",
+		"Poco adatto",
+		"Per niente adatto"
+	};
+	qst.setProperty("options", q650_opts);
+	send qst;
+
+
+	// Q660: CHOICE
+	qst = new question("choice", 660);
+	qst.setProperty("text", "Quanto l’attività natalizia di Kinder dedicata alla tradizione dell’ “<b>Elf on the Shelf</b>” la invoglia ad acquistare i prodotti <b>Kinder</b>?");
+	qst.setProperty("code", "e19");
+	qst.setProperty("show_rand", false);
+	vector q660_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q660_opts);
+	send qst;
+
+	}
+
+
+
+	
+	system.setProperty("cella", "rand:2");
+	cella=(int)system.getProperty("cella");
+	cella=cella+1;
+	system.setProperty("cel",cella);
+	string espositore;
+	string espositorePiccolo;
+
+
+	
+	for (int i=0,1)
+	{
+
+	espositore="<img src='https://www.primisoft.com/fields/FER/R2301021/resources/espositore"+cella+".png' class='img-responsive'>";
+	espositorePiccolo=scriptzoom+fogliostile+altroscript+"<p class='info'><a class='fancybox' rel='group' href='https://www.primisoft.com/fields/FER/R2301021/resources/espositore"+cella+".png'><img src='https://www.primisoft.com/fields/FER/R2301021/resources/espositore"+cella+".png'  class='img-responsive' alt='' /></a><br>clicca per ingrandire</p>";
+ 
+
+
+	qid=5000+cella*100+4;
+	// Q670: CONCEPT
+	qst = new question("concept", qid);
+	if (i==0){ qst.setProperty("text", "Le mostreremo ora la proposta di un espositore Kinder legato ad una promozione natalizia. Il personaggio al centro è un <u>grande peluche</u>, circondato da tutte le bontà Kinder.</br>Per cortesia la osservi con attenzione e prosegua rispondendo alle domande");}
+	if (i==1){ qst.setProperty("text", "Ora vedrà  un altro espositore natalizio <b>Kinder</b>.");}
+	send qst;	
+
+	if (i==0)
+	{
+	if (cella==1){ qtext="In generale, quanto le piace questo espositore con il <b>peluche di Babbo Natale</b>?"; }
+	if (cella==2){ qtext="In generale, quanto le piace questo espositore con il <b>peluche del Kinderino Natale</b>?"; }
+	}
+	else{
+	if (cella==1){ qtext="In generale, quanto le piace questo espositore con il <b>peluche di Babbo Natale</b>?"; }
+	if (cella==2){ qtext="In generale, quanto le piace questo espositore con il <b>peluche del Kinderino Natale</b>?"; }
+	}
+
+	qid=5000+cella*100;
+	// Q680: CONCEPT
+	qst = new question("concept", qid);
+	qst.setProperty("text", "<center>"+espositore+"</center>");
+	send qst;
+
+	qid=5000+cella*100+2;
+	// Q690: CHOICE
+	qst = new question("choice", qid);
+	qst.setProperty("text", espositorePiccolo+qtext);
+	if (controllomob==true){
+	qst.setProperty("text", espositore+qtext);
+	}
+	qst.setProperty("code", "q1."+cella);
+	qst.setProperty("show_rand", false);
+	vector q690_opts = new vector {
+		"Molto",
+		"Abbastanza",
+		"Così così",
+		"Poco",
+		"Per niente"
+	};
+	qst.setProperty("options", q690_opts);
+	send qst;
+	
+	if (cella==2){
+		cella=1;
+	}
+	else{
+		cella=cella+1;
+	}
+
+	}
+
+
+	// Q720: CHOICE
+	qst = new question("choice", 720);
+	qst.setProperty("text", allinea+"Ora che ha visto le due alternative di espositore Kinder, quale dei due preferisce?");
+	qst.setProperty("code", "q720");
+	qst.setProperty("show_rand", false);
+	vector q720_opts = new vector {
+		"<div><img src='https://www.primisoft.com/fields/FER/R2301021/resources/espositore1.png' width='300px'></div>",
+		"<div><img src='https://www.primisoft.com/fields/FER/R2301021/resources/espositore2.png' width='300px'></div>"
+	};
+	qst.setProperty("options", q720_opts);
+	send qst;
+
+
+	// Q730: CHOICE
+	qst = new question("choice", 730);
+	qst.setProperty("text", "Siamo arrivati alla fine dell’intervista. Ora le faremo solo qualche domanda a scopo statistico.</br><br>Complessivamente, di quante persone è composto il suo nucleo familiare incluso Lei?");
+	qst.setProperty("code", "dm1");
+	qst.setProperty("show_rand", false);
+	vector q730_opts = new vector {
+		"1 persona",
+		"2 persone",
+		"3 persone",
+		"4 persone",
+		"5 persone",
+		"6 persone",
+		"7 o più persone"
+	};
+	qst.setProperty("options", q730_opts);
+	send qst;
+
+
+	// Q740: CHOICE
+	qst = new question("choice", 740);
+	qst.setProperty("text", "Qual è il Suo livello di istruzione? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm4");
+	qst.setProperty("show_rand", false);
+	vector q740_opts = new vector {
+		"Specializzazione/master post Laurea",
+		"Università con laurea",
+		"Università senza laurea",
+		"Licenza Media superiore",
+		"Licenza Media inferiore",
+		"Licenza Elementare",
+		"Nessun titolo"
+	};
+	qst.setProperty("options", q740_opts);
+	send qst;
+
+
+	// Q750: CHOICE
+	qst = new question("choice", 750);
+	qst.setProperty("text", "Qual è il Suo stato civile? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm5");
+	qst.setProperty("show_rand", false);
+	vector q750_opts = new vector {
+		"Sposato/a, convivente",
+		"Celibe/nubile",
+		"Separato/a, divorziato/a, vedovo/a"
+	};
+	qst.setProperty("options", q750_opts);
+	send qst;
+
+
+	// Q760: CHOICE
+	qst = new question("choice", 760);
+	qst.setProperty("text", "Potrebbe indicare la sua attuale condizione lavorativa? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "dm6");
+	qst.setProperty("show_rand", false);
+	vector q760_opts = new vector {
+		"Occupato/a a tempo pieno",
+		"Occupato/a a tempo parziale",
+		"In congedo di maternità/paternità",
+		"Altra condizione lavorativa",
+		"Disoccupato/a",
+		"Pensionato/a",
+		"Casalingo/a",
+		"Studente",
+		"Altra condizione NON lavorativa"
+	};
+	qst.setProperty("options", q760_opts);
+	send qst;
+	selint=system.getProperty("ans760");
+
+	if (selint<4)
+	{
+	// Q770: CHOICE
+	qst = new question("choice", 770);
+	qst.setProperty("text", "Potrebbe indicare che lavoro svolge? Per favore selezioni una sola risposta.");
+	qst.setProperty("code", "q770");
+	qst.setProperty("show_rand", false);
+	vector q770_opts = new vector {
+		"Imprenditore",
+		"Libero professionista",
+		"Dirigente",
+		"Quadro /funzionario",
+		"Artigiano",
+		"Commerciante/esercente",
+		"Lavoratore autonomo",
+		"Impiegato/ Insegnante",
+		"Operaio",
+		"Altro"
+	};
+	qst.setProperty("options", q770_opts);
+	send qst;
+	}
+
+
+}

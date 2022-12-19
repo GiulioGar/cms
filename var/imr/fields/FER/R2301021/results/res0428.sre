@@ -1,0 +1,56 @@
+2.0;FER;R2301021;428;31FDS8UA3G;14/12/2022 15:35:19 CET;14/12/2022 15:47:46 CET;747;3;770;sysSID=R2301021;sysPRJ=FER;cel=2;sysUID=31FDS8UA3G;mob=1;lang=it;cella=1;mok712=si
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;45
+choice;40;7;4
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;3;-1;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000010000100;7
+choice;100;10;1100000000;0;comp0:Grinch;comp1:Babbo Natale 
+scale;110;7;5;0;1;0;0;0;2;0
+choice;120;2;0
+choice;130;9;000000100;6
+choice;140;3;010;1
+scale;150;2;6;100100000000
+choice;179;2;1
+choice;180;2;0
+choice;190;9;000000001;8;comp8:Qualche anno fa cercavo su un browser la possibilità di riceverea letterina da babbo Natale e sono capitata su quel sito
+concept;200
+choice;210;2;0
+choice;220;12;001000000000;2
+concept;410
+choice;420;2;0
+choice;430;9;010000000;1
+concept;440
+choice;450;5;2
+choice;460;5;2
+choice;510;17;00000000000000001;16;comp16:L'ho organizzato per due anni. Ora la bimba è cresciuta
+choice;520;5;0
+open;530;Sì crea complicità tramite le varie attività con l'elfo. Anche se è molto impegnativo 
+open;540;Mi piace.  
+choice;550;10;5
+choice;570;2;0
+choice;600;5;2
+choice;610;5;2
+choice;620;5;2
+choice;630;5;2
+choice;650;5;2
+choice;660;5;2
+choice;720;2;0
+choice;730;7;3
+choice;740;7;3
+choice;750;3;1
+choice;760;9;1
+choice;770;10;7
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;1
+concept;5104
+concept;5200
+choice;5202;5;2
+concept;5204

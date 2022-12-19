@@ -1,0 +1,33 @@
+2.0;FER;R2301021;903;IDEX1117;14/12/2022 18:06:48 CET;<unknown>;0;0;179;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1117;mok36=si;mob=1;lang=it;pan=1
+choice;10;20;11
+choice;20;4;2
+choice;21;2;1
+open;30;31
+choice;40;7;2
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;1;0;-1;-1;-1
+choice;85;3;0
+choice;90;15;111101011110110;9
+choice;100;10;1000000000;0;comp0:Babbo natale 
+scale;110;7;5;0;0;0;0;0;0;0
+choice;120;2;0
+choice;130;9;001000000;2
+choice;140;3;100;0
+scale;150;2;6;000000000010
+choice;179;2;1
+choice;180;2;0
+choice;190;9;001000000;2
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;0
+choice;430;9;001000000;2
+concept;440
+choice;450;5;4
+choice;460;5;1
+choice;510;17;00000010000000000;6
+choice;520;5;0
+open;530;Tutto
+open;540;Niente 
+choice;550;10;3

@@ -1,0 +1,10 @@
+2.0;FER;R2301021;2298;R4K0257778;15/12/2022 14:00:34 CET;<unknown>;0;0;40;sysSID=R2301021;sysPRJ=FER;sysUID=R4K0257778;lang=it;mok712=si
+choice;10;20;4
+choice;20;4;1
+choice;21;2;1
+open;30;37
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;5;2;-1;-1;-1
+choice;85;3;0

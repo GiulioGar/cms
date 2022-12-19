@@ -1,0 +1,9 @@
+2.0;FER;R2301021;566;AU09T39GBP;14/12/2022 16:20:33 CET;14/12/2022 16:21:08 CET;35;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=AU09T39GBP;lang=it
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;54
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;7;6;-1;-1;-1

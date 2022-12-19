@@ -1,0 +1,25 @@
+2.0;FER;R2301021;877;IDEX1093;14/12/2022 18:06:34 CET;<unknown>;0;0;179;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1093;mok36=si;mob=1;lang=it;pan=1;mok712=si
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;39
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;1;2;-1;-1;-1
+choice;85;3;0
+choice;90;15;001000000000000;2
+choice;100;10;1110000000;0;comp0:Babbo Natale ;comp2:Casetta di legno ;comp1:Stelle di neve 
+scale;110;7;5;0;3;0;1;0;1;2
+choice;120;2;0
+choice;130;9;000100000;3
+choice;140;3;100;0
+scale;150;2;6;000000001000
+choice;179;2;1
+choice;180;2;0
+choice;190;9;000000010;7
+concept;200
+choice;210;2;0
+choice;220;12;000000000010;10
+concept;410
+choice;420;2;0

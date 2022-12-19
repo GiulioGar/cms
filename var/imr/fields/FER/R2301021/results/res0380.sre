@@ -1,0 +1,9 @@
+2.0;FER;R2301021;380;DLWANBQR17;14/12/2022 15:09:20 CET;14/12/2022 15:09:49 CET;29;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=DLWANBQR17;mob=1;lang=it
+choice;10;20;19
+choice;20;4;3
+choice;21;2;1
+open;30;62
+choice;40;7;5
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;5;-1;-1;-1;-1

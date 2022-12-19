@@ -1,0 +1,9 @@
+2.0;FER;R2301021;3110;F279YF8ITI;16/12/2022 18:45:42 CET;16/12/2022 18:46:01 CET;19;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=F279YF8ITI;mob=1;lang=it
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;51
+choice;40;7;4
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;6;-1;-1;-1;-1

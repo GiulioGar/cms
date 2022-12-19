@@ -1,0 +1,7 @@
+2.0;FER;R2301021;3281;BXB560TQL1;18/12/2022 21:07:55 CET;18/12/2022 21:08:14 CET;19;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=BXB560TQL1;mob=1;lang=it
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;46
+choice;40;7;4
+choice;50;2;1

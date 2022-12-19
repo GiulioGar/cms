@@ -1,0 +1,32 @@
+2.0;FER;R2301021;1036;IDEX1245;14/12/2022 18:11:20 CET;14/12/2022 18:20:01 CET;521;7;3382;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1245;mok36=si;mob=1;lang=it;pan=1
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;32
+choice;40;7;2
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;1;-1;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000001100000;9
+choice;100;10;1111110000;0;comp0:Topolino ;comp5:Il grinch ;comp4:Paperino ;comp3:Pluto;comp2:Disney ;comp1:Babbo natale 
+scale;110;7;5;1;0;0;0;0;0;0
+choice;120;2;0
+choice;130;9;000000010;7
+choice;140;3;100;0
+scale;150;2;6;000000010000
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;0
+choice;430;9;100100000;3
+concept;440
+choice;450;5;4
+choice;460;5;1
+choice;510;17;00010000000000000;3
+choice;520;5;0
+open;530;E simpatica 
+open;540;Mi piace molto 
+choice;550;10;5

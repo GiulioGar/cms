@@ -1,0 +1,9 @@
+2.0;FER;R2301021;2195;TZ3WR63241;15/12/2022 11:42:20 CET;15/12/2022 11:43:17 CET;57;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=TZ3WR63241;lang=en
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;50
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;6;5;-1;-1;-1

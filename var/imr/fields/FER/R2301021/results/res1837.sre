@@ -1,0 +1,7 @@
+2.0;FER;R2301021;1837;1JA4PNY1JS;14/12/2022 22:01:39 CET;14/12/2022 22:01:51 CET;12;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=1JA4PNY1JS;mob=1;lang=it
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;40
+choice;40;7;3
+choice;50;2;1

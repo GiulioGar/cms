@@ -1,0 +1,7 @@
+2.0;FER;R2301021;562;XMHHM5A2PE;14/12/2022 16:19:06 CET;14/12/2022 16:19:23 CET;17;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=XMHHM5A2PE;mob=1;lang=it
+choice;10;20;6
+choice;20;4;1
+choice;21;2;1
+open;30;25
+choice;40;7;2
+choice;50;2;1

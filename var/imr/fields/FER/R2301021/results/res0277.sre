@@ -1,0 +1,7 @@
+2.0;FER;R2301021;277;HZW5724670;14/12/2022 14:19:43 CET;14/12/2022 14:19:56 CET;13;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=HZW5724670;mob=1;lang=it
+choice;10;20;7
+choice;20;4;1
+choice;21;2;1
+open;30;49
+choice;40;7;4
+choice;50;2;1

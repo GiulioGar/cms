@@ -1,0 +1,9 @@
+2.0;FER;R2301021;3264;OM6RE19391;18/12/2022 16:01:08 CET;18/12/2022 16:02:50 CET;102;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=OM6RE19391;lang=it
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;35
+choice;40;7;3
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;0;-1;-1;-1;-1

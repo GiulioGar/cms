@@ -1,0 +1,32 @@
+2.0;FER;R2301021;637;IDEX1008;14/12/2022 16:40:36 CET;<unknown>;0;0;179;Svar7=4;Svar6=3;Svar5=1;Svar4=2;Svar3=5;Svar2=0;Svar1=7;sysSID=R2301021;Svar0=6;sysUID=IDEX1008;sysPRJ=FER;r7=0;pan=1;r6=0;r5=0;r4=1;r3=4;r2=0;r1=6;r0=6;mok712=si;lang=it
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;47
+choice;40;7;4
+choice;50;2;0
+choice;70;6;2
+scale;80;5;8;5;4;3;-1;-1
+choice;85;3;0
+choice;90;15;011001110000100;1
+choice;100;10;1110000000;0;comp0:babbo natale;comp2:scrooge;comp1:elf
+scale;110;7;5;0;1;0;0;0;1;2
+choice;120;2;0
+choice;130;9;000000010;7
+choice;140;3;100;0
+scale;150;2;6;000000100000
+scale;160;2;14;0000000000000000000100000001
+choice;170;4;1
+choice;179;2;0
+choice;180;2;0
+choice;190;9;010000000;1
+concept;200
+choice;210;2;1
+choice;270;5;4
+choice;280;13;0010000000000;2
+choice;290;5;1
+choice;300;5;1
+choice;310;5;2
+scale;25000;1;102;54
+scale;25600;1;102;100
+scale;25700;1;102;100

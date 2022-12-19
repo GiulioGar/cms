@@ -1,0 +1,14 @@
+2.0;FER;R2301021;1554;IDEX1663;14/12/2022 19:26:38 CET;<unknown>;0;0;40;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1663;mok36=si;mob=1;lang=en;pan=1
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;27
+choice;40;7;2
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;1;-1;-1;-1;-1
+choice;85;3;0
+choice;90;15;110011011100100;0
+choice;100;10;1100000000;0;comp0:🎅 ;comp1:Elfo 
+scale;110;7;5;0;0;0;0;0;0;0
+choice;120;2;0

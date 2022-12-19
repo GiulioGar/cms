@@ -1,0 +1,55 @@
+2.0;FER;R2301021;1119;IDEX1321;14/12/2022 18:16:08 CET;14/12/2022 18:20:35 CET;267;3;760;lang=it;sysPRJ=FER;sysSID=R2301021;mok712=si;cel=2;cella=1;pan=1;mob=1;sysUID=IDEX1321
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;48
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;2;4;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000000000001;14
+choice;100;10;1100000000;0;comp0:Babbo natale;comp1:Elfi
+scale;110;7;5;0;0;1;0;0;1;0
+choice;120;2;0
+choice;130;9;000001000;5
+choice;140;3;100;0
+scale;150;2;6;000000010000
+choice;179;2;1
+choice;180;2;0
+choice;190;9;000001000;5
+concept;200
+choice;210;2;0
+choice;220;12;000010000000;4
+concept;410
+choice;420;2;0
+choice;430;9;000010000;4
+concept;440
+choice;450;5;2
+choice;460;5;0
+choice;510;17;00000000100000000;8
+choice;520;5;1
+open;530;Tutto adoro il Natale 
+open;540;E tutto 9k
+choice;550;10;6
+choice;570;2;0
+choice;600;5;0
+choice;610;5;0
+choice;620;5;1
+choice;630;5;1
+choice;650;5;1
+choice;660;5;0
+choice;720;2;1
+choice;730;7;3
+choice;740;7;0
+choice;750;3;0
+choice;760;9;6
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204

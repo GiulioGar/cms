@@ -1,0 +1,9 @@
+2.0;FER;R2301021;2017;4MTP928QHS;15/12/2022 04:08:38 CET;15/12/2022 04:09:13 CET;35;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=4MTP928QHS;mob=1;lang=it
+choice;10;20;18
+choice;20;4;3
+choice;21;2;1
+open;30;53
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;6;7;-1;-1;-1

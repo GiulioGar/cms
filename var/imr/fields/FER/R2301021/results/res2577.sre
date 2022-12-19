@@ -1,0 +1,20 @@
+2.0;FER;R2301021;2577;IDEX1939;15/12/2022 17:13:41 CET;<unknown>;0;0;40;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1939;mok36=si;mob=1;lang=it;pan=1
+choice;10;20;10
+choice;20;4;2
+choice;21;2;1
+open;30;39
+choice;40;7;3
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;1;-1;-1;-1;-1
+choice;85;3;1
+choice;90;15;011101011100100;2
+choice;100;10;1111100000;0;comp0:Babbo Natale ;comp4:Renne;comp3:Folletti;comp2:Elfi;comp1:Gesù 
+scale;110;7;5;1;1;0;0;0;2;1
+choice;120;2;0
+choice;130;9;000100010;7
+choice;140;3;100;0
+scale;150;2;6;000000100000
+scale;160;2;14;0000000000000000000000000010
+choice;170;4;2
+choice;180;2;1

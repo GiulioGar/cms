@@ -1,0 +1,7 @@
+2.0;FER;R2301021;3170;SYBSOU07K1;17/12/2022 01:49:23 CET;17/12/2022 01:49:35 CET;12;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=SYBSOU07K1;mob=1;lang=it
+choice;10;20;3
+choice;20;4;0
+choice;21;2;1
+open;30;51
+choice;40;7;4
+choice;50;2;1

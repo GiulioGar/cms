@@ -1,0 +1,7 @@
+2.0;FER;R2301021;1955;3QIH80VOL9;14/12/2022 23:39:35 CET;14/12/2022 23:39:45 CET;10;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=3QIH80VOL9;mob=1;lang=it
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;35
+choice;40;7;3
+choice;50;2;1

@@ -1,0 +1,44 @@
+2.0;FER;R2301021;229;75BFDZ92ZY;14/12/2022 13:40:17 CET;14/12/2022 13:47:44 CET;447;7;5102;sysSID=R2301021;sysPRJ=FER;cel=2;sysUID=75BFDZ92ZY;lang=it;cella=1;mok712=si
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;47
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;3;3;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000010100110;9
+choice;100;10;1111111000;0;comp0:Babbo Natale;comp6:jack Frost;comp5:omino di pan di zenzero;comp4:Pupazzo di neve;comp3:Elfi;comp2:Renne;comp1:il Grinch
+scale;110;7;5;0;0;0;0;0;4;0
+choice;120;2;0
+choice;130;9;000101000;3
+choice;140;3;001;2
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;4
+choice;510;17;00100010000000000;6
+choice;520;5;4
+open;530;gli scherzi dell'elfo
+open;540;è roba per bambini piccoli
+choice;550;10;2
+choice;570;2;1
+choice;600;5;4
+choice;610;5;4
+choice;620;5;3
+choice;630;5;1
+choice;650;5;4
+choice;660;5;4
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204

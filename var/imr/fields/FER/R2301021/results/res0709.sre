@@ -1,0 +1,7 @@
+2.0;FER;R2301021;709;YUXMREFT53;14/12/2022 17:04:09 CET;14/12/2022 17:04:22 CET;13;4;50;sysSID=R2301021;sysPRJ=FER;sysUID=YUXMREFT53;mob=1;lang=it
+choice;10;20;11
+choice;20;4;2
+choice;21;2;1
+open;30;37
+choice;40;7;3
+choice;50;2;1

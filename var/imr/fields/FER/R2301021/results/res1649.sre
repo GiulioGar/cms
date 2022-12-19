@@ -1,0 +1,9 @@
+2.0;FER;R2301021;1649;19MBIM6V05;14/12/2022 20:01:46 CET;14/12/2022 20:02:16 CET;30;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=19MBIM6V05;lang=it
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;60
+choice;40;7;5
+choice;50;2;0
+choice;70;6;2
+scale;80;5;8;7;7;6;-1;-1

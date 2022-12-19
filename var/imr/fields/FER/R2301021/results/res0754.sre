@@ -1,0 +1,9 @@
+2.0;FER;R2301021;754;YOOSTWU628;14/12/2022 17:25:41 CET;14/12/2022 17:27:01 CET;80;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=YOOSTWU628;lang=it
+choice;10;20;17
+choice;20;4;3
+choice;21;2;1
+open;30;53
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;6;4;-1;-1;-1

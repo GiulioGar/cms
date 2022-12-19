@@ -1,0 +1,9 @@
+2.0;FER;R2301021;1845;S67VSTDBCM;14/12/2022 22:11:27 CET;14/12/2022 22:12:05 CET;38;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=S67VSTDBCM;mob=1;lang=it
+choice;10;20;1
+choice;20;4;0
+choice;21;2;1
+open;30;65
+choice;40;7;5
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;6;-1;-1;-1;-1

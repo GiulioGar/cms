@@ -1,0 +1,50 @@
+2.0;FER;R2301021;579;F4C8OCVPRV;14/12/2022 16:25:04 CET;14/12/2022 23:22:03 CET;25019;3;770;sysSID=R2301021;sysPRJ=FER;cel=1;sysUID=F4C8OCVPRV;mob=1;lang=it;cella=0;mok712=si
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;44
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;3;2;-1;-1;-1
+choice;85;3;1
+choice;90;15;101100000100110;3
+choice;100;10;1111100000;0;comp0:Babbo Natale;comp4:Re Magi;comp3:Gesù Bambino;comp2:Elfi;comp1:Renne
+scale;110;7;5;0;1;0;0;0;1;1
+choice;120;2;0
+choice;130;9;010001000;1
+choice;140;3;001;2
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;1
+concept;440
+choice;460;5;1
+choice;520;5;1
+open;530;L'originalità e la simpatia del gioco
+open;540;È un po' spaventoso 
+choice;550;10;3
+choice;570;2;1
+choice;600;5;1
+choice;610;5;2
+choice;620;5;1
+choice;630;5;0
+choice;650;5;2
+choice;660;5;2
+choice;720;2;1
+choice;730;7;3
+choice;740;7;2
+choice;750;3;0
+choice;760;9;0
+choice;770;10;3
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;1
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204

@@ -1,0 +1,9 @@
+2.0;FER;R2301021;2103;53571cb112;15/12/2022 08:52:05 CET;15/12/2022 08:52:27 CET;22;4;80;sysSID=R2301021;sysPRJ=FER;sysUID=53571cb112;mob=1;lang=it
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;37
+choice;40;7;3
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;0;-1;-1;-1;-1

@@ -1,0 +1,69 @@
+2.0;FER;R2301021;1484;IDEX1618;14/12/2022 19:15:09 CET;14/12/2022 19:23:41 CET;512;3;770;Svar7=5;Svar6=1;Svar5=6;Svar4=4;Svar3=0;mok36=si;Svar2=3;Svar1=7;sysSID=R2301021;Svar0=2;sysUID=IDEX1618;sysPRJ=FER;cella=0;r7=0;pan=1;r6=0;r5=2;r4=1;r3=0;r2=2;r1=6;r0=2;mok712=si;cel=1;lang=it
+choice;10;20;14
+choice;20;4;3
+choice;21;2;1
+open;30;35
+choice;40;7;3
+choice;50;2;0
+choice;70;6;2
+scale;80;5;8;4;3;1;-1;-1
+choice;85;3;0
+choice;90;15;111101011101110;0
+choice;100;10;1111110000;0;comp0:BABBO NATALE;comp5:FATE;comp4:GNOMI;comp3:OMINI PAN DI ZENZERO;comp2:ELFO;comp1:RENNE
+scale;110;7;5;0;0;0;0;0;0;0
+choice;120;2;0
+choice;130;9;000100010;3
+choice;140;3;100;0
+scale;150;2;6;000000100100
+scale;160;2;14;0000000000000010000101110100
+choice;170;4;0
+choice;179;2;0
+choice;180;2;1
+concept;200
+choice;210;2;1
+choice;230;2;1
+choice;261;3;2
+choice;270;5;0
+choice;280;13;0000000000001;12;comp12:NON NE ERO A CONOSCENZA
+choice;290;5;0
+choice;300;5;0
+choice;310;5;0
+choice;340;5;0
+choice;350;5;0
+concept;360
+concept;361
+choice;370;5;0
+open;380;La descrizione dettagliata della vita della bambina
+open;390;mi piace tutto
+open;400;no, tutto perfetto
+concept;410
+choice;420;2;0
+choice;430;9;000001000;5
+choice;720;2;0
+choice;730;7;4
+choice;740;7;0
+choice;750;3;0
+choice;760;9;0
+choice;770;10;7
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204
+scale;25000;1;102;100
+scale;25100;1;102;100
+scale;25200;1;102;100
+scale;25300;1;102;98
+scale;25400;1;102;100
+scale;25500;1;102;100
+scale;25600;1;102;100
+scale;25700;1;102;100
+scale;35000;1;102;100
+scale;35100;1;102;98
+scale;35200;1;102;100
+scale;35300;1;102;100
+scale;35400;1;102;98
+scale;35500;1;102;100
+scale;35600;1;102;100
+scale;35700;1;102;100

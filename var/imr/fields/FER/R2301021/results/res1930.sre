@@ -1,0 +1,10 @@
+2.0;FER;R2301021;1930;2TZLHMCCBN;14/12/2022 23:19:44 CET;14/12/2022 23:20:31 CET;47;4;85;sysSID=R2301021;sysPRJ=FER;sysUID=2TZLHMCCBN;mok36=si;mob=1;lang=it
+choice;10;20;15
+choice;20;4;3
+choice;21;2;1
+open;30;22
+choice;40;7;1
+choice;50;2;0
+choice;70;6;3
+scale;80;5;8;1;0;0;1;-1
+choice;85;3;2

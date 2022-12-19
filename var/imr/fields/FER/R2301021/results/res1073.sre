@@ -1,0 +1,12 @@
+2.0;FER;R2301021;1073;IDEX1278;14/12/2022 18:13:06 CET;<unknown>;0;0;40;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1278;lang=it;pan=1;mok712=si
+choice;10;20;9
+choice;20;4;2
+choice;21;2;1
+open;30;48
+choice;40;7;4
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;3;3;-1;-1;-1
+choice;85;3;0
+choice;90;15;011000000000100;2
+choice;100;10;1000000000;0;comp0:Babbo.natale

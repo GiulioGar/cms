@@ -1,0 +1,12 @@
+2.0;FER;R2301021;2267;3ESVD1TX1T;15/12/2022 13:34:09 CET;<unknown>;0;0;40;sysSID=R2301021;sysPRJ=FER;sysUID=3ESVD1TX1T;mok36=si;lang=it;mok712=si
+choice;10;20;3
+choice;20;4;0
+choice;21;2;1
+open;30;33
+choice;40;7;2
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;2;1;-1;-1;-1
+choice;85;3;0
+choice;90;15;000000000000001;14
+choice;100;10;1000000000;0;comp0:babbo natalr

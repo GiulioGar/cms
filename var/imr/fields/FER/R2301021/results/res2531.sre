@@ -1,0 +1,52 @@
+2.0;FER;R2301021;2531;IDEX1903;15/12/2022 16:48:28 CET;15/12/2022 16:53:45 CET;317;3;760;lang=it;sysPRJ=FER;sysSID=R2301021;cel=2;cella=1;mok36=si;pan=1;mob=1;sysUID=IDEX1903
+choice;10;20;11
+choice;20;4;2
+choice;21;2;1
+open;30;32
+choice;40;7;2
+choice;50;2;0
+choice;70;6;0
+scale;80;5;8;1;-1;-1;-1;-1
+choice;85;3;0
+choice;90;15;100000001100000;0
+choice;100;10;1110000000;0;comp0:Elfo;comp2:Renne;comp1:Babbo natale
+scale;110;7;5;0;0;0;0;0;0;1
+choice;120;2;0
+choice;130;9;000100000;3
+choice;140;3;001;2
+choice;179;2;1
+choice;180;2;1
+concept;200
+choice;210;2;1
+concept;410
+choice;420;2;0
+choice;430;9;110000000;0
+concept;440
+choice;450;5;4
+choice;460;5;0
+choice;510;17;00000000000000100;14
+choice;520;5;0
+open;530;L'idea di questo Elfo dispettoso che con la magia viaggia e comunica con babbo Natale 
+open;540;Nulla. Per me è una tradizione fantastica 
+choice;550;10;6
+choice;570;2;1
+choice;600;5;0
+choice;610;5;0
+choice;620;5;0
+choice;630;5;1
+choice;650;5;1
+choice;660;5;0
+choice;720;2;0
+choice;730;7;2
+choice;740;7;2
+choice;750;3;0
+choice;760;9;6
+composed;3382
+concept;3380
+open;3381;0
+concept;5100
+choice;5102;5;0
+concept;5104
+concept;5200
+choice;5202;5;0
+concept;5204

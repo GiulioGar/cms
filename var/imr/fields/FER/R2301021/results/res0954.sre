@@ -1,0 +1,34 @@
+2.0;FER;R2301021;954;IDEX1166;14/12/2022 18:07:38 CET;14/12/2022 18:10:38 CET;180;7;3382;sysSID=R2301021;sysPRJ=FER;sysUID=IDEX1166;mok36=si;mob=1;lang=it;pan=1
+choice;10;20;2
+choice;20;4;0
+choice;21;2;1
+open;30;36
+choice;40;7;3
+choice;50;2;0
+choice;70;6;1
+scale;80;5;8;1;1;-1;-1;-1
+choice;85;3;0
+choice;90;15;001000000000010;2
+choice;100;10;1110000000;0;comp0:Babbo natale;comp2:Elfi;comp1:Renne
+scale;110;7;5;0;0;0;0;0;3;0
+choice;120;2;0
+choice;130;9;000001000;5
+choice;140;3;100;0
+scale;150;2;6;000000000100
+choice;179;2;1
+choice;180;2;0
+choice;190;9;000010000;4
+concept;200
+choice;210;2;0
+choice;220;12;000000001000;8
+concept;410
+choice;420;2;0
+choice;430;9;100000000;0
+concept;440
+choice;450;5;3
+choice;460;5;1
+choice;510;17;00000000000000100;14
+choice;520;5;1
+open;530;Gli scherzi che fa
+open;540;Nulla
+choice;550;10;3
