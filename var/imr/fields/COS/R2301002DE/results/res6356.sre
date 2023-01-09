@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;6356;IDEX63280;17/10/2022 09:03:16 CEST;17/10/2022 09:11:16 CEST;480;5;10002;dcg=2;sysUID=IDEX63280;lang=de;r9=16;r8=7;r19=1;pan=2;r7=15;r18=9;r6=9;r17=7;r5=0;r16=3;r4=17;r15=7;r3=17;r14=4;r2=27;r13=1;r1=22;r12=15;r0=6;r11=14;sysSID=R2301002DE;r10=7;psid=4vA9IRsk_0-fnKZP1EtO-g**;sysPRJ=COS;r30=0;Svar0=6;r29=1;r28=1;r27=3;r26=0;r25=4;r24=0;r23=0;r22=0;r21=5;r20=5
+concept;10
+choice;20;2;1
+choice;30;16;4
+choice;31;7;1
+open;40;63
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;0;comp0:0;comp1:2
+choice;130;6;100000;0
+scale;140;4;10;6;1;4;6
+choice;150;3;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;6;6;6;4;4;5
+scale;180;6;10;7;7;7;7;6;7
+scale;190;6;10;5;5;5;5;5;5
+scale;200;6;10;8;8;7;6;5;5
+scale;210;6;10;5;5;5;5;5;5
+ordering;220;6;0;1;3;2;5;4
+open;230;Man ist auf einem Kreuzfahrtschiff und dieses legt an den wichtigsten Häfen an, so dass man die Möglichkeit hat, viele Menschen bzw. Städte kennenzulernen.
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;8;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10002;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

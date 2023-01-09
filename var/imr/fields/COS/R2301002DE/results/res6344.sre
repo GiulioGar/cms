@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;6344;IDEX63268;16/10/2022 14:33:29 CEST;16/10/2022 14:42:03 CEST;514;5;10002;dcg=2;sysUID=IDEX63268;lang=de;r9=17;r8=3;r19=11;pan=2;r7=9;r18=7;r6=19;r17=12;r5=0;r16=0;r4=19;r15=1;r3=24;r14=16;r2=16;r13=1;r1=9;r12=5;r0=28;r11=7;sysSID=R2301002DE;r10=8;psid=4vA9IRsk_0_tMfe-F4_xNA**;sysPRJ=COS;r30=0;Svar0=6;r29=0;r28=1;r27=1;r26=0;r25=1;r24=4;r23=1;r22=8;r21=5;r20=9
+concept;10
+choice;20;2;0
+choice;30;16;10
+choice;31;7;5
+open;40;68
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;1;comp0:0;comp1:2
+choice;130;6;100000;0
+scale;140;4;10;8;3;4;6
+choice;150;3;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;8;8;7;7;7;7
+scale;180;6;10;7;7;7;7;7;7
+scale;190;6;10;7;7;7;7;7;7
+scale;200;6;10;8;7;8;8;7;7
+scale;210;6;10;8;8;8;8;8;8
+ordering;220;6;5;1;2;0;3;4
+open;230;Einen gemeinsamen Urlaub auf Costa ist für mich das wichtigste.
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10002;11;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10006;7;3;-1;-1;-1;-1;-1;-1

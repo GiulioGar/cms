@@ -1,0 +1,35 @@
+2.0;COS;R2301002DE;6035;IDEX62959;16/10/2022 12:43:06 CEST;16/10/2022 12:45:31 CEST;145;5;10004;dcg=1;sysUID=IDEX62959;lang=de;r9=11;r8=5;r19=9;pan=2;r7=19;r18=0;r6=23;r17=12;r5=9;r16=0;r4=25;r15=9;r3=10;r14=1;r2=13;r13=3;r1=23;r12=2;r0=20;r11=18;sysSID=R2301002DE;r10=8;psid=4vA9IRsk_0_z409gxCPokw**;sysPRJ=COS;mobile=si;r30=0;Svar0=24;r29=0;r28=1;r27=1;r26=3;r25=4;r24=0;r23=5;r22=4;r21=7;r20=9
+concept;10
+choice;20;2;1
+choice;30;16;1
+choice;31;7;0
+open;40;31
+choice;50;4;1
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;3
+choice;120;2;11;0;comp0:0;comp1:3
+choice;130;6;000100;3
+scale;140;4;10;4;1;2;3
+choice;150;3;1
+choice;151;6;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;5;2;1;3;1;2
+scale;180;6;10;4;2;3;1;4;1
+scale;190;6;10;0;3;2;1;3;0
+scale;200;6;10;4;4;4;8;0;1
+scale;210;6;10;4;4;5;6;7;9
+ordering;220;6;5;3;0;4;2;1
+open;230;Ist am besten auf meine Bedürfnisse zugeschnitten 
+choice;241;6;110001;0
+choice;2000;31;0000000000000000000000001000000;24
+concept_eval;10004;19;14;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10006;7;-1;-1;-1;-1;-1;-1;-1

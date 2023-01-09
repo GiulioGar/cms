@@ -1,0 +1,33 @@
+2.0;COS;R2301002DE;6031;IDEX62955;16/10/2022 12:42:01 CEST;16/10/2022 12:52:25 CEST;624;5;10002;dcg=2;sysUID=IDEX62955;lang=de;r9=1;r8=13;r19=0;pan=2;r7=2;r18=3;r6=16;r17=11;r5=21;r16=8;r4=11;r15=10;r3=17;r14=14;r2=3;r13=12;r1=20;r12=4;r0=5;r11=6;sysSID=R2301002DE;r10=1;psid=4vA9IRsk_09AsK2uoMx52w**;sysPRJ=COS;mobile=si;r30=0;Svar0=6;r29=0;r28=0;r27=2;r26=0;r25=1;r24=6;r23=3;r22=3;r21=6;r20=10
+concept;10
+choice;20;2;1
+choice;30;16;9
+choice;31;7;4
+open;40;74
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0100100;1
+open;110;1
+scale;140;4;10;4;4;5;5
+choice;150;3;1
+choice;151;6;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;5;7;7;4;4;3
+scale;180;6;10;7;6;6;7;4;4
+scale;190;6;10;5;4;5;6;5;5
+scale;200;6;10;6;7;6;5;4;6
+scale;210;6;10;6;6;5;5;5;6
+ordering;220;6;3;1;0;5;2;4
+open;230;Weil die Reise in irgendeiner Weise organisiert ist, aber man doch seine persönlichen Interessen entfalten kann
+choice;241;6;001101;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10002;11;8;10;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10004;19;6;4;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

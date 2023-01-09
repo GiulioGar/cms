@@ -1,0 +1,33 @@
+2.0;COS;R2301002DE;5712;IDEX62636;16/10/2022 11:41:20 CEST;16/10/2022 11:46:37 CEST;317;5;10002;dcg=2;sysUID=IDEX62636;lang=de;r9=17;r8=0;r19=8;pan=2;r7=15;r18=3;r6=6;r17=13;r5=13;r16=1;r4=12;r15=12;r3=2;r14=11;r2=2;r13=10;r1=14;r12=18;r0=8;r11=9;sysSID=R2301002DE;r10=8;psid=4vA9IRsk_0-UWf1RzLIQ4g**;sysPRJ=COS;r30=0;Svar0=6;r29=0;r28=2;r27=0;r26=2;r25=0;r24=2;r23=7;r22=3;r21=1;r20=5
+concept;10
+choice;20;2;0
+choice;30;16;5
+choice;31;7;2
+open;40;60
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;1
+scale;140;4;10;4;3;7;7
+choice;150;3;0
+choice;151;6;4
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;8;7;2;6;4;6
+scale;180;6;10;9;8;4;6;6;4
+scale;190;6;10;9;6;5;6;4;4
+scale;200;6;10;9;7;4;6;2;4
+scale;210;6;10;8;8;4;5;5;4
+ordering;220;6;0;1;3;4;2;5
+open;230;klingt interessant
+choice;241;6;001101;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;11;12;13;14;7;8;9;10;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10002;11;7;8;10;-1;-1;-1;-1;-1;-1;-1;-1

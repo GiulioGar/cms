@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;5784;IDEX62708;16/10/2022 11:52:31 CEST;16/10/2022 12:51:57 CEST;3566;5;10001;dcg=2;sysUID=IDEX62708;lang=de;r9=11;r8=4;r19=2;pan=2;r7=18;r18=3;r6=14;r17=4;r5=11;r16=2;r4=21;r15=6;r3=22;r14=15;r2=20;r13=4;r1=2;r12=4;r0=27;r11=13;sysSID=R2301002DE;r10=12;psid=4vA9IRsk_0_B72DMg_5suQ**;sysPRJ=COS;r30=0;Svar0=6;r29=1;r28=2;r27=2;r26=1;r25=3;r24=1;r23=7;r22=2;r21=6;r20=4
+concept;10
+choice;20;2;0
+choice;30;16;5
+choice;31;7;2
+open;40;64
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;0;comp0:0;comp1:2
+choice;130;6;100000;0
+scale;140;4;10;4;8;4;8
+choice;150;3;2
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;5;5;9;5;5;5
+scale;180;6;10;4;4;4;4;4;4
+scale;190;6;10;4;5;5;5;4;5
+scale;200;6;10;4;4;4;4;3;4
+scale;210;6;10;3;4;4;3;4;3
+ordering;220;6;4;0;5;1;3;2
+open;230;Einfach so meiner persönlichen Meinung nach
+choice;241;6;000100;3
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;0;7;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10005;4;-1;-1;-1;-1

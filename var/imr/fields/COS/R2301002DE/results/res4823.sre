@@ -1,0 +1,36 @@
+2.0;COS;R2301002DE;4823;IDEX61744;14/10/2022 16:26:36 CEST;14/10/2022 16:33:49 CEST;433;5;10003;dcg=2;sysUID=IDEX61744;lang=de;r9=19;r8=3;r19=3;pan=2;r7=22;r18=0;r6=6;r17=2;r5=13;r16=5;r4=26;r15=0;r3=18;r14=2;r2=26;r13=15;r1=2;r12=5;r0=0;r11=11;sysSID=R2301002DE;r10=8;psid=4vA9IRsk_0_eObQK2cm-dA**;sysPRJ=COS;mobile=si;r30=0;Svar5=12;Svar4=24;Svar3=16;Svar2=6;Svar1=30;Svar0=19;r29=0;r28=0;r27=2;r26=3;r25=5;r24=6;r23=7;r22=7;r21=7;r20=0
+concept;10
+choice;20;2;1
+choice;30;16;10
+choice;31;7;5
+open;40;57
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;0
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;0;comp0:0;comp1:2
+choice;130;6;010000;1
+scale;140;4;10;9;6;9;9
+choice;150;3;0
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;9;9;9;6;5;9
+scale;180;6;10;9;9;9;4;6;9
+scale;190;6;10;7;6;5;7;0;6
+scale;200;6;10;9;9;7;8;0;9
+scale;210;6;10;9;9;9;9;3;9
+ordering;220;6;5;2;0;1;3;4
+open;230;So kann oder sollte Urlaub sein. 
+choice;241;6;001100;2
+concept;260
+choice;2000;31;0000001000001000100100001000001;6
+concept;5000
+concept_eval;10003;14;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10006;7;-1;-1;-1;-1;-1;-1;-1

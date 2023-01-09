@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;5694;IDEX62618;15/10/2022 11:42:01 CEST;15/10/2022 11:46:27 CEST;266;5;10004;dcg=2;sysUID=IDEX62618;lang=de;r9=18;r8=6;r19=2;pan=2;r7=8;r18=6;r6=6;r17=4;r5=4;r16=12;r4=0;r15=8;r3=10;r14=5;r2=13;r13=7;r1=6;r12=4;r0=5;r11=19;sysSID=R2301002DE;r10=6;psid=4vA9IRsk_0_fhMQF_e8U2g**;sysPRJ=COS;r30=0;Svar0=6;r29=0;r28=2;r27=0;r26=4;r25=4;r24=3;r23=2;r22=4;r21=8;r20=8
+concept;10
+choice;20;2;0
+choice;30;16;1
+choice;31;7;0
+open;40;64
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;0
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;1;comp0:0;comp1:2
+choice;130;6;001000;2
+scale;140;4;10;9;4;9;7
+choice;150;3;0
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;9;9;6;9;8;8
+scale;180;6;10;9;9;7;9;8;9
+scale;190;6;10;9;9;9;9;9;9
+scale;200;6;10;9;9;9;9;9;9
+scale;210;6;10;9;9;9;9;9;9
+ordering;220;6;1;3;5;2;4;0
+open;230;Wer möchte das nicht
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10002;11;8;10;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10004;19;6;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

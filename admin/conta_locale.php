@@ -124,14 +124,13 @@
 
 				
 
-				
+				<!-- pannello esterno -->
+
 				<div class="col-xl-4 col-lg-5">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary"> 
 							 PANEL ESTERNO <br/>
-							<b> <span style="font-size:14px; color:gray">(<?php echo $usePanelext;  ?>)</span></b>
-
 						</h6>
 					
 						<span style="color:gray"><i class="fas fa-external-link-alt fa-2x text-gray-300"></i></span>
@@ -148,31 +147,38 @@
 						</div>
 					
 								<table class="table table-striped table-bordered">
-								<tr> <td> Complete: </td> <td> <b><?php echo  $conta_complete_ssi; ?></b> </td> </tr>
-								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati_ssi; ?></b> </td> </tr> 
-								<tr> <td> Over Quota: </td> <td> <b><?php echo  $conta_quotafull_ssi; ?></b> </td> </tr>
-								<tr> <td> Sospese: </td> <td> <b><?php echo  $conta_incomplete_ssi; ?></b> </td> </tr>
-								<tr> <td> Bloccate: </td> <td> <b><?php echo  $conta_bloccate_ssi; ?></b> </td> </tr>
+								<tr> <td> Complete: </td> <td> <b><?php echo  $conta_complete_Cint; ?></b> </td> </tr>
+								<tr> <td> Non in target: </td> <td> <b><?php echo  $conta_filtrati_Cint; ?></b> </td> </tr> 
+								<tr> <td> Over Quota: </td> <td> <b><?php echo  $conta_quotafull_Cint; ?></b> </td> </tr>
+								<tr> <td> Sospese: </td> <td> <b><?php echo  $conta_incomplete_Cint; ?></b> </td> </tr>
+								<tr> <td> Bloccate: </td> <td> <b><?php echo  $conta_bloccate_Cint; ?></b> </td> </tr>
 								<tr> <td> Contatti: </td> <td> <b><?php echo   $panel_esterno; ?></b> </td>
-								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_ssi['total']; ?></b> </td> </tr>
-								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_ssi."%"; ?></b> </td> </tr>
+								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_Cint['total']; ?></b> </td> </tr>
+								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_Cint."%"; ?></b> </td> </tr>
 								</table>
 						
 								
-					<?php 
-							$contaIns++;  }
-			else  { echo "<div class='alert alert-danger' role='alert'> Non utilizzato</div>"; } ?>
+						<?php 
+							$contaIns++;  
+						}
+
+						else  { echo "<div class='alert alert-danger' role='alert'> Non utilizzato</div>"; } ?>
                             
                         </div>
+
                         <div class="card-footer">
 
 						<?php if ($panel_esterno>0) 		
-						{ ?>						
+						{ ?>		
 
-						<div class="form-check form-check-inline">
-
-						<div class="form-check form-check-inline ">
-							
+						<div class="row">
+							<div class="form-check form-check-inline ">
+								
+					
+							</div>
+						</div>
+							<div class="row">
+							<div class="form-check form-check-inline ">
 							<form action="csv.php" method="post" target="_blank">
 								<input type="hidden" name="csv" value="<?php echo $csv_sta ?>" />
 								<input type="hidden" name="filename" value="status_list<?php echo $sid ?>" />
@@ -181,19 +187,20 @@
 								<input style="height:45px; width:auto;" class="form-control" type="image" value="submit" src="img/csv.png" />
 								</form>
 							</div>
+						</div>
 
-
-						</div>	
 						<?php 
 						}			
 						?>
 
                  		</div>
+
                     </div>
+
                 </div>
-			
+			<!-- fine pannello esterno  -->
 
-
+<!-- fine prima riga  -->
 </div>
 
 
@@ -318,11 +325,11 @@
 
 					</div>
 
-					<div class="tab-pane" id="filest" role="tabpanel" aria-labelledby="filest-tab"> 
+					<div class="tab-pane" id="filCint" role="tabpanel" aria-labelledby="filCint-tab"> 
 					<div>&nbsp;</div>
 					<?php
 					
-					if($conta_filtrati_ssi>0)
+					if($conta_filtrati_Cint>0)
 					{
 					?>
 					<canvas id="bar-chart-filtrati3" ></canvas>
@@ -336,21 +343,52 @@
 		
 
 					<ul class="nav nav-pills nav-justified" id="mytab" style="margin-bottom:15px;" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" id="filtot-tab" data-toggle="tab" href="#filtot" role="tab" aria-controls="filtot" aria-selected="true"><i class="fas fa-users"></i> TOT</a>
+					<li class="nav-item" style="font-size:11px; margin-right:2%">
+						<a class="nav-link active" id="filtot-tab" data-toggle="tab" href="#filtot" role="tab" aria-controls="filtot" aria-selected="true"><i class="fas fa-users"></i>TOT</a>
+					</li>
+					
+				<?php 
+				if($nPanel>1)
+				{
+					foreach ($panels as $value) 
+					{
+						switch ($value) {
+							case 0:
+								$tPanel="MILLE";
+								break;
+							case 1:
+								$tPanel="CINT";
+								break;
+							case 2:
+								$tPanel="DYNATA";
+								break;
+							case 3:
+								$tPanel="BILENDI";
+								break;
+							case 4:
+								$tPanel="NORSTAT";
+								break;	
+							case 5:
+								$tPanel="TOLUNA";
+								break;	
+							case 6:
+								$tPanel="NETQUEST";
+									break;		
+							case 7:
+								$tPanel="ALTRO";
+									break;														
+						}
+					?>
+
+					<li class="nav-item" style="font-size:11px; margin-right:2%">
+						<a class="nav-link" id="fil<?php echo $value; ?>-tab" data-toggle="tab" href="#filpan<?php echo $value; ?>" role="tab" aria-controls="filpan<?php echo $value; ?>" aria-selected="true"><i class="fas fa-users"></i> <?php echo $tPanel; ?></a>
 					</li>
 
-					<?php if ($contaPan>1) 		
-					{ ?>
+				<?php 
+					}
+				}	
+				?>
 
-					<li class="nav-item">
-						<a class="nav-link" id="filint-tab" data-toggle="tab" href="#filint" role="tab" aria-controls="filint" aria-selected="false"><i class="fas fa-chalkboard-teacher"></i> INT</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="filest-tab" data-toggle="tab" href="#filest" role="tab" aria-controls="filest" aria-selected="false"><i class="fas fa-external-link-alt"></i> EST</a>
-					</li>
-
-					<?php } ?>
 
 					</ul>
 
@@ -402,7 +440,7 @@
 					<div>&nbsp;</div>
 
 					<?php
-					if($conta_incomplete_ssi>0)
+					if($conta_incomplete_Cint>0)
 					{
 					?>
 					<canvas id="bar-chart-sospese3" ></canvas>

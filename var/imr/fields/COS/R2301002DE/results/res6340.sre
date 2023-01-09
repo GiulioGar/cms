@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;6340;IDEX63264;16/10/2022 14:32:32 CEST;16/10/2022 14:38:53 CEST;381;5;10002;dcg=2;sysUID=IDEX63264;lang=de;r9=21;r8=3;r19=3;pan=2;r7=20;r18=8;r6=5;r17=1;r5=1;r16=14;r4=20;r15=14;r3=26;r14=15;r2=14;r13=4;r1=13;r12=3;r0=17;r11=12;sysSID=R2301002DE;r10=8;psid=4vA9IRsk_08jAG61CaUVFg**;sysPRJ=COS;r30=0;Svar0=6;r29=1;r28=2;r27=1;r26=1;r25=5;r24=5;r23=7;r22=1;r21=7;r20=3
+concept;10
+choice;20;2;0
+choice;30;16;6
+choice;31;7;2
+open;40;58
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;0;comp0:0;comp1:2
+choice;130;6;010000;1
+scale;140;4;10;0;5;5;6
+choice;150;3;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;8;6;4;5;3;3
+scale;180;6;10;8;7;6;4;3;3
+scale;190;6;10;8;5;6;3;3;2
+scale;200;6;10;9;6;2;5;3;2
+scale;210;6;10;7;5;6;7;4;4
+ordering;220;6;0;1;2;3;4;5
+open;230;Ist für mich am attraktivsten, auch Landgänge zu machen.
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10002;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

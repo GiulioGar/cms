@@ -1,0 +1,33 @@
+2.0;COS;R2301002DE;5302;IDEX62225;15/10/2022 08:44:01 CEST;15/10/2022 08:54:42 CEST;641;5;10003;dcg=2;sysUID=IDEX62225;lang=de;r9=4;r8=2;r19=9;pan=2;r7=16;r18=8;r6=1;r17=0;r5=18;r16=4;r4=9;r15=0;r3=16;r14=0;r2=3;r13=6;r1=9;r12=5;r0=2;r11=16;sysSID=R2301002DE;r10=1;psid=4vA9IRsk_08A0n9Tym7CZg**;sysPRJ=COS;mobile=si;r30=0;Svar0=6;r29=0;r28=0;r27=0;r26=3;r25=2;r24=3;r23=5;r22=8;r21=1;r20=7
+concept;10
+choice;20;2;0
+choice;30;16;13
+choice;31;7;5
+open;40;63
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;1
+scale;140;4;10;7;8;6;7
+choice;150;3;1
+choice;151;6;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;7;8;7;6;6;7
+scale;180;6;10;7;8;7;7;6;7
+scale;190;6;10;7;7;8;7;7;7
+scale;200;6;10;8;8;8;7;7;7
+scale;210;6;10;8;8;8;7;7;7
+ordering;220;6;0;2;1;4;3;5
+open;230;Es beschreibt die Gesammtheit der Erfahrungen die auf der Reise gemacht werden können. Es macht Lust es zu probieren. Land und Meer erkunden macht neugierig. 
+choice;241;6;001101;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;7;8;9;11;12;14;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10003;14;3;8;10;11;12;13;-1;-1;-1;-1;-1;-1;-1;-1

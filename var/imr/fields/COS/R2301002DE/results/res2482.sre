@@ -1,0 +1,15 @@
+2.0;COS;R2301002DE;2482;IDEX3538;11/10/2022 11:40:27 CEST;11/10/2022 11:44:53 CEST;266;4;151;sysSID=R2301002DE;mobile=si;sysPRJ=COS;sysUID=IDEX3538;lang=de;pan=1
+concept;10
+choice;20;2;1
+choice;30;16;10
+choice;31;7;5
+open;40;37
+choice;50;4;1
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000010;5;comp5:Alle kommen in frage
+open;110;1
+scale;140;4;10;4;5;7;7
+choice;150;3;0
+choice;151;6;4

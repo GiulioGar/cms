@@ -1,0 +1,11 @@
+2.0;COS;R2301002DE;6201;IDEX63125;16/10/2022 13:41:22 CEST;16/10/2022 13:42:11 CEST;49;4;90;sysSID=R2301002DE;sysPRJ=COS;sysUID=IDEX63125;psid=4vA9IRsk_0_mqxzyogK4Zg**;lang=de;pan=2
+concept;10
+choice;20;2;1
+choice;30;16;4
+choice;31;7;1
+open;40;66
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;1000000;0

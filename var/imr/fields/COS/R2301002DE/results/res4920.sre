@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;4920;IDEX61842;14/10/2022 17:25:41 CEST;14/10/2022 17:31:24 CEST;343;5;10005;dcg=2;sysUID=IDEX61842;lang=de;r9=20;r8=3;r19=0;pan=2;r7=6;r18=6;r6=12;r17=13;r5=13;r16=0;r4=22;r15=9;r3=23;r14=7;r2=16;r13=12;r1=24;r12=3;r0=6;r11=18;sysSID=R2301002DE;r10=9;psid=4vA9IRsk_094Kb3GrLc3eg**;sysPRJ=COS;r30=0;Svar0=6;r29=0;r28=1;r27=1;r26=3;r25=5;r24=6;r23=5;r22=3;r21=2;r20=6
+concept;10
+choice;20;2;1
+choice;30;16;13
+choice;31;7;5
+open;40;64
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0010000;2
+open;110;2
+choice;120;2;11;0;comp0:0;comp1:2
+choice;130;6;100000;0
+scale;140;4;10;0;9;2;9
+choice;150;3;2
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;0;0;0;0;0;0
+scale;180;6;10;0;0;0;0;0;0
+scale;190;6;10;0;0;0;0;0;0
+scale;200;6;10;0;0;0;0;0;0
+scale;210;6;10;0;0;0;0;0;0
+ordering;220;6;0;4;1;2;5;3
+open;230;es gab keine andere Auswahl
+choice;241;6;000100;3
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10005;4;-1;-1;-1;-1

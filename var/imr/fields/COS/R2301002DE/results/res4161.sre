@@ -1,0 +1,15 @@
+2.0;COS;R2301002DE;4161;IDEX61145;14/10/2022 12:33:58 CEST;14/10/2022 12:36:48 CEST;170;4;151;sysSID=R2301002DE;sysPRJ=COS;sysUID=IDEX61145;psid=4vA9IRsk_09rfyhbwYpNxg**;lang=de;pan=2
+concept;10
+choice;20;2;0
+choice;30;16;5
+choice;31;7;2
+open;40;46
+choice;50;4;1
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000010;5;comp5:40000 Tons of Metal
+open;110;1
+scale;140;4;10;5;5;8;8
+choice;150;3;0
+choice;151;6;0

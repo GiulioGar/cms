@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;5375;IDEX62298;15/10/2022 09:37:18 CEST;15/10/2022 09:43:54 CEST;396;5;10002;dcg=2;sysUID=IDEX62298;lang=de;r9=5;r8=2;r19=8;pan=2;r7=21;r18=12;r6=14;r17=2;r5=17;r16=10;r4=25;r15=6;r3=14;r14=11;r2=23;r13=8;r1=29;r12=12;r0=17;r11=18;sysSID=R2301002DE;r10=4;psid=4vA9IRsk_09v-7Fmnu5pkw**;sysPRJ=COS;r30=0;Svar0=6;r29=1;r28=2;r27=3;r26=3;r25=3;r24=5;r23=4;r22=4;r21=9;r20=6
+concept;10
+choice;20;2;1
+choice;30;16;8
+choice;31;7;3
+open;40;61
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;4
+choice;120;2;11;0;comp0:0;comp1:4
+choice;130;6;001000;2
+scale;140;4;10;7;2;6;8
+choice;150;3;2
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;7;8;7;8;6;6
+scale;180;6;10;9;9;8;8;7;8
+scale;190;6;10;9;9;7;8;6;6
+scale;200;6;10;8;9;7;8;6;6
+scale;210;6;10;9;9;8;8;6;7
+ordering;220;6;0;1;3;2;5;4
+open;230;Bringt es auf den Punkt
+choice;241;6;000100;3
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;7;9;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10002;11;8;10;-1;-1;-1;-1;-1;-1;-1;-1;-1

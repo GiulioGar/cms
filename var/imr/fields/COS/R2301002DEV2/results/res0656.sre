@@ -1,0 +1,23 @@
+2.0;COS;R2301002DEV2;656;IDEX1695;15/11/2022 14:06:28 CET;15/11/2022 14:09:31 CET;183;5;150;Svar5=7;Svar4=6;mobile=si;Svar3=5;Svar2=1;Svar1=3;sysSID=R2301002DEV2;Svar0=8;sysUID=IDEX1695;sysPRJ=COS;r8=0;r7=1;pan=1;r6=0;r5=3;r4=3;r3=3;r2=1;r1=3;r0=8;dcg=3;lang=de
+concept;10
+choice;20;2;1
+choice;30;16;3
+choice;31;7;0
+open;40;46
+choice;50;4;1
+choice;60;2;0
+choice;70;2;1
+choice;80;5;0
+choice;90;7;0010000;2
+open;110;4
+choice;120;2;11;0;comp0:1;comp1:3
+choice;130;6;100100;0
+scale;140;4;10;0;8;6;9
+choice;150;3;2
+choice;241;6;000010;4
+concept;260
+choice;2000;9;010101111;1
+concept;5000
+scale;5002;1;10;7
+scale;5004;1;10;6
+scale;5006;1;10;7

@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;6183;IDEX63107;16/10/2022 13:36:49 CEST;16/10/2022 13:44:28 CEST;459;5;10004;dcg=2;sysUID=IDEX63107;lang=de;r9=7;r8=11;r19=10;pan=2;r7=17;r18=0;r6=10;r17=8;r5=4;r16=0;r4=23;r15=10;r3=3;r14=10;r2=4;r13=12;r1=11;r12=3;r0=22;r11=8;sysSID=R2301002DE;r10=15;psid=4vA9IRsk_0_eoQQxfeC7kA**;sysPRJ=COS;mobile=si;r30=0;Svar0=6;r29=0;r28=1;r27=3;r26=1;r25=3;r24=4;r23=0;r22=8;r21=9;r20=4
+concept;10
+choice;20;2;1
+choice;30;16;2
+choice;31;7;0
+open;40;64
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;6
+choice;120;2;11;0;comp0:0;comp1:6
+choice;130;6;100000;0
+scale;140;4;10;0;9;6;9
+choice;150;3;1
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;9;9;9;9;9;6
+scale;180;6;10;9;9;9;5;9;6
+scale;190;6;10;9;9;9;9;6;6
+scale;200;6;10;9;9;9;9;7;9
+scale;210;6;10;9;9;9;9;9;9
+ordering;220;6;2;3;0;5;1;4
+open;230;Viele erlebnisse
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10003;14;12;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10004;19;6;17;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

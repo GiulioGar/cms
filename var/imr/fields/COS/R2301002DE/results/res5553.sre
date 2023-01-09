@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;5553;IDEX62477;15/10/2022 10:44:29 CEST;15/10/2022 10:49:00 CEST;271;5;10001;dcg=2;sysUID=IDEX62477;lang=de;r9=18;r8=13;r19=8;pan=2;r7=23;r18=2;r6=5;r17=2;r5=8;r16=5;r4=7;r15=12;r3=22;r14=3;r2=23;r13=1;r1=6;r12=15;r0=11;r11=13;sysSID=R2301002DE;r10=18;psid=4vA9IRsk_08lYswbvnSCPg**;sysPRJ=COS;mobile=si;r30=0;Svar0=6;r29=1;r28=0;r27=0;r26=1;r25=3;r24=0;r23=7;r22=7;r21=5;r20=10
+concept;10
+choice;20;2;1
+choice;30;16;4
+choice;31;7;1
+open;40;62
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000001;6
+open;110;2
+choice;120;2;11;0;comp0:0;comp1:2
+choice;130;6;010000;1
+scale;140;4;10;3;1;3;8
+choice;150;3;0
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;4;4;2;0;9;7
+scale;180;6;10;3;4;1;0;6;6
+scale;190;6;10;0;0;0;0;0;0
+scale;200;6;10;4;4;4;4;4;4
+scale;210;6;10;4;4;4;4;4;4
+ordering;220;6;4;0;5;1;2;3
+open;230;Reines Bauchgefühl. Im Übrigen finde ich alle Beschreibungen nicht sehr einfallsreich.
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10001;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10005;4;-1;-1;-1;-1

@@ -1,0 +1,1476 @@
+#export vars "Svar0"
+#export vars "Svar1"
+#export vars "Svar2"
+#export vars "Svar3"
+#export vars "Svar4"
+#export vars "Svar5"
+#export vars "dcg"
+#export vars "mobile"
+#export vars "pan"
+#export vars "psid"
+#export vars "pid"
+void main() {
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+int r1;
+int selint;
+int selintb;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selb;
+string cpt;
+int preQid;
+int conta;
+int n;
+int reCod;
+int salvai;
+string nascondi_item;
+int selints14;
+int selint2;
+int selints15=99999;
+boolean sels16_0;
+int selints18;
+int selints17;
+int quota;
+string txtmodulato;
+string leggiSvar;
+string msgError="<script type=\"text/javascript\"> $(document).ready(function() { $('.errors li').html('se nessun bambino/adolescente inserire 0 per proseguire');});</script>";
+
+ 
+///LEGGERE VARIABILI DI SISTEMA
+string uid = system.getProperty("sysUID");
+string prj = system.getProperty("sysPRJ");
+string sid = system.getProperty("sysSID");
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+ 
+string autotest=system.getProperty("test");
+ 
+string cod_concept="<script type='text/javascript' src='https://www.primisoft.com/fields/script/dinNone.js'></script>";
+ 
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+ 
+ 
+if (autotest=="1" || uid=="GUEST" || uid=="null") {
+	system.setProperty("env", "debug:true");  system.setProperty("env", "browser:variables");
+}
+ 
+//allinea(colonne, margine_altezza,margine_larghezza)
+string all="<script type='text/javascript' src='https://www.primisoft.com/fields/script/all.js'></script>";
+string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(2,40,140,250);});</script>";
+string allinea=all+mozCode;
+ 
+//allinea(colonne, margine_altezza,margine_larghezza)
+string all_r="<script type='text/javascript' src='https://www.primisoft.com/fields/FER/ITA1903059/resources/all_rank.js'></script>";
+string mozCode_r="<script type='text/javascript'>$(window).load(function() {allinea_r(2,40,600);});</script>";
+string allinea_r=all_r+mozCode_r;	
+ 
+string scriptzoom="<script type='text/javascript' src='https://www.primisoft.com/fields/PRO/MBL047/resources/jquery.fancybox.js?v=2.1.5'></script>";
+string altroscript="<script type='text/javascript'> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+string fogliostile="<link rel='stylesheet' href='https://www.primisoft.com/fields/PRO/MBL047/resources/jquery.fancybox.css?v=2.1.5' type='text/css' media='screen' />";
+ 
+string imgpiccola=scriptzoom+fogliostile+altroscript+"<p class='info'><a class='fancybox' rel='group' href='https://www.primisoft.com/fields/FER/ITA1902033/resources/Diapositiva6.JPG'><img src='https://www.primisoft.com/fields/FER/ITA1902033/resources/Diapositiva6.JPG'  width='450px' alt='' /></a><br>clicca per ingrandire</p>";
+ 
+ 
+ 
+string inputStringToNumeric="<script type='text/javascript'>$(document).ready(function() {"+
+"$('input.form-control').attr('type', 'number');"+
+"$('input.form-control').attr('step', '.01');"+
+"$('input.form-control').attr({"+
+"'min' : 1,"+  
+"'max' : 99,"+  
+"});"+
+"});</script>";
+ 
+string deviceType = system.getProperty("user_agent:deviceType");
+string osType = system.getProperty("user_agent:osType");
+string browserType = system.getProperty("user_agent:browserType");
+ 
+/*
+qtext = "<p>System Information</p>"+
+		"<ul>"+
+			"<li>OS Type: "+osType+"</li>"+
+			"<li>Browser Type: "+browserType+"</li>"+
+			"<li>Device Type: "+deviceType+"</li>"+
+		"</ul>";
+qst = new question("concept", 5);
+qst.setProperty("text", qtext);
+send qst;
+*/
+ 
+boolean controllomob;
+ 
+string s1 = deviceType.trim();
+ 
+ 
+controllomob=s1.contains("mobile");
+if (controllomob==true){
+allinea_r="";
+allinea="";
+system.setProperty("env", "stylesheet:modmob.css");
+system.setProperty("mobile","si");
+}
+
+	// Q10: CONCEPT
+	qst = new question("concept", 10);
+	qst.setProperty("text", "Vielen Dank für Ihre Teilnahme an dieser Umfrage. </br>Die von Ihnen bereitgestellten Informationen werden vertraulich und nur zu Umfragezwecken verwendet. <br>Wir beabsichtigen nicht, Ihnen ein Produkt oder eine Dienstleistung zu verkaufen, weder jetzt noch in der Zukunft. Wir sind ausschließlich an Ihrer Meinung interessiert. ");
+	qst.setProperty("code", "q10");
+	send qst;
+
+
+	// Q20: CHOICE
+	qst = new question("choice", 20);
+	qst.setProperty("text", "Sie sind");
+	qst.setProperty("code", "s1");
+	qst.setProperty("show_rand", false);
+	vector q20_opts = new vector {
+		"Mann",
+		"Frau"
+	};
+	qst.setProperty("options", q20_opts);
+	send qst;
+
+
+	// Q30: CHOICE
+	qst = new question("choice", 30);
+	qst.setProperty("text", "In welcher Region leben Sie zurzeit?");
+	qst.setProperty("code", "s2");
+	qst.setProperty("show_rand", false);
+	vector q30_opts = new vector {
+"Bremen",
+"Hamburg",
+"Niedersachsen",
+"Schleswig-Holstein",
+"Nordrhein-Westfalen",
+"Hessen",
+"Rheinland-Pfalz",
+"Saarland",
+"Baden-Württemberg",
+"Bayern",
+"Berlin",
+"Brandenburg",
+"Mecklenburg-Vorpommern",
+"Sachsen-Anhalt",
+"Sachsen",
+"Thüringen"
+	};
+	qst.setProperty("options", q30_opts);
+	send qst;
+
+ansId=system.getProperty("ans30");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=6;
+    switch(ansId)
+        {
+        case 0,1,2,3:{reCod=0;}
+        case 4:{reCod=1;}
+		case 5,6,7:{reCod=2;}
+		case 8:{reCod=3;}
+		case 9:{reCod=4;}
+		case 10,11,12,13:{reCod=5;}
+        }
+
+
+
+qst = new question("choice", 31);
+qst.setProperty("text", "In quale regione vivi attualmente?");
+qst.setProperty("code", "s2rec");
+vector q31_opts = new vector {
+"Region (1) I",
+"Region (2) II",
+"Region (3) IIIa",
+"Region (4) IIIb",
+"Region (5) IV",
+"Region (6) V(a&b)+VI",
+"Region (7) VII"
+};
+qst.setProperty("options", q31_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+	// Q40: CONCEPT
+	qst = new question("open", 40);
+	qst.setProperty("text", "Würden Sie bitte Ihr Alter angeben?");
+	qst.setProperty("code", "s3");
+	qst.setProperty("view", "numeric");
+	send qst;
+int eta=(int)system.getProperty("ans40");
+if (eta<20 || eta>75) { return 4;}
+
+	if(eta<20) { reCod=0;}
+	if(eta>=20 && eta<=50) { reCod=1;}
+	if(eta>=51 && eta<=75) { reCod=2;}
+	if(eta>75) { reCod=3;}
+
+
+	// Q50: CHOICE
+	qst = new question("choice", 50);
+	qst.setProperty("text", "receta");
+	qst.setProperty("code", "s3rec");
+	qst.setProperty("show_rand", false);
+	vector q50_opts = new vector {
+		"Meno di 20 anni",
+		"20-50 anni",
+		"51-75anni",
+		"Più di 75 anni"
+	};
+	qst.setProperty("options", q50_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+	int selintage=system.getProperty("ans50");
+
+
+	// Q60: CHOICE
+	qst = new question("choice", 60);
+	qst.setProperty("text", "Sprechen wir nun kurz über Urlaub.</br>Haben Sie in den letzten 12 Monaten mindestens <b>4 Tage Ferien</b> gemacht?");
+	qst.setProperty("code", "q1");
+	qst.setProperty("show_rand", false);
+	vector q60_opts = new vector {
+		"Ja",
+		"Nein"
+	};
+	qst.setProperty("options", q60_opts);
+	send qst;
+	selint=system.getProperty("ans60");
+	if (selint==1){return 4;}
+
+
+	// Q70: CHOICE
+	qst = new question("choice", 70);
+	qst.setProperty("text", "Haben Sie jemals <b>eine Kreuzfahrt</b> (auf einem Kreuzfahrtschiff) unternommen, zumindest einmal in Ihrem Leben?");
+	qst.setProperty("code", "q2");
+	qst.setProperty("show_rand", false);
+	vector q70_opts = new vector {
+		"Ja",
+		"Nein"
+	};
+	qst.setProperty("options", q70_opts);
+	send qst;
+	selint=system.getProperty("ans70");
+	if (selint==0){ return 4; }
+
+
+	// Q80: CHOICE
+	qst = new question("choice", 80);
+	qst.setProperty("text", "Wie würden Sie Ihr Interesse für eine Kreuzfahrt in den nächten <u>2-3 Jahren</u> bezeichnen?");
+	qst.setProperty("code", "q3");
+	qst.setProperty("show_rand", false);
+	vector q80_opts = new vector {
+"Sehr interessiert ",
+"Einigermaßen interessiert ",
+"Weder noch",
+"Wenig interessiert",
+"Gar nicht interessiert"
+	};
+	qst.setProperty("options", q80_opts);
+	send qst;
+	selint=system.getProperty("ans80");
+	if (selint>1){return 4;}
+
+	
+	// Q90: CONCEPT
+	qst = new question("choice", 90);
+	qst.setProperty("text", "Mit welchen dieser Gesellschaften <b>würden Sie niemals reisen</b>?");
+	qst.setProperty("code", "q4");
+	qst.setProperty("selection", "multiple");
+	vector q90_opts = new vector {
+"Costa Kreuzfahrten",
+"MSC Kreuzfahrten",
+"Royal Caribbean",
+"Aida Kreuzfahrten",
+"TUI Kreuzfahrten",
+"Sonstige (bitte angeben)#so#sf",
+"Keine davon#se#sf"
+	};
+	qst.setProperty("options", q90_opts);	
+	send qst;
+	sel=system.getProperty("ans90_0");
+	if (sel==true){return 4;}
+
+	string txtatt="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input.form-control').attr('type', 'number');"+
+    "$('input.form-control').attr({"+
+    "'min' :1"+   
+    "});"+
+	//"$('input.form-control').attr('step', '.1');"+
+ 	"});</script>";	
+
+	// Q110: CONCEPT
+	qst = new question("open", 110);
+	qst.setProperty("text", txtatt+"Kommen wir nun zu Ihrem letzten Urlaub, den Sie gemacht haben, worunter eine Reise mit mindestens 4 Übernachtungen außer Haus zu verstehen ist. <br>Wie viele Personen waren an dieser Reise beteiligt, einschließlich Ihnen? <br>Hinweis: <b>Berücksichtigen Sie dabei nur Ihren Partner/Ihre Angehörigen, die Sie während des Aufenthalts begleitet haben.</b> ");
+	qst.setProperty("view", "numeric");
+	qst.setProperty("code", "s14");
+	send qst;
+	selints14=(int)system.getProperty("ans110");
+
+
+	//minimo 1 solo sugli adulti
+	txtatt="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input#comp1').attr('type', 'number');"+
+    "$('input#comp1').attr({"+
+    "'min' :1"+   
+    "});"+
+	//"$('input#comp1').attr('step', '.1');"+
+ 	"});</script>";
+
+	string txtatt2="<script type='text/javascript'>$(document).ready(function() {"+
+    "$('input#comp0').attr('type', 'number');"+
+	//"$('input#comp0').attr('step', '.1');"+
+ 	"});</script>";
+
+	int somma;	
+	int massimoSelezioni;
+
+	if (selints14>1)
+	{
+	// Q120: CHOICE
+	qst = new question("choice", 120);
+	qst.setProperty("text", msgError+txtatt+txtatt2+"Von diesen "+selints14+" Personen, wie viele waren Kinder/Jugendliche von weniger als 18 Jahren und wie viele waren Erwachsene?");
+	qst.setProperty("code", "s15");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("selection", "multiple");
+	vector q120_opts = new vector {
+		"Kinder/Jugendliche (weniger als 18)#so",
+		"AdulErwachseneti#so"
+	};
+	qst.setProperty("options", q120_opts);
+	qst.setProperty("extras", "{min:2}");
+	send qst;
+	selints15=(int)system.getProperty("ans120_0_comp");
+	selint2=(int)system.getProperty("ans120_1_comp");
+
+	somma=selints15+selint2;
+
+	while (somma!=selints14) 
+	{
+	// elimina l'ultima risposta
+	system.setProperty("delete", "ans120");
+	// ripropone la domanda
+	qst.setProperty("text", msgError+txtatt+txtatt2+"<p style='color: red'>Inkonsistenter Wert<p>Von diesen "+selints14+" Personen, wie viele waren Kinder/Jugendliche von weniger als 18 Jahren und wie viele waren Erwachsene?");
+	send qst;
+
+	selints15=(int)system.getProperty("ans120_0_comp");
+	selint2=(int)system.getProperty("ans120_1_comp");
+	somma=selints15+selint2;
+	}	
+
+	
+	if (selint2>=7){ massimoSelezioni=6; }
+	else{ massimoSelezioni=selint2-1; }
+	
+
+	if (selint2>1)
+	{
+	// Q130: CHOICE
+	qst = new question("choice", 130);
+	qst.setProperty("text", "Wer waren die anderen Erwachsenen, die mit Ihnen in einer Kabine gewohnt haben? <br<p>>Berücksichtigen Sie dabei nur Ihren Partner/Ihre Angehörigen, die Sie während des Aufenthalts begleitet haben.</p> ");
+	qst.setProperty("code", "s16");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("selection", "multiple");
+	vector q130_opts = new vector {
+"Mein Partner (Ehemann/Ehefrau, Lebensgefährte/in, Verlobte/r)",
+"Freunde",
+"Kinder (volljährig)",
+"Andere Verwandte (z. B. Eltern, Tanten und Onkel, Cousins/en, Geschwister,…)",
+"Kollegen oder Mitglieder von Gruppen, bei denen auch ich Mitglied bin (z. B. Sportverbände…)",
+"Sonstiges#so#sf"
+	};
+	qst.setProperty("options", q130_opts);
+	qst.setProperty("extras", "{max:"+massimoSelezioni+"}");
+	send qst;
+	sels16_0=system.getProperty("ans130_0");
+	}
+
+	}
+
+
+	// Q140: SCALE
+	qst = new question("scale", 140);
+	qst.setProperty("text", "Bitte geben Sie an, in wie weit Sie mit folgenden Behauptungen in Bezug auf Urlaub einverstanden sind");
+	qst.setProperty("code", "s17");
+	qst.setProperty("show_rand", false);
+	vector q140_rows = new vector {
+"Ich suche immer die preiswerteste Lösung für meinen Urlaub, auch wenn ich dabei einige Kompromisse machen muss ",
+"Ich mag es, mir einen gewissen Luxus zu gönnen",
+"Ich bin immer auf der Suche nach neuen Orten",
+"Komfort und Entspannung sind grundlegende Aspekte für jeden Urlaub"
+	};
+	qst.setProperty("rows", q140_rows);
+	vector q140_cols = new vector {
+		"1<br>Gar nicht einverstanden",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Voll einverstanden"
+	};
+	qst.setProperty("cols", q140_cols);
+	send qst;
+	selints17=system.getProperty("ans140_0");
+
+
+	// Q150: CHOICE
+	qst = new question("choice", 150);
+	qst.setProperty("text", "Wenn Sie an Ihren idealen Urlaub denken, welche der folgenden Beschreibungen würde Ihren Bedürfnissen am ehesten entsprechen?");
+	qst.setProperty("code", "s18");
+	qst.setProperty("show_rand", false);
+	vector q150_opts = new vector {
+"Mir gefällt es, immer wieder neue Orte zu erkunden ",
+"Ich ziehe es vor, mich auf wenige Ziele zu konzentrieren und die lokale Kultur und Natur besser kennenzulernen ",
+"Mir gefällt es, an einem Ort zu verweilen und mich zu entspannen"
+	};
+	qst.setProperty("options", q150_opts);
+	send qst;
+	selints18=system.getProperty("ans150");
+
+
+
+int recDcgTarget=99;
+string target0="99";
+string target1="99";
+string target2="99";
+string target3="99";
+string target4="99";
+string target5="99";
+	
+	if (selintage==1 && selints14==2 && selints15==0 && sels16_0==true && selints17<=7 && selints18!=2){recDcgTarget=0; target0="0";}
+	if (selintage==1 && selints14==2 && selints15==0 && sels16_0==true){recDcgTarget=1; target1="1";}
+	if (selintage==2 && selints14>=2 && selints15==0 && selints18!=2){recDcgTarget=2; target2="2";}
+	if (selintage==2 && selints14>=2 && selints15==0){recDcgTarget=3; target3="3";}
+	if(selints14>=2 && selints15>=1 && selints15!=99999){recDcgTarget=4; target4="4";}
+
+	if (recDcgTarget==99){recDcgTarget=5; target5="5";}
+
+	int selints19;
+	if (recDcgTarget==5)
+	{
+	qst = new question("choice", 151);
+	qst.setProperty("text", "Angenommen, Sie kaufen eine Kreuzfahrt, mit wem würden Sie in einer Kabine wohnen?");
+	qst.setProperty("code", "s19");
+	vector q151_opts = new vector {
+"Alleine",
+"Mit meinem Partner/meiner Partnerin/meinem Mann/meiner Frau ",
+"Mit meinem Partner/Partnerin und Kind(ern)",
+"Mit Kind(ern)",
+"Mit Freunden/Kollegen",
+"Andere Verwandte"
+	};
+	qst.setProperty("options", q151_opts);
+	send qst;	
+	selints19=system.getProperty("ans151");	
+
+	if (selints19==1 && selintage==1 && selints17<=7 && selints18!=2){recDcgTarget=0; target0="0";}
+	if (selints19==1 && selintage==1){recDcgTarget=1; target1="1";}
+	if (selints19!=0 && selintage==2 && (selints15==0 || selints15==99999) && selints18!=2){recDcgTarget=2; target2="2";}
+	if (selints19!=0 && selintage==2 && (selints15==0 || selints15==99999)){recDcgTarget=3; target3="3";}
+	if (selints19==2 || selints19==3){recDcgTarget=4; target4="4";}
+	if (recDcgTarget==5){target5="5"; return 4;}
+
+	}
+
+
+	qst = new question("choice", 241);
+	qst.setProperty("text", "recDCG");
+	qst.setProperty("code", "recDCG");
+	qst.setProperty("selection", "multiple");
+	vector q241_opts = new vector {
+		"EXPLORING COUPLES",
+		"EXPLORING COUPLES bis",
+		"SILVER EXPLORER",
+		"SILVER EXPLORER bis",
+		"EXPLORING TOGETHER FAMILIES",
+		"OTHER"
+	};
+	qst.setProperty("options", q241_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+target0+","+target1+","+target2+","+target3+","+target4+","+target5+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+	int rtrDcg;
+	
+	if (recDcgTarget==0 || recDcgTarget==1){ system.setProperty("dcg",1); system.out("<div>Target: EC</div>"); rtrDcg=1; }
+	if (recDcgTarget==2 || recDcgTarget==3){ system.setProperty("dcg",2); system.out("<div>Target: SE</div>"); rtrDcg=2; }
+	if (recDcgTarget==4){ system.setProperty("dcg",3); system.out("<div>Target: ETF</div>"); rtrDcg=3; }
+
+/*
+	// Q160: CONCEPT
+	qst = new question("concept", 160);
+	qst.setProperty("text", "Sie sehen nun einige <b>Beschreibungen einer Costa-Kreuzfahrt von anderen Kreuzfahrtpassagieren</b>, und wir würden gerne Ihre persönliche Meinung dazu erfahren. ");
+	send qst;
+
+
+	vector vettoreConcetti = new vector {
+"<span style=\"color:#0071a3; font-size:20px;\">Costa ist die beste Art und Weise, <b>Land und Meer</b> in demselben Urlaub <b>zu erkunden.</b></span>",
+"<span style=\"color:#0071a3; font-size:20px;\">Costa ist die beste Art und Weise, <b>die Welt zu entdecken</b>.</span>",
+"<span style=\"color:#0071a3; font-size:20px;\">Costa ist die Reise, von der Sie immer mit einem Gefühl der <b>Bereicherung</b> zurückkehren.</span>",
+"<span style=\"color:#0071a3; font-size:20px;\">Costa schenkt Ihnen jenes Gefühl von <b>Freiheit</b>, von dem Sie dachten, dass es in einem Urlaub nicht möglich sei.</span>",
+"<span style=\"color:#0071a3; font-size:20px;\">Costa steckt voller <b>Wunder</b>.</span>",
+"<span style=\"color:#0071a3; font-size:20px;\">Costa ist der Inbegriff <b>von gemeinsamem</b> Urlaub.</span>"
+	};
+
+
+	for(int i=0,5)
+	{
+		if (i==0){ txtmodulato="Eine Beschreibung ist die folgende:"; }
+		else{ txtmodulato="Eine andere Beschreibung ist die folgende:"; }
+
+	cmd=vettoreConcetti.get(i);
+	qid=161+i;
+	qst = new question("concept", qid);
+	qst.setProperty("text", txtmodulato+"<p>"+cmd+"</p>");
+	send qst;	
+	}
+
+
+	// Q170: SCALE
+	qst = new question("scale", 170);
+	qst.setProperty("text", "Wie viel <b>Lust verspüren Sie, auf eine Kreuzfahrt zu gehen</b>, wenn Sie diese Beschreibung lesen?");
+	qst.setProperty("code", "i1");
+	qst.setProperty("show_rand", true);
+	qst.setProperty("rows", vettoreConcetti);
+	vector q170_cols = new vector {
+		"1<br>Keine",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Sehr viel"
+	};
+	qst.setProperty("cols", q170_cols);
+	send qst;
+	string sortOrder = system.getProperty("ans170_sortorder");
+
+
+	// Q180: SCALE
+	qst = new question("scale", 180);
+	qst.setProperty("text", "Und wie <b>interessant finden Sie sie für sich persönlich und Ihren Ansprüchen entsprechend</b>? ");
+	qst.setProperty("code", "i2");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("rows", vettoreConcetti);
+	vector q180_cols = new vector {
+		"1<br>Überhaupt nicht interessant",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst interessant"
+	};
+	qst.setProperty("cols", q180_cols);
+	qst.setProperty("sortorder", sortOrder);
+	send qst;
+
+
+	// Q190: SCALE
+	qst = new question("scale", 190);
+	qst.setProperty("text", "Wie <b>eindeutig und originell</b> finden Sie sie im Verhältnis zu anderen Kreuzfahrt-Beschreibungen?");
+	qst.setProperty("code", "i3");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("rows", vettoreConcetti);
+	vector q190_cols = new vector {
+		"1<br>Überhaupt nicht eindeutig und originell",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst eindeutig und originell"
+	};
+	qst.setProperty("cols", q190_cols);
+	qst.setProperty("sortorder", sortOrder);
+	send qst;
+
+
+	// Q200: SCALE
+	qst = new question("scale", 200);
+	qst.setProperty("text", "Wie gut passt sie <b>Kreuzfahrt</b>?");
+	qst.setProperty("code", "i4");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("rows", vettoreConcetti);
+	vector q200_cols = new vector {
+		"1<br>Überhaupt nicht passend",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst passend"
+	};
+	qst.setProperty("cols", q200_cols);
+	qst.setProperty("sortorder", sortOrder);
+	send qst;
+
+	// Q210: SCALE
+	qst = new question("scale", 210);
+	qst.setProperty("text", "Wie gut passt sie - Ihrer Meinung nach - zur Marke <b>Costa Crociere</b>?");
+	qst.setProperty("code", "i5");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("rows", vettoreConcetti);
+	vector q210_cols = new vector {
+		"1<br>Überhaupt nicht passend",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst passend"
+	};
+	qst.setProperty("cols", q210_cols);
+	qst.setProperty("sortorder", sortOrder);
+	send qst;
+
+
+	// Q220: CHOICE
+	qst = new question("ordering", 220);
+	qst.setProperty("text", "Nachdem Sie nun alle möglichen Beschreibungen gelesen haben: Welche gefällt Ihnen am besten? Bitte geben Sie diese in der Reihenfolge Ihrer bevorzugten Auswahl an: Klicken Sie zuerst auf Ihren persönlichen Favoriten, dann auf Ihre zweite, dritte, vierte, fünfte und schließlich sechste Wahl");
+	qst.setProperty("code", "Ri1");
+	qst.setProperty("show_rand", false);
+	qst.setProperty("options", vettoreConcetti);
+	qst.setProperty("sel_count", 6);
+	qst.setProperty("strict_selection", true);
+	qst.setProperty("sortorder", sortOrder);
+	send qst;
+	selint=system.getProperty("ans220_0");
+	selint2=system.getProperty("ans220_1");
+
+
+	string cpt1="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae <b>#aszu#ae #aserkunden.#ae</b></span>";
+	string cpt2="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asdie#ae #asWelt#ae #aszu#ae #asentdecken.#ae</b></span>";
+	string cpt3="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asReise,#ae #asvon#ae #asder#ae #asSie#ae #asimmer#ae #asmit#ae #aseinem#ae #asGefühl#ae #asder#ae <b>#asBereicherung#ae</b> #aszurückkehren.#ae</span>";
+	string cpt4="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asschenkt#ae #asIhnen#ae #asjenes#ae #asGefühl#ae #asvon#ae <b>#asFreiheit,#ae</b> #asvon#ae #asdem#ae #asSie#ae #asdachten,#ae #asdass#ae #ases#ae #asin#ae #aseinem#ae #asUrlaub#ae #asnicht#ae #asmöglich#ae #assei.#ae</span>";
+	string cpt5="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b></span>";
+	string cpt6="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asder#ae #asInbegriff#ae <b>#asvon#ae #asgemeinsamem#ae</b> #asUrlaub.#ae</span>";
+
+	cmd=vettoreConcetti.get(selint);
+	// Q230: CONCEPT
+	qst = new question("open", 230);
+	qst.setProperty("text", "Warum haben Sie sich für diese Beschreibung entschieden? Was hat Sie dabei insbesondere überzeugt?<br>Bitte teilen Sie uns dies hier unten mit. Vielen Dank!<br><p>"+cmd+"</p>");
+	qst.setProperty("code", "ri1a");
+	send qst;
+
+
+	//CPT1
+	// Q: 360
+	question qst1_1 = new question("concept_eval", 10001);
+	qst1_1.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	qst1_1.setProperty("code", "ri2.1");
+	qst1_1.setProperty("view", "seltext");
+	qst1_1.setProperty("concept",cpt1);
+    qst1_1.setProperty("allow_nosel", true);
+
+	question qst1_2 = new question("concept_eval", 10002);
+	qst1_2.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	qst1_2.setProperty("code", "ri2.2");
+	qst1_2.setProperty("view", "seltext");
+	qst1_2.setProperty("concept",cpt2);
+    qst1_2.setProperty("allow_nosel", true);
+
+	question qst1_3 = new question("concept_eval", 10003);
+	qst1_3.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	qst1_3.setProperty("code", "ri2.3");
+	qst1_3.setProperty("view", "seltext");
+	qst1_3.setProperty("concept",cpt3);
+    qst1_3.setProperty("allow_nosel", true);
+
+	question qst1_4 = new question("concept_eval", 10004);
+	qst1_4.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	qst1_4.setProperty("code", "ri2.4");
+	qst1_4.setProperty("view", "seltext");
+	qst1_4.setProperty("concept",cpt4);
+    qst1_4.setProperty("allow_nosel", true);
+
+	question qst1_5 = new question("concept_eval", 10005);
+	qst1_5.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	qst1_5.setProperty("code", "ri2.5");
+	qst1_5.setProperty("view", "seltext");
+	qst1_5.setProperty("concept",cpt5);
+    qst1_5.setProperty("allow_nosel", true);
+
+	question qst1_6 = new question("concept_eval", 10006);
+	qst1_6.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	qst1_6.setProperty("code", "ri2.6");
+	qst1_6.setProperty("view", "seltext");
+	qst1_6.setProperty("concept",cpt6);
+    qst1_6.setProperty("allow_nosel", true);						
+
+	if (selint==0){ send qst1_1; }
+	if (selint==1){ send qst1_2; }
+	if (selint==2){ send qst1_3; }
+	if (selint==3){ send qst1_4; }
+	if (selint==4){ send qst1_5; }
+	if (selint==5){ send qst1_6; }
+
+	if (selint2==0){ send qst1_1; }
+	if (selint2==1){ send qst1_2; }
+	if (selint2==2){ send qst1_3; }
+	if (selint2==3){ send qst1_4; }
+	if (selint2==4){ send qst1_5; }
+	if (selint2==5){ send qst1_6; }	
+*/
+
+			vector selRan = new vector { "1#sh", "2#sh", "3#sh", "4#sh", "5#sh", "6#sh"};  
+			int contaestratti=0;
+			int r;
+			int Nran;
+			string optB;
+			string Svar;
+			string saveVar0="99";
+			string saveVar1="99";
+			string saveVar2="99";
+			string saveVar3="99";
+			string saveVar4="99";
+			string saveVar5="99";
+			
+			///PRIMO GRUPPO
+			vector ind = new vector 
+			{ "0", "1", "2", "3","4","5","6","7","8"}; 
+			
+			vector ele = new vector 
+			{
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die beste Art und Weise, Land und Meer in demselben Urlaub zu erkunden</b>. Nur mit Costa können Sie jeden Tag an einem neuen Ort aufwachen und das Beste von ihm entdecken. Und dank der speziellen ALL-INCLUSIVE Formel ist alles enthalten. Sie brauchen daher an nichts anderes zu denken als an Ihre Reise.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die beste Art und Weise, Land und Meer in demselben Urlaub zu erkunden</b>. Lassen Sie Ihr Portemonnaie zu Hause, denn mit der ALL-INCLUSIVE Formel entdecken Sie sorgenfrei die schönsten Reiseziele unserer exklusiven Costa-Reiserouten.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die beste Art und Weise, die Welt zu entdecken</b>. Tagsüber entdecken Sie die Schönheiten der Städte, und beim Abendessen an Bord tauchen Sie in ihre kulinarischen Traditionen ein. Und all das ist in der speziellen ALL-INCLUSIVE Formel enthalten. Sie müssen daher an nichts anderes denken und können Ihre Erlebnisse in vollen Zügen genießen.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die Reise, von der Sie immer mit einem Gefühl der Bereicherung zurückkehren</b>. Nur bei Costa haben Sie die Möglichkeit, in die Kultur des Ortes einzutauchen und die sich ständig ändernden Farben, Klänge und Düfte zu entdecken. Dank der speziellen ALL-INCLUSIVE Formel können Sie dabei Ihr Portemonnaie in der Kabine lassen: Sie brauchen an nichts anderes zu denken als an Ihre Reise.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa steckt voller Wunder</b>. Sie entdecken jeden Tag neue Sonnenauf- und -untergänge sowie Geräusche, von denen man nicht einmal dachte, dass es sie gibt. Und all das, während Sie Ihr Portemonnaie in der Kabine lassen: Dank der speziellen ALL-INCLUSIVE Formel brauchen Sie an nichts anderes zu denken als an Ihre Reise.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist der Inbegriff von gemeinsamem Urlaub</b>. Erleben Sie Ihre Reise und staunen Sie gemeinsam über neue Perspektiven, Lichter und Farben. Und dank der speziellen ALL-INCLUSIVE Formel lassen Sie Ihr Portemonnaie in der Kabine, so dass Sie die schönsten Momente Ihres Urlaubs miteinander erleben können, ohne an etwas anderes als an Ihre Reise denken zu müssen.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa schenkt Ihnen jenes Gefühl von Freiheit, von dem Sie dachten, dass es in einem Urlaub nicht möglich sei</b>. Nur mit Costa finden Sie die typisch italienische Flexibilität: Sie haben sogar die Freiheit, dank der speziellen ALL-INCLUSIVE Formel mit inbegriffenen Getränken und Landausflügen Ihre Brieftasche in der Kabine zu lassen und sich nur darum zu kümmern, die Reise an die schönsten Reiseziele voll auszukosten.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist der einzige Urlaub, der Meer und Land auf rein italienische Weise verbindet</b>. Sie werden jeden Tag an einem neuen Ort aufwachen und viel Zeit zu haben, um die Reiseziele ihrem Rhythmus folgend und ohne Zeitdruck zu genießen.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist das Wunder</b>, jeden Tag die Geheimnisse einzigartiger Orte anhand der Emotionen des Meeres zu entdecken. Sie folgen dabei immer dem entspannten Rhythmus und dem Wunsch nach authentischen Erfahrungen, die einen echten Urlaub in Italien auszeichnen.</span>"
+}; 
+			
+			Nran=9;
+			
+			
+			for (int i=0,8)
+			{   
+			sel=true;
+			system.setProperty("r"+i, "rand:"+Nran);
+			r = (int)system.getProperty("r"+i); 
+		
+			if (rtrDcg==1){
+				if (i==0){ r=0; }
+				
+			}
+
+			if (rtrDcg==2){
+				if (i==0){ r=7; }
+				if (i==1){ r=6; }
+				if (i==2){ r=4; }
+				if (i==3){ r=3; }
+				if (i==4){ r=2; }
+				
+			}	
+
+			if (rtrDcg==3){
+				if (i==0){ r=7; }
+				if (i==1){ r=5; }
+				if (i==2){ r=3; }
+				if (i==3){ r=2; }
+				if (i==4){ r=0; }
+				
+			}						
+						
+			optB=ind.get(r);
+			opt=ele.get(r);
+
+
+			quota=system.getProperty("quota:pescati_"+optB+"_"+rtrDcg);
+			if (quota>=44){ sel=false; }			
+			
+			if (contaestratti<6 && sel==true)
+			{
+			leggiSvar=system.getProperty("Svar"+contaestratti);
+			if (leggiSvar!="null"){ if (optB!=leggiSvar){ return 5; } }				
+		
+			system.setProperty("Svar"+contaestratti, optB);
+			selRan.set(contaestratti,opt);
+			
+			if(contaestratti==0) {saveVar0=optB;}
+			if(contaestratti==1) {saveVar1=optB;}
+			if(contaestratti==2) {saveVar2=optB;}
+			if(contaestratti==3) {saveVar3=optB;}
+			if(contaestratti==4) {saveVar4=optB;}
+			if(contaestratti==5) {saveVar5=optB;}
+			
+			contaestratti=contaestratti+1;
+			}
+			ele.remove(r);
+			ind.remove(r);
+			Nran=Nran-1;
+			}
+			///FINE PRIMO GRUPPO
+
+			
+			
+				qst = new question("choice", 2000);
+				qst.setProperty("text", "indici pescati");
+				qst.setProperty("selection", "multiple");
+				qst.setProperty("code", "recIndici");
+				vector q2000_opts = new vector {
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die beste Art und Weise, Land und Meer in demselben Urlaub zu erkunden</b>. Nur mit Costa können Sie jeden Tag an einem neuen Ort aufwachen und das Beste von ihm entdecken. Und dank der speziellen ALL-INCLUSIVE Formel ist alles enthalten. Sie brauchen daher an nichts anderes zu denken als an Ihre Reise.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die beste Art und Weise, Land und Meer in demselben Urlaub zu erkunden</b>. Lassen Sie Ihr Portemonnaie zu Hause, denn mit der ALL-INCLUSIVE Formel entdecken Sie sorgenfrei die schönsten Reiseziele unserer exklusiven Costa-Reiserouten.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die beste Art und Weise, die Welt zu entdecken</b>. Tagsüber entdecken Sie die Schönheiten der Städte, und beim Abendessen an Bord tauchen Sie in ihre kulinarischen Traditionen ein. Und all das ist in der speziellen ALL-INCLUSIVE Formel enthalten. Sie müssen daher an nichts anderes denken und können Ihre Erlebnisse in vollen Zügen genießen.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist die Reise, von der Sie immer mit einem Gefühl der Bereicherung zurückkehren</b>. Nur bei Costa haben Sie die Möglichkeit, in die Kultur des Ortes einzutauchen und die sich ständig ändernden Farben, Klänge und Düfte zu entdecken. Dank der speziellen ALL-INCLUSIVE Formel können Sie dabei Ihr Portemonnaie in der Kabine lassen: Sie brauchen an nichts anderes zu denken als an Ihre Reise.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa steckt voller Wunder</b>. Sie entdecken jeden Tag neue Sonnenauf- und -untergänge sowie Geräusche, von denen man nicht einmal dachte, dass es sie gibt. Und all das, während Sie Ihr Portemonnaie in der Kabine lassen: Dank der speziellen ALL-INCLUSIVE Formel brauchen Sie an nichts anderes zu denken als an Ihre Reise.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist der Inbegriff von gemeinsamem Urlaub</b>. Erleben Sie Ihre Reise und staunen Sie gemeinsam über neue Perspektiven, Lichter und Farben. Und dank der speziellen ALL-INCLUSIVE Formel lassen Sie Ihr Portemonnaie in der Kabine, so dass Sie die schönsten Momente Ihres Urlaubs miteinander erleben können, ohne an etwas anderes als an Ihre Reise denken zu müssen.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa schenkt Ihnen jenes Gefühl von Freiheit, von dem Sie dachten, dass es in einem Urlaub nicht möglich sei</b>. Nur mit Costa finden Sie die typisch italienische Flexibilität: Sie haben sogar die Freiheit, dank der speziellen ALL-INCLUSIVE Formel mit inbegriffenen Getränken und Landausflügen Ihre Brieftasche in der Kabine zu lassen und sich nur darum zu kümmern, die Reise an die schönsten Reiseziele voll auszukosten.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist der einzige Urlaub, der Meer und Land auf rein italienische Weise verbindet</b>. Sie werden jeden Tag an einem neuen Ort aufwachen und viel Zeit zu haben, um die Reiseziele ihrem Rhythmus folgend und ohne Zeitdruck zu genießen.</span>",
+"<span style=\"color:#0071a3; font-size:20px; \"><b>Costa ist das Wunder</b>, jeden Tag die Geheimnisse einzigartiger Orte anhand der Emotionen des Meeres zu entdecken. Sie folgen dabei immer dem entspannten Rhythmus und dem Wunsch nach authentischen Erfahrungen, die einen echten Urlaub in Italien auszeichnen.</span>"
+				};
+				qst.setProperty("options", q2000_opts);
+				qst.setProperty("default_answer","{ 'selection': ["+saveVar0+","+saveVar1+","+saveVar2+","+saveVar3+","+saveVar4+","+saveVar5+"]}");
+				qst.setProperty("hidden", true);
+				send qst;
+
+cmd=system.getProperty("Svar0");
+system.out("<div>Concetto 1: "+cmd+"</div>");
+cmd=system.getProperty("Svar1");
+system.out("<div>Concetto 2: "+cmd+"</div>");
+cmd=system.getProperty("Svar2");
+system.out("<div>Concetto 3: "+cmd+"</div>");
+cmd=system.getProperty("Svar3");
+system.out("<div>Concetto 4: "+cmd+"</div>");
+cmd=system.getProperty("Svar4");
+system.out("<div>Concetto 5: "+cmd+"</div>");
+cmd=system.getProperty("Svar5");
+system.out("<div>Concetto 6: "+cmd+"</div>");					
+
+if (contaestratti<3){ return 5; }
+	// Q260: CONCEPT
+	qst = new question("concept", 260);
+	qst.setProperty("text", "Sie sehen nun einige <b>Beschreibungen einer Costa-Kreuzfahrt von anderen Kreuzfahrtpassagieren</b>, und wir würden gerne Ihre persönliche Meinung dazu erfahren. ");
+	send qst;
+
+
+
+	for (int i=0,5)
+	{
+	label=selRan.get(i);
+
+		if (i==0){ txtmodulato="Eine Beschreibung ist die folgende:"; }
+		else{ txtmodulato="Eine andere Beschreibung ist die folgende:"; }	
+
+	qid=5000+i*100;
+	// Q260: CONCEPT
+	qst = new question("concept", qid);
+	qst.setProperty("text", txtmodulato+"<br><br><p>"+label+"</p>");
+	send qst;	
+
+	qid=5000+i*100+2;
+	// Q270: SCALE
+	qst = new question("scale", qid);
+	qst.setProperty("text", label+"<br><br>Wie viel <b>Lust verspüren Sie, auf eine Kreuzfahrt zu gehen</b>, wenn Sie diese Beschreibung lesen? ");
+	qst.setProperty("code", "qb1."+i);
+	qst.setProperty("show_rand", false);
+	vector q270_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q270_rows);
+	vector q270_cols = new vector {
+		"1<br>Keine",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Sehr viel"
+	};
+	qst.setProperty("cols", q270_cols);
+	send qst;
+
+	qid=5000+i*100+4;
+	// Q280: SCALE
+	qst = new question("scale", qid);
+	qst.setProperty("text", label+"<br><br>Und wie <b>interessant finden Sie sie für sich persönlich und Ihren Ansprüchen entsprechend</b>?");
+	qst.setProperty("code", "qb2."+i);
+	qst.setProperty("show_rand", false);
+	vector q280_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q280_rows);
+	vector q280_cols = new vector {
+		"1<br>Überhaupt nicht interessant",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst interessant"
+	};
+	qst.setProperty("cols", q280_cols);
+	send qst;
+
+	qid=5000+i*100+6;
+	// Q290: SCALE
+	qst = new question("scale", qid);
+	qst.setProperty("text", label+"<br><br>Wie <b>authentisch</b> finden Sie sie?");
+	qst.setProperty("code", "qb3."+i);
+	qst.setProperty("show_rand", false);
+	vector q290_rows = new vector {
+		" "
+	};
+	qst.setProperty("rows", q290_rows);
+	vector q290_cols = new vector {
+		"1<br>Überhaupt nicht authentisch",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst authentisch"
+	};
+	qst.setProperty("cols", q290_cols);
+	send qst;
+
+	qid=5000+i*100+8;
+	// Q290: SCALE
+	qst = new question("scale", qid);
+	qst.setProperty("text", label+"<br><br>Wir möchten Ihnen nun ein paar Aussagen zitieren.  Zu jedem Satz würden wir gerne wissen, wie gut er - Ihrer Ansicht nach - auf diese Beschreibung passt. ");
+	qst.setProperty("code", "qb4."+i);
+	qst.setProperty("show_rand", true);
+	vector q291_rows = new vector {
+"Sie ist <b>eindeutig und originell</b> im Vergleich zu anderen Kreuzfahrt-Beschreibungen ",
+"Sie ist <b>klar und leicht verständlich</b>",
+"Sie passt für eine <b>Kreuzfahrt</b>",
+"Sie ist für die Marke <b>Costa Crociere</b> passend",
+"Es animiert mich dazu, <b>sofort zu buchen</b>, ohne Zeit zu verlieren",
+"Es weckt mein Interesse, <b>mehr zu erfahren</b>"
+	};
+	qst.setProperty("rows", q291_rows);
+	vector q291_cols = new vector {
+		"1<br>Überhaupt nicht passend",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10<br>Äußerst passend"
+	};
+	qst.setProperty("cols", q291_cols);
+	send qst;
+
+	}
+
+
+
+	qst = new question("ordering", 292);
+	qst.setProperty("text", "Nachdem Sie nun alle möglichen Beschreibungen gelesen haben: Welche gefällt Ihnen am besten? Bitte geben Sie diese in der Reihenfolge Ihrer bevorzugten Auswahl an: Klicken Sie zuerst auf Ihren persönlichen Favoriten, dann auf Ihre zweite, dritte, vierte, fünfte und schließlich sechste Wahl");
+	qst.setProperty("code", "r1");
+	qst.setProperty("show_rand", false);
+	vector q292_options = new vector {
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6"
+		};	
+
+	cmd=selRan.get(0);
+	q292_options.set(0,cmd);
+
+	cmd=selRan.get(1);
+	q292_options.set(1,cmd);
+
+	cmd=selRan.get(2);
+	q292_options.set(2,cmd);
+
+	cmd=selRan.get(3);
+	q292_options.set(3,cmd);
+
+	cmd=selRan.get(4);
+	q292_options.set(4,cmd);
+
+	cmd=selRan.get(5);
+	q292_options.set(5,cmd);
+
+	qst.setProperty("options", q292_options);
+	qst.setProperty("sel_count", 6);
+	qst.setProperty("strict_selection", true);
+	send qst;	
+	selint=system.getProperty("ans292_0");
+
+
+	cmd=q292_options.get(selint);
+	// Q230: CONCEPT
+	qst = new question("open", 293);
+	qst.setProperty("text", "Warum haben Sie sich für diese Beschreibung entschieden? Was hat Sie dabei insbesondere überzeugt?<br> Bitte teilen Sie uns dies hier unten mit. Vielen Dank!<br> <br><p>"+cmd+"</p>");
+	qst.setProperty("code", "r1a");
+	send qst;	
+
+/*
+	string sr1="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae #aszu#ae #aserkunden.#ae #asNur#ae #asmit#ae #asCosta#ae #askönnen#ae #asSie#ae <b>#asjeden#ae #asTag#ae #asan#ae #aseinem#ae #asneuen#ae #asOrt#ae #asaufwachen#ae</b> #asund#ae #asdann#ae <b>#asdas#ae #asSchönste#ae #asvon#ae #asjedem#ae #asReiseziel#ae</b> #asentdecken.#ae </span>";
+	string sr2="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae #aszu#ae #aserkunden.#ae #asNur#ae #asmit#ae #asCosta#ae #askönnen#ae #asSie#ae <b>#asan#ae #as7#ae #asTagen#ae #asdas#ae #asSchönste#ae #asvon#ae #as3#ae #asLändern#ae</b> #asan#ae #asLand#ae #asund#ae #asauf#ae #asdem#ae #asMeer#ae <b>#asentdecken,#ae</b> #asohne#ae #asauch#ae #asnur#ae #aseinmal#ae #asdas#ae #asGepäck#ae #asein-#ae #asund#ae #asauszupacken.#ae </span>";
+	string sr3="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae <b>#aszu#ae #aserkunden.#ae</b> #asNur#ae #asmit#ae #asCosta#ae #ashaben#ae #asSie#ae #asdie#ae #asMöglichkeit,#ae #aswirklich#ae <b>#asin#ae #asdie#ae #aslokale#ae #asWirklichkeit#ae #aseinzutauchen,#ae</b> #asindem#ae #asSie#ae #aseinerseits#ae #asdie#ae #asZielorte#ae <b>#asin#ae #asBegleitung#ae #asvon#ae #aseinheimischen#ae #asGuides#ae #asbesichtigen#ae</b> #asund#ae #asandererseits#ae #asan#ae #asBord#ae <b>#asdie#ae #asjeweils#ae #astypischen#ae #aslokalen#ae #asGerichte#ae #asgenießen.#ae</b> </span>";
+	string sr4="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae <b>#aszu#ae #aserkunden.#ae</b> #asNur#ae #asmit#ae #asCosta#ae #askönnen#ae #asSie#ae #asan#ae #asLand#ae #asund#ae #asan#ae #asBord#ae <b>#asden#ae #asGeschmack,#ae #asdie#ae #asGewürze,#ae #asden#ae #asDuft#ae #asder#ae #asZielorte#ae #askosten.#ae #asEinheimische#ae #asFachleute#ae #asund#ae #asSterneköche#ae #asbegleiten#ae #asSie#ae</b> #asauf#ae #asdieser#ae #asReise.#ae </span>";
+	string sr5="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae <b>#aszu#ae #aserkunden.#ae</b> #asJede#ae #asEcke#ae #asdes#ae #asSchiffs,#ae #asjede#ae #aseinzelne#ae #asAttraktion,#ae #asdie#ae #asLichter#ae #asund#ae #asFarben#ae #asvon#ae #asSonnenauf-#ae #asund#ae #as-untergängen?#ae #asbergen#ae #asein#ae <b>#asKaleidoskop#ae #asaus#ae #asneuen#ae #asEmpfindungen,#ae</b> #asdie#ae #asSie#ae <b>#asin#ae #asIhrem#ae #aspersönlichen#ae #asUrlaubsrhythmus#ae #aserleben,#ae</b> #asan#ae #asLand#ae #asund#ae #asan#ae #asBord.#ae </span>";
+	string sr6="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae <b>#aszu#ae #aserkunden.#ae</b> #asNur#ae #asdie#ae #asReiserouten#ae #asvon#ae #asCosta#ae #asgeben#ae #asIhnen#ae #asdie#ae #asMöglichkeit,#ae <b>#asdie#ae #asZielorte#ae #aszu#ae #asden#ae #asjeweils#ae #asbesten#ae #asZeiten#ae #aszu#ae #aserkunden:#ae</b> #asnächtliche#ae <b>#asShoppingtour#ae</b> #asin#ae #asMykonos,#ae <b>#asAperitif#ae</b> #asin#ae #asSantorin,#ae <b>#asMittagessen#ae</b> #asmit#ae #asder#ae #astypischen#ae #asPasta#ae #asvon#ae #asBari:#ae #asOrecchiette.#ae </span>";
+	string sr7="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asLand#ae #asund#ae #asMeer#ae</b> #asin#ae #asdemselben#ae #asUrlaub#ae <b>#aszu#ae #aserkunden.#ae</b> #asDie#ae #aslange#ae #asSchifffahrtsgeschichte#ae #asund#ae #asdie#ae #asKenntnis#ae #asaller#ae #asZielorte#ae #asvon#ae #asCosta#ae #asgestatten#ae #ases#ae #asIhnen,#ae <b>#asOrte#ae #aszu#ae #asentdecken,#ae #asdie#ae #asSie#ae #asallein#ae #asnie#ae #ashätten#ae #assehen#ae #askönnen.#ae</b> #asAn#ae #asBord#ae #asdagegen#ae #ashaben#ae #asSie#ae #asdie#ae #asMöglichkeit,#ae <b>#asdie#ae #asKochkunst#ae #asvon#ae #as3#ae #asSterneköchen#ae #asin#ae #aseinem#ae #aseinzigen#ae #asRestaurant#ae #askennenzulernen.#ae</b> </span>";
+	string sr8="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asdie#ae #asWelt#ae #aszu#ae #asentdecken.#ae #asJeden#ae #asAbend#ae</b> #ashaben#ae #asSie#ae #asdie#ae #asGelegenheit,#ae <b>#aseine#ae #asder#ae #aszahlreichen#ae #asinternationalen#ae #asKochkünste#ae #askennenzulernen,#ae</b> #asdie#ae #ases#ae #asan#ae #asBord#ae #asder#ae #asCosta-Schiffe#ae #asgibt.#ae </span>";
+	string sr9="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asdie#ae #asWelt#ae #aszu#ae #asentdecken.#ae #asDie#ae #aseinheimischen#ae #asGuides#ae</b> #aswurden#ae #asso#ae #asausgewählt,#ae #asdass#ae #assie#ae <b>#asIhnen#ae #asdie#ae #asGeheimnisse#ae #asund#ae #asTraditionen#ae #asder#ae #asOrte#ae #asenthüllen,#ae</b> #asdie#ae #asSie#ae #asallein#ae #asnie#ae #askennengelernt#ae #ashätten.#ae </span>";
+	string sr10="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asdie#ae #asWelt#ae #aszu#ae #asentdecken.#ae</b> #asTagsüber#ae <b>#asentdecken#ae #asSie#ae #asdie#ae #asAttraktionen#ae #asder#ae #asStädte#ae</b> #asund#ae #aszum#ae #asAbendessen#ae #astauchen#ae #asSie#ae #asdank#ae #asGerichten#ae #asnach#ae #asauthentischen#ae #aslokalen#ae #asRezepten#ae #asin#ae #asderen#ae <b>#askulinarische#ae #asTraditionen#ae</b> #asein.#ae </span>";
+	string sr11="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asbeste#ae #asArt#ae #asund#ae #asWeise,#ae <b>#asdie#ae #asWelt#ae #aszu#ae #asentdecken.#ae</b> #asAn#ae #asBord#ae #asder#ae #asCosta#ae #asSchiffe#ae #askönnen#ae #asSie#ae #asden#ae #asUnterschieden#ae #aszwischen#ae <b>#asden#ae #asexklusiven#ae #asMenüs#ae #asvon#ae #asitalienischen,#ae #asspanischen#ae #asund#ae #asfranzösischen#ae #asSterneköchen#ae #asin#ae #aseinem#ae #aseinzigen#ae #asRestaurant#ae #asmit#ae #asBlick#ae #asaufs#ae #asMeer#ae #asnachspüren.#ae</b> </span>";
+	string sr12="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asReise,#ae #asvon#ae #asder#ae #asSie#ae #asimmer#ae #asmit#ae #aseinem#ae #asGefühl#ae #asder#ae <b>#asBereicherung#ae</b> #aszurückkehren.#ae #asNur#ae #asmit#ae #asCosta#ae <b>#aswachen#ae #asSie#ae #asjeden#ae #asTag#ae #asan#ae #aseinem#ae #asneuen#ae #asOrt#ae #asauf,#ae</b> #aswo#ae #asSie#ae <b>#asFarben,#ae #asKlänge,#ae #asDüfte#ae #asund#ae #asimmer#ae #aswieder#ae #asneue#ae #asAkzente#ae</b> #aserwarten,#ae #asdie#ae #asCosta#ae #asdank#ae #asseiner#ae #asErfahrung#ae #asaufs#ae #asBeste#ae #aszu#ae #assetzen#ae #asweiß.#ae </span>";
+	string sr13="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asReise,#ae #asvon#ae #asder#ae #asSie#ae #asimmer#ae #asmit#ae #aseinem#ae #asGefühl#ae #asder#ae <b>#asBereicherung#ae</b> #aszurückkehren.#ae #asNur#ae #asmit#ae #asCosta#ae <b>#asentdecken#ae #asSie#ae #asjeden#ae #asTag#ae #asetwas#ae #asNeues:#ae</b> #asEin#ae #asjapanisches#ae <b>#asRestaurant#ae</b> #asmit#ae #aseinem#ae #asakrobatischen#ae #asKoch,#ae #aseine#ae <b>#asShow#ae</b> #asmit#ae #asinternationalen#ae #asPerformern#ae #asoder#ae <b>#asden#ae #asBesuch#ae #aseines#ae #asneuen#ae #asOrtes#ae #asin#ae #asBegleitung#ae #aseinheimischer#ae #asFachleute.#ae</b> </span>";
+	string sr14="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asReise,#ae #asvon#ae #asder#ae #asSie#ae #asimmer#ae #asmit#ae #aseinem#ae #asGefühl#ae #asder#ae <b>#asBereicherung#ae</b> #aszurückkehren.#ae #asNur#ae #asmit#ae #asCosta#ae <b>#aswird#ae #asauch#ae #asdas#ae #asAbendessen#ae #aszu#ae #aseiner#ae #asEntdeckung:#ae</b> #asJeder#ae #asAbend#ae #asbirgt#ae #asdie#ae #asDegustation#ae #asvon#ae <b>#asGerichten#ae #asder#ae #astraditionellen#ae #asKüche#ae #asdes#ae #asOrtes,#ae #asden#ae #asSie#ae #asbesucht#ae #ashaben.#ae</b> </span>";
+	string sr15="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asdie#ae #asReise,#ae #asvon#ae #asder#ae #asSie#ae #asimmer#ae #asmit#ae #aseinem#ae #asGefühl#ae #asder#ae <b>#asBereicherung#ae</b> #aszurückkehren.#ae #asNur#ae #asmit#ae #asCosta#ae #ashaben#ae #asSie#ae #asdie#ae #asMöglichkeit,#ae #asganz#ae <b>#asin#ae #asdie#ae #asKultur#ae #asder#ae #asOrte#ae #aseinzutauchen,#ae</b> #asimmer#ae <b>#asin#ae #asBegleitung#ae #asvon#ae #aseinheimischen#ae #asFachleuten,#ae</b> #asdie#ae #asIhnen#ae #asden#ae #asZutritt#ae #aszu#ae #asstets#ae #asspannenden#ae #asOrten#ae <b>#asaußerhalb#ae #asder#ae #asüblichen#ae #asTouristenpfade#ae</b> #asverschaffen.#ae </span>";
+	string sr16=" ";
+	string sr17="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asschenkt#ae #asIhnen#ae #asjenes#ae #asGefühl#ae #asvon#ae <b>#asFreiheit,#ae</b> #asvon#ae #asdem#ae #asSie#ae #asdachten,#ae #asdass#ae #ases#ae #asin#ae #aseinem#ae #asUrlaub#ae #asnicht#ae #asmöglich#ae #assei.#ae #asMit#ae #asCosta#ae <b>#ashaben#ae #asSie#ae #asimmer#ae #asdie#ae #asFreiheit,#ae #asalle#ae #asReiseziele#ae</b> #asentweder#ae #asauf#ae #aseigene#ae #asFaust#ae #asoder#ae #asin#ae #asBegleitung#ae #asvon#ae #aseinheimischen#ae #asFachleuten#ae <b>#aszu#ae #asgenießen#ae</b> #asund#ae <b>#assie#ae #asin#ae #aseinem#ae #astypisch#ae #asitalienischen#ae #asStil#ae #aszu#ae #aserleben.#ae</b> </span>";
+	string sr18="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asschenkt#ae #asIhnen#ae #asjenes#ae #asGefühl#ae #asvon#ae <b>#asFreiheit,#ae</b> #asvon#ae #asdem#ae #asSie#ae #asdachten,#ae #asdass#ae #ases#ae #asin#ae #aseinem#ae #asUrlaub#ae #asnicht#ae #asmöglich#ae #assei.#ae #asNur#ae #asmit#ae #asCosta#ae #asfinden#ae #asSie#ae #asdie#ae <b>#astypisch#ae #asitalienische#ae #asFlexibilität:#ae</b> #asSo#ae #ashaben#ae #asSie#ae <b>#asalle#ae #asZeit,#ae #asdie#ae #asSie#ae #asbrauchen,#ae #asum#ae #asdie#ae #asSchönheit#ae #asder#ae #asOrte#ae #aszu#ae #asgenießen#ae #as–#ae #asdank#ae #asexklusiver#ae #asReiserouten,#ae</b> #asdie#ae #asIhnen#ae #asgenug#ae #asRaum#ae #aslassen,#ae #asum#ae #asganz#ae #asund#ae #asgar#ae #asin#ae #asdie#ae #aslokale#ae #asKultur#ae #aseinzutauchen.#ae </span>";
+	string sr19="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asschenkt#ae #asIhnen#ae #asjenes#ae #asGefühl#ae #asvon#ae <b>#asFreiheit,#ae</b> #asvon#ae #asdem#ae #asSie#ae #asdachten,#ae #asdass#ae #ases#ae #asin#ae #aseinem#ae #asUrlaub#ae #asnicht#ae #asmöglich#ae #assei.#ae #asDie#ae #asextreme#ae <b>#asVielfalt#ae #asan#ae #asRestaurants#ae</b> #asermöglicht#ae #ases#ae #asIhnen,#ae #asimmer#ae <b>#asdie#ae #asvon#ae #asIhnen#ae #asbevorzugten#ae #asGerichte#ae #asund#ae #asUhrzeiten#ae #asfürs#ae #asMittag-#ae #asund#ae #asAbendessen#ae #asauszuwählen#ae #asund#ae #asalles#ae #asim#ae #astypisch#ae #asitalienischen#ae #asStil#ae #aszu#ae #asgenießen.#ae</b> </span>";
+	string sr20="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asschenkt#ae #asIhnen#ae #asjenes#ae #asGefühl#ae #asvon#ae <b>#asFreiheit,#ae</b> #asvon#ae #asdem#ae #asSie#ae #asdachten,#ae #asdass#ae #ases#ae #asin#ae #aseinem#ae #asUrlaub#ae #asnicht#ae #asmöglich#ae #assei.#ae #asNur#ae #asmit#ae #asCosta#ae #asfinden#ae #asSie#ae #asdie#ae #astypisch#ae #asitalienische#ae #asFlexibilität:#ae <b>#asSie#ae #ashaben#ae #assogar#ae #asdie#ae #asFreiheit,#ae #asdank#ae #asder#ae #asspeziellen#ae #asALL-INCLUSIVE#ae #asFormel#ae</b> #asmit#ae #asinbegriffenen#ae #asGetränken#ae #asund#ae #asLandausflügen#ae <b>#asIhre#ae #asBrieftasche#ae #asin#ae #asder#ae #asKabine#ae #aszu#ae #aslassen#ae</b> #asund#ae #assich#ae #asnur#ae #asdarum#ae #aszu#ae #askümmern,#ae #asdie#ae #asReise#ae #asan#ae #asdie#ae #asschönsten#ae #asReiseziele#ae #asvoll#ae #asauszukosten.#ae </span>";
+	
+	string sr21="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b> #asJeden#ae #asTag#ae #aserwachen#ae #asSie#ae #asan#ae #aseinem#ae #asneuen#ae #asOrt#ae #asund#ae <b>#asentdecken#ae</b> #asbeim#ae #asHinausschauen#ae <b>#asein#ae #asneues#ae #asReiseziel,#ae #asmit#ae #asimmer#ae #aswieder#ae #asneuen#ae #asFarben,#ae #asDüften,#ae #asKlängen#ae #asund#ae #asAkzenten.#ae</b> </span>";
+	string sr22="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b> #asEgal,#ae #asum#ae #aswelche#ae #asZeit#ae <b>#asSie#ae #asvom#ae #asBalkon#ae #asIhrer#ae #asKabine#ae #asschauen:#ae</b> #asimmer#ae #aswieder#ae #aswundervolle#ae <b>#asSonnenauf-#ae #asoder#ae #as-untergänge,#ae #asKlänge#ae #asund#ae #asFarben,#ae #asdie#ae #asSie#ae #assich#ae #asselbst#ae #asin#ae #asden#ae #asschönsten#ae #asTräumen#ae #asnicht#ae #ashätten#ae #asvorstellen#ae #askönnen.#ae</b></span>";
+	string sr23="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b> #asEs#ae #asist#ae #asein#ae #aseinzigartiger#ae #asOrt,#ae #aswo#ae #asSie#ae <b>#asdie#ae #asGerichte#ae #asvon#ae #assage#ae #asund#ae #asschreibe#ae #as3#ae #asSterneköchen#ae #asin#ae #asein#ae #asund#ae #asdemselben#ae #asRestaurant#ae #asgenießen#ae #askönnen.#ae</b> </span>";
+	string sr24="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b> #asEine#ae #asexklusive#ae #asAuswahl#ae #asan#ae <b>#aseinheimischen#ae #asFachleuten#ae #asgibt#ae #asIhnen#ae #asdie#ae #asMöglichkeit,#ae #asalle#ae #asGeheimnisse#ae #asund#ae #asTraditionen#ae #asder#ae #asStädte#ae #aszu#ae #asentdecken,#ae</b> #asauch#ae #asvon#ae #asdenjenigen,#ae #asdie#ae #assie#ae #aszu#ae #askennen#ae #asdachten.#ae </span>";
+	string sr25="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b> #asVom#ae #asErwachen#ae #asbis#ae #aszum#ae #asAbendessen#ae <b>#asgibt#ae #ases#ae #asDinge#ae #aszu#ae #asentdecken,#ae #asdie#ae #asSie#ae #asnoch#ae #asnie#ae #asgesehen#ae #ashaben:#ae</b> #asjapanische#ae <b>#asRestaurants#ae</b> #asmit#ae #asMeistern#ae #asder#ae #asakrobatischen#ae #asKochkunst,#ae <b>#asShows#ae</b> #asmit#ae #asinternationalen#ae #asPerformern,#ae <b>#asSaunen#ae</b> #ashoch#ae #asüber#ae #asdem#ae #asMeer.#ae </span>";
+	string sr26="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #assteckt#ae #asvoller#ae <b>#asWunder.#ae</b> #asSie#ae #ashaben#ae #asnoch#ae #asnie#ae #aseine#ae #assolche#ae <b>#asVielfalt#ae #asan#ae #asRestaurants#ae #asder#ae #asinternationalen#ae #asKüche#ae #asan#ae #aseinem#ae #aseinzigen#ae #asOrt#ae</b> #asgesehen.#ae </span>";
+	string sr27="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asder#ae #asInbegriff#ae <b>#asvon#ae #asgemeinsamem#ae</b> #asUrlaub.#ae <b>#asPartys#ae #asund#ae #asShows#ae #asan#ae #asBord,#ae #asErlebnisse#ae #asan#ae #asLand#ae</b> #as–#ae #asalles#ae #asist#ae #asdarauf#ae #asausgerichtet,#ae #asdass#ae #asSie#ae #asunvergessliche#ae #asMomente#ae <b>#asgemeinsam#ae #asmit#ae #asIhren#ae #asLieben#ae</b> #asverbringen.#ae </span>";
+	string sr28="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asder#ae #asInbegriff#ae <b>#asvon#ae #asgemeinsamem#ae</b> #asUrlaub.#ae <b>#asJeden#ae #asTag#ae #asan#ae #aseinem#ae #asneuen#ae #asOrt#ae #aszu#ae #aserwachen,#ae</b> #asist#ae #aseine#ae #asErfahrung,#ae #asdie#ae #asdiese#ae <b>#asReise#ae</b> #aswirklich#ae <b>#aseinzigartig#ae #asund#ae #asunvergesslich#ae</b> #asmacht.#ae </span>";
+	string sr29="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asder#ae #asInbegriff#ae <b>#asvon#ae #asgemeinsamem#ae</b> #asUrlaub.#ae <b>#asJeden#ae #asAbend#ae #aseine#ae #asandere#ae #asArt#ae #asvon#ae #asKochkunst#ae #aszu#ae #askosten#ae #asund#ae #asdiesen#ae #asGenuss#ae #asmit#ae #asanderen#ae #asteilen#ae</b> #aszu#ae #askönnen,#ae #asmacht#ae #asdiese#ae <b>#asReise#ae</b> #aszu#ae #aseinem#ae <b>#asunvergesslichen#ae #asErlebnis.#ae</b> </span>";
+	string sr30="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asder#ae #asInbegriff#ae <b>#asvon#ae #asgemeinsamem#ae</b> #asUrlaub.#ae <b>#asSich#ae #asgemeinsam#ae</b> #asvon#ae #asneuen#ae #asPerspektiven,#ae #asLichtern#ae #asund#ae #asFarben#ae <b>#asin#ae #asErstaunen#ae #asversetzen#ae #aszu#ae #aslassen,#ae</b> #asist#ae #aswirklich#ae #asein#ae <b>#aseinzigartiges#ae #asErlebnis.#ae</b> </span>";
+	string sr31="<span style=\"color:#0071a3; font-size:20px;\">#asCosta#ae #asist#ae #asder#ae #asInbegriff#ae <b>#asvon#ae #asgemeinsamem#ae</b> #asUrlaub.#ae <b>#asGemeinsam#ae #asmit#ae #asseinen#ae #asLieben#ae #asin#ae #asdie#ae #aseinheimische#ae #asKultur#ae #asso#ae #asvieler#ae #asverschiedener#ae #asLänder#ae #aseinzutauchen,#ae</b> #asmacht#ae #asdiese#ae #asReise#ae #aszu#ae #aseinem#ae <b>#aseinzigartigen#ae #asErlebnis.#ae</b> </span>";
+
+
+
+	question r2_1 = new question("concept_eval", 100001);
+	r2_1.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_1.setProperty("code", "r2.1");
+	r2_1.setProperty("view", "seltext");
+	r2_1.setProperty("concept",sr1);
+    r2_1.setProperty("allow_nosel", true);
+
+
+	question r2_2 = new question("concept_eval", 100002);
+	r2_2.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_2.setProperty("code", "r2.2");
+	r2_2.setProperty("view", "seltext");
+	r2_2.setProperty("concept",sr2);
+    r2_2.setProperty("allow_nosel", true);	
+
+	question r2_3 = new question("concept_eval", 100003);
+	r2_3.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_3.setProperty("code", "r2.3");
+	r2_3.setProperty("view", "seltext");
+	r2_3.setProperty("concept",sr3);
+    r2_3.setProperty("allow_nosel", true);
+
+	question r2_4 = new question("concept_eval", 100004);
+	r2_4.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_4.setProperty("code", "r2.4");
+	r2_4.setProperty("view", "seltext");
+	r2_4.setProperty("concept",sr4);
+    r2_4.setProperty("allow_nosel", true);
+
+	question r2_5 = new question("concept_eval", 100005);
+	r2_5.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_5.setProperty("code", "r2.5");
+	r2_5.setProperty("view", "seltext");
+	r2_5.setProperty("concept",sr5);
+    r2_5.setProperty("allow_nosel", true);
+
+	question r2_6 = new question("concept_eval", 100006);
+	r2_6.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_6.setProperty("code", "r2.6");
+	r2_6.setProperty("view", "seltext");
+	r2_6.setProperty("concept",sr6);
+    r2_6.setProperty("allow_nosel", true);
+
+	question r2_7 = new question("concept_eval", 100007);
+	r2_7.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_7.setProperty("code", "r2.7");
+	r2_7.setProperty("view", "seltext");
+	r2_7.setProperty("concept",sr7);
+    r2_7.setProperty("allow_nosel", true);
+
+	question r2_8 = new question("concept_eval", 100008);
+	r2_8.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_8.setProperty("code", "r2.8");
+	r2_8.setProperty("view", "seltext");
+	r2_8.setProperty("concept",sr8);
+    r2_8.setProperty("allow_nosel", true);
+
+	question r2_9 = new question("concept_eval", 100009);
+	r2_9.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_9.setProperty("code", "r2.9");
+	r2_9.setProperty("view", "seltext");
+	r2_9.setProperty("concept",sr9);
+    r2_9.setProperty("allow_nosel", true);
+
+	question r2_10 = new question("concept_eval", 100010);
+	r2_10.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_10.setProperty("code", "r2.10");
+	r2_10.setProperty("view", "seltext");
+	r2_10.setProperty("concept",sr10);
+    r2_10.setProperty("allow_nosel", true);
+
+	question r2_11 = new question("concept_eval", 100011);
+	r2_11.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_11.setProperty("code", "r2.11");
+	r2_11.setProperty("view", "seltext");
+	r2_11.setProperty("concept",sr11);
+    r2_11.setProperty("allow_nosel", true);
+
+	question r2_12 = new question("concept_eval", 100012);
+	r2_12.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_12.setProperty("code", "r2.12");
+	r2_12.setProperty("view", "seltext");
+	r2_12.setProperty("concept",sr12);
+    r2_12.setProperty("allow_nosel", true);	
+
+	question r2_13 = new question("concept_eval", 100013);
+	r2_13.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_13.setProperty("code", "r2.13");
+	r2_13.setProperty("view", "seltext");
+	r2_13.setProperty("concept",sr13);
+    r2_13.setProperty("allow_nosel", true);
+
+	question r2_14 = new question("concept_eval", 100014);
+	r2_14.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_14.setProperty("code", "r2.14");
+	r2_14.setProperty("view", "seltext");
+	r2_14.setProperty("concept",sr14);
+    r2_14.setProperty("allow_nosel", true);
+
+	question r2_15 = new question("concept_eval", 100015);
+	r2_15.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_15.setProperty("code", "r2.15");
+	r2_15.setProperty("view", "seltext");
+	r2_15.setProperty("concept",sr15);
+    r2_15.setProperty("allow_nosel", true);
+
+	question r2_16 = new question("concept_eval", 100016);
+	r2_16.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_16.setProperty("code", "r2.16");
+	r2_16.setProperty("view", "seltext");
+	r2_16.setProperty("concept",sr16);
+    r2_16.setProperty("allow_nosel", true);
+
+	question r2_17 = new question("concept_eval", 100017);
+	r2_17.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_17.setProperty("code", "r2.17");
+	r2_17.setProperty("view", "seltext");
+	r2_17.setProperty("concept",sr17);
+    r2_17.setProperty("allow_nosel", true);
+
+	question r2_18 = new question("concept_eval", 100018);
+	r2_18.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_18.setProperty("code", "r2.18");
+	r2_18.setProperty("view", "seltext");
+	r2_18.setProperty("concept",sr18);
+    r2_18.setProperty("allow_nosel", true);
+
+	question r2_19 = new question("concept_eval", 100019);
+	r2_19.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_19.setProperty("code", "r2.19");
+	r2_19.setProperty("view", "seltext");
+	r2_19.setProperty("concept",sr19);
+    r2_19.setProperty("allow_nosel", true);
+
+	question r2_20 = new question("concept_eval", 100020);
+	r2_20.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_20.setProperty("code", "r2.20");
+	r2_20.setProperty("view", "seltext");
+	r2_20.setProperty("concept",sr20);
+    r2_20.setProperty("allow_nosel", true);
+
+	question r2_21 = new question("concept_eval", 100021);
+	r2_21.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_21.setProperty("code", "r2.21");
+	r2_21.setProperty("view", "seltext");
+	r2_21.setProperty("concept",sr21);
+    r2_21.setProperty("allow_nosel", true);
+
+	question r2_22 = new question("concept_eval", 100022);
+	r2_22.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_22.setProperty("code", "r2.22");
+	r2_22.setProperty("view", "seltext");
+	r2_22.setProperty("concept",sr22);
+    r2_22.setProperty("allow_nosel", true);	
+
+	question r2_23 = new question("concept_eval", 100023);
+	r2_23.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_23.setProperty("code", "r2.23");
+	r2_23.setProperty("view", "seltext");
+	r2_23.setProperty("concept",sr23);
+    r2_23.setProperty("allow_nosel", true);
+
+	question r2_24 = new question("concept_eval", 100024);
+	r2_24.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_24.setProperty("code", "r2.24");
+	r2_24.setProperty("view", "seltext");
+	r2_24.setProperty("concept",sr24);
+    r2_24.setProperty("allow_nosel", true);
+
+	question r2_25 = new question("concept_eval", 100025);
+	r2_25.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_25.setProperty("code", "r2.25");
+	r2_25.setProperty("view", "seltext");
+	r2_25.setProperty("concept",sr25);
+    r2_25.setProperty("allow_nosel", true);
+
+	question r2_26 = new question("concept_eval", 100026);
+	r2_26.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_26.setProperty("code", "r2.26");
+	r2_26.setProperty("view", "seltext");
+	r2_26.setProperty("concept",sr26);
+    r2_26.setProperty("allow_nosel", true);
+
+	question r2_27 = new question("concept_eval", 100027);
+	r2_27.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_27.setProperty("code", "r2.27");
+	r2_27.setProperty("view", "seltext");
+	r2_27.setProperty("concept",sr27);
+    r2_27.setProperty("allow_nosel", true);
+
+	question r2_28 = new question("concept_eval", 100028);
+	r2_28.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_28.setProperty("code", "r2.28");
+	r2_28.setProperty("view", "seltext");
+	r2_28.setProperty("concept",sr28);
+    r2_28.setProperty("allow_nosel", true);
+
+	question r2_29 = new question("concept_eval", 100029);
+	r2_29.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_29.setProperty("code", "r2.29");
+	r2_29.setProperty("view", "seltext");
+	r2_29.setProperty("concept",sr29);
+    r2_29.setProperty("allow_nosel", true);
+
+	question r2_30 = new question("concept_eval", 100030);
+	r2_30.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_30.setProperty("code", "r2.30");
+	r2_30.setProperty("view", "seltext");
+	r2_30.setProperty("concept",sr30);
+    r2_30.setProperty("allow_nosel", true);
+
+	question r2_31 = new question("concept_eval", 100031);
+	r2_31.setProperty("text", "Klicken Sie bitte auf die speziellen Schlüsselwörter, die am ehesten den Wunsch auf eine Kreuzfahrt in Ihnen wecken.");
+	r2_31.setProperty("code", "r2.31");
+	r2_31.setProperty("view", "seltext");
+	r2_31.setProperty("concept",sr31);
+    r2_31.setProperty("allow_nosel", true);
+
+	
+
+	int prendiSelezione=(int)system.getProperty("Svar"+selint);
+
+	if (prendiSelezione==0){ send r2_1; }
+	if (prendiSelezione==1){ send r2_2; }
+	if (prendiSelezione==2){ send r2_3; }
+	if (prendiSelezione==3){ send r2_4; }
+	if (prendiSelezione==4){ send r2_5; }
+	if (prendiSelezione==5){ send r2_6; }
+	if (prendiSelezione==6){ send r2_7; }
+	if (prendiSelezione==7){ send r2_8; }
+	if (prendiSelezione==8){ send r2_9; }
+	if (prendiSelezione==9){ send r2_10; }
+	if (prendiSelezione==10){ send r2_11; }
+	if (prendiSelezione==11){ send r2_12; }
+	if (prendiSelezione==12){ send r2_13; }
+	if (prendiSelezione==13){ send r2_14; }
+	if (prendiSelezione==14){ send r2_15; }
+	if (prendiSelezione==15){ send r2_16; }
+	if (prendiSelezione==16){ send r2_17; }
+	if (prendiSelezione==17){ send r2_18; }
+	if (prendiSelezione==18){ send r2_19; }
+	if (prendiSelezione==19){ send r2_20; }
+	if (prendiSelezione==20){ send r2_21; }
+	if (prendiSelezione==21){ send r2_22; }
+	if (prendiSelezione==22){ send r2_23; }
+	if (prendiSelezione==23){ send r2_24; }
+	if (prendiSelezione==24){ send r2_25; }
+	if (prendiSelezione==25){ send r2_26; }
+	if (prendiSelezione==26){ send r2_27; }
+	if (prendiSelezione==27){ send r2_28; }
+	if (prendiSelezione==28){ send r2_29; }
+	if (prendiSelezione==29){ send r2_30; }
+	if (prendiSelezione==30){ send r2_31; }
+*/
+
+	qst = new question("choice", 450);
+	qst.setProperty("text", "<p>Schließlich möchten wir, dass Sie uns einige Details geben.</p>Wie viele Personen sind in Ihrer Familie? (Sie inbegriffen)");
+	qst.setProperty("code", "d1");
+	vector q450_opts = new vector {
+"1 Person",
+"2 Personen",
+"3 Personen",
+"4 Personen",
+"5 Personen",
+"6 Personen",
+"7 Personen",
+"8 Personen",
+"9+ Personen"
+	};
+	qst.setProperty("options", q450_opts);
+	send qst;
+	selint=system.getProperty("ans450");
+	int selintv14=system.getProperty("ans450");
+
+	if (selint>0)
+	{
+	qst = new question("choice", 460);
+	qst.setProperty("text", "Haben Sie Kinder unter 18 Jahren?");
+	qst.setProperty("code", "d2");
+	vector q460_opts = new vector {
+		"Ja",
+		"Nein"
+	};
+	qst.setProperty("options", q460_opts);
+	send qst;
+	selint2=system.getProperty("ans460");
+
+	if (selint2==0)
+	{
+	qst = new question("choice", 470);
+	qst.setProperty("text", "Wie viele Kinder unter 18 Jahren haben Sie?");
+	qst.setProperty("code", "d2a");
+	vector q470_opts = new vector {
+"1 ",
+"2 ",
+"3 ",
+"4 ",
+"5 ",
+"6 ",
+"7 oder mehr"
+	};
+
+	if (selintv14==1)
+		{
+		q470_opts.set(1,"#sh1");
+		q470_opts.set(2,"#sh2");
+		q470_opts.set(3,"#sh3");
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==2)
+		{
+		q470_opts.set(2,"#sh2");
+		q470_opts.set(3,"#sh3");
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==3)
+		{
+		q470_opts.set(3,"#sh3");
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==4)
+		{
+		q470_opts.set(4,"#sh4");
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==5)
+		{
+		q470_opts.set(5,"#sh5");
+		q470_opts.set(6,"#sh6");
+		}
+
+	if (selintv14==6)
+		{
+		q470_opts.set(5,"#sh5");
+		}
+
+	
+
+	qst.setProperty("options", q470_opts);
+	send qst;
+	}
+	}
+
+	
+
+
+	qst = new question("choice", 480);
+	qst.setProperty("text", "Welchen Bildungsabschluss haben Sie? ");
+	qst.setProperty("code", "d3");
+	vector q480_opts = new vector {
+"Keinen/Volksschule",
+"Realschule",
+"Höhere Schule",
+"Hochschulabschluss",
+"Postgradualer Masterstudiengang/Doktorat"
+	};
+	qst.setProperty("options", q480_opts);
+	send qst;
+
+	
+	qst = new question("choice", 490);
+	qst.setProperty("text", "Welchen Beruf über Sie zurzeit aus?");
+	qst.setProperty("code", "d4");
+	vector q490_opts = new vector {
+"Leitender Angestellter/Freiberufler/Unternehmer",
+"Lehrer",
+"Angestellter/Beamter",
+"Arbeiter/Tagelöhner",
+"Vertreter/Händler/Geschäftsbetreiber",
+"Handwerker/selbstständiger Unternehmer",
+"Hausfrau",
+"Student/in",
+"Auf der Suche nach der ersten Anstellung/Arbeitslos",
+"Rentner/in"
+	};
+	qst.setProperty("options", q490_opts);
+	send qst;
+
+	
+
+}

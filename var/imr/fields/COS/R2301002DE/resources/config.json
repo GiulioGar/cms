@@ -1,0 +1,106 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=bd84808b-7360-49b2-85ac-695de0475271"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                    "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=24cb9463-d19f-47a4-dc4f-f030e6bb4f29"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                    "redirect_to": "https://s.cint.com/Survey/QuotaFull?ProjectToken=24cb9463-d19f-47a4-dc4f-f030e6bb4f29"
+                },
+					
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "2",
+                    "exit_code": 3,
+                    "redirect_to": "https://dkr1.ssisurveys.com/projects/end?rst=1&psid=$(psid)&basic=90353"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "2",
+                    "exit_code": 4,
+                    "redirect_to": "https://dkr1.ssisurveys.com/projects/end?rst=2&psid=$(psid)"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "2",
+                    "exit_code": 5,
+                    "redirect_to": "https://dkr1.ssisurveys.com/projects/end?rst=3&psid=$(psid)"
+                }              
+			
+						
+			 ]
+    }
+          
+},
+
+"quota": {
+    "total_interviews": 760,
+    "total_by_leg": {
+        "variable_name": "dcg",
+        "values": { 
+                    "1": 250,
+                    "2": 250,
+                    "3": 250
+                  }
+    },    
+        "targets": [
+        {
+            "name": "pescati",
+            "description": "pescati",
+            "question_id": 2000,
+            "option_id": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+            "value": 49,
+            "leg": {
+                "variable_name": "dcg",
+                "value": ["1","2","3"]
+            }
+        },
+        {
+            "name": "source_panel",
+            "description": "Total Interviews from Dynata",
+            "parameter_name": "pan",
+            "parameter_value": "2",
+            "value":200
+        }		
+                        
+                    
+         ]
+}
+
+}

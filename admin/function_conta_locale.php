@@ -16,6 +16,7 @@ $mesi2=0;
 $mesi3=0;
 $contatori;
 
+$panels=array();
 
 
  //array prezzi cint
@@ -75,11 +76,11 @@ $tot_user_abilitati = mysqli_query($admin,$query_user_abilitati) ;
 $tot_use_abilitati = mysqli_fetch_assoc($tot_user_abilitati);
 
 
-//ABILITATI PANEL ESTERNO
+//ABILITATI PANEL CINT
 
-$query_user_abilitati_ssi = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid LIKE 'IDEX%'))";
-$tot_user_abilitati_ssi = mysqli_query($admin,$query_user_abilitati_ssi) ;
-$tot_use_abilitati_ssi = mysqli_fetch_assoc($tot_user_abilitati_ssi);
+$query_user_abilitati_Cint = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid LIKE 'IDEXC%'))";
+$tot_user_abilitati_Cint = mysqli_query($admin,$query_user_abilitati_Cint) ;
+$tot_use_abilitati_Cint = mysqli_fetch_assoc($tot_user_abilitati_Cint);
 
 
 //ABILITATI TOTALE
@@ -410,11 +411,11 @@ $conta_incomplete=0;
 $conta_complete=0;
 $conta_filtrati=0;
 $conta_quotafull=0;
-$conta_bloccate_ssi=0;
-$conta_incomplete_ssi=0;
-$conta_complete_ssi=0;
-$conta_filtrati_ssi=0;
-$conta_quotafull_ssi=0;
+$conta_bloccate_Cint=0;
+$conta_incomplete_Cint=0;
+$conta_complete_Cint=0;
+$conta_filtrati_Cint=0;
+$conta_quotafull_Cint=0;
 $conta_bloccate_panel=0;
 $conta_incomplete_panel=0;
 $conta_complete_panel=0;
@@ -493,7 +494,7 @@ $riga = file($fl[$i]);
 $prima_riga=$riga[0]; 
 $ultima_calc=sizeof($riga) - 1 ; 
 $ultima_riga=$riga[$ultima_calc]; 
-$varPanel=0;
+$varPanel=99;
 //echo $contents[$i]."<br>";
 
 
@@ -741,29 +742,31 @@ if ($statSur==5){
 						}
 
 
-//CONTA STATISTICHE SSI
+//CONTA STATISTICHE CINT
+if ($useCint==true)
+{
 if (($statSur==0)&&($varPanel>0)){
-													$conta_incomplete_ssi=$conta_incomplete_ssi+1;
-													$diario_incomplete_ssi[$conta_giorno]=$diario_incomplete_ssi[$conta_giorno]+1;
+													$conta_incomplete_Cint=$conta_incomplete_Cint+1;
+													$diario_incomplete_Cint[$conta_giorno]=$diario_incomplete_Cint[$conta_giorno]+1;
 													}
 if (($statSur==3)&&($varPanel>0)){
-													$conta_complete_ssi=$conta_complete_ssi+1;
-													$diario_complete_ssi[$conta_giorno]=$diario_complete_ssi[$conta_giorno]+1;
+													$conta_complete_Cint=$conta_complete_Cint+1;
+													$diario_complete_Cint[$conta_giorno]=$diario_complete_Cint[$conta_giorno]+1;
 													}
 if (($statSur==4)&&($varPanel>0)){
-													$conta_filtrati_ssi=$conta_filtrati_ssi+1;
-													$diario_filtrati_ssi[$conta_giorno]=$diario_filtrati_ssi[$conta_giorno]+1;
+													$conta_filtrati_Cint=$conta_filtrati_Cint+1;
+													$diario_filtrati_Cint[$conta_giorno]=$diario_filtrati_Cint[$conta_giorno]+1;
 													}
 if (($statSur==5)&&($varPanel>0)){
-													$conta_quotafull_ssi=$conta_quotafull_ssi+1;
-													$diario_quotafull_ssi[$conta_giorno]=$diario_quotafull_ssi[$conta_giorno]+1;
+													$conta_quotafull_Cint=$conta_quotafull_Cint+1;
+													$diario_quotafull_Cint[$conta_giorno]=$diario_quotafull_Cint[$conta_giorno]+1;
 													}
 
 													if (($statSur==7)&&($varPanel>0)){
-														$conta_bloccate_ssi=$conta_bloccate_ssi+1;
+														$conta_bloccate_Cint=$conta_bloccate_Cint+1;
 													
 												}
-
+}
 
 //CONTA STATISTICHE PANEL
 if (($statSur==0)&&($varPanel==0)){
@@ -797,18 +800,18 @@ if ($varPanel>0){$panel_esterno=$panel_esterno+1;}
 $usePanel="";
 $usePanelext="";
 
-if ($useMillebytes==true) { $usePanel="MILLEBYTES"; }
-if ($useCint==true) {$usePanel=$usePanel." CINT"; $usePanelext=$usePanelext." CINT"; }
-if ($useDynata==true) {$usePanel=$usePanel." DYNATA"; $usePanelext=$usePanelext." DYNATA";}
-if ($useBilendi==true) {$usePanel=$usePanel." BILENDI"; $usePanelext=$usePanelext." BILENDI";}
-if ($useNorstat==true) {$usePanel=$usePanel." NORSTAT"; $usePanelext=$usePanelext." NORSTAT";}
-if ($useToluna==true) {$usePanel=$usePanel." TOLUNA"; $usePanelext=$usePanelext." TOLUNA";}
-if ($useNetquest==true) {$usePanel=$usePanel." NETQUEST"; $usePanelext=$usePanelext." NETQUEST";}
-if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO";}
+if ($useMillebytes==true) { $usePanel="MILLEBYTES"; array_push($panels,0);}
+if ($useCint==true) {$usePanel=$usePanel." CINT"; $usePanelext=$usePanelext." CINT"; array_push($panels,1); }
+if ($useDynata==true) {$usePanel=$usePanel." DYNATA"; $usePanelext=$usePanelext." DYNATA"; array_push($panels,2);}
+if ($useBilendi==true) {$usePanel=$usePanel." BILENDI"; $usePanelext=$usePanelext." BILENDI"; array_push($panels,3);}
+if ($useNorstat==true) {$usePanel=$usePanel." NORSTAT"; $usePanelext=$usePanelext." NORSTAT"; array_push($panels,4);}
+if ($useToluna==true) {$usePanel=$usePanel." TOLUNA"; $usePanelext=$usePanelext." TOLUNA"; array_push($panels,5);}
+if ($useNetquest==true) {$usePanel=$usePanel." NETQUEST"; $usePanelext=$usePanelext." NETQUEST"; array_push($panels,6);}
+if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO"; array_push($panels,7);}
 
 $usePanel = preg_replace('/\s+/', '-', $usePanel);
 
-
+$nPanel=count($panels);
 
 
 $contatti_disponibili=$tot_use_disponibili['total'];
@@ -825,9 +828,9 @@ $redemption_field=number_format($redemption_field, 2);
 
 
 <?php
-//Calcolo redemption field ssi
-$redemption_field_ssi=($conta_complete_ssi/($conta_complete_ssi+$conta_filtrati_ssi))*100;
-$redemption_field_ssi=number_format($redemption_field_ssi, 2);
+//Calcolo redemption field Cint
+$redemption_field_Cint=($conta_complete_Cint/($conta_complete_Cint+$conta_filtrati_Cint))*100;
+$redemption_field_Cint=number_format($redemption_field_Cint, 2);
 
 //Calcolo redemption field panel
 $redemption_field_panel=($conta_complete_panel/($conta_complete_panel+$conta_filtrati_panel))*100;
@@ -1026,7 +1029,7 @@ if ($progress>=100) {$progress=100;}
 $progress=round($progress, 1);
 
 //esterne
-$progressExt=$conta_complete_ssi/$obiet*100;
+$progressExt=$conta_complete_Cint/$obiet*100;
 
 if ($progressExt>=100) {$progressExt=100;}
 
@@ -1043,7 +1046,7 @@ $loiultima=substr($loi,0,4);
 if ($loiultima==""){$loiultima=0;}
 
 //echo "ciaooo".$loiultima;
-$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_ssi."',durata='".$loiultima."' where sur_id='".$sid."'";
+$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_Cint."',durata='".$loiultima."' where sur_id='".$sid."'";
 $aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
 $aggiorna_compInt_esegui = mysqli_fetch_assoc($query_compInt);
 

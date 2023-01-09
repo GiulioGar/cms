@@ -1,0 +1,20 @@
+2.0;COS;R2301002DE;375;IDEX1397;10/10/2022 18:30:51 CEST;10/10/2022 18:39:02 CEST;491;7;163;dcg=3;sysSID=R2301002DE;sysPRJ=COS;sysUID=IDEX1397;lang=de;pan=1
+concept;10
+choice;20;2;0
+choice;30;16;10
+choice;31;7;5
+open;40;35
+choice;50;4;1
+choice;60;2;0
+choice;70;2;1
+choice;80;5;0
+choice;90;7;0000001;6
+open;110;4
+choice;120;2;11;0;comp0:1;comp1:3
+choice;130;6;100000;0
+scale;140;4;10;5;9;6;1
+choice;150;3;0
+concept;160
+concept;161
+concept;162
+choice;241;6;000010;4

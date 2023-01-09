@@ -1,0 +1,34 @@
+2.0;COS;R2301002DE;4944;IDEX61866;14/10/2022 17:31:02 CEST;14/10/2022 17:37:30 CEST;388;5;10002;dcg=2;sysUID=IDEX61866;lang=de;r9=17;r8=3;r19=11;pan=2;r7=23;r18=8;r6=3;r17=13;r5=15;r16=0;r4=18;r15=10;r3=18;r14=2;r2=18;r13=3;r1=18;r12=7;r0=16;r11=11;sysSID=R2301002DE;r10=11;psid=4vA9IRsk_08IfQ6wbsCiSA**;sysPRJ=COS;r30=0;Svar0=6;r29=1;r28=1;r27=0;r26=2;r25=1;r24=4;r23=5;r22=6;r21=9;r20=0
+concept;10
+choice;20;2;0
+choice;30;16;8
+choice;31;7;3
+open;40;65
+choice;50;4;2
+choice;60;2;0
+choice;70;2;1
+choice;80;5;1
+choice;90;7;0000100;4
+open;110;2
+choice;120;2;11;1;comp0:0;comp1:2
+choice;130;6;100000;0
+scale;140;4;10;0;7;8;7
+choice;150;3;0
+concept;160
+concept;161
+concept;162
+concept;163
+concept;164
+concept;165
+concept;166
+scale;170;6;10;1;1;1;1;1;1
+scale;180;6;10;3;3;3;3;3;3
+scale;190;6;10;4;4;4;4;4;4
+scale;200;6;10;4;4;4;4;4;4
+scale;210;6;10;7;7;7;7;7;7
+ordering;220;6;2;1;3;0;5;4
+open;230;Ich gehe mal dafon aus
+choice;241;6;001100;2
+choice;2000;31;0000001000000000000000000000000;6
+concept_eval;10002;11;10;9;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;10003;14;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

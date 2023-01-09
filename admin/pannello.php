@@ -509,6 +509,7 @@ require_once('inc_footer.php');
 $(document).ready( function () {
   $('#table_sur').show();
   $('.mess').fadeOut();
+  
     $('#table_sur').DataTable( {
       "bProcessing":true,
         "order": [[ 10, "asc" ]],
