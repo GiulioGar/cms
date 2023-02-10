@@ -54,7 +54,7 @@ if ($_SESSION['MM_Username']!=""){
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="tools_link.php">Generatore Link</a>
           <a class="dropdown-item" href="tools_test.php">Auto test</a>
-          <a class="dropdown-item" href="rtr_gen.php">Rtr Converter</a>
+          <a class="dropdown-item" href="toResponsive.php">Concept Tool</a>
           <a class="dropdown-item" href="tool_focuspoint.php">Focus Point</a>
           <a class="dropdown-item" href="tools_convertiPunti.php">Converti Punti</a>
           <div class="dropdown-divider"></div>

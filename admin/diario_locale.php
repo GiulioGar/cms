@@ -488,7 +488,7 @@ new Chart(document.getElementById("lineaContattiE"), {
     title: {
             display: true,
             fontSize:16,
-            text: 'Panel Esterno'
+            text: 'Panel Esterni'
         }
 
     }
@@ -522,7 +522,7 @@ new Chart(document.getElementById("lineaIrE"), {
     title: {
             display: true,
             fontSize:16,    
-            text: 'Panel Esterno'
+            text: 'Panel Esterni'
         }
 
     }

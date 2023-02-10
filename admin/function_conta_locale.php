@@ -1176,7 +1176,7 @@ if ($useToluna==true) {$usePanel=$usePanel." TOLUNA"; $usePanelext=$usePanelext.
 if ($useNetquest==true) {$usePanel=$usePanel." NETQUEST"; $usePanelext=$usePanelext." NETQUEST"; array_push($panels,6);}
 if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO"; array_push($panels,7);}
 
-$usePanel = preg_replace('/\s+/', '-', $usePanel);
+$usePanel = preg_replace('/\s+/', ' ', $usePanel);
 
 $nPanel=count($panels);
 $nPanelExt=$nPanel;

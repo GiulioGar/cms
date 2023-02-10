@@ -16,14 +16,13 @@ require_once('inc_taghead.php');
 require_once('inc_tagbody.php'); 
 
 @$sid = $_REQUEST['sid'];
-@$stId = $_REQUEST['stid'];
+//@$stId = $_REQUEST['stid'];
+$stId=0;
 @$prj = $_REQUEST['prj'];
-@$gt = $_REQUEST['guest'];
-@$ss = $_REQUEST['ss'];
-@$cint = $_REQUEST['cint'];
-@$ot = $_REQUEST['ot'];
 @$nl = $_REQUEST['nl'];
 @$abi = $_REQUEST['abi'];
+@$gt = $_REQUEST['gst'];
+@$panel = $_REQUEST['panel'];
 @$vId = $_REQUEST['viewId'];
 @$ctId = $_REQUEST['ctId'];
 @$ctRe = $_REQUEST['ctRe'];
@@ -39,6 +38,7 @@ $genLink="";
 $genId="";
 
 
+// FUNZIONE PER RIATTIVARE LINK 
 
 if ($ctRe=="ATTIVA")
 {
@@ -95,7 +95,7 @@ $contatti=count($fl);
 		
 		}
 		$messAgg="Hai aggioranto ".$aggCont." link!";
-		$messDel="Hai eliminato ".$delConta." file!";
+		$messDel="Hai eliminato ".$contaDel." file!";
 	}
 	
 	else {
@@ -103,8 +103,10 @@ $contatti=count($fl);
 	$messDeò="Nessuna file eliminato"; 
 	}?>
 
-
 <?php } ?>
+
+<!-- FINE FUNZIONE RIATTIVA LINK -->
+
 
   <div class="content-wrapper">
        <div class="container">
@@ -112,11 +114,14 @@ $contatti=count($fl);
 	   
 <?php 
 
+$ssiVar="";
+$ot="";
+
+if($panel!="Nessuno") {$ssiVar="&pan=".$panel; }
+
 if ($nl>0 || $gt==true)
 {
-if($ss==true) { $ssiVar="&pan=2"; }
-if($cint==true) { $ssiVar="&pan=1"; }
-else { $ssiVar="";}
+
 ?>
 
 
@@ -138,11 +143,38 @@ else { $ssiVar="";}
 
 if ($gt==true) {echo "<div>https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=GUEST".$ssiVar.$ot."\n</div>";}
 
+else 
+{
 if ($nl>0)
 	{
-	for ($i=0; $i<=$nl; ++$i) 
+		//SUFFISSO ID PER PANEL SELEZIONATO
+		switch ($panel) 
 		{
-		$varId="IDEX".($i+1000+$stId);
+				case "1": $tPanel="IDEXCI"; $cint=true; break;
+				case "2": $tPanel="IDEXDY"; break;
+				case "3": $tPanel="IDEXBI"; break;
+				case "4": $tPanel="IDEXNO"; break;	
+				case "5": $tPanel="IDEXTO"; break;	
+				case "6": $tPanel="IDEXNE"; break;		
+				case "7": $tPanel="IDEXA7L"; break;														
+				case "8": $tPanel="IDEXA8L"; break;														
+				case "9": $tPanel="IDEXA9L"; break;														
+		}
+
+		//CALCOLO ULTIMO UID UTILIZZATO
+		$query_lastid = "SELECT COUNT(uid) as total FROM t_respint where uid LIKE '".$tPanel."%' and sid='$sid'";
+		$res_lastId = mysqli_query($admin,$query_lastid);
+		$lastId=mysqli_fetch_assoc($res_lastId);
+
+
+		$stId=(int)$lastId['total']+2;
+
+
+
+	for ($i=0; $i<=$nl; ++$i) 
+		{	
+
+		$varId=$tPanel.($i+1+$stId);
 		$genId=$varId;
 		$genLink="https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$varId.$ssiVar.$ot;
 		echo "<div>".$genLink."</div>";
@@ -155,7 +187,9 @@ if ($nl>0)
 		    $ininrespint = mysqli_query($admin,$query_insid);
 		    }
 		}
-	}?>	
+	}
+}	
+	?>	
 	
 </div>
 
@@ -201,15 +235,15 @@ $csv .=$addLinks;
 
 	   
 
- <div class="row"> 
+<div class="row"> 
 <div class="col-xl-8 col-lg-8">
 <div class="card shadow mb-6">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary"> CREA LINK </h6></span>
-                        </div>
-			
-			 <div class="card-body">
+<h6 class="m-0 font-weight-bold text-primary"> CREA LINK </h6></span>
+</div>
+<div class="card-body">
 	  
+
 		    <form role="form" method="get" action="tools_link.php">
 			
 			<div class="form-row">
@@ -240,15 +274,6 @@ $csv .=$addLinks;
 			
 		<div class="form-row">
 				
-		<div class="form-group col-md-6">
-			<div class="input-group mb-3">
- 			 <div class="input-group-prepend">
-   			 <label class="input-group-text" for="inputGroupSelect01">START ID:</label>
-  			</div>
-			<input class="form-control" id="stid" name="stid" value="0" type="text">
-			
-			</div>		
-			</div>
 
 
 			<div class="form-group col-md-6">
@@ -260,16 +285,7 @@ $csv .=$addLinks;
 			</div>
 			</div>
 			
-			
-
-			<!-- form-row end -->		  
-			</div>		  
-
-
-			
-			<div class="form-row">
-
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-6 form-inline">
 			<div class="input-group mb-3">
  			 <div class="input-group-prepend">
    			 <label class="input-group-text" for="inputGroupSelect01">ALTRE VARIABILI:</label>
@@ -277,55 +293,54 @@ $csv .=$addLinks;
              <input class="form-control" id="otVar" name="ot" type="text">
             </div>			
 			</div>
-		<!-- form-row end -->		
-			</div>
-			<div class="form-row">	
-			<div class="form-group col-md-6 align-items-center">
-			<div class="form-check form-check-inline">
-			<input  id="gst" name="guest" type="checkbox">
-			<label class="form-check-label" for="inlineCheckbox1">&nbsp;&nbsp;GUEST</label>
-			</div>
-			<div class="form-check form-check-inline">
-			<input id="cint" name="cint" type="checkbox">
-			<label class="form-check-label" for="inlineCheckbox2"> &nbsp;&nbsp;CINT</label>
-			</div>
-			<div class="form-check form-check-inline">
-			<input id="ss" name="ss" type="checkbox">
-			<label class="form-check-label" for="inlineCheckbox3"> &nbsp;&nbsp;SSI</label>
-			</div>
-			<div class="form-check form-check-inline">
-			<input id="ot"  type="checkbox" onclick="viewOt()">
-			<label class="form-check-label" for="inlineCheckbox4">&nbsp;&nbsp;ALTRO</label>
-			</div>
-			</div>
-		<!-- form-row end -->		
-			</div>
-		  
+
+			<!-- form-row end -->		  
+			</div>		  
 
 
-			<div class="form-row">
+			
+	<div class="form-row">
 
-			<div class="form-group col-md-10">
 
-			</div>
+    <div style="margin-bottom:5%" class="form-group col-md-6 form-inline">
+      <label class="input-group-btn" for="inlineFormCustomSelect">Seleziona il Panel</label>
+      <select style="margin-left:5%" class="custom-select mr-sm-2" name="panel" id="panel">
+        <option selected>Nessuno</option>
+        <option value="1">CINT</option>
+        <option value="2">DYNATA</option>
+        <option value="3">BILENDI</option>
+        <option value="4">NORSTAT</option>
+        <option value="5">TOLUNA</option>
+        <option value="6">NETQUEST</option>
+        <option value="7">PANEL 7</option>
+        <option value="8">PANEL 8</option>
+        <option value="9">PANEL 9</option>
+      </select>
+    </div>
 
-	<div class="form-group col-md-2">
+	<div class="form-group col-md-4 form-inline">
 	<div class="form-row align-items-left">
     <div class="col-auto my-1">
       <div class="custom-control custom-checkbox mr-sm-2">
         <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="abi" checked="checked">
         <label class="custom-control-label" for="customControlAutosizing">Abilita</label>
       </div>
+	  <div class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="guest" name="gst">
+        <label class="custom-control-label" for="guest">GUEST</label>
+      </div>
     </div>
-    <div class="col-auto my-1">
+    <div class="col-auto my-1 ">
       <button type="submit" id="crea" value="CREA" class="btn btn-primary">Submit</button>
     </div>
   </div>
 
 </div>
 
-	<!-- form-row end -->	
-	 </div>
+		<!-- form-row end -->		
+	</div>
+		  
+
 	  
 
 	  
@@ -420,10 +435,7 @@ $csv .=$addLinks;
 
 
 
-<?php 
-
-require_once('inc_footer.php'); 
-?>
+<?php require_once('inc_footer.php'); ?>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="jquery.copy-to-clipboard.js"></script>
 </body>
