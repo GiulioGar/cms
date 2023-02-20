@@ -173,8 +173,8 @@ $query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_cop
 //AGGIORNAMENTO DATA IN RESPINT//
 
 // RIPRISTINA DOPO PUBBLICAZIONE
-//$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
-$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+//$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
 
 $contatti_sample=count($fl_sample);
 //$sid="ITA1411148";
@@ -284,9 +284,9 @@ $ore_differenza=($confrontodata/60)/60;
 
 //ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
 
-//$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
-$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+//$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
 $contatti=count($fl);
 
@@ -693,15 +693,16 @@ if($varPanel==9)
 //recupero file sdl
 
 
-/*RIPRISTINA PER PRODUZIONE
+/*RIPRISTINA PER PRODUZIONE*/
+
 $sdl = file_get_contents('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
 
-*/
 
+/*
 $sdl = file_get_contents('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
-
+*/
 
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
@@ -1167,14 +1168,16 @@ if ($varPanel>0)
 $usePanel="";
 $usePanelext="";
 
-if ($useMillebytes==true) { $usePanel="MILLEBYTES"; array_push($panels,0);}
-if ($useCint==true) {$usePanel=$usePanel." CINT"; $usePanelext=$usePanelext." CINT"; array_push($panels,1); }
-if ($useDynata==true) {$usePanel=$usePanel." DYNATA"; $usePanelext=$usePanelext." DYNATA"; array_push($panels,2);}
-if ($useBilendi==true) {$usePanel=$usePanel." BILENDI"; $usePanelext=$usePanelext." BILENDI"; array_push($panels,3);}
-if ($useNorstat==true) {$usePanel=$usePanel." NORSTAT"; $usePanelext=$usePanelext." NORSTAT"; array_push($panels,4);}
-if ($useToluna==true) {$usePanel=$usePanel." TOLUNA"; $usePanelext=$usePanelext." TOLUNA"; array_push($panels,5);}
-if ($useNetquest==true) {$usePanel=$usePanel." NETQUEST"; $usePanelext=$usePanelext." NETQUEST"; array_push($panels,6);}
-if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO"; array_push($panels,7);}
+$codePanel=0;
+
+if ($useMillebytes==true) { $usePanel="MILLEBYTES"; array_push($panels,0); $codePanel=0;}
+if ($useCint==true) {$usePanel=$usePanel." CINT"; $usePanelext=$usePanelext." CINT"; array_push($panels,1); $codePanel=1;}
+if ($useDynata==true) {$usePanel=$usePanel." DYNATA"; $usePanelext=$usePanelext." DYNATA"; array_push($panels,2); $codePanel=2;}
+if ($useBilendi==true) {$usePanel=$usePanel." BILENDI"; $usePanelext=$usePanelext." BILENDI"; array_push($panels,3); $codePanel=3;}
+if ($useNorstat==true) {$usePanel=$usePanel." NORSTAT"; $usePanelext=$usePanelext." NORSTAT"; array_push($panels,4); $codePanel=4;} 
+if ($useToluna==true) {$usePanel=$usePanel." TOLUNA"; $usePanelext=$usePanelext." TOLUNA"; array_push($panels,5); $codePanel=5;}
+if ($useNetquest==true) {$usePanel=$usePanel." NETQUEST"; $usePanelext=$usePanelext." NETQUEST"; array_push($panels,6); $codePanel=6;}
+if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO"; array_push($panels,7); $codePanel=7;}
 
 $usePanel = preg_replace('/\s+/', ' ', $usePanel);
 
@@ -1195,7 +1198,7 @@ while ($row = mysqli_fetch_assoc($csv_status))
 { 
 	$uid=$row['uid'];
 	$status=$row['status'];
-	$link="https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$uid."&pan=1";
+	$link="https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$uid."&pan=".$codePanel;
 	if ($status==1) { $status2="suspended";}
 	if ($status==3) { $status2="complete";}
 	if ($status==4) { $status2="screen out";}
