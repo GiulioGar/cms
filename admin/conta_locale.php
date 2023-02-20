@@ -216,7 +216,8 @@
 											case 4: $tPanel="NORSTAT"; break;	
 											case 5: $tPanel="TOLUNA"; break;	
 											case 6: $tPanel="NETQUEST"; break;		
-											case 7: $tPanel="ALTRO"; break;														
+											case 7: $tPanel="CATI"; break;		
+											case 8: $tPanel="ALTRO"; break;														
 										}	
 									?>		
 
@@ -300,8 +301,11 @@
 									$tPanel="NETQUEST";
 										break;		
 								case 7:
+									$tPanel="CATI";
+										break;	
+								case 8:
 									$tPanel="ALTRO";
-										break;														
+										break;																	
 							}
 						?>
 
@@ -494,8 +498,11 @@
 								$tPanel="NETQUEST";
 									break;		
 							case 7:
+								$tPanel="CATI";
+									break;	
+							case 8:
 								$tPanel="ALTRO";
-									break;														
+									break;												
 						}
 					?>
 
@@ -603,8 +610,11 @@
 								$tPanel="NETQUEST";
 									break;		
 							case 7:
+								$tPanel="CATI";
+									break;	
+							case 8:
 								$tPanel="ALTRO";
-									break;														
+									break;											
 						}
 					?>
 
@@ -1542,7 +1552,7 @@ new Chart(document.getElementById("bar-chart-filtrati7"), {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Interviste Altro panel Filtrate'
+        text: 'Interviste Cato panel Filtrate'
       }
     }
 });

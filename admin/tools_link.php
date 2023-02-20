@@ -156,7 +156,7 @@ if ($nl>0)
 				case "4": $tPanel="IDEXNO"; break;	
 				case "5": $tPanel="IDEXTO"; break;	
 				case "6": $tPanel="IDEXNE"; break;		
-				case "7": $tPanel="IDEXA7L"; break;														
+				case "7": $tPanel="IDEXCT"; break;														
 				case "8": $tPanel="IDEXA8L"; break;														
 				case "9": $tPanel="IDEXA9L"; break;														
 		}
@@ -312,7 +312,7 @@ $csv .=$addLinks;
         <option value="4">NORSTAT</option>
         <option value="5">TOLUNA</option>
         <option value="6">NETQUEST</option>
-        <option value="7">PANEL 7</option>
+        <option value="7">CATI</option>
         <option value="8">PANEL 8</option>
         <option value="9">PANEL 9</option>
       </select>

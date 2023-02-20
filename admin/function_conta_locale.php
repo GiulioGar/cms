@@ -86,6 +86,15 @@ $bytes=$punteggio['value'];
 $argo=$argomento['value'];
 $loi=$durata['value'];
 
+//// ESPORTA CAMPIONE MVF IN CSV ////
+$query_new = "SELECT user_id,email,first_name,gender,birth_date  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) ORDER BY RAND() limit 50000";
+$csv_mvf = mysqli_query($admin,$query_new) ;
+
+
+
+$query_new_attivi = "SELECT *  FROM t_user_info as info, t_respint as respint,t_user_stats as story where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0') AND story.user_id=info.user_id AND story.last_update > '$mesi3' and year_surveys>0 ) limit 50000";
+$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) ;
+
 
 @$csv="uid;email;firstName;genderSuffix;sid;prj;argo;bytes;loi";
 $csv .= "\n";
@@ -103,9 +112,10 @@ $csv .= "\n";
             
 			$csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj.";".$argo.";".$bytes.";".$loi; 
             $csv .= "\n";
+
+			
     } 
-	
-	
+
 	
 	
 	
@@ -404,6 +414,7 @@ $useBilendi=false;     //3
 $useNorstat=false;     //4
 $useToluna=false;      //5
 $useNetquest=false;    //6
+$useCati=false;    //7
 $useAltroPanel=false;    //789
 
 
@@ -442,7 +453,7 @@ foreach ($elementi as &$value)
     if($opt==="pan=4") { $varPanel=4; $useNorstat=true; };
     if($opt==="pan=5") { $varPanel=5; $useToluna=true; };
     if($opt==="pan=6") { $varPanel=6; $useNetquest=true; };
-    if($opt==="pan=7") { $varPanel=7; $useAltroPanel=true; };
+    if($opt==="pan=7") { $varPanel=7; $useCati=true; };
     if($opt==="pan=8") { $varPanel=8; $useAltroPanel=true; };
     if($opt==="pan=9") { $varPanel=9; $useAltroPanel=true; };
 }
@@ -1177,7 +1188,8 @@ if ($useBilendi==true) {$usePanel=$usePanel." BILENDI"; $usePanelext=$usePanelex
 if ($useNorstat==true) {$usePanel=$usePanel." NORSTAT"; $usePanelext=$usePanelext." NORSTAT"; array_push($panels,4); $codePanel=4;} 
 if ($useToluna==true) {$usePanel=$usePanel." TOLUNA"; $usePanelext=$usePanelext." TOLUNA"; array_push($panels,5); $codePanel=5;}
 if ($useNetquest==true) {$usePanel=$usePanel." NETQUEST"; $usePanelext=$usePanelext." NETQUEST"; array_push($panels,6); $codePanel=6;}
-if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO"; array_push($panels,7); $codePanel=7;}
+if ($useCati==true) {$usePanel=$usePanel." CATI"; $usePanelext=$usePanelext." CATI"; array_push($panels,7); $codePanel=7;}
+if ($useAltroPanel==true) {$usePanel=$usePanel." ALTRO"; $usePanelext=$usePanelext." ALTRO"; array_push($panels,8); $codePanel=8;}
 
 $usePanel = preg_replace('/\s+/', ' ', $usePanel);
 
@@ -1228,7 +1240,8 @@ foreach ($panels as $value)
 		case 4: $tPanel="NO"; break;	
 		case 5: $tPanel="TO"; break;	
 		case 6: $tPanel="NE"; break;		
-		case 7: $tPanel="AL"; break;														
+		case 7: $tPanel="CT"; break;														
+		case 8: $tPanel="AL"; break;														
 	}	
 	
 	$idexPanel="IDEX".$tPanel."%";
@@ -1308,15 +1321,8 @@ $tot_use_abilitati_totali = mysqli_fetch_assoc($tot_user_abilitati_totali);
 
 
 
-$query_new = "SELECT user_id,email,first_name,gender,birth_date  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) ORDER BY RAND() limit 50000";
-$csv_mvf = mysqli_query($admin,$query_new) ;
 
 
-$query_new_attivi = "SELECT *  FROM t_user_info as info, t_respint as respint,t_user_stats as story where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0') AND story.user_id=info.user_id AND story.last_update > '$mesi3' and year_surveys>0 ) limit 50000";
-$csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) ;
-
-
-//// ESPORTA CAMPIONE MVF IN CSV ////
 //lettura punteggio da assegnare
 $query_cerca_punteggio = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
 $cerca_punteggio = mysqli_query($admin,$query_cerca_punteggio);
