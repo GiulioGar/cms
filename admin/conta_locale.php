@@ -197,7 +197,7 @@
 								<tr> <td> Over Quota: </td> <td> <b><?php echo  ${'conta_quotafull_'.$value}; ?></b> </td> </tr>
 								<tr> <td> Sospese: </td> <td> <b><?php echo  ${'conta_incomplete_'.$value}; ?></b> </td> </tr>
 								<tr> <td> Bloccate: </td> <td> <b><?php echo  ${'conta_block_'.$value}; ?></b> </td> </tr>
-								<tr> <td> Contatti: </td> <td> <b><?php echo   $panel_esterno; ?></b> </td>
+								<tr> <td> Contatti: </td> <td> <b><?php echo  ${'panel_esterno'.$value}; ?></b> </td>
 								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_Cint['total']; ?></b> </td> </tr>
 								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  ${'redemption_field_Ext'.$value}."%"; ?></b> </td> </tr>
 						</table>

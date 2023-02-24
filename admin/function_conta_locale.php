@@ -7,6 +7,15 @@ $conta_complete=0;
 $conta_quotafull=0;
 $conta_giorno=0;
 $panel_esterno=0;
+$panel_esterno1=0;
+$panel_esterno2=0;
+$panel_esterno3=0;
+$panel_esterno4=0;
+$panel_esterno5=0;
+$panel_esterno6=0;
+$panel_esterno7=0;
+$panel_esterno8=0;
+$panel_esterno9=0;
 $loi=0;
 $sumDiff=0;
 $contaCompl=0;
@@ -1217,6 +1226,20 @@ if (($statSur==5)&&($varPanel==0)){
 if ($varPanel>0)
 	{
 		$panel_esterno=$panel_esterno+1;
+
+		switch ($varPanel) 
+		{
+		
+			case 1: $panel_esterno1++; break;
+			case 2: $panel_esterno2++; break;
+			case 3: $panel_esterno3++; break;
+			case 4: $panel_esterno4++; break;	
+			case 5: $panel_esterno5++; break;	
+			case 6: $panel_esterno6++; break;		
+			case 7: $panel_esterno7++; break;														
+			case 8: $panel_esterno8++; break;														
+			case 9: $panel_esterno9++; break;														
+		}	
 
 		//CONTA STATISTICHE PANEL ESTERNO
 		if (($statSur==0)&&($varPanel!=0)){ $diario_incomplete_ssi[$conta_giorno]++; }
