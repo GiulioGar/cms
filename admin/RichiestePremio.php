@@ -93,7 +93,7 @@ $cerca = mysqli_query($admin,$query_cerca);
 
 <form  action="RichiestePremio.php" method="post">
 
-<div class="card shadow p-8 mb-8 bg-white rounded">
+<div class="card shadow p-9 mb-9 bg-white rounded">
 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 	<h6 class="m-0 font-weight-bold text-primary"> RICHIESTE PREMIO</h6></span>
 	<!-- <input class='btn btn-danger'  type='submit'  name='Verifica' value='verifica' /> -->
@@ -104,14 +104,13 @@ $cerca = mysqli_query($admin,$query_cerca);
 <table id='table_sur' style="font-size:11px;"  class="table table-striped table-hover dt-responsive display dataTable no-footer" >
 <thead>
 <tr class='intesta'>
-	 <th style="max-width:200px;">Uid</th>
+	 <th style="max-width:150px;">Uid</th>
 	 <th>Premio</th>
-	 <th>Valore</th>
-	 <th>Pre</th>
-	 <th>Post</th>
+	 <th>Bytes</th>
 	 <th>Richiesta</th>
 	 <th>Codice</th>
 	 <th>Pagamento</th>
+	 <th>Annulla</th>
 	</tr>
 
 </thead>	
@@ -138,7 +137,7 @@ $contapagati20euro=0;
 
 	while ($row = mysqli_fetch_assoc($cerca))
 		{
-			$newdate = substr($row['event_date'],0,strlen($row['event_date'])-8);
+			$newdate = substr($row['event_date'],0,strlen($row['event_date'])-3);
 			$paydate = substr($row['giorno_paga'],0,strlen($row['giorno_paga'])-8);
 			$euroPaga=substr($row['event_info'], -7, 7);
 			$tipoPremio=substr($row['event_info'], -14,7);
@@ -155,21 +154,20 @@ $contapagati20euro=0;
 			if (strstr($euroPaga,"5 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ff8989"; }
 			if (strstr($euroPaga,"10 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ffdcbc"; }
 	
+		 $puntiSpesi=$row['prev_level']-$row['new_level'];
 
 		  echo "<tr>
 		  <td style='max-width:200px;'><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td>
-		 <td style='background:".$bacCol."'>".$tipoPremio."</td>
-		 <td style='background:".$bacCol."'>".$euroPaga."</td>
-		 <td>".$row['prev_level']."</td>
-		 <td>".$row['new_level']."</td>
+		 <td style='background:".$bacCol."'>".$tipoPremio." - ".$euroPaga."</td>
+		 <td>".$puntiSpesi."</td>
 		 <td>".$newdate."</td>";
-		  if ($row['codice']===null){echo "<td>n.a.</td><td>n.p.</td></tr>";}
+		  if ($row['codice']===null){echo "<td>n.a.</td><td>n.p.</td>";}
 								else
 								{
-									echo "<td>".$row['codice']."</td><td>".$paydate."</td></tr>"; 
+									echo "<td>".$row['codice']."</td><td>".$paydate."</td>"; 
 									 
 								}
-								
+							
 			$montDate=date("m",strtotime($row['event_date']));
 			$yearDate=date("y",strtotime($row['event_date']));
 			
@@ -307,8 +305,12 @@ $cicli=0;
 
 		
 ?>
+</tr>	
 </tbody>
 </table>
+
+
+
 </div>
 
 

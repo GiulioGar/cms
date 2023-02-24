@@ -17,6 +17,12 @@ $mesi2=0;
 $mesi3=0;
 $contatori;
 
+$conta_complete_T=0;
+$conta_filtrati_T=0;
+$conta_quotafull_T=0;
+$conta_incomplete_T=0;
+$conta_block_T=0;
+
 $panels=array();
 
 
