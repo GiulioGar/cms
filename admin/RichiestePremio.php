@@ -110,7 +110,6 @@ $cerca = mysqli_query($admin,$query_cerca);
 	 <th>Richiesta</th>
 	 <th>Codice</th>
 	 <th>Pagamento</th>
-	 <th>Annulla</th>
 	</tr>
 
 </thead>	
@@ -584,7 +583,7 @@ $(document).ready( function () {
         "pageLength": 50,
         'columnDefs': [ {
 
-                        'targets': [0,1,3,4,6], /* column index */
+                        'targets': [0,1,3,4], /* column index */
 
                         'orderable': false, /* true or false */
 

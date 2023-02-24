@@ -209,6 +209,7 @@ $month2 = date('m', $ts2);
 	 <th>Richiesta</th>
 	 <th>Email paypal</th>
 	 <th>Pagamento</th>
+	 <th></th>
 	</tr>
 
 </thead>	
@@ -326,7 +327,7 @@ $(document).ready( function () {
         "pageLength": 50,
         'columnDefs': [ {
 
-                        'targets': [0,1,3,4,6], /* column index */
+                        'targets': [0,1,3], /* column index */
 
                         'orderable': false, /* true or false */
 

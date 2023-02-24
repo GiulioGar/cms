@@ -189,8 +189,8 @@ $query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_cop
 //AGGIORNAMENTO DATA IN RESPINT//
 
 // RIPRISTINA DOPO PUBBLICAZIONE
-//$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
-$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+//$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
 
 $contatti_sample=count($fl_sample);
 //$sid="ITA1411148";
@@ -300,9 +300,9 @@ $ore_differenza=($confrontodata/60)/60;
 
 //ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
 
-//$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
-$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+//$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
 $contatti=count($fl);
 
@@ -758,15 +758,15 @@ if($varPanel==9)
 
 
 /*RIPRISTINA PER PRODUZIONE*/
-/*
+
 $sdl = file_get_contents('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
-*/
 
 
+/*
 $sdl = file_get_contents('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
-
+*/
 
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
