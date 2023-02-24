@@ -1,0 +1,93 @@
+2.0;LMI;R2302052;415;IDEXCI281;23/02/2023 21:15:42 CET;23/02/2023 21:33:21 CET;1059;7;252;Svar3=3;Svar2=4;Svar1=5;sysSID=R2302052;Svar0=2;sysUID=IDEXCI281;rec=5#sh;sysPRJ=LMI;r9=0;r8=2;r7=2;pan=1;r6=4;r5=4;r4=5;r3=5;r10=0;r2=1;device=desktop;r1=4;r0=2;trg=4;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;4
+choice;35;4;3
+choice;40;4;0
+choice;50;5;1
+choice;60;9;111001110;0
+scale;70;4;3;0;1;2;-1
+choice;80;14;11000000111100;8
+choice;85;2;0
+choice;87;16;4
+choice;90;11;10111100000;0
+choice;93;44;00000000000000000000000000000000010111100000;33
+ordering;250;5;1;0;3;2;-1
+open;252;E' un tipo di prodotto che uso abitualmente per pizze, pizzette panini ed e' la marca che abitualmente uso e che mi fido
+composed;1077
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;0
+choice;1078;10;5
+composed;1177
+choice;1550;2;0
+choice;1560;2;0
+choice;1570;2;0
+choice;1575;2;0
+choice;1178;10;7
+concept;1201
+app;1203;time|string|0.93024800 1677183591
+concept;1205
+app;1207;differenza|string|00:23
+choice;1215;10;5
+choice;1220;10;5
+open;1225;15
+choice;1227;5;2
+open;1230;non uso vegano quasi sempre Galbani 
+concept;1240
+composed;1277
+choice;1450;2;1
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1278;10;6
+choice;1279;10;5
+open;1290;prodotto vegano potrebbe servire per variare l'offerta al pubblico
+concept;1301
+app;1303;time|string|0.56810800 1677184209
+concept;1305
+app;1307;differenza|string|00:21
+choice;1315;10;5
+choice;1320;10;5
+open;1325;2
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;010000;1
+open;1330;nessuno
+concept;1340
+composed;1377
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;0
+choice;1375;2;0
+choice;1378;10;6
+choice;1379;10;5
+open;1390;buona anche se non la uso 
+concept;1401
+app;1403;time|string|0.43321500 1677184083
+concept;1405
+app;1407;differenza|string|00:23
+choice;1415;10;4
+choice;1420;10;3
+choice;1427;5;2
+open;1430;non uso questa tipologia di prodotto
+concept;1440
+choice;1479;10;4
+open;1490;credo che sia buono e' galbani
+concept;1501
+app;1503;time|string|0.36043000 1677183874
+concept;1505
+app;1507;differenza|string|00:17
+choice;1515;10;6
+choice;1520;10;7
+open;1525;20
+choice;1527;5;2
+open;1530;uso spesso un prodotto Galbani e lo uso sia cotto sulla pizza che crudo nei panini
+concept;1540
+choice;1579;10;6
+open;1590;e' una evoluzione dei prodotti che gia uso e mi fido di Galbani
+concept_eval;9003;18;8;9;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;24;2;8;10;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;4;8;12;13;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9006;23;6;9;16;17;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

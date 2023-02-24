@@ -1,0 +1,53 @@
+2.0;LMI;R2302052;393;IDEXCI257;23/02/2023 20:44:47 CET;<unknown>;0;0;93;Svar10=9;Svar9=1;Svar8=8;Svar7=6;Svar6=3;Svar5=10;Svar4=5;Svar3=0;Svar2=7;Svar1=2;Svar0=4;sysSID=R2302052;rec=5;sysUID=IDEXCI257;sysPRJ=LMI;r9=0;r8=1;r7=1;pan=1;r6=1;r5=5;r4=2;r3=0;r10=0;r2=5;device=mobile;r1=2;r0=4;trg=1;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;0
+choice;50;5;2
+choice;60;9;101011000;5
+scale;70;4;3;0;-1;0;-1
+choice;80;14;01000000000000;1
+choice;85;2;1
+choice;87;16;3
+choice;90;11;10101101000;0
+choice;93;44;10101101000000000000000000000000000000000000;0
+composed;1077
+choice;1450;2;0
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1078;10;6
+composed;1177
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1178;10;4
+concept;1201
+app;1203;time|string|0.03923800 1677181742
+concept;1205
+app;1207;differenza|string|00:16
+choice;1215;10;4
+choice;1220;10;3
+choice;1227;5;4
+open;1230;Non utilizzo un prodotto simile
+concept;1240
+choice;1279;10;3
+open;1290;Non mi interessa 
+concept;1401
+app;1403;time|string|0.97917600 1677181576
+concept;1405
+app;1407;differenza|string|00:17
+choice;1415;10;6
+choice;1420;10;6
+open;1425;2
+choice;1427;5;2
+open;1430;Non utilizzo prodotti simili 
+concept;1440
+choice;1479;10;6
+open;1490;Porti utilizzarlo nei panini
+concept;1701
+app;1703;time|string|0.42487500 1677181853
+concept_eval;9003;0
+concept_eval;9005;0

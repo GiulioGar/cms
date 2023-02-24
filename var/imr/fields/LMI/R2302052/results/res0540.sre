@@ -1,0 +1,75 @@
+2.0;LMI;R2302052;540;IDEXCI399;24/02/2023 12:07:46 CET;<unknown>;0;0;93;Svar4=4;Svar3=1;Svar2=2;Svar1=10;sysSID=R2302052;Svar0=3;sysUID=IDEXCI399;rec=4;sysPRJ=LMI;r9=0;r8=2;r7=1;pan=1;r6=1;r5=3;r4=2;r3=7;r10=0;r2=7;device=mobile;r1=3;r0=5;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;1
+choice;35;4;2
+choice;40;4;0
+choice;50;5;2
+choice;60;9;111111110;2
+scale;70;4;3;2;2;2;2
+choice;80;14;11100000111100;8
+choice;85;2;0
+choice;87;16;1
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+composed;1077
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.41145100 1677238180
+composed;1177
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;0
+choice;2075;2;0
+choice;1178;10;8
+concept;1201
+app;1203;time|string|0.26450100 1677237627
+concept;1205
+app;1207;differenza|string|00:33
+choice;1215;10;7
+choice;1220;10;8
+open;1225;50
+choice;1227;5;2
+open;1230;Non utilizzo nessun prodotto simile
+concept;1240
+composed;1277
+choice;1250;2;0
+choice;1260;2;0
+choice;1270;2;0
+choice;1275;2;0
+choice;1278;10;8
+choice;1279;10;8
+open;1290;Ottimo soluzione
+concept;1301
+app;1303;time|string|0.85827000 1677236986
+concept;1305
+app;1307;differenza|string|00:23
+choice;1315;10;6
+choice;1320;10;6
+open;1325;100
+choice;1327;5;1
+choice;1328;5;2
+choice;1329;6;100000;0
+open;1330;Preparazione base di ricotta classica già zuccherata
+concept;1340
+choice;1379;10;8
+open;1390;Ottima proposta di mercato,ottimo package che risalta molto all'occhio e ti induce in qual modo a provare almeno una volta il prodotto e con dettagliati punti riportati sul prodotto
+concept;2001
+app;2003;time|string|0.18672400 1677237371
+concept;2005
+app;2007;differenza|string|00:53
+choice;2015;10;8
+choice;2020;10;8
+open;2025;6
+choice;2027;5;2
+open;2030;Un pezzo da 700g di media stagionatura xchè purtroppo perde aal taglio o si sfalda anche se ti ottima qualita
+concept;2040
+choice;2079;10;9
+open;2090;Devo assolutamente averla,risparmio,qualità e pieno utilizzo della materia
+concept_eval;9003;0
+concept_eval;9004;0
+concept_eval;9011;0

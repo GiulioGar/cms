@@ -157,7 +157,7 @@
 								<tr> <td> Bloccate: </td> <td> <b><?php echo  $conta_block_T; ?></b> </td> </tr>
 								<tr> <td> Contatti: </td> <td> <b><?php echo   $panel_esterno; ?></b> </td>
 								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_Cint['total']; ?></b> </td> </tr>
-								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_Cint."%"; ?></b> </td> </tr>
+								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_Ext."%"; ?></b> </td> </tr>
 						</table>
 
 								<!-- DOWNOLAD STATUS -->
@@ -199,7 +199,7 @@
 								<tr> <td> Bloccate: </td> <td> <b><?php echo  ${'conta_block_'.$value}; ?></b> </td> </tr>
 								<tr> <td> Contatti: </td> <td> <b><?php echo   $panel_esterno; ?></b> </td>
 								<tr> <td> Abilitati: </td> <td> <b><?php echo  $tot_use_abilitati_Cint['total']; ?></b> </td> </tr>
-								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  $redemption_field_Cint."%"; ?></b> </td> </tr>
+								<tr> <td> Redemption(IR): </td> <td> <b><?php echo  ${'redemption_field_Ext'.$value}."%"; ?></b> </td> </tr>
 						</table>
 
 						<!-- DOWNOLAD STATUS -->

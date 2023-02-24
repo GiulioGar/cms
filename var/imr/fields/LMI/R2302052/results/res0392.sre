@@ -1,0 +1,73 @@
+2.0;LMI;R2302052;392;IDEXCI256;23/02/2023 20:44:22 CET;<unknown>;0;0;93;Svar4=2;Svar3=1;Svar2=10;Svar1=4;sysSID=R2302052;Svar0=3;sysUID=IDEXCI256;rec=2;sysPRJ=LMI;r9=0;r8=2;r7=2;pan=1;r6=4;r5=3;r4=2;r3=0;r10=0;r2=6;device=mobile;r1=8;r0=3;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111011110;1
+scale;70;4;3;0;0;0;-1
+choice;80;14;11100000111100;2
+choice;85;2;0
+choice;87;16;2
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+composed;1077
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.28611600 1677183415
+composed;1177
+choice;1450;2;1
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1178;10;8
+composed;1277
+choice;2050;2;1
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1278;10;5
+concept;1301
+app;1303;time|string|0.70038200 1677181596
+concept;1305
+app;1307;differenza|string|00:18
+choice;1315;10;6
+choice;1320;10;1
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;000001;5
+open;1330;nessun prodotto al mascarpone poiché non coincide con la mia tipologia di ristorazione 
+concept;1340
+choice;1379;10;7
+open;1390;un ottima idea per lavorare velocemente 
+concept;1401
+app;1403;time|string|0.65487200 1677181788
+concept;1405
+app;1407;differenza|string|00:17
+choice;1415;10;9
+choice;1420;10;8
+open;1425;10
+choice;1427;5;2
+open;1430;caprino fresco lavorato dallo chef
+concept;1440
+choice;1479;10;8
+open;1490;può essere un buon alleato per la mia tipologia di ristorazione 
+concept;2001
+app;2003;time|string|0.00976100 1677183291
+concept;2005
+app;2007;differenza|string|00:23
+choice;2015;10;4
+choice;2020;10;3
+choice;2027;5;1
+open;2030;bresaola dop
+concept;2040
+choice;2079;10;5
+open;2090;il prodotto che uso è sicuramente migliore 
+concept_eval;9004;24;2;1;7;10;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;4;6;8;12;11;13;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;2;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

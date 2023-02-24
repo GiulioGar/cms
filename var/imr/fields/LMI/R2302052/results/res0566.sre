@@ -1,0 +1,16 @@
+2.0;LMI;R2302052;566;IDEXCI416;24/02/2023 13:21:08 CET;<unknown>;0;0;93;Svar10=2;Svar9=4;Svar8=5;Svar7=7;Svar6=1;Svar5=9;Svar4=10;Svar3=0;Svar2=8;Svar1=6;Svar0=3;sysSID=R2302052;rec=10;sysUID=IDEXCI416;sysPRJ=LMI;r9=1;r8=2;r7=3;pan=1;r6=0;r5=5;r4=6;r3=0;r10=0;r2=6;device=desktop;r1=5;r0=3;trg=1;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111000000;2
+scale;70;4;3;2;2;0;-1
+choice;80;14;00000000000001;13
+choice;85;2;1
+choice;87;16;3
+choice;90;11;10010010101;0
+choice;93;44;10010010101000000000000000000000000000000000;0
+concept;1301
+app;1303;time|string|0.89807100 1677242133

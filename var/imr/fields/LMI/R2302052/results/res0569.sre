@@ -1,0 +1,119 @@
+2.0;LMI;R2302052;569;IDEXCI417;24/02/2023 13:23:24 CET;24/02/2023 13:50:28 CET;1624;3;310;Svar9=7;Svar8=4;Svar7=1;Svar6=5;Svar5=3;Svar4=10;Svar3=2;Svar2=9;Svar1=8;sysSID=R2302052;Svar0=6;rec=10;sysUID=IDEXCI417;sysPRJ=LMI;r9=0;r8=0;r7=2;pan=1;r6=1;r5=5;r4=0;r3=2;r10=0;r2=7;device=mobile;r1=7;r0=6;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;1
+choice;60;9;111010110;7
+scale;70;4;3;2;0;0;-1
+choice;80;14;11000000000000;0
+choice;85;2;0
+choice;87;16;0
+choice;90;11;00100010111;2
+choice;93;44;00000000000001000101110000000000000000000000;13
+ordering;250;5;2;4;1;0;3
+open;252;Sembra un piatto sfizioso
+open;254;Non vendo pizze e non amo la mozzarella vegana
+choice;260;2;1
+open;270;28
+choice;280;3;0
+choice;290;5;2
+choice;300;3;1
+choice;305;4;2
+choice;310;4;1
+composed;1077
+choice;1650;2;0
+choice;1660;2;1
+choice;1670;2;1
+choice;1675;2;1
+choice;1078;10;5
+composed;1177
+choice;1850;2;0
+choice;1860;2;0
+choice;1870;2;1
+choice;1875;2;0
+choice;1178;10;6
+concept;1201
+app;1203;time|string|0.41256200 1677242354
+concept;1205
+app;1207;differenza|string|00:28
+choice;1215;10;3
+choice;1220;10;2
+choice;1227;5;2
+open;1230;Mozzarella di origine ajinale
+concept;1240
+composed;1277
+choice;1950;2;0
+choice;1960;2;1
+choice;1970;2;1
+choice;1975;2;1
+choice;1278;10;5
+choice;1279;10;5
+open;1290;Non amo i prodotti vegani copiati da quello di origine animale
+composed;1377
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1378;10;4
+composed;1477
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;1
+choice;2075;2;0
+choice;1478;10;6
+concept;1601
+app;1603;time|string|0.45820700 1677241550
+concept;1605
+app;1607;differenza|string|00:34
+choice;1615;10;2
+choice;1620;10;2
+choice;1627;5;2
+open;1630;Non utilizziamo mozzarella vegana, ma solo di origine animale.
+concept;1640
+choice;1679;10;6
+open;1690;Non amo le 'copie vegane' di cibi che sarebbero solo di origine animale
+concept;1801
+app;1803;time|string|0.56499700 1677241819
+concept;1805
+app;1807;differenza|string|00:43
+choice;1815;10;7
+choice;1820;10;5
+open;1825;2
+choice;1827;5;2
+open;1830;Grana padano intero da tagliare a scaglie
+concept;1840
+choice;1879;10;6
+open;1890;Molto utile, ma un po' troppo costoso
+concept;1901
+app;1903;time|string|0.61770200 1677242167
+concept;1905
+app;1907;differenza|string|00:45
+choice;1915;10;6
+choice;1920;10;5
+open;1925;2
+choice;1927;5;1
+choice;1928;5;0
+choice;1929;6;010100;1
+open;1930;Ricotta fresca normale
+concept;1940
+choice;1979;10;7
+open;1990;Buona idea
+concept;2001
+app;2003;time|string|0.84831200 1677242749
+concept;2005
+app;2007;differenza|string|00:33
+choice;2015;10;7
+choice;2020;10;6
+open;2025;1
+choice;2027;5;1
+open;2030;Non uso bresaola al momento
+concept;2040
+choice;2079;10;7
+open;2090;Sembra interessante
+concept_eval;9003;18;0;8;9;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9007;17;4;6;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9009;21;2;3;13;14;15;16;19;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9010;25;1;2;4;6;7;13;14;17;18;19;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;0;2;3;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

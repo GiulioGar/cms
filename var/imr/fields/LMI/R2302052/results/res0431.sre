@@ -1,0 +1,118 @@
+2.0;LMI;R2302052;431;IDEXCI297;23/02/2023 21:37:55 CET;23/02/2023 21:52:49 CET;894;3;310;Svar9=8;Svar8=5;Svar7=1;Svar6=9;Svar5=3;Svar4=7;Svar3=4;Svar2=10;Svar1=2;sysSID=R2302052;Svar0=6;rec=7;sysUID=IDEXCI297;sysPRJ=LMI;r9=0;r8=0;r7=3;pan=1;r6=0;r5=2;r4=4;r3=3;r10=0;r2=8;device=mobile;r1=2;r0=6;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111011110;4
+scale;70;4;3;2;1;0;-1
+choice;80;14;11000000010100;11
+choice;85;2;0
+choice;87;16;0
+choice;90;11;00101011001;2
+choice;93;44;00000000000001010110010000000000000000000000;13
+ordering;250;5;4;3;0;2;1
+open;252;Ritengo sia più adatto alle nostre esigenze, di alta qualità e propone un qualcosa nuovo
+open;254;Ritengo sia poco adatto al nostro tipo di ristorazione e clientela
+choice;260;2;1
+open;270;38
+choice;280;3;1
+choice;290;5;2
+choice;300;3;1
+choice;305;4;1
+choice;310;4;0
+composed;1077
+choice;1650;2;0
+choice;1660;2;1
+choice;1670;2;1
+choice;1675;2;1
+choice;1078;10;7
+composed;1177
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1178;10;7
+concept;1201
+app;1203;time|string|0.40649400 1677184922
+concept;1205
+app;1207;differenza|string|00:25
+choice;1215;10;8
+choice;1220;10;4
+choice;1227;5;3
+open;1230;Nessuno
+concept;1240
+composed;1277
+choice;2050;2;0
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1278;10;8
+choice;1279;10;8
+open;1290;Pratica e innovativa 
+composed;1377
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;1
+choice;1475;2;1
+choice;1378;10;8
+concept;1401
+app;1403;time|string|0.16871200 1677185132
+concept;1405
+app;1407;differenza|string|00:16
+choice;1415;10;8
+choice;1420;10;6
+open;1425;3
+choice;1427;5;2
+open;1430;Formaggio fresco spalmabile
+concept;1440
+composed;1477
+choice;1750;2;0
+choice;1760;2;0
+choice;1770;2;0
+choice;1775;2;0
+choice;1478;10;8
+choice;1479;10;8
+open;1490;Comodo, senza sprechi
+concept;1601
+app;1603;time|string|0.63699600 1677184747
+concept;1605
+app;1607;differenza|string|00:16
+choice;1615;10;7
+choice;1620;10;5
+open;1625;2
+choice;1627;5;3
+open;1630;Utilizziamo mozzarella cubettata ma non vegana
+concept;1640
+choice;1679;10;8
+open;1690;Novità 
+concept;1701
+app;1703;time|string|0.87223400 1677185263
+concept;1705
+app;1707;differenza|string|00:15
+choice;1715;10;9
+choice;1720;10;9
+open;1725;2
+choice;1727;5;2
+open;1730;Nessuno 
+concept;1740
+choice;1779;10;8
+open;1790;Comodo, nuovo alta qualità 
+concept;2001
+app;2003;time|string|0.29541500 1677185022
+concept;2005
+app;2007;differenza|string|00:16
+choice;2015;10;8
+choice;2020;10;8
+open;2025;2
+choice;2027;5;2
+open;2030;Bresaola e roastbeef di altre marche
+concept;2040
+choice;2079;10;8
+open;2090;Comoda, pratica, alta qualità 
+concept_eval;9003;18;3;6;8;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;4;3;6;8;11;12;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9007;17;3;7;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9008;21;6;9;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;2;3;4;8;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

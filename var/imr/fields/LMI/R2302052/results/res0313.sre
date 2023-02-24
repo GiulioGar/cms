@@ -1,0 +1,35 @@
+2.0;LMI;R2302052;313;IDEXCI176;23/02/2023 19:49:59 CET;<unknown>;0;0;93;Svar4=1;Svar3=3;Svar2=10;Svar1=2;sysSID=R2302052;Svar0=4;sysUID=IDEXCI176;rec=1;sysPRJ=LMI;r9=0;r8=1;r7=3;pan=1;r6=3;r5=3;r4=1;r3=0;r10=0;r2=6;device=mobile;r1=7;r0=4;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;1
+choice;35;4;2
+choice;40;4;1
+choice;50;5;1
+choice;60;9;111110010;4
+scale;70;4;3;1;0;1;1
+choice;80;14;10000000010100;9
+choice;85;2;0
+choice;87;16;1
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+composed;1077
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;1
+choice;1475;2;0
+choice;1078;10;6
+concept;1201
+app;1203;time|string|0.29183500 1677179010
+concept;1401
+app;1403;time|string|0.62653300 1677178373
+concept;1405
+app;1407;differenza|string|00:13
+choice;1415;10;6
+choice;1420;10;5
+open;1425;4
+choice;1427;5;2
+open;1430;Philadelphia 
+concept;1440
+choice;1479;10;9
+open;1490;Descrizione dettagliata e ottima
+concept_eval;9005;0

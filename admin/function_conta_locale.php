@@ -189,8 +189,8 @@ $query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_cop
 //AGGIORNAMENTO DATA IN RESPINT//
 
 // RIPRISTINA DOPO PUBBLICAZIONE
-$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
-//$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+//$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
 
 $contatti_sample=count($fl_sample);
 //$sid="ITA1411148";
@@ -300,9 +300,9 @@ $ore_differenza=($confrontodata/60)/60;
 
 //ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
 
-$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+//$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
-//$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
 $contatti=count($fl);
 
@@ -373,6 +373,49 @@ $contaFiltri3=0;
 $contaCompl=0;
 $conta_filtrati_T=0;
 
+$conta_complete_0=0;
+$conta_complete_1=0;
+$conta_complete_2=0;
+$conta_complete_3=0;
+$conta_complete_4=0;
+$conta_complete_5=0;
+$conta_complete_6=0;
+$conta_complete_7=0;
+$conta_complete_8=0;
+$conta_complete_9=0;
+
+$conta_filtrati_0=0;
+$conta_filtrati_1=0;
+$conta_filtrati_2=0;
+$conta_filtrati_3=0;
+$conta_filtrati_4=0;
+$conta_filtrati_5=0;
+$conta_filtrati_6=0;
+$conta_filtrati_7=0;
+$conta_filtrati_8=0;
+$conta_filtrati_9=0;
+
+$conta_quotafull_0=0;
+$conta_quotafull_1=0;
+$conta_quotafull_2=0;
+$conta_quotafull_3=0;
+$conta_quotafull_4=0;
+$conta_quotafull_5=0;
+$conta_quotafull_6=0;
+$conta_quotafull_7=0;
+$conta_quotafull_8=0;
+$conta_quotafull_9=0;
+
+$conta_block_0=0;
+$conta_block_1=0;
+$conta_block_2=0;
+$conta_block_3=0;
+$conta_block_4=0;
+$conta_block_5=0;
+$conta_block_6=0;
+$conta_block_7=0;
+$conta_block_8=0;
+$conta_block_9=0;
 
 $conta0=0;
 $conta1=0;
@@ -464,10 +507,6 @@ foreach ($elementi as &$value)
     if($opt==="pan=9") { $varPanel=9; $useAltroPanel=true; };
 }
 
-if($leggi_id_parziale !="IDEX" && $varPanel==99)  {$varPanel=0; $useMillebytes=true;}
-
-//echo "<div>".$i."-".$varPanel."</div>";
-
 //controllo status ricerca
 
 $versionSre=$elementi[0];
@@ -482,6 +521,14 @@ else  { $leggi_id=$elementi[3];}
 			
 
 $leggi_id_parziale=substr($leggi_id,0,4);
+
+if($leggi_id_parziale !="IDEX" && $varPanel==99)  {$varPanel=0; $useMillebytes=true;}
+
+
+
+//echo "<div>".$i."-".$varPanel."-".$leggi_id_parziale."</div>";
+
+
 
 //echo "<div>".$i."-".$statSur."</div>";
 
@@ -711,15 +758,15 @@ if($varPanel==9)
 
 
 /*RIPRISTINA PER PRODUZIONE*/
-
+/*
 $sdl = file_get_contents('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
+*/
 
 
-/*
 $sdl = file_get_contents('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
-*/
+
 
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
@@ -1296,9 +1343,17 @@ $redemption_field=number_format($redemption_field, 2);
 
 
 <?php
-//Calcolo redemption field Cint
-$redemption_field_Cint=($conta_complete_Cint/($conta_complete_Cint+$conta_filtrati_Cint))*100;
-$redemption_field_Cint=number_format($redemption_field_Cint, 2);
+//Calcolo redemption field Esterni
+
+$redemption_field_Ext=($conta_complete_T/($conta_complete_T+$conta_filtrati_T))*100;
+$redemption_field_Ext=number_format($redemption_field_Ext, 2);
+
+foreach ($panels as $value) 
+{
+	
+${'redemption_field_Ext'.$value}=(${'conta_complete_'.$value}/(${'conta_complete_'.$value}+${'conta_filtrati_'.$value}))*100;
+${'redemption_field_Ext'.$value}=number_format(${'redemption_field_Ext'.$value}, 2);
+}
 
 //Calcolo redemption field panel
 $redemption_field_panel=($conta_complete_panel/($conta_complete_panel+$conta_filtrati_panel))*100;

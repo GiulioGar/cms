@@ -1,0 +1,120 @@
+2.0;LMI;R2302052;401;IDEXCI265;23/02/2023 20:52:46 CET;23/02/2023 21:13:17 CET;1231;3;310;Svar9=8;Svar8=5;Svar7=1;Svar6=10;Svar5=4;Svar4=3;Svar3=7;Svar2=2;Svar1=9;sysSID=R2302052;Svar0=6;rec=3;sysUID=IDEXCI265;sysPRJ=LMI;r9=0;r8=0;r7=3;pan=1;r6=1;r5=1;r4=0;r3=5;r10=0;r2=2;device=desktop;r1=8;r0=6;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;6
+choice;35;4;1
+choice;40;4;1
+choice;50;5;1
+choice;60;9;111111010;4
+scale;70;4;3;2;2;2;2
+choice;80;14;00000100110100;11
+choice;85;2;1
+choice;87;16;6
+choice;90;11;00110011010;2
+choice;93;44;00000000000001100110100000000000000000000000;13
+ordering;250;5;1;3;4;2;0
+open;252;Pratico, nuovo e potrebbe aver un buon sapore
+open;254;Non mi sembra possa avere un buon sapore
+choice;260;2;1
+open;270;54
+choice;280;3;1
+choice;290;5;2
+choice;300;3;2
+choice;305;4;1
+choice;310;4;2
+composed;1077
+choice;1650;2;0
+choice;1660;2;1
+choice;1670;2;1
+choice;1675;2;1
+choice;1078;10;4
+composed;1177
+choice;1950;2;0
+choice;1960;2;0
+choice;1970;2;1
+choice;1975;2;0
+choice;1178;10;7
+concept;1201
+app;1203;time|string|0.08481100 1677182543
+concept;1205
+app;1207;differenza|string|00:16
+choice;1215;10;0
+choice;1220;10;0
+choice;1227;5;2
+open;1230;Non faccia lo pizza e non usiamo prodotti simili
+concept;1240
+composed;1277
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1278;10;4
+choice;1279;10;3
+open;1290;che non mi entusiasma
+concept;1301
+app;1303;time|string|0.25693000 1677182923
+concept;1305
+app;1307;differenza|string|00:31
+choice;1315;10;6
+choice;1320;10;0
+choice;1327;5;2
+choice;1328;5;2
+choice;1329;6;010000;1
+open;1330;Non sembra di gran preggio, sarà comoda ma abbastanza industriale
+concept;1340
+composed;1377
+choice;1750;2;0
+choice;1760;2;0
+choice;1770;2;1
+choice;1775;2;0
+choice;1378;10;9
+choice;1379;10;5
+open;1390;Che è troppo dozzinale, noi non facciamo pasticceria
+composed;1477
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1478;10;5
+concept;1601
+app;1603;time|string|0.40029200 1677182041
+concept;1605
+app;1607;differenza|string|00:21
+choice;1615;10;0
+choice;1620;10;3
+choice;1627;5;1
+open;1630;Facciamo solo snack e piatti freschi con poca o nessuna preparazione
+concept;1640
+choice;1679;10;5
+open;1690;che i finti piatti non sono sostituzioni, vale la pena fare dei piatti alternativi e non piatti simili
+concept;1701
+app;1703;time|string|0.30790500 1677182684
+concept;1705
+app;1707;differenza|string|00:17
+choice;1715;10;8
+choice;1720;10;6
+open;1725;5
+choice;1727;5;2
+open;1730;Ovoline semplici che poi accompagnamo ad una farcitura
+concept;1740
+choice;1779;10;7
+open;1790;Piacevolmente sorpresa, la trovo un'ottima idea
+concept;1901
+app;1903;time|string|0.18651400 1677182261
+concept;1905
+app;1907;differenza|string|00:19
+choice;1915;10;9
+choice;1920;10;9
+open;1925;20
+choice;1927;5;2
+choice;1928;5;3
+choice;1929;6;100000;0
+open;1930;Solo ricotta semplice imsieme ad altri formaggi
+concept;1940
+choice;1979;10;8
+open;1990;Piacevole sorpresa, modi per utilizzarla
+concept_eval;9003;18;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;0
+concept_eval;9007;17;10;11;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9008;21;8;12;13;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9010;25;4;5;7;9;12;13;14;17;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

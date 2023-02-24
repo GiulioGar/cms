@@ -1,0 +1,122 @@
+2.0;LMI;R2302052;408;IDEXCI272;23/02/2023 21:03:09 CET;23/02/2023 21:20:19 CET;1030;3;310;Svar10=7;Svar9=1;Svar8=2;Svar7=0;Svar6=6;Svar5=4;Svar4=5;Svar3=9;Svar2=10;Svar1=8;Svar0=3;sysSID=R2302052;rec=5;sysUID=IDEXCI272;sysPRJ=LMI;r9=0;r8=1;r7=0;pan=1;r6=3;r5=3;r4=4;r3=7;r10=0;r2=8;device=mobile;r1=7;r0=3;trg=1;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;1
+choice;50;5;2
+choice;60;9;101001100;5
+scale;70;4;3;2;-1;2;-1
+choice;80;14;11000000010100;1
+choice;85;2;0
+choice;87;16;3
+choice;90;11;00010100111;3
+choice;93;44;00010100111000000000000000000000000000000000;3
+ordering;250;5;3;2;1;4;0
+open;252;Sono originali, non scontate.
+open;254;Sarebbe più comodo un prodotto finito 
+choice;260;2;1
+open;270;25
+choice;280;3;0
+choice;290;5;2
+choice;300;3;1
+choice;305;4;2
+choice;310;4;0
+composed;1077
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1078;10;8
+composed;1177
+choice;1850;2;0
+choice;1860;2;0
+choice;1870;2;0
+choice;1875;2;0
+choice;1178;10;8
+composed;1277
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;0
+choice;2075;2;0
+choice;1278;10;9
+concept;1301
+app;1303;time|string|0.04934600 1677182720
+concept;1305
+app;1307;differenza|string|00:18
+choice;1315;10;6
+choice;1320;10;3
+choice;1327;5;2
+choice;1328;5;1
+choice;1329;6;000010;4;comp4:Vaniglia
+open;1330;Nutella
+concept;1340
+composed;1377
+choice;1950;2;0
+choice;1960;2;0
+choice;1970;2;1
+choice;1975;2;0
+choice;1378;10;7
+choice;1379;10;5
+open;1390;Pratico ma industrializzato
+composed;1477
+choice;1550;2;0
+choice;1560;2;0
+choice;1570;2;0
+choice;1575;2;0
+choice;1478;10;7
+concept;1501
+app;1503;time|string|0.94042000 1677183364
+concept;1505
+app;1507;differenza|string|00:17
+choice;1515;10;8
+choice;1520;10;8
+open;1525;2
+choice;1527;5;3
+open;1530;Mozzarella santa lucia
+concept;1540
+choice;1579;10;6
+open;1590;Uguale alla mozzarella che già acquisto ma prezzo più vantaggioso ottimo per aperitivi e piadine
+concept;1801
+app;1803;time|string|0.11772000 1677182954
+concept;1805
+app;1807;differenza|string|00:18
+choice;1815;10;7
+choice;1820;10;7
+open;1825;5
+choice;1827;5;3
+open;1830;Grana a scaglie
+concept;1840
+choice;1879;10;6
+open;1890;Comodo ma forse ha più senso acquistare un pezzo intero a minor prezzo al kg
+concept;1901
+app;1903;time|string|0.80764600 1677183212
+concept;1905
+app;1907;differenza|string|00:35
+choice;1915;10;7
+choice;1920;10;6
+open;1925;15
+choice;1927;5;1
+choice;1928;5;1
+choice;1929;6;100100;0
+open;1930;Mozzarelline per aperitivo
+concept;1940
+choice;1979;10;8
+open;1990;Carine sa vedere ottime per aperitivo 
+concept;2001
+app;2003;time|string|0.32384500 1677183090
+concept;2005
+app;2007;differenza|string|00:26
+choice;2015;10;8
+choice;2020;10;8
+open;2025;5
+choice;2027;5;2
+open;2030;Bresaola in buste
+concept;2040
+choice;2079;10;7
+open;2090;Ottimo rapporto qualità prezzo
+concept_eval;9004;24;1;13;15;10;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9006;23;8;5;7;9;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9009;21;4;8;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9010;25;12;13;14;4;1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;15;0;7;3;6;8;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

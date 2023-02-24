@@ -1,0 +1,8 @@
+2.0;LMI;R2302052;482;IDEXCI351;24/02/2023 10:00:54 CET;24/02/2023 10:02:02 CET;68;4;60;trg=1;sysSID=R2302052;sysPRJ=LMI;sysUID=IDEXCI351;device=desktop;lang=it;pan=1
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;1
+choice;50;5;1
+choice;60;9;000001100;6

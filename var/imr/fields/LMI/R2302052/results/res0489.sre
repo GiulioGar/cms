@@ -1,0 +1,118 @@
+2.0;LMI;R2302052;489;IDEXCI358;24/02/2023 10:20:04 CET;24/02/2023 10:34:43 CET;879;3;310;Svar4=1;Svar3=10;Svar2=2;Svar1=4;sysSID=R2302052;Svar0=3;sysUID=IDEXCI358;rec=1;sysPRJ=LMI;r9=1;r8=1;r7=1;pan=1;r6=0;r5=5;r4=6;r3=2;r10=0;r2=3;device=mobile;r1=4;r0=3;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;1
+choice;35;4;2
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111011010;1
+scale;70;4;3;0;2;2;-1
+choice;80;14;10000000000000;0
+choice;85;2;0
+choice;87;16;1
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+ordering;250;5;3;4;0;1;2
+open;252;Perche gia lo utilizzo
+open;254;Non sono propenso alle novita
+choice;260;2;0
+open;270;50
+choice;280;3;1
+choice;290;5;0
+choice;300;3;1
+choice;305;4;2
+choice;310;4;3
+composed;1077
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1078;10;4
+concept;1101
+app;1103;time|string|0.68294500 1677231071
+concept;1105
+app;1107;differenza|string|00:17
+choice;1115;10;4
+choice;1120;10;4
+choice;1127;5;2
+open;1130;Da provare
+concept;1140
+composed;1177
+choice;1450;2;1
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1178;10;4
+choice;1179;10;5
+open;1190;Da provare
+concept;1201
+app;1203;time|string|0.61817400 1677230829
+concept;1205
+app;1207;differenza|string|00:18
+choice;1215;10;5
+choice;1220;10;5
+open;1225;1
+choice;1227;5;2
+open;1230;Ottima non la cambierei al massimo aggiungerei altre opzioni
+concept;1240
+composed;1277
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1278;10;4
+choice;1279;10;4
+open;1290;Cara
+concept;1301
+app;1303;time|string|0.83053400 1677230506
+concept;1305
+app;1307;differenza|string|00:17
+choice;1315;10;3
+choice;1320;10;2
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;001000;2
+open;1330;Utilizzo solo mozzarella
+concept;1340
+composed;1377
+choice;2050;2;1
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1378;10;7
+choice;1379;10;3
+open;1390;Bo forse da provare
+concept;1401
+app;1403;time|string|0.87989200 1677230708
+concept;1405
+app;1407;differenza|string|00:18
+choice;1415;10;5
+choice;1420;10;4
+choice;1427;5;2
+open;1430;Mozzarella professionale
+concept;1440
+composed;1477
+choice;1150;2;1
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;1
+choice;1478;10;5
+choice;1479;10;5
+open;1490;Non so da provare
+concept;2001
+app;2003;time|string|0.12429600 1677230943
+concept;2005
+app;2007;differenza|string|00:17
+choice;2015;10;8
+choice;2020;10;6
+open;2025;5
+choice;2027;5;2
+open;2030;Nessuno utilizzo questo
+concept;2040
+choice;2079;10;6
+open;2090;Ottimo prodotto
+concept_eval;9002;0
+concept_eval;9003;0
+concept_eval;9004;0
+concept_eval;9005;0
+concept_eval;9011;0

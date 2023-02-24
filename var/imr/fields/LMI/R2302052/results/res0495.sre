@@ -1,0 +1,54 @@
+2.0;LMI;R2302052;495;IDEXCI363;24/02/2023 10:33:22 CET;<unknown>;0;0;93;Svar9=9;Svar8=8;Svar7=2;Svar6=5;Svar5=3;Svar4=4;Svar3=7;Svar2=6;Svar1=10;sysSID=R2302052;Svar0=1;rec=4;sysUID=IDEXCI363;sysPRJ=LMI;r9=0;r8=0;r7=1;pan=1;r6=1;r5=0;r4=3;r3=5;r10=0;r2=5;device=mobile;r1=9;r0=1;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;2
+choice;60;9;101000100;0
+scale;70;4;3;2;-1;0;-1
+choice;80;14;00000000000001;13
+choice;85;2;1
+choice;87;16;0
+choice;90;11;01001011001;1
+choice;93;44;00000000000010010110010000000000000000000000;12
+composed;1077
+choice;1150;2;0
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;0
+choice;1078;10;6
+concept;1101
+app;1103;time|string|0.22315900 1677231342
+concept;1105
+app;1107;differenza|string|00:19
+choice;1115;10;7
+choice;1120;10;6
+open;1125;10
+choice;1127;5;2
+open;1130;Panini 
+concept;1140
+composed;1177
+choice;2050;2;0
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1178;10;6
+choice;1179;10;7
+open;1190;Come potrei usarli al meglio
+concept;1601
+app;1603;time|string|0.00745700 1677231793
+concept;2001
+app;2003;time|string|0.76544300 1677231619
+concept;2005
+app;2007;differenza|string|00:21
+choice;2015;10;6
+choice;2020;10;6
+open;2025;5
+choice;2027;5;4
+open;2030;Antipasti
+concept;2040
+choice;2079;10;8
+open;2090;Bella la presentazione e la confezione ma troppo il contenuto
+concept_eval;9002;0
+concept_eval;9011;0

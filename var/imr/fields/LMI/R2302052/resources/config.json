@@ -1,0 +1,121 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=60a35c37-bd7c-4c2b-a9a5-7a5451b799a8"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=8dd91828-be07-5a81-584b-321f19917842"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "https://s.cint.com/Survey/QuotaFull?ProjectToken=8dd91828-be07-5a81-584b-321f19917842"
+                },
+
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "6",
+                    "exit_code": 3,
+                    "redirect_to": "https://resources.netquest.es/router/transit?tp=co"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "6",
+                    "exit_code": 4,
+                   "redirect_to": "https://resources.netquest.es/router/transit?tp=fo"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "6",
+                    "exit_code": 5,
+                     "redirect_to": "https://resources.netquest.es/router/transit?tp=qf"
+                }
+					
+			
+						
+			 ]
+    }
+          
+},
+
+
+
+
+
+   "quota": {
+    "total_interviews": 600,
+
+    "targets": [
+        
+
+    {
+        "name": "legTarg",
+        "description": "legTarg",
+        "question_id": 93,
+        "option_id": [0,1,2,3,4,5,6,7,8,9,10],
+        "value": 80
+    },
+
+    {
+        "name": "legTarg",
+        "description": "legTarg",
+        "question_id": 93,
+        "option_id": [11,12,13,14,15,16,17,18,19,20,21],
+        "value": 155
+    },
+    
+    {
+        "name": "legTarg",
+        "description": "legTarg",
+        "question_id": 93,
+        "option_id": [23,24,25,26,32],
+        "value": 80
+    },
+    {
+        "name": "legTarg",
+        "description": "legTarg",
+        "question_id": 93,
+        "option_id": [35,36,37,38],
+        "value": 80
+    }
+
+            ]
+
+}
+
+
+
+}

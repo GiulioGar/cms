@@ -1,0 +1,73 @@
+2.0;LMI;R2302052;330;IDEXCI193;23/02/2023 19:53:26 CET;<unknown>;0;0;93;Svar4=1;Svar3=3;Svar2=10;Svar1=4;sysSID=R2302052;Svar0=2;sysUID=IDEXCI193;rec=1;sysPRJ=LMI;r9=1;r8=2;r7=3;pan=1;r6=4;r5=3;r4=4;r3=5;r10=0;r2=2;device=mobile;r1=6;r0=8;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;0
+choice;50;5;2
+choice;60;9;111111110;6
+scale;70;4;3;2;0;2;2
+choice;80;14;01001000101100;4
+choice;85;2;1
+choice;87;16;2
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+composed;1077
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1078;10;5
+composed;1177
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;0
+choice;1475;2;0
+choice;1178;10;9
+concept;1201
+app;1203;time|string|0.19293900 1677178529
+concept;1205
+app;1207;differenza|string|00:19
+choice;1215;10;5
+choice;1220;10;5
+open;1225;0
+choice;1227;5;2
+open;1230;Nessuno 
+concept;1240
+composed;1277
+choice;2050;2;1
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;0
+choice;1278;10;9
+choice;1279;10;5
+open;1290;Nessuno 
+concept;1301
+app;1303;time|string|0.69748500 1677178953
+concept;1401
+app;1403;time|string|0.54258400 1677178680
+concept;1405
+app;1407;differenza|string|00:18
+choice;1415;10;9
+choice;1420;10;9
+open;1425;10
+choice;1427;5;2
+open;1430;Centrale del latte
+concept;1440
+choice;1479;10;9
+open;1490;Greschezza
+concept;2001
+app;2003;time|string|0.43253400 1677178840
+concept;2005
+app;2007;differenza|string|00:20
+choice;2015;10;9
+choice;2020;10;9
+open;2025;5
+choice;2027;5;2
+open;2030;Idem
+concept;2040
+choice;2079;10;9
+open;2090;Golosità 
+concept_eval;9003;0
+concept_eval;9005;0
+concept_eval;9011;17;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

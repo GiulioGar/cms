@@ -1,0 +1,121 @@
+2.0;LMI;R2302052;276;IDEXCI139;23/02/2023 19:47:02 CET;23/02/2023 20:05:34 CET;1112;3;310;Svar10=9;Svar9=8;Svar8=7;Svar7=0;Svar6=10;Svar5=4;Svar4=3;Svar3=1;Svar2=6;Svar1=5;Svar0=2;sysSID=R2302052;rec=3;sysUID=IDEXCI139;sysPRJ=LMI;r9=0;r8=0;r7=0;pan=1;r6=4;r5=1;r4=1;r3=1;r10=0;r2=4;device=mobile;r1=4;r0=2;trg=1;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;1
+choice;50;5;2
+choice;60;9;101011000;5
+scale;70;4;3;0;-1;0;-1
+choice;80;14;10000000110100;8
+choice;85;2;0
+choice;87;16;3
+choice;90;11;01110110000;1
+choice;93;44;01110110000000000000000000000000000000000000;1
+ordering;250;5;3;4;2;1;0
+open;252;Il ripieno appetitoso, secchiello richiudibile, prezzo vantaggioso 
+open;254;Prezzo elevato 
+choice;260;2;1
+open;270;33
+choice;280;3;0
+choice;290;5;2
+choice;300;3;0
+choice;305;4;3
+choice;310;4;2
+composed;1077
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;0
+choice;1275;2;0
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.58399000 1677178798
+concept;1105
+app;1107;differenza|string|00:20
+choice;1115;10;8
+choice;1120;10;6
+open;1125;5
+choice;1127;5;1
+open;1130;Mozzarella e coop
+concept;1140
+composed;1177
+choice;1550;2;0
+choice;1560;2;0
+choice;1570;2;0
+choice;1575;2;0
+choice;1178;10;7
+choice;1179;10;7
+open;1190;Prezzo troppo elevato, secchiello richiudibile, il ripieno 
+concept;1201
+app;1203;time|string|0.22592200 1677178129
+concept;1205
+app;1207;differenza|string|00:19
+choice;1215;10;6
+choice;1220;10;6
+open;1225;3
+choice;1227;5;2
+open;1230;Mozzarella da pizza santa Lucia, utilizzata per panini e insalate, melanzane alla parmigiana 
+concept;1240
+composed;1277
+choice;1650;2;0
+choice;1660;2;1
+choice;1670;2;1
+choice;1675;2;1
+choice;1278;10;6
+choice;1279;10;6
+open;1290;Prezzo conveniente, consigliata per le alte temperature, senza elementi di origine animale 
+concept;1301
+app;1303;time|string|0.66876800 1677178915
+concept;1305
+app;1307;differenza|string|00:16
+choice;1315;10;9
+choice;1320;10;9
+open;1325;7
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;010000;1
+open;1330;Mascarpone galbani
+concept;1340
+composed;1377
+choice;1150;2;0
+choice;1160;2;0
+choice;1170;2;1
+choice;1175;2;0
+choice;1378;10;7
+choice;1379;10;9
+open;1390;Senza sprechi pronto all uso 
+composed;1477
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;0
+choice;1375;2;0
+choice;1478;10;9
+concept;1501
+app;1503;time|string|0.51600000 1677178369
+concept;1505
+app;1507;differenza|string|01:44
+choice;1515;10;7
+choice;1520;10;8
+open;1525;4
+choice;1527;5;3
+open;1530;Mozzarella in filone santa Lucia, per panini, verdure sfornati, pizzette 
+concept;1540
+choice;1579;10;5
+open;1590;Prezzo conveniente, per vegetariani, 
+concept;1601
+app;1603;time|string|0.68099200 1677178663
+concept;1605
+app;1607;differenza|string|00:44
+choice;1615;10;7
+choice;1620;10;5
+open;1625;1
+choice;1627;5;1
+open;1630;Mozzarella Granarolo, per insalate, panini
+concept;1640
+choice;1679;10;4
+open;1690;Senza colesterolo, adatto ai vegani
+concept_eval;9002;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9003;18;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;0
+concept_eval;9006;0
+concept_eval;9007;0

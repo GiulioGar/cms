@@ -1,0 +1,121 @@
+2.0;LMI;R2302052;529;IDEXCI391;24/02/2023 11:45:21 CET;24/02/2023 11:53:22 CET;481;3;310;Svar9=5;Svar8=3;Svar7=2;Svar6=7;Svar5=6;Svar4=4;Svar3=8;Svar2=9;Svar1=10;sysSID=R2302052;Svar0=1;rec=4;sysUID=IDEXCI391;sysPRJ=LMI;r9=0;r8=0;r7=3;pan=1;r6=3;r5=2;r4=6;r3=0;r10=0;r2=8;device=desktop;r1=9;r0=1;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;1
+choice;60;9;101011100;2
+scale;70;4;3;1;-1;2;-1
+choice;80;14;10000000000000;0
+choice;85;2;0
+choice;87;16;0
+choice;90;11;01001000111;1
+choice;93;44;00000000000010010001110000000000000000000000;12
+ordering;250;5;0;4;2;3;1
+open;252;nulla da dichiarare
+open;254;nulla da dichiarare
+choice;260;2;0
+open;270;37
+choice;280;3;1
+choice;290;5;2
+choice;300;3;1
+choice;305;4;2
+choice;310;4;0
+composed;1077
+choice;1150;2;1
+choice;1160;2;0
+choice;1170;2;1
+choice;1175;2;1
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.17598500 1677235619
+concept;1105
+app;1107;differenza|string|00:27
+choice;1115;10;6
+choice;1120;10;7
+open;1125;15
+choice;1127;5;2
+open;1130;nulla da dichiarare
+concept;1140
+composed;1177
+choice;2050;2;1
+choice;2060;2;0
+choice;2070;2;1
+choice;2075;2;1
+choice;1178;10;6
+choice;1179;10;6
+open;1190;nulla da dichiarare
+composed;1277
+choice;1950;2;1
+choice;1960;2;0
+choice;1970;2;1
+choice;1975;2;1
+choice;1278;10;6
+composed;1377
+choice;1850;2;0
+choice;1860;2;0
+choice;1870;2;0
+choice;1875;2;1
+choice;1378;10;7
+concept;1401
+app;1403;time|string|0.64715600 1677235898
+concept;1405
+app;1407;differenza|string|00:17
+choice;1415;10;7
+choice;1420;10;5
+open;1425;6
+choice;1427;5;2
+open;1430;nulla da dichiarare
+concept;1440
+composed;1477
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;1
+choice;1475;2;1
+choice;1478;10;7
+choice;1479;10;5
+open;1490;nulla da dichiarare
+concept;1801
+app;1803;time|string|0.72731700 1677235850
+concept;1805
+app;1807;differenza|string|00:16
+choice;1815;10;7
+choice;1820;10;5
+open;1825;5
+choice;1827;5;2
+open;1830;nulla da dichiarare
+concept;1840
+choice;1879;10;6
+open;1890;nulla da dichiarare
+concept;1901
+app;1903;time|string|0.98551700 1677235784
+concept;1905
+app;1907;differenza|string|00:21
+choice;1915;10;8
+choice;1920;10;6
+open;1925;5
+choice;1927;5;1
+choice;1928;5;0
+choice;1929;6;000001;5
+open;1930;nulla da dichiarare
+concept;1940
+choice;1979;10;7
+open;1990;nulla da dichiarare
+concept;2001
+app;2003;time|string|0.34918900 1677235708
+concept;2005
+app;2007;differenza|string|00:21
+choice;2015;10;6
+choice;2020;10;5
+open;2025;12
+choice;2027;5;2
+open;2030;nulla da dichiarare
+concept;2040
+choice;2079;10;6
+open;2090;nulla da dichiarare
+concept_eval;9002;0
+concept_eval;9005;0
+concept_eval;9009;0
+concept_eval;9010;0
+concept_eval;9011;0

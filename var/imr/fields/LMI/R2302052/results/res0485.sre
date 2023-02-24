@@ -1,0 +1,123 @@
+2.0;LMI;R2302052;485;IDEXCI354;24/02/2023 10:11:31 CET;24/02/2023 10:26:24 CET;893;3;310;Svar10=6;Svar9=7;Svar8=2;Svar7=1;Svar6=4;Svar5=0;Svar4=8;Svar3=9;Svar2=5;Svar1=10;Svar0=3;sysSID=R2302052;rec=8;sysUID=IDEXCI354;sysPRJ=LMI;r9=1;r8=0;r7=0;pan=1;r6=2;r5=0;r4=6;r3=7;r10=0;r2=4;device=desktop;r1=9;r0=3;trg=1;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111001110;0
+scale;70;4;3;2;1;0;-1
+choice;80;14;01100101000000;7
+choice;85;2;1
+choice;87;16;3
+choice;90;11;00010100111;3
+choice;93;44;00010100111000000000000000000000000000000000;3
+ordering;250;5;2;0;1;3;4
+open;252;Pratico e a buon prezzo 
+open;254;Troppo costoso
+choice;260;2;1
+open;270;33
+choice;280;3;0
+choice;290;5;2
+choice;300;3;1
+choice;305;4;2
+choice;310;4;2
+composed;1077
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;1
+choice;1375;2;0
+choice;1078;10;7
+composed;1177
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;0
+choice;2075;2;0
+choice;1178;10;7
+composed;1277
+choice;1550;2;0
+choice;1560;2;0
+choice;1570;2;0
+choice;1575;2;0
+choice;1278;10;7
+concept;1301
+app;1303;time|string|0.25550600 1677229983
+concept;1305
+app;1307;differenza|string|00:17
+choice;1315;10;7
+choice;1320;10;9
+open;1325;20
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;001000;2
+open;1330;Già pronto all uso, per condire bruschettoni o simili
+concept;1340
+composed;1377
+choice;1950;2;0
+choice;1960;2;1
+choice;1970;2;0
+choice;1975;2;1
+choice;1378;10;7
+choice;1379;10;7
+open;1390;Facile, gustoso e veloce
+composed;1477
+choice;1850;2;0
+choice;1860;2;1
+choice;1870;2;1
+choice;1875;2;1
+choice;1478;10;8
+concept;1501
+app;1503;time|string|0.86604100 1677230297
+concept;1505
+app;1507;differenza|string|00:17
+choice;1515;10;9
+choice;1520;10;8
+open;1525;30
+choice;1527;5;2
+open;1530;Prodotto versatile
+concept;1540
+choice;1579;10;8
+open;1590;Versatile
+concept;1801
+app;1803;time|string|0.74043500 1677230499
+concept;1805
+app;1807;differenza|string|00:21
+choice;1815;10;7
+choice;1820;10;7
+open;1825;50
+choice;1827;5;3
+open;1830;Grana padano/parmigiano reggiano in forma per aperitivi sfiziosi
+concept;1840
+choice;1879;10;9
+open;1890;Pratica confezione, etichetta esauriente
+concept;1901
+app;1903;time|string|0.22021800 1677230401
+concept;1905
+app;1907;differenza|string|00:18
+choice;1915;10;9
+choice;1920;10;9
+open;1925;50
+choice;1927;5;2
+choice;1928;5;1
+choice;1929;6;000100;3
+open;1930;Pallotta "cac e ove"
+concept;1940
+choice;1979;10;6
+open;1990;Sfiziose e comode da servire
+concept;2001
+app;2003;time|string|0.24844600 1677230184
+concept;2005
+app;2007;differenza|string|00:28
+choice;2015;10;7
+choice;2020;10;7
+open;2025;30
+choice;2027;5;2
+open;2030;Preconfezionati Conad 
+concept;2040
+choice;2079;10;8
+open;2090;Ottimo prezzo
+concept_eval;9004;24;15;13;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9006;23;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9009;21;13;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9010;0
+concept_eval;9011;17;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

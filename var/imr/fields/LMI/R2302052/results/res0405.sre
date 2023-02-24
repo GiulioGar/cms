@@ -1,0 +1,118 @@
+2.0;LMI;R2302052;405;IDEXCI268;23/02/2023 20:57:20 CET;23/02/2023 21:10:45 CET;805;3;310;Svar4=3;Svar3=1;Svar2=4;Svar1=10;sysSID=R2302052;Svar0=2;sysUID=IDEXCI268;rec=3;sysPRJ=LMI;r9=0;r8=1;r7=3;pan=1;r6=1;r5=1;r4=5;r3=3;r10=0;r2=8;device=mobile;r1=8;r0=2;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;1
+choice;50;5;1
+choice;60;9;111111110;0
+scale;70;4;3;2;0;0;1
+choice;80;14;11000100101110;12
+choice;85;2;0
+choice;87;16;2
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+ordering;250;5;4;2;3;0;1
+open;252;Mi sembra un'idea più originale e pratica
+open;254;Non lo trovo accattivante
+choice;260;2;1
+open;270;38
+choice;280;3;1
+choice;290;5;0
+choice;300;3;1
+choice;305;4;2
+choice;310;4;2
+composed;1077
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1078;10;5
+concept;1101
+app;1103;time|string|0.60796300 1677182764
+concept;1105
+app;1107;differenza|string|00:32
+choice;1115;10;2
+choice;1120;10;2
+choice;1127;5;0
+open;1130;Non lo uso 
+concept;1140
+composed;1177
+choice;2050;2;1
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1178;10;4
+choice;1179;10;1
+open;1190;Non mi piace
+concept;1201
+app;1203;time|string|0.88001900 1677182324
+concept;1205
+app;1207;differenza|string|00:19
+choice;1215;10;5
+choice;1220;10;4
+choice;1227;5;2
+open;1230;Mozzarella galbani
+concept;1240
+composed;1277
+choice;1450;2;1
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1278;10;1
+choice;1279;10;4
+open;1290;Che considerando l'aumento dei soggetti allergici, è un prodotto comodo 
+concept;1301
+app;1303;time|string|0.92133300 1677182857
+concept;1305
+app;1307;differenza|string|00:16
+choice;1315;10;4
+choice;1320;10;5
+open;1325;2
+choice;1327;5;1
+choice;1328;5;1
+choice;1329;6;001000;2
+open;1330;Non lo uso non lo uso
+concept;1340
+composed;1377
+choice;1150;2;1
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;1
+choice;1378;10;1
+choice;1379;10;2
+open;1390;Boh
+concept;1401
+app;1403;time|string|0.59596900 1677182665
+concept;1405
+app;1407;differenza|string|00:21
+choice;1415;10;3
+choice;1420;10;3
+choice;1427;5;3
+open;1430;Non lo itilizzo
+concept;1440
+composed;1477
+choice;1350;2;1
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1478;10;2
+choice;1479;10;1
+open;1490;Non mi piace e non ne vedo l'utilità 
+concept;2001
+app;2003;time|string|0.76784500 1677182514
+concept;2005
+app;2007;differenza|string|00:16
+choice;2015;10;5
+choice;2020;10;5
+open;2025;5
+choice;2027;5;3
+open;2030;Bresaola della Valtellina 
+concept;2040
+choice;2079;10;3
+open;2090;La confezione non mi piace, non valorizza il prodotto 
+concept_eval;9002;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9003;18;0;4;6;11;15;17;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;0
+concept_eval;9005;0
+concept_eval;9011;17;0;2;12;13;15;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,116 @@
+2.0;LMI;R2302052;135;IDEXCI98;23/02/2023 17:37:14 CET;23/02/2023 17:59:16 CET;1322;3;310;Svar9=5;Svar8=10;Svar7=6;Svar6=3;Svar5=9;Svar4=2;Svar3=1;Svar2=4;Svar1=8;sysSID=R2302052;Svar0=7;rec=2;sysUID=IDEXCI98;sysPRJ=LMI;r9=1;r8=1;r7=0;pan=1;r6=3;r5=0;r4=0;r3=0;r10=0;r2=4;device=desktop;r1=7;r0=7;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;6
+choice;35;4;1
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111111110;2
+scale;70;4;3;1;2;0;1
+choice;80;14;10000000000000;0
+choice;85;2;0
+choice;87;16;6
+choice;90;11;01101001100;1
+choice;93;44;00000000000011010011000000000000000000000000;12
+ordering;250;5;2;0;3;1;4
+open;252;praticità 
+open;254;da provare 
+choice;260;2;0
+open;270;51
+choice;280;3;1
+choice;290;5;2
+choice;300;3;0
+choice;305;4;1
+choice;310;4;0
+composed;1077
+choice;1750;2;0
+choice;1760;2;1
+choice;1770;2;1
+choice;1775;2;1
+choice;1078;10;9
+concept;1101
+app;1103;time|string|0.87573200 1677171173
+concept;1105
+app;1107;differenza|string|00:26
+choice;1115;10;6
+choice;1120;10;5
+open;1125;10
+choice;1127;5;2
+open;1130;nessuno 
+concept;1140
+composed;1177
+choice;1850;2;0
+choice;1860;2;0
+choice;1870;2;1
+choice;1875;2;1
+choice;1178;10;9
+choice;1179;10;8
+open;1190;novità 
+concept;1201
+app;1203;time|string|0.17799100 1677171283
+concept;1205
+app;1207;differenza|string|01:26
+choice;1215;10;3
+choice;1220;10;2
+choice;1227;5;2
+open;1230;non la userei 
+concept;1240
+composed;1277
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;1
+choice;1475;2;0
+choice;1278;10;9
+choice;1279;10;4
+open;1290;non mi piace 
+composed;1377
+choice;1150;2;0
+choice;1160;2;0
+choice;1170;2;0
+choice;1175;2;0
+choice;1378;10;9
+concept;1401
+app;1403;time|string|0.96827700 1677171029
+concept;1405
+app;1407;differenza|string|00:25
+choice;1415;10;9
+choice;1420;10;8
+open;1425;10
+choice;1427;5;2
+open;1430;caprino  monoporzopne da 100gr
+concept;1440
+composed;1477
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1478;10;9
+choice;1479;10;9
+open;1490;wauuu
+concept;1701
+app;1703;time|string|0.64867600 1677170473
+concept;1705
+app;1707;differenza|string|00:27
+choice;1715;10;7
+choice;1720;10;2
+choice;1727;5;2
+open;1730;mozzarelline da 30 gr o da 10gr
+concept;1740
+choice;1779;10;8
+open;1790;che bella idea 
+concept;1801
+app;1803;time|string|0.48523100 1677170754
+concept;1805
+app;1807;differenza|string|00:30
+choice;1815;10;5
+choice;1820;10;1
+choice;1827;5;2
+open;1830;grana in forma
+concept;1840
+choice;1879;10;8
+open;1890;piu scenografica la forma  
+concept_eval;9002;0
+concept_eval;9003;0
+concept_eval;9005;0
+concept_eval;9008;21;10;17;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9009;0

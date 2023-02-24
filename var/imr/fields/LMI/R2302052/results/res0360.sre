@@ -1,0 +1,117 @@
+2.0;LMI;R2302052;360;IDEXCI223;23/02/2023 20:06:25 CET;23/02/2023 20:25:48 CET;1163;3;310;Svar9=1;Svar8=5;Svar7=10;Svar6=6;Svar5=9;Svar4=3;Svar3=4;Svar2=7;Svar1=2;sysSID=R2302052;Svar0=8;rec=3;sysUID=IDEXCI223;sysPRJ=LMI;r9=1;r8=2;r7=2;pan=1;r6=3;r5=1;r4=2;r3=5;r10=0;r2=1;device=desktop;r1=7;r0=0;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111000010;0
+scale;70;4;3;2;2;2;-1
+choice;80;14;01010000111100;9
+choice;85;2;1
+choice;87;16;0
+choice;90;11;00111001100;2
+choice;93;44;00000000000001110011000000000000000000000000;13
+ordering;250;5;2;0;3;4;1
+open;252;è un prodotto nuovo e difficile da trovare in loco
+open;254;non facciamo pizze
+choice;260;2;0
+open;270;57
+choice;280;3;2
+choice;290;5;0
+choice;300;3;0
+choice;305;4;2
+choice;310;4;3
+composed;1077
+choice;1850;2;1
+choice;1860;2;1
+choice;1870;2;1
+choice;1875;2;1
+choice;1078;10;6
+composed;1177
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1178;10;5
+concept;1201
+app;1203;time|string|0.78556900 1677179565
+concept;1205
+app;1207;differenza|string|00:16
+choice;1215;10;1
+choice;1220;10;1
+choice;1227;5;2
+open;1230;non usiamo mozzarella vegetale. non facciamo pizze
+concept;1240
+composed;1277
+choice;1750;2;0
+choice;1760;2;0
+choice;1770;2;0
+choice;1775;2;0
+choice;1278;10;5
+choice;1279;10;1
+open;1290;nulla. non la comprerei
+concept;1301
+app;1303;time|string|0.88026200 1677180042
+concept;1305
+app;1307;differenza|string|00:31
+choice;1315;10;1
+choice;1320;10;1
+choice;1327;5;1
+choice;1328;5;4;comp4:nessuna
+choice;1329;6;000001;5
+open;1330;crema alla ricotta fatta da noi
+concept;1340
+composed;1377
+choice;1450;2;1
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1378;10;4
+choice;1379;10;1
+open;1390;non lo comprerei mai
+concept;1401
+app;1403;time|string|0.11440100 1677179944
+concept;1405
+app;1407;differenza|string|00:17
+choice;1415;10;1
+choice;1420;10;1
+choice;1427;5;1
+open;1430;prodotto fatto da noi
+concept;1440
+composed;1477
+choice;1350;2;1
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1478;10;3
+choice;1479;10;2
+open;1490;non mi piace
+concept;1701
+app;1703;time|string|0.12958900 1677179734
+concept;1705
+app;1707;differenza|string|00:25
+choice;1715;10;5
+choice;1720;10;6
+open;1725;5
+choice;1727;5;1
+open;1730;sarebbe un nuovo prodotto da acquistare
+concept;1740
+choice;1779;10;5
+open;1790;una buona idea
+concept;1801
+app;1803;time|string|0.74933600 1677179322
+concept;1805
+app;1807;differenza|string|00:25
+choice;1815;10;3
+choice;1820;10;4
+choice;1827;5;1
+open;1830;grana padano in forma
+concept;1840
+choice;1879;10;4
+open;1890;non è molto comodo per la nostra struttura
+concept_eval;9003;18;17;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;24;22;23;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;20;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9008;21;1;3;4;6;8;9;20;14;12;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9009;21;2;3;13;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

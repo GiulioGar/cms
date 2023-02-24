@@ -1,0 +1,1163 @@
+#export vars "Svar0"
+#export vars "Svar1"
+#export vars "Svar2"
+#export vars "Svar3"
+#export vars "Svar4"
+#export vars "pan"
+
+void main() {
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+string labelCheck;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selCheck;
+string cpt;
+int preQid;
+int n;
+int reCod;
+int selintCheck;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+string autotest=system.getProperty("test");
+string uid = system.getProperty("sysUID");
+if (autotest=="1" || uid=="GUEST" || uid=="null") {
+system.setProperty("env", "debug:true");  system.setProperty("env", "browser:variables");}
+string err;
+string sortOrder;
+int nVar;
+int leggiCella;
+boolean full=false;
+int numero_celle;
+int contagiro;
+int c;
+int primoVisto;
+int index;
+int idx;
+int trg;
+string cpt1;
+string panel=system.getProperty("pan");
+string delay;
+int idex;
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+boolean live=true;
+
+string scriptzoom="<script type='text/javascript' src='https://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script><script type='text/javascript''> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+
+
+
+///CONCEPT EVALUETOR QUESTIONS//
+
+cpt1="<table id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C1_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C1_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 25px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asProva le salse ai formaggi#ae #asdi Galbani Professionale#ae #as per rendere ancora <b>più sfizioso l’aperitivo:#ae #as pratiche,#ae #asgustose</b> #ae #ase con la <b>perfetta cremosità</b>#ae #as in cui intingere verdure croccanti o grissini.#ae </p> <p> <ul> <li>#as<b>Genuine</b> #ae #asperché con vero formaggio#ae </li> <li>#as<b>Naturali</b> #ae #asperchè prive di aromi#ae </li> <li>#as<b>Pronte all’uso</b>#ae </li> <li>#asQualità garantita da Galbani Professionale#ae </li> </ul> </p> <p> #asDisponibili nei gusti #ae <b>#asGorgonzola,#ae #asParmigiano,#ae #asCrescenza,#ae #as Erbe#ae</b> </p> <p> #asPratico <b>Secchiello richiudibile</b>#ae #as<b> da 500g </b>#ae #as<br/>Al prezzo di <b>9,90 €/kg</b>#ae #as (4,95 €/pezzo)#ae </p> </div> </td> </tr> </table>";
+
+
+question qc1 = new question("concept_eval", 9001);
+qc1.setProperty("text", "Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b>. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola.");
+if(live==true) { qc1.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc1.setProperty("code", "C8.a1");
+qc1.setProperty("concept", cpt1);
+qc1.setProperty("allow_nosel", true);
+qc1.setProperty("view", "seltext");
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C2_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C2_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asArricchisci il tuo menù #ae #ascon una irresistibile <b>proposta gourmet</b>. #ae #asGalbani Professionale propone #ae #as <b>ovetti di mozzarella ripieni:</b> #ae #asun <b>piccolo sfizio gustoso</b> #ae #asideale per completare un <b>tagliere</b>,#ae #asarricchire una <b>«insalatona»</b> #ae #aso guarnire una <b>pizza gourmet.</b>#ae </p> <p> <ul> <li>#as<b>Ripieno cremoso</b> #ae #asa base di <b>panna</b> #ae </li> <li>#asRipieno della <b>giusta consistenza#ae #as e privo di liquido</b>#ae </li> <li>#as<b>Costo porzione controllato</b> #ae #as(30g)#ae </li> <li>#as<b>Riduzione sprechi</b>#ae </li> <li>#asQualità garantita da Galbani Professionale #ae	</li> </ul> </p> <p> #asPratico <b>Secchiello richiudibile</b> #ae #as<b>da 450g</b> #ae #as(15x30g)#ae #as<br/>Al prezzo di <b>11,90 €/kg</b> #ae #as(5,35 €/pezzo)#ae </p> </div> </td> </tr> </table>";
+
+question qc2 = new question("concept_eval", 9002);
+qc2.setProperty("text", "Testo");
+if(live==true) { qc2.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc2.setProperty("code", "C8.a2");
+qc2.setProperty("concept", cpt1);
+qc2.setProperty("allow_nosel", true);
+qc2.setProperty("view", "seltext");
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C3_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C3_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asCompletare la propria offerta con <b>prodotti vegani</b> #ae #asè oggi sempre più importante.#ae #as<b>Enjoy</b> propone #ae #asuna <b>Mozzarella per pizza</b> #ae #as<b>100% vegetale,</b> #ae #asper i tuoi clienti che sono attenti #ae #asad una alimentazione <b>priva di elementi di origine animale,</b> #ae #ascon <b>ottime performance</b> funzionali: #ae #as<b>fusione rapida</b> #ae #ase buona <b>resistenza anche alle alte temperature</b> #ae #asdei forni a legna.#ae </p> <p> <ul> <li>#as<b>Adatta ai vegani</b>#ae	</li> <li>#as<b>Fusione rapida</b>#ae	</li> <li>#asAdatta sia <b>forni elettrici</b> #ae #asche a <b>legna</b>#ae</li> </ul> </p> <p> #as<b>Panetto sottovuoto</b> #ae #as<b>1kg </b>#ae #as<br/>Al prezzo di <b>13,90 €/kg</b>#ae </p> </div> </td> </tr> </table>";
+
+question qc3 = new question("concept_eval", 9003);
+qc3.setProperty("text", "Testo");
+if(live==true) { qc3.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc3.setProperty("code", "C8.a3");
+qc3.setProperty("concept", cpt1);
+qc3.setProperty("allow_nosel", true);
+qc3.setProperty("view", "seltext");
+
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C4_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C4_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asDa oggi <b>preparare,</b> #ae #as<b>decorare</b> #ae #as<b>e farcire i tuoi dolci</b> #ae #assarà più facile #ae #asgrazie alle <b>sac à poche</b> #ae #asdi Creme di Mascarpone #ae #asdi Galbani Professionale.#ae #asUna preparazione dalla <b>cremosità ideale</b> #ae #asche si conserva <b>sempre fresca</b>.#ae #as <b>Pronta</b> #ae #ase <b>facile da dosare,</b> #ae #asè sufficiente tagliarne la punta#ae #as e spremerne il contenuto.#ae </p> <p> <ul> <li>#asConsistenza <b>cremosa e avvolgente</b>#ae </li> <li>#as<b>Senza sprechi</b> di prodotto#ae </li> <li>#as<b>Perfette per farcire</b> piccola pasticceria #ae </li> </ul> </p> <p> #asDisponibili nei gusti: #ae #as<b>classica,</b> #ae #as<b>cioccolato</b> #ae #ase <b>limone</b>#ae <br/> <br/> #asPratica <b>Sac à poche</b>#ae #as <b>da 500g</b>#ae #as<br/>Al prezzo di <b>9,40 €/kg</b> #ae #as(4,70 €/pezzo)#ae </p> </div> </td> </tr> </table>";
+
+question qc4 = new question("concept_eval", 9004);
+qc4.setProperty("text", "Testo");
+if(live==true) { qc4.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc4.setProperty("code", "C8.a4");
+qc4.setProperty("concept", cpt1);
+qc4.setProperty("allow_nosel", true);
+qc4.setProperty("view", "seltext");
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C5_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C5_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asDa oggi <b>farcire di gusto</b> #ae #astramezzini, tartine o vol au vent  #ae #assarà più semplice #ae #asgrazie alla <b>sac à poche</b> #ae #as<b>di Formaggio Spalmabile di Capra</b> #ae #asGalbani Professionale, #ae #asche <b>ti aiuta a dosare</b> il prodotto nella quantità desiderata, #ae #asdirettamente sulle preparazioni #ae #as<b>senza sprechi</b>. #ae #asE’ sufficiente tagliarne la punta #ae #ase spremerne il contenuto #ae #ase in più è anche <b>facile da conservare</b>,#ae #as<b>sempre fresca.</b>#ae </p> <p> <ul> <li>#asConsistenza <b>cremosa e avvolgente</b>#ae	</li> <li>#as<b>Gusto deciso #ae #asma non invadente</b>#ae </li> <li>#as<b>Senza sprechi</b> di prodotto#ae	</li> <li>#asQualità garantita da Galbani Professionale#ae</li> </ul> </p> <p> #asPratica <b>Sac à poche</b> #ae #as<b>da 500g</b>#ae #as<br/>Al prezzo di <b>9,90 €/kg</b> #ae #as(4,95 €/pezzo)#ae </p> </div> </td> </tr> </table>";
+
+question qc5 = new question("concept_eval", 9005);
+qc5.setProperty("text", "Testo");
+if(live==true) { qc5.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc5.setProperty("code", "C8.a5");
+qc5.setProperty("concept", cpt1);
+qc5.setProperty("allow_nosel", true);
+qc5.setProperty("view", "seltext");
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C6_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C6_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asProva il<b> nuovo Filante Filone</b> #ae #asdi Galbani Professionale, #ae #as<b>adatto ai vegetariani</b> #ae #ase dal <b>ridotto contenuto di colesterolo</b>, #ae #asè in grado di stupire#ae #as per le sue <b>altissime performance</b> funzionali. #ae #as<b>Gusto saporito,</b>#ae #as <b>fusione rapida</b> #ae #ase <b>uniforme</b> #ae #ased una <b>filatura</b> che si mantiene <b>perfetta</b> #ae #as<b>anche quando riscaldato,</b> #ae #ascome se fosse appena uscito dal forno… #ae #ase tutto questo a un <b>prezzo altamente competitivo</b>#ae </p> <p> <ul> <li>#asA base di <b>latte scremato #ae #ase olio di palma#ae</b> </li> <li>#asColore naturalmente <b>bianco «mozzarella»</b>#ae </li> <li>#as<b>Ideale per pizze e focacce</b> #ae #ase per le<b> preparazioni calde</b> in genere#ae </li> <li>#asQualità garantita da Galbani Professionale#ae </li> </ul> </p> <p> #as<b>Filone sottovuoto</b> #ae #as<b>da 2kg</b> #ae #as<br/>Al prezzo di <b>6,70 €/kg</b> #ae #as(13,40 €/pezzo)#ae </p> </div> </td> </tr> </table>";
+
+question qc6 = new question("concept_eval", 9006);
+qc6.setProperty("text", "Testo 6");
+if(live==true) { qc6.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc6.setProperty("code", "C8.a6");
+qc6.setProperty("concept", cpt1);
+qc6.setProperty("allow_nosel", true);
+qc6.setProperty("view", "seltext");
+
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C7_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C7_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asCompletare la propria offerta con <b>prodotti vegani</b> #ae #asè oggi sempre più importante.#ae #as<b>Enjoy</b> propone #ae #asuna <b>Mozzarella fresca</b>#ae #as <b>100% vegetale,</b> #ae #asper i tuoi clienti che sono attenti #ae #asad una alimentazione <b>priva di elementi di origine animale</b> #ae #ase con tutta la <b>succosità</b> <b>e morbidezza</b> #ae #asdella mozzarella di sempre.#ae </p> <p> <ul> <li>#as<b>Adatta ai vegani</b>#ae </li> <li>#as<b>Ideale</b> per <b>caprese</b> e <b>piatti freddi</b>#ae </li> <li>#as<b>Senza colesterolo</b>#ae </li> <li>#as<b>Consistenza morbida</b>#ae </li> </ul> </p> <p> #as<b>Vaschetta</b> #ae #as<b>5x125g</b> #ae #as<br/>Al prezzo di <b>13,90 €/kg</b>#ae #as (8,68 €/confezione)#ae </p> </div> </td> </tr> </table>";
+
+question qc7 = new question("concept_eval", 9007);
+qc7.setProperty("text", "Test 7");
+if(live==true) { qc7.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc7.setProperty("code", "C8.a7");
+qc7.setProperty("concept", cpt1);
+qc7.setProperty("allow_nosel", true);
+qc7.setProperty("view", "seltext");
+
+
+cpt1=" <table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C8_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C8_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asSorprendi i tuoi clienti #ae #ascon un aperitivo <b>originale</b> #ae #asgrazie a <b>Mozzaperì</b>,#ae #as <b>i nuovi morbidi cestini</b> #ae #as<b>di mozzarella fresca</b> #ae #asdi Galbani Professionale. #ae #asLa <b>forma concava</b> #ae #as<b>di Mozzaperì</b>#ae #aspermette di <b>farcirla</b> #ae #as<b>con gli ingredienti che preferisci</b>#ae #as (olive, pomodorini, capperi o acciughe..,) #ae #ase, unita al suo <b>gusto delicato</b>, #ae #asti consentirà una grande <b>versatilità</b> di abbinamenti,#ae #asin modo <b>pratico e veloce.</b> #ae </p> <p> <ul> <li>#as<b>100% latte vaccino</b>#ae </li> <li>#as<b>Costo porzione controllato</b> #ae #as(circa 30 g)#ae </li> <li>#asQualità garantita da Galbani Professionale#ae </li> </ul> </p> <p> #asPratico <b>Secchiello richiudibile</b> #ae #as<b>da 1 kg</b>#ae #as<br/>Al prezzo di <b>9,90 €/kg</b>#ae </p> </div> </td> </tr> </table>";
+
+question qc8 = new question("concept_eval", 9008);
+qc8.setProperty("text", "Test 8");
+if(live==true) { qc8.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc8.setProperty("code", "C8.a8");
+qc8.setProperty("concept", cpt1);
+qc8.setProperty("allow_nosel", true);
+qc8.setProperty("view", "seltext");
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C9_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C9_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asOffri ai tuoi clienti #ae #asla praticità delle <b>scaglie</b> #ae #as<b>Grana Padano DOP</b> #ae #asdi Galbani Professionale.#ae #as<b>Come appena scavate</b> #ae #as<b>dalla forma</b> di Grana Padano, #ae #asqueste scaglie dal <b>taglio irregolare,</b> #ae #asdalla <b>consistenza</b> <b>friabile</b> #ae #ase dal <b>gusto delicato</b>, #ae #assono una <b>pratica soluzione</b> per completare #ae #asin maniera <b>autentica e tradizionale</b> #ae #asun ricco tagliere #ae #aso un aperitivo. #ae </p> <p> <ul> <li>#as<b>100% Grana Padano DOP</b>#ae </li> <li>#as<b>10 mesi stagionatura</b>#ae	</li> <li>#as<b>Costo porzione controllato</b>#ae #as (circa 20g / scaglia)#ae </li> <li>#asQualità garantita da Galbani Professionale#ae </li> </ul> </p> <p> #as<b>Busta</b> #ae #as<b>da 1 kg</b> #ae #as<br/>Al prezzo di <b>13,70 €/kg</b>#ae </p> </div> </td> </tr> </table>";
+
+question qc9 = new question("concept_eval", 9009);
+qc9.setProperty("text", "Test 9");
+if(live==true) { qc9.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc9.setProperty("code", "C8.a9");
+qc9.setProperty("concept", cpt1);
+qc9.setProperty("allow_nosel", true);
+qc9.setProperty("view", "seltext");
+
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C10_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C10_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #as<b>Arricchisci</b> il tuo aperitivo o il tuo tagliere#ae #as con le <b>Praline di Ricotta</b> #ae #asdi Galbani Professionale. #ae #as<b>Bocconcini di ricotta</b> #ae #asdalla consistenza <b>morbida</b> #ae #ase <b>compatta</b> #ae #as<b>ricoperti di delicati granelli</b> #ae #asdi pepe, peperoncino o erbe #ae #asper catturare l’attenzione dei tuoi clienti e <b>stupirli</b> #ae #ascon questi stuzzichini #ae #as<b>leggeri</b> #ae #as <b></b>e invitanti</b>. #ae </p> <p> <ul> <li>#as<b>100% ricotta</b>#ae </li> <li>#as<b>Si preservano intatte</b> perfettamente fruibili#ae </li> <li>#as<b>Controllo del costo porzione</b>#ae #as (circa 20g / pralina)#ae </li> <li>#asQualità garantita da Galbani Professionale#ae </li> </ul> </p> <p> #as<b>Disponibili nei gusti:</b> #ae #as<b>pepe nero,</b> #ae #as<b>peperoncino</b> #ae #as<b>e erbe</b>#ae <br/> <br/> #asPratica <b>confezione richiudibile salva-freschezza</b> #ae #as<b>500g</b> #ae #as<br/>Al prezzo di <b>9,90 €/kg</b> #ae #as(4,95 €/pezzo) #ae </p> </div> </td> </tr> </table>";
+
+question qc10 = new question("concept_eval", 9010);
+qc10.setProperty("text", "Test 10");
+if(live==true) { qc10.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc10.setProperty("code", "C8.a10");
+qc10.setProperty("concept", cpt1);
+qc10.setProperty("allow_nosel", true);
+qc10.setProperty("view", "seltext");
+
+cpt1="<table  id='Table_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C11_01.png' class='img-responsive' alt=''></td> <td rowspan='2'> <img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C11_02.png' class='img-responsive' alt=''></td> </tr> <tr> <td width='771' height='540'> <div style='color:#003366; font-size: 22px; font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; '> <p> #asProva la <b>Bresaola IGP</b> #ae #asGalbani Professionale: #ae #asgrazie alla sua <b>specifica stagionatura</b>,#ae #as è <b>facile da affettar</b>e #ae #asfino a uno spessore di <b>soli 0,5mm</b>. #ae #asPerfetta servita come <b>carpaccio</b>,#ae #as ma anche per <b>farcire</b> un buon panino #ae #aso <b>accompagnare</b> delle verdure. #ae </p> <p> <ul> <li>#as<b>Ottimizzazione costo porzione</b>, #ae #asgrazie al taglio sottile#ae </li> <li>#asNo sprechi, #ae #asla <b>fetta rimane integra</b>#ae </li> <li>#asQualità garantita da Galbani Professionale#ae </li> </ul> </p> <p> #asPratica <b>confezione sottovuoto</b> #ae #as<b>da circa 1.3 kg</b>#ae #as<br/>Al prezzo di<b> 20,90 €/kg</b> #ae #as(27,17 €/pezzo)#ae </p> </div> </td> </tr> </table>";
+
+question qc11 = new question("concept_eval", 9011);
+qc11.setProperty("text", "Test 11");
+if(live==true) { qc11.setProperty("text", cod+"Le chiediamo di <b>selezionare le parole</b> di questa descrizione che <b>ritiene più importanti</b> e la invogliano di più all’acquisto. Selezioni tutte le risposte che ritiene opportune. Se nessuna parola è per Lei importante, clicchi su “Avanti”.<br>Per rispondere a questa domanda, utilizzi il mouse e faccia clic sulle parole che vuole selezionare; vedrà il testo che viene evidenziato. Per annullare, faccia semplicemente clic sulla parola."); }
+qc11.setProperty("code", "C8.a11");
+qc11.setProperty("concept", cpt1);
+qc11.setProperty("allow_nosel", true);
+qc11.setProperty("view", "seltext");
+
+
+//////////FINE/////////////////
+
+
+// Q: 10
+qst = new question("concept", 10);
+qst.setProperty("text", "Grazie per la sua partecipazione a questa indagine. Iniziamo con alcune domande generali.");
+send qst;
+
+// Q: 20
+qst = new question("choice", 20);
+qst.setProperty("text", "Partecipando a questa ricerca avrà accesso a informazioni riservate legate allo sviluppo di idee e proposte per nuovi prodotti.<br>Le chiediamo di non utilizzare o divulgare a nessuno le informazioni di cui verrà a conoscenza, non copiare, stampare o scaricare alcuna informazione accessibile nel corso di questo studio. <p>Selezionando “Accetto” qui sotto, dichiara di aver letto, compreso e accettato questi termini.</p> ");
+qst.setProperty("code", "conf");
+vector q20_opts = new vector {
+"ACCETTA",
+"RIFIUTA"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+int ans20 = system.getProperty("ans20");
+if (ans20==1  && autotest !="1") { return 4; }
+
+// Q: 30
+qst = new question("choice", 30);
+qst.setProperty("text", "Può indicare se lavora in una di queste attività?");
+qst.setProperty("code", "s.1");
+qst.setProperty("show_rand", true);
+vector q30_opts = new vector {
+"Ristorante",
+"Pizzeria ",
+"Ristorante e pizzeria ",
+"Bar/Caffè ",
+"Gastronomia/rosticceria",
+"Panificio",
+"Albergo/struttura ricettiva",
+"Farmacia/parafarmacia",
+"Commercio al dettaglio",
+"Commercio all’ingrosso",
+"Pasticceria ",
+"Studio medico/dentistico",
+"Società di servizi/studio professionale",
+"Ufficio pubblico",
+"Altro#sf",
+"Nessuna di queste#sf"
+};
+qst.setProperty("options", q30_opts);
+send qst;
+
+int ans30 = system.getProperty("ans30");
+if (ans30>6) { return 4; }
+
+
+//bar
+if(ans30==3) { reCod=0;}
+//ristoranti
+if(ans30==0 || ans30==6) { reCod=1;}
+
+//ristoranti e pizzeria
+if(ans30==1 || ans30==2 ) { reCod=2;}
+
+//bakery
+if(ans30==4 || ans30==5 ) { reCod=3;}
+
+system.out("<div>ans30: "+ans30+"</div>"); 
+
+qst = new question("choice", 35);
+qst.setProperty("text", "Targe");
+qst.setProperty("code", "s.1x");
+vector q35_opts = new vector {
+"Bar",
+"Ristorante",
+"Ristorante -Pizzeria",
+"Panificio"
+};
+qst.setProperty("options", q35_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q35_opts.get(reCod);
+system.out("<div>Tipo: "+cmd+"</div>"); 
+
+trg=reCod+1;
+system.setProperty("trg", trg);
+system.out("<div>Target: "+trg+"</div>"); 
+
+// Q: 40
+qst = new question("choice", 40);
+qst.setProperty("text", "Chi si occupa della scelta delle materie prime alimentari e semi-lavorati per la sua attività?");
+qst.setProperty("code", "s.2");
+vector q40_opts = new vector {
+"Soltanto io",
+"Io e altre persone",
+"Soltanto altre persone",
+"Non acquistiamo materie prime alimentari e semi-lavorati"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+int ans40 = system.getProperty("ans40");
+if(autotest!="1")
+{
+if (ans40==2 || ans40==3) { return 4; }
+}
+
+// Q: 50
+qst = new question("choice", 50);
+qst.setProperty("text", "In quale dei seguenti canali acquistate più spesso le materie prime alimentari e semi-lavorati?");
+qst.setProperty("code", "s.3");
+vector q50_opts = new vector {
+"Supermercati/ipermercati/negozi al dettaglio",
+"Grossisti/cash&carry dedicati ai professionisti",
+"Fornitori dedicati alla ristorazione (con consegna diretta presso la nostra sede)",
+"Online/e-commerce ",
+"Altri (specificare:)#so#sf"
+};
+
+
+qst.setProperty("options", q50_opts);
+send qst;
+int ans50 = system.getProperty("ans50");
+if(autotest!="1")
+{
+if (ans50==0 || ans50==3 || ans50==4) { return 4; }
+}
+
+
+// Q: 60
+qst = new question("choice", 60);
+qst.setProperty("text", "E quali di questi prodotti acquista abitualmente per la sua attività?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.3b");
+vector q60_opts = new vector {
+"Formaggi freschi",
+"Formaggi stagionati",
+"Salumi",
+"Formaggi fusi",
+"Frutta/verdura",
+"Prodotti da forno",
+"Carne/pesce",
+"Prodotti da dispensa",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+vector q70_rows = new vector {
+"FORMAGGI FRESCHI",
+"FORMAGGI STAGIONATI",
+"SALUMI",
+"FORMAGGI FUSI"
+};
+
+count=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans60_"+i);
+if (sel==false)  {  opt ="#shopt"+i; q70_rows.set(i,opt); }
+else { if(i !=2) { count=count+1; } }
+}
+
+if(count==0) { return 4;}
+
+// Q: 70
+qst = new question("scale", 70);
+qst.setProperty("text", "Per quali preparazioni principalmente utilizzate questi prodotti?");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.3c");
+qst.setProperty("rows", q70_rows);
+vector q70_cols = new vector {
+"Preparazioni a freddo",
+"Preparazioni a caldo",
+"A caldo e a freddo in egual misura"
+};
+qst.setProperty("cols", q70_cols);
+qst.setProperty("view", "columns");
+if (ss1=="mobile")
+{
+qst.setProperty("view", "dropdown");
+}
+send qst;
+
+// Q: 80
+qst = new question("choice", 80);
+qst.setProperty("text", "Può indicare se acquistate prodotti di qualcuna di queste <b>marche professionali</b> per la vostra attività?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "s.4");
+vector q80_opts = new vector {
+"Galbani Professionale",
+"Granarolo",
+"Valcolatte",
+"Alival ",
+"Ambrosi",
+"Francia",
+"Soligo",
+"Sabelli",
+"Fiorucci",
+"Casa Modena",
+"AIA",
+"Rovagnati ",
+"Villani",
+"Nessuna di queste#se#sf"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+
+sel=system.getProperty("ans80_0");
+if(sel==true) { reCod=0; }
+else { reCod=1;}
+
+qst = new question("choice", 85);
+qst.setProperty("text", "Galbani Buyers");
+qst.setProperty("code", "s.4x");
+vector q85_opts = new vector {
+"Si",
+"No"
+};
+qst.setProperty("options", q85_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+// Q: 30
+qst = new question("choice", 87);
+qst.setProperty("text", "Le chiediamo di confermarci in quale di queste attività lei lavora? ");
+qst.setProperty("code", "s.1bis");
+qst.setProperty("show_rand", true);
+qst.setProperty("options", q30_opts);
+send qst;
+
+
+
+ansId=system.getProperty("ans87");
+if (ans30 != ansId) { return 4;}
+
+
+
+vector ind= new vector {"0","1","2", "3","4","5","6","7","8","9","10"};  
+
+
+vector selRan = new vector { "1#sh", "2#sh", "3#sh", "4#sh", "5#sh" , "6#sh" , "7#sh" , "8#sh" , "9#sh" , "10#sh", "11#sh"};  
+int contaestratti=0;
+int r;
+int Nran;
+int Nran2;
+string Svar;
+boolean valid;
+Nran=11;
+
+
+for (int i=0,10)
+{  
+        valid=true;
+
+        system.setProperty("r"+i, "rand:"+Nran);
+        r = (int)system.getProperty("r"+i); 
+        opt=ind.get(r);
+        n=(int)ind.get(r);
+
+        //ristorante
+        if(trg==2 && n==0) { valid=false;}
+        //rist pizzer
+        if(trg==3 && n==0) { valid=false;}
+        if(trg==3 && n==5) { valid=false;}
+        if(trg==3 && n==6) { valid=false;}
+        if(trg==3 && n==7) { valid=false;}
+        if(trg==3 && n==8) { valid=false;}
+        if(trg==3 && n==9) { valid=false;}
+        //bakery
+        if(trg==4 && n==0) { valid=false;}
+        if(trg==4 && n==1) { valid=false;}
+        if(trg==4 && n==6) { valid=false;}
+        if(trg==4 && n==7) { valid=false;}
+        if(trg==4 && n==8) { valid=false;}
+        if(trg==4 && n==9) { valid=false;}
+        if(trg==4 && n==10) { valid=false;}
+
+        if(valid==true)
+        {
+        selRan.set(contaestratti,opt);
+        system.setProperty("Svar"+contaestratti, opt);
+
+        
+        n=n+1;
+        system.out("<div>Item "+contaestratti+": "+n+"</div>"); 
+        
+        contaestratti=contaestratti+1;
+        }
+
+	ind.remove(r);
+	Nran=Nran-1;
+}
+
+vector brands = new vector 
+{
+"Salse ai formaggi",
+"Ovetti di mozzarella ripieni",
+"Veganella per pizza",
+"Creme di mascarpone",
+"Formaggio caprino spalmabile",
+"Filante Filone",
+"Veganella fresca",
+"Mozzaperì",
+"Grana Padano DOP scaglie",
+"Praline di ricotta",
+"Bresaola IGP "
+};   
+
+int cod0=99;
+int cod1=99;
+int cod2=99;
+int cod3=99;
+int cod4=99;
+int ncod;
+
+
+count=0;
+for(int i=0,4)
+{
+    label =selRan.get(i);
+    system.setProperty("rec",label);
+    ncod=(int)system.getProperty("rec");
+
+    if(i==0) { cod0=ncod;}
+    if(i==1) { cod1=ncod;}
+    if(i==2) { cod2=ncod;}
+    if(i==3) { cod3=ncod;}
+    if(i==4) { cod4=ncod;}
+
+}
+
+
+
+
+// Q: 90
+qst = new question("choice", 90);
+qst.setProperty("text", "Concetti estratti");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "val");
+qst.setProperty("options", brands);
+qst.setProperty("default_answer","{ 'selection': ["+cod0+","+cod1+","+cod2+","+cod3+","+cod4+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+vector brands2 = new vector 
+{
+"Bar - Salse ai formaggi",
+"Bar - Ovetti di mozzarella ripieni",
+"Bar - Veganella per pizza",
+"Bar - Creme di mascarpone",
+"Bar - Formaggio caprino spalmabile",
+"Bar - Filante Filone",
+"Bar - Veganella fresca",
+"Bar - Mozzaperì",
+"Bar - Grana Padano DOP scaglie",
+"Bar - Praline di ricotta",
+"Bar - Bresaola IGP ",
+"Ristorante - Salse ai formaggi",
+"Ristorante - Ovetti di mozzarella ripieni",
+"Ristorante - Veganella per pizza",
+"Ristorante - Creme di mascarpone",
+"Ristorante - Formaggio caprino spalmabile",
+"Ristorante - Filante Filone",
+"Ristorante - Veganella fresca",
+"Ristorante - Mozzaperì",
+"Ristorante - Grana Padano DOP scaglie",
+"Ristorante - Praline di ricotta",
+"Ristorante - Bresaola IGP ",
+"RistoPizz - Salse ai formaggi",
+"RistoPizz - Ovetti di mozzarella ripieni",
+"RistoPizz - Veganella per pizza",
+"RistoPizz - Creme di mascarpone",
+"RistoPizz - Formaggio caprino spalmabile",
+"RistoPizz - Filante Filone",
+"RistoPizz - Veganella fresca",
+"RistoPizz - Mozzaperì",
+"RistoPizz - Grana Padano DOP scaglie",
+"RistoPizz - Praline di ricotta",
+"RistoPizz - Bresaola IGP ",
+"Bakery - Salse ai formaggi",
+"Bakery - Ovetti di mozzarella ripieni",
+"Bakery - Veganella per pizza",
+"Bakery - Creme di mascarpone",
+"Bakery - Formaggio caprino spalmabile",
+"Bakery - Filante Filone",
+"Bakery - Veganella fresca",
+"Bakery - Mozzaperì",
+"Bakery - Grana Padano DOP scaglie",
+"Bakery - Praline di ricotta",
+"Bakery - Bresaola IGP "
+}; 
+
+for(int i=0,4)
+{
+    label =selRan.get(i);
+ 
+    system.setProperty("rec",label);
+    ncod=(int)system.getProperty("rec");
+
+    if(i==0) 
+    {
+         if (trg==1) {cod0=ncod;} 
+         if (trg==2) {cod0=ncod+11;} 
+         if (trg==3) {cod0=ncod+22;} 
+         if (trg==4) {cod0=ncod+33;} 
+     }
+
+    if(i==1) 
+    { 
+         if (trg==1) {cod1=ncod;} 
+         if (trg==2) {cod1=ncod+11;} 
+         if (trg==3) {cod1=ncod+22;} 
+         if (trg==4) {cod1=ncod+33;} 
+    }
+    if(i==2)
+    { 
+         if (trg==1) {cod2=ncod;} 
+         if (trg==2) {cod2=ncod+11;} 
+         if (trg==3) {cod2=ncod+22;} 
+         if (trg==4) {cod2=ncod+33;} 
+    }
+    if(i==3) 
+    { 
+         if (trg==1) {cod3=ncod;} 
+         if (trg==2) {cod3=ncod+11;} 
+         if (trg==3) {cod3=ncod+22;} 
+         if (trg==4) {cod3=ncod+33;} 
+    }
+    if(i==4) 
+    { 
+         if (trg==1) {cod4=ncod;} 
+         if (trg==2) {cod4=ncod+11;} 
+         if (trg==3) {cod4=ncod+22;} 
+         if (trg==4) {cod4=ncod+33;} 
+    }
+
+}
+
+// Q: 90
+qst = new question("choice", 93);
+qst.setProperty("text", "Concetti estratti");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "val2");
+qst.setProperty("options", brands2);
+qst.setProperty("default_answer","{ 'selection': ["+cod0+","+cod1+","+cod2+","+cod3+","+cod4+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+
+baseQid=1000;
+
+delay="<script src='https://www.primisoft.com/fields/ADA/ITA1907111/resources/jquery.countdown.min.js'></script>"+
+"<script>$(window).load(function() {contorovescia(15000);});</script>";
+
+vector indici = new vector { "1", "2", "3", "4", "5", "6", "7", "8", "9","10","11" };     
+
+int numCon;
+
+if(trg==4) {numCon=4;}
+else { numCon=5;}
+
+for(int i=0,10)
+{
+     contagiro=contagiro+1;
+     idx=(int)selRan.get(i);
+     idex=idx-1;
+
+     if(contagiro<=numCon)
+     {
+          nam=indici.get(idx);
+          cmd=brands.get(idx);
+
+     if (i==0) { qtext="Ora vedrà la descrizione di <b>un prodotto dedicato ai professionisti del suo settore</b>. Si prenda tutto il tempo necessario per leggerla e poi clicchi sul pulsante “Avanti” quando è pronto/a per continuare";}
+    else { qtext="Ora vedrà la descrizione di <b>un altro prodotto dedicato ai professionisti del suo settore</b>. Si prenda tutto il tempo necessario per leggerla e poi clicchi sul pulsante “Avanti” quando è pronto/a per continuare";}
+
+    qid=baseQid+100*idx+1;
+    // Q: 100
+    qst = new question("concept", qid);
+    qst.setProperty("text", qtext);
+    send qst;    
+
+    link="https://www.primisoft.com/fields/LMI/R2302052/resources/C"+nam+".PNG";
+    img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'><img class='img-responsive' src='"+link+"' width='450px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>";
+
+   qid=baseQid+100*idx+3;
+    qst = new question("app",qid);
+    qst.setProperty("text", "");
+    qst.setProperty("path", "timer");
+    qst.setProperty("output", "time:string");
+    send qst;
+
+    labelCheck=system.getProperty("ans"+qid+"_time"); 
+
+
+    qid=baseQid+100*idx+5;
+    // Q: 110
+    qst = new question("concept", qid);
+    qst.setProperty("text", "<img class='img-responsive' src='"+link+"'/>"+delay);
+    send qst;
+
+
+     qid=baseQid+100*idx+7;
+     qst = new question("app",qid);
+     qst.setProperty("text", "");
+   qst.setProperty("path", "timer");
+    qst.setProperty("input", "t1:"+labelCheck);
+    qst.setProperty("output", "differenza:string");
+    send qst;
+    
+     labelCheck=system.getProperty("ans"+qid+"_differenza");
+     system.out("<div>Tempo: "+labelCheck+"</div>"); 
+
+     qid=baseQid+100*idx+15;
+
+     // Q: 130
+     qst = new question("choice", qid);
+     qst.setProperty("text", "Che giudizio dà complessivamente al prodotto che ha appena visto?<br><div class'info'>Dia un voto da 1 a 10 dove 1 significa che non le piace per niente e 10 che le piace moltissimo</div>");
+     if(live==true) { qst.setProperty("text", img+"Che <b>giudizio dà complessivamente</b> al prodotto che ha appena visto?<br><br><div class'info'>Dia un voto da 1 a 10 dove 1 significa che non le piace per niente e 10 che le piace moltissimo</div>");}
+     qst.setProperty("code", "c.2sv"+idx);
+     vector q130_cols = new vector {
+     "Non mi piace per niente <br/>1",
+     "<br/>2",
+     "<br/>3",
+     "<br/>4",
+     "<br/>5",
+     "<br/>6",
+     "<br/>7",
+     "<br/>8",
+     "<br/>9",
+     "Mi piace moltissimo<br/>10"
+     };
+     qst.setProperty("options", q130_cols);
+      if (autotest!="1") {   qst.setProperty("view", "row"); }
+     send qst;
+
+     qid=baseQid+100*idx+20;
+    // Q: 140
+    qst = new question("choice", qid);
+    qst.setProperty("text", "Se questo nuovo prodotto fosse disponibile sul mercato, lei lo acquisterebbe per la sua attività al prezzo indicato? <br><div class'info'>Dia un voto da 1 a 10 dove 1 significa che certamente non acquisterebbe e 10 che certamente acquisterebbe</div>");
+    if(live==true) { qst.setProperty("text", img+"Se questo nuovo prodotto fosse disponibile sul mercato, <b>lei lo acquisterebbe per la sua attività</b> al prezzo indicato? <br><div class'info'>Dia un voto da 1 a 10 dove 1 significa che certamente non acquisterebbe e 10 che certamente acquisterebbe</div>");}
+    qst.setProperty("code", "c.3sv"+idx);
+    vector q140_cols = new vector {
+    "Certamente NON lo acquisterei <br/>1",
+    "<br/>2",
+    "<br/>3",
+    "<br/>4",
+    "<br/>5",
+    "<br/>6",
+    "<br/>7",
+    "<br/>8",
+    "<br/>9",
+    "Certamente lo acquisterei<br/>10"
+    };
+    qst.setProperty("options", q140_cols);
+    if (autotest!="1") {   qst.setProperty("view", "row"); }
+    send qst;
+
+     ansId=system.getProperty("ans"+qid);
+     if (ansId>4)
+     { 
+
+    qid=baseQid+100*idx+25;
+
+    qst = new question("open", qid);
+    qst.setProperty("text", img+"Indicativamente, <b>in un mese, quante confezioni</b> pensa che potrebbe acquistare per la sua attività? <p>Se nessuna metta 0.</p>");
+    qst.setProperty("code", "c.3bsv"+idx);
+    qst.setProperty("view", "numeric");
+    send qst;
+     }
+
+    switch(idx)
+    {
+    case 0:{label="500gr";}
+    case 1:{label="450g (15x30g)";}
+    case 2:{label="1kg";}
+    case 3:{label="500g";}
+    case 4:{label="500g";}
+    case 5:{label="2kg";}
+    case 6:{label="5x125g";}
+    case 7:{label="1kg";}
+    case 8:{label="1kg";}
+    case 9:{label="500g";}
+    case 10:{label="1,3kg";}
+    }
+
+
+    qid=baseQid+100*idx+27;
+    qst = new question("choice", qid);
+    qst.setProperty("text", img+"E ritiene che <b>il peso di "+label+"</b> previsto per questa confezione, sia…?");
+    qst.setProperty("code", "c.3csv"+idx);
+    vector q141_opts = new vector {
+          "Decisamente troppo poco",
+          "Un po’ poco",
+          "Giusto",
+          "Un po’ troppo",
+          "Decisamente troppo"
+    };
+    qst.setProperty("options", q141_opts);
+    send qst;
+  
+    if(idx==0 || idx==3 || idx==9)
+    {
+
+     qid=baseQid+100*idx+28;
+     qst = new question("choice", qid);
+     qst.setProperty("text", img+"Quale tra le varianti proposte, o altre di suo interesse, acquisterebbe principalmente? ");
+     qst.setProperty("code", "c.3dsv"+idx);
+     vector q142_opts = new vector {
+          "Gorgonzola",
+          "Parmigiano",
+          "Crescenza",
+          "Erbe ",
+          "Altro (specificare)#so#sf"        
+     };
+     vector q142b_opts = new vector {
+          "Classica",
+          "Cioccolato",
+          "Limone",          
+          "Erbe#sh ",
+          "Altro (specificare)#so#sf"        
+     };
+     vector q142c_opts = new vector {
+          "Pepe nero",
+          "Peperoncino",
+          "#shCrescenza",
+          "Erbe ",
+          "Altro (specificare)#so#sf"        
+     };
+     qst.setProperty("options", q142_opts);
+     if(idx==3) { qst.setProperty("options", q142b_opts); }
+     if(idx==9) { qst.setProperty("options", q142c_opts); }
+     send qst;
+
+     vector q143_opts = new vector {
+          "Gorgonzola",
+          "Parmigiano",
+          "Crescenza",
+          "Erbe ",
+          "Altro (specificare)#so#sf",
+          "Nessun’altra#se#sf "        
+     };
+     vector q143b_opts = new vector {
+          "Classica",
+          "Cioccolato",
+          "Limone",          
+          "Erbe#sh ",
+          "Altro (specificare)#so#sf",
+          "Nessun’altra#se#sf "        
+     };
+     vector q143c_opts = new vector {
+          "Pepe nero",
+          "Peperoncino",
+          "#shCrescenza",
+          "Erbe ",
+          "Altro (specificare)#so#sf",
+          "Nessun’altra#se#sf "        
+     };
+
+     ansId=system.getProperty("ans"+qid);
+
+
+     if(idx==0) { opt="#shopt"+ansId; q143_opts.set(ansId,opt); }
+     if(idx==3) { opt="#shopt"+ansId; q143b_opts.set(ansId,opt); }
+     if(idx==9) { opt="#shopt"+ansId; q143c_opts.set(ansId,opt); }
+
+     qid=baseQid+100*idx+29;
+     qst = new question("choice", qid);
+     qst.setProperty("text", "E poi quali altre?");
+     qst.setProperty("code", "c.3dbsv"+idx);
+     qst.setProperty("selection", "multiple");
+     qst.setProperty("show_rand", true);
+     qst.setProperty("options", q143_opts);
+     if(idx==3) { qst.setProperty("options", q143b_opts); }
+     if(idx==9) { qst.setProperty("options", q143c_opts); }
+     send qst;
+
+    }
+
+    qid=baseQid+100*idx+30;
+    // Q: 150
+    qst = new question("open", qid);
+    qst.setProperty("text", "Attualmente quale prodotto simile al nuovo prodotto di cui ha appena letto la descrizione utilizza più spesso per la sua attività?<br><br><br>Sì può trattare sia di un prodotto già pronto per l’uso che di una base che viene poi lavorata nel vostro bar/ristorante per utilizzi simili a quelli che ha appena letto, o un'altra preparazione/prodotto creato da voi. <br>Descrizione del prodotto/preparazione attualmente utilizzata più spesso:");
+    if(live==true) { qst.setProperty("text", img+"Attualmente <b>quale prodotto simile al nuovo prodotto di cui ha appena letto la descrizione utilizza più spesso per la sua attività?</b><br><br>Sì può trattare sia di un prodotto già pronto per l’uso che di una base che viene poi lavorata da voi per utilizzi simili a quelli che ha appena letto. <br><br>Descrizione del prodotto/preparazione attualmente utilizzata più spesso:");}
+    qst.setProperty("code", "c.4sv"+idx);
+    send qst;
+
+    vector q195_comps = new vector {};
+
+    qid=baseQid+100*idx+40;
+//     opt=""+qid;
+//     q195_comps.add(opt);
+
+    // Q: 160
+    qst = new question("concept", qid);
+    qst.setProperty("text", "Nelle prossime domande le verrà chiesto di indicare la sua preferenza tra il nuovo prodotto di cui ha letto la descrizione e quello che utilizza oggi per coprire i medesimi bisogni.<br/>"+img);
+    send qst;
+
+    qid=baseQid+100*idx+50;
+    opt=""+qid;
+    q195_comps.add(opt);
+
+    vector q200_opts = new vector {
+    "1.	CONCEPT (es. Crema di Ricotta dolce in sac à poche Galbani Professionale)",
+    "Il prodotto che attualmente uso o preparo più spesso"
+    };
+    q200_opts.set(0,cmd);
+
+
+
+    // Q: 170
+    qst = new question("choice", qid);
+    qst.setProperty("text", img+"E quale tra questi due prodotti è <b>più originale e diverso</b> dagli altri?");
+     qst.setProperty("code", "c.5sv"+idx);
+    qst.setProperty("options", q200_opts);
+
+
+
+    qid=baseQid+100*idx+60;
+    opt=""+qid;
+    q195_comps.add(opt);
+    // Q: 180
+    qst = new question("choice", qid);
+    qst.setProperty("text", "E quale tra questi due prodotti <b>soddisfa meglio i bisogni della sua attività</b>?");
+    qst.setProperty("code", "c.6sv"+idx);
+    qst.setProperty("options", q200_opts);
+
+
+    qid=baseQid+100*idx+70;
+    opt=""+qid;
+    q195_comps.add(opt);
+
+    // Q: 190
+    qst = new question("choice", qid);
+    qst.setProperty("text", "E quale tra questi due prodotti <b>ha il miglior rapporto qualità-prezzo</b>?");
+    qst.setProperty("code", "c.7sv"+idx);
+    qst.setProperty("options", q200_opts);
+
+
+
+
+    qid=baseQid+100*idx+75;
+    opt=""+qid;
+    q195_comps.add(opt);
+    // Q: 200
+    qst = new question("choice", qid);
+    qst.setProperty("text", "E, se questo nuovo prodotto dovesse essere disponibile sul mercato, <b>quale utilizzerebbe più spesso</b>?");
+    qst.setProperty("code", "c.8sv"+idx);
+    qst.setProperty("options", q200_opts);
+
+
+
+    qid=baseQid+100*i+77;
+    // Q: 200
+    qst = new question("composed", qid);
+    qst.setProperty("components", q195_comps);
+    send qst;
+
+    qid=baseQid+100*i+78;
+    // Q: 130
+    qst = new question("choice", qid);
+    qst.setProperty("text", "Quanto Le affermazioni presenti nella descrizione di questo prodotto sono credibili?");
+    if(live==true) { qst.setProperty("text", img+"Quanto <b>Le affermazioni presenti nella descrizione</b> di questo prodotto <b>sono credibili</b>?");}
+    qst.setProperty("code", "c.9A"+idx);
+    vector q131_cols = new vector {
+    "Per niente credibile  <br/>1",
+    "<br/>2",
+    "<br/>3",
+    "<br/>4",
+    "<br/>5",
+    "<br/>6",
+    "<br/>7",
+    "<br/>8",
+    "<br/>9",
+    "Del tutto credibile <br/>10"
+    };
+    qst.setProperty("options", q131_cols);
+    if (autotest!="1") {   qst.setProperty("view", "row"); }
+    send qst;
+
+    qid=baseQid+100*idx+79;
+
+    // Q: 130
+    qst = new question("choice", qid);
+    qst.setProperty("text", "Quanto le piace la confezione di questo prodotto?");
+    if(live==true) { qst.setProperty("text", img+"<b>Quanto le piace la confezione</b> di questo prodotto?");}
+    qst.setProperty("code", "c.9b"+idx);
+    vector q132_cols = new vector {
+    "Per niente <br/>1",
+    "<br/>2",
+    "<br/>3",
+    "<br/>4",
+    "<br/>5",
+    "<br/>6",
+    "<br/>7",
+    "<br/>8",
+    "<br/>9",
+    "Moltissimo <br/>10"
+    };
+    qst.setProperty("options", q132_cols);
+   if (autotest!="1") {   qst.setProperty("view", "row"); }
+    send qst;
+
+        // CLICK
+    
+     // Q: 210
+     if(idx==0) { send qc1;  }
+     if(idx==1) { send qc2;  }
+     if(idx==2) { send qc3;  }
+     if(idx==3) { send qc4;  }
+     if(idx==4) { send qc5;  }
+     if(idx==5) { send qc6;  }
+     if(idx==6) { send qc7;  }
+     if(idx==7) { send qc8;  }
+     if(idx==8) { send qc9;  }
+     if(idx==9) { send qc10;  }
+     if(idx==10) { send qc11; }
+
+
+     qid=baseQid+100*idx+90;
+     // Q: 230
+     qst = new question("open", qid);
+     qst.setProperty("text", "Qual è prima cosa che ha pensato, quali reazioni ha avuto quando ha letto la descrizione di questo nuovo prodotto?");
+     if(live==true) { qst.setProperty("text", img+"Qual è prima cosa che ha pensato, quali reazioni ha avuto quando ha letto la descrizione di questo nuovo prodotto?");}
+     qst.setProperty("code", "c.11sv"+idx);
+     send qst;
+
+     }
+
+    //inserito in maniera fittizia solo per l'explode del datafile, ma ad inizio ciclo viene ricavato l'indice della domanda da mostrare
+    if (idx!=10){ idx=idx+1; }
+    else{ idx=0; }	
+
+}
+
+string all="<script type='text/javascript' src='https://www.primisoft.com/fields/script/all_rank.js'></script>";
+string mozCode="<script type='text/javascript'>$(window).load(function() {allinea(3,20,60);});</script>";
+string allinea=all+mozCode;    
+
+
+vector q250_opts = new vector {
+"#shsvar0",
+"#shsvar1",
+"#shsvar2",
+"#shsvar3",
+"#shsvar4"
+};
+
+n=numCon-1;
+for(int i=0,n)
+{
+idx=(int)selRan.get(i);
+idx=idx+1;
+opt="<a class='fancybox' rel='group' href='https://www.primisoft.com/fields/LMI/R2302052/resources/C"+idx+".PNG'><img src='https://www.primisoft.com/fields/LMI/R2302052/resources/C"+idx+".PNG' width='370px'  alt='' /></a>";
+q250_opts.set(i,opt);
+}
+
+// Q: 250
+qst = new question("ordering", 250);
+qst.setProperty("text", "E infine guardi ancora tutti i prodotti che le abbiamo presentato.<br>Se dovesse classificarli in ordine di preferenza mettendo per primo quello che preferisce e poi via via gli altri, fino al quinto (quello meno preferito) come li ordinerebbe?");
+if(live==true) { qst.setProperty("text", allinea+scriptzoom+"E infine guardi ancora tutti i prodotti che le abbiamo presentato.<br>Se dovesse classificarli in ordine di preferenza per la sua attività, mettendo per primo quello che preferisce e poi via via gli altri, fino a quello meno preferito, come li ordinerebbe? ");}
+ qst.setProperty("code", "c.12");
+qst.setProperty("sel_count", 5);
+if(trg==4) { qst.setProperty("sel_count", 4); }
+qst.setProperty("options", q250_opts);
+qst.setProperty("strict_selection", true);
+qst.setProperty("show_rand", true);
+send qst;
+
+ansId=system.getProperty("ans250_0");
+label=q250_opts.get(ansId);
+
+qst = new question("open", 252);
+qst.setProperty("text", "Per quale motivo ha scelto questo come <b>prodotto preferito</b> per la sua attività?<p>"+label+"</p>"+scriptzoom);
+qst.setProperty("code", "c13");
+send qst;
+
+ansId=system.getProperty("ans250_4");
+label=q250_opts.get(ansId);
+
+qst = new question("open", 254);
+qst.setProperty("text", "Per quale motivo ha indicato questo <b>prodotto come il meno interessante</b> per la sua attività?<p>"+label+"</p>"+scriptzoom);
+qst.setProperty("code", "c14");
+send qst;
+
+// Q: 260
+qst = new question("choice", 260);
+qst.setProperty("text", "Abbiamo quasi concluso, Le chiediamo ancora un paio di informazioni su di Lei e sulla sua attività.<br>Lei è…");
+qst.setProperty("code", "p.1");
+vector q260_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q260_opts);
+send qst;
+
+// Q: 270
+qst = new question("open", 270);
+qst.setProperty("text", "Può gentilmente indicare la sua età:");
+qst.setProperty("view", "numeric");
+qst.setProperty("code", "p.2");
+send qst;
+
+int eta=(int)system.getProperty("ans270");
+ 
+if(eta>=0 && eta<=34) { reCod=0;}
+if(eta>=35 && eta<=54) { reCod=1;}
+if(eta>=55) { reCod=2;}
+
+// Q: 280
+qst = new question("choice", 280);
+qst.setProperty("text", "Agfe");
+qst.setProperty("code", "p.2x");
+vector q280_opts = new vector {
+"• 18-34 anni",
+"• 35-54 anni",
+"• 55 e oltre"
+};
+qst.setProperty("options", q280_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+// Q: 290
+qst = new question("choice", 290);
+qst.setProperty("text", "Quale ruolo svolge nella sua attività?");
+qst.setProperty("code", "p.3");
+vector q290_opts = new vector {
+"Titolare/socio",
+"Direttore/responsabile",
+"Dipendente con ruolo operativo",
+"Collaboratore",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q290_opts);
+send qst;
+
+// Q: 300
+qst = new question("choice", 300);
+qst.setProperty("text", "Lei lavora come chef?");
+qst.setProperty("code", "p.4");
+vector q300_opts = new vector {
+"Sì, sono uno chef",
+"No, ma mi occupo di cucina/ preparazione dei cibi",
+"No, e non mi occupo di cucina/ preparazione dei cibi"
+};
+qst.setProperty("options", q300_opts);
+send qst;
+
+qst = new question("choice", 305);
+qst.setProperty("text", "Quale frase descrive meglio la vostra <b>posizione attuale rispetto ai Clienti vegani</b>? ");
+qst.setProperty("code", "P.4B");
+vector q305_opts = new vector {
+"<b>Non siamo interessati</b> alla clientela vegana",
+"<b>Non abbiamo proposte dedicate</b> ai vegani, ma alcuni cibi che vendiamo lo sono naturalmente",
+"Nella nostra offerta <b>abbiamo alcune proposte dedicate</b> ai vegani",
+"<b>Stiamo puntando molto </b>sulla clientela vegana, aumentando le proposte a loro dedicate "
+};
+qst.setProperty("options", q305_opts);
+send qst;
+
+// Q: 310
+qst = new question("choice", 310);
+qst.setProperty("text", "In quale area geografica si trova la sua attività?");
+qst.setProperty("code", "p.5");
+vector q310_opts = new vector {
+"Nord Ovest",
+"Nord Est",
+"Centro",
+"Sud"
+};
+qst.setProperty("options", q310_opts);
+send qst;
+
+}

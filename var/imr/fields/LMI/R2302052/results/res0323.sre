@@ -1,0 +1,89 @@
+2.0;LMI;R2302052;323;IDEXCI187;23/02/2023 19:52:06 CET;23/02/2023 20:05:24 CET;798;7;252;Svar3=2;Svar2=4;Svar1=5;sysSID=R2302052;Svar0=3;sysUID=IDEXCI187;rec=5#sh;sysPRJ=LMI;r9=1;r8=1;r7=1;pan=1;r6=4;r5=3;r4=2;r3=0;r10=0;r2=4;device=mobile;r1=7;r0=3;trg=4;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;5
+choice;35;4;3
+choice;40;4;1
+choice;50;5;2
+choice;60;9;101011010;2
+scale;70;4;3;1;-1;1;-1
+choice;80;14;10001000111110;9
+choice;85;2;0
+choice;87;16;5
+choice;90;11;10111100000;0
+choice;93;44;00000000000000000000000000000000010111100000;33
+ordering;250;5;3;1;0;2;-1
+composed;1077
+choice;1350;2;1
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;0
+choice;1078;10;6
+composed;1177
+choice;1550;2;0
+choice;1560;2;1
+choice;1570;2;1
+choice;1575;2;1
+choice;1178;10;6
+concept;1201
+app;1203;time|string|0.78816000 1677178959
+concept;1205
+app;1207;differenza|string|00:22
+choice;1215;10;3
+choice;1220;10;3
+choice;1227;5;3
+open;1230;Non utiliz,o questo tipo di prodotto 
+concept;1240
+composed;1277
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;0
+choice;1475;2;0
+choice;1278;10;5
+choice;1279;10;1
+open;1290;Non mi piace la confezione e il colore
+concept;1301
+app;1303;time|string|0.05208200 1677178439
+concept;1305
+app;1307;differenza|string|00:20
+choice;1315;10;4
+choice;1320;10;4
+choice;1327;5;2
+choice;1328;5;2
+choice;1329;6;010000;1
+open;1330;Mascarpone da 500 gr in vaschetta
+concept;1340
+composed;1377
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1378;10;4
+choice;1379;10;6
+open;1390;Trasparenza nella descrizione. Poche informazioni sugli ingredienti 
+concept;1401
+app;1403;time|string|0.62151500 1677178867
+concept;1405
+app;1407;differenza|string|00:19
+choice;1415;10;5
+choice;1420;10;4
+choice;1427;5;2
+open;1430;Si, può essere sostituito da un prodotto che normalmente uso
+concept;1440
+choice;1479;10;5
+open;1490;La comodità della confezione 
+concept;1501
+app;1503;time|string|0.05187300 1677178702
+concept;1505
+app;1507;differenza|string|00:18
+choice;1515;10;3
+choice;1520;10;2
+choice;1527;5;2
+open;1530;Uso un formaggio da affettare per fare teamez
+concept;1540
+choice;1579;10;5
+open;1590;Ho letto negli ingredienti olio di palma, che già a prima vista non andrà bene per il cliente 
+concept_eval;9003;0
+concept_eval;9004;0
+concept_eval;9005;0
+concept_eval;9006;0

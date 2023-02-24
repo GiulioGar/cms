@@ -1,0 +1,91 @@
+2.0;LMI;R2302052;462;IDEXCI330;23/02/2023 22:19:52 CET;<unknown>;0;0;93;Svar10=8;Svar9=0;Svar8=3;Svar7=5;Svar6=4;Svar5=9;Svar4=7;Svar3=10;Svar2=6;Svar1=1;Svar0=2;sysSID=R2302052;rec=7;sysUID=IDEXCI330;sysPRJ=LMI;r9=0;r8=1;r7=2;pan=1;r6=2;r5=5;r4=4;r3=7;r10=0;r2=4;device=mobile;r1=1;r0=2;trg=1;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;3
+choice;35;4;0
+choice;40;4;1
+choice;50;5;2
+choice;60;9;101100000;0
+scale;70;4;3;0;-1;0;0
+choice;80;14;00000000000001;13
+choice;85;2;1
+choice;87;16;3
+choice;90;11;01100011001;1
+choice;93;44;01100011001000000000000000000000000000000000;1
+composed;1077
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.94460700 1677187516
+concept;1105
+app;1107;differenza|string|00:17
+choice;1115;10;9
+choice;1120;10;9
+open;1125;10
+choice;1127;5;1
+open;1130;Non utilizzo un prodotto simile
+concept;1140
+composed;1177
+choice;1150;2;0
+choice;1160;2;0
+choice;1170;2;0
+choice;1175;2;0
+choice;1178;10;9
+choice;1179;10;9
+open;1190;Mi incuriosisce tantissimo il sapore 
+concept;1201
+app;1203;time|string|0.19506400 1677187253
+concept;1205
+app;1207;differenza|string|00:24
+choice;1215;10;9
+choice;1220;10;9
+open;1225;8
+choice;1227;5;0
+open;1230;Formaggio per pizza, pagnotta da 3Kg
+concept;1240
+composed;1277
+choice;1650;2;1
+choice;1660;2;1
+choice;1670;2;1
+choice;1675;2;1
+choice;1278;10;4
+choice;1279;10;8
+open;1290;ADATTA SOLO A UNA CERCHIA RISTRETTA DI CLIENTI, MA CHE APPUNTO NE FAREBBE ATTIRARE DI NUOVI
+composed;1377
+choice;2050;2;0
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1378;10;9
+concept;1601
+app;1603;time|string|0.51474800 1677187670
+concept;1605
+app;1607;differenza|string|00:16
+choice;1615;10;4
+choice;1620;10;4
+choice;1627;5;1
+open;1630;No non utilizzo prodotti simili 
+concept;1640
+choice;1679;10;9
+open;1690;Buon prodotto, ma quantitativamente poco
+concept;1701
+app;1703;time|string|0.84620900 1677187923
+concept;2001
+app;2003;time|string|0.60131300 1677187800
+concept;2005
+app;2007;differenza|string|00:20
+choice;2015;10;9
+choice;2020;10;7
+open;2025;7
+choice;2027;5;2
+open;2030;Non utilizzo un prodotto simile 
+concept;2040
+choice;2079;10;9
+open;2090;Buon prodotto, sicuramente costoso, adatto a locali di alto rango
+concept_eval;9002;0
+concept_eval;9003;0
+concept_eval;9007;0
+concept_eval;9011;0

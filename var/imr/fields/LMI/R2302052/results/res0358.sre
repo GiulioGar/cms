@@ -1,0 +1,118 @@
+2.0;LMI;R2302052;358;IDEXCI221;23/02/2023 20:05:45 CET;23/02/2023 20:16:54 CET;669;3;310;Svar9=7;Svar8=10;Svar7=9;Svar6=8;Svar5=4;Svar4=6;Svar3=1;Svar2=2;Svar1=5;sysSID=R2302052;Svar0=3;rec=6;sysUID=IDEXCI221;sysPRJ=LMI;r9=0;r8=2;r7=2;pan=1;r6=2;r5=1;r4=2;r3=1;r10=0;r2=2;device=mobile;r1=4;r0=3;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111010110;4
+scale;70;4;3;2;2;2;-1
+choice;80;14;10000011010100;6
+choice;85;2;0
+choice;87;16;0
+choice;90;11;01110110000;1
+choice;93;44;00000000000011101100000000000000000000000000;12
+ordering;250;5;0;4;2;3;1
+open;252;È comodo e pratico per i dolci
+open;254;Perché usiamo mozzarella di bufala 
+choice;260;2;1
+open;270;38
+choice;280;3;1
+choice;290;5;1
+choice;300;3;2
+choice;305;4;2
+choice;310;4;1
+composed;1077
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;1
+choice;1375;2;0
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.69245600 1677179580
+concept;1105
+app;1107;differenza|string|00:16
+choice;1115;10;6
+choice;1120;10;4
+choice;1127;5;2
+open;1130;Non uso un prodotto simile 
+concept;1140
+composed;1177
+choice;1550;2;1
+choice;1560;2;1
+choice;1570;2;1
+choice;1575;2;1
+choice;1178;10;6
+choice;1179;10;6
+open;1190;Curioso
+concept;1201
+app;1203;time|string|0.19255300 1677179486
+concept;1205
+app;1207;differenza|string|00:16
+choice;1215;10;7
+choice;1220;10;7
+open;1225;1
+choice;1227;5;2
+open;1230;Non uso prodotti simili
+concept;1240
+composed;1277
+choice;1250;2;0
+choice;1260;2;0
+choice;1270;2;0
+choice;1275;2;0
+choice;1278;10;6
+choice;1279;10;6
+open;1290;Nuova
+concept;1301
+app;1303;time|string|0.64352200 1677179254
+concept;1305
+app;1307;differenza|string|00:16
+choice;1315;10;6
+choice;1320;10;7
+open;1325;2
+choice;1327;5;2
+choice;1328;5;2
+choice;1329;6;010000;1
+open;1330;Crema pasticcera, crema mascarpone
+concept;1340
+composed;1377
+choice;1150;2;0
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;0
+choice;1378;10;7
+choice;1379;10;5
+open;1390;Interessante 
+composed;1477
+choice;1650;2;1
+choice;1660;2;1
+choice;1670;2;1
+choice;1675;2;1
+choice;1478;10;5
+concept;1501
+app;1503;time|string|0.45093200 1677179413
+concept;1505
+app;1507;differenza|string|00:16
+choice;1515;10;4
+choice;1520;10;4
+choice;1527;5;2
+open;1530;Mozzarella 
+concept;1540
+choice;1579;10;5
+open;1590;Già visto
+concept;1601
+app;1603;time|string|0.73652500 1677179660
+concept;1605
+app;1607;differenza|string|00:16
+choice;1615;10;5
+choice;1620;10;4
+choice;1627;5;2
+open;1630;Niente 
+concept;1640
+choice;1679;10;5
+open;1690;Interessante 
+concept_eval;9002;0
+concept_eval;9003;0
+concept_eval;9004;0
+concept_eval;9006;0
+concept_eval;9007;0

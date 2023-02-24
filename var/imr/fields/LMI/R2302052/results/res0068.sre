@@ -1,0 +1,12 @@
+2.0;LMI;R2302052;68;IDEXCI71;23/02/2023 16:18:34 CET;23/02/2023 16:20:24 CET;110;4;87;trg=3;sysSID=R2302052;sysPRJ=LMI;sysUID=IDEXCI71;device=mobile;lang=it;pan=1
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;1
+choice;50;5;2
+choice;60;9;101010110;0
+scale;70;4;3;0;-1;2;-1
+choice;80;14;01000000000000;1
+choice;85;2;1
+choice;87;16;0

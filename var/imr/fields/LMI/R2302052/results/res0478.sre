@@ -1,0 +1,110 @@
+2.0;LMI;R2302052;478;IDEXCI347;24/02/2023 05:52:54 CET;24/02/2023 06:02:21 CET;567;7;250;Svar4=10;Svar3=2;Svar2=3;Svar1=4;sysSID=R2302052;Svar0=1;sysUID=IDEXCI347;rec=10;sysPRJ=LMI;r9=1;r8=2;r7=3;pan=1;r6=1;r5=2;r4=2;r3=3;r10=0;r2=4;device=mobile;r1=8;r0=1;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111110110;6
+scale;70;4;3;2;2;2;2
+choice;80;14;01000000110100;11
+choice;85;2;1
+choice;87;16;2
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+composed;1077
+choice;1150;2;0
+choice;1160;2;0
+choice;1170;2;0
+choice;1175;2;0
+choice;1078;10;5
+concept;1101
+app;1103;time|string|0.19836300 1677214440
+concept;1105
+app;1107;differenza|string|00:17
+choice;1115;10;5
+choice;1120;10;5
+open;1125;5
+choice;1127;5;2
+open;1130;Mozzarella ciliegine 
+concept;1140
+composed;1177
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;0
+choice;1475;2;0
+choice;1178;10;6
+choice;1179;10;5
+open;1190;Nuovo prodotto per nuovi piatti da fare
+concept;1201
+app;1203;time|string|0.50614200 1677214754
+concept;1205
+app;1207;differenza|string|00:18
+choice;1215;10;0
+choice;1220;10;0
+choice;1227;5;2
+open;1230;Non utilizziamo questo prodotto 
+concept;1240
+composed;1277
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;0
+choice;1375;2;0
+choice;1278;10;5
+choice;1279;10;0
+open;1290;Non mi interessa
+concept;1301
+app;1303;time|string|0.30611200 1677214673
+concept;1305
+app;1307;differenza|string|00:18
+choice;1315;10;5
+choice;1320;10;5
+open;1325;4
+choice;1327;5;2
+choice;1328;5;2
+choice;1329;6;100000;0
+open;1330;Non uso prodotti simili
+concept;1340
+composed;1377
+choice;1250;2;1
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1378;10;0
+choice;1379;10;5
+open;1390;Nuovi dolci da fare
+concept;1401
+app;1403;time|string|0.79403300 1677214557
+concept;1405
+app;1407;differenza|string|00:16
+choice;1415;10;6
+choice;1420;10;6
+open;1425;6
+choice;1427;5;2
+open;1430;Philadelphia
+concept;1440
+composed;1477
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;0
+choice;2075;2;0
+choice;1478;10;7
+choice;1479;10;6
+open;1490;Che sia spalmabile e formaggio di capra
+concept;2001
+app;2003;time|string|0.31163400 1677214834
+concept;2005
+app;2007;differenza|string|00:17
+choice;2015;10;6
+choice;2020;10;6
+open;2025;6
+choice;2027;5;2
+open;2030;Usiamo quella della citterio
+concept;2040
+choice;2079;10;6
+open;2090;Ottimo prodotto 
+concept_eval;9002;21;4;6;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9003;0
+concept_eval;9004;24;7;9;10;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;4;8;12;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;8;11;2;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

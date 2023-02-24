@@ -1,0 +1,120 @@
+2.0;LMI;R2302052;354;IDEXCI217;23/02/2023 20:04:57 CET;23/02/2023 20:27:41 CET;1364;3;310;Svar9=2;Svar8=6;Svar7=4;Svar6=8;Svar5=7;Svar4=5;Svar3=3;Svar2=9;Svar1=1;sysSID=R2302052;Svar0=10;rec=5;sysUID=IDEXCI217;sysPRJ=LMI;r9=1;r8=1;r7=3;pan=1;r6=3;r5=2;r4=1;r3=7;r10=0;r2=0;device=mobile;r1=9;r0=0;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;0
+choice;50;5;2
+choice;60;9;111110110;0
+scale;70;4;3;2;0;0;2
+choice;80;14;11100100110000;0
+choice;85;2;0
+choice;87;16;0
+choice;90;11;01010100011;1
+choice;93;44;00000000000010101000110000000000000000000000;12
+ordering;250;5;2;4;0;3;1
+open;252;Carino e sicuramente pratico 
+open;254;Non utilizziamo il prodotto ripieno 
+choice;260;2;0
+open;270;59
+choice;280;3;2
+choice;290;5;0
+choice;300;3;0
+choice;305;4;2
+choice;310;4;0
+composed;1077
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;1
+choice;2075;2;0
+choice;1078;10;6
+concept;1101
+app;1103;time|string|0.14422900 1677179523
+concept;1105
+app;1107;differenza|string|00:18
+choice;1115;10;4
+choice;1120;10;0
+choice;1127;5;1
+open;1130;Prodotto non ripieno 
+concept;1140
+composed;1177
+choice;1150;2;1
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;1
+choice;1178;10;2
+choice;1179;10;1
+open;1190;Sicuramente il prodotto sarà valido ma non utilizziamo  prodotti ripieni 
+composed;1277
+choice;1950;2;1
+choice;1960;2;1
+choice;1970;2;1
+choice;1975;2;1
+choice;1278;10;3
+concept;1301
+app;1303;time|string|0.12187700 1677179957
+concept;1305
+app;1307;differenza|string|00:17
+choice;1315;10;7
+choice;1320;10;7
+open;1325;15
+choice;1327;5;1
+choice;1328;5;0
+choice;1329;6;001000;2
+open;1330;Prodotto simile ma in formato più grande 
+concept;1340
+composed;1377
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1378;10;5
+choice;1379;10;7
+open;1390;Ottima idea ma un po caro
+composed;1477
+choice;1550;2;1
+choice;1560;2;1
+choice;1570;2;1
+choice;1575;2;1
+choice;1478;10;4
+concept;1501
+app;1503;time|string|0.11691300 1677180184
+concept;1505
+app;1507;differenza|string|00:17
+choice;1515;10;4
+choice;1520;10;3
+choice;1527;5;2
+open;1530;Non utilizziamo questo tipo di prodotto 
+concept;1540
+choice;1579;10;4
+open;1590;Ottimo prezzo ma non utilizziamo 
+concept;1901
+app;1903;time|string|0.32021900 1677179753
+concept;1905
+app;1907;differenza|string|00:17
+choice;1915;10;6
+choice;1920;10;0
+choice;1927;5;2
+choice;1928;5;3
+choice;1929;6;100000;0
+open;1930;Facciamo noi direttamente il prodotto 
+concept;1940
+choice;1979;10;4
+open;1990;Accattivante, ma ripeto lo facciamo in casa da noi 
+concept;2001
+app;2003;time|string|0.60273200 1677179269
+concept;2005
+app;2007;differenza|string|00:18
+choice;2015;10;7
+choice;2020;10;9
+open;2025;1
+choice;2027;5;2
+open;2030;Mucetta
+concept;2040
+choice;2079;10;6
+open;2090;Prodotto di eccellenza ad un prezzo valido 
+concept_eval;9002;0
+concept_eval;9004;0
+concept_eval;9006;0
+concept_eval;9010;0
+concept_eval;9011;0

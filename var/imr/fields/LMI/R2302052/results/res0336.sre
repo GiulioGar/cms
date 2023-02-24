@@ -1,0 +1,121 @@
+2.0;LMI;R2302052;336;IDEXCI199;23/02/2023 19:54:15 CET;23/02/2023 20:12:14 CET;1079;3;310;Svar4=1;Svar3=4;Svar2=10;Svar1=2;sysSID=R2302052;Svar0=3;sysUID=IDEXCI199;rec=1;sysPRJ=LMI;r9=1;r8=2;r7=0;pan=1;r6=3;r5=2;r4=4;r3=3;r10=0;r2=7;device=mobile;r1=7;r0=6;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;1
+choice;50;5;1
+choice;60;9;111111010;2
+scale;70;4;3;0;1;2;1
+choice;80;14;10011100110110;0
+choice;85;2;0
+choice;87;16;2
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+ordering;250;5;2;0;1;4;3
+open;252;Ottima qualità prezzo
+open;254;Pratico e innovativo
+choice;260;2;0
+open;270;33
+choice;280;3;0
+choice;290;5;1
+choice;300;3;0
+choice;305;4;3
+choice;310;4;3
+composed;1077
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;0
+choice;1375;2;0
+choice;1078;10;9
+concept;1101
+app;1103;time|string|0.34314200 1677179271
+concept;1105
+app;1107;differenza|string|00:16
+choice;1115;10;9
+choice;1120;10;9
+open;1125;10000
+choice;1127;5;1
+open;1130;Prodotti da forno e fresco 
+concept;1140
+composed;1177
+choice;1250;2;0
+choice;1260;2;0
+choice;1270;2;0
+choice;1275;2;0
+choice;1178;10;9
+choice;1179;10;9
+open;1190;Ottimo prodotto 
+concept;1201
+app;1203;time|string|0.45544400 1677178885
+concept;1205
+app;1207;differenza|string|00:16
+choice;1215;10;9
+choice;1220;10;9
+open;1225;2000
+choice;1227;5;2
+open;1230;Pizza margherita 
+concept;1240
+composed;1277
+choice;2050;2;0
+choice;2060;2;0
+choice;2070;2;0
+choice;2075;2;0
+choice;1278;10;9
+choice;1279;10;9
+open;1290;Ottima alternativa alla classica mozzarella 
+concept;1301
+app;1303;time|string|0.10037000 1677178614
+concept;1305
+app;1307;differenza|string|00:22
+choice;1315;10;8
+choice;1320;10;9
+open;1325;10007
+choice;1327;5;2
+choice;1328;5;2
+choice;1329;6;110000;1
+open;1330;Torta e semifreddi 
+concept;1340
+composed;1377
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;0
+choice;1475;2;0
+choice;1378;10;9
+choice;1379;10;9
+open;1390;Facile utilizzo e molto pratica e di ottima pulizia  
+concept;1401
+app;1403;time|string|0.69953600 1677179166
+concept;1405
+app;1407;differenza|string|00:16
+choice;1415;10;9
+choice;1420;10;9
+open;1425;1000
+choice;1427;5;2
+open;1430;Stuzzichini
+concept;1440
+composed;1477
+choice;1150;2;0
+choice;1160;2;0
+choice;1170;2;0
+choice;1175;2;0
+choice;1478;10;9
+choice;1479;10;9
+open;1490;Praticità è convenienza 
+concept;2001
+app;2003;time|string|0.03838900 1677179052
+concept;2005
+app;2007;differenza|string|00:17
+choice;2015;10;9
+choice;2020;10;9
+open;2025;2000
+choice;2027;5;2
+open;2030;Calzone ripieno 
+concept;2040
+choice;2079;10;9
+open;2090;Ottima qualità con rapporto prezzo ottimo 
+concept_eval;9002;21;10;8;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9003;18;3;4;16;15;17;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;24;15;13;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;13;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;13;15;14;16;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

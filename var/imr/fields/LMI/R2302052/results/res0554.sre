@@ -1,0 +1,121 @@
+2.0;LMI;R2302052;554;IDEXCI409;24/02/2023 12:52:54 CET;24/02/2023 13:19:10 CET;1576;3;310;Svar4=2;Svar3=4;Svar2=1;Svar1=10;sysSID=R2302052;Svar0=3;sysUID=IDEXCI409;rec=2;sysPRJ=LMI;r9=1;r8=1;r7=0;pan=1;r6=3;r5=5;r4=3;r3=0;r10=0;r2=8;device=mobile;r1=3;r0=7;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;1
+choice;35;4;2
+choice;40;4;1
+choice;50;5;2
+choice;60;9;111110010;0
+scale;70;4;3;0;1;2;1
+choice;80;14;01000000100100;8
+choice;85;2;1
+choice;87;16;1
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+ordering;250;5;3;0;1;4;2
+open;252;Era tempo che aspettavo 
+open;254;Mi piacerebbe molto fare qualcosa di nuovo
+choice;260;2;0
+open;270;47
+choice;280;3;1
+choice;290;5;2
+choice;300;3;0
+choice;305;4;3
+choice;310;4;3
+composed;1077
+choice;1350;2;0
+choice;1360;2;0
+choice;1370;2;1
+choice;1375;2;0
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.38800000 1677240378
+concept;1105
+app;1107;differenza|string|00:24
+choice;1115;10;6
+choice;1120;10;6
+open;1125;5
+choice;1127;5;2
+open;1130;Attualmente non uso questo tipo di prodotto
+concept;1140
+composed;1177
+choice;2050;2;0
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1178;10;8
+choice;1179;10;8
+open;1190;Bellissimo potrei preparare una bella pizza una novita
+concept;1201
+app;1203;time|string|0.78667900 1677240794
+concept;1205
+app;1207;differenza|string|00:26
+choice;1215;10;7
+choice;1220;10;8
+open;1225;3
+choice;1227;5;2
+open;1230;Nessuno
+concept;1240
+composed;1277
+choice;1150;2;0
+choice;1160;2;0
+choice;1170;2;0
+choice;1175;2;0
+choice;1278;10;7
+choice;1279;10;6
+open;1290;Adesso posso accontentare tutti i clienti
+concept;1301
+app;1303;time|string|0.21876700 1677239744
+concept;1305
+app;1307;differenza|string|00:33
+choice;1315;10;7
+choice;1320;10;8
+open;1325;10
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;000001;5
+open;1330;Mascarpone classico s.lucia
+concept;1340
+composed;1377
+choice;1450;2;0
+choice;1460;2;0
+choice;1470;2;0
+choice;1475;2;0
+choice;1378;10;8
+choice;1379;10;8
+open;1390;Interessante
+concept;1401
+app;1403;time|string|0.68389900 1677240617
+concept;1405
+app;1407;differenza|string|00:21
+choice;1415;10;9
+choice;1420;10;8
+open;1425;2
+choice;1427;5;2
+open;1430;Nessuno
+concept;1440
+composed;1477
+choice;1250;2;0
+choice;1260;2;0
+choice;1270;2;0
+choice;1275;2;0
+choice;1478;10;8
+choice;1479;10;8
+open;1490;Posso realizzare delle novità 
+concept;2001
+app;2003;time|string|0.48017000 1677240150
+concept;2005
+app;2007;differenza|string|00:22
+choice;2015;10;7
+choice;2020;10;6
+open;2025;1
+choice;2027;5;2
+open;2030;Bresaula di altra marca
+concept;2040
+choice;2079;10;8
+open;2090;Non c'è male sembra ottimo
+concept_eval;9002;21;1;4;7;17;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9003;18;0;3;4;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;24;6;7;13;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9005;22;4;6;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;17;0;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

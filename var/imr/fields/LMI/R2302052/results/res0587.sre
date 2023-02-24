@@ -1,0 +1,120 @@
+2.0;LMI;R2302052;587;IDEXCI431;24/02/2023 14:02:53 CET;24/02/2023 14:27:32 CET;1479;3;310;Svar9=10;Svar8=8;Svar7=6;Svar6=4;Svar5=7;Svar4=1;Svar3=2;Svar2=5;Svar1=9;sysSID=R2302052;Svar0=3;rec=1;sysUID=IDEXCI431;sysPRJ=LMI;r9=0;r8=1;r7=1;pan=1;r6=1;r5=3;r4=1;r3=2;r10=0;r2=4;device=mobile;r1=8;r0=3;trg=2;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;0
+choice;35;4;1
+choice;40;4;1
+choice;50;5;2
+choice;60;9;110010110;0
+scale;70;4;3;0;1;-1;-1
+choice;80;14;00000000000001;13
+choice;85;2;1
+choice;87;16;0
+choice;90;11;01110100010;1
+choice;93;44;00000000000011101000100000000000000000000000;12
+ordering;250;5;3;0;4;2;1
+open;252;Poache alternative per vegani
+open;254;Si può fare in casa, ristorazione di basso livello
+choice;260;2;0
+open;270;39
+choice;280;3;1
+choice;290;5;2
+choice;300;3;0
+choice;305;4;2
+choice;310;4;1
+composed;1077
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;1
+choice;1078;10;4
+concept;1101
+app;1103;time|string|0.86899600 1677244935
+concept;1105
+app;1107;differenza|string|00:28
+choice;1115;10;4
+choice;1120;10;5
+open;1125;1
+choice;1127;5;2
+open;1130;Burrata, Stracciatella
+concept;1140
+composed;1177
+choice;1950;2;0
+choice;1960;2;1
+choice;1970;2;1
+choice;1975;2;1
+choice;1178;10;4
+choice;1179;10;5
+open;1190;Già visto, non è una novità
+concept;1201
+app;1203;time|string|0.99344800 1677244800
+concept;1205
+app;1207;differenza|string|00:27
+choice;1215;10;5
+choice;1220;10;5
+open;1225;1
+choice;1227;5;3
+open;1230;Nessuno
+concept;1240
+composed;1277
+choice;1550;2;0
+choice;1560;2;1
+choice;1570;2;1
+choice;1575;2;1
+choice;1278;10;2
+choice;1279;10;6
+open;1290;Interessante
+concept;1301
+app;1303;time|string|0.24351000 1677243895
+concept;1305
+app;1307;differenza|string|00:48
+choice;1315;10;5
+choice;1320;10;3
+choice;1327;5;2
+choice;1328;5;2
+choice;1329;6;010000;1
+open;1330;Nessuna preparazione simile al momento 
+concept;1340
+composed;1377
+choice;1250;2;0
+choice;1260;2;0
+choice;1270;2;0
+choice;1275;2;0
+choice;1378;10;5
+choice;1379;10;5
+open;1390;Prodotti per compensare la preparazione non adeguata di cuochi  E per far risparmiare tempo
+composed;1477
+choice;1150;2;1
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;1
+choice;1478;10;5
+concept;1501
+app;1503;time|string|0.25580500 1677244563
+concept;1505
+app;1507;differenza|string|00:42
+choice;1515;10;2
+choice;1520;10;0
+choice;1527;5;3
+open;1530;Mozzarella
+concept;1540
+choice;1579;10;2
+open;1590;Surrogato, non lo userei mai, olio di palma e basso colesterolo???
+concept;1901
+app;1903;time|string|0.89452400 1677244336
+concept;1905
+app;1907;differenza|string|00:39
+choice;1915;10;4
+choice;1920;10;3
+choice;1927;5;1
+choice;1928;5;3
+choice;1929;6;010000;1
+open;1930;Ricotta
+concept;1940
+choice;1979;10;4
+open;1990;Cose che si possono fare da se, con costi minori
+concept_eval;9002;21;3;4;5;6;8;11;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9003;18;0;4;9;8;11;13;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9004;24;8;13;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9006;23;2;3;5;7;6;9;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9010;25;14;8;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

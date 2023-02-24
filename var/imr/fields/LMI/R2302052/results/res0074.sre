@@ -1,0 +1,111 @@
+2.0;LMI;R2302052;74;IDEXCI77;23/02/2023 16:25:44 CET;23/02/2023 16:36:58 CET;674;7;250;Svar4=10;Svar3=4;Svar2=2;Svar1=1;sysSID=R2302052;Svar0=3;sysUID=IDEXCI77;rec=10;sysPRJ=LMI;r9=1;r8=1;r7=1;pan=1;r6=1;r5=3;r4=3;r3=1;r10=0;r2=5;device=mobile;r1=5;r0=3;trg=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;16;2
+choice;35;4;2
+choice;40;4;1
+choice;50;5;1
+choice;60;9;011010110;2
+scale;70;4;3;-1;0;0;-1
+choice;80;14;10000000101010;0
+choice;85;2;0
+choice;87;16;2
+choice;90;11;01111000001;1
+choice;93;44;00000000000000000000000111100000100000000000;23
+composed;1077
+choice;1350;2;0
+choice;1360;2;1
+choice;1370;2;1
+choice;1375;2;0
+choice;1078;10;7
+concept;1101
+app;1103;time|string|0.58334900 1677166199
+concept;1105
+app;1107;differenza|string|00:31
+choice;1115;10;6
+choice;1120;10;6
+open;1125;6
+choice;1127;5;2
+open;1130;Burrare e bocconcini fior di latte, per insalate e taglieri e antipasti 
+concept;1140
+composed;1177
+choice;1150;2;0
+choice;1160;2;1
+choice;1170;2;1
+choice;1175;2;0
+choice;1178;10;8
+choice;1179;10;7
+open;1190;Gustosi 
+concept;1201
+app;1203;time|string|0.04646300 1677166336
+concept;1205
+app;1207;differenza|string|00:24
+choice;1215;10;7
+choice;1220;10;7
+open;1225;16
+choice;1227;5;2
+open;1230;Mozzarella fior di latte e mozzarella senza lattosio 
+concept;1240
+composed;1277
+choice;1250;2;0
+choice;1260;2;1
+choice;1270;2;1
+choice;1275;2;1
+choice;1278;10;8
+choice;1279;10;8
+open;1290;Novità 
+concept;1301
+app;1303;time|string|0.29426700 1677166058
+concept;1305
+app;1307;differenza|string|00:17
+choice;1315;10;7
+choice;1320;10;7
+open;1325;10
+choice;1327;5;2
+choice;1328;5;0
+choice;1329;6;010000;1
+open;1330;Mascarpone Galbani per la preparazione di dolci
+concept;1340
+composed;1377
+choice;1450;2;0
+choice;1460;2;1
+choice;1470;2;1
+choice;1475;2;1
+choice;1378;10;9
+choice;1379;10;8
+open;1390;Più pratico da usare 
+concept;1401
+app;1403;time|string|0.86813400 1677166423
+concept;1405
+app;1407;differenza|string|00:22
+choice;1415;10;7
+choice;1420;10;7
+open;1425;8
+choice;1427;5;2
+open;1430;Ricotta 
+concept;1440
+composed;1477
+choice;2050;2;0
+choice;2060;2;1
+choice;2070;2;1
+choice;2075;2;1
+choice;1478;10;8
+choice;1479;10;7
+open;1490;Novità 
+concept;2001
+app;2003;time|string|0.92678700 1677166505
+concept;2005
+app;2007;differenza|string|00:20
+choice;2015;10;7
+choice;2020;10;8
+open;2025;3
+choice;2027;5;2
+open;2030;Bresaola 
+concept;2040
+choice;2079;10;8
+open;2090;Qualità 
+concept_eval;9002;0
+concept_eval;9003;0
+concept_eval;9004;0
+concept_eval;9005;0
+concept_eval;9011;0
