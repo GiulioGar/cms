@@ -1,6 +1,8 @@
 <?php 
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
+
+
 	  
 $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
@@ -21,6 +23,9 @@ $email=$_REQUEST['email'];
 @$cifra15 = $_REQUEST['cifra15'];
 @$cifra20 = $_REQUEST['cifra20'];
 $data=date("Y-m-d");
+
+@$del= $_REQUEST['del'];
+@$idPre= $_REQUEST['idPremio'];
 
 @$premi2euro=$_REQUEST["pr2euro"];
 @$premi5euro=$_REQUEST["pr5euro"];
@@ -60,6 +65,15 @@ mysqli_select_db($admin,$database_admin);
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php');
 
+
+if($del=="Delete")
+{
+	  
+  $query_user = "UPDATE t_user_history set pagato=1 where id='".$idPre."'";
+  mysqli_query($admin,$query_user);
+  
+
+}
 
 
 $query_cerca = "SELECT * FROM t_user_history,t_user_info where pagato like '$cerca_progetto' AND t_user_history.user_id=t_user_info.user_id AND event_type='withdraw' and event_info LIKE '%Amazon%' order by event_date asc";
@@ -108,8 +122,10 @@ $cerca = mysqli_query($admin,$query_cerca);
 	 <th>Premio</th>
 	 <th>Bytes</th>
 	 <th>Richiesta</th>
+	 <th>IP</th>
 	 <th>Codice</th>
-	 <th>Pagamento</th>
+	 <th>Pagato</th>
+	 <th>*</th>
 	</tr>
 
 </thead>	
@@ -159,7 +175,8 @@ $contapagati20euro=0;
 		  <td style='max-width:200px;'><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td>
 		 <td style='background:".$bacCol."'>".$tipoPremio." - ".$euroPaga."</td>
 		 <td>".$puntiSpesi."</td>
-		 <td>".$newdate."</td>";
+		 <td>".$newdate."</td>
+		 <td>".$row['ip']."</td>";
 		  if ($row['codice']===null){echo "<td>n.a.</td><td>n.p.</td>";}
 								else
 								{
@@ -269,6 +286,16 @@ $contapagati20euro=0;
 				}
 			}
 			
+//delete prizes
+?>
+<td><form action="RichiestePremio.php" method="POST">
+<input type="hidden" id="id_sur<?php echo $row['id'] ?>" name="idPremio" value="<?php echo $row['id'] ?>">
+<button class="btn btn-success" value="Delete"  name="del" onclick="return confirm('Sei sicuro?')" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+</form>
+</td>
+
+
+<?php
 		}
 
 

@@ -195,7 +195,7 @@ $(document).ready(function() {
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
 
-
+<script src="https://kit.fontawesome.com/b476d3b0ae.js" crossorigin="anonymous"></script>
 
 
 </body>
