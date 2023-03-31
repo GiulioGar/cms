@@ -69,8 +69,26 @@ require_once('inc_tagbody.php');
 if($del=="Delete")
 {
 	  
-  $query_user = "UPDATE t_user_history set pagato=1 where id='".$idPre."'";
-  mysqli_query($admin,$query_user);
+	$query_selPoint = "SELECT user_id,prev_level,new_level FROM  t_user_history  where id='".$idPre."'";
+	$risCerca=mysqli_query($admin,$query_selPoint);
+
+	while ($row = mysqli_fetch_assoc($risCerca))
+		{
+
+			$recuperoPunteggio=$row["prev_level"]-$row["new_level"];
+			$recuperoUid=$row["user_id"];
+
+			$query_addPoint = "UPDATE t_user_info SET points=points+$recuperoPunteggio where user_id='$recuperoUid'";
+			$risCerca=mysqli_query($admin,$query_addPoint);
+
+			$query_delPremio = "DELETE FROM t_user_history  where id='".$idPre."'";
+			$eliminaPremio=mysqli_query($admin,$query_delPremio);
+
+		
+		}
+
+//   $query_user = "UPDATE t_user_history set pagato=1 where id='".$idPre."'";
+//   mysqli_query($admin,$query_user);
   
 
 }
@@ -610,7 +628,7 @@ $(document).ready( function () {
         "pageLength": 50,
         'columnDefs': [ {
 
-                        'targets': [0,1,3,4], /* column index */
+                        'targets': [0,5,6,7], /* column index */
 
                         'orderable': false, /* true or false */
 
