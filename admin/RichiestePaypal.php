@@ -240,7 +240,7 @@ $month2 = date('m', $ts2);
 		  if ($row['pagato']==0){echo "<td>n.p.</td>";}
 								else
 								{
-									echo "<td>".$paydate."</td></tr>"; 
+									echo "<td>".$paydate."</td>"; 
 									 
 								}
 			if ($row['pagato']==0){					
@@ -249,14 +249,16 @@ $month2 = date('m', $ts2);
 			<input name='id_pre' type='hidden' value='".$row['id']."' >
 			<button class='btn btn-primary' style='min-width:54px;' type='submit'  name='var_pagato' value='PAGA' >PAGA</button>
 			</form>
-			</td></tr>	";	
+			</td>	";	
 			}
+			else {echo "<td>&nbsp;</td>"; }
 			$montDate=date("m",strtotime($row['event_date']));
 			$yearDate=date("y",strtotime($row['event_date']));
 
 
 		}			
 ?>
+</tr>
 </tbody>
 </table>
 </div>

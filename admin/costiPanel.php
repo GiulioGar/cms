@@ -64,17 +64,19 @@ require_once('inc_tagbody.php');
 
 <div class="col-md-6 col-md-offset-1">
 <div class="card shadow mb-6">	
-						<div class="card-heading">
+<div class="card-heading">
 						<form role="form" name="modulo_cerca_prj" action="costiPanel.php" method="get">
 							<select class="form-control dropdown-primary Canno" name="Canno">
-								<option value="<?php echo '2021' ?>"><?php echo '2021' ?></option>
+								<option value="<?php echo '2023' ?>"><?php echo '2023' ?></option>
+								<option value="2022" <?php if ($cerca_anno_originale=="2022") {echo 'selected="selected"';} ?>>2022</option>
+								<option value="2021" <?php if ($cerca_anno_originale=="2021") {echo 'selected="selected"';} ?>>2021</option>
 								<option value="2020" <?php if ($cerca_anno_originale=="2020") {echo 'selected="selected"';} ?>>2020</option>
 								<option value="2019" <?php if ($cerca_anno_originale=="2019") {echo 'selected="selected"';} ?>>2019</option>
 								<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
 								<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>
 							</select>
 						</form>
-						</div>
+</div>
 
 
 <div class="card-body text-center recent-users-sec">

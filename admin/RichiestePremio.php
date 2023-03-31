@@ -615,7 +615,7 @@ $(document).ready( function () {
   $('#table_sur').show();
   $('.mess').fadeOut();
     $('#table_sur').DataTable( {
-        "order": [[ 5, "asc" ]],
+        "order": [[ 3, "asc" ]],
         "pagingType": "full_numbers",
         "scrollY": false,
         "scrollX": false,
