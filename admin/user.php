@@ -148,7 +148,7 @@ require_once('function_user.php');
 
               <tr>
                 <td><?php echo $row2['event_info'] ?></td>
-                <td><?php echo $row2['codice'] ?></td>
+                <td><?php echo $row2['codice2'] ?></td>
                 <td><?php echo $row2['event_date'] ?></td>
                 <td><?php echo $row2['giorno_paga'] ?></td>
                 <td><?php echo $pagaScritto; ?></td>

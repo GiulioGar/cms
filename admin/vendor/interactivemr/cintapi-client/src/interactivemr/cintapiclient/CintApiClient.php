@@ -213,7 +213,7 @@ class CintApiClient {
      * @return mixed an array list of invitations
      * @throws CintApiException if an error occurs
      */
-    public function fetchInvitations(int $since = 0, int $limit = 10000) {
+    public function fetchInvitations(int $since = 0, int $limit = 50000) {
         $invitations = [];
         try {
             $client = $this->client;

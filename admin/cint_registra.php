@@ -12,7 +12,7 @@ use interactivemr\cintapiclient\CintApiClient;
 // API settings
 const API_URL = "https://api.cint.com";
 const API_KEY = "c5886a77-7ee1-45ef-b919-f4464a4ac93d";
-const API_SECRET = "gRFry5s9UCwqT";
+const API_SECRET = "UjYL89CEZHADJ";
 
 // instantiate API client
 $client = new CintApiClient(API_URL, API_KEY, API_SECRET);

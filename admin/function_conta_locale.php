@@ -97,6 +97,11 @@ $query_cerca_loi = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' an
 $cerca_loi = mysqli_query($admin,$query_cerca_loi);
 $durata = mysqli_fetch_assoc($cerca_loi);
 
+//lettura punteggio da assegnare
+$query_cerca_bytes = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
+$cerca_bytes = mysqli_query($admin,$query_cerca_bytes);
+$punteggio = mysqli_fetch_assoc($cerca_bytes);
+
 $bytes=$punteggio['value'];
 $argo=$argomento['value'];
 $loi=$durata['value'];

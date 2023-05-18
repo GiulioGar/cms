@@ -1,11 +1,11 @@
 <?php
 
-/*
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL & ~E_NOTICE);
 
-
+/*
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
 
@@ -24,7 +24,7 @@ use interactivemr\cintapiclient\CintApiClient;
 // API settings
 const API_URL = "https://api.cint.com";
 const API_KEY = "c5886a77-7ee1-45ef-b919-f4464a4ac93d";
-const API_SECRET = "gRFry5s9UCwqT";
+const API_SECRET = "UjYL89CEZHADJ";
 
 // instantiate API client
 $client = new CintApiClient(API_URL, API_KEY, API_SECRET);
@@ -54,7 +54,7 @@ $todaydate=date ("Y/m/d H:i:s");
 
 echo "ultimo:".$lastview;
 // lettura api
-$invitations = $client->fetchInvitations($lastview, 10000);
+$invitations = $client->fetchInvitations($lastview, 5000);
 
 foreach ( $invitations as $var )
 {

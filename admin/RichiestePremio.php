@@ -2,7 +2,7 @@
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
 
-
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_WARNING);
 	  
 $titolo = 'Desktop Gestionale';
 $sitowebdiriferimento = 'www.millebytes.com';
@@ -195,10 +195,10 @@ $contapagati20euro=0;
 		 <td>".$puntiSpesi."</td>
 		 <td>".$newdate."</td>
 		 <td>".$row['ip']."</td>";
-		  if ($row['codice']===null){echo "<td>n.a.</td><td>n.p.</td>";}
+		  if ($row['codice2']===null){echo "<td>n.a.</td><td>n.p.</td>";}
 								else
 								{
-									echo "<td>".$row['codice']."</td><td>".$paydate."</td>"; 
+									echo "<td>".$row['codice2']."</td><td>".$paydate."</td>"; 
 									 
 								}
 							
@@ -218,7 +218,7 @@ $contapagati20euro=0;
 				
 
 				mysqli_select_db($admin,$database_admin );
-				$query_aggiorna = "UPDATE t_user_history SET codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+				$query_aggiorna = "UPDATE t_user_history SET codice2='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 				$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 				
 				$contapagati2euro=$contapagati2euro+1;
@@ -239,7 +239,7 @@ $contapagati20euro=0;
 				
 
 					mysqli_select_db($admin,$database_admin);
-					$query_aggiorna = "UPDATE t_user_history SET codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+					$query_aggiorna = "UPDATE t_user_history SET codice2='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					$contapagati5euro=$contapagati5euro+1;
@@ -259,7 +259,7 @@ $contapagati20euro=0;
 			
 
 					mysqli_select_db($admin,$database_admin);
-					$query_aggiorna = "UPDATE t_user_history SET  codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+					$query_aggiorna = "UPDATE t_user_history SET  codice2='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					$contapagati10euro=$contapagati10euro+1;
@@ -279,7 +279,7 @@ $contapagati20euro=0;
 				if ($code!="")	
 				{
 					mysqli_select_db($admin,$database_admin);
-					$query_aggiorna = "UPDATE t_user_history SET  codice='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
+					$query_aggiorna = "UPDATE t_user_history SET  codice2='$code', giorno_paga='$data' WHERE pagato=0 and id='".$row['id']."'";
 					$up_ricercha = mysqli_query($admin,$query_aggiorna) ;
 					
 					
@@ -291,11 +291,11 @@ $contapagati20euro=0;
 		
 			if(($var_esporta=="ESPORTA")&&(strstr($tipoPremio,"Amazon")))
 			{
-				if ($row['codice'] != null)	
+				if ($row['codice2'] != null)	
 				{
-				echo "entro in esporta";
+				//echo "entro in esporta";
 				$csv .= "\n";
-				$csv .=$row['user_id'].";".$row['email'].";".$euroPaga.";".$row['codice']; 
+				$csv .=$row['user_id'].";".$row['email'].";".$euroPaga.";".$row['codice2']; 
 
 				mysqli_select_db($admin,$database_admin);
 				$query_aggiorna2 = "UPDATE t_user_history SET  pagato=1 WHERE pagato=0 and id='".$row['id']."'";
@@ -306,10 +306,10 @@ $contapagati20euro=0;
 			
 //delete prizes
 ?>
-<td><form action="RichiestePremio.php" method="POST">
+<td>
 <input type="hidden" id="id_sur<?php echo $row['id'] ?>" name="idPremio" value="<?php echo $row['id'] ?>">
 <button class="btn btn-success" value="Delete"  name="del" onclick="return confirm('Sei sicuro?')" type="submit"><i class="fa-solid fa-trash-can"></i></button>
-</form>
+
 </td>
 
 
