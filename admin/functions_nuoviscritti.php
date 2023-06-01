@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_assoc($esegui_query_nuoviutenti))
 }
 
 //FACEBOOK
-$query_nuoviutenti2 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website')  ";
+$query_nuoviutenti2 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza='app')  ";
 $esegui_query_nuoviutenti2 = mysqli_query($admin,$query_nuoviutenti2);
 
 
@@ -60,8 +60,8 @@ while ($row2 = mysqli_fetch_assoc($esegui_query_nuoviutenti2))
 }
 
 
-//MVF
-$query_nuoviutenti3 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza='ref3' ";
+//ADVICE
+$query_nuoviutenti3 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza='ref5' ";
 $esegui_query_nuoviutenti3 = mysqli_query($admin,$query_nuoviutenti3);
 
 
@@ -75,6 +75,42 @@ while ($row3 = mysqli_fetch_assoc($esegui_query_nuoviutenti3))
 	if ($ricavamese3==$mese && $ricavaanno3==$anno){
 		$contaiscrittimese3=$contaiscrittimese3+1;
 		$iscritti3[$contaiscrittimese3]=$timestamp3;
+	}
+}
+
+//big data
+$query_nuoviutenti4 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza='ref6' ";
+$esegui_query_nuoviutenti4 = mysqli_query($admin,$query_nuoviutenti4);
+
+
+while ($row4 = mysqli_fetch_assoc($esegui_query_nuoviutenti4))
+{
+	$giornoiscrizione4=$row4['reg_date'];
+	$timestamp4=strtotime($giornoiscrizione4);
+	$ricavamese4=date('m', $timestamp4);
+	$ricavaanno4=date('Y', $timestamp4);
+	
+	if ($ricavamese4==$mese && $ricavaanno4==$anno){
+		$contaiscrittimese4=$contaiscrittimese4+1;
+		$iscritti4[$contaiscrittimese4]=$timestamp4;
+	}
+}
+
+//riattivazioni
+$query_nuoviutenti5 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza='react' ";
+$esegui_query_nuoviutenti5 = mysqli_query($admin,$query_nuoviutenti5);
+
+
+while ($row5 = mysqli_fetch_assoc($esegui_query_nuoviutenti5))
+{
+	$giornoiscrizione5=$row5['reg_date'];
+	$timestamp5=strtotime($giornoiscrizione5);
+	$ricavamese5=date('m', $timestamp5);
+	$ricavaanno5=date('Y', $timestamp5);
+	
+	if ($ricavamese5==$mese && $ricavaanno5==$anno){
+		$contaiscrittimese5=$contaiscrittimese5+1;
+		$iscritti5[$contaiscrittimese5]=$timestamp5;
 	}
 }
 
@@ -97,45 +133,71 @@ $giornimese = date("t",strtotime($data));
 
 $vediMese;
     
-if ($mese=="01") {$vediMese='TOTALI GENNAIO:';} 
-if ($mese=="02") {$vediMese='TOTALI FEBBRAIO:';} 
-if ($mese=="03") {$vediMese='TOTALI MARZO:';} 
-if ($mese=="04") {$vediMese='TOTALI APRILE:';} 
-if ($mese=="05") {$vediMese='TOTALI MAGGIO:';} 
-if ($mese=="06") {$vediMese='TOTALI GIUGNO:';} 
-if ($mese=="07") {$vediMese='TOTALI LUGLIO:';} 
-if ($mese=="08") {$vediMese='TOTALI AGOSTO:';} 
-if ($mese=="09") {$vediMese='TOTALI SETTEMBRE:';} 
-if ($mese=="10") {$vediMese='TOTALI OTTOBRE:';} 
-if ($mese=="11") {$vediMese='TOTALI NOVEMBRE:';} 
-if ($mese=="12") {$vediMese='TOTALI DICEMBRE:';} 
+if ($mese=="01") {$vediMese='TOT GENNAIO:';} 
+if ($mese=="02") {$vediMese='TOT FEBBRAIO:';} 
+if ($mese=="03") {$vediMese='TOT MARZO:';} 
+if ($mese=="04") {$vediMese='TOT APRILE:';} 
+if ($mese=="05") {$vediMese='TOT MAGGIO:';} 
+if ($mese=="06") {$vediMese='TOT GIUGNO:';} 
+if ($mese=="07") {$vediMese='TOT LUGLIO:';} 
+if ($mese=="08") {$vediMese='TOT AGOSTO:';} 
+if ($mese=="09") {$vediMese='TOT SETTEMBRE:';} 
+if ($mese=="10") {$vediMese='TOT OTTOBRE:';} 
+if ($mese=="11") {$vediMese='TOT NOVEMBRE:';} 
+if ($mese=="12") {$vediMese='TOT DICEMBRE:';} 
 
 
-if ($mese=="01") {$vediMese2='MVF GENNAIO:';} 
-if ($mese=="02") {$vediMese2='MVF FEBBRAIO:';} 
-if ($mese=="03") {$vediMese2='MVF MARZO:';} 
-if ($mese=="04") {$vediMese2='MVF APRILE:';} 
-if ($mese=="05") {$vediMese2='MVF MAGGIO:';} 
-if ($mese=="06") {$vediMese2='MVF GIUGNO:';} 
-if ($mese=="07") {$vediMese2='MVF LUGLIO:';} 
-if ($mese=="08") {$vediMese2='MVF AGOSTO:';} 
-if ($mese=="09") {$vediMese2='MVF SETTEMBRE:';} 
-if ($mese=="10") {$vediMese2='MVF OTTOBRE:';} 
-if ($mese=="11") {$vediMese2='MVF NOVEMBRE:';} 
-if ($mese=="12") {$vediMese2='MVF DICEMBRE:';} 
+if ($mese=="01") {$vediMese2='ADV GENNAIO:';} 
+if ($mese=="02") {$vediMese2='ADV FEBBRAIO:';} 
+if ($mese=="03") {$vediMese2='ADV MARZO:';} 
+if ($mese=="04") {$vediMese2='ADV APRILE:';} 
+if ($mese=="05") {$vediMese2='ADV MAGGIO:';} 
+if ($mese=="06") {$vediMese2='ADV GIUGNO:';} 
+if ($mese=="07") {$vediMese2='ADV LUGLIO:';} 
+if ($mese=="08") {$vediMese2='ADV AGOSTO:';} 
+if ($mese=="09") {$vediMese2='ADV SETTEMBRE:';} 
+if ($mese=="10") {$vediMese2='ADV OTTOBRE:';} 
+if ($mese=="11") {$vediMese2='ADV NOVEMBRE:';} 
+if ($mese=="12") {$vediMese2='ADV DICEMBRE:';} 
 
-if ($mese=="01") {$vediMese3='FACEBOOK GENNAIO:';} 
-if ($mese=="02") {$vediMese3='FACEBOOK FEBBRAIO:';} 
-if ($mese=="03") {$vediMese3='FACEBOOK MARZO:';} 
-if ($mese=="04") {$vediMese3='FACEBOOK APRILE:';} 
-if ($mese=="05") {$vediMese3='FACEBOOK MAGGIO:';} 
-if ($mese=="06") {$vediMese3='FACEBOOK GIUGNO:';} 
-if ($mese=="07") {$vediMese3='FACEBOOK LUGLIO:';} 
-if ($mese=="08") {$vediMese3='FACEBOOK AGOSTO:';} 
-if ($mese=="09") {$vediMese3='FACEBOOK SETTEMBRE:';} 
-if ($mese=="10") {$vediMese3='FACEBOOK OTTOBRE:';} 
-if ($mese=="11") {$vediMese3='FACEBOOK NOVEMBRE:';} 
-if ($mese=="12") {$vediMese3='FACEBOOK DICEMBRE:';} 
+if ($mese=="01") {$vediMese3='FAC GENNAIO:';} 
+if ($mese=="02") {$vediMese3='FAC FEBBRAIO:';} 
+if ($mese=="03") {$vediMese3='FAC MARZO:';} 
+if ($mese=="04") {$vediMese3='FAC APRILE:';} 
+if ($mese=="05") {$vediMese3='FAC MAGGIO:';} 
+if ($mese=="06") {$vediMese3='FAC GIUGNO:';} 
+if ($mese=="07") {$vediMese3='FAC LUGLIO:';} 
+if ($mese=="08") {$vediMese3='FAC AGOSTO:';} 
+if ($mese=="09") {$vediMese3='FAC SETTEMBRE:';} 
+if ($mese=="10") {$vediMese3='FAC OTTOBRE:';} 
+if ($mese=="11") {$vediMese3='FAC NOVEMBRE:';} 
+if ($mese=="12") {$vediMese3='FAC DICEMBRE:';} 
+
+if ($mese=="01") {$vediMese4='BIG GENNAIO:';} 
+if ($mese=="02") {$vediMese4='BIG FEBBRAIO:';} 
+if ($mese=="03") {$vediMese4='BIG MARZO:';} 
+if ($mese=="04") {$vediMese4='BIG APRILE:';} 
+if ($mese=="05") {$vediMese4='BIG MAGGIO:';} 
+if ($mese=="06") {$vediMese4='BIG GIUGNO:';} 
+if ($mese=="07") {$vediMese4='BIG LUGLIO:';} 
+if ($mese=="08") {$vediMese4='BIG AGOSTO:';} 
+if ($mese=="09") {$vediMese4='BIG SETTEMBRE:';} 
+if ($mese=="10") {$vediMese4='BIG OTTOBRE:';} 
+if ($mese=="11") {$vediMese4='BIG NOVEMBRE:';} 
+if ($mese=="12") {$vediMese4='BIG DICEMBRE:';} 
+
+if ($mese=="01") {$vediMese5='REA GENNAIO:';} 
+if ($mese=="02") {$vediMese5='REA FEBBRAIO:';} 
+if ($mese=="03") {$vediMese5='REA MARZO:';} 
+if ($mese=="04") {$vediMese5='REA APRILE:';} 
+if ($mese=="05") {$vediMese5='REA MAGGIO:';} 
+if ($mese=="06") {$vediMese5='REA GIUGNO:';} 
+if ($mese=="07") {$vediMese5='REA LUGLIO:';} 
+if ($mese=="08") {$vediMese5='REA AGOSTO:';} 
+if ($mese=="09") {$vediMese5='REA SETTEMBRE:';} 
+if ($mese=="10") {$vediMese5='REA OTTOBRE:';} 
+if ($mese=="11") {$vediMese5='REA NOVEMBRE:';} 
+if ($mese=="12") {$vediMese5='REA DICEMBRE:';} 
 
 ?>
 
@@ -143,7 +205,7 @@ if ($mese=="12") {$vediMese3='FACEBOOK DICEMBRE:';}
 <thead>
 <tr>
 <th> 
-<button type="button" class="btn btn-success">
+<button type="button" class="btn btn-primary">
 <?php echo $vediMese3; ?> <span class="badge badge-light"><?php echo $contaiscrittimese2; ?></span>
 </button> 
 </th>
@@ -154,8 +216,20 @@ if ($mese=="12") {$vediMese3='FACEBOOK DICEMBRE:';}
 </button> 
 </th>
 
-<th colspan="6"> 
-<button type="button" class="btn btn-allert">
+<th> 
+<button type="button" class="btn btn-info">
+<?php echo $vediMese4; ?> <span class="badge badge-light"><?php echo $contaiscrittimese4; ?></span>
+</button> 
+</th>
+
+<th> 
+<button type="button" class="btn btn-secondary">
+<?php echo $vediMese5; ?> <span class="badge badge-light"><?php echo $contaiscrittimese5; ?></span>
+</button> 
+</th>
+
+<th colspan="4"> 
+<button type="button" class="btn btn-dark">
 <?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
 </button> 
 </th>

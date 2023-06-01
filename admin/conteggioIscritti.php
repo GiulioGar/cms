@@ -12,6 +12,7 @@ $annocorrente=date(Y);
 $eti2=$_REQUEST['eti2'];
 $eti3=$_REQUEST['eti3'];
 $eti4=$_REQUEST['eti4'];
+$eti5=$_REQUEST['eti5'];
 $eti6=$_REQUEST['eti6'];
 $etiR=$_REQUEST['etiR'];
 
@@ -20,7 +21,7 @@ $data = json_decode($jsonString, true);
 
 // MODIFICA JSON
 
-$sumSpesa=$data['referal'][0]["spesa"]+$data['referal'][1]["spesa"]+$data['referal'][2]["spesa"]+$data['referal'][3]["spesa"]+$data['referal'][4]["spesa"];
+$sumSpesa=$data['referal'][0]["spesa"]+$data['referal'][1]["spesa"]+$data['referal'][2]["spesa"]+$data['referal'][3]["spesa"]+$data['referal'][4]["spesa"]+$data['referal'][5]["spesa"];
 $difSpesa=15000-$sumSpesa;
 
 if ($modCosti=="Modifica")
@@ -28,9 +29,10 @@ if ($modCosti=="Modifica")
   if (!empty($eti2)) { $data['referal'][0]["spesa"]=$eti2; }
   if (!empty($eti3)) { $data['referal'][1]["spesa"]=$eti3; }
   if (!empty($eti4)) { $data['referal'][2]["spesa"]=$eti4; }
-  if (!empty($eti6)) { $data['referal'][3]["spesa"]=$eti6; }
-  if (!empty($etiR)) { $data['referal'][4]["spesa"]=$etiR; }
-  if (!empty($eti5)) { $data['referal'][5]["spesa"]=$eti5; }
+  if (!empty($eti5)) { $data['referal'][3]["spesa"]=$eti5; }
+  if (!empty($eti6)) { $data['referal'][4]["spesa"]=$eti6; }
+  if (!empty($etiR)) { $data['referal'][5]["spesa"]=$etiR; }
+
 
 ?>
 
@@ -63,12 +65,12 @@ $perc_ref6=0;
 // QUERY DI LETTURA DATI
 
 //FACEBOOK - ref 2
-$query_nuoviutenti2 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutenti2 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza ='app') and reg_date like '%".$annocorrente."%'  ";
 $esegui_query_nuoviutenti2 = mysqli_query($admin,$query_nuoviutenti2);
 $num_ref2 = mysqli_num_rows($esegui_query_nuoviutenti2);
 
 //FACEBOOK - ref 2 attivi
-$query_nuoviutenti2a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref2' || provenienza='website') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutenti2a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza ='app') and reg_date like '%".$annocorrente."%'";
 $esegui_query_nuoviutenti2a = mysqli_query($admin,$query_nuoviutenti2a);
 $num_ref2a = mysqli_num_rows($esegui_query_nuoviutenti2a);
 
@@ -125,7 +127,7 @@ if($num_ref5a>0) {$perc_ref5=ceil($num_ref5a/$num_ref5*100);}
 
 //CONTA AZIONI - REF6
 $query_azioni6a = "SELECT DISTINCT(actions) as cref5,  COUNT(DISTINCT user_id) AS nref5 FROM t_user_info where active=1 and provenienza ='ref5' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
-$esegui_query_azioni5a = mysqli_query($admin,$query_azioni5a);
+$esegui_query_azioni5a = mysqli_query($admin,$query_azioni6a);
 
 
 //BIG DATA - ref 6

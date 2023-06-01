@@ -116,9 +116,9 @@ $giornimese = date("t",strtotime($data));
 	</select>
 	<select class="form-control custom-select annoSel" name="anno" id="inputGroupSelect04">
 		<option value="">[ANNO]</option>
-		<option value="2020" <?php if ($anno=="2020") {echo 'selected="selected"';} ?>>2020</option>
-		<option value="2019" <?php if ($anno=="2019") {echo 'selected="selected"';} ?>>2019</option>
-		<option value="2018" <?php if ($anno=="2018") {echo 'selected="selected"';} ?>>2018</option>
+		<option value="2023" <?php if ($anno=="2023") {echo 'selected="selected"';} ?>>2023</option>
+		<option value="2022" <?php if ($anno=="2022") {echo 'selected="selected"';} ?>>2022</option>
+		<option value="2021" <?php if ($anno=="2021") {echo 'selected="selected"';} ?>>2021</option>
 	</select>
 </div>
 </form>

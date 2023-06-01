@@ -97,17 +97,12 @@ $query_cerca_loi = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' an
 $cerca_loi = mysqli_query($admin,$query_cerca_loi);
 $durata = mysqli_fetch_assoc($cerca_loi);
 
-//lettura punteggio da assegnare
-$query_cerca_bytes = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
-$cerca_bytes = mysqli_query($admin,$query_cerca_bytes);
-$punteggio = mysqli_fetch_assoc($cerca_bytes);
-
 $bytes=$punteggio['value'];
 $argo=$argomento['value'];
 $loi=$durata['value'];
 
 //// ESPORTA CAMPIONE MVF IN CSV ////
-$query_new = "SELECT user_id,email,first_name,gender,birth_date  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) ORDER BY RAND() limit 50000";
+$query_new = "SELECT user_id,email,first_name,gender,birth_date,token  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) ORDER BY RAND() limit 50000";
 $csv_mvf = mysqli_query($admin,$query_new) ;
 
 
@@ -116,10 +111,11 @@ $query_new_attivi = "SELECT *  FROM t_user_info as info, t_respint as respint,t_
 $csv_mvf_attivi = mysqli_query($admin,$query_new_attivi) ;
 
 
-@$csv="uid;email;firstName;genderSuffix;sid;prj;argo;bytes;loi";
+@$csv="uid;email;firstName;genderSuffix;sid;prj;argo;bytes;loi;token;age";
 $csv .= "\n";
 	
-	
+$currentYear=date("Y");
+
     while ($row = mysqli_fetch_assoc($csv_mvf)) 
     { 
             
@@ -127,10 +123,16 @@ $csv .= "\n";
             $mail=$row['email'];
             $nome=$row['first_name'];
             $sesso=$row['gender'];
+            $token=$row['token'];
+            $yAge=$row['birth_date'];
+            $yAgeMod=substr($yAge, 0,4);
+			$userAge=$currentYear-$yAgeMod;
+
+
             if($sesso==1){$genderTransform="o";}
             else {$genderTransform="a";}
             
-			$csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj.";".$argo.";".$bytes.";".$loi; 
+			$csv .=$uid.";".$mail.";".$nome.";".$genderTransform.";".$sid.";".$prj.";".$argo.";".$bytes.";".$loi.";".$token.";".$userAge; 
             $csv .= "\n";
 
 			
