@@ -9,7 +9,9 @@
 # FileName="Connection_php_mysql.htm"
 # Type="MYSQL"
 # HTTP="true"
-
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 
 //$admin = mysql_pconnect($hostname_admin, $username_admin, $password_admin) or trigger_error(mysql_error(),E_USER_ERROR); 
 
@@ -17,6 +19,9 @@
 $conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
 $admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
 
+date_default_timezone_set('Europe/Rome');
+$today=date("Y-m-d H:i:s");
+echo $today;
 //test
 // $conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
 // $admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
@@ -26,10 +31,8 @@ if (!$conn) {
 	exit();
 }
 
-$mailPal=$_GET["mailPal"];
-$uidPal=$_GET["uidPal"];
-$pwdPal=$_GET["pwd"];
 
+$uidPal=$_GET["uidPal"];
 
 //salva info in db
 
@@ -38,19 +41,25 @@ $pwdPal=$_GET["pwd"];
 // $upEmail = mysqli_query($admin,$query_up_email);
 
 //lettura password
-/*
-$query_cerca_email = sprintf("SELECT pwd FROM t_user_info where t_user_info.user_id='%s'",
-$conn->real_escape_string($uidPal),);
-$results=$conn->query($query_cerca_email);
-$lvl = mysqli_fetch_assoc($results);
-*/
+// $query_cerca_email = sprintf("SELECT pwd FROM t_user_info where t_user_info.user_id='%s'",
+// $conn->real_escape_string($uidPal),);
+// $results=$conn->query($query_cerca_email);
+// $lvl = mysqli_fetch_assoc($results);
 
-$query_up_email=sprintf("UPDATE t_user_info set paypalEmail='%s' where t_user_info.user_id='%s'; ",
-$conn->real_escape_string($mailPal),
+// $pwdOriginale=$lvl["pwd"];
+// echo $pwdOriginale;
+
+
+$query_up_email=sprintf("UPDATE t_user_info set active=1,points=1000,provenienza='react', reg_date='%s' where t_user_info.user_id='%s' and active=0; ",
+$conn->real_escape_string($today),
 $conn->real_escape_string($uidPal));
 $results=$conn->query($query_up_email);
 
-echo  "<div class='contOk'>  <h2 class='perfect'>Grazie, la tua email &egrave; stata inserita correttamente. <p>Nei prossimi giorni riceverai la tua ricarica!</p></h2></div>";
+echo  "<div class='contOk'>  <h2 class='perfect'>Grazie, il tuo account è stato riattivato hai ricevuto il bonus di 1000 punti!</p></h2></div>";
+
+
+
+
 
 
 

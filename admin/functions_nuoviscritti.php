@@ -61,7 +61,7 @@ while ($row2 = mysqli_fetch_assoc($esegui_query_nuoviutenti2))
 
 
 //ADVICE
-$query_nuoviutenti3 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza='ref5' ";
+$query_nuoviutenti3 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and (provenienza='ref5' || provenienza='ref8') ";
 $esegui_query_nuoviutenti3 = mysqli_query($admin,$query_nuoviutenti3);
 
 
@@ -114,6 +114,24 @@ while ($row5 = mysqli_fetch_assoc($esegui_query_nuoviutenti5))
 	}
 }
 
+
+//porta amico
+$query_nuoviutenti6 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza LIKE 'PAM%' ";
+$esegui_query_nuoviutenti6 = mysqli_query($admin,$query_nuoviutenti6);
+
+
+while ($row6 = mysqli_fetch_assoc($esegui_query_nuoviutenti6))
+{
+	$giornoiscrizione5=$row6['reg_date'];
+	$timestamp6=strtotime($giornoiscrizione6);
+	$ricavamese6=date('m', $timestamp6);
+	$ricavaanno6=date('Y', $timestamp6);
+	
+	if ($ricavamese6==$mese && $ricavaanno6==$anno){
+		$contaiscrittimese6=$contaiscrittimese6+1;
+		$iscritti6[$contaiscrittimese6]=$timestamp6;
+	}
+}
 
 
 $giorno=01;
@@ -199,6 +217,20 @@ if ($mese=="10") {$vediMese5='REA OTTOBRE:';}
 if ($mese=="11") {$vediMese5='REA NOVEMBRE:';} 
 if ($mese=="12") {$vediMese5='REA DICEMBRE:';} 
 
+if ($mese=="01") {$vediMese6='AMI GENNAIO:';} 
+if ($mese=="02") {$vediMese6='AMI FEBBRAIO:';} 
+if ($mese=="03") {$vediMese6='AMI MARZO:';} 
+if ($mese=="04") {$vediMese6='AMI APRILE:';} 
+if ($mese=="05") {$vediMese6='AMI MAGGIO:';} 
+if ($mese=="06") {$vediMese6='AMI GIUGNO:';} 
+if ($mese=="07") {$vediMese6='AMI LUGLIO:';} 
+if ($mese=="08") {$vediMese6='AMI AGOSTO:';} 
+if ($mese=="09") {$vediMese6='AMI SETTEMBRE:';} 
+if ($mese=="10") {$vediMese6='AMI OTTOBRE:';} 
+if ($mese=="11") {$vediMese6='AMI NOVEMBRE:';} 
+if ($mese=="12") {$vediMese6='AMI DICEMBRE:';} 
+
+
 ?>
 
 <table id="tabIscritti" class='table table-striped table-bordered table-hover' cellpadding="5">
@@ -228,7 +260,13 @@ if ($mese=="12") {$vediMese5='REA DICEMBRE:';}
 </button> 
 </th>
 
-<th colspan="4"> 
+<th> 
+<button type="button" class="btn btn-success">
+<?php echo $vediMese6; ?> <span class="badge badge-light"><?php echo $contaiscrittimese6; ?></span>
+</button> 
+</th>
+
+<th colspan="3"> 
 <button type="button" class="btn btn-dark">
 <?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
 </button> 

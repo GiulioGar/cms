@@ -3,7 +3,7 @@
 
 <?php require_once('../Connections/admin.php'); 
 	  require_once('inc_auth.php'); 
-	  mysqli_select_db($database_admin, $admin);
+	  mysqli_select_db($admin,$database_admin);
 
 
 
@@ -435,8 +435,12 @@ $csv .=$addLinks;
 
 
 
-<?php require_once('inc_footer.php'); ?>
+<?php 
+
+require_once('inc_footer.php'); 
+?>
 <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
 <script src="jquery.copy-to-clipboard.js"></script>
+</body>
 </body>
 </html>

@@ -50,6 +50,63 @@ $userId=$_GET["user_id"];
 
 .contOk { display: none;}
 
+.copy-text {
+	position: relative;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	display: flex;
+    padding:3%;
+    
+}
+.copy-text input.text {
+	padding: 10px;
+	font-size: 15px!important;
+	color: #555;
+	border: none;
+	outline: none;
+}
+.copy-text button {
+	padding: 10px;
+	background: #5784f5;
+	color: #fff;
+	font-size: 15px!important;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.copy-text button:active {
+	background: #809ce2;
+}
+.copy-text button:before {
+	content: "Copied";
+	position: absolute;
+	top: -45px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 8px 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	display: none;
+}
+.copy-text button:after {
+	content: "";
+	position: absolute;
+	top: -20px;
+	right: 25px;
+	width: 10px;
+	height: 10px;
+	background: #5c81dc;
+	transform: rotate(45deg);
+	display: none;
+}
+.copy-text.active button:before,
+.copy-text.active button:after {
+	display: block;
+}
+
     </style>
 </head>
 <body>
@@ -71,31 +128,71 @@ $userId=$_GET["user_id"];
 <div class="container-fluid gtco-banner-area">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="contMessage">
 
                 <div class="contEmail">
-                <h1> <span>Inserisci di seguito la tua emai Paypal:</span>  </h1>
+                <h2> <span><b>Invita i tuoi amici e gudagna!</b></span>  </h2><br/>
+                <h4> <span>Come funziona:</span>  </h4><br/>
+                <h5> <span>Ci sono 2 modi per invitare i tuoi amici: <br/>
+                1) Ti daremo un link tutto tuo da girare ai tuoi amici<br/>
+                2) Potrai segnalarci qui gli indirizzi email dei tuoi amici, <br/>invieremo noi un invito. <br/>
+                <br/><br/>
+                <h4> <span>Cosa ci guadagno:</span>  </h4><br/>
+                <h5> <span>Per ogni amico che si iscriverà al nostro Club per te<b> 50 punti bytes</b><br/> e appena il tuo amico completerà una ricerca riceverai  altri <b>300 punti bytes</b>! <br/> </span>  </h5><br/>
+                
+                <h5> <span>Anche il tuo amico sarà premiato con un bonus di Benvenuto di <b>300 bytes</b>! <br/> </span>  </h5>
+                <h5> <span style='font-size:13px'><i>Puoi trovare le condizioni in fondo a questa pagina.</i> <br/> </span>  </h5>
+
+
+                <div class="row">
+                <div class="col-md-6">
                 <p> 
+                <h4> <span>Inserisci gli indirizzi email dei tuoi amici:</span>  </h4><br/>
                 <form>
-                    <input style="max-width: 300px;" class="form-control mailpal" type="email" name="mailsend" placeholder="e-mail Paypal">    
-                    <input style="max-width: 300px;" class="form-control paspal" type="password" name="password" placeholder="Password Millebytes">    
+                    <input style="max-width: 300px;" class="form-control mail1" type="email" name="mailsend1" placeholder="e-mail 1">    
+                    <input style="max-width: 300px;" class="form-control mail2" type="email" name="mailsend2" placeholder="e-mail 2">    
+                    <input style="max-width: 300px;" class="form-control mail3" type="email" name="mailsend3" placeholder="e-mail 3">    
                     <input style="max-width: 300px;" class="form-control uidpal" type="hidden" name="uidPal" value='<?php echo $userId;?>' >    
                     <button class='btn btn-success validation' type='button' >Invia <i class="fa fa-angle-right" aria-hidden="true"></i></button>
                 </form>
                 </p>
             </div>
 
-          
-
-     
-
-
-            </div>
-            
-            </div>
             <div class="col-md-6">
-                <div class="card"><img class="card-img-top img-fluid" src="images/banner-img.png" alt=""></div>
+                <p> 
+                <h4> <span>Copia il link e condividilo con i tuoi amici:</span>  </h4><br/>
+
+                <div class="copy-text">
+                <input style="position:absolute; left:2500px;" type="text" id="refLink" class="text" value="https://millebytes.com/registrazione/pro/<?php echo $userId;?>" />
+
+
+                <div>
+                https://millebytes.com/registrazione/pro/<?php echo $userId;?> 
+                <button><i class="fa fa-clone"></i></button>
+                </div>
+
+		        
+		        
+	            </div>
+
+                </p>
+            </div>
+            </div>
+
+            
+
+
+            </div>
+
+        
+
+
+            </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card"><img class="card-img-top img-fluid" src="images/friends.png" alt=""></div>
             </div>
         </div>
     </div>
@@ -145,7 +242,24 @@ $userId=$_GET["user_id"];
         </div>
     </div>
 </div>
-<footer class="container-fluid" id="gtco-footer">
+
+<footer style="background-color:#FB8610 ;" class="container-fluid" id="gtco-footer">
+<p><b>Regolamento</b>:</p>
+
+<div style="font-size:12px; padding:1%">
+<b>L'iniziativa è soggetta a condizioni invitiamo l'utente a prenderne visione:</b><br/><br/>
+
+1) Gli indirizzi inviati dovranno essere indirizzi validi appartenenti a persone esistenti.<br/>
+2) Gli utenti invitati non possono essere già iscritti al Club Millebytes.<br/>
+3) I nostri responsabili verificheranno la validità e l'esistenza degli indirizzio, in caso di violazione dei punti 1 e 2 ci sarà l'esclusione dal Club.<br/>
+4) I punti bonus saranno assegnati al termine delle verifiche, l'assegnazione NON SARA' IMMEDIATA<br/>
+5) Ogni utente potrà accumulare un massimo di 15.000 punti bonus.<br/>
+<br/>
+<p>Per ulteriori info: <a href="mailto:millebytes@interactive-mr.com"><span class="__cf_email__">Contattaci</span></a></p>
+
+
+</div>
+
 
 </footer>
 
@@ -202,6 +316,18 @@ console.log(uid);
 
     });
   });
+
+  let copyText = document.querySelector(".copy-text");
+copyText.querySelector("button").addEventListener("click", function () {
+	let input = copyText.querySelector("input.text");
+	input.select();
+	document.execCommand("copy");
+	copyText.classList.add("active");
+	window.getSelection().removeAllRanges();
+	setTimeout(function () {
+		copyText.classList.remove("active");
+	}, 2500);
+});
 
 </script>
 

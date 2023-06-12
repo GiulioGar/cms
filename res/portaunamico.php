@@ -18,7 +18,7 @@
 //$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
 
 //test
- $conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+$conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
  $admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
 
 if (!$conn) {
@@ -27,8 +27,6 @@ if (!$conn) {
 }
 
 $userId=$_GET["user_id"];
-
-
 
 ?>
 
@@ -75,20 +73,26 @@ $userId=$_GET["user_id"];
                 <div class="contMessage">
 
                 <div class="contEmail">
-                <h1> <span>Inserisci di seguito la tua emai Paypal:</span>  </h1>
+                <div style="font-size:27px"> <span>Invita un amico!</span>  </div>
+                <div style="font-size:16px"> 
+                  <ul>
+                    <li>Inserisci fino ad un massimo di 3 indirizzi email che ci vuoi suggerire</li><br/>
+                    <li>Gli indirizzi inseriti saranno invitati ad iscriversi al nostro Club, su tuo suggerimento.</li><br/>
+                    <li>Una volta effettuata l'iscrizione e quando completeranno almeno 1 ricerca riceverai 500 bytes per ogni utente da te suggerito!</li>
+
+                </div>  
+                </h5>
                 <p> 
                 <form>
-                    <input style="max-width: 300px;" class="form-control mailpal" type="email" name="mailsend" placeholder="e-mail Paypal">    
-                    <input style="max-width: 300px;" class="form-control paspal" type="password" name="password" placeholder="Password Millebytes">    
+                    <input style="max-width: 500px;" class="form-control mailpal" type="email" name="mailsend1" placeholder="e-mail amico 1">    
+                    <input style="max-width: 500px;" class="form-control mailpal" type="email" name="mailsend2" placeholder="e-mail amico 2">    
+                    <input style="max-width: 500px;" class="form-control mailpal" type="email" name="mailsend3" placeholder="e-mail amico 3">    
+ 
                     <input style="max-width: 300px;" class="form-control uidpal" type="hidden" name="uidPal" value='<?php echo $userId;?>' >    
                     <button class='btn btn-success validation' type='button' >Invia <i class="fa fa-angle-right" aria-hidden="true"></i></button>
                 </form>
                 </p>
             </div>
-
-          
-
-     
 
 
             </div>

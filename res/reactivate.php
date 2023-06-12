@@ -14,12 +14,12 @@
 //$admin = mysql_pconnect($hostname_admin, $username_admin, $password_admin) or trigger_error(mysql_error(),E_USER_ERROR); 
 
 //online
-//$conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
-//$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
+$conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
+$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
 
 //test
- $conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
- $admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+// $conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+// $admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
 
 if (!$conn) {
     echo "Error: " . mysqli_connect_error();
@@ -75,13 +75,13 @@ $userId=$_GET["user_id"];
                 <div class="contMessage">
 
                 <div class="contEmail">
-                <h1> <span>Inserisci di seguito la tua emai Paypal:</span>  </h1>
+                <h2> <span>Millebytes cambia le sue regole, più sondaggi, più punti, buoni amazon e ricariche Paypal!<br/><br/>Pronto a tornare?</span>  </h2>
+                <br/>
+                <h3> <span>Riattiva il tuo account e riceverai subito 1000 punti bytes pari al valore di 1€!</span>  </h3>
                 <p> 
-                <form>
-                    <input style="max-width: 300px;" class="form-control mailpal" type="email" name="mailsend" placeholder="e-mail Paypal">    
-                    <input style="max-width: 300px;" class="form-control paspal" type="password" name="password" placeholder="Password Millebytes">    
+                <form> 
                     <input style="max-width: 300px;" class="form-control uidpal" type="hidden" name="uidPal" value='<?php echo $userId;?>' >    
-                    <button class='btn btn-success validation' type='button' >Invia <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                    <button class='btn btn-success validation' type='button' >ATTIVA <i class="fa fa-angle-right" aria-hidden="true"></i></button>
                 </form>
                 </p>
             </div>
@@ -168,9 +168,7 @@ $userId=$_GET["user_id"];
 
 $(".wrong").hide();
 $(".perfect").hide();
-let can= $(".mailpal").val();
 let uid= $(".uidpal").val();
-let pwd= $(".paspal").val();
 let tabtot;
 let tabField;
 
@@ -182,10 +180,10 @@ console.log(uid);
       type: "GET",
 
       //Dove devo inviare i dati recuperati dal form?
-      url: "paypalMail2.php",
+      url: "reactivate2.php",
 
       //Quali dati devo inviare?
-      data: "mailPal="+can+"&uidPal="+uid+"&pwd="+pwd, 
+      data: "uidPal="+uid, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
