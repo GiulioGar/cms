@@ -30,6 +30,7 @@ $mail1=$_GET["mailsend1"];
 $mail2=$_GET["mailsend2"];
 $mail3=$_GET["mailsend3"];
 $uidPal=$_GET["uidPal"];
+$today=date('Y-m-d H:i:s');
 
 $getMail="null";
 
@@ -47,6 +48,7 @@ $results=$conn->query($query_cerca_email);
 $lvl = mysqli_fetch_assoc($results);
 */
 
+$mailInserite=0;
 for ($i = 1; $i <= 3; $i++) 
 {
 
@@ -56,18 +58,25 @@ for ($i = 1; $i <= 3; $i++)
 
     if (!empty($getMail)) 
 	{
-	$query_add_email=sprintf("INSERT INTO portaamico VALUES ('%s', '%s', '%s'); ",
+	$query_add_email=sprintf("INSERT INTO portaamico VALUES (NULL,'%s', '%s', '%s',0,0); ",
 
 	$conn->real_escape_string($uidPal),
-	$conn->real_escape_string($getMail));
+	$conn->real_escape_string($getMail),
+	$conn->real_escape_string($today)
+        );
 	$results=$conn->query($query_add_email);
+    $mailInserite++;
+    
 	}
+
+  
 
 }
 
+if ($mailInserite>0) { $mText="Grazie!<br/> Inviteremo i tuoi amici quanto prima. <p>Se vuoi invitare altri amici aggiorna questa pagina.</p>";}
+else { $mText="Non sono stati trovati indirizzi validi";}
 
-
-echo  "<div class='contOk'>  <h2 class='perfect'>Grazie, la tua email &egrave; stata inserita correttamente. <p>Nei prossimi giorni riceverai la tua ricarica!</p></h2></div>";
+echo  "<div class='contOk'>  <h2 class='perfect'>".$mText."</h2></div>";
 
 
 

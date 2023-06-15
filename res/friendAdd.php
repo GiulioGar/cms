@@ -81,7 +81,7 @@ $userId=$_GET["user_id"];
 	background: #809ce2;
 }
 .copy-text button:before {
-	content: "Copied";
+	content: "Copiato";
 	position: absolute;
 	top: -45px;
 	right: 0px;
@@ -282,9 +282,10 @@ $userId=$_GET["user_id"];
 
 $(".wrong").hide();
 $(".perfect").hide();
-let can= $(".mailpal").val();
+let can1= $(".mail1").val();
+let can2= $(".mail2").val();
+let can3= $(".mail3").val();
 let uid= $(".uidpal").val();
-let pwd= $(".paspal").val();
 let tabtot;
 let tabField;
 
@@ -296,10 +297,10 @@ console.log(uid);
       type: "GET",
 
       //Dove devo inviare i dati recuperati dal form?
-      url: "paypalMail2.php",
+      url: "friendAdd2.php",
 
       //Quali dati devo inviare?
-      data: "mailPal="+can+"&uidPal="+uid+"&pwd="+pwd, 
+      data: "mailsend1="+can1+"&mailsend2="+can2+"&mailsend3="+can3+"&uidPal="+uid, 
       dataType: "html",
 	  success: function(data) 
 	  					{ 
