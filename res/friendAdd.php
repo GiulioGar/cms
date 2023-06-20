@@ -32,6 +32,8 @@ $userId=$_GET["user_id"];
 
 ?>
 
+
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -49,6 +51,8 @@ $userId=$_GET["user_id"];
     <style>
 
 .contOk { display: none;}
+
+.mailAlert { color:red; font-size:13px; }
 
 .copy-text {
 	position: relative;
@@ -149,13 +153,14 @@ $userId=$_GET["user_id"];
                 <div class="col-md-6">
                 <p> 
                 <h4> <span>Inserisci gli indirizzi email dei tuoi amici:</span>  </h4><br/>
-                <form>
+                <form id="form1" name="form1">
                     <input style="max-width: 300px;" class="form-control mail1" type="email" name="mailsend1" placeholder="e-mail 1">    
                     <input style="max-width: 300px;" class="form-control mail2" type="email" name="mailsend2" placeholder="e-mail 2">    
                     <input style="max-width: 300px;" class="form-control mail3" type="email" name="mailsend3" placeholder="e-mail 3">    
                     <input style="max-width: 300px;" class="form-control uidpal" type="hidden" name="uidPal" value='<?php echo $userId;?>' >    
                     <button class='btn btn-success validation' type='button' >Invia <i class="fa fa-angle-right" aria-hidden="true"></i></button>
                 </form>
+                
                 </p>
             </div>
 
@@ -208,11 +213,12 @@ $userId=$_GET["user_id"];
             <div>
                 <div class="card text-center"><img class="card-img-top" src="images/news1.png" alt="">
                     <div class="card-body text-left pr-0 pl-0">
-                        <h5>Prossimamente la nostra nuova app per Android !</h5>
-                        <p class="card-text">Stiamo lavorando per migliorare la tua esperienza con il Club Millebytes!
+                        <h5>Scarica la nostra app sul tuo dispositivo Android</h5>
+                        <p class="card-text">Scarica la nostra app direttamente dal play store di Google e mantenere sempre aggiornata l'app.
                             Nei prossimi giorni rilasceremo la nostra nuova app che ti consentirà in maniera semplice e veloce di consultare il punteggio, i premi e le ricerche
                             a disposizione.
                         </p>
+                        <p><a href="https://play.google.com/store/apps/details?id=com.interactive.millebytes&gl=IT">Download<i class="fa fa-cloud-download" aria-hidden="true"></i></a></p>
                         <!-- <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a> -->
                     </div>
                 </div>
@@ -220,11 +226,10 @@ $userId=$_GET["user_id"];
             <div>
                 <div class="card text-center"><img class="card-img-top" src="images/news2.jpg" alt="">
                     <div class="card-body text-left pr-0 pl-0">
-                    <h5>Prossimamente la nostra nuova app per Apple !</h5>
-                        <p class="card-text">Stiamo lavorando per migliorare la tua esperienza con il Club Millebytes!
-                            Nei prossimi giorni rilasceremo la nostra nuova app che ti consentirà in maniera semplice e veloce di consultare il punteggio, i premi e le ricerche
-                            a disposizione.
+                    <h5>Scarica la nostra nuova app sul tuo dispositivo Apple</h5>
+                        <p class="card-text">Scarica l'app direttamente dall App Store di Apple e mantenerla sempre aggiornata.
                         </p>
+                        <p><a href="https://apps.apple.com/it/app/millebytes/id1623646742">Download<i class="fa fa-cloud-download" aria-hidden="true"></i></a></p>
                         <!-- <a href="#">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a> -->
                     </div>
                 </div>
@@ -329,6 +334,51 @@ copyText.querySelector("button").addEventListener("click", function () {
 		copyText.classList.remove("active");
 	}, 2500);
 });
+
+
+function isEmail(email) {
+  var EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return EmailRegex.test(email);
+}
+
+function CheckEmail()
+{
+$(".mailAlert").remove();
+
+var m1=$(".mail1").val();
+var m2=$(".mail2").val();
+var m3=$(".mail3").val();
+
+var ml1=$(".mail1").val().length;
+var ml2=$(".mail2").val().length;
+var ml3=$(".mail3").val().length;
+var udl=$(".uidpal").val().length;
+var sumMail=ml1+ml2+ml3;
+
+console.log("A"+ml1);
+console.log("B"+ml2);
+console.log("C"+ml3);
+
+  var Email1=isEmail(m1);
+  var Email2=isEmail(m2);
+  var Email3=isEmail(m3);
+  
+if (udl==0 || sumMail==0 || ( (Email1==false && ml1>0) || (Email2==false && ml2>0) || (Email3==false && ml3>0) )) { 
+    $(".btn-success").prop('disabled', true).after("<div class='mailAlert'>Attenzione verificare che le email siano corrette!</div>");
+}
+
+else {
+    $(".btn-success").prop('disabled', false); 
+    $(".mailAlert").remove();
+}
+
+
+}
+
+$("input").on( "change", function() { CheckEmail(); });
+//$("input").keypress(function(){ CheckEmail(); });
+$("body").mousemove(function(){ CheckEmail(); });
+
 
 </script>
 
