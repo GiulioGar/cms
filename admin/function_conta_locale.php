@@ -97,6 +97,11 @@ $query_cerca_loi = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' an
 $cerca_loi = mysqli_query($admin,$query_cerca_loi);
 $durata = mysqli_fetch_assoc($cerca_loi);
 
+//lettura punteggio da assegnare
+$query_cerca_punteggio = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
+$cerca_punteggio = mysqli_query($admin,$query_cerca_punteggio);
+$punteggio = mysqli_fetch_assoc($cerca_punteggio);
+
 $bytes=$punteggio['value'];
 $argo=$argomento['value'];
 $loi=$durata['value'];
@@ -1414,10 +1419,7 @@ $tot_use_abilitati_totali = mysqli_fetch_assoc($tot_user_abilitati_totali);
 
 
 
-//lettura punteggio da assegnare
-$query_cerca_punteggio = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='prize_complete'";
-$cerca_punteggio = mysqli_query($admin,$query_cerca_punteggio);
-$punteggio = mysqli_fetch_assoc($cerca_punteggio);
+
 
 
 //REDEMPTION PANEL
