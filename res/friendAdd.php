@@ -143,9 +143,9 @@ $userId=$_GET["user_id"];
                 2) Potrai segnalarci qui gli indirizzi email dei tuoi amici, <br/>invieremo noi un invito. <br/>
                 <br/><br/>
                 <h4> <span>Cosa ci guadagno:</span>  </h4><br/>
-                <h5> <span>Per ogni amico che si iscriverà al nostro Club per te<b> 50 punti bytes</b><br/> e appena il tuo amico completerà una ricerca riceverai  altri <b>300 punti bytes</b>! <br/> </span>  </h5><br/>
+                <h5> <span>Per ogni amico che si iscriverà al nostro Club per te<b> 50 punti bytes</b><br/> e appena il tuo amico completerà una ricerca riceverai  altri <b>250 punti bytes</b>! <br/> </span>  </h5><br/>
                 
-                <h5> <span>Anche il tuo amico sarà premiato con un bonus di Benvenuto di <b>300 bytes</b>! <br/> </span>  </h5>
+                <h5> <span>Il tuo amico sarà premiato con un bonus di Benvenuto di <b>500 bytes</b>! <br/> </span>  </h5>
                 <h5> <span style='font-size:13px'><i>Puoi trovare le condizioni in fondo a questa pagina.</i> <br/> </span>  </h5>
 
 
