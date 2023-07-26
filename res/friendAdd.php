@@ -14,12 +14,12 @@
 //$admin = mysql_pconnect($hostname_admin, $username_admin, $password_admin) or trigger_error(mysql_error(),E_USER_ERROR); 
 
 //online
-//$conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
-//$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
+$conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
+$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
 
 //test
- $conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
- $admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+ //$conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+ //$admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
 
 if (!$conn) {
     echo "Error: " . mysqli_connect_error();
@@ -112,6 +112,10 @@ $userId=$_GET["user_id"];
 }
 
     </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent" id="gtco-main-nav">
@@ -139,7 +143,7 @@ $userId=$_GET["user_id"];
                 <h2> <span><b>Invita i tuoi amici e gudagna!</b></span>  </h2><br/>
                 <h4> <span>Come funziona:</span>  </h4><br/>
                 <h5> <span>Ci sono 2 modi per invitare i tuoi amici: <br/>
-                1) Ti daremo un link tutto tuo da girare ai tuoi amici<br/>
+                1) Ti daremo un link tutto tuo da girare ai tuoi amici<br/> tramite i vari social.<br/>
                 2) Potrai segnalarci qui gli indirizzi email dei tuoi amici, <br/>invieremo noi un invito. <br/>
                 <br/><br/>
                 <h4> <span>Cosa ci guadagno:</span>  </h4><br/>
@@ -166,8 +170,16 @@ $userId=$_GET["user_id"];
 
             <div class="col-md-6">
                 <p> 
-                <h4> <span>Copia il link e condividilo con i tuoi amici:</span>  </h4><br/>
-
+                <h4> <span>Copia il link e condividilo con i tuoi amici sui social:</span>  </h4>
+                <div>
+                    <i class="fa-brands fa-facebook"></i> 
+                    <i class="fa-brands fa-instagram"></i> 
+                    <i class="fa-brands fa-telegram"></i>  
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+            </div>
+                <br/>
                 <div class="copy-text">
                 <input style="position:absolute; left:2500px;" type="text" id="refLink" class="text" value="https://millebytes.com/registrazione/pro/<?php echo $userId;?>" />
 
@@ -259,6 +271,7 @@ $userId=$_GET["user_id"];
 3) I nostri responsabili verificheranno la validità e l'esistenza degli indirizzio, in caso di violazione dei punti 1 e 2 ci sarà l'esclusione dal Club.<br/>
 4) I punti bonus saranno assegnati al termine delle verifiche, l'assegnazione NON SARA' IMMEDIATA<br/>
 5) Ogni utente potrà accumulare un massimo di 15.000 punti bonus.<br/>
+6) L'iniziativa ha validità dal 03 Luglio al 31 Dicembre 2023 <br/>
 <br/>
 <p>Per ulteriori info: <a href="mailto:millebytes@interactive-mr.com"><span class="__cf_email__">Contattaci</span></a></p>
 

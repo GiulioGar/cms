@@ -29,8 +29,8 @@ if($num_res>0)
     $query_upStatus = "UPDATE portaamico SET  status=2 WHERE email_invitato='".$row['email_invitato']."'";
     $up_stat2 = mysqli_query($admin,$query_upStatus) ;
 
-echo $query_upStatus."<br/>";
-echo $num_res."<br/>";
+//echo $query_upStatus."<br/>";
+//echo $num_res."<br/>";
 }
 
 }
@@ -40,8 +40,8 @@ $query_cerca = "SELECT * FROM portaamico,t_user_info where portaamico.uid_invita
 $cerca = mysqli_query($admin,$query_cerca);
 
 
-@$csv1="email1;email2";
-@$csv2="email1;email2";
+@$csv1="email;email2;uid";
+@$csv2="email;email2;uid";
 
 
 
@@ -55,7 +55,7 @@ if($var_csv1=="ESPORTA1")
     while ($row = mysqli_fetch_assoc($res_csv1))
     {
         $csv1 .= "\n";
-        $csv1 .=$row['email_invitato'].";".$row['email']; 
+        $csv1 .=$row['email_invitato'].";".$row['email'].";".$row['user_id']; 
 
         mysqli_select_db($admin,$database_admin);
         $query_aggiorna2 = "UPDATE portaamico SET  status=1 WHERE status=0 and uid_invitante='".$row['uid_invitante']."'";
@@ -67,7 +67,7 @@ if($var_csv1=="ESPORTA1")
 if($var_csv2=="ESPORTA2")
 {
 
-echo "entrato";
+//echo "entrato";
 
     $query_csv2 = "SELECT * FROM portaamico,t_user_info where uid_invitante=user_id AND status=1";
     $res_csv2 = mysqli_query($admin,$query_csv2);
@@ -75,11 +75,11 @@ echo "entrato";
     while ($row = mysqli_fetch_assoc($res_csv2))
     {
         $csv2 .= "\n";
-        $csv2 .=$row['email_invitato'].";".$row['email']; 
+        $csv2 .=$row['email_invitato'].";".$row['email'].";".$row['user_id']; 
 
     }
 
-   echo "Var".$csv2; 
+   //echo "Var".$csv2; 
 
 }
 

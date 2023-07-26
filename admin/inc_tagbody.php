@@ -100,6 +100,8 @@ if ($_SESSION['MM_Username']!=""){
           <a class="dropdown-item" href="nuoviscritti.php">Conteggi</a>
           <a class="dropdown-item" href="conteggioIscritti.php">Dettagli</a>
           <a class="dropdown-item" href="conta_campagna.php">Statistiche</a>
+          <a class="dropdown-item" href="pa_richieste.php">Porta Amico - Email</a>
+          <a class="dropdown-item" href="pa_bonus.php">Porta Amico - Bonus</a>
       </li>  
 
       <li class="nav-item">

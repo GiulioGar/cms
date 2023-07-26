@@ -14,12 +14,12 @@
 //$admin = mysql_pconnect($hostname_admin, $username_admin, $password_admin) or trigger_error(mysql_error(),E_USER_ERROR); 
 
 //online
-//$conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
-//$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
+$conn = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
+$admin = @mysqli_connect('195.231.2.30', 'mbuser', '$leeple%1598', 'millebytesdb');
 
 //test
-$conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
-$admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+//$conn = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
+//$admin = @mysqli_connect('localhost', 'root', '', 'millebytesdb');
 
 if (!$conn) {
     echo "Error: " . mysqli_connect_error();
@@ -73,7 +73,7 @@ for ($i = 1; $i <= 3; $i++)
 
 }
 
-if ($mailInserite>0) { $mText="Grazie!<br/> Inviteremo i tuoi amici quanto prima. <p>Se vuoi invitare altri amici aggiorna questa pagina.</p>";}
+if ($mailInserite>0) { $mText="Grazie!<br/> Inviteremo i tuoi amici quanto prima. <p>Se vuoi invitare altri amici aggiorna questa pagina.</p>&nbsp;<p></p>";}
 else { $mText="Non sono stati trovati indirizzi validi";}
 
 echo  "<div class='contOk'>  <h2 class='perfect'>".$mText."</h2></div>";
