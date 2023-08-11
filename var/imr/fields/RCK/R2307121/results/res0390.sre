@@ -1,0 +1,9 @@
+2.0;RCK;R2307121;390;T3OZCY7381;25/07/2023 18:50:16 CEST;25/07/2023 18:50:59 CEST;43;4;90;sysSID=R2307121;sysPRJ=RCK;sysUID=T3OZCY7381;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;49
+choice;50;6;3
+choice;52;20;10
+choice;60;4;2
+choice;80;3;0
+choice;90;4;3

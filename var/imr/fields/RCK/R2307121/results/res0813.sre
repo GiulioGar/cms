@@ -1,0 +1,5 @@
+2.0;RCK;R2307121;813;YELRG80383;26/07/2023 15:21:54 CEST;26/07/2023 15:22:19 CEST;25;5;;sysSID=R2307121;sysPRJ=RCK;sysUID=YELRG80383;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;52
+choice;50;6;3

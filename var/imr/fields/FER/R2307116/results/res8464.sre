@@ -1,0 +1,21 @@
+2.0;FER;R2307116;8464;VI7DVR38TD;26/07/2023 13:21:34 CEST;26/07/2023 13:22:58 CEST;84;4;2000;rm6=1;rm5=4;rm4=4;rm3=1;rm2=8;rm1=5;rm0=12;sysSID=R2307116;sysUID=VI7DVR38TD;sysPRJ=FER;idx=10;device=desktop;rm12=0;rm11=0;rm10=0;rm9=3;rm8=0;rm7=3;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;45
+choice;45;20;11
+choice;50;4;0
+choice;52;7;4
+choice;70;2;0
+choice;80;5;00100;2
+choice;90;2;0
+choice;100;7;1110100;4
+choice;110;5;0
+concept;111
+choice;1200;14;11
+choice;1300;14;7
+choice;1500;14;3
+choice;1700;14;5
+choice;2000;14;13
+choice;2100;14;3
+choice;2200;14;10

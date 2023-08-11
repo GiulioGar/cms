@@ -1,0 +1,14 @@
+2.0;RCK;R2307121;57;FEZ290IXV3;25/07/2023 14:51:48 CEST;25/07/2023 14:54:41 CEST;173;7;149;sysSID=R2307121;sysPRJ=RCK;sysUID=FEZ290IXV3;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;57
+choice;50;6;4
+choice;52;20;1
+choice;60;4;0
+choice;80;3;1
+choice;90;4;1
+choice;110;7;1111100;0
+choice;130;7;1010100;0
+choice;140;7;0
+concept;144
+concept;148

@@ -1,0 +1,21 @@
+2.0;RCK;R2307121;680;E7KIS1ATXM;26/07/2023 11:01:30 CEST;26/07/2023 11:05:37 CEST;247;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=E7KIS1ATXM;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;45
+choice;50;6;3
+choice;52;20;4
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1111110;0
+choice;130;7;1110000;0
+choice;140;7;0
+concept;144
+concept;148
+choice;149;3;1
+choice;153;3;1
+choice;157;2;1
+choice;360;6;1
+choice;370;7;6
+choice;390;12;8
+choice;400;5;2

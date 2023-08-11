@@ -1,0 +1,22 @@
+2.0;RCK;R2307121;240;F8QSGRBZZN;25/07/2023 16:57:31 CEST;25/07/2023 16:59:23 CEST;112;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=F8QSGRBZZN;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;30
+choice;50;6;1
+choice;52;20;4
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1111110;1
+choice;130;7;0011100;2
+choice;140;7;2
+concept;144
+concept;148
+choice;149;3;2
+choice;153;3;2
+choice;157;2;0
+choice;360;6;2
+choice;370;7;0
+choice;380;5;10000;0
+choice;390;12;6
+choice;400;5;2

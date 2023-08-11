@@ -1,0 +1,452 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+string labelCheck;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selCheck;
+string cpt;
+int preQid;
+int n;
+int reCod;
+int selintCheck;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+string autotest=system.getProperty("test");
+string uid = system.getProperty("sysUID");
+if (autotest=="1" || uid=="GUEST" || uid=="null") {
+system.setProperty("env", "debug:true");  system.setProperty("env", "browser:variables");}
+string err;
+string scriptClaim1;
+string scriptClaim2;
+string scriptClaim3;
+string scriptClaim4;
+string scriptClaimR;
+int Nran;
+int rVar;
+int targ;
+string claim;
+string selClaim1;
+string selClaim2;
+string selClaimA1;
+string selClaimA2;
+string selClaimA3;
+string selClaimA4;
+string selClaimB1;
+string selClaimB2;
+string selClaimB3;
+string selClaimB4;
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+string scriptzoom="<script type='text/javascript' src='https://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script><script type='text/javascript''> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+boolean live=true;
+
+// Q20: CHOICE
+qst = new question("choice", 20);
+qst.setProperty("text", "Partecipando a questa ricerca avrà accesso a informazioni riservate legate allo sviluppo di idee e proposte per nuovi prodotti.</br>Le chiediamo di non utilizzare o divulgare a nessuno le informazioni di cui verrà a conoscenza, non copiare, fotografare, stampare o scaricare alcuna informazione accessibile nel corso di questo studio.</br>Selezionando “Accetto” qui sotto, dichiara di aver letto, compreso e accettato questi termini.");
+qst.setProperty("code", "q20");
+qst.setProperty("show_rand", false);
+vector q20_opts = new vector {
+"Accetta",
+"Declina"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+ansId=system.getProperty("ans20");
+if (ansId==1) { return 4;}
+
+
+// Q30: CHOICE
+qst = new question("choice", 30);
+qst.setProperty("text", "Come prima cosa Le chiediamo di rispondere ad alcune domande introduttive.</br>Lei è…");
+qst.setProperty("code", "S1");
+qst.setProperty("show_rand", false);
+vector q30_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q30_opts);
+send qst;
+
+// Q40: CONCEPT
+qst = new question("open", 40);
+qst.setProperty("text", "Quanti anni ha?");
+qst.setProperty("code", "S2");
+qst.setProperty("view", "numeric");
+send qst;
+
+int eta=(int)system.getProperty("ans40");
+ 
+if(eta<25) { reCod=0; return 4;}
+if(eta>=25 && eta<=34) { reCod=1;}
+if(eta>=35 && eta<=44) { reCod=2;}
+if(eta>=45 && eta<=54) { reCod=3;}
+if(eta>=55 && eta<=65) { reCod=4;}
+if(eta>65) { reCod=5; return 4;}
+
+// Q50: CHOICE
+qst = new question("choice", 50);
+qst.setProperty("text", "CODIFICARE");
+qst.setProperty("code", "q50");
+qst.setProperty("show_rand", false);
+vector q50_opts = new vector {
+"Meno di 25",
+"25 - 34",
+"35 - 44",
+"45 - 54",
+"55-65",
+"Più di 65"
+};
+qst.setProperty("options", q50_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+// Q50: CHOICE
+	qst = new question("choice", 52);
+	qst.setProperty("text", "In quale regione vive?");
+	qst.setProperty("code", "s3");
+	qst.setProperty("show_rand", false);
+	vector q52_opts = new vector {
+		"Valle d’Aosta",
+		"Piemonte",
+		"Lombardia",
+		"Liguria",
+		"Veneto",
+		"Friuli V.G.",
+		"Trentino A.A.",
+		"Emilia Romagna",
+		"Toscana",
+		"Marche",
+		"Umbria",
+		"Lazio",
+		"Abruzzo",
+		"Molise",
+		"Campania",
+		"Puglia",
+		"Basilicata",
+		"Sardegna",
+		"Calabria",
+		"Sicilia"
+	};
+	qst.setProperty("options", q52_opts);
+	send qst;
+ansId=system.getProperty("ans52");
+
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+    switch(ansId)
+        {
+        case 0,1,2,3:{reCod=0;}
+        case 4,5,6,7:{reCod=1;}
+		case 8,9,10,11:{reCod=2;}
+        }
+
+
+	// Q60: CHOICE
+	qst = new question("choice", 60);
+	qst.setProperty("text", "Ricodifica");
+	qst.setProperty("code", "recarea");
+	qst.setProperty("show_rand", false);
+	vector q60_opts = new vector {
+		"Nord Ovest",
+		"Nord est",
+		"Centro",
+		"Sud e Isole"
+	};
+	qst.setProperty("options", q60_opts);
+	qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+	qst.setProperty("hidden", true);
+	send qst;
+
+// Q80: CHOICE
+qst = new question("choice", 80);
+qst.setProperty("text", "Chi si occupa degli acquisti di prodotti per la pulizia delle stoviglie in casa?");
+qst.setProperty("code", "S4");
+qst.setProperty("show_rand", false);
+vector q80_opts = new vector {
+"Io personalmente",
+"Io e il mio coniuge/altre persone insieme",
+"Il mio coniuge/altre persone non sono responsabile"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+
+ansId=system.getProperty("ans80");
+if (ansId==2){ return 4; }
+
+qst = new question("choice", 90);
+qst.setProperty("text", "Chi si occupa principalmente dell’utilizzo della lavastoviglie in casa sua?");
+qst.setProperty("code", "s5");
+vector q90_opts = new vector {
+"Io personalmente",
+"Io con mio marito/moglie/partner/ altri",
+"Altre persone",
+"Non possiedo la lavastoviglie in casa"
+};
+qst.setProperty("options", q90_opts);
+send qst;
+
+ansId=system.getProperty("ans90");
+if (ansId>1) { return 4;}
+
+
+// Q110: CHOICE
+qst = new question("choice", 110);
+qst.setProperty("text", " Quali di questi prodotti ha acquistato negli ultimi sei mesi per il lavaggio delle stoviglie in casa?");
+qst.setProperty("code", "S6");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+vector q110_opts = new vector {
+"Detersivo liquido/in gel per lavastoviglie",
+"Pastiglie per lavastoviglie",
+"Cura lavastoviglie",
+"Additivo brillantante per lavastoviglie",
+"Detersivo liquido per piatti",
+"Sgrassatore",
+"Nessuno di questi prodotti#se#sf"
+};
+qst.setProperty("options", q110_opts);
+send qst;
+
+count=0;
+nam="";
+for(int i=0,1)
+{
+sel=system.getProperty("ans110_"+i);
+if (sel==true) { 
+    count=count+1; 
+    if(i==0) { nam="Detersivo liquido/in gel per lavastoviglie ";}
+    if(i==1) { nam=nam+" Pastiglie per lavastoviglie ";}
+    }
+}
+
+if (count==0) { return 4; }
+
+// Q130: CHOICE
+qst = new question("choice", 130);
+qst.setProperty("text", "Quali sono le marche di <b>"+nam+"</b> che ha acquistato negli ultimi 6 mesi?");
+qst.setProperty("code", "Q1.0");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+vector q130_opts = new vector {
+"Finish",
+"Pril",
+"Fairy",
+"Svelto",
+"Winni’s",
+"Marca del supermercato#sf",
+"Altra marca (specificare)#so#sf"
+};
+qst.setProperty("options", q130_opts);
+send qst;
+
+count=0;
+for(int i=0,6)
+{
+sel=system.getProperty("ans130_"+i);
+if (sel==true) { count=count+1; reCod=i; }
+}
+
+// Q140: CHOICE
+qst = new question("choice", 140);
+qst.setProperty("text", "E qual è la marca che acquista più spesso?");
+qst.setProperty("code", "Q1.1");
+qst.setProperty("show_rand", true);
+qst.setProperty("controller", 130);
+if(count==1)
+{
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+}
+send qst;
+
+qst = new question("concept", 144);
+qst.setProperty("text", "Le mostreremo di seguito lo spot di un detergente gel per la lavastoviglie. Lo guardi attentamente per poter rispondere successivamente ad alcune domande, si assicure che le cuffie/casse siano accese prima di cliccare 'Avanti'.");
+send qst;
+
+
+
+string movieCode;
+
+string time="20000";
+	string delay="<script type='text/javascript'>"+
+    "$(document).ready(function() {"+
+    "$('#console').hide();"+
+    "$('#console').before('<div class=\"alt\">Attendere la fine del filmato per procedere.</div>');"+
+    "$( '.startVideo' ).on( 'click', function() {"+
+    "$('#video').slideDown(1000);"+
+    "setTimeout(function() { $('#console').show(); $('div.alt').remove(); }, "+time+");"+
+    "}); });"+
+    " function playPause() { var myVideo = document.getElementById('video1'); myVideo.play();};"+
+    "</script>"; 
+
+movieCode=delay+"<div class='startVideo div-bottone' onclick='playPause()'><b>AVVIA IL VIDEO ▶</b></div> <br/><br/>"+
+"<div id='video'><video id='video1' width=\"650\">"+
+      "<source src=\"https://www.primisoft.com/fields/RCK/R2307121/resources/pril.mp4\" type=\"video/mp4\">"+
+      "Il tuo browser non supporta i contenuti video HTML5"+
+         "</video></div>";
+
+qst = new question("concept", 148);
+qst.setProperty("text", movieCode);
+send qst;
+
+movieCode="<div id='video'><video width=\"400\" controls>"+
+      "<source src=\"https://www.primisoft.com/fields/RCK/R2307121/resources/pril.mp4\" type=\"video/mp4\">"+
+      "Il tuo browser non supporta i contenuti video HTML5"+
+         "</video></div><br/><br/>";
+
+qst = new question("choice", 149);
+qst.setProperty("text", movieCode+"<p>Quale delle seguenti frasi meglio descrive cosa vuole comunicare questo spot?</p>");
+qst.setProperty("code", "q2.0");
+vector q149_opts = new vector {
+"Che il <b>ciclo ECO</b> in presenza di sporco ostinato <b>non permette una corretta pulizia</b> delle stoviglie che è invece garantita se utilizzo Pril Excellence",
+"Che il <b>ciclo ECO</b> in presenza di sporco ostinato consente una corretta pulizia delle stoviglie <b>solo se utilizzo anche Pril Excellence</b>",
+"Che il <b>ciclo ECO</b> in presenza di sporco ostinato <b>funziona sempre a prescindere dal detersivo</b> per lavastoviglie che utilizzo"
+};
+qst.setProperty("options", q149_opts);
+send qst;
+
+qst = new question("choice", 153);
+qst.setProperty("text", movieCode+"Questo spot si chiude con la seguente affermazione “Passando al ciclo Eco con Pril Excellence puoi risparmiare il 20% di energia”. <p>Secondo lei, comunica che il risparmio di energia è legato:</p>");
+qst.setProperty("code", "q2.1");
+vector q153_opts = new vector {
+"Al solo Ciclo ECO",
+"A Pril Excellence",
+"Alla combinazione di entrambi"
+};
+qst.setProperty("options", q153_opts);
+send qst;
+
+qst = new question("choice", 157);
+qst.setProperty("text", movieCode+"Aveva già visto in passato lo spot Pril che le abbiamo precedentemente mostrato?");
+qst.setProperty("code", "q2.2");
+vector q157_opts = new vector {
+"Sì, lo avevo già visto",
+"No, non lo avevo mai visto prima"
+};
+qst.setProperty("options", q157_opts);
+send qst;
+
+// Q360: CHOICE
+qst = new question("choice", 360);
+qst.setProperty("text", "Da quante persone è composta la Sua famiglia, inclusa Lei stessa?");
+qst.setProperty("code", "QB");
+qst.setProperty("show_rand", false);
+vector q360_opts = new vector {
+"Una",
+"Due",
+"Tre",
+"Quattro",
+"Cinque",
+"Sei o più"
+};
+qst.setProperty("options", q360_opts);
+send qst;
+
+ansId=system.getProperty("ans360");
+if (ansId>0)
+{ 
+
+// Q370: CHOICE
+qst = new question("choice", 370);
+qst.setProperty("text", "Ci sono bambini / ragazzi fino a 18 anni nella sua famiglia? Se si, quanti? ");
+qst.setProperty("code", "QC");
+qst.setProperty("show_rand", false);
+vector q370_opts = new vector {
+"Uno",
+"Due",
+"Tre",
+"Quattro",
+"Cinque",
+"Sei o più",
+"Nessuno"
+};
+qst.setProperty("options", q370_opts);
+send qst;
+
+ansId=system.getProperty("ans370");
+if (ansId!=6)
+		{ 
+
+		// Q380: CHOICE
+		qst = new question("choice", 380);
+		qst.setProperty("text", "Quanti anni ha/hanno il suo/i suoi bambini?");
+		qst.setProperty("code", "QD");
+		qst.setProperty("show_rand", false);
+		qst.setProperty("selection", "multiple");
+		vector q380_opts = new vector {
+		"Fino a 3 anni",
+		"Dai 3 ai 7 anni",
+		"Dai 7 a 10 anni",
+		"Dai 11 a 14 anni",
+		"Dai 15 a 18 anni"
+		};
+		qst.setProperty("options", q380_opts);
+		send qst;
+		}
+}
+
+// Q390: CHOICE
+qst = new question("choice", 390);
+qst.setProperty("text", "Qual è la sua attuale professione?");
+qst.setProperty("code", "QE");
+qst.setProperty("show_rand", false);
+vector q390_opts = new vector {
+"Dirigente, imprenditore, libero professionista",
+"Insegnante",
+"Impiegato",
+"Commerciante/esercente (in proprio)",
+"Commerciante/esercente (alle dipendenze di altri)",
+"Artigiano",
+"Operaio",
+"Studente",
+"Casalinga",
+"In cerca di prima occupazione",
+"Disoccupato",
+"Altro (specificare)#so#sf"
+};
+qst.setProperty("options", q390_opts);
+send qst;
+
+// Q400: CHOICE
+qst = new question("choice", 400);
+qst.setProperty("text", "Qual è il tuo titolo di studio?");
+qst.setProperty("code", "QF");
+qst.setProperty("show_rand", false);
+vector q400_opts = new vector {
+"Nessun titolo/Scuola primaria",
+"Diploma di scuola media",
+"Diploma di scuola superiore",
+"Laurea/Laurea triennale",
+"Post Laurea"
+};
+qst.setProperty("options", q400_opts);
+send qst;
+
+}
+
+

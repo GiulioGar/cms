@@ -1,0 +1,11 @@
+2.0;FER;R2307116;467;HYRSWW72I1;24/07/2023 11:58:30 CEST;24/07/2023 11:59:35 CEST;65;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=HYRSWW72I1;device=desktop;lang=en
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;43
+choice;45;20;16
+choice;50;4;1
+choice;52;7;3
+choice;70;2;0
+choice;80;5;01000;1
+choice;90;2;1

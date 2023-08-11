@@ -1,0 +1,20 @@
+2.0;RCK;R2307121;814;ZLRFP87290;26/07/2023 15:21:55 CEST;26/07/2023 15:24:25 CEST;150;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=ZLRFP87290;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;63
+choice;50;6;4
+choice;52;20;5
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1001100;3
+choice;130;7;1000000;0
+choice;140;7;0
+concept;144
+concept;148
+choice;149;3;0
+choice;153;3;0
+choice;157;2;1
+choice;360;6;0
+choice;390;12;11;comp11:pensione
+choice;400;5;1

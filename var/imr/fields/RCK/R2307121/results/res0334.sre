@@ -1,0 +1,10 @@
+2.0;RCK;R2307121;334;TTVN2IMI19;25/07/2023 17:56:35 CEST;25/07/2023 18:01:26 CEST;291;4;110;sysSID=R2307121;sysPRJ=RCK;sysUID=TTVN2IMI19;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;0
+open;40;39
+choice;50;6;2
+choice;52;20;4
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;0000100;4

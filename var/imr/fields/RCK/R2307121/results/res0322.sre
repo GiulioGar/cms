@@ -1,0 +1,22 @@
+2.0;RCK;R2307121;322;1LYQ10A03F;25/07/2023 17:51:08 CEST;25/07/2023 17:52:08 CEST;60;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=1LYQ10A03F;device=desktop;lang=en
+choice;20;2;0
+choice;30;2;0
+open;40;37
+choice;50;6;2
+choice;52;20;14
+choice;60;4;3
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1111110;2
+choice;130;7;0011000;2
+choice;140;7;3
+concept;144
+concept;148
+choice;149;3;1
+choice;153;3;1
+choice;157;2;1
+choice;360;6;2
+choice;370;7;0
+choice;380;5;01000;1
+choice;390;12;6
+choice;400;5;2

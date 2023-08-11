@@ -1,0 +1,9 @@
+2.0;RCK;R2307121;759;VQM70H2N0D;26/07/2023 12:44:42 CEST;26/07/2023 12:45:49 CEST;67;4;90;sysSID=R2307121;sysPRJ=RCK;sysUID=VQM70H2N0D;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;47
+choice;50;6;3
+choice;52;20;7
+choice;60;4;1
+choice;80;3;0
+choice;90;4;3

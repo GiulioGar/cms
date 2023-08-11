@@ -1,0 +1,10 @@
+2.0;RCK;R2307121;458;RNI097K8KB;25/07/2023 20:11:04 CEST;25/07/2023 20:12:17 CEST;73;4;110;sysSID=R2307121;sysPRJ=RCK;sysUID=RNI097K8KB;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;0
+open;40;40
+choice;50;6;2
+choice;52;20;1
+choice;60;4;0
+choice;80;3;0
+choice;90;4;0
+choice;110;7;0000110;5

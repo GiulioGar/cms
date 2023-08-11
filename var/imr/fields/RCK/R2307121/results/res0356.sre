@@ -1,0 +1,10 @@
+2.0;RCK;R2307121;356;OR44M279AG;25/07/2023 18:14:53 CEST;25/07/2023 18:15:17 CEST;24;4;110;sysSID=R2307121;sysPRJ=RCK;sysUID=OR44M279AG;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;0
+open;40;31
+choice;50;6;1
+choice;52;20;4
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;0010000;2

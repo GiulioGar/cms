@@ -1,0 +1,9 @@
+2.0;RCK;R2307121;779;F92XRCVUVZ;26/07/2023 13:27:40 CEST;26/07/2023 13:28:14 CEST;34;4;90;sysSID=R2307121;sysPRJ=RCK;sysUID=F92XRCVUVZ;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;58
+choice;50;6;4
+choice;52;20;3
+choice;60;4;0
+choice;80;3;0
+choice;90;4;3

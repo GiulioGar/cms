@@ -1,0 +1,9 @@
+2.0;RCK;R2307121;226;9GLPC64CF7;25/07/2023 16:41:51 CEST;25/07/2023 16:42:16 CEST;25;4;90;sysSID=R2307121;sysPRJ=RCK;sysUID=9GLPC64CF7;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;51
+choice;50;6;3
+choice;52;20;17
+choice;60;4;3
+choice;80;3;0
+choice;90;4;3

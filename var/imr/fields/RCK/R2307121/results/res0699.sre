@@ -1,0 +1,10 @@
+2.0;RCK;R2307121;699;7QH2MYLF9O;26/07/2023 11:14:17 CEST;26/07/2023 11:14:38 CEST;21;4;110;sysSID=R2307121;sysPRJ=RCK;sysUID=7QH2MYLF9O;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;39
+choice;50;6;2
+choice;52;20;7
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;0000110;5

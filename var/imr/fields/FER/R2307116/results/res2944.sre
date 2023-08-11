@@ -1,0 +1,11 @@
+2.0;FER;R2307116;2944;AG2KMAHQPL;25/07/2023 08:22:06 CEST;25/07/2023 08:29:57 CEST;471;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=AG2KMAHQPL;device=desktop;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;38
+choice;45;20;7
+choice;50;4;0
+choice;52;7;3
+choice;70;2;0
+choice;80;5;01000;1
+choice;90;2;1

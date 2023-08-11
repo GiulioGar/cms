@@ -1,0 +1,21 @@
+2.0;RCK;R2307121;713;BIGLUG166;26/07/2023 11:30:42 CEST;26/07/2023 11:32:45 CEST;123;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=BIGLUG166;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;35
+choice;50;6;2
+choice;52;20;11
+choice;60;4;2
+choice;80;3;1
+choice;90;4;1
+choice;110;7;0100000;1
+choice;130;7;1000000;0
+choice;140;7;0
+concept;144
+concept;148
+choice;149;3;1
+choice;153;3;2
+choice;157;2;1
+choice;360;6;2
+choice;370;7;6
+choice;390;12;11;comp11:dipendente part-time
+choice;400;5;3

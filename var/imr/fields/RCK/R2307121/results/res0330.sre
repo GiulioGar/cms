@@ -1,0 +1,21 @@
+2.0;RCK;R2307121;330;EZ71H526TM;25/07/2023 17:54:09 CEST;25/07/2023 17:56:08 CEST;119;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=EZ71H526TM;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;0
+open;40;42
+choice;50;6;2
+choice;52;20;2
+choice;60;4;0
+choice;80;3;0
+choice;90;4;0
+choice;110;7;0111000;3
+choice;130;7;0010000;2
+choice;140;7;2
+concept;144
+concept;148
+choice;149;3;2
+choice;153;3;1
+choice;157;2;1
+choice;360;6;1
+choice;370;7;6
+choice;390;12;6
+choice;400;5;1

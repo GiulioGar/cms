@@ -1,0 +1,78 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                }
+					
+			
+						
+			 ]
+    }
+          
+},
+
+"quota": {
+    "total_interviews": 600,
+ 
+        "targets": [
+        
+        {
+            "name": "sex",
+            "description": "sex",
+            "question_id": 30,
+            "option_id": [0],
+            "value": 230
+       
+        },
+
+        {
+            "name": "sex",
+            "description": "sex",
+            "question_id": 30,
+            "option_id": [1],
+            "value": 300
+        },
+
+        {
+            "name": "age",
+            "description": "age",
+            "question_id": 50,
+            "option_id": [1],
+            "value": 100
+        },
+
+        {
+            "name": "age",
+            "description": "age",
+            "question_id": 50,
+            "option_id": [2,3,4],
+            "value": 165
+        }
+        
+        
+
+    ]
+
+}
+
+
+}

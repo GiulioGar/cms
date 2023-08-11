@@ -1,0 +1,22 @@
+2.0;RCK;R2307121;703;SIGN6NEFLO;26/07/2023 11:17:10 CEST;26/07/2023 11:20:21 CEST;191;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=SIGN6NEFLO;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;35
+choice;50;6;2
+choice;52;20;7
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1110110;0
+choice;130;7;0001010;3
+choice;140;7;3
+concept;144
+concept;148
+choice;149;3;1
+choice;153;3;2
+choice;157;2;1
+choice;360;6;3
+choice;370;7;1
+choice;380;5;01100;1
+choice;390;12;6
+choice;400;5;2
