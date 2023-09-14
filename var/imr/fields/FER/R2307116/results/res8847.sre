@@ -1,0 +1,10 @@
+2.0;FER;R2307116;8847;LRNBJIB9L2;04/08/2023 09:35:34 CEST;04/08/2023 09:35:51 CEST;17;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=LRNBJIB9L2;device=desktop;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;42
+choice;45;20;19
+choice;50;4;1
+choice;52;7;3
+choice;70;2;1
+choice;90;2;1

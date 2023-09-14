@@ -1,0 +1,9 @@
+2.0;RCK;R2307121;19;TNL6N67TER;25/07/2023 14:46:09 CEST;25/07/2023 14:46:29 CEST;20;4;90;sysSID=R2307121;sysPRJ=RCK;sysUID=TNL6N67TER;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;29
+choice;50;6;1
+choice;52;20;11
+choice;60;4;2
+choice;80;3;0
+choice;90;4;3

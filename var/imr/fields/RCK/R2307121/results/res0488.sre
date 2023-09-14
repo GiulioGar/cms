@@ -1,0 +1,21 @@
+2.0;RCK;R2307121;488;HMTXLID6MN;25/07/2023 20:51:35 CEST;25/07/2023 20:53:45 CEST;130;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=HMTXLID6MN;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;51
+choice;50;6;3
+choice;52;20;19
+choice;60;4;3
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1111110;3
+choice;130;7;0111100;2
+choice;140;7;1
+concept;144
+concept;148
+choice;149;3;0
+choice;153;3;0
+choice;157;2;0
+choice;360;6;1
+choice;370;7;6
+choice;390;12;0
+choice;400;5;2

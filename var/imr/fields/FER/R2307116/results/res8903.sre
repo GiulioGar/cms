@@ -1,0 +1,10 @@
+2.0;FER;R2307116;8903;YISN1LM4MD;08/08/2023 13:07:13 CEST;08/08/2023 13:08:20 CEST;67;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=YISN1LM4MD;device=desktop;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;21
+choice;45;20;8
+choice;50;4;0
+choice;52;7;1
+choice;70;2;1
+choice;90;2;1

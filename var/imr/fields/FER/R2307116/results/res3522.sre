@@ -1,0 +1,10 @@
+2.0;FER;R2307116;3522;IDEXCI15148;25/07/2023 12:28:13 CEST;25/07/2023 12:28:29 CEST;16;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=IDEXCI15148;device=mobile;lang=it;pan=1
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;38
+choice;45;20;8
+choice;50;4;0
+choice;52;7;3
+choice;70;2;1
+choice;90;2;1

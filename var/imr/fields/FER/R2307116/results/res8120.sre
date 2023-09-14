@@ -1,0 +1,11 @@
+2.0;FER;R2307116;8120;CBJ7G41321;25/07/2023 19:15:27 CEST;25/07/2023 19:16:07 CEST;40;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=CBJ7G41321;device=mobile;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;58
+choice;45;20;6
+choice;50;4;2
+choice;52;7;0
+choice;70;2;0
+choice;80;5;00001;4
+choice;90;2;1

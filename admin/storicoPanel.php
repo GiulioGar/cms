@@ -11,6 +11,12 @@ $coldx = "no";
 
 $data=date("Y-m-d");
 
+$saveY0=date("Y");
+$saveY1=date("Y")-1;
+$saveY2=date("Y")-2;
+$saveY3=date("Y")-3;
+$saveY4=date("Y")-4;
+
 /*default value */
 $default_anno=date("Y");
 
@@ -43,24 +49,9 @@ require_once('inc_tagbody.php');
 <div class="col-md-8 col-md-offset-1">
 <div class="card-body">
 <div class="table-responsive">
-<table id='tabField' style='font-size:11px text-align:center' class='table table-striped table-hover'>
+<table id='tabField' style='font-size:11px; text-align:center' class='table table-striped table-hover'>
 <thead>
-<th colspan='1' style='font-size:18px; color:red'>Anno: <span class='stampanno'>2020</span> </th>
-<th colspan='2' >
-<form role="form" name="modulo_cerca_prj">
-
-<div class="bootstrap-select-wrapper">
-		<select class="form-control Canno" name="Canno">
-			<option value="">[ANNO]</option>
-			<option value="2016" <?php if ($cerca_anno_originale=="2016") {echo 'selected="selected"';} ?>>2016</option>
-			<option value="2017" <?php if ($cerca_anno_originale=="2017") {echo 'selected="selected"';} ?>>2017</option>
-			<option value="2018" <?php if ($cerca_anno_originale=="2018") {echo 'selected="selected"';} ?>>2018</option>
-			<option value="2019" <?php if ($cerca_anno_originale=="2019") {echo 'selected="selected"';} ?>>2019</option>
-			<option value="2020" <?php if ($cerca_anno_originale=="2020") {echo 'selected="selected"';} ?>>2020</option>
-		</select>
-	</form>
-</div>
-</th>
+<th colspan='1' style='font-size:18px; color:red'>Anno: <span class='stampanno'><?php echo $saveY0 ?></span> </th>
 <th style="vertical-align:middle" colspan="7">
 <div class="alert alert-secondary mess2" role="alert" style="display:none"> Caricamento in corso... </div>
 </th>
@@ -90,7 +81,7 @@ foreach ($arrNum as $value)
 			
 		/*statistiche ricerche */
 		$query_ricerche = "SELECT * FROM millebytesdb.t_panel_control where panel=1 and end_field like '".$cerca_anno."-".$value."%' ";
-		$tot_ricerche = mysqli_query($admin,$query_ricerche) or die(mysql_error());
+		$tot_ricerche = mysqli_query($admin,$query_ricerche);
 
 		$contaRic=0;
 		$completeM=0;
@@ -109,24 +100,24 @@ foreach ($arrNum as $value)
 		
 		/*statistiche premi */
 		$query_premi="SELECT COUNT(user_id) as total FROM millebytesdb.t_user_history where event_type='withdraw' and event_date like '".$cerca_anno."-".$value."%'";
-		$tot_premi = mysqli_query($admin,$query_premi) or die(mysql_error());
+		$tot_premi = mysqli_query($admin,$query_premi);
 		$tot_premi_ass = mysqli_fetch_assoc($tot_premi);
 		
 		/*nuovi registrati */
 		$query_reg="SELECT COUNT(user_id) as totalreg FROM millebytesdb.t_user_info where reg_date LIKE '".$cerca_anno."-".$value."%'";
-		$query_copia_reg_sample = mysqli_query($admin,$query_reg) or die(mysql_error());
+		$query_copia_reg_sample = mysqli_query($admin,$query_reg);
 		$query_copia_reg_sample_t = mysqli_fetch_assoc($query_copia_reg_sample);
 		
 		
 		/*totali*/
 		$query_user = "SELECT COUNT(*) as totalIsc FROM t_user_info where active='1' and reg_date <= '".$cerca_anno."-".$value."'";
-		$tot_user = mysqli_query($admin,$query_user) or die(mysql_error());
+		$tot_user = mysqli_query($admin,$query_user);
 		$tot_use = mysqli_fetch_assoc($tot_user);
 		
 		/*attività */
 		$query_user = "SELECT count(distinct story.user_id) as totalAtt FROM millebytesdb.t_user_history  as story, t_user_info as info where info.active='1' AND story.user_id=info.user_id 
 		AND story.event_date like '".$cerca_anno."-".$value."%'  AND story.event_type <>'subscribe'  order by story.event_date";
-		$tot_att = mysqli_query($admin,$query_user) or die(mysql_error());
+		$tot_att = mysqli_query($admin,$query_user);
 		$tot_act = mysqli_fetch_assoc($tot_att);
 		$percAtt=0;
 		$percAtt=$tot_act['totalAtt']/$tot_use['totalIsc']*100;

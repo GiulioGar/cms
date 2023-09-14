@@ -1,0 +1,9 @@
+2.0;RCK;R2307121;211;TTITFSRYXM;25/07/2023 16:20:02 CEST;25/07/2023 16:20:38 CEST;36;4;90;sysSID=R2307121;sysPRJ=RCK;sysUID=TTITFSRYXM;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;36
+choice;50;6;2
+choice;52;20;17
+choice;60;4;3
+choice;80;3;1
+choice;90;4;2

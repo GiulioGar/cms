@@ -1,0 +1,14 @@
+2.0;FER;R2307116;2831;4I686Y6O0B;24/07/2023 22:22:01 CEST;24/07/2023 22:24:53 CEST;172;7;1200;rm6=5;rm5=5;rm4=8;rm3=5;rm2=10;rm1=5;rm0=2;sysSID=R2307116;sysUID=4I686Y6O0B;sysPRJ=FER;idx=4;device=mobile;rm12=0;rm11=0;rm10=2;rm9=2;rm8=0;rm7=0;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;47
+choice;45;20;0
+choice;50;4;3
+choice;52;7;4
+choice;70;2;0
+choice;80;5;00110;2
+choice;90;2;0
+choice;100;7;1111110;3
+choice;110;5;0
+concept;111

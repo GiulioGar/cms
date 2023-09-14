@@ -1,0 +1,11 @@
+2.0;FER;R2307116;8283;EGZNM91229;26/07/2023 08:00:01 CEST;26/07/2023 08:00:22 CEST;21;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=EGZNM91229;device=mobile;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;60
+choice;45;20;11
+choice;50;4;0
+choice;52;7;0
+choice;70;2;0
+choice;80;5;00001;4
+choice;90;2;1

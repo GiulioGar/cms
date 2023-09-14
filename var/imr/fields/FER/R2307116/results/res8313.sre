@@ -1,0 +1,11 @@
+2.0;FER;R2307116;8313;EQG4A3AZVG;26/07/2023 10:10:08 CEST;26/07/2023 10:11:01 CEST;53;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=EQG4A3AZVG;device=mobile;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;55
+choice;45;20;4
+choice;50;4;1
+choice;52;7;0
+choice;70;2;0
+choice;80;5;00010;3
+choice;90;2;1

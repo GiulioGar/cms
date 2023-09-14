@@ -1,0 +1,10 @@
+2.0;FER;R2307116;8465;P9M55A94FN;26/07/2023 13:25:09 CEST;26/07/2023 13:25:46 CEST;37;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=P9M55A94FN;device=desktop;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;57
+choice;45;20;9
+choice;50;4;2
+choice;52;7;0
+choice;70;2;1
+choice;90;2;1

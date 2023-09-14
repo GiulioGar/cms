@@ -1,0 +1,21 @@
+2.0;RCK;R2307121;53;RZ4519DUIG;25/07/2023 14:51:20 CEST;25/07/2023 14:52:40 CEST;80;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=RZ4519DUIG;device=mobile;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;27
+choice;50;6;1
+choice;52;20;11
+choice;60;4;2
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1011110;2
+choice;130;7;0011100;2
+choice;140;7;2
+concept;144
+concept;148
+choice;149;3;2
+choice;153;3;2
+choice;157;2;1
+choice;360;6;2
+choice;370;7;6
+choice;390;12;2
+choice;400;5;3

@@ -1,0 +1,11 @@
+2.0;FER;R2307116;8506;UN1NPMRDZ9;26/07/2023 14:57:26 CEST;26/07/2023 14:57:48 CEST;22;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=UN1NPMRDZ9;device=mobile;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;39
+choice;45;20;3
+choice;50;4;3
+choice;52;7;3
+choice;70;2;0
+choice;80;5;01100;1
+choice;90;2;1

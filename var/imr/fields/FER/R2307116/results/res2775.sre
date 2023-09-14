@@ -1,0 +1,10 @@
+2.0;FER;R2307116;2775;ROF789DIY1;24/07/2023 21:02:01 CEST;24/07/2023 21:12:29 CEST;628;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=ROF789DIY1;device=desktop;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;43
+choice;45;20;3
+choice;50;4;3
+choice;52;7;3
+choice;70;2;1
+choice;90;2;1

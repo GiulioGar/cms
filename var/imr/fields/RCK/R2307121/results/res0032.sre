@@ -1,0 +1,21 @@
+2.0;RCK;R2307121;32;N5V3160DJU;25/07/2023 14:47:57 CEST;25/07/2023 14:50:31 CEST;154;3;400;sysSID=R2307121;sysPRJ=RCK;sysUID=N5V3160DJU;device=desktop;lang=it
+choice;20;2;0
+choice;30;2;1
+open;40;48
+choice;50;6;3
+choice;52;20;4
+choice;60;4;1
+choice;80;3;0
+choice;90;4;0
+choice;110;7;1111110;2
+choice;130;7;1111100;1
+choice;140;7;3
+concept;144
+concept;148
+choice;149;3;0
+choice;153;3;1
+choice;157;2;0
+choice;360;6;3
+choice;370;7;6
+choice;390;12;2
+choice;400;5;2

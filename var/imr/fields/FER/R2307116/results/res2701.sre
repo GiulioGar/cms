@@ -1,0 +1,10 @@
+2.0;FER;R2307116;2701;KM4BB75XD1;24/07/2023 20:14:03 CEST;24/07/2023 20:14:19 CEST;16;4;90;sysSID=R2307116;sysPRJ=FER;sysUID=KM4BB75XD1;device=desktop;lang=it
+concept;10
+choice;20;2;0
+choice;30;2;1
+open;40;37
+choice;45;20;12
+choice;50;4;3
+choice;52;7;3
+choice;70;2;1
+choice;90;2;1
