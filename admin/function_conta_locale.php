@@ -107,7 +107,7 @@ $argo=$argomento['value'];
 $loi=$durata['value'];
 
 //// ESPORTA CAMPIONE MVF IN CSV ////
-$query_new = "SELECT user_id,email,first_name,gender,birth_date,token  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) ORDER BY RAND() limit 50000";
+$query_new = "SELECT user_id,email,first_name,gender,birth_date,token  FROM t_user_info as info, t_respint as respint where (respint.sid='".$sid."' AND respint.uid=info.user_id AND (status='1' or status='0')) AND info.active=1 ORDER BY RAND() limit 50000";
 $csv_mvf = mysqli_query($admin,$query_new) ;
 
 
