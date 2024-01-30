@@ -409,7 +409,11 @@ $(document).ready( function () {
 
 <script>
 //TROVA DUPLICATI IP E SOTTOLINEA
-$(document).ready(function() {
+
+
+const tabella = "#table_sur";
+  const colonnaDaControllare = 5; // Ad esempio, controlla la seconda colonna
+
   function trovaDuplicatiETagli(tabella, colonna) {
     const celleColonna = $(tabella).find(`tr td:nth-child(${colonna})`);
     const valori = {};
@@ -425,11 +429,17 @@ $(document).ready(function() {
     });
   }
 
-  const tabella = "#table_sur";
-  const colonnaDaControllare = 5; // Ad esempio, controlla la seconda colonna
 
+$(document).ready(function() {
   trovaDuplicatiETagli(tabella, colonnaDaControllare);
   $(".duplicato").css("background-color","#ff6b6b");
+});
+
+$( "#table_sur" ).on( "mousemove", function( event ) {
+	trovaDuplicatiETagli(tabella, colonnaDaControllare);
+	$(".duplicato").css("background-color","#ff6b6b");
+	console.log("Muovo");
+
 });
 </script>
 

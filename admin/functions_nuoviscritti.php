@@ -4,8 +4,12 @@ mysqli_select_db($admin,$database_admin);
 
 
 $contaiscrittimese=0;
+$contaiscrittimese1=0;
 $contaiscrittimese2=0;
 $contaiscrittimese3=0;
+$contaiscrittimese4=0;
+$contaiscrittimese5=0;
+$contaiscrittimese6=0;
 
 $mesecorrente=date(m);
 $annocorrente=date(Y);
@@ -18,8 +22,6 @@ if ($mese==""){$mese=$mesecorrente;}
 
 $anno=$_REQUEST['anno'];
 if ($anno==""){$anno=$annocorrente;}
-
-
 
 
 //TOTALI
@@ -37,6 +39,25 @@ while ($row = mysqli_fetch_assoc($esegui_query_nuoviutenti))
 	if ($ricavamese==$mese && $ricavaanno==$anno){
 		$contaiscrittimese=$contaiscrittimese+1;
 		$iscritti[$contaiscrittimese]=$timestamp;
+	}
+}
+
+//MVF
+$query_nuoviutenti1 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and  provenienza='ref3'   ";
+$esegui_query_nuoviutenti1 = mysqli_query($admin,$query_nuoviutenti1);
+
+
+
+while ($row1 = mysqli_fetch_assoc($esegui_query_nuoviutenti1))
+{
+	$giornoiscrizione1=$row1['reg_date'];
+	$timestamp1=strtotime($giornoiscrizione1);
+	$ricavamese1=date('m', $timestamp1);
+	$ricavaanno1=date('Y', $timestamp1);
+	
+	if ($ricavamese1==$mese && $ricavaanno1==$anno){
+		$contaiscrittimese1=$contaiscrittimese1+1;
+		$iscritti1[$contaiscrittimese1]=$timestamp1;
 	}
 }
 
@@ -61,7 +82,7 @@ while ($row2 = mysqli_fetch_assoc($esegui_query_nuoviutenti2))
 
 
 //ADVICE
-$query_nuoviutenti3 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and (provenienza='ref5' || provenienza='ref8') ";
+$query_nuoviutenti3 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza='ref5' ";
 $esegui_query_nuoviutenti3 = mysqli_query($admin,$query_nuoviutenti3);
 
 
@@ -114,15 +135,14 @@ while ($row5 = mysqli_fetch_assoc($esegui_query_nuoviutenti5))
 	}
 }
 
-
-//porta amico
-$query_nuoviutenti6 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza LIKE 'PAM%' ";
+//amici
+$query_nuoviutenti6 = "SELECT reg_date FROM t_user_info where active=1 and email not like'%.top' and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%'  ";
 $esegui_query_nuoviutenti6 = mysqli_query($admin,$query_nuoviutenti6);
 
 
 while ($row6 = mysqli_fetch_assoc($esegui_query_nuoviutenti6))
 {
-	$giornoiscrizione5=$row6['reg_date'];
+	$giornoiscrizione6=$row6['reg_date'];
 	$timestamp6=strtotime($giornoiscrizione6);
 	$ricavamese6=date('m', $timestamp6);
 	$ricavaanno6=date('Y', $timestamp6);
@@ -132,7 +152,6 @@ while ($row6 = mysqli_fetch_assoc($esegui_query_nuoviutenti6))
 		$iscritti6[$contaiscrittimese6]=$timestamp6;
 	}
 }
-
 
 $giorno=01;
 
@@ -149,88 +168,6 @@ $giorno_n=date('w',strtotime($data));
 
 $giornimese = date("t",strtotime($data));
 
-$vediMese;
-    
-if ($mese=="01") {$vediMese='TOT GENNAIO:';} 
-if ($mese=="02") {$vediMese='TOT FEBBRAIO:';} 
-if ($mese=="03") {$vediMese='TOT MARZO:';} 
-if ($mese=="04") {$vediMese='TOT APRILE:';} 
-if ($mese=="05") {$vediMese='TOT MAGGIO:';} 
-if ($mese=="06") {$vediMese='TOT GIUGNO:';} 
-if ($mese=="07") {$vediMese='TOT LUGLIO:';} 
-if ($mese=="08") {$vediMese='TOT AGOSTO:';} 
-if ($mese=="09") {$vediMese='TOT SETTEMBRE:';} 
-if ($mese=="10") {$vediMese='TOT OTTOBRE:';} 
-if ($mese=="11") {$vediMese='TOT NOVEMBRE:';} 
-if ($mese=="12") {$vediMese='TOT DICEMBRE:';} 
-
-
-if ($mese=="01") {$vediMese2='ADV GENNAIO:';} 
-if ($mese=="02") {$vediMese2='ADV FEBBRAIO:';} 
-if ($mese=="03") {$vediMese2='ADV MARZO:';} 
-if ($mese=="04") {$vediMese2='ADV APRILE:';} 
-if ($mese=="05") {$vediMese2='ADV MAGGIO:';} 
-if ($mese=="06") {$vediMese2='ADV GIUGNO:';} 
-if ($mese=="07") {$vediMese2='ADV LUGLIO:';} 
-if ($mese=="08") {$vediMese2='ADV AGOSTO:';} 
-if ($mese=="09") {$vediMese2='ADV SETTEMBRE:';} 
-if ($mese=="10") {$vediMese2='ADV OTTOBRE:';} 
-if ($mese=="11") {$vediMese2='ADV NOVEMBRE:';} 
-if ($mese=="12") {$vediMese2='ADV DICEMBRE:';} 
-
-if ($mese=="01") {$vediMese3='FAC GENNAIO:';} 
-if ($mese=="02") {$vediMese3='FAC FEBBRAIO:';} 
-if ($mese=="03") {$vediMese3='FAC MARZO:';} 
-if ($mese=="04") {$vediMese3='FAC APRILE:';} 
-if ($mese=="05") {$vediMese3='FAC MAGGIO:';} 
-if ($mese=="06") {$vediMese3='FAC GIUGNO:';} 
-if ($mese=="07") {$vediMese3='FAC LUGLIO:';} 
-if ($mese=="08") {$vediMese3='FAC AGOSTO:';} 
-if ($mese=="09") {$vediMese3='FAC SETTEMBRE:';} 
-if ($mese=="10") {$vediMese3='FAC OTTOBRE:';} 
-if ($mese=="11") {$vediMese3='FAC NOVEMBRE:';} 
-if ($mese=="12") {$vediMese3='FAC DICEMBRE:';} 
-
-if ($mese=="01") {$vediMese4='BIG GENNAIO:';} 
-if ($mese=="02") {$vediMese4='BIG FEBBRAIO:';} 
-if ($mese=="03") {$vediMese4='BIG MARZO:';} 
-if ($mese=="04") {$vediMese4='BIG APRILE:';} 
-if ($mese=="05") {$vediMese4='BIG MAGGIO:';} 
-if ($mese=="06") {$vediMese4='BIG GIUGNO:';} 
-if ($mese=="07") {$vediMese4='BIG LUGLIO:';} 
-if ($mese=="08") {$vediMese4='BIG AGOSTO:';} 
-if ($mese=="09") {$vediMese4='BIG SETTEMBRE:';} 
-if ($mese=="10") {$vediMese4='BIG OTTOBRE:';} 
-if ($mese=="11") {$vediMese4='BIG NOVEMBRE:';} 
-if ($mese=="12") {$vediMese4='BIG DICEMBRE:';} 
-
-if ($mese=="01") {$vediMese5='REA GENNAIO:';} 
-if ($mese=="02") {$vediMese5='REA FEBBRAIO:';} 
-if ($mese=="03") {$vediMese5='REA MARZO:';} 
-if ($mese=="04") {$vediMese5='REA APRILE:';} 
-if ($mese=="05") {$vediMese5='REA MAGGIO:';} 
-if ($mese=="06") {$vediMese5='REA GIUGNO:';} 
-if ($mese=="07") {$vediMese5='REA LUGLIO:';} 
-if ($mese=="08") {$vediMese5='REA AGOSTO:';} 
-if ($mese=="09") {$vediMese5='REA SETTEMBRE:';} 
-if ($mese=="10") {$vediMese5='REA OTTOBRE:';} 
-if ($mese=="11") {$vediMese5='REA NOVEMBRE:';} 
-if ($mese=="12") {$vediMese5='REA DICEMBRE:';} 
-
-if ($mese=="01") {$vediMese6='AMI GENNAIO:';} 
-if ($mese=="02") {$vediMese6='AMI FEBBRAIO:';} 
-if ($mese=="03") {$vediMese6='AMI MARZO:';} 
-if ($mese=="04") {$vediMese6='AMI APRILE:';} 
-if ($mese=="05") {$vediMese6='AMI MAGGIO:';} 
-if ($mese=="06") {$vediMese6='AMI GIUGNO:';} 
-if ($mese=="07") {$vediMese6='AMI LUGLIO:';} 
-if ($mese=="08") {$vediMese6='AMI AGOSTO:';} 
-if ($mese=="09") {$vediMese6='AMI SETTEMBRE:';} 
-if ($mese=="10") {$vediMese6='AMI OTTOBRE:';} 
-if ($mese=="11") {$vediMese6='AMI NOVEMBRE:';} 
-if ($mese=="12") {$vediMese6='AMI DICEMBRE:';} 
-
-
 ?>
 
 <table id="tabIscritti" class='table table-striped table-bordered table-hover' cellpadding="5">
@@ -238,37 +175,44 @@ if ($mese=="12") {$vediMese6='AMI DICEMBRE:';}
 <tr>
 <th> 
 <button type="button" class="btn btn-primary">
-<?php echo $vediMese3; ?> <span class="badge badge-light"><?php echo $contaiscrittimese2; ?></span>
+<?php echo "Social"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese2; ?></span>
+</button> 
+</th>
+
+
+<th> 
+<button type="button" class="btn btn-light">
+<?php echo "MVF"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese1; ?></span>
 </button> 
 </th>
 
 <th> 
 <button type="button" class="btn btn-warning">
-<?php echo $vediMese2; ?> <span class="badge badge-light"><?php echo $contaiscrittimese3; ?></span>
+<?php echo "AdviceMe"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese3; ?></span>
 </button> 
 </th>
 
 <th> 
 <button type="button" class="btn btn-info">
-<?php echo $vediMese4; ?> <span class="badge badge-light"><?php echo $contaiscrittimese4; ?></span>
+<?php echo "BigData"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese4; ?></span>
 </button> 
 </th>
 
 <th> 
 <button type="button" class="btn btn-secondary">
-<?php echo $vediMese5; ?> <span class="badge badge-light"><?php echo $contaiscrittimese5; ?></span>
+<?php echo "Riattivazioni"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese5; ?></span>
 </button> 
 </th>
 
 <th> 
 <button type="button" class="btn btn-success">
-<?php echo $vediMese6; ?> <span class="badge badge-light"><?php echo $contaiscrittimese6; ?></span>
+<?php echo "Amici"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese6; ?></span>
 </button> 
 </th>
 
-<th colspan="3"> 
+<th colspan="6"> 
 <button type="button" class="btn btn-dark">
-<?php echo $vediMese; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
+<?php echo "Totali"; ?> <span class="badge badge-light"><?php echo $contaiscrittimese; ?></span>
 </button> 
 </th>
 
