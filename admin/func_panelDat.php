@@ -29,7 +29,24 @@ $tot_useGirl = mysqli_fetch_assoc($tot_userGirl);
 
 
 //ATTIVI//
+mysqli_select_db($admin,$database_admin);
+$query_user = "SELECT count(distinct story.user_id) as total,YEAR(event_date) AS anno FROM millebytesdb.t_user_history  as story where (story.event_type <>'subscribe'   and story.event_type <>'unsubscribe') GROUP BY anno;";
+$tot_att= mysqli_query($admin,$query_user) ;
 
+
+$arrAnno = array();
+$arrAttivi = array();
+
+while ($row = mysqli_fetch_assoc($tot_att)) 
+{ 
+	$optAnno=$row['anno'];  
+	$optTot=$row['total'];  
+
+	if($optAnno>=$pastYear4) { array_push($arrAttivi, $optTot);}
+
+}
+
+/*
 //attivi TOTALI 2mesi
 mysqli_select_db($admin,$database_admin);
 $query_user = "SELECT count(distinct story.user_id) as total FROM millebytesdb.t_user_history  as story, t_user_info as info where info.active='1' AND story.user_id=info.user_id 
@@ -103,7 +120,7 @@ $query_user = "SELECT count(distinct story.user_id) as total FROM millebytesdb.t
 AND story.event_date > '$mesi36' AND story.event_type <>'subscribe'  AND gender=2  order by story.event_date";
 $tot_att36Girl = mysqli_query($admin,$query_user) ;
 $tot_act36Girl = mysqli_fetch_assoc($tot_att36Girl);
-
+*/
 
 
 
@@ -464,15 +481,6 @@ $medRed16=$totRed16/$cloSur16['tot'];
 	if ($row['panel']==2) {$contaTar16++;}
 	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// info 2019 su tutte le ricerche

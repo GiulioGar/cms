@@ -96,12 +96,31 @@ require_once('function_conta_aree.php');
 </div>
 <!--Fine seconda riga -->	
 		
+<!--Inizio terza riga -->	
+<div class="row">	
 
+<div class="col-xl-12">
+<div class="card shadow mb-12">
+
+   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	<h6 class="m-0 font-weight-bold text-secondary"> UTENTI ATTIVI </h6></span>
+ </div>
+
+<div style="min-height:240px;" class="card-body">      
+<canvas width="100%" id="attivi"></canvas>
+</div>
+
+</div>
+</div>
+
+		
+</div>
+<!--Fine seconda riga -->	
 
 
 
 <div class="panel-footer">
-                         
+                  
 </div>
                 
 
@@ -250,7 +269,60 @@ new Chart(document.getElementById("linered"), {
     }
 });
 	
- 
+ // chart attivi   
+new Chart(document.getElementById("attivi"), {
+    type: 'line',
+    data: {
+      labels: ["<?php echo $pastYear4; ?>","<?php echo $pastYear3; ?>","<?php echo $pastYear2; ?>", "<?php echo $pastYear1; ?>", "<?php echo $actualYear; ?>"],
+      datasets: [{
+        label: "utenti attivi ",
+        borderColor:["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointBorderColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointBackgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointHoverBackgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointHoverBorderColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+            pointBorderWidth: 5,
+            pointHoverRadius: 5,
+            pointHoverBorderWidth: 1,
+            pointRadius: 5,
+            fill: false,
+            borderWidth: 2,
+		fill:false,
+        backgroundColor: ["#c9ffd5", "#36a2eb" , "#cc65fe", "#FFD789","#E60000"],
+        data: [<?php echo sprintf("%01.2f", $arrAttivi[0]); ?>,<?php echo sprintf("%01.2f", $arrAttivi[1]); ?>,<?php echo sprintf("%01.2f", $arrAttivi[2]); ?>,<?php echo sprintf("%01.2f", $arrAttivi[3]); ?>,<?php echo sprintf("%01.2f", $arrAttivi[4]); ?>]
+      }]
+    },
+    options: {
+        legend: {
+            position: "bottom"
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold",
+                    beginAtZero: true,
+                    maxTicksLimit: 8,
+                    stepSize:100,
+                    padding: 10
+                },
+                gridLines: {
+                    drawTicks: true,
+                    display: true
+                }}],
+            xAxes: [{
+                gridLines: {
+                    zeroLineColor: "transparent"},
+                ticks: {
+                    padding: 5,
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold"
+                }
+            }]
+        }
+    }
+});
+	
 
 //chart registrati
 new Chart(document.getElementById("barnew"), {

@@ -451,7 +451,21 @@ $( "#table_sur" ).on( "mousemove", function( event ) {
 
 <?php
 
+$query_pago2= "SELECT COUNT(*) as total FROM millebytesdb.t_premidb where valore=2";
+$t_pago2 = mysqli_query($admin,$query_pago2) ;
+$totPremi2=mysqli_fetch_assoc($t_pago2);
 
+$query_pago2= "SELECT COUNT(*) as total FROM millebytesdb.t_premidb where valore=5";
+$t_pago2 = mysqli_query($admin,$query_pago2) ;
+$totPremi5=mysqli_fetch_assoc($t_pago2);
+
+$query_pago2= "SELECT COUNT(*) as total FROM millebytesdb.t_premidb where valore=10";
+$t_pago2 = mysqli_query($admin,$query_pago2) ;
+$totPremi10=mysqli_fetch_assoc($t_pago2);
+
+$query_pago2= "SELECT COUNT(*) as total FROM millebytesdb.t_premidb where valore=20";
+$t_pago2 = mysqli_query($admin,$query_pago2) ;
+$totPremi20=mysqli_fetch_assoc($t_pago2);
 
 $query_pago= "SELECT COUNT(*) as total FROM millebytesdb.t_premidb where valore=2 and status='pagato' and pagamento LIKE '".$cyear."%' ";
 $t_PAGO = mysqli_query($admin,$query_pago) ;
@@ -720,6 +734,50 @@ $buyTotal=0;
 				 
                 </div>
 	 </div>
+ </div>
+
+ <div class="row">
+ 
+ <div class="card-success shadow mb-12">
+ <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+	 <h6 class="m-0 font-weight-bold text-primary"> PREMI TOTALI </h6></span>
+  </div>
+ 
+	
+  <div class="card-body  recent-users-sec"> 
+ 
+ 
+ <table style="font-size:11px"  class="table table-striped table-bordered">
+		 <tr class='intesta'><th></th><th >&euro; 2</th><th >&euro;5</th><th >&euro;10</th><th> &euro;20 </th></tr>
+ 
+		 <tr class=''>
+		 <td style="vertical-align : middle; text-align:center;" rowspan="2">STORICO RICHIESTE</td>
+		 <td><?php echo $totPremi2['total']; ?></td>
+		 <td><?php echo $totPremi5['total']; ?></td>
+		 <td><?php echo $totPremi10['total']; ?></td>
+		 <td><?php echo $totPremi20['total']; ?></td>
+		 </tr>
+		 <?php 
+		 $totalone=($totPremi2['total'])+($totPremi5['total'])+($totPremi10['total'])+($totPremi20['total']);
+
+		 ?>
+		 <tr>
+		 <td><?php echo round(($totPremi2['total']/$totalone)*100); ?>%</td><td><?php echo round(($totPremi5['total']/$totalone)*100); ?>%</td><td><?php echo  round(($totPremi10['total']/$totalone)*100); ?>%</td><td><?php echo  round(($totPremi20['total']/$totalone)*100); ?>%</td>
+		 </tr>
+		 <tr class=''>
+		 <td colspan="3" style="vertical-align : middle; text-align:center;"><b>TOTALE RICHIESTE</b></td>
+		 <td colspan="2" style="vertical-align : middle; text-align:center;">
+		 <b>
+		 <?php 
+		 echo $totalone;
+		 ?>
+		 </b>
+		 </td>
+		 </tr>
+ 
+ </table>
+ </div>
+ </div>
  </div>
 
 

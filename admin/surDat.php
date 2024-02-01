@@ -28,8 +28,6 @@ require_once('function_conta_aree.php');
 </div>
 	
 
-
-
 <div class="col-xl-6  shadow-sm p-3 mb-5 bg-white rounded">
 
  <div class="card card-default">
