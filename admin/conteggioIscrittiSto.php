@@ -21,23 +21,23 @@ $eti6=$_REQUEST['eti6'];
 $eti7=$_REQUEST['eti7'];
 $etiR=$_REQUEST['etiR'];
 
-$jsonString = file_get_contents('referal.json');
+$jsonString = file_get_contents('referalSto.json');
 $data = json_decode($jsonString, true);
 
 // MODIFICA JSON
 
-$sumSpesa=$data['referal'][0]["spesa"]+$data['referal'][1]["spesa"]+$data['referal'][2]["spesa"]+$data['referal'][3]["spesa"]+$data['referal'][4]["spesa"]+$data['referal'][5]["spesa"];
+$sumSpesa=$data['referalSto'][0]["spesa"]+$data['referalSto'][1]["spesa"]+$data['referalSto'][2]["spesa"]+$data['referalSto'][3]["spesa"]+$data['referalSto'][4]["spesa"]+$data['referalSto'][5]["spesa"];
 $difSpesa=15000-$sumSpesa;
 
 if ($modCosti=="Modifica")
 {
-  if (!empty($eti2)) { $data['referal'][0]["spesa"]=$eti2; }
-  if (!empty($eti3)) { $data['referal'][1]["spesa"]=$eti3; }
-  if (!empty($eti4)) { $data['referal'][2]["spesa"]=$eti4; }
-  if (!empty($eti5)) { $data['referal'][3]["spesa"]=$eti5; }
-  if (!empty($eti6)) { $data['referal'][4]["spesa"]=$eti6; }
-  if (!empty($etiA)) { $data['referal'][6]["spesa"]=$etiA; }
-  if (!empty($etiR)) { $data['referal'][5]["spesa"]=$etiR; }
+  if (!empty($eti2)) { $data['referalSto'][0]["spesa"]=$eti2; }
+  if (!empty($eti3)) { $data['referalSto'][1]["spesa"]=$eti3; }
+  if (!empty($eti4)) { $data['referalSto'][2]["spesa"]=$eti4; }
+  if (!empty($eti5)) { $data['referalSto'][3]["spesa"]=$eti5; }
+  if (!empty($eti6)) { $data['referalSto'][4]["spesa"]=$eti6; }
+  if (!empty($etiA)) { $data['referalSto'][6]["spesa"]=$etiA; }
+  if (!empty($etiR)) { $data['referalSto'][5]["spesa"]=$etiR; }
 
 
 ?>
@@ -52,7 +52,7 @@ $.ajaxSetup({
 }
 
 $newJsonString = json_encode($data);
-file_put_contents('referal.json', $newJsonString);
+file_put_contents('referalSto.json', $newJsonString);
 
 $num_ref1=0;
 $num_ref2=0;
@@ -75,12 +75,12 @@ $perc_refR=0;
 // QUERY DI LETTURA DATI
 
 //FACEBOOK - ref 2
-$query_nuoviutenti2 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza ='app') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutenti2 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza ='app')";
 $esegui_query_nuoviutenti2 = mysqli_query($admin,$query_nuoviutenti2);
 $num_ref2 = mysqli_num_rows($esegui_query_nuoviutenti2);
 
 //FACEBOOK - ref 2 attivi
-$query_nuoviutenti2a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza ='app') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutenti2a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref2' || provenienza='website' || provenienza ='app')";
 $esegui_query_nuoviutenti2a = mysqli_query($admin,$query_nuoviutenti2a);
 $num_ref2a = mysqli_num_rows($esegui_query_nuoviutenti2a);
 
@@ -89,17 +89,17 @@ $num_ref2a = mysqli_num_rows($esegui_query_nuoviutenti2a);
 if($num_ref2a>0) {$perc_ref2=ceil($num_ref2a/$num_ref2*100);}
 
 //CONTA AZIONI - FACEBOOK
-$query_azioni2a = "SELECT DISTINCT(actions) as cref2,  COUNT(DISTINCT user_id) AS nref2 FROM t_user_info where active=1 and (provenienza ='ref2' or provenienza ='website') and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioni2a = "SELECT DISTINCT(actions) as cref2,  COUNT(DISTINCT user_id) AS nref2 FROM t_user_info where active=1 and (provenienza ='ref2' or provenienza ='website') GROUP by actions order by actions ASC";
 $esegui_query_azioni2a = mysqli_query($admin,$query_azioni2a);
 
 
 //MVF - ref 3
-$query_nuoviutenti3 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref3') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutenti3 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref3')  ";
 $esegui_query_nuoviutenti3 = mysqli_query($admin,$query_nuoviutenti3);
 $num_ref3 = mysqli_num_rows($esegui_query_nuoviutenti3);
 
 //MVF - ref 3
-$query_nuoviutenti3a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref3') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutenti3a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref3') ";
 $esegui_query_nuoviutenti3a = mysqli_query($admin,$query_nuoviutenti3a);
 $num_ref3a = mysqli_num_rows($esegui_query_nuoviutenti3a);
 
@@ -107,92 +107,91 @@ $num_ref3a = mysqli_num_rows($esegui_query_nuoviutenti3a);
 if($num_ref3a>0) {$perc_ref3=ceil($num_ref3a/$num_ref3*100);}
 
 //CONTA AZIONI - REF3
-$query_azioni3a = "SELECT DISTINCT(actions) as cref3,  COUNT(DISTINCT user_id) AS nref3 FROM t_user_info where active=1 and provenienza ='ref3' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioni3a = "SELECT DISTINCT(actions) as cref3,  COUNT(DISTINCT user_id) AS nref3 FROM t_user_info where active=1 and provenienza ='ref3' GROUP by actions order by actions ASC";
 $esegui_query_azioni3a = mysqli_query($admin,$query_azioni3a);
 
 //EMY - ref 4
-$query_nuoviutenti4 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref4') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutenti4 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref4')  ";
 $esegui_query_nuoviutenti4 = mysqli_query($admin,$query_nuoviutenti4);
 $num_ref4 = mysqli_num_rows($esegui_query_nuoviutenti4);
 
 //EMY - ref 4
-$query_nuoviutenti4a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref4') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutenti4a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref4') ";
 $esegui_query_nuoviutenti4a = mysqli_query($admin,$query_nuoviutenti4a);
 $num_ref4a = mysqli_num_rows($esegui_query_nuoviutenti4a);
 
 if($num_ref4a>0) {$perc_ref4=ceil($num_ref4a/$num_ref4*100);}
 
 //CONTA AZIONI - REF4
-$query_azioni4a = "SELECT DISTINCT(actions) as cref4,  COUNT(DISTINCT user_id) AS nref4 FROM t_user_info where active=1 and provenienza ='ref4' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioni4a = "SELECT DISTINCT(actions) as cref4,  COUNT(DISTINCT user_id) AS nref4 FROM t_user_info where active=1 and provenienza ='ref4' GROUP by actions order by actions ASC";
 $esegui_query_azioni4a = mysqli_query($admin,$query_azioni4a);
 
 //adviceme - ref 5
-$query_nuoviutenti5= "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref5') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutenti5= "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref5')   ";
 $esegui_query_nuoviutenti5 = mysqli_query($admin,$query_nuoviutenti5);
 $num_ref5 = mysqli_num_rows($esegui_query_nuoviutenti5);
 
 //adviceme - ref 5
-$query_nuoviutenti5a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref5') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutenti5a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref5') ";
 $esegui_query_nuoviutenti5a = mysqli_query($admin,$query_nuoviutenti5a);
 $num_ref5a = mysqli_num_rows($esegui_query_nuoviutenti5a);
 
 if($num_ref5a>0) {$perc_ref5=ceil($num_ref5a/$num_ref5*100);}
 
 //CONTA AZIONI - REF5
-$query_azioni6a = "SELECT DISTINCT(actions) as cref5,  COUNT(DISTINCT user_id) AS nref5 FROM t_user_info where active=1 and provenienza ='ref5' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioni6a = "SELECT DISTINCT(actions) as cref5,  COUNT(DISTINCT user_id) AS nref5 FROM t_user_info where active=1 and provenienza ='ref5'  GROUP by actions order by actions ASC";
 $esegui_query_azioni5a = mysqli_query($admin,$query_azioni6a);
 
 
 //BIG DATA - ref 6
-$query_nuoviutenti6 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref6') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutenti6 = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='ref6')  ";
 $esegui_query_nuoviutenti6 = mysqli_query($admin,$query_nuoviutenti6);
 $num_ref6 = mysqli_num_rows($esegui_query_nuoviutenti6);
 
 //BIG DATA - ref 6
-$query_nuoviutenti6a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref6') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutenti6a = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='ref6') ";
 $esegui_query_nuoviutenti6a = mysqli_query($admin,$query_nuoviutenti6a);
 $num_ref6a = mysqli_num_rows($esegui_query_nuoviutenti6a);
 
 if($num_ref6a>0) {$perc_ref6=ceil($num_ref6a/$num_ref6*100);}
 
 //CONTA AZIONI - REF6
-$query_azioni6a = "SELECT DISTINCT(actions) as cref6,  COUNT(DISTINCT user_id) AS nref6 FROM t_user_info where active=1 and provenienza ='ref6' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioni6a = "SELECT DISTINCT(actions) as cref6,  COUNT(DISTINCT user_id) AS nref6 FROM t_user_info where active=1 and provenienza ='ref6'  GROUP by actions order by actions ASC";
 $esegui_query_azioni6a = mysqli_query($admin,$query_azioni6a);
 
 
 //AMICI
-$query_nuoviutentiA = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%'  and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutentiA = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%'   ";
 $esegui_query_nuoviutentiA = mysqli_query($admin,$query_nuoviutentiA);
 $num_refA = mysqli_num_rows($esegui_query_nuoviutentiA);
 
 //AMICI
-$query_nuoviutentiAa = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%' and reg_date like '%".$annocorrente."%'";
+$query_nuoviutentiAa = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%' ";
 $esegui_query_nuoviutentiAa = mysqli_query($admin,$query_nuoviutentiAa);
 $num_refAa = mysqli_num_rows($esegui_query_nuoviutentiAa);
 
 if($num_refAa>0) {$perc_refA=ceil($num_refAa/$num_refA*100);}
 
 //CONTA AZIONI - AMICI
-$query_azioniAa = "SELECT DISTINCT(actions) as crefA,  COUNT(DISTINCT user_id) AS nrefA FROM t_user_info where active=1 and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioniAa = "SELECT DISTINCT(actions) as crefA,  COUNT(DISTINCT user_id) AS nrefA FROM t_user_info where active=1 and provenienza NOT LIKE 'ref%' AND provenienza NOT LIKE 'website%' GROUP by actions order by actions ASC";
 $esegui_query_azioniAa = mysqli_query($admin,$query_azioniAa);
 
 
 //RECUPERI - ref REACT
-$query_nuoviutentiR = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='react') and reg_date like '%".$annocorrente."%'  ";
+$query_nuoviutentiR = "SELECT * FROM t_user_info where active=1 and email not like'%.top' and ( provenienza='react')";
 $esegui_query_nuoviutentiR = mysqli_query($admin,$query_nuoviutentiR);
 $num_refR= mysqli_num_rows($esegui_query_nuoviutentiR);
 
 //RECUPERI - ref REACT
-$query_nuoviutentiRa = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='react') and reg_date like '%".$annocorrente."%'";
+$query_nuoviutentiRa = "SELECT * FROM t_user_info where active=1 and actions>0 and email not like'%.top' and ( provenienza='react')";
 $esegui_query_nuoviutentiRa = mysqli_query($admin,$query_nuoviutentiRa);
 $num_refRa = mysqli_num_rows($esegui_query_nuoviutentiRa);
 
 if($num_refRa>0) { $perc_refR=ceil($num_refRa/$num_refR*100);}
 
 //RECUPERI AZIONI - REF REACT
-$query_azioniRa = "SELECT DISTINCT(actions) as crefR,  COUNT(DISTINCT user_id) AS nrefR FROM t_user_info where active=1 and provenienza ='react' and reg_date like '%$annocorrente%' GROUP by actions order by actions ASC";
+$query_azioniRa = "SELECT DISTINCT(actions) as crefR,  COUNT(DISTINCT user_id) AS nrefR FROM t_user_info where active=1 and provenienza ='react GROUP by actions order by actions ASC";
 $esegui_query_azioniRa = mysqli_query($admin,$query_azioniRa);
-
 
 
  // somma iscritti
@@ -271,6 +270,7 @@ $mediaAct=round($mediaAct, 2);
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 	<div col-xs-6>
+        <h2>Reclutamento Storico</h2>
 </div>
  
  
@@ -364,7 +364,7 @@ $mediaAct=round($mediaAct, 2);
 <div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<div col-xs-6><h6 class="m-0 font-weight-bold text-primary"> DETTAGLI - CAMPAGNE <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="fas fa-info-circle"></i></span> </h6></div>
+	<div col-xs-6><h6 class="m-0 font-weight-bold text-primary"> DETTAGLI - CAMPAGNE STORICO &nbsp; <span style="float:right"> <i class="fas fa-info-circle"></i></span> </h6></div>
   <div class="col col-xs-6 text-right">
 	<?php require_once('modifica_ref.php'); ?>
 	</div>
@@ -411,14 +411,14 @@ $.ajaxSetup({
    let price;
    let csv;
 
-  $.getJSON('referal.json', function(data) 
+  $.getJSON('referalSto.json', function(data) 
     {
       $.ajaxSetup({
         cache:false
           });
 
       cache: false
-      $.each(data.referal, function(key, val) 
+      $.each(data.referalSto, function(key, val) 
       {
 
       if (val.id==2) 
@@ -548,14 +548,14 @@ $.ajaxSetup({
    let info4;
 
 
-  $.getJSON('referal.json', function(data) 
+  $.getJSON('referalSto.json', function(data) 
     {
       $.ajaxSetup({
      cache:false
         });
 
       cache: false
-      $.each(data.referal, function(key, val) 
+      $.each(data.referalSto, function(key, val) 
       {
 
       if (val.id==2) 
@@ -571,10 +571,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioni2a)) 
       {
       if($row["cref2"]==0) { $NactA=$NactA+$row["nref2"];  $perc_NactA=ceil($NactA/$num_ref2*100);}
-      if($row["cref2"]>=1 && $row["cref2"]<=2) { $NactB=$NactB+$row["nref2"];; $perc_NactB=ceil($NactB/$num_ref2*100);}
-      if($row["cref2"]>=3 && $row["cref2"]<=5) { $NactC=$NactC+$row["nref2"]; $perc_NactC=ceil($NactC/$num_ref2*100);}
-      if($row["cref2"]>=6 && $row["cref2"]<=9) { $NactD=$NactD+$row["nref2"]; $perc_NactD=ceil($NactD/$num_ref2*100);}
-      if($row["cref2"]>9) {  $NactE=$NactE+$row["nref2"]; $perc_NactE=ceil($NactE/$num_ref2*100);}
+      if($row["cref2"]>=1 && $row["cref2"]<=4) { $NactB=$NactB+$row["nref2"];; $perc_NactB=ceil($NactB/$num_ref2*100);}
+      if($row["cref2"]>=5 && $row["cref2"]<=8) { $NactC=$NactC+$row["nref2"]; $perc_NactC=ceil($NactC/$num_ref2*100);}
+      if($row["cref2"]>=9 && $row["cref2"]<=15) { $NactD=$NactD+$row["nref2"]; $perc_NactD=ceil($NactD/$num_ref2*100);}
+      if($row["cref2"]>15) {  $NactE=$NactE+$row["nref2"]; $perc_NactE=ceil($NactE/$num_ref2*100);}
    } 
    ?> 
 
@@ -585,19 +585,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -631,10 +631,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioni3a)) 
       {
       if($row["cref3"]==0) { $NactA=$NactA+$row["nref3"];  $perc_NactA=ceil($NactA/$num_ref3*100);}
-      if($row["cref3"]>=1 && $row["cref3"]<=2) { $NactB=$NactB+$row["nref3"];  $perc_NactB=ceil($NactB/$num_ref3*100);}
-      if($row["cref3"]>=3 && $row["cref3"]<=5) { $NactC=$NactC+$row["nref3"]; $perc_NactC=ceil($NactC/$num_ref3*100);}
-      if($row["cref3"]>=6 && $row["cref3"]<=9) { $NactD=$NactD+$row["nref3"]; $perc_NactD=ceil($NactD/$num_ref3*100);}
-      if($row["cref3"]>9) {  $NactE=$NactE+$row["nref3"];  $perc_NactE=ceil($NactE/$num_ref3*100);}
+      if($row["cref3"]>=1 && $row["cref3"]<=4) { $NactB=$NactB+$row["nref3"];  $perc_NactB=ceil($NactB/$num_ref3*100);}
+      if($row["cref3"]>=5 && $row["cref3"]<=8) { $NactC=$NactC+$row["nref3"]; $perc_NactC=ceil($NactC/$num_ref3*100);}
+      if($row["cref3"]>=9 && $row["cref3"]<=15) { $NactD=$NactD+$row["nref3"]; $perc_NactD=ceil($NactD/$num_ref3*100);}
+      if($row["cref3"]>15) {  $NactE=$NactE+$row["nref3"];  $perc_NactE=ceil($NactE/$num_ref3*100);}
    } 
    ?> 
 
@@ -645,19 +645,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -690,10 +690,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioni4a)) 
       {
       if($row["cref4"]==0) { $NactA=$NactA+$row["nref4"];  $perc_NactA=ceil($NactA/$num_ref4*100);}
-      if($row["cref4"]>=1 && $row["cref4"]<=2) { $NactB=$NactB+$row["nref4"];  $perc_NactB=ceil($NactB/$num_ref4*100);}
-      if($row["cref4"]>=3 && $row["cref4"]<=5) { $NactC=$NactC+$row["nref4"]; $perc_NactC=ceil($NactC/$num_ref4*100);}
-      if($row["cref4"]>=6 && $row["cref4"]<=9) { $NactD=$NactD+$row["nref4"]; $perc_NactD=ceil($NactD/$num_ref4*100);}
-      if($row["cref4"]>9) {  $NactE=$NactE+$row["nref4"];  $perc_NactE=ceil($NactE/$num_ref4*100);}
+      if($row["cref4"]>=1 && $row["cref4"]<=4) { $NactB=$NactB+$row["nref4"];  $perc_NactB=ceil($NactB/$num_ref4*100);}
+      if($row["cref4"]>=5 && $row["cref4"]<=8) { $NactC=$NactC+$row["nref4"]; $perc_NactC=ceil($NactC/$num_ref4*100);}
+      if($row["cref4"]>=9 && $row["cref4"]<=15) { $NactD=$NactD+$row["nref4"]; $perc_NactD=ceil($NactD/$num_ref4*100);}
+      if($row["cref4"]>15) {  $NactE=$NactE+$row["nref4"];  $perc_NactE=ceil($NactE/$num_ref4*100);}
    } 
    ?> 
 
@@ -704,19 +704,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -749,10 +749,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioni5a)) 
       {
       if($row["cref5"]==0) { $NactA=$NactA+$row["nref5"];  $perc_NactA=ceil($NactA/$num_ref5*100);}
-      if($row["cref5"]>=1 && $row["cref5"]<=2) { $NactB=$NactB+$row["nref5"];  $perc_NactB=ceil($NactB/$num_ref5*100);}
-      if($row["cref5"]>=3 && $row["cref5"]<=5) { $NactC=$NactC+$row["nref5"]; $perc_NactC=ceil($NactC/$num_ref5*100);}
-      if($row["cref5"]>=6 && $row["cref5"]<=9) { $NactD=$NactD+$row["nref5"]; $perc_NactD=ceil($NactD/$num_ref5*100);}
-      if($row["cref5"]>9) {  $NactE=$NactE+$row["nref5"];  $perc_NactE=ceil($NactE/$num_ref5*100);}
+      if($row["cref5"]>=1 && $row["cref5"]<=4) { $NactB=$NactB+$row["nref5"];  $perc_NactB=ceil($NactB/$num_ref5*100);}
+      if($row["cref5"]>=5 && $row["cref5"]<=8) { $NactC=$NactC+$row["nref5"]; $perc_NactC=ceil($NactC/$num_ref5*100);}
+      if($row["cref5"]>=9 && $row["cref5"]<=15) { $NactD=$NactD+$row["nref5"]; $perc_NactD=ceil($NactD/$num_ref5*100);}
+      if($row["cref5"]>15) {  $NactE=$NactE+$row["nref5"];  $perc_NactE=ceil($NactE/$num_ref5*100);}
    } 
    ?> 
 
@@ -763,19 +763,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -809,10 +809,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioni6a)) 
       {
       if($row["cref6"]==0) { $NactA=$NactA+$row["nref6"];  $perc_NactA=ceil($NactA/$num_ref6*100);}
-      if($row["cref6"]>=1 && $row["cref6"]<=2) { $NactB=$NactB+$row["nref6"];  $perc_NactB=ceil($NactB/$num_ref6*100);}
-      if($row["cref6"]>=3 && $row["cref6"]<=5) { $NactC=$NactC+$row["nref6"]; $perc_NactC=ceil($NactC/$num_ref6*100);}
-      if($row["cref6"]>=6 && $row["cref6"]<=9) { $NactD=$NactD+$row["nref6"]; $perc_NactD=ceil($NactD/$num_ref6*100);}
-      if($row["cref6"]>9) {  $NactE=$NactE+$row["nref6"];  $perc_NactE=ceil($NactE/$num_ref6*100);}
+      if($row["cref6"]>=1 && $row["cref6"]<=4) { $NactB=$NactB+$row["nref6"];  $perc_NactB=ceil($NactB/$num_ref6*100);}
+      if($row["cref6"]>=5 && $row["cref6"]<=8) { $NactC=$NactC+$row["nref6"]; $perc_NactC=ceil($NactC/$num_ref6*100);}
+      if($row["cref6"]>=9 && $row["cref6"]<=15) { $NactD=$NactD+$row["nref6"]; $perc_NactD=ceil($NactD/$num_ref6*100);}
+      if($row["cref6"]>15) {  $NactE=$NactE+$row["nref6"];  $perc_NactE=ceil($NactE/$num_ref6*100);}
    } 
    ?> 
 
@@ -823,19 +823,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -869,10 +869,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioniRa)) 
       {
       if($row["crefR"]==0) { $NactA=$NactA+$row["nrefR"];  $perc_NactA=ceil($NactA/$num_refR*100);}
-      if($row["crefR"]>=1 && $row["crefR"]<=2) { $NactB=$NactB+$row["nrefR"];  $perc_NactB=ceil($NactB/$num_refR*100);}
-      if($row["crefR"]>=3 && $row["crefR"]<=5) { $NactC=$NactC+$row["nrefR"]; $perc_NactC=ceil($NactC/$num_refR*100);}
-      if($row["crefR"]>=6 && $row["crefR"]<=9) { $NactD=$NactD+$row["nrefR"]; $perc_NactD=ceil($NactD/$num_refR*100);}
-      if($row["crefR"]>9) {  $NactE=$NactE+$row["nrefR"];  $perc_NactE=ceil($NactE/$num_refR*100);}
+      if($row["crefR"]>=1 && $row["crefR"]<=4) { $NactB=$NactB+$row["nrefR"];  $perc_NactB=ceil($NactB/$num_refR*100);}
+      if($row["crefR"]>=5 && $row["crefR"]<=8) { $NactC=$NactC+$row["nrefR"]; $perc_NactC=ceil($NactC/$num_refR*100);}
+      if($row["crefR"]>=9 && $row["crefR"]<=15) { $NactD=$NactD+$row["nrefR"]; $perc_NactD=ceil($NactD/$num_refR*100);}
+      if($row["crefR"]>15) {  $NactE=$NactE+$row["nrefR"];  $perc_NactE=ceil($NactE/$num_refR*100);}
    } 
    ?> 
 
@@ -883,19 +883,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -928,10 +928,10 @@ $.ajaxSetup({
        while ($row = mysqli_fetch_assoc($esegui_query_azioniAa)) 
       {
       if($row["crefA"]==0) { $NactA=$NactA+$row["nrefA"];  $perc_NactA=ceil($NactA/$num_refA*100);}
-      if($row["crefA"]>=1 && $row["crefA"]<=2) { $NactB=$NactB+$row["nrefA"];  $perc_NactB=ceil($NactB/$num_refA*100);}
-      if($row["crefA"]>=3 && $row["crefA"]<=5) { $NactC=$NactC+$row["nrefA"]; $perc_NactC=ceil($NactC/$num_refA*100);}
-      if($row["crefA"]>=6 && $row["crefA"]<=9) { $NactD=$NactD+$row["nrefA"]; $perc_NactD=ceil($NactD/$num_refA*100);}
-      if($row["crefA"]>9) {  $NactE=$NactE+$row["nrefA"];  $perc_NactE=ceil($NactE/$num_refA*100);}
+      if($row["crefA"]>=1 && $row["crefA"]<=4) { $NactB=$NactB+$row["nrefA"];  $perc_NactB=ceil($NactB/$num_refA*100);}
+      if($row["crefA"]>=5 && $row["crefA"]<=8) { $NactC=$NactC+$row["nrefA"]; $perc_NactC=ceil($NactC/$num_refA*100);}
+      if($row["crefA"]>=9 && $row["crefA"]<=15) { $NactD=$NactD+$row["nrefA"]; $perc_NactD=ceil($NactD/$num_refA*100);}
+      if($row["crefA"]>15) {  $NactE=$NactE+$row["nrefA"];  $perc_NactE=ceil($NactE/$num_refA*100);}
    } 
    ?> 
 
@@ -942,19 +942,19 @@ $.ajaxSetup({
      </tr>  
      
      <tr style="background-color:#ffde7c">
-     <td>Bassa(1-2) </td>
+     <td>Bassa(1-4) </td>
      <td><?php echo $NactB; ?></td>
      <td><b><?php echo $perc_NactB; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#ffff7c">
-     <td>Media(3-5) </td>
+     <td>Media(5-8) </td>
      <td><?php echo $NactC; ?></td>
      <td><b><?php echo $perc_NactC; ?>%</b></td>
      </tr>
 
      <tr style="background-color:#cfff7c">
-     <td>Buona(6-9) </td>
+     <td>Buona(9-15) </td>
      <td><?php echo $NactD; ?></td>
      <td><b><?php echo $perc_NactD; ?>%</b></td>
      </tr>
@@ -976,7 +976,7 @@ $.ajaxSetup({
 <div class="card shadow mb-12 ">
 
    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-	<h6 class="m-0 font-weight-bold text-primary"> `+val.title+` <?php echo $annocorrente ?> &nbsp; <span style="float:right"> <i class="`+val.icon+`"></i></span> </h6>
+	<h6 class="m-0 font-weight-bold text-primary"> `+val.title+` STORICO &nbsp; <span style="float:right"> <i class="`+val.icon+`"></i></span> </h6>
  </div>
 
 <div class="card-body">  

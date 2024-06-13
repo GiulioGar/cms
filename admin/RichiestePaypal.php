@@ -32,10 +32,10 @@ require_once('inc_tagbody.php');
 
 
 
-$query_cerca = "SELECT * FROM t_user_history,t_user_info where pagato like '$cerca_progetto' AND t_user_history.user_id=t_user_info.user_id AND event_type='withdraw' and event_info LIKE '%Paypal%' order by event_date asc";
+$query_cerca = "SELECT * FROM t_user_history,t_user_info where pagato like '$cerca_progetto' AND t_user_history.user_id=t_user_info.user_id AND event_type='withdraw' and event_info LIKE '%Paypal%' and active=1 order by event_date asc";
 $cerca = mysqli_query($admin,$query_cerca);
 
-$query_cerca2 = "SELECT * FROM t_user_history,t_user_info where pagato like '$cerca_progetto' AND t_user_history.user_id=t_user_info.user_id AND event_type='withdraw' and event_info LIKE '%Paypal%' order by event_date asc";
+$query_cerca2 = "SELECT * FROM t_user_history,t_user_info where pagato like '$cerca_progetto' AND t_user_history.user_id=t_user_info.user_id AND event_type='withdraw' and event_info LIKE '%Paypal%' and active=1 order by event_date asc";
 $cerca2 = mysqli_query($admin,$query_cerca2);
 
 
@@ -208,6 +208,7 @@ $month2 = date('m', $ts2);
 	 <th>Post</th>
 	 <th>Richiesta</th>
 	 <th>Email paypal</th>
+	 <th>IP</th>
 	 <th>Pagamento</th>
 	 <th></th>
 	</tr>
@@ -228,6 +229,8 @@ $month2 = date('m', $ts2);
 			if (strstr($euroPaga,"5 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ff8989"; }
 			if (strstr($euroPaga,"10 euro")&&(strstr($tipoPremio,"Paypal"))) { $bacCol="#ffdcbc"; }
 	
+			if ($row['pagato']==0) { $stampIP=$row['ip'];}
+			else { $stampIP="&nbsp;"; }
 
 		  echo "<tr>
 		  <td style='max-width:200px;'><a href=\"user.php?user_id=".$row['user_id']."\" style=\"color:#00C; text-decoration:none \" target='_blank'>".$row['user_id']."<br/>".$row['email']."</a></td>
@@ -236,7 +239,9 @@ $month2 = date('m', $ts2);
 		 <td>".$row['prev_level']."</td>
 		 <td>".$row['new_level']."</td>
 		 <td>".$newdate."</td>
-		 <td>".$row['paypalEmail']."</td>";
+		 <td>".$row['paypalEmail']."</td>
+		 <td>".$stampIP."</td>";
+		 
 		  if ($row['pagato']==0){echo "<td>n.p.</td>";}
 								else
 								{
@@ -336,4 +341,40 @@ $(document).ready( function () {
                         }]
     } );
 } );
+</script>
+
+<script>
+//TROVA DUPLICATI IP E SOTTOLINEA
+
+
+const tabella = "#table_sur";
+  const colonnaDaControllare = 8; // Ad esempio, controlla la seconda colonna
+
+  function trovaDuplicatiETagli(tabella, colonna) {
+    const celleColonna = $(tabella).find(`tr td:nth-child(${colonna})`);
+    const valori = {};
+    console.log(celleColonna);
+
+    celleColonna.each(function() {
+      const valore = $(this).text();
+      if (valori[valore]) {
+        $(this).addClass("duplicato");
+      } else {
+        valori[valore] = true;
+      }
+    });
+  }
+
+
+$(document).ready(function() {
+  trovaDuplicatiETagli(tabella, colonnaDaControllare);
+  $(".duplicato").css("background-color","#ff6b6b");
+});
+
+$( "#table_sur" ).on( "mousemove", function( event ) {
+	trovaDuplicatiETagli(tabella, colonnaDaControllare);
+	$(".duplicato").css("background-color","#ff6b6b");
+	console.log("Muovo");
+
+});
 </script>

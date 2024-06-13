@@ -211,6 +211,7 @@ setlocale(LC_MONETARY, 'it_IT');
         }
 
         if ($costo_Totale==""){$costo_Totale=0;}
-
+        if ($cerca_progetto=="R2309129"){ $costo_Totale=0; }
+        if ($cerca_progetto=="R2401001"){ $costo_Totale=$costo_Totale+142.50; }
         echo $costo_Totale;
         ?>
