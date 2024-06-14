@@ -8,12 +8,13 @@ $coldx = "no";
 
 
 
-$today=date("Y-m-d H:i:s", mktime(date("H")-6,date("i,s,m,d,Y") ));
-$mesi1=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-1,date("d"),date("Y")));
-$mesi2=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-2,date("d"),date("Y")));
-$mesi4=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-4,date("d"),date("Y")));
-$mesi6=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-6,date("d"),date("Y")));
-$mesi12=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m"),date("d"),date("Y")-1));
+$today = date("Y-m-d H:i:s", mktime(date("H") - 6, date("i"), date("s"), date("m"), date("d"), date("Y")));
+$mesi1 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 1, date("d"), date("Y")));
+$mesi2 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 2, date("d"), date("Y")));
+$mesi4 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 4, date("d"), date("Y")));
+$mesi6 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 6, date("d"), date("Y")));
+$mesi12 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m"), date("d"), date("Y") - 1));
+
 
 mysqli_select_db($admin,$database_admin);
 $query_ricerche = "SELECT * FROM t_panel_control order by stato,giorni_rimanenti ASC,id DESC";

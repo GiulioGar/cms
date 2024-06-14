@@ -1,0 +1,8 @@
+2.0;FER;R2405081;678;IDEXCI682;08/06/2024 05:59:54 CEST;08/06/2024 06:00:31 CEST;37;4;70;sysSID=R2405081;sysPRJ=FER;sysUID=IDEXCI682;device=mobile;lang=en;sysIID=678;pan=1
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;22
+choice;45;4;1
+choice;52;4;1
+choice;70;2;1

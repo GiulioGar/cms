@@ -725,7 +725,6 @@ if ($stato_ricerca != 1)
 
 $query_aggiorna_statistiche = "UPDATE t_panel_control set abilitati='".$totale_user_abilitati."', contatti='".$contatti_panel."', filtrati='".$conta_filtrati."', quota_full='".$conta_quotafull."',incomplete='".$conta_incomplete."',panel_interno='".$contatti_panel."',contatti_totali='".$contatti."',panel_esterno='".$panel_esterno."', red_panel='".$redemption_panel."', last_update='".$data."', complete='".$conta_complete."', red_surv='".$redemption_field."' where sur_id='".$sid."' AND id <> '' ";
 $aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche) ;
-$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 
 
 }
@@ -755,7 +754,14 @@ $labelArr=array();
 $valArr=array();
 
 $contaImm=0;
-		arsort($filtri);
+		// Assicurati che $filtri sia definito come array
+			if (isset($filtri) && is_array($filtri)) {
+				arsort($filtri);
+			} else {
+				// Gestione del caso in cui $filtri non è definito o non è un array
+				$filtri = [];
+				// Puoi decidere di loggare un messaggio di errore o gestire questo caso come preferisci
+			}
 		foreach ( $filtri as $chiave => $valore) 
 				{
 				$contaImm++;
@@ -856,7 +862,11 @@ $contaImm=0;
 								$contaT++;
 								if ($contaT>2)
 									{
-										$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
+										if (isset($txtread[$contaT]) && $txtread[$contaT] !== null) {
+    $txtread[$contaT] = str_replace('+"', ' ', $txtread[$contaT]);
+} else {
+    // Gestione del caso in cui $txtread[$contaT] è null
+    $txtread[$contaT] = '';}
 										$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
 										$txtcompleto=$txtcompleto.$txtread[$contaT];
 										
@@ -890,7 +900,17 @@ ${'valArr'.$value}=array();
 
 $contaImm=0;
 
-arsort(${'filtriP'.$value});
+// Nome della variabile dinamica
+$filtriP_var = 'filtriP' . $value;
+
+// Verifica che la variabile dinamica sia definita e sia un array
+if (isset(${$filtriP_var}) && is_array(${$filtriP_var})) {
+    arsort(${$filtriP_var});
+} else {
+    // Gestione del caso in cui la variabile dinamica non è definita o non è un array
+    ${$filtriP_var} = []; // O qualsiasi altro valore di default appropriato
+
+}
 foreach ( ${'filtriP'.$value} as ${'chiave'.$value} => ${'valore'.$value}) 
 		{
 		$contaImm++;
@@ -991,7 +1011,11 @@ foreach ( ${'filtriP'.$value} as ${'chiave'.$value} => ${'valore'.$value})
 						$contaT++;
 						if ($contaT>2)
 							{
-								$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
+								if (isset($txtread[$contaT]) && $txtread[$contaT] !== null) {
+    $txtread[$contaT] = str_replace('+"', ' ', $txtread[$contaT]);
+} else {
+    // Gestione del caso in cui $txtread[$contaT] è null
+    $txtread[$contaT] = '';}
 								$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
 								$txtcompleto=$txtcompleto.$txtread[$contaT];
 								
@@ -1028,7 +1052,15 @@ $valsArr=array();
 
 $contaImm2==0;
 		
-		arsort($sospese);
+		// Assicurati che $sospese sia definito come array
+if (isset($sospese) && is_array($sospese)) {
+    arsort($sospese);
+} else {
+    // Gestione del caso in cui $sospese non è definito o non è un array
+    $sospese = [];
+    // Puoi decidere di loggare un messaggio di errore o gestire questo caso come preferisci
+
+}
 		foreach ($sospese as $chiave => $valore) 
 				{
 				$contaImm2++;
@@ -1128,7 +1160,11 @@ $contaImm2==0;
 								$contaT++;
 								if ($contaT>2)
 									{
-										$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
+										if (isset($txtread[$contaT]) && $txtread[$contaT] !== null) {
+    $txtread[$contaT] = str_replace('+"', ' ', $txtread[$contaT]);
+} else {
+    // Gestione del caso in cui $txtread[$contaT] è null
+    $txtread[$contaT] = '';}
 										$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
 										$txtcompleto=$txtcompleto.$txtread[$contaT];
 									}
@@ -1264,7 +1300,11 @@ foreach ($panels as $value)
 									$contaT++;
 									if ($contaT>2)
 										{
-											$txtread[$contaT]=str_replace('+"', ' ', $txtread[$contaT]);
+											if (isset($txtread[$contaT]) && $txtread[$contaT] !== null) {
+    $txtread[$contaT] = str_replace('+"', ' ', $txtread[$contaT]);
+} else {
+    // Gestione del caso in cui $txtread[$contaT] è null
+    $txtread[$contaT] = '';}
 											$txtread[$contaT]=str_replace('"+', ' ', $txtread[$contaT]);
 											$txtcompleto=$txtcompleto.$txtread[$contaT];
 										}

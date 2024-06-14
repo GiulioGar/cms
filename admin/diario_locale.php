@@ -61,7 +61,13 @@ $contattiArr=array();
 $redArr=array();
 
 
-							asort($diario);
+                    if (isset($diario) && is_array($diario)) {
+                        asort($diario);
+                    } else {
+                        // Gestione del caso in cui $diario non è definito o non è un array
+                        $diario = [];
+                        // Puoi decidere di loggare un messaggio di errore o gestire questo caso come preferisci
+                    }
 
 
 							foreach ( $diario as $chiave => $valore) 
@@ -71,7 +77,12 @@ $redArr=array();
 							if ($diario_quotafull[$chiave]==""){$diario_quotafull[$chiave]=0;}
 							if ($diario_incomplete[$chiave]==""){$diario_incomplete[$chiave]=0;}
 
-							$redemption_field_giornaliero=($diario_complete[$chiave]/($diario_complete[$chiave]+$diario_filtrati[$chiave]))*100;
+							if (($diario_complete[$chiave] + $diario_filtrati[$chiave]) != 0) {
+                                $redemption_field_giornaliero = ($diario_complete[$chiave] / ($diario_complete[$chiave] + $diario_filtrati[$chiave])) * 100;
+                            } else {
+                                // Gestione del caso di divisione per zero
+                                $redemption_field_giornaliero = 0; // O qualsiasi altro valore di default appropriato
+                            }
 							$redemption_field_giornaliero=number_format($redemption_field_giornaliero, 2);
 							$sumDiaComp=$sumDiaComp+$diario_complete[$chiave];
 							$sumDiaFilt=$sumDiaFilt+$diario_filtrati[$chiave];
@@ -132,10 +143,20 @@ $redArr=array();
  if ($diario_quotafull_panel[$chiave]==""){$diario_quotafull_panel[$chiave]=0;}
  if ($diario_incomplete_panel[$chiave]==""){$diario_incomplete_panel[$chiave]=0;}
  $contatti_totali_sample=$contatti_totali_sample+$diario_complete_panel[$chiave]+$diario_filtrati_panel[$chiave]+$diario_quotafull_panel[$chiave]+$diario_incomplete_panel[$chiave];
- $red_panel_sample=($contatti_totali_sample/$abilitati_totali_sample)*100;
+ if ($abilitati_totali_sample != 0) {
+    $red_panel_sample = ($contatti_totali_sample / $abilitati_totali_sample) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    $red_panel_sample = 0; // O qualsiasi altro valore di default appropriato
+}
  $red_panel_sample=number_format($red_panel_sample, 2);
 
- $redemption_field_giornalieroMb=($diario_complete_panel[$chiave]/($diario_complete_panel[$chiave]+$diario_filtrati_panel[$chiave]))*100;
+ if (($diario_complete_panel[$chiave] + $diario_filtrati_panel[$chiave]) != 0) {
+    $redemption_field_giornalieroMb = ($diario_complete_panel[$chiave] / ($diario_complete_panel[$chiave] + $diario_filtrati_panel[$chiave])) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    $redemption_field_giornalieroMb = 0; // O qualsiasi altro valore di default appropriato
+}
  $redemption_field_giornalieroMb=number_format($redemption_field_giornalieroMb, 2);
 
  $sumPanDiaComp=$sumPanDiaComp+$diario_complete_panel[$chiave];
@@ -188,7 +209,13 @@ asort($diario);
 									if ($diario_quotafull_ssi[$chiave]==""){$diario_quotafull_ssi[$chiave]=0;}
 									if ($diario_incomplete_ssi[$chiave]==""){$diario_incomplete_ssi[$chiave]=0;}
 
-									$redemption_field_giornalieroEx=($diario_complete_ssi[$chiave]/($diario_complete_ssi[$chiave]+$diario_filtrati_ssi[$chiave]))*100;
+									// Verifica che il denominatore non sia zero
+                                    if (($diario_complete_ssi[$chiave] + $diario_filtrati_ssi[$chiave]) != 0) {
+                                        $redemption_field_giornalieroEx = ($diario_complete_ssi[$chiave] / ($diario_complete_ssi[$chiave] + $diario_filtrati_ssi[$chiave])) * 100;
+                                    } else {
+                                        // Gestione del caso di divisione per zero
+                                        $redemption_field_giornalieroEx = 0; // O qualsiasi altro valore di default appropriato
+                                    }
 									$redemption_field_giornalieroEx=number_format($redemption_field_giornalieroEx, 2);
 
 									$sumExtDiaComp=$sumExtDiaComp+$diario_complete_ssi[$chiave];
@@ -204,10 +231,14 @@ asort($diario);
                                     $anno1C=$pieces3[2];
 
                                     $wdayC= giornoSettimana($mese1C,$giorno1C,$anno1C);
+
+                                    if (!isset($WdaysArrMC) || !is_array($WdaysArrMC)) { $WdaysArrMC = []; }
                                     
                                     array_push($WdaysArrMC,$wdayC);
                                     array_push($daysArrE,$chiave);
                                     if ($redemption_field_giornalieroEx !="nan")  { array_push($days2ArrE,$chiave);}
+
+                                    if (!isset($day2sArrE) || !is_array($day2sArrE)) { $day2sArrE = []; }
                                     array_push($day2sArrE,$chiave);
                                     array_push($completeArrE,$diario_complete_ssi[$chiave]);
                                     array_push($screenoutArrE,$diario_filtrati_ssi[$chiave]);

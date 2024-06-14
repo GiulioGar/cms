@@ -191,27 +191,41 @@ if ($stato_ricerca != 1)
 {
 
 
-//ELIMINO RECORD
-$query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='.$sid.')";
-$query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) ;
-$query_pulisci_respint_copy_sample_t = mysqli_fetch_assoc($query_pulisci_respint_copy_sample);
+	$query_pulisci_respint_copy = "DELETE FROM t_abilitatipanel WHERE sid = '$sid'";
 
-//RICOPIO
-$query_copia_respint_copy="INSERT t_abilitatipanel (sid, uid, prj_name)
-SELECT sid, uid, prj_name
-FROM t_respint
-WHERE sid = '".$sid."'";
-$query_copia_respint_copy_sample = mysqli_query($admin,$query_copia_respint_copy) ;
-$query_copia_respint_copy_sample_t = mysqli_fetch_assoc($query_copia_respint_copy_sample);
+	// Esegui la query
+	$query_pulisci_respint_copy_sample = mysqli_query($admin, $query_pulisci_respint_copy);
+	
+	// Verifica se la query è stata eseguita correttamente
+	if (!$query_pulisci_respint_copy_sample) {
+		die("Query failed: " . mysqli_error($admin));
+	}
+
+// Ricopia i dati
+$query_copia_respint_copy = "
+    INSERT INTO t_abilitatipanel (sid, uid, prj_name)
+    SELECT sid, uid, prj_name
+    FROM t_respint
+    WHERE sid = '$sid'
+";
+
+// Esegui la query
+$query_copia_respint_copy_sample = mysqli_query($admin, $query_copia_respint_copy);
+
+// Verifica se la query è stata eseguita correttamente
+if (!$query_copia_respint_copy_sample) {
+    die("Query failed: " . mysqli_error($admin));
+}
 
 
 
+///MODIFICA PRIMA DI PUBBLICARE */
+//$linkDir="/var";     // SERVER ONLINE
+$linkDir="../var";   //XAMPP 
 
 //AGGIORNAMENTO DATA IN RESPINT//
 
-// RIPRISTINA DOPO PUBBLICAZIONE
-$fl_sample = glob('/var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
-//$fl_sample = glob('../var/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
+$fl_sample = glob($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/samples/*.txt');
 
 $contatti_sample=count($fl_sample);
 //$sid="ITA1411148";
@@ -303,27 +317,39 @@ else
 if ($stato_ricerca != 1)
 	{
 	
-	$aggiorna_abilitati=$tot_use_abilitati['total'];
-	
-	$query_aggiorna_abilitati_aggiornati = "UPDATE t_panel_control set abilitati_aggiornati='".$aggiorna_abilitati."', abilitati='".$aggiorna_abilitati."' where sur_id='".$sid."'";
-	$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) ;
-	$aggiorna_abilitati_query_esegui = mysqli_fetch_assoc($aggiorna_abilitati_query);
+		$aggiorna_abilitati = $tot_use_abilitati['total'];
+
+		// Esegui la query di aggiornamento
+		$query_aggiorna_abilitati_aggiornati = "
+			UPDATE t_panel_control 
+			SET abilitati_aggiornati = '$aggiorna_abilitati', 
+				abilitati = '$aggiorna_abilitati' 
+			WHERE sur_id = '$sid'
+		";
+		
+		// Esegui la query
+		$aggiorna_abilitati_query = mysqli_query($admin, $query_aggiorna_abilitati_aggiornati);
+		
+		// Verifica se la query è stata eseguita correttamente
+		if (!$aggiorna_abilitati_query) {
+			die("Query failed: " . mysqli_error($admin));
+		}
 	}
 }
 
 //echo "<br>Ultimo aggiornamento:".$ultimo_aggiornamento;
 //echo "<br>Data odierna:".$data;
-$confrontodata=(strtotime($data_odierna))-(strtotime($data));
-$ore_differenza=($confrontodata/60)/60;
+if (!empty($data_odierna) && !empty($data)) {
+    $confrontodata = strtotime($data_odierna) - strtotime($data);
+    $ore_differenza = ($confrontodata / 60) / 60;
+} 
 //echo "<br>Differenza:".(($confrontodata/60)/60)." ore";
 
 //recupero tutti i file sre dalla cartella e li conto
 
 //ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
 
-$fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
-
-//$fl = glob('../var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+$fl = glob($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 
 $contatti=count($fl);
 
@@ -349,9 +375,17 @@ $query_base=$query_base." AND birth_date <= ".$anno_nascita;
 
 if ($target_age_2 <> NULL)
 {
-$anno_corrente = date("Y")+"<br>";
-$anno_nascita= $anno_corrente-$target_age_2;
-$query_base=$query_base." AND birth_date >= ".$anno_nascita;
+// Ottieni l'anno corrente come intero
+$anno_corrente = (int)date("Y");
+
+// Assicurati che $target_age_2 sia definito correttamente e sia un numero
+$target_age_2 = 30; // Esempio di valore, sostituisci con il valore effettivo
+
+// Calcola l'anno di nascita
+$anno_nascita = $anno_corrente - $target_age_2;
+
+// Costruisci la query
+$query_base = $query_base . " AND birth_date >= " . $anno_nascita;
 }
 
 //echo $query_base;
@@ -780,14 +814,9 @@ if($varPanel==9)
 
 /*RIPRISTINA PER PRODUZIONE*/
 
-$sdl = file_get_contents('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
-$sdlb = file('/var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
+$sdl = file_get_contents($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
+$sdlb = file($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
 
-
-/*
-$sdl = file_get_contents('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
-$sdlb = file('../var/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
-*/
 
 //CONTA STATISTICHE TOTALI
 if ($i==0) {
@@ -1372,7 +1401,13 @@ $media_redemption_panel=number_format($media_redemption_panel, 2);
 
 
 //Calcolo redemption field totale
-$redemption_field=($conta_complete/($conta_complete+$conta_filtrati))*100;
+// Verifica che il denominatore non sia zero
+if (($conta_complete + $conta_filtrati) != 0) {
+    $redemption_field = ($conta_complete / ($conta_complete + $conta_filtrati)) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    $redemption_field = 0; // O qualsiasi altro valore di default appropriato
+}
 $redemption_field=number_format($redemption_field, 2);
 ?>
 
@@ -1380,18 +1415,39 @@ $redemption_field=number_format($redemption_field, 2);
 <?php
 //Calcolo redemption field Esterni
 
-$redemption_field_Ext=($conta_complete_T/($conta_complete_T+$conta_filtrati_T))*100;
+if (($conta_complete_T + $conta_filtrati_T) != 0) {
+    $redemption_field_Ext = ($conta_complete_T / ($conta_complete_T + $conta_filtrati_T)) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    $redemption_field_Ext = 0; // O qualsiasi altro valore di default appropriato
+}
 $redemption_field_Ext=number_format($redemption_field_Ext, 2);
 
 foreach ($panels as $value) 
 {
 	
-${'redemption_field_Ext'.$value}=(${'conta_complete_'.$value}/(${'conta_complete_'.$value}+${'conta_filtrati_'.$value}))*100;
+// Verifica che il denominatore non sia zero
+$complete_var = 'conta_complete_' . $value;
+$filtrati_var = 'conta_filtrati_' . $value;
+$redemption_var = 'redemption_field_Ext' . $value;
+
+if ((${$complete_var} + ${$filtrati_var}) != 0) {
+    ${$redemption_var} = (${$complete_var} / (${$complete_var} + ${$filtrati_var})) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    ${$redemption_var} = 0; // O qualsiasi altro valore di default appropriato
+}
 ${'redemption_field_Ext'.$value}=number_format(${'redemption_field_Ext'.$value}, 2);
 }
 
 //Calcolo redemption field panel
-$redemption_field_panel=($conta_complete_panel/($conta_complete_panel+$conta_filtrati_panel))*100;
+// Verifica che il denominatore non sia zero
+if (($conta_complete_panel + $conta_filtrati_panel) != 0) {
+    $redemption_field_panel = ($conta_complete_panel / ($conta_complete_panel + $conta_filtrati_panel)) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    $redemption_field_panel = 0; // O qualsiasi altro valore di default appropriato
+}
 $redemption_field_panel=number_format($redemption_field_panel, 2);
 
 
@@ -1469,7 +1525,13 @@ $totale_user_abilitati=$salva_abilitati;
 }
 else
 {
-$redemption_panel=($contatti_panel/$tot_use_abilitati['total'])*100;
+// Verifica che il denominatore non sia zero
+if ($tot_use_abilitati['total'] != 0) {
+    $redemption_panel = ($contatti_panel / $tot_use_abilitati['total']) * 100;
+} else {
+    // Gestione del caso di divisione per zero
+    $redemption_panel = 0; // O qualsiasi altro valore di default appropriato
+}
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$tot_use_abilitati['total'];
 }
@@ -1580,7 +1642,12 @@ if ($lu['stato']==1){$stato="Chiusa"; }
 if ($lu['sex_target']==1){$sex="Uomini";}
 if ($lu['sex_target']==2){$sex="Donne";}
 if ($lu['sex_target']==3){$sex="Uomini-Donne";}
-$loi=$sumDiff/$contaCompl;
+if ($contaCompl != 0) {
+    $loi = $sumDiff / $contaCompl;
+} else {
+    // Gestione del caso di divisione per zero
+    $loi = 0; // O qualsiasi altro valore di default appropriato
+}
 
 
 //Conta PANEL
@@ -1630,9 +1697,8 @@ $loiultima=substr($loi,0,4);
 if ($loiultima==""){$loiultima=0;}
 
 //echo "ciaooo".$loiultima;
-$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_Cint."',durata='".$loiultima."' where sur_id='".$sid."'";
+$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_T."',durata='".$loiultima."' where sur_id='".$sid."'";
 $aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
-$aggiorna_compInt_esegui = mysqli_fetch_assoc($query_compInt);
 
 
 

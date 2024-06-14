@@ -1,0 +1,24 @@
+2.0;FER;R2405081;446;IDEXCI449;07/06/2024 15:50:32 CEST;07/06/2024 15:53:44 CEST;192;7;140;device=mobile;lang=en;sysIID=446;sysPRJ=FER;sysSID=R2405081;cella=0;pan=1;leg=1;sysUID=IDEXCI449
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;30
+choice;45;4;1
+choice;52;4;1
+choice;70;2;0
+choice;80;6;010000;1
+choice;90;2;0
+choice;95;5;0
+choice;100;23;10010000011011100100000;0
+choice;110;6;0
+choice;112;2;0
+scale;121;4;5;0;1;2;3
+choice;135;4;0
+app;1999;indOrder|string|0,3,2,1
+composed;33890
+scale;130;4;5;2;0;2;0
+open;3381;0
+open;3382;0
+open;3383;0
+open;3384;0
+open;3385;0

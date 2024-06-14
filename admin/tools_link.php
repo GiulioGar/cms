@@ -30,8 +30,22 @@ $stId=0;
 
 //Tutto maiuscolo//
 //$sid=strtoupper($sid);
-$prj=strtoupper($prj);
-$vId=strtoupper($vId);
+if (!is_null($prj)) {
+    $prj = strtoupper($prj);
+} else {
+    // Gestione del caso in cui $prj è null
+    $prj = ''; // O qualsiasi altro valore di default appropriato
+    error_log("La variabile \$prj è null.");
+}
+
+// Verifica che $vId non sia null
+if (!is_null($vId)) {
+    $vId = strtoupper($vId);
+} else {
+    // Gestione del caso in cui $vId è null
+    $vId = ''; // O qualsiasi altro valore di default appropriato
+    error_log("La variabile \$vId è null.");
+}
 
 $addLinks="";
 $genLink="";
@@ -161,10 +175,32 @@ if ($nl>0)
 				case "9": $tPanel="IDEXA9L"; break;														
 		}
 
+		function generateUniqueRandomString($length = 11) {
+			$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$charactersArray = str_split($characters);
+			$randomString = '';
+		
+			if ($length > count($charactersArray)) {
+				throw new Exception('Lunghezza richiesta maggiore del numero di caratteri unici disponibili');
+			}
+		
+			for ($i = 0; $i < $length; $i++) {
+				$randomIndex = array_rand($charactersArray);
+				$randomString .= $charactersArray[$randomIndex];
+				// Rimuovi il carattere usato per evitare duplicati
+				unset($charactersArray[$randomIndex]);
+				// Re-index array to fill gaps
+				$charactersArray = array_values($charactersArray);
+			}
+		
+			return $randomString;
+		}
+
 		//CALCOLO ULTIMO UID UTILIZZATO
 		$query_lastid = "SELECT COUNT(uid) as total FROM t_respint where uid LIKE '".$tPanel."%' and sid='$sid'";
 		$res_lastId = mysqli_query($admin,$query_lastid);
 		$lastId=mysqli_fetch_assoc($res_lastId);
+		//echo $query_lastid;
 
 
 		$stId=(int)$lastId['total']+2;
@@ -173,8 +209,9 @@ if ($nl>0)
 
 	for ($i=0; $i<=$nl; ++$i) 
 		{	
-
-		$varId=$tPanel.($i+1+$stId);
+		$generateString = generateUniqueRandomString();
+		$tPanelMod= $tPanel. $generateString;	
+		$varId=$tPanelMod.($i+1+$stId);
 		$genId=$varId;
 		$genLink="https://www.primisoft.com/primis/run.do?sid=".$sid."&prj=".$prj."&uid=".$varId.$ssiVar.$ot;
 		echo "<div>".$genLink."</div>";
@@ -185,6 +222,7 @@ if ($nl>0)
 			
 		    $query_insid = "INSERT INTO t_respint VALUES ('$sid','$varId',0,-1,'$prj')";
 		    $ininrespint = mysqli_query($admin,$query_insid);
+			//echo $query_insid;
 		    }
 		}
 	}

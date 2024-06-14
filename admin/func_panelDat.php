@@ -1,12 +1,11 @@
 <?php
 
-$today=date("Y-m-d H:i:s", mktime(date("H")-6,date("i,s,m,d,Y") ));
-$mesi1=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-1,date("d"),date("Y")));
-$mesi2=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-2,date("d"),date("Y")));
-$mesi4=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-4,date("d"),date("Y")));
-$mesi6=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m")-6,date("d"),date("Y")));
-$mesi12=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m"),date("d"),date("Y")-1));
-$mesi36=date("Y-m-d H:i:s", mktime(date("H")-6,0,0,date("m"),date("d"),date("Y")-3));
+$today = date("Y-m-d H:i:s", mktime(date("H") - 6, date("i"), date("s"), date("m"), date("d"), date("Y")));
+$mesi1 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 1, date("d"), date("Y")));
+$mesi2 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 2, date("d"), date("Y")));
+$mesi4 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 4, date("d"), date("Y")));
+$mesi6 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 6, date("d"), date("Y")));
+$mesi12 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m"), date("d"), date("Y") - 1));
 
 $actualYear=date("Y");
 $pastYear1=$actualYear-1;
@@ -638,14 +637,19 @@ $redTot6=$tot_act6['total']/$tot_use['total']*100;
 $redTot12=$tot_act12['total']/$tot_use['total']*100;
 $redTot36=$tot_act36['total']/$tot_use['total']*100;
 
-$percA=$a_ric['total']/$tot_act12['total']*100;
-$percB=$b_ric['total']/$tot_act12['total']*100;
-$percC=$c_ric['total']/$tot_act12['total']*100;
-$percD=$d_ric['total']/$tot_act12['total']*100;
-$percE=$e_ric['total']/$tot_act12['total']*100;
-$percF=$f_ric['total']/$tot_act12['total']*100;
-$percG=$g_ric['total']/$tot_act12['total']*100;
-$percH=$h_ric['total']/$tot_act12['total']*100;
+if ($tot_act12['total'] != 0) {
+    $percA = $a_ric['total'] / $tot_act12['total'] * 100;
+    $percB = $b_ric['total'] / $tot_act12['total'] * 100;
+    $percC = $c_ric['total'] / $tot_act12['total'] * 100;
+    $percD = $d_ric['total'] / $tot_act12['total'] * 100;
+    $percE = $e_ric['total'] / $tot_act12['total'] * 100;
+    $percF = $f_ric['total'] / $tot_act12['total'] * 100;
+    $percG = $g_ric['total'] / $tot_act12['total'] * 100;
+    $percH = $h_ric['total'] / $tot_act12['total'] * 100;
+} else {
+    // Handle the case when $tot_act12['total'] is zero
+    $percA = $percB = $percC = $percD = $percE = $percF = $percG = $percH = 0;
+}
 
 
 //Clienti

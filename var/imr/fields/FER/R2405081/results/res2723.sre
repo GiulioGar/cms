@@ -1,0 +1,22 @@
+2.0;FER;R2405081;2723;IDEXCI2798;11/06/2024 10:44:35 CEST;<unknown>;0;0;112;sysSID=R2405081;sysPRJ=FER;sysUID=IDEXCI2798;device=desktop;lang=en;sysIID=2723;pan=1
+concept;10
+choice;20;2;0
+classifier;21;4;0;1;3;2
+choice;30;2;0
+open;40;45
+choice;45;4;2
+choice;52;4;2
+choice;70;2;0
+choice;80;6;001000;2
+choice;90;2;0
+choice;95;5;0
+choice;100;23;10000000000000001100100;0
+choice;110;6;1
+choice;112;2;0
+composed;33890
+scale;130;4;5;2;1;-1;-1
+open;3381;0
+open;3382;0
+open;3383;0
+open;3384;0
+open;3385;0
