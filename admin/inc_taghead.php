@@ -4,11 +4,33 @@
 
 
 <?php
-/*
 
- ini_set ('display_errors', 0);
- ini_set ('display_startup_errors', 1);
- */
+
+// Disabilita la visualizzazione degli errori non fatali
+ini_set('display_errors', 0);
+
+// Abilita la visualizzazione degli errori durante l'avvio (utile per il debug)
+ini_set('display_startup_errors', 1);
+
+// Imposta il livello di error_reporting per visualizzare solo errori fatali
+error_reporting(E_ERROR);
+
+// Registra una funzione di gestione degli errori personalizzata per gestire solo errori fatali
+function handleFatalError() {
+    $error = error_get_last();
+    if ($error !== null) {
+        // Controlla se l'errore è di tipo E_ERROR (errore fatale)
+        if ($error['type'] === E_ERROR) {
+            echo "Fatal error: {$error['message']} in {$error['file']} on line {$error['line']}";
+        }
+    }
+}
+
+// Registra la funzione di gestione degli errori per eseguire alla fine dello script
+register_shutdown_function('handleFatalError');
+
+// Ulteriore codice PHP
+ 
 
 header("Cache-Control: no-cache, must-revalidate");
 

@@ -1,4 +1,5 @@
 <?php
+
 require_once('func_panelDat.php');
 require_once('function_conta_aree.php');
 ?>

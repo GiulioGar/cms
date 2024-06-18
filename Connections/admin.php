@@ -6,8 +6,8 @@
 //$hostname_admin = "46.37.21.33"; 
 $hostname_admin = "localhost"; 
 $database_admin = "millebytesdb";
-$username_admin = "mbuser";
-$password_admin = '$leeple%1598';
+$username_admin = "root";
+$password_admin = '';
 //$admin = mysql_pconnect($hostname_admin, $username_admin, $password_admin) or trigger_error(mysql_error(),E_USER_ERROR); 
 
 $con = @mysqli_connect('localhost', 'root', '', 'millebytesdb');

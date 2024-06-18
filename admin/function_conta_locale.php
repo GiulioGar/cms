@@ -1,4 +1,4 @@
- <?php
+<?php
 $conta_bloccate=0;
 $conta_incomplete=0;
 $conta_filtrati=0;
@@ -186,6 +186,10 @@ $target_age_2=$lu['age2_target'];
 $panel_in=$lu['panel'];
 
 
+///MODIFICA PRIMA DI PUBBLICARE */
+//$linkDir="/var";     // SERVER ONLINE
+$linkDir="../var";   //XAMPP 
+
 
 if ($stato_ricerca != 1)
 {
@@ -217,11 +221,6 @@ if (!$query_copia_respint_copy_sample) {
     die("Query failed: " . mysqli_error($admin));
 }
 
-
-
-///MODIFICA PRIMA DI PUBBLICARE */
-//$linkDir="/var";     // SERVER ONLINE
-$linkDir="../var";   //XAMPP 
 
 //AGGIORNAMENTO DATA IN RESPINT//
 
