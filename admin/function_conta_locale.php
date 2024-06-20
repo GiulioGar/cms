@@ -171,7 +171,7 @@ $currentYear=date("Y");
 
 
 //last update
-
+$leggi_abilitati_aggiornati=0;
 $query_last_update = "SELECT * FROM t_panel_control where (sur_id='".$sid."')";
 $last_update = mysqli_query($admin,$query_last_update) ;
 $lu = mysqli_fetch_assoc($last_update);
@@ -187,40 +187,24 @@ $panel_in=$lu['panel'];
 
 
 ///MODIFICA PRIMA DI PUBBLICARE */
-//$linkDir="/var";     // SERVER ONLINE
-$linkDir="../var";   //XAMPP 
+$linkDir="/var";     // SERVER ONLINE
+//$linkDir="../var";   //XAMPP 
 
+//echo "Stato".$stato_ricerca;
 
 if ($stato_ricerca != 1)
 {
 
+	//ELIMINO RECORD
+$query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='.$sid.')";
+$query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) ;
 
-	$query_pulisci_respint_copy = "DELETE FROM t_abilitatipanel WHERE sid = '$sid'";
-
-	// Esegui la query
-	$query_pulisci_respint_copy_sample = mysqli_query($admin, $query_pulisci_respint_copy);
-	
-	// Verifica se la query è stata eseguita correttamente
-	if (!$query_pulisci_respint_copy_sample) {
-		die("Query failed: " . mysqli_error($admin));
-	}
-
-// Ricopia i dati
-$query_copia_respint_copy = "
-    INSERT INTO t_abilitatipanel (sid, uid, prj_name)
-    SELECT sid, uid, prj_name
-    FROM t_respint
-    WHERE sid = '$sid'
-";
-
-// Esegui la query
-$query_copia_respint_copy_sample = mysqli_query($admin, $query_copia_respint_copy);
-
-// Verifica se la query è stata eseguita correttamente
-if (!$query_copia_respint_copy_sample) {
-    die("Query failed: " . mysqli_error($admin));
-}
-
+//RICOPIO
+$query_copia_respint_copy="INSERT t_abilitatipanel (sid, uid, prj_name)
+SELECT sid, uid, prj_name
+FROM t_respint
+WHERE sid = '".$sid."'";
+$query_copia_respint_copy_sample = mysqli_query($admin,$query_copia_respint_copy) ;
 
 //AGGIORNAMENTO DATA IN RESPINT//
 
@@ -262,6 +246,7 @@ $query_aggiorna_statistiche_sample = "UPDATE t_abilitatipanel set data_abilitazi
 $aggiorna_statistiche_sample = mysqli_query($admin,$query_aggiorna_statistiche_sample) ;
 $aggiorna_statistiche_t_sample = mysqli_fetch_assoc($aggiorna_statistiche_sample);
 
+echo $query_aggiorna_statistiche_sample;
 
 
 
@@ -315,24 +300,10 @@ else
 {
 if ($stato_ricerca != 1)
 	{
+		$aggiorna_abilitati=$tot_use_abilitati['total'];
 	
-		$aggiorna_abilitati = $tot_use_abilitati['total'];
-
-		// Esegui la query di aggiornamento
-		$query_aggiorna_abilitati_aggiornati = "
-			UPDATE t_panel_control 
-			SET abilitati_aggiornati = '$aggiorna_abilitati', 
-				abilitati = '$aggiorna_abilitati' 
-			WHERE sur_id = '$sid'
-		";
-		
-		// Esegui la query
-		$aggiorna_abilitati_query = mysqli_query($admin, $query_aggiorna_abilitati_aggiornati);
-		
-		// Verifica se la query è stata eseguita correttamente
-		if (!$aggiorna_abilitati_query) {
-			die("Query failed: " . mysqli_error($admin));
-		}
+		$query_aggiorna_abilitati_aggiornati = "UPDATE t_panel_control set abilitati_aggiornati='".$aggiorna_abilitati."', abilitati='".$aggiorna_abilitati."' where sur_id='".$sid."'";
+		$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) ;
 	}
 }
 

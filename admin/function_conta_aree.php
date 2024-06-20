@@ -1,25 +1,13 @@
 
 <?php
 
-	  /////Target
-// Verifica la connessione
-if (!$admin) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+
 
 // Query da eseguire
+mysqli_select_db($database_admin, $admin);
 $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
-
-// Esegui la query
 $tot_targ = mysqli_query($admin, $query_trg);
 
-// Verifica se la query è stata eseguita correttamente
-if (!$tot_targ) {
-    die("Query failed: " . mysqli_error($admin));
-}
-
-// Libera il risultato della query
-mysqli_free_result($tot_targ);
 
 $query_surv = "SELECT *  FROM t_panel_control where stato=0 AND panel=1";
 $csv_sur = mysqli_query($admin,$query_surv);	
