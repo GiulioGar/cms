@@ -1,0 +1,13 @@
+2.0;IPS;R2406095;640;9OP5338341;28/06/2024 15:22:40 CEST;<unknown>;0;0;80;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=9OP5338341;device=mobile;lang=it;sysIID=640
+choice;7;107;94
+choice;8;7903;6857
+choice;9;7;2
+choice;10;2;0
+open;20;35
+choice;30;5;2
+open;40;38057
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;92;20;16
+choice;93;4;1

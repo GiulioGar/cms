@@ -1,0 +1,14 @@
+2.0;IPS;R2406095;399;SVSC2VBYA8;28/06/2024 13:48:14 CEST;28/06/2024 13:50:00 CEST;106;4;90;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=SVSC2VBYA8;device=mobile;lang=it;sysIID=399
+choice;7;107;13
+choice;8;7903;1141
+choice;9;7;2
+choice;10;2;1
+open;20;49
+choice;30;5;3
+open;40;40069
+choice;60;2;0
+choice;70;8;00000010;6
+choice;80;8;00000001;7
+choice;90;7;0111100;2
+choice;92;20;4
+choice;93;4;1

@@ -1,0 +1,18 @@
+2.0;IPS;R2406095;280;GYB96XCADI;28/06/2024 12:19:11 CEST;28/06/2024 12:35:57 CEST;1006;4;130;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=GYB96XCADI;device=desktop;lang=it;sysIID=280
+choice;7;107;57
+choice;8;7903;4156
+choice;9;7;3
+choice;10;2;0
+open;20;45
+choice;30;5;3
+open;40;80011
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1111110;0
+choice;92;20;3
+choice;93;4;3
+choice;100;6;111100;0
+choice;110;3;111;2
+choice;120;4;3
+choice;130;3;1

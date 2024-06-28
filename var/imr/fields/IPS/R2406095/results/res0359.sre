@@ -1,0 +1,18 @@
+2.0;IPS;R2406095;359;7LFK6176QG;28/06/2024 13:03:10 CEST;28/06/2024 13:04:57 CEST;107;4;130;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=7LFK6176QG;device=desktop;lang=it;sysIID=359
+choice;7;107;80
+choice;8;7903;5684
+choice;9;7;6
+choice;10;2;1
+open;20;38
+choice;30;5;2
+open;40;00100
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1111110;0
+choice;92;20;6
+choice;93;4;2
+choice;100;6;111100;0
+choice;110;3;111;2
+choice;120;4;3
+choice;130;3;1

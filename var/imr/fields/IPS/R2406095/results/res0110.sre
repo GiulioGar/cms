@@ -1,0 +1,15 @@
+2.0;IPS;R2406095;110;PYZR627O86;28/06/2024 11:27:10 CEST;28/06/2024 11:50:31 CEST;1401;4;100;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=PYZR627O86;device=mobile;lang=it;sysIID=110
+choice;7;107;82
+choice;8;7903;5771
+choice;9;7;3
+choice;10;2;1
+open;20;40
+choice;30;5;2
+open;40;84096
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1101000;3
+choice;92;20;3
+choice;93;4;3
+choice;100;6;000100;3

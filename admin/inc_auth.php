@@ -1,4 +1,6 @@
 <?php
+require_once('../Connections/admin.php'); 
+
 if (!isset($_SESSION)) {
   session_start();
 }

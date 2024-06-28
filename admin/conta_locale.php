@@ -348,7 +348,7 @@ error_reporting(E_ERROR);
  			<?php if ($panel_in==1 || $panel_in==2)
 			{
 						$daFare=$lu['goal']-$conta_complete;	
-						$totalRed=$conta_complete/$tot_use_abilitati_totali['total']*100;
+					if($tot_use_abilitati_totali['total']>0)	{ $totalRed=$conta_complete/$tot_use_abilitati_totali['total']*100;}
 						$totalRed=number_format($totalRed, 2);
 						$inviaUtenti=$daFare*$tot_use_abilitati_totali['total']/$conta_complete;
 						$inviaUtenti=number_format($inviaUtenti, 0);

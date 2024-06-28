@@ -196,7 +196,8 @@ if ($stato_ricerca != 1)
 {
 
 	//ELIMINO RECORD
-$query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='.$sid.')";
+$query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='$sid')";
+//echo $query_pulisci_respint_copy;
 $query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) ;
 
 //RICOPIO
@@ -349,7 +350,7 @@ if ($target_age_2 <> NULL)
 $anno_corrente = (int)date("Y");
 
 // Assicurati che $target_age_2 sia definito correttamente e sia un numero
-$target_age_2 = 30; // Esempio di valore, sostituisci con il valore effettivo
+$target_age_2 = $anno_corrente-$target_age_2; // Esempio di valore, sostituisci con il valore effettivo
 
 // Calcola l'anno di nascita
 $anno_nascita = $anno_corrente - $target_age_2;
@@ -365,7 +366,6 @@ $query_base = $query_base . " AND birth_date >= " . $anno_nascita;
 
 //$qq=$_GET['txtquery'];
 $qq=$query_base;
-
 if ($qq <>'')
 {
 
@@ -1483,7 +1483,7 @@ $totale_user_abilitati=$salva_abilitati;
 }
 if (($ore_differenza>=24)&&($aggiornamento==true))
 {
-$redemption_panel=($contatti_panel/$tot_use_abilitati['total'])*100;
+IF($tot_use_abilitati['total']>0) { $redemption_panel=($contatti_panel/$tot_use_abilitati['total'])*100;}
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$tot_use_abilitati['total'];
 }

@@ -1,0 +1,27 @@
+2.0;IPS;R2406095;451;P4OSA8O41P;28/06/2024 14:36:26 CEST;28/06/2024 14:38:01 CEST;95;3;400;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=P4OSA8O41P;device=desktop;lang=it;sysIID=451
+choice;7;107;21
+choice;8;7903;1726
+choice;9;7;5
+choice;10;2;0
+open;20;51
+choice;30;5;3
+open;40;95121
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1111110;0
+choice;92;20;14
+choice;93;4;3
+choice;100;6;101000;0
+choice;120;4;2
+choice;130;3;0
+choice;140;3;0
+choice;170;5;11010;0
+choice;175;2;1
+scale;200;3;3;-1;0;0
+choice;210;14;2
+choice;215;16;0010000000000000;2
+choice;220;16;0010000000000000;2
+choice;230;16;0010000000000000;2
+scale;240;16;3;-1;-1;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;11;00100000000;2

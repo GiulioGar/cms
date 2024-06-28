@@ -1,0 +1,27 @@
+2.0;IPS;R2406095;335;DIPGEWGCAE;28/06/2024 12:47:46 CEST;28/06/2024 12:49:38 CEST;112;3;400;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=DIPGEWGCAE;device=mobile;lang=it;sysIID=335
+choice;7;107;1
+choice;8;7903;45
+choice;9;7;3
+choice;10;2;1
+open;20;51
+choice;30;5;3
+open;40;15121
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1000100;0
+choice;92;20;11
+choice;93;4;0
+choice;100;6;111000;0
+choice;120;4;3
+choice;130;3;0
+choice;140;3;0
+choice;170;5;11010;0
+choice;175;2;1
+scale;200;3;3;-1;1;2
+choice;210;14;1
+choice;215;16;0110001000001000;6
+choice;220;16;0100000000000000;1
+choice;230;16;0100000000000000;1
+scale;240;16;3;-1;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;11;00100000000;2

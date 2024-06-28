@@ -1,0 +1,14 @@
+2.0;IPS;R2406095;429;0D2SUVC50V;28/06/2024 14:18:41 CEST;28/06/2024 14:19:56 CEST;75;4;90;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=0D2SUVC50V;device=mobile;lang=it;sysIID=429
+choice;7;107;89
+choice;8;7903;6338
+choice;9;7;3
+choice;10;2;0
+open;20;41
+choice;30;5;2
+open;40;74016
+choice;60;2;0
+choice;70;8;10000000;0
+choice;80;8;00000001;7
+choice;90;7;0100010;1
+choice;92;20;12
+choice;93;4;3

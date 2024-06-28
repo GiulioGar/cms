@@ -34,7 +34,7 @@ $todoAct;
 		}	
 
 
-$perAct=($todoAct/$full_total_crm2)*100;
+if($full_total_crm2>0) { $perAct=($todoAct/$full_total_crm2)*100;}
 
 if ($perAct>50) { $levAct="Ottima"; }
 if ($perAct<=49 && $perAct>=30) { $levAct="Buona"; }

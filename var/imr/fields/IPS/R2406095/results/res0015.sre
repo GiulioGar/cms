@@ -1,0 +1,14 @@
+2.0;IPS;R2406095;15;L5FVNGSC9C;27/06/2024 15:43:11 CEST;27/06/2024 15:43:41 CEST;30;4;90;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=L5FVNGSC9C;device=desktop;lang=it;sysIID=15
+choice;7;107;21
+choice;8;7903;1743
+choice;9;7;2
+choice;10;2;1
+open;20;34
+choice;30;5;2
+open;40;95046
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;0000010;5
+choice;92;20;14
+choice;93;4;3

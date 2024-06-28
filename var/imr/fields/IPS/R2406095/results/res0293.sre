@@ -1,0 +1,26 @@
+2.0;IPS;R2406095;293;MVH84Z5EF1;28/06/2024 12:24:30 CEST;28/06/2024 12:29:30 CEST;300;3;400;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=MVH84Z5EF1;device=desktop;lang=it;sysIID=293
+choice;7;107;53
+choice;8;7903;3817
+choice;9;7;3
+choice;10;2;1
+open;20;57
+choice;30;5;3
+open;40;98051
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1110000;0
+choice;92;20;14
+choice;93;4;3
+choice;100;6;100000;0
+choice;120;4;3
+choice;130;3;0
+choice;170;5;10000;0
+choice;175;2;1
+scale;200;3;3;2;2;2
+choice;210;14;0
+choice;215;16;1000010000000000;5
+choice;220;16;1000010000000000;0
+choice;230;16;1000010000000000;0
+scale;240;16;3;0;-1;-1;-1;-1;2;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;11;00000000001;10

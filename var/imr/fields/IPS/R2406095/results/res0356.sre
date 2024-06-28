@@ -1,0 +1,14 @@
+2.0;IPS;R2406095;356;YDAAZ42CTV;28/06/2024 13:00:44 CEST;28/06/2024 13:01:16 CEST;32;4;90;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=YDAAZ42CTV;device=mobile;lang=it;sysIID=356
+choice;7;107;54
+choice;8;7903;3992
+choice;9;7;6
+choice;10;2;1
+open;20;23
+choice;30;5;1
+open;40;20152
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;0100100;4
+choice;92;20;8
+choice;93;4;0

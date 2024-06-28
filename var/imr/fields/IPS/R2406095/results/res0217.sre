@@ -1,0 +1,26 @@
+2.0;IPS;R2406095;217;15IB5CAM49;28/06/2024 11:53:26 CEST;28/06/2024 11:54:46 CEST;80;3;400;version=v01;sysSID=R2406095;sysPRJ=IPS;sysUID=15IB5CAM49;device=mobile;lang=it;sysIID=217
+choice;7;107;3
+choice;8;7903;295
+choice;9;7;0
+choice;10;2;1
+open;20;46
+choice;30;5;3
+open;40;52046
+choice;60;2;0
+choice;70;8;00000001;7
+choice;80;8;00000001;7
+choice;90;7;1111110;0
+choice;92;20;15
+choice;93;4;2
+choice;100;6;110000;0
+choice;120;4;3
+choice;130;3;0
+choice;170;5;10000;0
+choice;175;2;1
+scale;200;3;3;0;0;0
+choice;210;14;1
+choice;215;16;0100000100000000;7
+choice;220;16;0100000000000000;1
+choice;230;16;0100000000000000;1
+scale;240;16;3;-1;0;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;400;11;00000010000;6
