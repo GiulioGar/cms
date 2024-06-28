@@ -1,0 +1,22 @@
+2.0;AMP;R2405079;290;IDEXNE3059;08/06/2024 13:57:18 CEST;08/06/2024 14:19:53 CEST;1355;3;230;rm5=0;rm4=0;rm3=0;rm2=1;rm1=3;rm0=2;Svar3=3;Svar2=8;Svar1=4;Svar0=0;sysSID=R2405079;rec=3;sysUID=IDEXNE3059;sysPRJ=AMP;debug=false;pan=6;sysIID=290;device=desktop;ticket=9839ba1fb621a5ba_46c11089d69cc088_cf7b16ff7662310b_f6ac0a2bf146b56e5ad57c5edbf7ba4b;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;77
+choice;40;4;3
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1110000000;0;comp0:gaes;comp2:Philips;comp1:General optica
+choice;100;18;100110101000000110;15
+choice;110;18;0
+open;120;Recomendado por profesionales y amigos que lo usan. 
+choice;130;23;10000010000000000000000;6
+choice;140;11;01101000000;1
+choice;150;5;1
+open;160;La atención recibida, el estudio realizado, dos meses de prueba y la financiación a mi medida.
+scale;190;28;10;9;9;9;7;9;9;9;9;9;9;7;9;9;9;9;9;7;9;9;9;9;9;9;9;9;9;9;9
+choice;200;28;0000000000000100010100100010;13
+scale;210;28;5;10000100001000010000100001000010000100001000010000100001000010000100001000010000000011000010000100001000010000100001000010000100001000010000
+choice;220;5;1
+choice;230;5;2
+choice;999;17;10011000100000000;0

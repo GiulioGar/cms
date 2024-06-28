@@ -1,0 +1,16 @@
+2.0;AMP;R2405079;23;IDEXNE8652;06/06/2024 12:00:38 CEST;06/06/2024 12:05:09 CEST;271;7;190;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE8652;device=mobile;ticket=35c8b8471ca3cd48_46c11089d69cc088_cf7b16ff7662310b_75c7fca11005020727c9cbbb4332974d;pan=6;sysIID=23;lang=es
+choice;10;2;0
+choice;20;2;1
+open;25;58
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1100000000;0;comp0:No me acuerdo;comp1:No me acuerdo 
+choice;100;18;000000000000100000;12
+choice;110;18;12
+open;120;Por medio de una amiga
+choice;130;23;00000010000000000000000;6
+choice;140;11;01000100000;1
+choice;150;5;0
+open;160;Buen trato, profesionalidad, 

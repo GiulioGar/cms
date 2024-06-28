@@ -1,0 +1,16 @@
+2.0;AMP;R2405079;19;IDEXNE3595;06/06/2024 11:40:59 CEST;<unknown>;0;0;160;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE3595;device=desktop;ticket=63cdff559b5122ca_46c11089d69cc088_cf7b16ff7662310b_ebc15bc3e981f5bbc5f203f0b6b2a980;pan=6;sysIID=19;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;57
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;0
+choice;90;10;1000000000;0;comp0:Audica
+choice;100;18;100000000000100000;0
+choice;110;18;12
+open;120;Es la única que hay en mi localidad
+choice;130;23;00010000000000000000000;3
+choice;140;11;01000000000;1
+choice;150;5;1
+open;160;Facilidad de pago y explicaciones claras

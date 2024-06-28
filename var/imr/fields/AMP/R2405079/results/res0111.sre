@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;111;IDEXNE14442;07/06/2024 11:27:50 CEST;07/06/2024 11:31:42 CEST;232;3;230;debug=false;device=desktop;lang=es;sysIID=111;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=1;rm3=2;rm2=3;ticket=5d61030c84388945_46c11089d69cc088_cf7b16ff7662310b_464c7461b3042375fda670ee278c90d2;rm1=3;rm0=0;pan=6;sysUID=IDEXNE14442
+choice;10;2;0
+choice;20;2;0
+open;25;68
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1100000000;0;comp0:oticon;comp1:nose
+choice;100;18;000000000000000100;15
+choice;110;18;15
+open;120;por cercania
+choice;130;23;00000000000000000100000;17
+choice;150;5;1
+open;160;son fiables  y puedes pagar a plazos
+scale;190;28;10;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9
+choice;200;28;1000000010010000010100000000;0
+choice;220;5;0
+choice;230;5;1
+choice;999;17;00000000000000000;-1

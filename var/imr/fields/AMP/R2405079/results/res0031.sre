@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;31;IDEXNE2737;06/06/2024 12:46:15 CEST;06/06/2024 12:59:45 CEST;810;3;230;rm5=0;rm4=1;rm3=2;rm2=3;rm1=4;rm0=2;Svar3=2;Svar2=3;Svar1=6;Svar0=0;sysSID=R2405079;rec=2;sysUID=IDEXNE2737;sysPRJ=AMP;debug=false;pan=6;sysIID=31;device=desktop;ticket=d8968a8d56517c5d_46c11089d69cc088_cf7b16ff7662310b_b0faf68f1426c6d7fdcae924cbd29dfa;browser=none;lang=en
+choice;10;2;0
+choice;20;2;0
+open;25;78
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:amplifon
+choice;100;18;101100100010000110;0
+choice;110;18;0
+open;120;Entonces no era GAES, me permitio tenerlos de `prueba un mes, me atendio una estupenda profesional que supo guiarme y convencerme
+choice;130;23;00000000000000000000001;22
+choice;150;5;1
+open;160;Solo en el caso que permitiera un mes de prueba
+scale;190;28;10;7;8;6;5;5;4;7;8;5;7;7;9;7;5;9;8;9;8;8;9;9;9;9;6;5;9;5;9
+choice;200;28;0000000000000010000101100100;25
+scale;210;28;5;11110111101111000001000010000100001111100000111110111100000111110000010000100001111101111010000100001111011110100000000111100111101111010000
+choice;220;5;1
+choice;230;5;3
+choice;999;17;10110010000000000;0

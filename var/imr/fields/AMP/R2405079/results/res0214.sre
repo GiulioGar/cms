@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;214;IDEXNE14615;07/06/2024 16:33:03 CEST;07/06/2024 16:43:49 CEST;646;3;230;debug=false;device=mobile;lang=es;sysIID=214;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=0;rm3=1;rm2=4;ticket=a6989a61534b3989_46c11089d69cc088_cf7b16ff7662310b_6e78bfe628b6efe41ad992182bcf60e2;rm1=2;rm0=3;pan=6;sysUID=IDEXNE14615
+choice;10;2;0
+choice;20;2;0
+open;25;78
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Opticon
+choice;100;18;000000010000000000;7
+choice;110;18;7
+open;120;Me la ofrecieron 
+choice;130;23;00000001000000000000000;7
+choice;150;5;0
+open;160;Al menos en donde viví tienen una persona muy apta y perfeccionista y trata con mucha atención a los clientes 
+scale;190;28;10;9;9;9;9;9;9;9;9;9;9;8;9;7;9;4;4;9;9;9;9;9;9;9;9;9;9;9;9
+choice;200;28;1000000110000000010010000000;0
+choice;220;5;0
+choice;230;5;3
+choice;999;17;00000000000000000;-1

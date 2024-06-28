@@ -1,0 +1,22 @@
+2.0;AMP;R2405079;237;IDEXNE9506;07/06/2024 18:15:09 CEST;07/06/2024 18:31:39 CEST;990;3;230;rm5=0;rm4=1;rm3=0;rm2=0;rm1=2;rm0=4;sysSID=R2405079;Svar0=13;sysUID=IDEXNE9506;rec=13;sysPRJ=AMP;debug=false;pan=6;sysIID=237;device=desktop;ticket=a1c1f19534c96916_46c11089d69cc088_cf7b16ff7662310b_24c51c599e3466e7dd89d6296d482b98;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;71
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;3
+choice;80;3;1
+choice;90;10;1000000000;0;comp0:Beltone
+choice;100;18;000000000000010000;13
+choice;110;18;13
+open;120;Porque en ese momento, los encontré interesantes.
+choice;130;23;10000000000000000100000;17
+choice;150;5;2
+open;170;Porque el Servició técnico es muy deficiente, además de que en mi última revisión, me interesé por unos nuevos y los precios eran exorbitantes. 
+scale;190;28;10;8;4;4;4;4;1;8;8;8;4;4;4;4;8;8;4;0;8;4;4;8;8;1;4;8;4;8;4
+choice;200;28;0000000010000110000011000000;8
+scale;210;28;5;10000100001000000001000011000010000100000000110000100001000010000100001000000001000011000010000100001000010000100001000010000100000000100001
+choice;220;5;1
+choice;230;5;3
+choice;999;17;00000000000001000;13

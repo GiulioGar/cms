@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;22;IDEXNE12965;06/06/2024 11:53:22 CEST;06/06/2024 11:59:56 CEST;394;3;230;debug=false;device=desktop;lang=es;sysIID=22;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=2;rm3=3;rm2=2;ticket=7d1aa760c0710695_46c11089d69cc088_cf7b16ff7662310b_1352965e60ffe26479739ee03378a9f7;rm1=0;rm0=4;pan=6;sysUID=IDEXNE12965
+choice;10;2;0
+choice;20;2;0
+open;25;80
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:optimón
+choice;100;18;000000010000000000;7
+choice;110;18;7
+open;120;porque alli me han hecho las pruebas
+choice;130;23;11010000000000000000000;0
+choice;140;11;00001000000;4
+choice;150;5;1
+open;160;atención esmerada
+scale;190;28;10;8;7;8;8;8;8;8;8;6;7;8;8;7;4;5;5;7;8;8;8;7;7;8;8;4;7;8;5
+choice;200;28;0000110100000000010100000000;17
+choice;220;5;1
+choice;230;5;3
+choice;999;17;00000000000000000;-1

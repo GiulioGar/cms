@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;90;IDEXNE12897;06/06/2024 23:12:22 CEST;06/06/2024 23:30:13 CEST;1071;3;230;rm5=0;rm4=1;rm3=0;rm2=0;rm1=0;rm0=4;Svar3=4;Svar2=3;Svar1=2;Svar0=0;sysSID=R2405079;rec=4;sysUID=IDEXNE12897;sysPRJ=AMP;debug=false;pan=6;sysIID=90;device=desktop;ticket=d880b028bd6c614d_46c11089d69cc088_cf7b16ff7662310b_b7d904251374a09e5d42ac03aa8d8f72;browser=none;lang=es
+choice;10;2;0
+choice;20;2;1
+open;25;71
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1000000000;0;comp0:GAES
+choice;100;18;101110100000010010;2
+choice;110;18;0
+open;120;Me hicieron una audiometría y compré los audífonos allí sin comparar con otras marcas
+choice;130;23;00000000000000101100000;14
+choice;150;5;2
+open;170;Son más caros que otras marcas. Después que los has pagado, prácticamente se desentienden de ti. Yo sigo sin oir  bien  de hecho, oigo peor que antes de ponerme los audífonos y, sin embargo, no hacen nada por solucionar el problema.
+scale;190;28;10;8;8;8;0;6;8;8;8;9;8;7;8;4;8;8;8;8;8;8;8;8;8;8;2;8;8;8;1
+choice;200;28;0100001000000010000010100000;22
+scale;210;28;5;00110000010000100001000010000100001000010000111110000010000100001000010000100001000010000100110000010000100110000011111011110000010000111110
+choice;220;5;0
+choice;230;5;3
+choice;999;17;10111000000000000;0

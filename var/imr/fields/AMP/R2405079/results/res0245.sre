@@ -1,0 +1,7 @@
+2.0;AMP;R2405079;245;IDEXNE7799;07/06/2024 19:34:07 CEST;07/06/2024 19:34:47 CEST;40;4;60;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE7799;device=desktop;ticket=f775825d108f8f98_46c11089d69cc088_cf7b16ff7662310b_78dede47dbda9e720c6cb3c3a9dbc7e2;pan=6;sysIID=245;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;60
+choice;40;4;0
+choice;50;3;0
+choice;60;4;2

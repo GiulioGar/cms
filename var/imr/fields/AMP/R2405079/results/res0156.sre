@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;156;IDEXNE11085;07/06/2024 12:48:19 CEST;07/06/2024 13:01:44 CEST;805;3;230;rm5=0;rm4=1;rm3=0;rm2=0;rm1=4;rm0=5;Svar2=6;Svar1=3;sysSID=R2405079;Svar0=0;rec=6;sysUID=IDEXNE11085;sysPRJ=AMP;debug=false;pan=6;sysIID=156;device=mobile;ticket=eydozp8u8f4664wu_46c11089d69cc088_cf7b16ff7662310b_97ca5c460cefa9d31416667a9b44fcae;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;71
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Amplifon
+choice;100;18;100100100001000100;11
+choice;110;18;0
+open;120;son muy competentes y tiene bastantes revisiones totalmente gratuitas
+choice;130;23;00000001000000000001000;7
+choice;150;5;0
+open;160;la especialidad  del personal muy atentos serviciales
+scale;190;28;10;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9;8;9;9;9;8;9;9;9;9;9;9;8
+choice;200;28;1001000000000000010100000100;0
+scale;210;28;5;10000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000
+choice;220;5;2
+choice;230;5;2
+choice;999;17;10010010000000000;0

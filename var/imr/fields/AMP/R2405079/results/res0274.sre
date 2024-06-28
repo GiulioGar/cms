@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;274;IDEXNE7429;08/06/2024 09:41:07 CEST;08/06/2024 09:48:00 CEST;413;3;230;debug=false;device=desktop;lang=es;sysIID=274;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=2;rm3=1;rm2=2;ticket=20358032974f018c_46c11089d69cc088_cf7b16ff7662310b_1d9dbfed5790496970c314f48e65c14f;rm1=0;rm0=4;pan=6;sysUID=IDEXNE7429
+choice;10;2;0
+choice;20;2;0
+open;25;76
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;0
+choice;90;10;1000000000;0;comp0:Widex
+choice;100;18;010000000010000000;10
+choice;110;18;1
+open;120;Calidad
+choice;130;23;10000000000000000000000;0
+choice;150;5;0
+open;160;Buen servicio, calidad
+scale;190;28;10;9;7;9;7;7;9;9;9;9;9;6;9;9;9;9;9;9;9;9;9;9;9;7;6;5;9;7;5
+choice;200;28;1000000101000100001000000000;13
+choice;220;5;1
+choice;230;5;3
+choice;999;17;00000000000000000;-1

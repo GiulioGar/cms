@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;277;IDEXNE2797;08/06/2024 10:24:24 CEST;08/06/2024 10:38:14 CEST;830;3;230;rm5=0;rm4=1;rm3=1;rm2=1;rm1=1;rm0=0;Svar2=8;Svar1=2;sysSID=R2405079;Svar0=0;rec=8;sysUID=IDEXNE2797;sysPRJ=AMP;debug=false;pan=6;sysIID=277;device=mobile;ticket=9209c72a56cbc7dc_46c11089d69cc088_cf7b16ff7662310b_222e6b1d688e088c4ce8a09af0f8579c;browser=none;lang=ca
+choice;10;2;0
+choice;20;2;1
+open;25;57
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1100000000;0;comp0:Audifon;comp1:Òptica universitaria
+choice;100;18;101000011000000000;0
+choice;110;18;0
+open;120;Por ignorància,no concis ostras,és la màs conocida
+choice;130;23;00000000000001000000000;13
+choice;150;5;2
+open;170;Post venta Malo, reparacions costosísimas. Pretendieron dejarme 15 dias sin audífonos,pagando 300 euros por una reparación que me costó 100 y tuvieron l'ós audífonos 3 horas
+scale;190;28;10;7;8;6;7;6;7;7;7;8;8;8;8;7;8;8;8;7;8;7;8;9;6;7;5;6;8;7;8
+choice;200;28;0000000000100011010100000000;14
+scale;210;28;5;01100000010100001000010000000101100010000000111100000010000100001000010100000100000010100000100001000000111100100000010000100000010000100001
+choice;220;5;2
+choice;230;5;3
+choice;999;17;10100000100000000;0

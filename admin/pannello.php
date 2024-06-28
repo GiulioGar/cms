@@ -232,7 +232,7 @@ if ($daysField<0) {$daysField=0;}
 $sid=$row['sur_id'];
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
 $aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
-$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
+//s$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
 }
 
 
@@ -314,7 +314,7 @@ echo "<td>".$row['bytes']." bytes</td>";
 
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
 $aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
-$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
+//$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
  ?>
 
 

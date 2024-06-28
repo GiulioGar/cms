@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;146;IDEXNE7032;07/06/2024 12:26:57 CEST;07/06/2024 12:42:55 CEST;958;3;230;rm5=0;rm4=1;rm3=2;rm2=1;rm1=0;rm0=0;Svar2=6;Svar1=3;sysSID=R2405079;Svar0=0;rec=6;sysUID=IDEXNE7032;sysPRJ=AMP;debug=false;pan=6;sysIID=146;device=mobile;ticket=07d955995b836c23_46c11089d69cc088_cf7b16ff7662310b_0ebe2ae1dc8242f00bd198c6d04316ba;browser=none;lang=es
+choice;10;2;0
+choice;20;2;1
+open;25;61
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Amplifon
+choice;100;18;100100100000000000;0
+choice;110;18;0
+open;120;Por la calidad y por ser Gaes una marca con cierto prestigio en temas de audición 
+choice;130;23;00000000000100000101000;19
+choice;150;5;0
+open;160; calidad y responsabilidad en el servicio que me ofrece, las garantías, el poderlo financiar. Variedad de audífonos 
+scale;190;28;10;9;9;9;9;9;9;9;9;9;9;9;9;7;9;9;9;9;9;9;9;9;9;9;9;9;9;9;9
+choice;200;28;0100101000000000010010000000;4
+scale;210;28;5;11100111001000010000100001000011100100001110011100100001110010000100001110011100111001110011100100001110011100111001110011100111001110010000
+choice;220;5;0
+choice;230;5;2
+choice;999;17;10010010000000000;0

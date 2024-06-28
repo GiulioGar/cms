@@ -1,0 +1,9 @@
+2.0;AMP;R2405079;218;IDEXNE12970;07/06/2024 16:45:52 CEST;<unknown>;0;0;90;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE12970;device=desktop;ticket=2xa72flf2vwn6t7g_46c11089d69cc088_cf7b16ff7662310b_6e9f35874d45ab362858569e074e0b4c;lang=es;sysIID=218;pan=6
+choice;10;2;0
+choice;20;2;0
+open;25;88
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;0
+choice;90;10;1000000000;0;comp0:Phonak

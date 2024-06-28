@@ -1,0 +1,22 @@
+2.0;AMP;R2405079;139;IDEXNE8035;07/06/2024 12:03:13 CEST;07/06/2024 12:16:19 CEST;786;3;230;rm4=0;rm3=1;rm2=0;rm1=0;rm0=1;Svar3=13;Svar2=3;Svar1=0;sysSID=R2405079;Svar0=8;rec=13;sysUID=IDEXNE8035;sysPRJ=AMP;debug=false;pan=6;sysIID=139;device=mobile;ticket=ac5bfd38fb8bb4b2_46c11089d69cc088_1cd776f7ba1bbbd3_7ca971f29c875dc804972bb42a0ffa3d;browser=none;lang=ca
+choice;10;2;0
+choice;20;2;1
+open;25;65
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Unitron 
+choice;100;18;100100111000010000;0
+choice;110;18;8
+open;120;Soy cliente de antiguo, desde que llevo gafas, siempre con buen trato 
+choice;130;23;00011001000000000000000;3
+choice;140;11;01010011100;7
+choice;150;5;0
+open;160;Profesionalidad,  Buen trato. Precio ajustado 
+scale;190;28;10;9;9;9;7;9;9;9;9;9;9;8;9;8;9;9;9;8;9;9;9;9;9;9;9;8;9;9;9
+choice;200;28;0010010000000000010101000000;2
+scale;210;28;5;11110100001000010000111101000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000
+choice;220;5;2
+choice;230;5;0
+choice;999;17;10010000100001000;0

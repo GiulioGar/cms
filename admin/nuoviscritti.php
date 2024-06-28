@@ -1,12 +1,14 @@
 <?php require_once('../Connections/admin.php'); 
 	  require_once('inc_auth.php');
-mysqli_select_db($database_admin, $admin);
+
 
 
 $contaiscrittimese=0;
 
-$mesecorrente=date(m);
-$annocorrente=date(Y);
+$mesecorrente=date('m');
+$annocorrente=date('Y');
+$anno_selezionato = isset($_POST['anno']) ? $_POST['anno'] : '';
+$anno_inizio = 2021;
 
 $contaGennaio=0;
 $contaFebbraio=0;
@@ -115,10 +117,13 @@ $giornimese = date("t",strtotime($data));
 	<option value="12" <?php if ($mese=="12") {echo 'selected="selected"';} ?>>Dicembre</option>
 	</select>
 	<select class="form-control custom-select annoSel" name="anno" id="inputGroupSelect04">
-		<option value="">[ANNO]</option>
-		<option value="2023" <?php if ($anno=="2023") {echo 'selected="selected"';} ?>>2023</option>
-		<option value="2022" <?php if ($anno=="2022") {echo 'selected="selected"';} ?>>2022</option>
-		<option value="2021" <?php if ($anno=="2021") {echo 'selected="selected"';} ?>>2021</option>
+	<option value="">[ANNO]</option>
+	<?php
+       // Ciclo per generare le opzioni della select
+	   for ($Vanno = $annocorrente; $Vanno >= $anno_inizio; $Vanno--) {
+		echo '<option value="' . $Vanno . '">' . $Vanno . '</option>';
+	}
+	?>
 	</select>
 </div>
 </form>

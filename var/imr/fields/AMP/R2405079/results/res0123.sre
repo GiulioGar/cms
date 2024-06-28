@@ -1,0 +1,19 @@
+2.0;AMP;R2405079;123;IDEXNE9954;07/06/2024 11:37:46 CEST;07/06/2024 11:44:24 CEST;398;3;230;debug=false;device=mobile;lang=es;sysIID=123;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=2;rm3=3;rm2=4;ticket=55c73a759765ffb7_46c11089d69cc088_cf7b16ff7662310b_4aec41c0e7fec05a640b9fc6ef80a3a4;rm1=1;rm0=4;pan=6;sysUID=IDEXNE9954
+choice;10;2;0
+choice;20;2;0
+open;25;69
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1000000000;0;comp0:Implante cloquear 
+choice;100;18;000000000010000000;10
+choice;110;18;10
+open;120;Herede unos aufifonos que no se habian usado y me los adaptaron pata mi.
+choice;130;23;00010000000000000000000;3
+choice;140;11;01000000000;1
+choice;150;5;4
+scale;190;28;10;3;3;3;3;3;5;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;5
+choice;220;5;1
+choice;230;5;2
+choice;999;17;00000000000000000;-1

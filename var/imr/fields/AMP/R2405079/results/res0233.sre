@@ -1,0 +1,18 @@
+2.0;AMP;R2405079;233;IDEXNE1209;07/06/2024 17:51:45 CEST;07/06/2024 18:17:31 CEST;1546;7;210;rm5=0;rm4=1;rm3=2;rm2=0;rm1=2;rm0=0;Svar2=4;Svar1=8;sysSID=R2405079;Svar0=0;rec=4;sysUID=IDEXNE1209;sysPRJ=AMP;debug=false;pan=6;sysIID=233;device=desktop;ticket=d9c2118c0da31ac5_46c11089d69cc088_cf7b16ff7662310b_e4c393c3188518fbd3ed99c2f5e1b848;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;77
+choice;40;4;3
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1110000000;0;comp0:Gaes;comp2:Cotet;comp1:Ausiss
+choice;100;18;100010001010000000;4
+choice;110;18;10
+open;120;Por calidad y servicio
+choice;130;23;00000001000001000000000;7
+choice;150;5;0
+open;160;Atención  con el cliente
+scale;190;28;10;8;8;8;8;8;8;8;8;8;8;8;8;7;8;8;7;8;8;8;8;7;8;8;8;8;8;8;8
+choice;200;28;0000000100000010111000000000;17
+choice;999;17;10001000100000000;0

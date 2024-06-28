@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;272;IDEXNE9053;08/06/2024 09:37:34 CEST;08/06/2024 09:40:46 CEST;192;4;100;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE9053;device=mobile;ticket=fd38dd3a7fb2c5dc_46c11089d69cc088_cf7b16ff7662310b_c97aaf50f1c014f87be665ec7fa062f6;pan=6;sysIID=272;lang=ca
+choice;10;2;0
+choice;20;2;1
+open;25;62
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Interton
+choice;100;18;000000000000000001;17

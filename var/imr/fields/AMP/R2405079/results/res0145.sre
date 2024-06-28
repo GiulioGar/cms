@@ -1,0 +1,18 @@
+2.0;AMP;R2405079;145;IDEXNE11487;07/06/2024 12:17:42 CEST;07/06/2024 12:28:52 CEST;670;7;210;rm5=0;rm4=0;rm3=1;rm2=2;rm1=0;rm0=3;sysSID=R2405079;Svar0=0;sysUID=IDEXNE11487;rec=0;sysPRJ=AMP;debug=false;pan=6;sysIID=145;device=mobile;ticket=c72d4c21c408f405_46c11089d69cc088_cf7b16ff7662310b_8e9692a7e02ef3267e62761949439f2f;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;72
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1100000000;0;comp0:Gaes;comp1:Audifon
+choice;100;18;100000000001000100;0
+choice;110;18;0
+open;120;Servicio y revisión 
+choice;130;23;00000000000000000100010;17
+choice;150;5;0
+open;160;Atención personalizada durante cuatro años. Seriedad 
+scale;190;28;10;9;7;8;5;9;9;6;9;8;9;8;9;8;9;9;7;3;8;8;9;9;9;8;5;9;9;9;9
+choice;200;28;0000100000000010000110000001;14
+choice;999;17;10000000000000000;0

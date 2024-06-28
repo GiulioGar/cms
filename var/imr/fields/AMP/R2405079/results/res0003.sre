@@ -1,0 +1,11 @@
+2.0;AMP;R2405079;3;IDEXNE4816;06/06/2024 10:40:58 CEST;06/06/2024 10:43:23 CEST;145;7;120;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE4816;device=desktop;ticket=03c539f47440d9d4_46c11089d69cc088_cf7b16ff7662310b_1461dffd150aef994746ba70e9722906;pan=6;sysIID=3;lang=es
+choice;10;2;0
+choice;20;2;1
+open;25;70
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1100000000;0;comp0:philips;comp1:siemens
+choice;100;18;100000000000000000;0
+choice;110;18;0

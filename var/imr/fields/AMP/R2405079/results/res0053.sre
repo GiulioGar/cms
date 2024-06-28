@@ -1,0 +1,15 @@
+2.0;AMP;R2405079;53;IDEXNE5556;06/06/2024 15:57:49 CEST;06/06/2024 16:08:13 CEST;624;7;190;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE5556;device=mobile;ticket=373880f780b5b38c_46c11089d69cc088_cf7b16ff7662310b_07396990e4968068499646a460817dbf;pan=6;sysIID=53;lang=es
+choice;10;2;0
+choice;20;2;1
+open;25;83
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1111110000;0;comp0:Óptica Universitaria;comp5:X.   Ɓ;comp4:-'ZX__<_;comp3:---- ;comp2:----;comp1:Gaes
+choice;100;18;100100101000001100;14
+choice;110;18;8
+open;120;Buena atención, proximidad
+choice;130;23;00000000000000000001000;19
+choice;150;5;0
+open;160;Pre io

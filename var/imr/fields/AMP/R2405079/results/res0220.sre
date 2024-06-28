@@ -1,0 +1,18 @@
+2.0;AMP;R2405079;220;IDEXNE14617;07/06/2024 17:01:49 CEST;07/06/2024 17:08:41 CEST;412;7;210;rm5=0;rm4=1;rm3=0;rm2=0;rm1=0;rm0=4;sysSID=R2405079;Svar0=0;sysUID=IDEXNE14617;rec=0;sysPRJ=AMP;debug=false;pan=6;sysIID=220;device=mobile;ticket=mg0kf6e5e5d22w05_46c11089d69cc088_6ccd2254955148c8_aaae02766a19cb6acc146f8672dbdd21;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;67
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1000000000;0;comp0:Siemens 
+choice;100;18;110000000000000000;1
+choice;110;18;1
+open;120;Dogzjc,ncj oydigz. Lttl
+choice;130;23;00000000010000000000000;9
+choice;150;5;1
+open;160;Es mejor 
+scale;190;28;10;7;9;8;7;8;8;9;7;7;7;5;8;7;7;8;7;6;8;7;8;8;9;8;8;6;8;8;8
+choice;200;28;0000100000010010000101000000;11
+choice;999;17;10000000000000000;0

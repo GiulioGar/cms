@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;257;IDEXNE10289;07/06/2024 23:30:04 CEST;07/06/2024 23:30:58 CEST;54;4;100;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE10289;device=mobile;ticket=d181fa1a39643c61_46c11089d69cc088_cf7b16ff7662310b_6ceb6cdcfb661f8b12ed61d3a17552fb;pan=6;sysIID=257;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;55
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Audiofon
+choice;100;18;000000000000000001;17

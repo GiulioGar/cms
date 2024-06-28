@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;281;IDEXNE10916;08/06/2024 11:06:49 CEST;08/06/2024 11:14:24 CEST;455;3;230;debug=false;device=desktop;lang=ca;sysIID=281;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=1;rm3=1;rm2=4;ticket=6ca092fd270a8105_46c11089d69cc088_cf7b16ff7662310b_ebfaf7b93aabcb6f1355f71f27aae584;rm1=1;rm0=2;pan=6;sysUID=IDEXNE10916
+choice;10;2;0
+choice;20;2;0
+open;25;76
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:cotet
+choice;100;18;000000010000000000;7
+choice;110;18;7
+open;120;Cercania
+choice;130;23;01000100000000000000000;1
+choice;140;11;00001000000;4
+choice;150;5;4
+scale;190;28;10;6;8;6;4;5;9;9;6;6;9;9;6;7;9;8;7;6;6;8;2;8;9;9;7;6;7;4;9
+choice;200;28;0000011001100000000001000000;9
+choice;220;5;1
+choice;230;5;4
+choice;999;17;00000000000000000;-1

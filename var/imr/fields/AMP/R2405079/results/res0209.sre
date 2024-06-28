@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;209;IDEXNE2295;07/06/2024 16:12:28 CEST;07/06/2024 16:21:00 CEST;512;3;230;rm5=0;rm4=1;rm3=2;rm2=1;rm1=4;rm0=4;sysSID=R2405079;Svar0=0;sysUID=IDEXNE2295;rec=0;sysPRJ=AMP;debug=false;pan=6;sysIID=209;device=mobile;ticket=uqtmclqnqhy14bro_46c11089d69cc088_cf7b16ff7662310b_987e8a899007eefaec32f53af526a0a5;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;64
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1100000000;0;comp0:ReSound;comp1:Amplifon
+choice;100;18;100000000001000000;0
+choice;110;18;11
+open;120;No he elegido esa marca. Mis audífonos son de  marca ReSound, proporcionados por RV Alfa. Nunca usaría audífonos de estafadores como Gaes
+choice;130;23;01000000000000000000000;1
+choice;150;5;3
+open;170;Porque no les conozco
+scale;190;28;10;9;9;8;6;9;5;5;9;7;7;5;9;6;5;5;5;5;9;7;8;9;8;9;6;8;9;9;8
+choice;200;28;0000000000000000000000000010;26
+scale;210;28;5;00001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000110000000010000100001000010000100001
+choice;220;5;3
+choice;230;5;3
+choice;999;17;10000000000000000;0

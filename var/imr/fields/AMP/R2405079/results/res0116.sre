@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;116;IDEXNE14854;07/06/2024 11:31:13 CEST;07/06/2024 11:44:26 CEST;793;3;230;rm5=0;rm4=0;rm3=1;rm2=3;rm1=1;rm0=2;Svar3=13;Svar2=3;Svar1=4;Svar0=0;sysSID=R2405079;rec=13;sysUID=IDEXNE14854;sysPRJ=AMP;debug=false;pan=6;sysIID=116;device=desktop;ticket=a894d879399c80a8_46c11089d69cc088_cf7b16ff7662310b_9739e688fa88f2805b3307f74e46dba2;browser=none;lang=ca
+choice;10;2;0
+choice;20;2;0
+open;25;72
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1110000000;0;comp0:AUDIKA;comp2:ALAIN AFLELLOU;comp1:GAES
+choice;100;18;111110111000110100;1
+choice;110;18;12
+open;120;recomendación del médico
+choice;130;23;01000000000000000000000;1
+choice;150;5;1
+open;160;No me gusta recomendar nunca nada a nadie, pero el servicio de AUDIKA en mi ciudad es excelente. Personal atento, amable y dispuesto a ofrecer ayuda en todo momento.
+scale;190;28;10;9;7;8;6;6;9;9;9;6;9;9;9;4;8;7;4;0;9;9;9;9;9;9;9;9;7;9;9
+choice;200;28;0000011001000000010010000000;5
+scale;210;28;5;11100101001000000001100001111011110101001110011110100101000010000000010000110000000010000110000101001000010100100001000011110000010000100001
+choice;220;5;1
+choice;230;5;4
+choice;999;17;10011000000001000;0

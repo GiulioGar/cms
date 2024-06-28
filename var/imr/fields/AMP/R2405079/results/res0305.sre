@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;305;IDEXNE2050;08/06/2024 21:53:34 CEST;08/06/2024 21:57:51 CEST;257;3;230;debug=false;device=mobile;lang=es;sysIID=305;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=1;rm4=1;rm3=0;rm2=1;ticket=c20d884c000196bb_46c11089d69cc088_679238fdb6c74b8d_cc136f83bb5f32f3a67e3787b42d33b4;rm1=1;rm0=3;pan=6;sysUID=IDEXNE2050
+choice;10;2;0
+choice;20;2;1
+open;25;67
+choice;40;4;3
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1100000000;0;comp0:Audika;comp1:Gades
+choice;100;18;000000000000100000;12
+choice;110;18;12
+open;120;Confianza 
+choice;130;23;00000000000000000000010;21
+choice;150;5;1
+open;160;Me va bien con ellos
+scale;190;28;10;6;6;7;6;5;8;8;6;6;8;6;6;6;7;6;6;4;6;7;7;7;6;7;6;7;6;7;7
+choice;200;28;0000000001000100000100101000;13
+choice;220;5;1
+choice;230;5;0
+choice;999;17;00000000000000000;-1

@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;212;IDEXNE3777;07/06/2024 16:20:02 CEST;08/06/2024 10:42:19 CEST;66137;7;110;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE3777;device=mobile;ticket=a00rj2j508yu2mkn_46c11089d69cc088_cf7b16ff7662310b_80c490a4dde16c30c75aea902ba337d7;lang=es;sysIID=212;pan=6
+choice;10;2;0
+choice;20;2;1
+open;25;84
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1000000000;0;comp0:Gars
+choice;100;18;100000111000010000;0

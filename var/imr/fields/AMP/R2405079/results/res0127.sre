@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;127;IDEXNE12731;07/06/2024 11:44:29 CEST;07/06/2024 11:46:03 CEST;94;7;110;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE12731;device=mobile;ticket=8f2vugd5jwm4lbg0_46c11089d69cc088_cf7b16ff7662310b_4439e445eb6356b8a15872b25f4242e0;pan=6;sysIID=127;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;65
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1100000000;0;comp0:Philips;comp1:Phonak
+choice;100;18;110000000000100000;0

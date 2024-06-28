@@ -1,0 +1,818 @@
+#export vars "Svar0"
+#export vars "Svar1"
+#export vars "Svar2"
+#export vars "Svar3"
+
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+string labelCheck;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selCheck;
+string cpt;
+int preQid;
+int n;
+int reCod;
+int selintCheck;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+string autotest=system.getProperty("test");
+string uid = system.getProperty("sysUID");
+if (autotest=="1" || uid=="GUEST" || uid=="null") {
+system.setProperty("env", "debug:true");  system.setProperty("env", "browser:variables");}
+string err;
+int countValid;
+int cod0=99;
+int cod1=99;
+int cod2=99;
+int cod3=99;
+int cod4=99;
+int ncod;
+int idx;
+int idex;
+int rm;
+int nSel;
+int selCon=0;
+int Nran;
+boolean valid;
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+boolean live=true;
+
+
+
+// Q10: CHOICE
+qst = new question("choice", 10);
+qst.setProperty("text", "¡Gracias por participar en esta encuesta!</br>Toda la información que proporcione será estrictamente confidencial y se utilizará únicamente para los fines de la encuesta. Nos interesa mucho su opinión. Tómese su tiempo y responda a las preguntas con la mayor sinceridad y precisión posibles.");
+qst.setProperty("code", "ac1");
+qst.setProperty("show_rand", false);
+vector q10_opts = new vector {
+"Acepto",
+"Me niego"
+};
+qst.setProperty("options", q10_opts);
+send qst;
+
+ansId=system.getProperty("ans10");
+if(ansId==1) { return 4; }
+
+// Q20: CHOICE
+qst = new question("choice", 20);
+qst.setProperty("text", "Usted es...");
+qst.setProperty("code", "S1");
+qst.setProperty("show_rand", false);
+vector q20_opts = new vector {
+"Hombre",
+"Mujer"
+};
+qst.setProperty("options", q20_opts);
+send qst;
+
+qst = new question("open", 25);
+qst.setProperty("text", "Por favor, indique su edad.");
+qst.setProperty("code", "S2");
+qst.setProperty("view", "numeric");
+qst.setProperty("validation_rule", "^[1-9]|[1-9][0-9]$");
+qst.setProperty("validation_error", "Indicare un numero compreso tra 1 e 99");
+send qst;
+
+int eta=(int)system.getProperty("ans25");
+ 
+if(eta<55) {  return 4;}
+
+
+// Q40: CHOICE
+qst = new question("choice", 40);
+qst.setProperty("text", "¿En qué zona vive actualmente?");
+qst.setProperty("code", "S3");
+qst.setProperty("show_rand", false);
+vector q40_opts = new vector {
+"Noroeste y Nordeste",
+"Madrid y Centro",
+"Este",
+"Sur y Canarias"
+};
+qst.setProperty("options", q40_opts);
+send qst;
+
+// Q50: CHOICE
+qst = new question("choice", 50);
+qst.setProperty("text", "¿Se ha sometido alguna vez a una prueba de audición para evaluar la gravedad de su pérdida auditiva?");
+qst.setProperty("code", "S.4");
+qst.setProperty("show_rand", false);
+vector q50_opts = new vector {
+"Sí, me he hecho una prueba",
+"No, no me he hecho ninguna prueba, pero tengo problemas de audición",
+"No, no tengo problemas de audición"
+};
+qst.setProperty("options", q50_opts);
+send qst;
+
+int ans4=system.getProperty("ans50");
+if (ans4==2) { return 4;}
+
+// Q60: CHOICE
+qst = new question("choice", 60);
+qst.setProperty("text", "¿Y qué hay de los audífonos?");
+qst.setProperty("code", "S.4b");
+qst.setProperty("show_rand", false);
+vector q60_opts = new vector {
+"Ya tengo un audífono",
+"Estoy evaluando empezar a utilizar un audífono",
+"No excluyo adoptar un audífono en el futuro",
+"Nunca utilizaré un audífono."
+};
+qst.setProperty("options", q60_opts);
+send qst;
+
+int ans4b=system.getProperty("ans60");
+if (ans4b!=0) { return 4;}
+
+
+int ans5a;
+
+if(ans4==0)
+{
+
+// Q70: CHOICE
+qst = new question("choice", 70);
+qst.setProperty("text", "Ha mencionado haberse sometido a una prueba de audición en el pasado. ¿Recuerda el nivel de pérdida auditiva indicado por la prueba?");
+qst.setProperty("code", "S.5a");
+qst.setProperty("show_rand", false);
+vector q70_opts = new vector {
+"<b>Pérdida auditiva leve:</b> puede vivir con ella sin comprometer su calidad de vida, pero debe ser controlada. Se aconseja el uso de un audífono",
+"<b>Pérdida auditiva moderada:</b> la pérdida auditiva ya afecta a algunos aspectos de su vida, por lo que es muy recomendable usar un audífono",
+"<b>Pérdida auditiva grave/profunda:</b> la pérdida auditiva está comprometiendo su calidad de vida, por lo que el uso de un audífono es imprescindible",
+"<b>No me acuerdo</b>"
+};
+qst.setProperty("options", q70_opts);
+send qst;
+
+ans5a=system.getProperty("ans70");
+
+}
+
+if(ans4==1 || ans5a==3) 
+{ 
+// Q80: CHOICE
+qst = new question("choice", 80);
+qst.setProperty("text", "¿Cómo describiría la gravedad de su pérdida auditiva?");
+qst.setProperty("code", "S.5b");
+qst.setProperty("show_rand", false);
+vector q80_opts = new vector {
+"<b>Pérdida auditiva leve:</b> tengo algunas dificultades para oír sonidos bajos o entender el habla en ambientes ruidosos",
+"<b>Pérdida de audición moderada:</b> tengo problemas para oír conversaciones personales (tanto en situaciones ruidosas como tranquilas) y a menudo tengo que pedir a la gente que repita lo que ha dicho",
+"<b>Pérdida auditiva grave/profunda:</b> me cuesta oír casi todos los sonidos y entender cualquier tipo de conversación, tengo la sensación de que los demás murmuran o hablan con poca claridad"
+};
+qst.setProperty("options", q80_opts);
+send qst;
+}
+
+
+
+cod="<script type='text/javascript' src='https://www.primisoft.com/fields/script/oneforone.js'></script>";
+
+// Q90: CONCEPT
+qst = new question("choice", 90);
+qst.setProperty("text", "Hablando de audífonos, ¿qué marcas le vienen a la mente?"+cod);
+qst.setProperty("selection", "multiple");
+vector q90_opts = new vector {
+"Marca 1:#so",
+"Marca 2:#so",
+"Marca 3:#so",
+"Marca 4:#so",
+"Marca 5:#so",
+"Marca 6:#so",
+"Marca 7:#so",
+"Marca 8:#so",
+"Marca 9:#so",
+"Marca 10:#so"
+};
+qst.setProperty("options", q90_opts);
+qst.setProperty("code", "S.6");
+send qst;
+
+
+// Q100: CHOICE
+qst = new question("choice", 100);
+qst.setProperty("text", "¿Cuál de las siguientes marcas de audífonos conoce?");
+qst.setProperty("code", "S.7");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+vector q100_opts = new vector {
+"Gaes - Una marca Amplifon",
+"Widex",
+"Audifon",
+"Multiópticas",
+"Opticalia",
+"Audiocalia",
+"General Optica",
+"Cottet Audio",
+"Óptica Universitaria",
+"Vista Óptica",
+"Aural",
+"Óptica Roma",
+"Audika",
+"Alain Afflelou Audiólogo",
+"Angelsfon",
+"Óptica 2000",
+"Federópticos",
+"Nadie #se#sf"
+};
+qst.setProperty("options", q100_opts);
+send qst;
+
+
+count=0;
+for(int i=0,16)
+{
+sel=system.getProperty("ans100_"+i);
+if (sel==true) { count=count+1; reCod=i;}
+}
+
+if(count==0) { return 4; }
+
+
+// Q110: CHOICE
+qst = new question("choice", 110);
+qst.setProperty("text", "¿De qué marca es su audífono actual?");
+qst.setProperty("code", "S.8");
+qst.setProperty("show_rand", false);
+qst.setProperty("controller", 100);
+if(count==1)
+{
+    qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+    qst.setProperty("hidden", true);
+}
+send qst;
+
+
+ansId=system.getProperty("ans110");
+nam=q100_opts.get(ansId);
+
+
+    // Q120: CHOICE
+    qst = new question("open", 120);
+    qst.setProperty("text", "¿Cuál es la razón más importante por la que ha elegido esta marca?");
+    qst.setProperty("code", "S.9");
+    send qst;
+
+
+
+// Q130: CHOICE
+qst = new question("choice", 130);
+qst.setProperty("text", "¿Qué le influyó a la hora de comprar/obtener su último audífono?");
+qst.setProperty("code", "S.10");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+qst.setProperty("extras", "{max:5}");
+vector q130_opts = new vector {
+"Otorrinolaringólogo",
+"Audiólogo",
+"Médico de familia",
+"Cónyuge/pareja",
+"Hijo",
+"Familiares",
+"Amigos",
+"La persona que me proporciona apoyo y asistencia",
+"Compañero de trabajo o jefe",
+"Otro usuario de audífono (de boca en boca)",
+"Anuncio televisivo",
+"Internet (sitios web de clínicas de audífonos/fabricantes/opiniones de consumidores)",
+"Anuncio de radio",
+"Anuncios en periódicos o revistas",
+"Correo directo",
+"Celebridad o personalidad pública",
+"Llamada telefónica de telemarketing",
+"La pérdida de audición empeora o empeoró",
+"Cuestiones de seguridad",
+"Precio del audífono/Promoción",
+"Mejora de la situación financiera",
+"Experiencia previa con audífonos",
+"No me acuerdo/Ninguna de estas#se#sf"
+};
+qst.setProperty("options", q130_opts);
+send qst;
+
+count=0;
+for(int i=3,6)
+{
+sel=system.getProperty("ans130_"+i);
+if (sel==true) { count=count+1; }
+}
+
+if(count>0)
+{
+    
+// Q140: CHOICE
+qst = new question("choice", 140);
+qst.setProperty("text", "¿Qué hicieron sus seres queridos en particular para apoyar su decisión de comprar un audífono?");
+qst.setProperty("code", "S.11");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+qst.setProperty("extras", "{max:5}");
+vector q140_opts = new vector {
+"Investigación en internet sobre opciones de audífonos.",
+"Acompañamiento a citas con profesionales de la audición.",
+"Ayuda para comparar distintos modelos de audífonos, características y precios.",
+"Asistencia en la programación de citas para evaluaciones de audífonos.",
+"Ánimo y consuelo durante todo el proceso de toma de decisiones.",
+"Ayuda u orientación financiera (cobertura de seguros, opciones de financiación).",
+"Ayuda para interpretar información técnica sobre audífonos.",
+"Hablar sobre el impacto potencial de los audífonos en la vida del individuo.",
+"Escuchar activamente las preocupaciones y preferencias en relación con los audífonos.",
+"Ayudar en la resolución de problemas y el mantenimiento de los audífonos.",
+"No me acuerdo/Ninguna de estas#se#sf"
+};
+qst.setProperty("options", q140_opts);
+
+send qst;
+}
+
+
+// Q150: CHOICE
+qst = new question("choice", 150);
+qst.setProperty("text", "En caso de que un amigo o familiar le pidiera consejo, ¿le recomendaría "+nam+" como audífono?");
+qst.setProperty("code", "S.12");
+qst.setProperty("show_rand", false);
+vector q150_opts = new vector {
+"Definitivamente sí",
+"Probablemente sí",
+"Probablemente no",
+"Definitivamente no",
+"No sabria"
+};
+qst.setProperty("options", q150_opts);
+send qst;
+
+ansId=system.getProperty("ans150");
+if (ansId<=1)
+{ 
+// Q160: CONCEPT
+qst = new question("open", 160);
+qst.setProperty("text", "¿Por qué lo recomendaría? ¿Cuáles son sus ventajas?");
+qst.setProperty("code", "S.13a");
+send qst;
+}
+
+else
+{
+    if(ansId !=4)
+    {
+        // Q170: CONCEPT
+        qst = new question("open", 170);
+        qst.setProperty("text", "¿Por qué no lo recomendaría? ¿Cuáles son sus inconvenientes?");
+        qst.setProperty("code", "S.13b");
+        send qst;
+    }
+
+}
+
+
+
+// Q190: SCALE
+qst = new question("scale", 190);
+qst.setProperty("text", "<p>Ahora se le mostrará una lista de aspectos. Díganos qué importancia concede a cada uno de ellos a la hora de elegir un audífono.</br></br>Cuando dé su respuesta, puntúe su opinión del 1 al 10, siendo 10 &quot;Muy importante&quot; y 1 &quot;Nada importante&quot;.</p><p>A la hora de elegir un audífono¿ qué importancia tiene...?</p>");
+qst.setProperty("code", "P.1");
+qst.setProperty("show_rand", true);
+vector q190_rows = new vector {
+"La marca/empresa es fiable",
+"La marca/empresa ofrece audífonos personalizados según mis necesidades",
+"Es una marca/empresa de confianza",
+"La marca/empresa obtiene los mayores índices de satisfacción de los clientes",
+"La marca/empresa es líder en la categoría de audífonos",
+"Mejora la relación con mi familia",
+"Me permite redescubrir el gran placer de oír y vivir",
+"Ofrece productos de primera calidad",
+"Me permitió escuchar un sonido natural",
+"Es fácil de usar",
+"Es invisible/discreto",
+"Es resistente y duradero",
+"Ofrece la gama más amplia de audífonos",
+"Las condiciones de pago se ajustan a mis necesidades",
+"Buena relación calidad-precio",
+"Ofrece interesantes descuentos",
+"Ofrece un programa de intercambio",
+"El personal es experto y profesional",
+"El personal es amable y servicial",
+"Después de la compra, ofrecen comprobaciones periódicas gratuitas para asegurarse de que funciona correctamente",
+"Si surge algún problema después de la compra, puede contar con ellos",
+"Evaluación auditiva exhaustiva gratuita",
+"Ofrecen un periodo de prueba gratuito",
+"Las tiendas tienen un ambiente agradable y acogedor",
+"Siempre hay una tienda cerca",
+"Las pruebas y visitas las realizan audiólogos titulados",
+"Hay especialistas en audición de larga duración",
+"Pouede ser atendido siempre por el mismo audioprotesista"
+};
+qst.setProperty("rows", q190_rows);
+vector q190_cols = new vector {
+"1 Nada importante",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10-Muy importante"
+};
+if(autotest !="1")  { qst.setProperty("view", "carousel"); }
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+qst.setProperty("cols", q190_cols);
+send qst;
+
+
+vector q200_rows = new vector {
+"#shLa marca/empresa es fiable",
+"#shLa marca/empresa ofrece audífonos personalizados según mis necesidades",
+"#shEs una marca/empresa de confianza",
+"#shLa marca/empresa obtiene los mayores índices de satisfacción de los clientes",
+"#shLa marca/empresa es líder en la categoría de audífonos",
+"#shMejora la relación con mi familia",
+"#shMe permite redescubrir el gran placer de oír y vivir",
+"#shOfrece productos de primera calidad",
+"#shMe permitió escuchar un sonido natural",
+"#shEs fácil de usar",
+"#shEs invisible/discreto",
+"#shEs resistente y duradero",
+"#shOfrece la gama más amplia de audífonos",
+"#shLas condiciones de pago se ajustan a mis necesidades",
+"#shBuena relación calidad-precio",
+"#shOfrece interesantes descuentos",
+"#shOfrece un programa de intercambio",
+"#shEl personal es experto y profesional",
+"#shEl personal es amable y servicial",
+"#shDespués de la compra, ofrecen comprobaciones periódicas gratuitas para asegurarse de que funciona correctamente",
+"#shSi surge algún problema después de la compra, puede contar con ellos",
+"#shEvaluación auditiva exhaustiva gratuita",
+"#shOfrecen un periodo de prueba gratuito",
+"#shLas tiendas tienen un ambiente agradable y acogedor",
+"#shSiempre hay una tienda cerca",
+"#shLas pruebas y visitas las realizan audiólogos titulados",
+"#shHay especialistas en audición de larga duración",
+"#shPouede ser atendido siempre por el mismo audioprotesista"
+};
+
+vector q200_rowsCopy = new vector {
+"La marca/empresa es fiable",
+"La marca/empresa ofrece audífonos personalizados según mis necesidades",
+"Es una marca/empresa de confianza",
+"La marca/empresa obtiene los mayores índices de satisfacción de los clientes",
+"La marca/empresa es líder en la categoría de audífonos",
+"Mejora la relación con mi familia",
+"Me permite redescubrir el gran placer de oír y vivir",
+"Ofrece productos de primera calidad",
+"Me permitió escuchar un sonido natural",
+"Es fácil de usar",
+"Es invisible/discreto",
+"Es resistente y duradero",
+"Ofrece la gama más amplia de audífonos",
+"Las condiciones de pago se ajustan a mis necesidades",
+"Buena relación calidad-precio",
+"Ofrece interesantes descuentos",
+"Ofrece un programa de intercambio",
+"El personal es experto y profesional",
+"El personal es amable y servicial",
+"Después de la compra, ofrecen comprobaciones periódicas gratuitas para asegurarse de que funciona correctamente",
+"Si surge algún problema después de la compra, puede contar con ellos",
+"Evaluación auditiva exhaustiva gratuita",
+"Ofrecen un periodo de prueba gratuito",
+"Las tiendas tienen un ambiente agradable y acogedor",
+"Siempre hay una tienda cerca",
+"Las pruebas y visitas las realizan audiólogos titulados",
+"Hay especialistas en audición de larga duración",
+"Pouede ser atendido siempre por el mismo audioprotesista"
+};
+
+baseQid=9;
+vector indiciB = new vector {};
+
+
+for(int i=0,9)
+{
+    if(countValid<5)
+    {
+        for(int j=0,27)
+        {
+        ansId=system.getProperty("ans190_"+j);
+        if(ansId>=7)
+            {
+                        cmd=q200_rowsCopy.get(j);
+                        system.out("<div>Risposta: "+baseQid+" - Item "+cmd+": "+ansId+"</div>"); 
+                        if(ansId==baseQid) 
+                        {
+                            link=""+j;
+                            indiciB.add(link);
+                            opt=q200_rowsCopy.get(j); q200_rows.set(j,opt);  
+                            system.out("<div>Sel "+countValid+": "+opt+"</div>"); 
+                            countValid=countValid+1; 
+                        }
+            }
+
+        }
+    }
+    baseQid=baseQid-1;
+}
+
+system.out("<div>countValid: "+countValid+"</div>"); 
+
+
+if(countValid>0) 
+{ 
+
+
+   if(countValid<=5)
+    {
+        idex=countValid-1;
+        for(int i=0,idex)
+        {
+            ncod=(int)indiciB.get(i);
+
+            if(i==0) { cod0=ncod;}
+            if(i==1) { cod1=ncod;}
+            if(i==2) { cod2=ncod;}
+            if(i==3) { cod3=ncod;}
+            if(i==4) { cod4=ncod;}
+        }
+
+    }
+
+    // Q200: CHOICE
+    qst = new question("choice", 200);
+    qst.setProperty("text", "Seleccione ahora los 5 aspectos más importantes de entre los que acaba de evaluar.");
+    qst.setProperty("code", "P.2");
+    qst.setProperty("selection", "multiple");
+    qst.setProperty("extras", "{max:5}");
+    qst.setProperty("show_rand", true);
+    qst.setProperty("options", q200_rows);
+    if(countValid<=5)
+    {
+    qst.setProperty("default_answer","{ 'selection': ["+cod0+","+cod1+","+cod2+","+cod3+","+cod4+"]}");
+    qst.setProperty("hidden", true);
+    }
+    send qst;
+}
+
+
+vector elementPrio = new vector {
+"Gaes - Una marca Amplifon",
+"Widex",
+"Audifon",
+"Multiópticas",
+"Opticalia",
+"Audiocalia",
+"General Optica",
+"Cottet Audio",
+"Óptica Universitaria",
+"Vista Óptica",
+"Aural",
+"Óptica Roma",
+"Audika",
+"Alain Afflelou Audiólogo",
+"Angelsfon",
+"Óptica 2000",
+"Federópticos"
+};
+
+vector brands = new vector {
+"#sha",
+"#shb",
+"#shc",
+"#shd",
+"NINGUNA DE ESTAS#se#sf"
+};
+
+vector indici = new vector {
+"#sha",
+"#shb",
+"#shc",
+"#shd"
+};
+
+nSel=6;
+Nran=7;
+vector indiciPrio = new vector {"0", "2", "3", "4" , "6", "8", "13" };
+
+ansId=system.getProperty("ans110");
+if(ansId==0 || ansId==2 || ansId==3 || ansId==4 || ansId==6 || ansId==8 || ansId==13)
+{
+    opt=elementPrio.get(ansId); 
+    brands.set(selCon,opt);
+    link=""+ansId;
+    indici.set(selCon,link);
+
+
+    for(int i=0,6)
+    {
+    if(selCheck==false)
+        {
+            n=(int)indiciPrio.get(i);
+            if(n==ansId){ indiciPrio.remove(i); selCheck=true;}
+        }
+    }
+
+    system.setProperty("Svar"+selCon, link);
+    system.out("<div>Item  "+selCon+": "+opt+"</div>"); 
+    system.out("<div>Indice  "+selCon+": "+link+"</div>"); 
+
+    selCon=selCon+1;
+    nSel=nSel-1;
+    Nran=Nran-1;
+}
+
+if(ansId !=0)
+{
+    sel=system.getProperty("ans100_0");
+
+    if(sel==true)
+    {
+     opt=elementPrio.get(0); 
+    brands.set(selCon,opt);
+    link=""+0;
+    indici.set(selCon,link);
+    indiciPrio.remove(0);
+
+    system.setProperty("Svar"+selCon, link);
+    system.out("<div>Item  "+selCon+": "+opt+"</div>"); 
+    system.out("<div>Indice  "+selCon+": "+link+"</div>"); 
+
+    selCon=selCon+1;
+    nSel=nSel-1;
+    Nran=Nran-1;
+    }
+
+}
+
+opt="";
+for (int i=0,nSel)
+{ 
+
+    system.setProperty("rm"+i, "rand:"+Nran);
+    rm = (int)system.getProperty("rm"+i); 
+    
+    opt=indiciPrio.get(rm);
+    idx=(int)indiciPrio.get(rm);
+
+    if (selCon<4)
+    {
+
+    sel=system.getProperty("ans100_"+opt);
+    if (sel==true)
+        {
+            nam=elementPrio.get(idx);
+            brands.set(selCon,nam);
+            indici.set(selCon,opt);
+            
+            // salvo nel sistema una variabile che contiene l'item pescato.
+            system.setProperty("Svar"+selCon, opt);
+            system.out("<div>Item  "+selCon+": "+nam+"</div>"); 
+            system.out("<div>Indice  "+selCon+": "+opt+"</div>"); 
+
+            selCon=selCon+1;
+        }
+    }	
+
+indiciPrio.remove(rm);
+Nran=Nran-1;
+
+}
+
+cod0=99;
+cod1=99;
+cod2=99;
+cod3=99;
+ncod=99;
+
+count=0;
+for(int i=0,3)
+{
+    label =indici.get(i);
+    valid=label.contains("#sh");
+    if (valid==false) 
+    { 
+    system.setProperty("rec",label);
+    ncod=(int)system.getProperty("rec");
+
+    if(i==0) { cod0=ncod;}
+    if(i==1) { cod1=ncod;}
+    if(i==2) { cod2=ncod;}
+    if(i==3) { cod3=ncod;}
+    }
+
+}
+
+qst = new question("choice", 999);
+qst.setProperty("text", "prodotti estratti");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "prodEstr");
+qst.setProperty("options", elementPrio);
+qst.setProperty("default_answer","{ 'selection': ["+cod0+","+cod1+","+cod2+","+cod3+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+system.setProperty("env", "debug:false");
+system.setProperty("env", "browser:none");
+
+if(selCon !=0)
+{
+    // Q210: SCALE
+    qst = new question("scale", 210);
+    qst.setProperty("text", "<p>Ahora nos gustaría conocer su opinión sobre las marcas de audífonos especializados. No importa lo familiarizado que esté con estas marcas.</p> Lo que importa es su opinión.</br></br> Para cada una de las afirmaciones siguientes, seleccione qué marcas asociaría con ellas.</br>¿Qué marcas de audífonos especializados...");
+    qst.setProperty("code", "P.3");
+    qst.setProperty("show_rand", true);
+    qst.setProperty("selection", "multiple");
+    vector q210_rows = new vector {
+    "La marca/empresa es fiable",
+    "La marca/empresa ofrece audífonos personalizados según mis necesidades",
+    "Es una marca/empresa de confianza",
+    "La marca/empresa obtiene los mayores índices de satisfacción de los clientes",
+    "La marca/empresa es líder en la categoría de audífonos",
+    "Mejora la relación con mi familia",
+    "Me permite redescubrir el gran placer de oír y vivir",
+    "Ofrece productos de primera calidad",
+    "Me permitió escuchar un sonido natural",
+    "Es fácil de usar",
+    "Es invisible/discreto",
+    "Es resistente y duradero",
+    "Ofrece la gama más amplia de audífonos",
+    "Las condiciones de pago se ajustan a mis necesidades",
+    "Buena relación calidad-precio",
+    "Ofrece interesantes descuentos",
+    "Ofrece un programa de intercambio",
+    "El personal es experto y profesional",
+    "El personal es amable y servicial",
+    "Después de la compra, ofrecen comprobaciones periódicas gratuitas para asegurarse de que funciona correctamente",
+    "Si surge algún problema después de la compra, puede contar con ellos",
+    "Evaluación auditiva exhaustiva gratuita",
+    "Ofrecen un periodo de prueba gratuito",
+    "Las tiendas tienen un ambiente agradable y acogedor",
+    "Siempre hay una tienda cerca",
+    "Las pruebas y visitas las realizan audiólogos titulados",
+    "Hay especialistas en audición de larga duración",
+    "Pouede ser atendido siempre por el mismo audioprotesista"
+    };
+    qst.setProperty("rows", q210_rows);
+    qst.setProperty("cols", brands);
+   if(autotest !="1")  { qst.setProperty("view", "onebyone"); }
+    send qst;
+}
+
+
+// Q220: CHOICE
+qst = new question("choice", 220);
+qst.setProperty("text", "Por último, nos gustaría que nos diera algunos datos demográficos.</br>¿Cuántas personas hay en su familia? (Incluyendo usted, que vivan en el mismo hogar) ");
+qst.setProperty("code", "Por");
+qst.setProperty("show_rand", false);
+vector q220_opts = new vector {
+"1",
+"2",
+"3",
+"4",
+"5 o más"
+};
+qst.setProperty("options", q220_opts);
+send qst;
+
+// Q230: CHOICE
+qst = new question("choice", 230);
+qst.setProperty("text", "¿Cuál es su nivel educativo?");
+qst.setProperty("code", "D2");
+qst.setProperty("show_rand", false);
+vector q230_opts = new vector {
+"Ninguno/Escuela primaria",
+"Escuela secundaria",
+"Secundaria superior",
+"Titulación",
+"Postgrado Máster/Doctorado"
+};
+qst.setProperty("options", q230_opts);
+send qst;
+
+}

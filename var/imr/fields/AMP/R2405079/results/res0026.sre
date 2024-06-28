@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;26;IDEXNE5340;06/06/2024 12:19:28 CEST;06/06/2024 12:21:41 CEST;133;4;100;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE5340;device=mobile;ticket=4113cd4f6651a0db_46c11089d69cc088_c30dc1fb24295980_3d6d3f957ebd88de8689dba66fa41048;pan=6;sysIID=26;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;77
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:No recuerdo 
+choice;100;18;000000000000000001;17

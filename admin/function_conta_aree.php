@@ -4,7 +4,7 @@
 
 
 // Query da eseguire
-mysqli_select_db($database_admin, $admin);
+mysqli_select_db($admin, $database_admin);
 $query_trg = "SELECT * FROM elencotag ORDER BY tag ASC";
 $tot_targ = mysqli_query($admin, $query_trg);
 

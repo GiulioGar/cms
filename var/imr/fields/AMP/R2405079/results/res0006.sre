@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;6;IDEXNE12205;06/06/2024 10:46:57 CEST;06/06/2024 10:48:56 CEST;119;4;100;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE12205;device=mobile;ticket=260f87dca2af8cd5_46c11089d69cc088_cf7b16ff7662310b_a4977faf024115f130d357ce1ea75172;pan=6;sysIID=6;lang=es
+choice;10;2;0
+choice;20;2;1
+open;25;72
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1100000000;0;comp0:Gaes;comp1:Amplifon 
+choice;100;18;000000000000000001;17

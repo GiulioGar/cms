@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;260;IDEXNE13645;08/06/2024 00:44:29 CEST;08/06/2024 00:48:01 CEST;212;7;110;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE13645;device=desktop;ticket=qvz0ttd4aqlijt8h_46c11089d69cc088_cf7b16ff7662310b_4fbff8ba619cb8203ec299d6e9e2ec7a;pan=6;sysIID=260;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;81
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:gaes
+choice;100;18;101010000001010010;13

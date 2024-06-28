@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;147;IDEXNE10666;07/06/2024 12:23:07 CEST;07/06/2024 12:37:18 CEST;851;3;230;debug=false;device=desktop;lang=es;sysIID=147;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=0;rm3=1;rm2=2;ticket=219015d1ab118426_46c11089d69cc088_cf7b16ff7662310b_5730839954abb33f98cc0398dd89fc6a;rm1=5;rm0=6;pan=6;sysUID=IDEXNE10666
+choice;10;2;0
+choice;20;2;0
+open;25;68
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;0
+choice;90;10;1111000000;0;comp0:Unitrron;comp3:Gaes;comp2:Audika;comp1:Philips
+choice;100;18;000000000000100000;12
+choice;110;18;12
+open;120;Conozco Audika porque compró Unitron, pero en realidad estoy decepcionado de ambas. Confío en mi audioprotesista que se fue de ambas.
+choice;130;23;00000001000000000100000;17
+choice;150;5;3
+open;170;Porque la atención postventa fue muy negativa: cambiaron de personal y la persona que me atendió se fue de esa empresa.
+scale;190;28;10;6;6;8;7;8;5;7;8;7;5;2;8;4;5;9;8;4;9;8;8;9;8;7;4;4;8;4;8
+choice;200;28;0000000000010010001110000000;14
+choice;220;5;0
+choice;230;5;3
+choice;999;17;00000000000000000;-1

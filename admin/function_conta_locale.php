@@ -187,8 +187,8 @@ $panel_in=$lu['panel'];
 
 
 ///MODIFICA PRIMA DI PUBBLICARE */
-$linkDir="/var";     // SERVER ONLINE
-//$linkDir="../var";   //XAMPP 
+//$linkDir="/var";     // SERVER ONLINE
+$linkDir="../var";   //XAMPP 
 
 //echo "Stato".$stato_ricerca;
 
@@ -1302,13 +1302,13 @@ while ($row = mysqli_fetch_assoc($csv_status))
 	if ($status==3) { $status2="complete";}
 	if ($status==4) { $status2="screen out";}
 	if ($status==5) { $status2="quotafull";}
+	if ($status==7) { $status2="bad quality";}
 
 	if ($status !=0) 
 	{
 	$csv_sta .=$uid.";".$status.";".$status2.";".$link; 
     $csv_sta .= "\n";
 	}
-
 
 }	
 
@@ -1350,6 +1350,7 @@ foreach ($panels as $value)
 		if ($status==3) { $status2="complete";}
 		if ($status==4) { $status2="screen out";}
 		if ($status==5) { $status2="quotafull";}
+		if ($status==7) { $status2="bad quality";}
 
 		if ($status !=0) 
 		{
@@ -1669,8 +1670,6 @@ if ($loiultima==""){$loiultima=0;}
 //echo "ciaooo".$loiultima;
 $query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_T."',durata='".$loiultima."' where sur_id='".$sid."'";
 $aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
-
-
 
 
 if (is_numeric($redemption_panel)){ $redemption_panel=number_format( $redemption_panel, 2); }

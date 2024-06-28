@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;129;IDEXNE6314;07/06/2024 11:46:02 CEST;07/06/2024 11:59:38 CEST;816;3;230;rm4=0;rm3=0;rm2=1;rm1=2;rm0=1;Svar2=13;Svar1=0;sysSID=R2405079;Svar0=2;sysUID=IDEXNE6314;rec=13;sysPRJ=AMP;debug=false;pan=6;sysIID=129;device=mobile;ticket=38b83bc1f5f64b62_46c11089d69cc088_cf7b16ff7662310b_2e1f9261ea641055abd5a91a574f3c96;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;72
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1111000000;0;comp0:Gaes;comp3:Alain afeliu;comp2:Audifon;comp1:Audika
+choice;100;18;101000000000110000;13
+choice;110;18;2
+open;120;La tengo desde que empecé a perder audición y siempre me ha ido bien
+choice;130;23;00000000000000000100000;17
+choice;150;5;0
+open;160;Muy buena atención, puedes aplazar la compra pues el importe es muy alto y personal muy agradable
+scale;190;28;10;8;8;8;6;8;5;8;8;8;8;6;8;8;8;9;7;3;8;9;8;8;8;1;5;5;8;7;4
+choice;200;28;0000000010000100001101000000;8
+scale;210;28;5;10000101001000011100111000000110000111001000010000100001000010000100001000000001000011000011100100001000010000000011000010000100001000000001
+choice;220;5;1
+choice;230;5;3
+choice;999;17;10100000000001000;0

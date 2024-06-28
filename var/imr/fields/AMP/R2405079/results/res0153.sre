@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;153;IDEXNE5922;07/06/2024 12:42:03 CEST;07/06/2024 13:03:21 CEST;1278;3;230;rm5=0;rm4=0;rm3=1;rm2=0;rm1=0;rm0=1;Svar3=6;Svar2=8;Svar1=3;Svar0=0;sysSID=R2405079;rec=6;sysUID=IDEXNE5922;sysPRJ=AMP;debug=false;pan=6;sysIID=153;device=desktop;ticket=99d30637a8cf17cf_46c11089d69cc088_cf7b16ff7662310b_70b1db058be67bcc99811e134e661370;browser=none;lang=ca
+choice;10;2;0
+choice;20;2;1
+open;25;62
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:No lo se. 
+choice;100;18;100100111000010110;13
+choice;110;18;7
+open;120;Porque siendo del RACC tenia un 2O% de descuento. El precio original no era de los más caros. Me regalaban lparte de las gafas
+choice;130;23;01000000000000000001000;19
+choice;150;5;1
+open;160;Te avisan para la revision gratuita. Arreglos gratuitos. Atención excelente. Precios buenos. Promociones interesantes. Cerca del trabajo. Buena calidad
+scale;190;28;10;6;6;7;6;5;4;7;6;6;6;6;6;6;6;8;7;4;6;6;7;7;7;4;6;6;7;7;7
+choice;200;28;0000000000000011000111000000;20
+scale;210;28;5;11100000011111000001000010000110000100000000111110111101111010000000010000101110000011000011110111100000110000000011111011110111101111000001
+choice;220;5;2
+choice;230;5;2
+choice;999;17;10010010100000000;0

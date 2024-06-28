@@ -1,0 +1,22 @@
+2.0;AMP;R2405079;125;IDEXNE12390;07/06/2024 11:42:00 CEST;07/06/2024 11:52:35 CEST;635;3;230;rm5=0;rm4=1;rm3=0;rm2=2;rm1=3;rm0=2;Svar3=3;Svar2=2;Svar1=6;Svar0=0;sysSID=R2405079;rec=3;sysUID=IDEXNE12390;sysPRJ=AMP;debug=false;pan=6;sysIID=125;device=mobile;ticket=tfhsc0uugfkah8ii_46c11089d69cc088_cf7b16ff7662310b_5d7a293aad133493915ddfaa9073137f;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;64
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1110000000;0;comp0:Aural;comp2:Gaes;comp1:Oidos
+choice;100;18;101101100010000110;15
+choice;110;18;10
+open;120;Me lo recomendaron, y se adaptan perfectamente a mis oídos. Mejor relación calidad precio.
+choice;130;23;00010000010000000101100;20
+choice;140;11;01000000000;1
+choice;150;5;0
+open;160;De todos los que probó mu mujer, que también lleva audífonos, es el que mejor , le sienta, tolera. Los de gaes por ejemplo, no los toleró. Sin embardo, los de Laural, se adaptan perfectamente en el oído y no tiene ruidos extraños.
+scale;190;28;10;9;9;9;9;9;9;8;9;9;9;9;9;9;9;9;9;7;9;9;9;9;9;9;9;9;9;9;9
+choice;200;28;0000000000010000000111000100;21
+scale;210;28;5;11110100001111000001100001111011110100000000110000100000000110000000010000110000000011111011110111101111011110111101111011010100001010000001
+choice;220;5;3
+choice;230;5;3
+choice;999;17;10110010000000000;0

@@ -1,0 +1,10 @@
+2.0;AMP;R2405079;241;IDEXNE6588;07/06/2024 18:59:59 CEST;07/06/2024 19:05:02 CEST;303;7;110;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE6588;device=desktop;ticket=40d95ba86c83fdab_46c11089d69cc088_cf7b16ff7662310b_b6df7e9c96d14ca308cd4598cb3a7e54;pan=6;sysIID=241;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;64
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:Audio-service
+choice;100;18;100000000000010000;0

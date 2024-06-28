@@ -1,0 +1,72 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+
+
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "6",
+                    "exit_code": 3,
+                    "redirect_to": "https://transit.nicequest.com/transit/participation?tp=co_0&c=ok&ticket=$(ticket)"
+                }, {
+                    "parameter_name": "pan",
+                    "parameter_value": "6",
+                    "exit_code": 4,
+                    "redirect_to": "https://transit.nicequest.com/transit/participation?tp=fo_0&c=ok&ticket=$(ticket)"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "6",
+                    "exit_code": 5,
+                    "redirect_to": "https://transit.nicequest.com/transit/participation?tp=qf_1&c=ok&ticket=$(ticket)"
+                }
+					
+			
+						
+			 ],
+             "ssi": {
+                "secure_key_1": 62279,
+                "secure_key_2": 56430
+            }
+    }
+          
+},
+
+"quota": {
+    "total_interviews": 540,
+    "total_by_leg": {
+        "variable_name": "cel",
+        "values": { 
+                    "1": 90,
+                    "2": 90,
+                    "3": 90,
+                    "4": 90,
+                    "5": 90,
+                    "6": 90
+                  }
+    }
+}
+
+}

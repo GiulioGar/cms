@@ -1,0 +1,15 @@
+2.0;AMP;R2405079;118;IDEXNE11295;07/06/2024 11:34:58 CEST;07/06/2024 11:43:40 CEST;522;7;190;sysSID=R2405079;sysPRJ=AMP;sysUID=IDEXNE11295;device=desktop;ticket=f22756f0cbdd744a_46c11089d69cc088_cf7b16ff7662310b_bf40c21261e193c8909cc9321cee43c8;pan=6;sysIID=118;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;74
+choice;40;4;2
+choice;50;3;0
+choice;60;4;0
+choice;70;4;0
+choice;90;10;1000000000;0;comp0:unitron
+choice;100;18;000000001000000000;8
+choice;110;18;8
+open;120;llevo muchos años en su optica, y cuando me hizo falta el audifono , por el precio y calidad.
+choice;130;23;00000001000000000001000;19
+choice;150;5;0
+open;160;Atencion, calidad, precio.

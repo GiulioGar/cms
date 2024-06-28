@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;270;IDEXNE12302;08/06/2024 09:14:16 CEST;08/06/2024 09:48:29 CEST;2053;3;230;rm5=0;rm4=0;rm3=2;rm2=1;rm1=3;rm0=0;Svar1=13;sysSID=R2405079;Svar0=0;sysUID=IDEXNE12302;rec=13;sysPRJ=AMP;debug=false;pan=6;sysIID=270;device=desktop;ticket=f1dbf31924b15dbd_46c11089d69cc088_cf7b16ff7662310b_5587af39ed350a90d0af84c87e9ed877;browser=none;lang=fr
+choice;10;2;0
+choice;20;2;0
+open;25;76
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;0
+choice;90;10;1100000000;0;comp0:Widert;comp1:Phonak
+choice;100;18;110000000000010000;13
+choice;110;18;1
+open;120;Me pareció la que tenía una tecnología más avanzada.
+choice;130;23;01000001000000000010000;18
+choice;150;5;0
+open;160;Mi audición ha mejorado notablemente, no se nota apenas que lo llevo puesto y un servicio post venta muy bueno.  Debo precisar que mi audífono es de la marca Phonak. Es prácticamente igual pero no estaba en la lista y no podía continuar la encuesta si no. 
+scale;190;28;10;9;8;9;7;8;8;8;8;8;8;9;8;8;3;8;6;6;9;8;8;9;8;9;8;8;9;9;8
+choice;200;28;1000000000000000010010100100;22
+scale;210;28;5;10000110001000000001100001100011000000011000011000100001000000001100000100001000100001000010000110001000010000100001000010000100000000100001
+choice;220;5;0
+choice;230;5;3
+choice;999;17;10000000000001000;0

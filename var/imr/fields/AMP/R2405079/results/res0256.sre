@@ -1,0 +1,22 @@
+2.0;AMP;R2405079;256;IDEXNE12408;07/06/2024 22:11:36 CEST;07/06/2024 22:18:07 CEST;391;3;230;rm4=0;rm3=1;rm2=0;rm1=0;rm0=2;Svar3=13;Svar2=4;Svar1=0;sysSID=R2405079;Svar0=8;rec=13;sysUID=IDEXNE12408;sysPRJ=AMP;debug=false;pan=6;sysIID=256;device=desktop;ticket=87b7cdba361240ac_46c11089d69cc088_cf7b16ff7662310b_767552a6e3bc6ed126efae6ea3f84bfc;browser=none;lang=ca
+choice;10;2;0
+choice;20;2;0
+open;25;55
+choice;40;4;0
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:UNITRON
+choice;100;18;100010111100010010;4
+choice;110;18;8
+open;120;Siempre acudo a ellos, siempre he tenido muy buena experiencia, tango en el trato, como la relación calidad-precio
+choice;130;23;00010000000000000000000;3
+choice;140;11;00001100000;4
+choice;150;5;0
+open;160;Son grandes profesionales y los mejores precios
+scale;190;28;10;9;9;9;7;8;9;7;9;8;9;9;9;9;8;9;9;9;9;9;9;9;9;9;9;7;9;9;9
+choice;200;28;0000000101000010011000000000;18
+scale;210;28;5;10000100001000010000100001000010000100001000010000100001000010000100001000010000000011000010000100001000010000100001000000001100001000010000
+choice;220;5;1
+choice;230;5;3
+choice;999;17;10001000100001000;0

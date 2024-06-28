@@ -1,0 +1,20 @@
+2.0;AMP;R2405079;200;IDEXNE5959;07/06/2024 15:43:18 CEST;07/06/2024 15:50:48 CEST;450;3;230;debug=false;device=mobile;lang=es;sysIID=200;sysPRJ=AMP;sysSID=R2405079;browser=none;rm6=0;rm5=0;rm4=1;rm3=3;rm2=1;ticket=355b9f0c1047c0f2_46c11089d69cc088_cf7b16ff7662310b_3d666ac8a9a0584666815aaa04167566;rm1=4;rm0=0;pan=6;sysUID=IDEXNE5959
+choice;10;2;0
+choice;20;2;0
+open;25;66
+choice;40;4;1
+choice;50;3;0
+choice;60;4;0
+choice;70;4;1
+choice;90;10;1000000000;0;comp0:UNITRON 
+choice;100;18;000001000000000000;5
+choice;110;18;5
+open;120;Buena relación calidad precio
+choice;130;23;00000001000000000001010;21
+choice;150;5;1
+open;160;Estoy conforme con su funcionamiento.
+scale;190;28;10;6;9;6;6;6;4;9;9;6;9;8;6;6;6;8;6;6;9;9;6;9;6;6;6;6;9;6;6
+choice;200;28;0100001001000000010010000000;6
+choice;220;5;2
+choice;230;5;3
+choice;999;17;00000000000000000;-1

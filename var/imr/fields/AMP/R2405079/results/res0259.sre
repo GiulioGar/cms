@@ -1,0 +1,21 @@
+2.0;AMP;R2405079;259;IDEXNE13045;08/06/2024 00:30:47 CEST;08/06/2024 00:43:37 CEST;770;3;230;rm5=0;rm4=0;rm3=0;rm2=0;rm1=0;rm0=0;Svar3=4;Svar2=3;Svar1=2;Svar0=0;sysSID=R2405079;rec=4;sysUID=IDEXNE13045;sysPRJ=AMP;debug=false;pan=6;sysIID=259;device=mobile;ticket=8a8115aa81cb4a26_46c11089d69cc088_cf7b16ff7662310b_8e9aba834052934f1257da7d77495126;browser=none;lang=es
+choice;10;2;0
+choice;20;2;0
+open;25;71
+choice;40;4;3
+choice;50;3;0
+choice;60;4;0
+choice;70;4;2
+choice;90;10;1110000000;0;comp0:Widex;comp2:Afelou ;comp1:Gaes
+choice;100;18;111110100000010110;3
+choice;110;18;1
+open;120;Porque fue en el gabinete que mejor me atendieron, donde más pruebas me hicieron y donde el audífono era más completo y perfecto para mi pérdida en concreto. 
+choice;130;23;01000001000000000100010;17
+choice;150;5;0
+open;160;Calidad y más aún la calidad del personal que me atiende, profesional inmejorable, atenta, eficiente y eficaz. 
+scale;190;28;10;9;9;9;8;9;9;9;9;9;9;7;9;9;9;9;9;4;9;9;9;9;9;9;9;9;9;9;9
+choice;200;28;0000000100000000010111000000;7
+scale;210;28;5;10000111101000010000100001000010000111100000111110100001111010000000010000100001000011000010000111100000110000111101111010000111101111010000
+choice;220;5;1
+choice;230;5;2
+choice;999;17;10111000000000000;0
