@@ -187,8 +187,8 @@ $panel_in=$lu['panel'];
 
 
 ///MODIFICA PRIMA DI PUBBLICARE */
-//$linkDir="/var";     // SERVER ONLINE
-$linkDir="../var";   //XAMPP 
+$linkDir="/var";     // SERVER ONLINE
+//$linkDir="../var";   //XAMPP 
 
 //echo "Stato".$stato_ricerca;
 

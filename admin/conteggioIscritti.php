@@ -250,12 +250,13 @@ $cpi_medio_attivi = round($cpi_medio_attivi, 2);
     <?php
     foreach ($data['referal'] as $referal) {
         $ref = $referal['ref'];
+        $costo = $referal['spesa'];
         $num_reg = isset($num_ref[$ref]) ? $num_ref[$ref] : 0;
         $num_act = isset($num_ref_a[$ref]) ? $num_ref_a[$ref] : 0;
         $perc = $num_reg > 0 ? round(($num_act / $num_reg) * 100, 2) : 0;
-        $cpi_tot = $num_reg > 0 ? round($sumSpesa / $num_reg, 2) : 0;
-        $cpi_reale = $num_act > 0 ? round($sumSpesa / $num_act, 2) : 0;
-        $costo = $referal['spesa'];
+        $cpi_tot = $num_reg > 0 ? round($costo / $num_reg, 2) : 0;
+        $cpi_reale = $num_act > 0 ? round($costo / $num_act, 2) : 0;
+       
         
         echo "<tr>
                 <td><b>{$referal['title']}</b></td>

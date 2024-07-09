@@ -8,291 +8,216 @@
 	   
  
  
- <div class="row">
-
- 
-   <div class="col-xl-6 col-lg-5">
-   <div class="card shadow mb-6">
-
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary"> CREA CAMPIONE </h6></span>
+<div class="row">
+    <div class="col-xl-6 col-lg-5">
+        <div class="card shadow mb-6">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">CREA CAMPIONE</h6>
+            </div>
+            <div class="card-body">
+                <form action="campioni.php" method="get" class="myform">
+                    <input name="id_sur" type="hidden" value="<?php echo $row['sur_id']; ?>" />
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Ricerca:</label>
+                                </div>
+                                <select class="custom-select surv" id="inputGroupSelect01" name="sid">
+                                    <option value="">No select</option>
+                                    <?php
+                                    while ($row = mysqli_fetch_assoc($csv_sur)) {
+                                        echo "<option class='" . $row['prj'] . "' data-age1='" . $row['age1_target'] . "' data-age2='" . $row['age2_target'] . "' data-sesso='" . $row['sex_target'] . "' value='" . $row['sur_id'] . "'>" . $row['sur_id'] . " (" . $row['prj'] . ") - " . $row['description'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <input class="form-control prj" type="hidden" value="" name="prj" />
                         </div>
-   <div class="card-body">
-
-<form action="campioni.php" method="get"  class="myform" >
-<input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>" />
-
-<div class="form-row">
-
-<div class="form-group col-md-12">
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Ricerca:</label>
-  </div>
-  <select class="custom-select surv" id="inputGroupSelect01 " name="sid">
-  <option value="">No select</option>
-<?php
-    while ($row = mysqli_fetch_assoc($csv_sur)) 
-    {
-	 echo "<option class='".$row['prj']."' data-age1='".$row['age1_target']."' data-age2='".$row['age2_target']."' data-sesso='".$row['sex_target']."' value='".$row['sur_id']."'>".$row['sur_id']." (".$row['prj'].") - ".$row['description']."</option>";
-	}
-?>
-</select>
-
-</div>
-<input class="form-control prj" type="hidden" value=""  name="prj" />
-</div>
-
-
-</div>
-
-<hr />
-
-<div class="form-row">
-
-<div class="col-xl-6 col-lg-6">
-<label><h6 class="m-0 font-weight-bold text-primary">Regione:</h6></label>
-<select name="reg[]" class="selectpicker show-tick reg"  multiple title="Scegli la regione...">
-  <option value="1">ABRUZZO</option>
-  <option value="2">BASILICATA</option>
-  <option value="3">CALABRIA</option>
-  <option value="4">CAMPANIA</option>
-  <option value="5">EMILIA-ROMAGNA</option>
-  <option value="6">FRIULI-VENEZIA GIULIA</option>
-  <option value="7">LAZIO</option>
-  <option value="8">LIGURIA</option>
-  <option value="9">LOMBARDIA</option>
-  <option value="10">MARCHE</option>
-  <option value="11">MOLISE</option>
-  <option value="12">PIEMONTE</option>
-  <option value="13">PUGLIA</option>
-  <option value="14">SARDEGNA</option>
-  <option value="15">SICILIA</option>
-  <option value="16">TOSCANA</option>
-  <option value="17">TRENTINO-ALTO ADIGE</option>
-  <option value="18">UMBRIA</option>
-  <option value="19">VALLE D'AOSTA</option>
-  <option value="20">VENETO</option>
-</select>
-</div>
-
-
-
-<div class="col-xl-6 col-lg-5">
-<label><h6 class="m-0 font-weight-bold text-primary">Area:</h6></label>
-<select name="aree[]" class="selectpicker show-tick area"  multiple title="Scegli l'area...">
-  <option value="1">Nord-Ovest</option>
-  <option value="2">Nord-Est</option>
-  <option value="3">Centro</option>
-  <option value="4">Sud</option>
-</select>
-</div>
-
-
-</div>
-
-<div class="form-row">
-<div class="col-xl-6 col-lg-5">
-<label><h6 class="m-0 font-weight-bold text-primary">Ampiezza:</h6></label>
-<select name="ampiezza[]" class="selectpicker show-tick amp"  multiple title="Scegli l'ampiezza...">
-  <option value="1">1-149.999</option>
-  <option value="2">150.000-499.999</option>
-  <option value="3">500.000-999.9999</option>
-  <option value="4">1 milione e oltre</option>
-</select>
-</div>
-
-</div>
-
-
-<hr />
-
-<div class="form-row">
-
-<div class="form-group col-md-6">
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Sesso:</label>
-  </div>
-  <select class="custom-select sex_target" id="inputGroupSelect01 " name="sex_target">
-<option value="3">Uomo/Donna</option>
-<option value="1">Uomo</option>
-<option value="2">Donna</option>
-</select>
-</div>
-</div>
-
-
-
-<div class="form-group col-md-6">
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Età da:</label>
-  </div>
- <input   class="form-control ag1" type="number" maxlength="2" style="width:90px" value="18"  name="age1_target" required />  
-</div>
-<div class="input-group mb-3">
-      <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Età a&nbsp;&nbsp;:</label>
-  </div> 
-
-	  <input   class="form-control ag2" type="number" maxlength="2" value="65" style="width:90px" name="age2_target" required /> 
-  </div>
-
-     </div>
-</div>
-</div>
-
-<div style="padding:5px" class="form-row">
-
-<div class="form-group col-md-4">
-<div class="input-group mb-3">
-<div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Iscritto dal:</label>
-  </div>
-	   <input required class="form-control iscrizione" type="text" maxlength="4"  value="1990"  name="iscrizione" />
-</div>
-
-
-
-</div>
-
-<div class="form-group col-md-8">
-<div class="input-group mb-3">
-<div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Escludi ricerca:</label>
-  </div>
-	   <input required class="form-control sidesc" type="text"  value="" placeholder="Inserire codice ricerca"  name="sidesc" />
-</div>
-
-
-
-</div>
-
-
-</div>
-
-<div style="padding:5px" class="form-row">
-
-<div class="form-group col-md-12">
-<div class="input-group mb-6">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Target:</label>
-  </div>
-  <select class="custom-select tag" id="inputGroupSelect01 " name="tag">
-  <option value="">No select</option>
-  <?php
-			while ($row = mysqli_fetch_assoc($tot_targ))
-			{
-			?>
-		    <option value="<?php echo $row['tag'];?>"><?php echo $row['tag'];?></option>
-			<?php
-			}
-			?>
-</select>
-</div>
-</div>
-<div class="input-group mb-6"></div>
-</div>
-
-</hr></hr>
-
-<div class="form-row">
-<div class="form-group col-md-12"  style="text-align:right; padding:20px;" >
-
-<input class="btn btn-primary dispo" type="button" name="azione" value="DISPONIBILI" />
-<input class="btn btn-primary addInfo" type="button" name="azione" value="AGGIUNGI" />
-
-
-</div>
- </div>
-
-
- </form>
-
- 
- 
-</div>
-
-</div>
-
-
-<!-- Seconda colonna -->
-<div class="col-xl-6 col-lg-5">
-
-<!-- Box Campione -->
-<div class="card shadow mb-6">
-
-   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<span><h6 class="m-0 font-weight-bold text-primary"> CAMPIONE </h6></span> <span style="cursor:pointer" class="deltask"><i style="color:#007bff" class="fas fa-trash"></i></span>
-            
+                    </div>
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-xl-6 col-lg-6">
+                            <label>
+                                <h6 class="m-0 font-weight-bold text-primary">Regione:</h6>
+                            </label>
+                            <select name="reg[]" class="selectpicker show-tick reg" multiple title="Scegli la regione...">
+                                <option value="1">ABRUZZO</option>
+                                <option value="2">BASILICATA</option>
+                                <option value="3">CALABRIA</option>
+                                <option value="4">CAMPANIA</option>
+                                <option value="5">EMILIA-ROMAGNA</option>
+                                <option value="6">FRIULI-VENEZIA GIULIA</option>
+                                <option value="7">LAZIO</option>
+                                <option value="8">LIGURIA</option>
+                                <option value="9">LOMBARDIA</option>
+                                <option value="10">MARCHE</option>
+                                <option value="11">MOLISE</option>
+                                <option value="12">PIEMONTE</option>
+                                <option value="13">PUGLIA</option>
+                                <option value="14">SARDEGNA</option>
+                                <option value="15">SICILIA</option>
+                                <option value="16">TOSCANA</option>
+                                <option value="17">TRENTINO-ALTO ADIGE</option>
+                                <option value="18">UMBRIA</option>
+                                <option value="19">VALLE D'AOSTA</option>
+                                <option value="20">VENETO</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-5">
+                            <label>
+                                <h6 class="m-0 font-weight-bold text-primary">Area:</h6>
+                            </label>
+                            <select name="aree[]" class="selectpicker show-tick area" multiple title="Scegli l'area...">
+                                <option value="1">Nord-Ovest</option>
+                                <option value="2">Nord-Est</option>
+                                <option value="3">Centro</option>
+                                <option value="4">Sud</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-xl-6 col-lg-5">
+                            <label>
+                                <h6 class="m-0 font-weight-bold text-primary">Ampiezza:</h6>
+                            </label>
+                            <select name="ampiezza[]" class="selectpicker show-tick amp" multiple title="Scegli l'ampiezza...">
+                                <option value="1">1-149.999</option>
+                                <option value="2">150.000-499.999</option>
+                                <option value="3">500.000-999.9999</option>
+                                <option value="4">1 milione e oltre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Sesso:</label>
+                                </div>
+                                <select class="custom-select sex_target" id="inputGroupSelect01" name="sex_target">
+                                    <option value="3">Uomo/Donna</option>
+                                    <option value="1">Uomo</option>
+                                    <option value="2">Donna</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Età da:</label>
+                                </div>
+                                <input class="form-control ag1" type="number" maxlength="2" style="width:90px" value="18" name="age1_target" required />
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Età a&nbsp;&nbsp;:</label>
+                                </div>
+                                <input class="form-control ag2" type="number" maxlength="2" value="65" style="width:90px" name="age2_target" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding:5px" class="form-row">
+                        <div class="form-group col-md-5">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Reg. dal:</label>
+                                </div>
+                                <input required class="form-control iscrizione" type="text" maxlength="4" value="1990" name="iscrizione" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-7">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Escludi SID:</label>
+                                </div>
+                                <input required class="form-control sidesc" type="text" value="" placeholder="Inserire codice ricerca" name="sidesc" />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding:5px" class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="input-group mb-6">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Target:</label>
+                                </div>
+                                <select class="custom-select tag" id="inputGroupSelect01" name="tag">
+                                    <option value="">No select</option>
+                                    <?php
+                                    while ($row = mysqli_fetch_assoc($tot_targ)) {
+                                    ?>
+                                        <option value="<?php echo $row['tag']; ?>"><?php echo $row['tag']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-6"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12" style="text-align:right; padding:20px;">
+                            <input class="btn btn-primary dispo" type="button" name="azione" value="DISPONIBILI" />
+                            <input class="btn btn-primary addInfo" type="button" name="azione" value="AGGIUNGI" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
-<div class="card-body">                       
-
-<div class="ugenera"> 
-<form action="campioni.php" method="get"  class="formC" >
-<div class="ubody"> 
-
-</div>
-
-  <div style="padding:5px" class="form-row uform">
-
-<div class="form-group col-md-8">
-<div class="input-group mb-3">
-<div class="input-group-prepend">
-    <label class="input-group-text" style="background-color:#0050CE!important; font-weight:bold; color:#fff" for="inputGroupSelect01"><i class="fas fa-users"> </i> &nbsp; Utenti:</label>
-  </div>
-	 <input class="form-control goal" type="text" maxlength="4" value=""  name="goal" />
-</div>
-</div>
-
-    <div class="form-group col-md-4">
-    <input style="float:right" class="btn btn-primary creaCamp" type="button" name="azione" value="CREA" />
-   
-
-
+    <!-- Seconda colonna -->
+    <div class="col-xl-6 col-lg-5">
+        <!-- Box Campione -->
+        <div class="card shadow mb-6">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <span>
+                    <h6 class="m-0 font-weight-bold text-primary">CAMPIONE</h6>
+                </span>
+                <span style="cursor:pointer" class="deltask">
+                    <i style="color:#007bff" class="fas fa-trash"></i>
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="ugenera">
+                    <form action="campioni.php" method="get" class="formC">
+                        <div class="ubody"></div>
+                        <div style="padding:5px" class="form-row uform">
+                            <div class="form-group col-md-8">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" style="background-color:#0050CE!important; font-weight:bold; color:#fff" for="inputGroupSelect01">
+                                            <i class="fas fa-users"></i>&nbsp; Utenti:
+                                        </label>
+                                    </div>
+                                    <input class="form-control goal" type="text" maxlength="4" value="" name="goal" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <input style="float:right" class="btn btn-primary creaCamp" type="button" name="azione" value="CREA" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="alert alert-secondary messCampione" role="alert" style="display:none"> Caricamento in corso... </div>
+            </div>
+        </div>
+        <br />
+        <!-- Box Dati -->
+        <div class="card shadow mb-6">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">DATI</h6>
+            </div>
+            <div class="card-body">
+                <div class="udisp"></div>
+                <div class="ug2"></div>
+                <div class="alert alert-secondary messDati" role="alert" style="display:none"> Caricamento in corso...</div>
+            </div>
+        </div>
     </div>
-
-    </div>
-
-</form>
-</div> 
-
-
-<div class="alert alert-secondary messCampione" role="alert" style="display:none"> Caricamento in corso... </div>
-
 </div>
 
-<!--fine box campione-->
-</div>
-
-<BR/>
-
-<!-- Box Dati-->
-<div class="card shadow mb-6">
-
-   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-						<h6 class="m-0 font-weight-bold text-primary"> DATI </h6></span>
-    </div>
-
-<div class="card-body">                       
-<div class="udisp"> </div> 
-<div class="ug2"> </div> 
-<div class="alert alert-secondary messDati" role="alert" style="display:none"> Caricamento in corso... </div>
-
-</div>
-
-<!--fine box dati-->
-</div>
-
-<!--fine seconda colonna-->
-</div>
-
-
-
-</div>
 
 
 
