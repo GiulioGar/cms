@@ -247,7 +247,7 @@ $query_aggiorna_statistiche_sample = "UPDATE t_abilitatipanel set data_abilitazi
 $aggiorna_statistiche_sample = mysqli_query($admin,$query_aggiorna_statistiche_sample) ;
 $aggiorna_statistiche_t_sample = mysqli_fetch_assoc($aggiorna_statistiche_sample);
 
-echo $query_aggiorna_statistiche_sample;
+//echo $query_aggiorna_statistiche_sample;
 
 
 
