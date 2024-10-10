@@ -1,3 +1,4 @@
+
 <footer>
   <div class="footer-bottom">
     <div class="container">
@@ -11,47 +12,58 @@
   </div>
 </footer>
 
-<!-- FOOTER SECTION END-->
-<!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 
-<!-- Includi JavaScript di Popper.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<!-- Includi JavaScript di Bootstrap 4.1.3 -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<!-- Includi JavaScript di Bootstrap Select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
-<!-- Includi Bootstrap Toggle -->
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
-<!-- CUSTOM SCRIPTS -->
-<script src="assets/js/custom.js"></script>
 
-<!-- CUSTOM all -->
-<script src="assets/js/all.js"></script>
+      <!-- FOOTER SECTION END-->
+      
+      
+          <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+      <!-- CUSTOM SCRIPTS  -->
+    <script src="assets/js/custom.js"></script>
 
-<!-- TOOLTIP -->
-<script>
+          <!-- CUSTOM all  -->
+          <script src="assets/js/all.js"></script>
+
+        <!-- TOOLTIP  -->   
+        <script>
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 });
-</script>  
 
-<!-- datatables -->   
+        </script>  
+
+<!-- datatables  -->   
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script>
-$.fn.dataTable.pipeline = function ( opts ) {
-    var conf = $.extend( {
-        pages: 5,
-        url: '',
-        data: null,
-        method: 'GET'
-    }, opts );
 
+<script>
+
+  //
+// Pipelining function for DataTables. To be used to the `ajax` option of DataTables
+//
+$.fn.dataTable.pipeline = function ( opts ) {
+    // Configuration options
+    var conf = $.extend( {
+        pages: 5,     // number of pages to cache
+        url: '',      // script url
+        data: null,   // function or object with parameters to send to the server
+                      // matching how `ajax.data` works in DataTables
+        method: 'GET' // Ajax HTTP method
+    }, opts );
+ 
+    // Private variables for storing the cache
     var cacheLower = -1;
     var cacheUpper = null;
     var cacheLastRequest = null;
     var cacheLastJson = null;
-
+ 
     return function ( request, drawCallback, settings ) {
         var ajax          = false;
         var requestStart  = request.start;
@@ -60,45 +72,56 @@ $.fn.dataTable.pipeline = function ( opts ) {
         var requestEnd    = requestStart + requestLength;
          
         if ( settings.clearCache ) {
+            // API requested that the cache be cleared
             ajax = true;
             settings.clearCache = false;
         }
         else if ( cacheLower < 0 || requestStart < cacheLower || requestEnd > cacheUpper ) {
+            // outside cached data - need to make a request
             ajax = true;
         }
         else if ( JSON.stringify( request.order )   !== JSON.stringify( cacheLastRequest.order ) ||
                   JSON.stringify( request.columns ) !== JSON.stringify( cacheLastRequest.columns ) ||
-                  JSON.stringify( request.search )  !== JSON.stringify( cacheLastRequest.search ) ) {
+                  JSON.stringify( request.search )  !== JSON.stringify( cacheLastRequest.search )
+        ) {
+            // properties changed (ordering, columns, searching)
             ajax = true;
         }
-
+         
+        // Store the request for checking next time around
         cacheLastRequest = $.extend( true, {}, request );
-
+ 
         if ( ajax ) {
+            // Need data from the server
             if ( requestStart < cacheLower ) {
                 requestStart = requestStart - (requestLength*(conf.pages-1));
-
+ 
                 if ( requestStart < 0 ) {
                     requestStart = 0;
                 }
             }
-
+             
             cacheLower = requestStart;
             cacheUpper = requestStart + (requestLength * conf.pages);
-
+ 
             request.start = requestStart;
             request.length = requestLength*conf.pages;
-
+ 
+            // Provide the same `data` options as DataTables.
             if ( typeof conf.data === 'function' ) {
+                // As a function it is executed with the data object as an arg
+                // for manipulation. If an object is returned, it is used as the
+                // data object to submit
                 var d = conf.data( request );
                 if ( d ) {
                     $.extend( request, d );
                 }
             }
             else if ( $.isPlainObject( conf.data ) ) {
+                // As an object, the data given extends the default
                 $.extend( request, conf.data );
             }
-
+ 
             settings.jqXHR = $.ajax( {
                 "type":     conf.method,
                 "url":      conf.url,
@@ -107,7 +130,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
                 "cache":    false,
                 "success":  function ( json ) {
                     cacheLastJson = $.extend(true, {}, json);
-
+ 
                     if ( cacheLower != drawStart ) {
                         json.data.splice( 0, drawStart-cacheLower );
                     }
@@ -121,7 +144,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
         }
         else {
             json = $.extend( true, {}, cacheLastJson );
-            json.draw = request.draw;
+            json.draw = request.draw; // Update the echo for each response
             json.data.splice( 0, requestStart-cacheLower );
             json.data.splice( requestLength, json.data.length );
  
@@ -129,23 +152,52 @@ $.fn.dataTable.pipeline = function ( opts ) {
         }
     }
 };
-
+ 
+// Register an API method that will empty the pipelined data, forcing an Ajax
+// fetch on the next draw (i.e. `table.clearPipeline().draw()`)
 $.fn.dataTable.Api.register( 'clearPipeline()', function () {
     return this.iterator( 'table', function ( settings ) {
         settings.clearCache = true;
     } );
-});
+} );
+ 
+
+
 </script>
 
 <script>
+//progress bar
 $(document).ready(function() {
-    $('.progress .progress-bar').css("width", function() {
-        return $(this).attr("aria-valuenow") + "%";
+      $('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     });
 
-    $('.alcasi').hide();
-    $('.alcasi').fadeIn(2500);
-});
+
+//allert
+
+$(document).ready(function() {
+  $('.alcasi').hide();
+  $('.alcasi').fadeIn(2500);
+
+  });
+
+    
+
 </script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+ 
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
+
+<script src="https://kit.fontawesome.com/b476d3b0ae.js" crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>

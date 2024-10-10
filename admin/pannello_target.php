@@ -1,7 +1,6 @@
 
 <?php 
-require_once('inc_taghead.php');
-require_once('inc_tagbody.php');   
+	  
 
 @$id_sur = $_REQUEST['id_sur'];
 @$closearch = $_REQUEST['closearch'];
@@ -28,7 +27,8 @@ $tag_csv=$_REQUEST['tag_csv'];
 $query_ricerche = "SELECT * FROM elencotag  ORDER BY tag ASC";
 $tot_ricerche = mysqli_query($admin,$query_ricerche) ;
 
-
+require_once('inc_taghead.php');
+require_once('inc_tagbody.php'); 
 
 ?>
 
@@ -139,7 +139,7 @@ $tagClass= str_replace(' ', '', $tagClass);
 				<input type="hidden" name="filetype" value="target_list" />
 				<button type="submit" class="btn btn-secondary"> <span><i class="far fa-arrow-alt-circle-down" aria-hidden="true"></i></span> </button>
 
-</form>	
+				</form>	
 </td>
 
 </tr>

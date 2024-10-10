@@ -2,6 +2,7 @@
 
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
+mysqli_select_db($admin,$database_admin);
 
 @$azione = $_REQUEST['azione'];
 $sex_target=$_REQUEST['sex_target'];
@@ -115,33 +116,11 @@ if ($goal=="") {$goal=100000; }
 
 if ($azione=="DISPONIBILI")
 {
-//$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."') and user_id NOT IN (SELECT uid FROM t_respint where sid='".$escludi."' and status=3) ";
-$query_contaDisp = "
-SELECT COUNT(DISTINCT u.user_id) AS total
-FROM t_user_info u
-$fromTag
-WHERE 
-    $addSex
-    $addArea
-    $addReg
-    $addAmp
-    $addTag
-    u.active = 1
-    AND STR_TO_DATE(u.birth_date, '%Y-%m-%d') < STR_TO_DATE('$year1-01-01', '%Y-%m-%d')
-    AND STR_TO_DATE(u.birth_date, '%Y-%m-%d') > STR_TO_DATE('$year2-12-31', '%Y-%m-%d')
-    AND u.reg_date >= '$iscrizione'
-    AND u.user_id NOT IN (
-        SELECT r1.uid FROM t_respint r1 WHERE r1.sid = '$sid'
-    )
-    AND u.user_id NOT IN (
-        SELECT r2.uid FROM t_respint r2 WHERE r2.sid = '$escludi' AND r2.status = 3
-    )
-";
-
+$query_contaDisp = "SELECT COUNT(DISTINCT i.user_id) as total  FROM t_user_info i ".$fromTag." where ".$addSex.$addArea.$addReg.$addAmp.$addTag." active=1 AND Year(birth_date)<'$year1' and Year(birth_date)>'$year2' AND reg_date >= $iscrizione and active=1 and user_id NOT IN (SELECT uid FROM t_respint where sid='".$sid."') and user_id NOT IN (SELECT uid FROM t_respint where sid='".$escludi."' and status=3) ";
 $contaDisp= mysqli_query($admin,$query_contaDisp);
 $dataDisp=mysqli_fetch_assoc($contaDisp);
 
-echo $query_contaDisp;
+//echo $query_contaDisp;
 
 $totRed3=13;
 if($tags !="") { $totRed3=35; }
@@ -151,7 +130,7 @@ $medRed3=($dataDisp['total']/100)*$totRed3;
 $medRed3=number_format($medRed3,0);
 
 
-//echo $query_contaDisp;
+echo $query_contaDisp;
 ?>
 
 

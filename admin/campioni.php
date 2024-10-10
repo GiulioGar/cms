@@ -2,6 +2,10 @@
 require_once('../Connections/admin.php'); 
 require_once('inc_auth.php'); 
 
+
+
+
+
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php'); 
 
@@ -23,7 +27,6 @@ $currentYear=date("Y");
 require_once('function_conta_aree.php');
 
 ?>
-
 
 <div class="content-wrapper">
 <div class="container">
@@ -56,12 +59,12 @@ require_once('function_conta_aree.php');
 
   <div class="tab-pane" id="inviti" role="tabpanel" aria-labelledby="inviti-tab"> 
   <?php    
-  //require_once('pannello_target.php');
+  require_once('pannello_target.php');
   ?> 
 
 <div class="tab-pane" id="info" role="tabpanel" aria-labelledby="info-tab"> 
   <?php    
-  //require_once('infopanel.php');
+  require_once('infopanel.php');
   ?> 
 
   </div>
