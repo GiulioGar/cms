@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;1369;8YY5QPAB6X;22/10/2024 10:48:41 CEST;22/10/2024 10:55:35 CEST;414;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=8YY5QPAB6X;device=desktop;lang=it;sysIID=1369;cella=2
+choice;10;2;1
+open;18;45
+choice;20;6;3
+choice;30;20;8
+choice;35;4;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111110;3;comp6:aspirapolvere senza filo
+choice;166;2;1
+choice;200;5;11111;3
+choice;202;5;00001;4
+choice;204;5;11110;3
+concept;210
+choice;220;5;0
+open;230;Mi piace il fatto che con una pods posso pulire le stoviglie e mantenere efficiente anche la lavastoviglie stessa
+open;240;nulla in particolare 
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;300;13;5;0;0;0;1;0;0;0;1;0;1;0;0;0
+concept;310
+choice;360;21;20
+choice;370;21;6
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;1
+choice;420;5;0
+choice;430;9;7
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;6;10;12;13;14;15;19;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;10;11;12;14;13;15;28;29;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

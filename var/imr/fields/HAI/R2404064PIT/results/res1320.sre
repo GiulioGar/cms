@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PIT;1320;54485026cb;21/10/2024 22:57:17 CEST;21/10/2024 22:57:56 CEST;39;4;80;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=54485026cb;device=mobile;lang=it;sysIID=1320;cella=1
+choice;10;2;0
+open;18;57
+choice;20;6;4
+choice;30;20;11
+choice;35;4;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;2
+choice;90;8;10011010;0;comp6:Deumidificatore 
+choice;166;2;0

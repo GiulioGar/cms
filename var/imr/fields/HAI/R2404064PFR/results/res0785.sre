@@ -1,0 +1,10 @@
+2.0;HAI;R2404064PFR;785;IDEXCIMCAVMQTHZED801;22/10/2024 09:57:49 CEST;<unknown>;0;0;20;version=v01;sysSID=R2404064PFR;sysPRJ=HAI;sysUID=IDEXCIMCAVMQTHZED801;device=mobile;pan=1;sysIID=785;lang=fr
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;22;16
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;90;8;10111100;4
+app;1999

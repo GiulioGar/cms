@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;1171;IDEXCIEYASIDQDUVN1200;22/10/2024 11:43:18 CEST;22/10/2024 11:50:03 CEST;405;3;440;device=mobile;lang=fr;sysIID=1171;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIEYASIDQDUVN1200
+choice;10;2;1
+open;18;30
+choice;20;6;1
+choice;30;22;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;4
+choice;166;2;0
+choice;200;5;00010;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;0
+open;230;Il faut que je pense à la nettoyer davantage, car elle fera un bon lavage si la machine est bien entretenue 
+open;240;La doisette doit coûter cher 
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;300;13;5;0;0;1;0;1;0;0;0;0;0;0;0;0
+concept;310
+choice;360;21;2
+choice;370;21;20
+choice;380;21;14
+choice;390;21;20
+choice;400;5;0
+choice;410;5;4
+choice;420;5;1
+choice;430;9;8;comp8:Garde d enfant
+choice;440;4;1
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

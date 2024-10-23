@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;78;GH910LAYSB;17/10/2024 11:52:54 CEST;17/10/2024 11:57:07 CEST;253;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=GH910LAYSB;device=mobile;lang=it;sysIID=78;cella=1
+choice;10;2;1
+open;18;44
+choice;20;6;2
+choice;30;20;6
+choice;35;4;2
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11111110;1;comp6:Piano cottura elettrico 
+choice;166;2;0
+app;1999;indOrder|string|1,2

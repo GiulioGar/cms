@@ -1,0 +1,101 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=7cb888e8-eddd-442f-8065-0229d9fca0c9"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=2ef5f66d-2549-1437-d343-fbd337dd2dab"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "https://s.cint.com/Survey/Finished?ProjectToken=2ef5f66d-2549-1437-d343-fbd337dd2dab"
+                }	
+			
+						
+			 ]
+    }
+          
+},
+"quota": {
+    "total_interviews": 450,
+    "total_by_leg": {
+        "variable_name": "cella",
+        "values": {
+            "1": 225,
+            "2": 225
+        }
+    },
+    "targets": [
+        {
+            "name": "SessoU",
+            "description": "SessoU",
+            "question_id": 10,
+            "option_id": ["0"],
+            "value": 90,
+            "leg": {
+                "variable_name": "cella",
+                "value": ["1", "2"]
+            }
+        },
+        {
+            "name": "SessoD",
+            "description": "SessoD",
+            "question_id": 10,
+            "option_id": ["1"],
+            "value": 135,
+            "leg": {
+                "variable_name": "cella",
+                "value": ["1", "2"]
+            }
+        },
+        {
+            "name": "Cella1",
+            "description": "Cella1",
+            "question_id": 166,
+            "option_id": ["0"],
+            "value": 225
+        },
+        {
+            "name": "Cella2",
+            "description": "Cella2",
+            "question_id": 166,
+            "option_id": ["1"],
+            "value": 225
+        }
+    ]
+}
+    
+
+}

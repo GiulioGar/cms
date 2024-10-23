@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;1069;HI0PM3BI7E;21/10/2024 12:29:02 CEST;21/10/2024 12:31:32 CEST;150;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=HI0PM3BI7E;device=mobile;lang=it;sysIID=1069;cella=1
+choice;10;2;1
+open;18;30
+choice;20;6;1
+choice;30;20;14
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010010;6;comp6:Friggitrice ad aria scopa elettrica macchinetta del caffè phon piastre
+choice;166;2;0

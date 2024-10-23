@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;1054;Q1R88R50ZI;21/10/2024 12:19:21 CEST;21/10/2024 12:21:34 CEST;133;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=Q1R88R50ZI;device=mobile;lang=it;sysIID=1054;cella=1
+choice;10;2;1
+open;18;43
+choice;20;6;2
+choice;30;20;3
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10000000;0
+choice;166;2;0

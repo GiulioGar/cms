@@ -1,0 +1,38 @@
+2.0;HAI;R2404064PFR;1104;IDEXCIPINLHUTYVUS1132;22/10/2024 11:41:17 CEST;22/10/2024 11:48:09 CEST;412;3;440;device=desktop;lang=en;sysIID=1104;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIPINLHUTYVUS1132
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;22;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;1
+choice;85;3;1
+choice;90;8;10011100;4
+choice;166;2;0
+choice;200;5;01110;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;1
+open;230;JE PENSE C'EST SURTOUT LE MELANGE DE PLUSIEURS PRODUITS EN MEME TEMPS
+open;240;Y'A RIEN QUE JE N'APPRECIE PAS
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;1;2;2;1;1;1;2;1;1;2;1;1;1
+concept;310
+choice;360;21;11
+choice;370;21;17
+choice;380;21;20
+choice;390;21;20
+choice;400;5;0
+choice;410;5;1
+choice;420;5;0
+choice;430;9;0
+choice;440;4;3
+concept_eval;9001;0
+concept_eval;9011;0
+concept_eval;9021;0
+concept_eval;9031;0

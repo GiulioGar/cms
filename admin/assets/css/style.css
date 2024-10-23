@@ -225,3 +225,101 @@ canvas{
 }
 
 .table-bordered th, .table-bordered td { vertical-align: middle;}
+
+/* CSS per fieldControl */
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  border: 1px solid #dee2e6;
+}
+
+.custom-table th, .custom-table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.custom-thead {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.custom-tr:nth-child(even) {
+  background-color: #f2f2f2; /* Zebra pattern */
+}
+
+.custom-progress {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+}
+
+.custom-progress-bar {
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.custom-progress-bar.bg-danger {
+  background-color: #dc3545; /* Rosso sotto il 50% */
+  border-radius: 10px;
+}
+
+.custom-progress-bar.bg-warning {
+  background-color: #ffc107; /* Giallo tra 50% e 80% */
+  border-radius: 10px;
+}
+
+.custom-progress-bar.bg-success {
+  background-color: #28a745; /* Verde sopra l'80% */
+  border-radius: 10px;
+}
+
+.custom-crono {
+  font-size: 14px;
+  text-align: center;
+}
+
+.custom-table-responsive {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.custom-alert-danger {
+  height: 35px;
+  background-color: #ffcccc;
+  color: #ff0000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.custom-alert-warning {
+  height: 35px;
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+  text-align: center;
+}
+
+.custom-alert-success {
+  height: 35px;
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .custom-table {
+      font-size: 14px;
+  }
+
+  .custom-progress-bar {
+      font-size: 12px;
+  }
+}
+

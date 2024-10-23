@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;382;IDEXCIKTUPNFXKALM392;21/10/2024 13:41:41 CEST;21/10/2024 13:54:57 CEST;796;3;440;device=mobile;lang=fr;sysIID=382;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIKTUPNFXKALM392
+choice;10;2;0
+open;18;28
+choice;20;6;1
+choice;30;22;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;1
+choice;166;2;1
+choice;200;5;10000;0
+choice;202;5;10000;0
+choice;204;5;10000;0
+concept;210
+choice;220;5;1
+open;230;Le fait qu'il soit sur à 100% pour mes ustensiles de cuisine et autres et le fait qu'il soit économe 
+open;240;Le fait qu'il n'y ait que 24 dosette 
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;0;1;0;1;0;1;1;1;0;1;1;0
+concept;310
+choice;360;21;14
+choice;370;21;18
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;1
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;16;21;22;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;25;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;16;22;21;31;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;16;C4GL77OYEU;17/10/2024 11:11:14 CEST;17/10/2024 11:13:10 CEST;116;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=C4GL77OYEU;device=desktop;lang=it;sysIID=16;cella=1
+choice;10;2;1
+open;18;52
+choice;20;6;3
+choice;30;20;13
+choice;35;4;3
+choice;50;7;6
+choice;60;6;2
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10011110;4;comp6:aspirapolvere
+choice;166;2;0

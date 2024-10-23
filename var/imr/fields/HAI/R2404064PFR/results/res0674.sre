@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;674;IDEXCIPLTVDVRMHQL684;22/10/2024 09:28:17 CEST;22/10/2024 09:43:54 CEST;937;3;440;device=desktop;lang=fr;sysIID=674;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIPLTVDVRMHQL684
+choice;10;2;1
+open;18;37
+choice;20;6;2
+choice;30;22;3
+choice;50;7;6
+choice;60;6;3
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;1
+choice;166;2;0
+choice;200;5;00010;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;2
+open;230;je ne sais aps
+open;240;je ne sais pas
+choice;250;5;2
+choice;260;5;2
+choice;270;5;2
+choice;280;5;1
+scale;300;13;5;2;2;2;2;1;2;2;1;1;2;2;2;2
+concept;310
+choice;360;21;3
+choice;370;21;18
+choice;380;21;9
+choice;390;21;17
+choice;400;5;2
+choice;410;5;1
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;0
+concept_eval;9021;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;900;IDEXCIGZTPZHPRUQE917;22/10/2024 10:01:30 CEST;22/10/2024 10:10:38 CEST;548;3;440;device=desktop;lang=fr;sysIID=900;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIGZTPZHPRUQE917
+choice;10;2;1
+open;18;45
+choice;20;6;3
+choice;30;22;7
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;3
+choice;166;2;0
+choice;200;5;00100;2
+choice;202;5;00100;2
+choice;204;5;00100;2
+concept;210
+choice;220;5;1
+open;230;que la dosette soit tout en un
+open;240;la quantité des produits
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;1;1;1;1;0;2;1;1;1;1;1;1
+concept;310
+choice;360;21;20
+choice;370;21;1
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;3
+choice;420;5;1
+choice;430;9;2
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;32;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;32;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;35;30;31;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

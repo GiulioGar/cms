@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PIT;1221;MGVRF37R5A;21/10/2024 18:15:31 CEST;21/10/2024 18:16:28 CEST;57;4;80;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=MGVRF37R5A;device=mobile;lang=it;sysIID=1221;cella=1
+choice;10;2;1
+open;18;25
+choice;20;6;1
+choice;30;20;3
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;2
+choice;90;8;10011110;0;comp6:Frullatore ad immersione, Frullatore, Friggitrice ad aria, Planetaria
+choice;166;2;0

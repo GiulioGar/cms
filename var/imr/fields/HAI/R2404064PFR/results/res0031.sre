@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;31;IDEXCIAXPLSXRBWKY33;18/10/2024 16:01:46 CEST;18/10/2024 16:04:34 CEST;168;4;85;device=mobile;lang=fr;sysIID=31;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIAXPLSXRBWKY33
+choice;10;2;0
+open;18;51
+choice;20;6;3
+choice;30;22;9
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010110;0;comp6:Sèche cheveux, tondeuse,blender chauffant 
+choice;166;2;0

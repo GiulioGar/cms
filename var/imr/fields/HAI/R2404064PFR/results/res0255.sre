@@ -1,0 +1,38 @@
+2.0;HAI;R2404064PFR;255;IDEXCIXRRJKNUBGHM265;21/10/2024 11:03:52 CEST;21/10/2024 11:12:21 CEST;509;3;440;device=desktop;lang=fr;sysIID=255;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIXRRJKNUBGHM265
+choice;10;2;0
+open;18;58
+choice;20;6;4
+choice;30;22;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10010100;3
+choice;166;2;0
+choice;200;5;10111;4
+choice;202;5;00001;4
+choice;204;5;10100;0
+concept;210
+choice;220;5;1
+open;230;tout en un : lessive + anticalcaire + parfum
+open;240;Photo peu sexy
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;1;1;2;0;1;0;1;1;1;1;1;1
+concept;310
+choice;360;21;20
+choice;370;21;10
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;0
+choice;420;5;0
+choice;430;9;7
+choice;440;4;1
+concept_eval;9001;36;8;0;1;2;9;13;14;15;16;19;20;24;30;31;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;4;7;17;33;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;12;11;13;14;15;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;18;19;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

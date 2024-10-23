@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;588;DJCB0VQPN1;18/10/2024 14:47:31 CEST;18/10/2024 14:48:26 CEST;55;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=DJCB0VQPN1;device=desktop;lang=it;sysIID=588;cella=1
+choice;10;2;0
+open;18;49
+choice;20;6;3
+choice;30;20;19
+choice;35;4;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11111110;4;comp6:Congelatore Verticale
+choice;166;2;0
+app;1999;indOrder|string|1,2

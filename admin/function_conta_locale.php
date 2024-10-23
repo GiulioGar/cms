@@ -187,8 +187,13 @@ $panel_in=$lu['panel'];
 
 
 ///MODIFICA PRIMA DI PUBBLICARE */
-$linkDir="/var";     // SERVER ONLINE
-//$linkDir="../var";   //XAMPP 
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
+    // Ambiente locale (XAMPP)
+    $linkDir = "../var";   // XAMPP 
+} else {
+    // Server online
+    $linkDir = "/var";     // SERVER ONLINE
+}
 
 //echo "Stato".$stato_ricerca;
 
@@ -238,9 +243,6 @@ $riga_sample=$righe_sample[$j];
 //divido il testo in array stabilendo come separatore il punto e virgola
 $id_sample = explode(";", $riga_sample);
 //echo $id_sample[0]."<br>";
-
-
-
 
 
 $query_aggiorna_statistiche_sample = "UPDATE t_abilitatipanel set data_abilitazione='".$data_creazione_file."' where (sid='".$sid."' and uid='".$id_sample[0]."' and ((data_abilitazione is NULL) or (data_abilitazione ='')))";
@@ -1667,7 +1669,6 @@ else {$alsuccess=0;}
 $loiultima=substr($loi,0,4);
 if ($loiultima==""){$loiultima=0;}
 
-//echo "ciaooo".$loiultima;
 $query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_T."',durata='".$loiultima."' where sur_id='".$sid."'";
 $aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
 

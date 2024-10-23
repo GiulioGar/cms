@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;596;NDTK4R1PV1;18/10/2024 14:53:49 CEST;18/10/2024 14:54:16 CEST;27;4;70;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=NDTK4R1PV1;device=desktop;lang=it;sysIID=596
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;20;3
+choice;35;4;3
+choice;50;7;6
+choice;70;3;2

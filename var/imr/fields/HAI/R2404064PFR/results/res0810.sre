@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;810;IDEXCIAHPPJONYQJH821;22/10/2024 09:58:16 CEST;22/10/2024 10:03:55 CEST;339;3;440;device=mobile;lang=fr;sysIID=810;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIAHPPJONYQJH821
+choice;10;2;0
+open;18;44
+choice;20;6;2
+choice;30;22;17
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;1
+choice;85;3;1
+choice;90;8;11111100;3
+choice;166;2;1
+choice;200;5;11110;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;0
+open;230;Produit qui a l. Air très efficace contre toutes sortes de tâches incrstations'etc
+open;240;Rien me déplaît 
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;1;0;0;0;0;1;0;0;0;0;0;1
+concept;310
+choice;360;21;16
+choice;370;21;13
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;1
+choice;420;5;0
+choice;430;9;0
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;5;4;6;7;8;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;6;5;10;4;9;11;7;15;14;8;13;12;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

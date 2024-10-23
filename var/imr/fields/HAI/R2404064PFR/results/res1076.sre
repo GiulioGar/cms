@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;1076;IDEXCICGZYUAXSKLW1103;22/10/2024 11:40:36 CEST;22/10/2024 11:42:56 CEST;140;4;85;device=mobile;lang=fr;sysIID=1076;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCICGZYUAXSKLW1103
+choice;10;2;1
+open;18;42
+choice;20;6;2
+choice;30;22;1
+choice;50;7;6
+choice;60;6;2
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11011010;3;comp6:Aspirateur 
+choice;166;2;0

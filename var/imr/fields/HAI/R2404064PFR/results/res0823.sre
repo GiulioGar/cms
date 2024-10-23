@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;823;IDEXCIEOZTHQSJOGI838;22/10/2024 09:58:27 CEST;22/10/2024 10:05:36 CEST;429;3;440;device=mobile;lang=fr;sysIID=823;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIEOZTHQSJOGI838
+choice;10;2;0
+open;18;41
+choice;20;6;2
+choice;30;22;4
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;5
+choice;166;2;1
+choice;200;5;00010;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;0
+open;230;Capsule tout en un, pas besoin de rajouter un produit de rinçage 
+open;240;Le nombre de dosettes est insuffisant 
+choice;250;5;0
+choice;260;5;1
+choice;270;5;0
+choice;280;5;2
+scale;300;13;5;1;0;0;1;0;2;1;1;0;1;1;1;0
+concept;310
+choice;360;21;20
+choice;370;21;2
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;2
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;11;26;29;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;25;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;11;34;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

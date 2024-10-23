@@ -1,0 +1,38 @@
+2.0;HAI;R2404064PFR;818;IDEXCIOGSPHJRFZBN830;22/10/2024 09:58:21 CEST;22/10/2024 10:02:36 CEST;255;3;440;device=mobile;lang=fr;sysIID=818;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIOGSPHJRFZBN830
+choice;10;2;1
+open;18;42
+choice;20;6;2
+choice;30;22;6
+choice;50;7;3
+choice;60;6;4
+choice;70;3;1
+choice;80;3;1
+choice;85;3;1
+choice;90;8;00100000;2
+choice;166;2;1
+choice;200;5;01000;1
+choice;202;5;01000;1
+choice;204;5;01000;1
+concept;210
+choice;220;5;2
+open;230;Avoir une vaisselle  propre est important 
+open;240;Multi actions je ne suis pas sur
+choice;250;5;2
+choice;260;5;2
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;2;2;1;2;3;2;3;2;2;2;3;2;1
+concept;310
+choice;360;21;12
+choice;370;21;14
+choice;380;21;16
+choice;390;21;18
+choice;400;5;3
+choice;410;5;1
+choice;420;5;2
+choice;430;9;0
+choice;440;4;2
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;35;25;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

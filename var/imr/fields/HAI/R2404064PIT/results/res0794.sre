@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;794;63N88GEEO5;18/10/2024 20:23:30 CEST;18/10/2024 20:23:45 CEST;15;4;70;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=63N88GEEO5;device=desktop;lang=it;sysIID=794
+choice;10;2;0
+open;18;52
+choice;20;6;3
+choice;30;20;19
+choice;35;4;1
+choice;50;7;6
+choice;70;3;2

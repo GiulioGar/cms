@@ -1,7 +1,6 @@
 <?php
 
 require_once('func_panelDat.php');
-require_once('function_conta_aree.php');
 ?>
 
 <!--Inizio nuova riga -->	
@@ -87,45 +86,62 @@ require_once('function_conta_aree.php');
 
 <script>
 
-//chart ricerche
+// Chart per le ricerche online
 new Chart(document.getElementById("barSur"), {
     type: 'bar',
     data: {
-      labels: ["<?php echo $actualYear; ?>", "<?php echo $pastYear1; ?>"],
-      datasets: [
-        {
-          label:  ["Totali"],
-          backgroundColor: ["#ffd789","#ffd789"],
-          data: [<?php echo $totSur['tot']; ?>,<?php echo $totSur16['tot']; ?>]
-        },
-
-        {
-          label:  ["Interne"],
-          backgroundColor: ["#ceefbd","#ceefbd"],
-          data: [<?php echo $contaInt; ?>,<?php echo $contaInt16; ?>]
-        },
-
-        {
-          label:  ["Esterne"],
-          backgroundColor: ["#7fbee2", "#7fbee2"],
-          data: [<?php echo $contaExt; ?>,<?php echo $contaExt16; ?>]
-        },
-        {
-          label:  ["Da Lista"],
-          backgroundColor: ["#BF8BD6", "#BF8BD6"],
-          data: [<?php echo $contaTar; ?>,<?php echo $contaTar16; ?>]
-        }
-
-      ]
+        labels: ["<?php echo $actualYear; ?>", "<?php echo $pastYear1; ?>"],  // Anni da visualizzare sulla X
+        datasets: [
+            {
+                label: "Totali",
+                backgroundColor: ["#ffd789", "#ffd789"],
+                data: [
+                    <?php echo $totSur['tot']; ?>, 
+                    <?php echo $totSur16['tot']; ?>
+                ]  // Totali per gli anni
+            },
+            {
+                label: "Interne",
+                backgroundColor: ["#ceefbd", "#ceefbd"],
+                data: [
+                    <?php echo $contaInt; ?>, 
+                    <?php echo $contaInt16; ?>
+                ]  // Ricerche interne per gli anni
+            },
+            {
+                label: "Esterne",
+                backgroundColor: ["#7fbee2", "#7fbee2"],
+                data: [
+                    <?php echo $contaExt; ?>, 
+                    <?php echo $contaExt16; ?>
+                ]  // Ricerche esterne per gli anni
+            },
+            {
+                label: "Da Lista",
+                backgroundColor: ["#BF8BD6", "#BF8BD6"],
+                data: [
+                    <?php echo $contaTar; ?>, 
+                    <?php echo $contaTar16; ?>
+                ]  // Ricerche da lista per gli anni
+            }
+        ]
     },
     options: {
-      legend: { display: true },
-      title: {
-        display: true,
-        text: 'Ricerche online'
-      }
+        legend: { display: true },  // Mostra la legenda
+        title: {
+            display: true,
+            text: 'Ricerche online'  // Titolo della chart
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true  // Inizia l'asse Y da zero
+                }
+            }]
+        }
     }
 });
+
 
 
 //chart ricerche per paese

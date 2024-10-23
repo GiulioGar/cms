@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;1417;FXDBMDU9HT;22/10/2024 21:52:17 CEST;22/10/2024 21:53:08 CEST;51;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=FXDBMDU9HT;device=mobile;lang=it;sysIID=1417;cella=1
+choice;10;2;0
+open;18;56
+choice;20;6;4
+choice;30;20;6
+choice;35;4;2
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;1
+choice;85;3;0
+choice;90;8;11111100;5
+choice;166;2;0
+app;1999;indOrder|string|1,2

@@ -1,0 +1,38 @@
+2.0;HAI;R2404064PFR;619;IDEXCINDZBSFUVPEQ628;21/10/2024 22:50:48 CEST;21/10/2024 23:03:03 CEST;735;3;440;device=desktop;lang=fr;sysIID=619;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCINDZBSFUVPEQ628
+choice;10;2;0
+open;18;60
+choice;20;6;4
+choice;30;22;4
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;00111100;4
+choice;166;2;1
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;2
+open;230;agreable mais un peu cher
+open;240;son prix
+choice;250;5;2
+choice;260;5;2
+choice;270;5;2
+choice;280;5;2
+scale;300;13;5;2;2;2;2;2;2;2;2;2;2;2;2;2
+concept;310
+choice;360;21;20
+choice;370;21;0
+choice;380;21;20
+choice;390;21;20
+choice;400;5;3
+choice;410;5;4
+choice;420;5;1
+choice;430;9;1
+choice;440;4;2
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;0
+concept_eval;9032;0

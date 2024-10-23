@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;954;IDEXCIQTACOSREEXY974;22/10/2024 11:38:48 CEST;22/10/2024 11:39:37 CEST;49;4;85;device=mobile;lang=fr;sysIID=954;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIQTACOSREEXY974
+choice;10;2;1
+open;18;45
+choice;20;6;3
+choice;30;22;9
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11011100;0
+choice;166;2;0

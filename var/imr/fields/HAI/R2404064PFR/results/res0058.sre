@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;58;IDEXCIUXMVFQOHQPT64;18/10/2024 16:02:08 CEST;18/10/2024 16:11:09 CEST;541;3;440;device=mobile;lang=fr;sysIID=58;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIUXMVFQOHQPT64
+choice;10;2;0
+open;18;43
+choice;20;6;2
+choice;30;22;16
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;1
+choice;85;3;1
+choice;90;8;10111100;3
+choice;166;2;0
+choice;200;5;10010;3
+choice;202;5;10000;0
+choice;204;5;10010;3
+concept;210
+choice;220;5;1
+open;230;Prolongé la vie de la machine 
+open;240;Rien ne me déplaît 
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;1;1;2;1;1;2;0;1;1;1;0;1
+concept;310
+choice;360;21;14
+choice;370;21;18
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;2
+choice;420;5;1
+choice;430;9;2
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;0
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;0;31;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

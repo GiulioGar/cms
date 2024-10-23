@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;120;IDEXCIUDDCHOXYNVR128;18/10/2024 16:04:08 CEST;18/10/2024 16:10:32 CEST;384;3;440;device=mobile;lang=fr;sysIID=120;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIUDDCHOXYNVR128
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;22;16
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;5
+choice;166;2;1
+choice;200;5;10000;0
+choice;202;5;10000;0
+choice;204;5;10000;0
+concept;210
+choice;220;5;2
+open;230;Ce que peut faire le produit 
+open;240;La description est trop longue
+choice;250;5;2
+choice;260;5;1
+choice;270;5;3
+choice;280;5;2
+scale;300;13;5;1;1;1;2;1;1;1;1;1;1;1;1;1
+concept;310
+choice;360;21;18
+choice;370;21;10
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;2
+choice;420;5;1
+choice;430;9;1
+choice;440;4;1
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

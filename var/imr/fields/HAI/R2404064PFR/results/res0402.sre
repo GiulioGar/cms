@@ -1,0 +1,25 @@
+2.0;HAI;R2404064PFR;402;IDEXCIYCKSBRTNJQE412;21/10/2024 14:04:30 CEST;<unknown>;0;0;166;device=desktop;lang=fr;sysIID=402;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIYCKSBRTNJQE412
+choice;10;2;1
+open;18;42
+choice;20;6;2
+choice;30;22;4
+choice;50;7;2
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11011100;5
+choice;166;2;0
+choice;200;5;10010;3
+choice;202;5;10000;0
+choice;204;5;10000;0
+concept;210
+choice;220;5;1
+open;230;le fait que ce produit me facilite la vie
+open;240;rien
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+concept;310

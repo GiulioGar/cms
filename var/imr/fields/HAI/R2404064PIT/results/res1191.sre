@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;1191;DM9IU93KGV;21/10/2024 17:45:22 CEST;21/10/2024 17:49:37 CEST;255;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=DM9IU93KGV;device=mobile;lang=it;sysIID=1191;cella=1
+choice;10;2;0
+open;18;39
+choice;20;6;2
+choice;30;20;16
+choice;35;4;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;4
+choice;166;2;0
+choice;200;5;10000;0
+choice;202;5;10000;0
+choice;204;5;10000;0
+concept;210
+choice;220;5;0
+open;230;Il fatto che con un solo prodotto sia possibile avere vantaggi diversi 
+open;240;Il fatto che non ci sia la possibilità di avere varie confezioni (con numeri diversi di pods)
+choice;250;5;1
+choice;260;5;1
+choice;270;5;0
+choice;280;5;0
+scale;300;13;5;0;0;0;0;1;0;1;0;0;0;0;1;0
+concept;310
+choice;360;21;20
+choice;370;21;10
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;2
+choice;420;5;0
+choice;430;9;0
+choice;440;4;1
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;8;12;22;23;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;26;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;7;8;9;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

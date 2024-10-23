@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;409;ZWL9B18614;17/10/2024 22:51:08 CEST;17/10/2024 22:55:45 CEST;277;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=ZWL9B18614;device=mobile;lang=it;sysIID=409;cella=2
+choice;10;2;0
+open;18;48
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10110100;2
+choice;166;2;1
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;0
+open;230;Che protegge la lavastoviglie e lascia un buon profumo
+open;240;La scritta in lingua inglese
+choice;250;5;0
+choice;260;5;1
+choice;270;5;0
+choice;280;5;1
+scale;300;13;5;0;1;0;0;0;0;0;0;0;0;0;0;0
+concept;310
+choice;360;21;20
+choice;370;21;6
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;1
+choice;420;5;1
+choice;430;9;0
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;35;2;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;34;33;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;18;19;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

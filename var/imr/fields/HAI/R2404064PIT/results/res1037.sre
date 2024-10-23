@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;1037;541cdc4519;21/10/2024 10:37:39 CEST;21/10/2024 10:38:47 CEST;68;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=541cdc4519;device=mobile;lang=it;sysIID=1037;cella=1
+choice;10;2;1
+open;18;57
+choice;20;6;4
+choice;30;20;7
+choice;35;4;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010010;3;comp6:Fornelli
+choice;166;2;0

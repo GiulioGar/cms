@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;356;IDEXCIVVAQNRRWODK366;21/10/2024 13:07:19 CEST;21/10/2024 13:08:18 CEST;59;4;85;device=mobile;lang=fr;sysIID=356;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIVVAQNRRWODK366
+choice;10;2;0
+open;18;59
+choice;20;6;4
+choice;30;22;12
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10011100;5
+choice;166;2;0

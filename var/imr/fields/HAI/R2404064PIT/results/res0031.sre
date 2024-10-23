@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;31;C7DZ48BSO5;17/10/2024 11:14:51 CEST;17/10/2024 11:17:55 CEST;184;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=C7DZ48BSO5;device=mobile;lang=it;sysIID=31;cella=1
+choice;10;2;1
+open;18;50
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;50;7;6
+choice;60;6;2
+choice;70;3;1
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10011010;3;comp6:Aspirapolvere- scopa elettrica- ventilatore- climatizzatore
+choice;166;2;0

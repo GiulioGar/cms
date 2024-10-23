@@ -1,0 +1,28 @@
+2.0;HAI;R2404064PFR;1021;IDEXCIZAZIDKUQNBA1046;22/10/2024 11:39:36 CEST;22/10/2024 11:51:51 CEST;735;5;9021;device=mobile;lang=fr;sysIID=1021;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIZAZIDKUQNBA1046
+choice;10;2;0
+open;18;44
+choice;20;6;2
+choice;30;22;6
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;0
+choice;166;2;0
+choice;200;5;10010;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;1
+open;230;Un produit qui a l’air complet et qui prend soin du linge et de l’appareillage 
+open;240;Le nom il est pas super explicite 
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;2
+scale;300;13;5;0;0;1;1;1;0;0;0;0;1;0;0;0
+concept;310
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;0;7;9;14;13;15;16;17;19;20;21;30;31;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;6;33;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

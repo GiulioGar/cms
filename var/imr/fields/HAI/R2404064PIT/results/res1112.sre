@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PIT;1112;74SHQ8TQN1;21/10/2024 14:00:39 CEST;21/10/2024 14:10:17 CEST;578;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=74SHQ8TQN1;device=desktop;lang=it;sysIID=1112;cella=2
+choice;10;2;1
+open;18;50
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;00111100;5
+choice;166;2;1
+choice;200;5;10010;3
+choice;202;5;10000;0
+choice;204;5;10010;0
+concept;210
+choice;220;5;1
+open;230;La possibilità di avere un pulito perfetto e curare la mia lavastoviglie
+open;240;non c 'è nulla che non mi piace
+choice;250;5;1
+choice;260;5;1
+choice;270;5;2
+choice;280;5;1
+scale;300;13;5;1;1;1;1;1;1;1;1;1;1;1;0;0
+concept;310
+choice;360;21;12
+choice;370;21;15
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;1
+choice;420;5;0
+choice;430;9;1
+choice;440;4;1
+concept_eval;9002;35;1;7;8;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;3;7;8;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

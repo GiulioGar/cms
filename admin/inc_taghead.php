@@ -166,3 +166,5 @@ $coldx = "no";
 <![endif]-->	
 
 </head>
+<?php
+require_once('inc_auth.php'); 

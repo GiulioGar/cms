@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;1328;MTYBR21IC3;21/10/2024 23:59:03 CEST;22/10/2024 00:00:07 CEST;64;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=MTYBR21IC3;device=desktop;lang=it;sysIID=1328;cella=2
+choice;10;2;1
+open;18;51
+choice;20;6;3
+choice;30;20;0
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11110100;5
+choice;166;2;1
+app;1999;indOrder|string|2,1

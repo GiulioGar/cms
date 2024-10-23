@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;695;LY5ISEPIII;18/10/2024 16:41:57 CEST;18/10/2024 16:42:35 CEST;38;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=LY5ISEPIII;device=mobile;lang=it;sysIID=695;cella=1
+choice;10;2;1
+open;18;35
+choice;20;6;2
+choice;30;20;12
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010000;3
+choice;166;2;0

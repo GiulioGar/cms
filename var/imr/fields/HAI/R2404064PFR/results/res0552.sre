@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;552;IDEXCIVBPWEAGPUXN561;21/10/2024 20:23:04 CEST;21/10/2024 20:30:51 CEST;467;3;440;device=desktop;lang=fr;sysIID=552;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIVBPWEAGPUXN561
+choice;10;2;1
+open;18;39
+choice;20;6;2
+choice;30;22;11
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;0
+choice;166;2;1
+choice;200;5;10000;0
+choice;202;5;10000;0
+choice;204;5;10000;0
+concept;210
+choice;220;5;1
+open;230;Le fait que ce soit un produit tout en un
+open;240;Il n'y a pas beaucoup de dosettes
+choice;250;5;2
+choice;260;5;1
+choice;270;5;4
+choice;280;5;2
+scale;300;13;5;0;1;2;4;2;0;1;1;2;2;2;3;2
+concept;310
+choice;360;21;20
+choice;370;21;0
+choice;380;21;20
+choice;390;21;20
+choice;400;5;4
+choice;410;5;2
+choice;420;5;1
+choice;430;9;1
+choice;440;4;1
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;32;33;34;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

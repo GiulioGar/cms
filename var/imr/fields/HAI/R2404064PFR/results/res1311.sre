@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;1311;IDEXCIXPTRLZILTSU1340;22/10/2024 13:13:39 CEST;22/10/2024 13:19:15 CEST;336;3;440;device=mobile;lang=fr;sysIID=1311;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIXPTRLZILTSU1340
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;22;9
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;1
+choice;85;3;1
+choice;90;8;11111100;4
+choice;166;2;1
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;1
+open;230;Dosettes, c'est bien pour moi 
+open;240;C'est pas un petit peu trop beau pour être vrai 
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;1;1;1;1;2;1;2;1;1;1;1;2;1
+concept;310
+choice;360;21;11
+choice;370;21;16
+choice;380;21;16
+choice;390;21;18
+choice;400;5;1
+choice;410;5;3
+choice;420;5;1
+choice;430;9;1
+choice;440;4;2
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;25;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;34;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;6;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;30;29;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

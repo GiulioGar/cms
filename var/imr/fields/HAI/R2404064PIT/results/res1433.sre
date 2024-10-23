@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;1433;58C2LK9R28;23/10/2024 12:30:54 CEST;23/10/2024 12:31:40 CEST;46;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=58C2LK9R28;device=mobile;lang=it;sysIID=1433;cella=2
+choice;10;2;1
+open;18;52
+choice;20;6;3
+choice;30;20;13
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11111110;5;comp6:Planetaria 
+choice;166;2;1
+app;1999;indOrder|string|2,1

@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;49;TZL23ZSB62;17/10/2024 11:23:08 CEST;17/10/2024 11:27:37 CEST;269;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=TZL23ZSB62;device=mobile;lang=it;sysIID=49;cella=2
+choice;10;2;0
+open;18;29
+choice;20;6;1
+choice;30;20;4
+choice;35;4;1
+choice;50;7;0
+choice;60;6;3
+choice;70;3;0
+choice;80;3;1
+choice;85;3;1
+choice;90;8;10111100;3
+choice;166;2;1
+choice;200;5;10010;0
+choice;202;5;10000;0
+choice;204;5;10010;0
+concept;210
+choice;220;5;2
+open;230;Comodo sicuramente perché in pastiglia
+open;240;Le pastiglie non le trovo così affidabili come i prodotti per pulizia liquidi
+choice;250;5;2
+choice;260;5;3
+choice;270;5;2
+choice;280;5;2
+scale;300;13;5;0;2;2;2;2;2;2;3;2;2;2;2;2
+concept;310
+choice;360;21;20
+choice;370;21;10
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;2
+choice;420;5;1
+choice;430;9;1
+choice;440;4;2
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;0
+concept_eval;9032;0

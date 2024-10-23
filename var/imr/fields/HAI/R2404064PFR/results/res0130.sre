@@ -1,0 +1,9 @@
+2.0;HAI;R2404064PFR;130;IDEXCICNYDMSJOBQL141;18/10/2024 16:04:37 CEST;18/10/2024 16:04:53 CEST;16;4;60;version=v01;sysSID=R2404064PFR;sysPRJ=HAI;sysUID=IDEXCICNYDMSJOBQL141;device=desktop;pan=1;sysIID=130;lang=fr
+choice;10;2;1
+open;18;32
+choice;20;6;1
+choice;30;22;2
+choice;50;7;6
+choice;60;6;1
+choice;70;3;0
+choice;90;8;01001100;1

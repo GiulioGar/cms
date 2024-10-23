@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;416;FBNI2UQ0M3;18/10/2024 00:33:53 CEST;18/10/2024 00:54:31 CEST;1238;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=FBNI2UQ0M3;device=desktop;lang=it;sysIID=416;cella=2
+choice;10;2;1
+open;18;45
+choice;20;6;3
+choice;30;20;3
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;3
+choice;166;2;1
+choice;200;5;10111;0
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;2
+open;230;la praticità della forma e la sicurezza di utilizzarlo con le stoviglie presenti nell'apparecchio
+open;240;non è indicata la fragranza
+choice;250;5;2
+choice;260;5;2
+choice;270;5;0
+choice;280;5;3
+scale;300;13;5;0;2;2;1;1;0;1;1;1;1;1;1;1
+concept;310
+choice;360;21;20
+choice;370;21;7
+choice;380;21;20
+choice;390;21;20
+choice;400;5;3
+choice;410;5;4
+choice;420;5;0
+choice;430;9;4
+choice;440;4;2
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;6;11;16;28;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;25;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;19;28;29;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;239;5A0FS68N4Q;17/10/2024 15:06:04 CEST;17/10/2024 15:08:14 CEST;130;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=5A0FS68N4Q;device=desktop;lang=it;sysIID=239;cella=1
+choice;10;2;0
+open;18;49
+choice;20;6;3
+choice;30;20;4
+choice;35;4;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11111110;0;comp6:friggitrice aria, aspirapolvere, ferro stiro, tosta pane
+choice;166;2;0
+app;1999;indOrder|string|1,2

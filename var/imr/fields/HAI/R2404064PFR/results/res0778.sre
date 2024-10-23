@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;778;IDEXCISYDPEIPBWMT790;22/10/2024 09:57:43 CEST;22/10/2024 10:09:19 CEST;696;3;440;device=mobile;lang=fr;sysIID=778;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCISYDPEIPBWMT790
+choice;10;2;0
+open;18;48
+choice;20;6;3
+choice;30;22;2
+choice;50;7;6
+choice;60;6;3
+choice;70;3;0
+choice;80;3;1
+choice;85;3;1
+choice;90;8;10111100;4
+choice;166;2;1
+choice;200;5;10110;0
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;0
+open;230;L efficacité 
+open;240;Le prix 
+choice;250;5;0
+choice;260;5;0
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+concept;310
+choice;360;21;18
+choice;370;21;6
+choice;380;21;18
+choice;390;21;18
+choice;400;5;0
+choice;410;5;2
+choice;420;5;1
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;28;6;8;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;0
+concept_eval;9022;35;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;8;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

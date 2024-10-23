@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;1271;PT67FYUMIO;21/10/2024 19:42:05 CEST;<unknown>;0;0;35;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=PT67FYUMIO;device=desktop;lang=en;sysIID=1271
+choice;10;2;0
+open;18;54
+choice;20;6;3
+choice;30;20;4
+choice;35;4;1
+choice;50;7;6
+choice;70;3;0

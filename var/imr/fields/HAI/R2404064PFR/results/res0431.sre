@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;431;IDEXCILZAEMZSCNFG440;21/10/2024 14:54:33 CEST;21/10/2024 16:02:36 CEST;4083;3;440;device=desktop;lang=fr;sysIID=431;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCILZAEMZSCNFG440
+choice;10;2;0
+open;18;59
+choice;20;6;4
+choice;30;22;12
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;5
+choice;166;2;0
+choice;200;5;11111;4
+choice;202;5;00001;4
+choice;204;5;01011;3
+concept;210
+choice;220;5;1
+open;230;Son économie d'énergie et de temps, son efficacité même à basse température et en cycle court, son action tout-en-1, sa prise de soin de mes vêtements tout en prolongeant le cycle de vie de mon appareil, sa technologie innovante et brevetée et 100% sûre pour mes vêtements et l'entretien de ma machine en 1 seul cycle de lavage, sa dosette multi-actions  
+open;240;Son absence TOTALE d'engagements RSE et inclusifs, son nom en langue étrangère incompréhensible, son manque d'informations précises et prouvées
+choice;250;5;1
+choice;260;5;2
+choice;270;5;2
+choice;280;5;2
+scale;300;13;5;1;1;1;2;1;1;1;1;1;1;1;1;1
+concept;310
+choice;360;21;20
+choice;370;21;5
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;2
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;5;7;9;8;10;11;17;20;24;23;29;30;31;33;34;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;6;0;14;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;5;7;9;10;16;13;17;19;20;21;23;24;29;30;31;33;34;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;10;16;19;20;23;24;21;29;30;31;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

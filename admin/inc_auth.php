@@ -1,9 +1,10 @@
 <?php
-require_once('../Connections/admin.php'); 
+
 
 if (!isset($_SESSION)) {
   session_start();
 }
+require_once('../Connections/admin.php'); 
 //$MM_authorizedUsers = "crm";
 $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
@@ -80,7 +81,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 ?>
 <?php 
-mysqli_select_db( $admin,$database_admin);
+mysqli_select_db($admin,$database_admin);
 
 require_once('inc_func.php'); 
 ?>

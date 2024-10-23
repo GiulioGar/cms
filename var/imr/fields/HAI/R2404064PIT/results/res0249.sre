@@ -1,0 +1,6 @@
+2.0;HAI;R2404064PIT;249;G4NG8PDEYS;17/10/2024 14:46:50 CEST;<unknown>;0;0;35;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=G4NG8PDEYS;device=mobile;lang=it;sysIID=249
+choice;10;2;0
+open;18;30
+choice;20;6;1
+choice;30;20;19
+choice;35;4;1

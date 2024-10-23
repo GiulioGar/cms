@@ -1,0 +1,813 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+string labelCheck;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selCheck;
+string cpt;
+int preQid;
+int n;
+int nArr;
+int reCod;
+int selintCheck;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+string autotest=system.getProperty("test");
+string uid = system.getProperty("sysUID");
+if (autotest=="1" || uid=="null") {
+system.setProperty("env", "debug:true");  system.setProperty("env", "browser:variables");}
+string err;
+int cella;
+int leg;
+
+int qpers;
+int cPer;
+
+boolean selDryS8;
+boolean selDryS8b;
+string cpt1;
+string cpt2;
+string cpt3;
+string cpt4;
+
+boolean selCella1;
+boolean selCella2;
+
+string qIndici="";
+
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+string scriptzoom="<script type='text/javascript' src='https://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script><script type='text/javascript''> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+boolean live=true;
+string version="v01";
+if (autotest=="1") {version="auotest";}
+system.setProperty("version",version);
+
+///CONCEPT EVALUETOR QUESTIONS//
+labelCheck="<script type='text/javascript' src='https://www.primisoft.com/fields/script/dinNone3.js'></script>";
+
+cpt1=labelCheck+"<table id='Tabella_01'  border='0' cellpadding='0' cellspacing='0'> <tr> <td colspan='2'> <img class='img-responsive' src='https://www.primisoft.com/fields/HAI/R2404064PIT/resources/c1_01.jpg' class='img-responsive' alt=''></td> </tr> <tr> <td style='width: 879px; height: 559px;'> <div class='pptContainer2'> <p>#asVoglio che il mio bucato sia sempre impeccabile#ae, #asma so che per ottenerlo è fondamentale avere una lavatrice pulita#ae #ase ben curata#ae. #asTuttavia, la manutenzione richiede tempo#ae #ase spesso mi dimentico di farla#ae.</p> <p><strong>#asIl nuovo All-in-One Pod#ae #asdi Care+Protect#ae</strong> #asti offre una soluzione professionale#ae #asper prenderti cura del bucato#ae #asprolungando allo stesso tempo il ciclo di vita della tua lavatrice#ae. #asQuesto è possibile grazie alla nostra tecnologia innovativa#ae, #asracchiusa in un pod multicamera#ae #asche combina più formule#ae: #asdetersivo per bucato#ae, #asammorbidente#ae, #asprofumo per bucato#ae #ase decalcificante per la tua lavatrice#ae.</p> <p>#asQuesta tecnologia è sicura al 100% per i tuoi capi#ae #ase ti consente di fare il bucato#ae #ased eseguire la manutenzione della tua lavatrice#ae #asin un unico ciclo di lavaggio#ae.<br> #asIn questo modo puoi ottenere risultati ottimali#ae #asrisparmiando tempo#ae #ased energia#ae #ase prolungando la vita della tua lavatrice#ae.</p> <p>#asIl prodotto è disponibile per te#ae #asin una confezione con 24 pod multicamera#ae. #asTi basterà inserire la capsula nel fondo dell’oblò#ae, #asinsieme ai tuoi indumenti sporchi#ae. #asEfficace in qualsiasi condizione#ae, #asanche a bassa temperatura#ae #ase cicli brevi#ae.</p> <br/> <br/> <p>#asPod All-in-One C+P#ae. #asRisultati perfetti#ae #asper il tuo bucato#ae #ase per la tua lavatrice#ae!</p> </div> </td> <td> <img class='img-responsive' src='https://www.primisoft.com/fields/HAI/R2404064PIT/resources/c1_03.jpg' class='img-responsive' alt=''></td> </tr> </table>";
+
+
+question qc1 = new question("concept_eval", 9001);
+qc1.setProperty("text", "Potrebbe selezionare le parole/parti di questa descrizione che maggiormente le <b>piacciono</b>? Può indicare 'Nessuno di questi' se non ci sono parole che le <b>piacciono</b>.");
+qc1.setProperty("code", "C1.a1");
+qc1.setProperty("concept", cpt1);
+qc1.setProperty("allow_nosel", true);
+qc1.setProperty("view", "seltext");
+
+
+question qc1b = new question("concept_eval", 9011);
+qc1b.setProperty("text", "E quali parole/parti, invece, non le <b>piacciono</b>? Può indicare 'Nessuno di quest' se non ci sono parole che <b>non le piacciono.</b>");
+qc1b.setProperty("code", "C2.a1");
+qc1b.setProperty("concept", cpt1);
+qc1b.setProperty("allow_nosel", true);
+qc1b.setProperty("view", "seltext");
+
+question qc1c = new question("concept_eval", 9021);
+qc1c.setProperty("text", "Potrebbe selezionare le parole/parti di questa descrizione che trova <b>più interessanti</b>? Se non trova nessuna parte particolarmente interessante può indicare 'Nessuno di questi'");
+qc1c.setProperty("code", "C3.a1");
+qc1c.setProperty("concept", cpt1);
+qc1c.setProperty("allow_nosel", true);
+qc1c.setProperty("view", "seltext");
+
+question qc1d = new question("concept_eval", 9031);
+qc1d.setProperty("text", "E quali parole/parti di questa descrizione, secondo lei, sono particolarmente <b>nuove e diverse</b>? Se non trova nessuna parte particolarmente nuova e diversa può indicare 'Nessuno di questi'");
+qc1d.setProperty("code", "C4.a1");
+qc1d.setProperty("concept", cpt1);
+qc1d.setProperty("allow_nosel", true);
+qc1d.setProperty("view", "seltext");
+
+
+cpt2=labelCheck+"<table id='Tabella_01' width='1280' height='720' border='0' cellpadding='0' cellspacing='0'> <tr> <td colspan='2'> <img class='img-responsive' src='https://www.primisoft.com/fields/HAI/R2404064PIT/resources/c2_01.jpg' width='1280' height='161' alt=''></td> </tr> <tr> <td style='width: 945px; height: 559px;'> <div class='pptContainer2'> <p>#asMi piacerebbe avere una soluzione completa#ae #asper avere stoviglie perfettamente pulite#ae #ase, allo stesso tempo,#ae #asmantenere la mia lavastoviglie sempre al massimo delle prestazioni.#ae</p> <p>#asIl nuovo All-in-One Pod#ae <strong>#asdi Care+Protect#ae</strong> #asti offre una soluzione professionale#ae #asper pulire perfettamente le stoviglie#ae #asprolungando al tempo stesso il ciclo di vita della tua lavastoviglie.#ae #asQuesto è possibile grazie alla nostra tecnologia innovativa,#ae #asracchiusa in un pod multicamera#ae #asche combina più formule:#ae #asgel detergente,#ae #asbrillantante,#ae #asprofumo#ae #ase trattamento decalcificante per la tua lavastoviglie.#ae</p> <p>#asQuesta tecnologia è sicura al 100% a contatto con le tue stoviglie#ae #ase ti consente di eseguire il lavaggio#ae #ase la manutenzione della tua lavastoviglie#ae #asin un unico ciclo.#ae #asIn questo modo puoi ottenere risultati ottimali#ae #asrisparmiando tempo#ae #ased energia#ae #ase prolungando le prestazioni della tua lavastoviglie.#ae</p> <p>#asIl prodotto è disponibile per te#ae #asin una confezione con 24 pod multicamera per lavastoviglie.#ae #asTi basta semplicemente posizionare la capsula sul fondo del serbatoio,#ae #asinsieme alle stoviglie sporche.#ae #asEfficace in qualsiasi condizione,#ae #asanche a bassa temperatura#ae #ase cicli brevi.#ae</p> <br> <p>#asPod All-in-One C+P.#ae #asRisultati perfetti#ae #asper i tuoi piatti#ae #ase per la tua lavastoviglie!#ae</p> </div> </td> <td> <img class='img-responsive' src='https://www.primisoft.com/fields/HAI/R2404064PIT/resources/c2_03.jpg' width='335' height='559' alt=''></td> </tr> </table>";
+
+question qc2 = new question("concept_eval", 9002);
+qc2.setProperty("text", "Potrebbe selezionare le parole/parti di questa descrizione che maggiormente <b>le piacciono</b>? Può indicare 'Nessuno di questi' se non ci sono parole che <b>le piacciono.</b>");
+qc2.setProperty("code", "C1.a2");
+qc2.setProperty("concept", cpt2);
+qc2.setProperty("allow_nosel", true);
+qc2.setProperty("view", "seltext");
+
+question qc2b = new question("concept_eval", 9012);
+qc2b.setProperty("text", "E quali parole/parti, invece,<b>non le piacciono</b>? Può indicare “Nessuno di questi se non ci sono parole che <b>non le piacciono.</b>");
+qc2b.setProperty("code", "C2.a2");
+qc2b.setProperty("concept", cpt2);
+qc2b.setProperty("allow_nosel", true);
+qc2b.setProperty("view", "seltext");
+
+question qc2c = new question("concept_eval", 9022);
+qc2c.setProperty("text", "Potrebbe selezionare le parole/parti di questa descrizione che trova <b>più interessanti</b>? Se non trova nessuna parte particolarmente interessante può indicare 'Nessuno di questi'");
+qc2c.setProperty("code", "C3.a2");
+qc2c.setProperty("concept", cpt2);
+qc2c.setProperty("allow_nosel", true);
+qc2c.setProperty("view", "seltext");
+
+question qc2d = new question("concept_eval", 9032);
+qc2d.setProperty("text", "E quali parole/parti di questa descrizione, secondo lei, sono particolarmente <b>nuove e diverse</b>? Se non trova nessuna parte particolarmente nuova e diversa può indicare 'Nessuno di questi'");
+qc2d.setProperty("code", "C4.a2");
+qc2d.setProperty("concept", cpt2);
+qc2d.setProperty("allow_nosel", true);
+qc2d.setProperty("view", "seltext");
+
+
+// Q10: CHOICE
+qst = new question("choice", 10);
+qst.setProperty("text", "Lei è..?");
+qst.setProperty("code", "S1");
+qst.setProperty("show_rand", false);
+vector q10_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q10_opts);
+send qst; 
+
+qst = new question("open", 18);
+qst.setProperty("text", "Quanti anni ha? <p>Registrare età precisa</p>");
+qst.setProperty("code", "S2");
+qst.setProperty("view", "numeric");
+qst.setProperty("validation_rule", "^[1-9]|[1-9][0-9]$");
+qst.setProperty("validation_error", "Indicare un numero compreso tra 1 e 99");
+send qst;
+
+int eta=(int)system.getProperty("ans18");
+
+if(eta<20) { reCod=0; return 4;}
+if(eta>=20 && eta<=34) { reCod=1;}
+if(eta>=35 && eta<=44) { reCod=2;}
+if(eta>=45 && eta<=54) { reCod=3;}
+if(eta>=55 && eta<=60) { reCod=4;}
+if(eta>60) { reCod=5; return 4;}
+
+// Q20: CHOICE
+qst = new question("choice", 20);
+qst.setProperty("text", "Quanti anni ha? Registrare età precisa in numero di anni");
+qst.setProperty("code", "S2X");
+qst.setProperty("show_rand", false);
+vector q20_opts = new vector {
+"<20",
+"20-34",
+"35-44",
+"45-54",
+"55-60",
+">60"
+};
+qst.setProperty("options", q20_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst; 
+
+qst = new question("choice", 30);
+qst.setProperty("text", "In quale regione vive?");
+qst.setProperty("code", "s3");
+vector q30_opts = new vector {
+"ABRUZZO",
+"BASILICATA",
+"CALABRIA",
+"CAMPANIA",
+"EMILIA-ROMAGNA",
+"FRIULI-VENEZIA GIULIA",
+"LAZIO",
+"LIGURIA",
+"LOMBARDIA",
+"MARCHE",
+"MOLISE",
+"PIEMONTE",
+"PUGLIA",
+"SARDEGNA",
+"SICILIA",
+"TOSCANA",
+"TRENTINO-ALTO ADIGE",
+"UMBRIA",
+"VALLE D'AOSTA",
+"VENETO"
+};
+    qst.setProperty("options", q30_opts);
+    send qst;
+
+int regione=system.getProperty("ans30");
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+switch(regione)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+        case 6,9,15,17:{reCod=2;}
+        }	
+
+
+    qst = new question("choice", 35);
+    qst.setProperty("text", "In quale regione vive?");
+    qst.setProperty("code", "q40rec");
+    vector q35_opts = new vector {
+        "Nord-Ovest (Piemonte, Val d&#39;Aosta, Liguria, Lombardia;)",
+        "Nord-est (Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna)",
+        "Centro (Toscana, Umbria, Marche, Lazio, Sardegna)",
+        "Sud + Isole (Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria, Sicilia)"
+    };
+    qst.setProperty("options", q35_opts);
+    qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+    qst.setProperty("hidden", true);
+    send qst;	
+
+
+
+// Q50: CHOICE
+qst = new question("choice", 50);
+qst.setProperty("text", "Lei o qualcuno dei suoi familiari lavora in uno dei seguenti settori?");
+qst.setProperty("code", "S4");
+qst.setProperty("show_rand", true);
+vector q50_opts = new vector {
+"Marketing",
+"Ricerca di mercato",
+"Pubbliche relazioni",
+"Pubblicità",
+"Giornalismo",
+"Prodotti elettronici per la pulizia della casa",
+"Nessuno dei precedenti#se#sf"
+};
+qst.setProperty("options", q50_opts);
+send qst; 
+
+ansId=system.getProperty("ans50");
+//if (ansId!=6) { return 4;}
+
+
+
+
+// Q70: CHOICE
+qst = new question("choice", 70);
+qst.setProperty("text", "In merito agli elettrodomestici, chi è il responsabile acquisti principale nella sua famiglia?   ");
+qst.setProperty("code", "S6");
+qst.setProperty("show_rand", false);
+vector q70_opts = new vector {
+"Io personalmente",
+"Io insieme a mio marito/moglie/compagno/altri",
+"Altre persone"
+};
+qst.setProperty("options", q70_opts);
+send qst; 
+
+ansId=system.getProperty("ans70");
+if (ansId==2 && autotest !="1") { return 4;}
+
+
+
+// Q90: CHOICE
+qst = new question("choice", 90);
+qst.setProperty("text", "Quali dei seguenti elettrodomestici ha in casa? ");
+qst.setProperty("code", "S7");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+vector q90_opts = new vector {
+"Lavatrice",
+"Asciugatrice",
+"Lavastoviglie ",
+"Frigorifero",
+"Forno elettrico",
+"Forno a microonde",
+"Altro (specificare)#so#sf",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q90_opts);
+send qst; 
+
+selCella1=system.getProperty("ans90_0");
+selCella2=system.getProperty("ans90_2");
+
+// Q60: CHOICE
+qst = new question("choice", 60);
+qst.setProperty("text", "Ha partecipato <b>a ricerche di mercato negli ultimi 3 mesi</b> sui seguenti argomenti...?");
+qst.setProperty("code", "S5");
+qst.setProperty("show_rand", true);
+vector q60_opts = new vector {
+"Lavatrici e asciugatrici",
+"Lavastoviglie",
+"Prodotti tecnologici",
+"Prodotti alimentari",
+"Auto",
+"Nessuno dei precedenti#se#sf"
+};
+qst.setProperty("options", q60_opts);
+send qst; 
+
+ansId=system.getProperty("ans60");
+
+//if(selCella1==true && ansId==0) { selCella1=false;}
+//if(selCella2==true && ansId==1) { selCella2=false;}
+
+if(selCella1==true && selCella2==false) { cella=1;}
+if(selCella1==false && selCella2==true) { cella=2;}
+if(selCella1==false && selCella2==false) { return 4;}
+
+if(selCella1==true && selCella2==true) 
+{
+
+// NUOVO CONTROLLO PER QUOTA
+string qConta;
+int cq;
+
+
+//creo stringa da inviare a domanda app con indici e numero quote//
+	count=0;
+	for(int i=1,2)
+	{
+		n=i;
+		cq=system.getProperty("quota:total_interviews_"+n); 
+		//indici
+		qIndici=qIndici+i+",";
+		//quota
+		qConta=qConta+cq+",";
+	}
+
+
+	qst = new question("app",1999);
+	qst.setProperty("text", "test");
+	qst.setProperty("path", "quotaControl");
+	qst.setProperty("input", "ix:"+qIndici);
+	qst.setProperty("input", "cq:"+qConta);
+	qst.setProperty("output", "indOrder:string");
+	send qst;
+
+	cmd=system.getProperty("ans1999_indOrder");
+	label=cmd.trim();
+	system.out("<div>Indici estratti: "+label+"</div>"); 
+
+	vector indiciControl = new vector { };
+	indiciControl = label.split(",");
+	cella=(int)indiciControl.get(0);
+
+}
+
+int leggiCella=(int)system.getProperty("cella");
+		if (leggiCella==0){
+		system.setProperty("cella",cella);
+		}
+		else{ 
+			if (cella!=leggiCella){ return 7; };
+			}
+
+system.out("<divCella: "+cella+"</div>"); 
+
+reCod=cella-1;
+		// Q: 160
+		qst = new question("choice", 166);
+		qst.setProperty("text", "Cella");
+		qst.setProperty("code", "cellaSel");
+		vector q166_opts = new vector {
+            "Lavatrice",
+            "Lavastoviglie"
+		};
+		qst.setProperty("options", q166_opts);
+		qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+		qst.setProperty("hidden", true);
+		send qst;
+
+
+// Q80: CHOICE
+qst = new question("choice", 80);
+qst.setProperty("text", "Puoi dirmi chi si occupa principalmente del bucato in casa?");
+if(cella==2) {qst.setProperty("text", "Puoi dirmi chi si occupa principalmente della pulizia delle stoviglie in casa? "); }
+qst.setProperty("code", "S8");
+qst.setProperty("show_rand", false);
+vector q80_opts = new vector {
+"Principalmente io",
+"Sia io che qualcun altro allo stesso modo (il mio compagno, i miei figli, ecc.)",
+"È quasi esclusivamente il compito di qualcun altro"
+};
+qst.setProperty("options", q80_opts);
+send qst; 
+
+ansId=system.getProperty("ans80");
+if (ansId==2  && autotest !="1") { return 4;}
+
+switch(cella)
+{
+case 1:{nam="lavatrice";}
+case 2:{nam="lavastoviglie";}
+}
+
+
+qst = new question("choice", 85);
+qst.setProperty("text", "Quali prodotti usa come detersivo per la "+nam+"?");
+qst.setProperty("code", "s9");
+vector q85_opts = new vector {
+"Detersivo liquido/in gel",
+"Pastiglie/capsule/Pods",
+"Detersivo in polvere"
+};
+qst.setProperty("options", q85_opts);
+send qst;
+
+ansId=system.getProperty("ans85");
+if (ansId != 1) { return 4;}
+
+
+qst = new question("choice", 200);
+qst.setProperty("text", "Quale delle seguenti marche di "+nam+" conosce? ");
+qst.setProperty("code", "S9a");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+vector q200_opts = new vector {
+"Candy",
+"Hoover",
+"Haier ",
+"Samsung",
+"Altro#sf"
+};
+qst.setProperty("options", q200_opts);
+send qst; 
+
+count=0;
+for(int i=0,4)
+{
+sel=system.getProperty("ans200_"+i);
+if (sel==true) { count=count+1;  reCod=i;}
+}
+
+    qst = new question("choice", 202);
+    qst.setProperty("text", "Quale delle seguenti marche di "+nam+" <b>possiede</b>?");
+    qst.setProperty("code", "s9b");
+    qst.setProperty("selection", "multiple");
+    qst.setProperty("show_rand", true);
+    qst.setProperty("controller", 200);
+    if(count==1)
+    {
+        qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+        qst.setProperty("hidden", true);
+    }
+    send qst;
+
+    qst = new question("choice", 204);
+    qst.setProperty("text", "Quale delle seguenti marche di "+nam+" prenderebbe in considerazione per un acquisto futuro?");
+    qst.setProperty("code", "s9c");
+    qst.setProperty("show_rand", true);
+    qst.setProperty("selection", "multiple");
+    qst.setProperty("controller", 200);
+    if(count==1)
+    {
+        qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+        qst.setProperty("hidden", true);
+    }
+    send qst;
+    
+link="https://www.primisoft.com/fields/HAI/R2404064PIT/resources/c"+cella+".PNG";
+img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'><img src='"+link+"' width='450px'  alt='' /></a><div class='info'>Clicca per vedere i dettagli</div></p>";
+
+string delay="<script src='https://www.primisoft.com/fields/script/jquery.countdown.min.js'></script>"+
+"<script>$(window).load(function() {contorovescia(10000);});</script>";
+
+// Q210: CONCEPT
+qst = new question("concept", 210);
+qst.setProperty("text","<p>Ora Le mostreremo la descrizione di un prodotto per la sua "+nam+"</p> <p>La prego di leggerla attentamente e di rispondere alle seguenti domande.</p><img src='"+link+"' alt='' class='img-responsive'/>"+delay);
+qst.setProperty("code", "q210");
+send qst; 
+
+// Q220: CHOICE
+qst = new question("choice", 220);
+qst.setProperty("text", img+"Nel complesso, quanto Le piace questo prodotto?");
+qst.setProperty("code", "Q1");
+qst.setProperty("show_rand", false);
+vector q220_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q220_opts);
+send qst; 
+
+// Q230: CONCEPT
+qst = new question("open", 230);
+qst.setProperty("text", img+"Quali aspetti <b>Le piacciono di più</b>? <p>Per favore ci dica tutto quello che Le viene in mente.</p>");
+qst.setProperty("code", "Q2");
+send qst; 
+
+// Q240: CONCEPT
+qst = new question("open", 240);
+qst.setProperty("text", img+"Quali aspetti <b>Le piacciono di meno</b>?<p> Per favore ci dica tutto quello che Le viene in mente.</p>");
+qst.setProperty("code", "Q3");
+send qst; 
+
+// Q250: CHOICE
+qst = new question("choice", 250);
+qst.setProperty("text", img+"Quanto <b>è rilevante</b> per Lei ciò che viene detto in questa descrizione?");
+qst.setProperty("code", "Q4");
+qst.setProperty("show_rand", false);
+vector q250_opts = new vector {
+"Molto rilevante",
+"Abbastanza rilevante",
+"Rilevante così così",
+"Poco rilevante",
+"Per niente rilevante"
+};
+qst.setProperty("options", q250_opts);
+send qst; 
+
+// Q260: CHOICE
+qst = new question("choice", 260);
+qst.setProperty("text", img+"Quanto è <b>credibile</b> la descrizione di questo prodotto?");
+qst.setProperty("code", "Q5");
+qst.setProperty("show_rand", false);
+vector q260_opts = new vector {
+"Molto credibile",
+"Abbastanza credibile",
+"Credibile così così",
+"Poco credibile",
+"Per niente credibile"
+};
+qst.setProperty("options", q260_opts);
+send qst; 
+
+// Q270: CHOICE
+qst = new question("choice", 270);
+qst.setProperty("text", img+"Secondo Lei, questo prodotto è <b>nuovo e diverso</b> rispetto agli altri che può trovare sul mercato?");
+qst.setProperty("code", "Q6");
+qst.setProperty("show_rand", false);
+vector q270_opts = new vector {
+"Completamente nuovo e diverso",
+"Abbastanza nuovo e diverso",
+"Nuovo e diverso così così",
+"Poco nuovo e diverso",
+"Per niente nuovo e diverso"
+};
+qst.setProperty("options", q270_opts);
+send qst; 
+
+// Q280: CHOICE
+qst = new question("choice", 280);
+qst.setProperty("text", img+"Quanto sarebbe <b>interessato</b> ad acquistare questo prodotto indipendentemente dal prezzo che potrebbe avere?");
+qst.setProperty("code", "Q7");
+qst.setProperty("show_rand", false);
+vector q280_opts = new vector {
+"Sicuramente la comprerei",
+"Probabilmente la comprerei",
+"Non so se la comprerei",
+"Probabilmente non la comprerei",
+"Sicuramente non la comprerei"
+};
+qst.setProperty("options", q280_opts);
+send qst; 
+
+
+
+cod="<script type='text/javascript'> $(document).ready(function() { $('th:first-child').html( $('.introd') ); });</script>";
+
+// Q300: SCALE
+qst = new question("scale", 300);
+qst.setProperty("text", img+"<p>Ora leggerà alcune affermazioni che potrebbero essere attribuite a questo prodotto.</p> <p>Per favore ci dica quanto ogni affermazione è adatta a descrivere questo prodotto per "+nam+": molto, abbastanza, così così, poco, per niente?</p><div class='introd'>Questo prodotto...</div>"+cod);
+qst.setProperty("code", "q10");
+qst.setProperty("show_rand", true);
+vector q300_opts = new vector {
+    "È facile da usare",
+    "Si adatta alle mie abitudini di lavaggio",
+    "È adatta alle mie esigenze",
+    "È innovativo e moderno",
+    "Mi da tranquillità",
+    "E’ un detersivo completo",
+    "Mi fa risparmiare tempo",
+    "Rispetta e si prende cura della mia lavatrice IF CELLA 1 / lavastoviglie IF CELLA 2",
+    "Mi aiuta a tenere la lavatrice IF CELLA 1 / lavastoviglie IF CELLA 2 pulita",
+    "Contribuisce a rendere il mio bucato impeccabile IF CELLA 1 / le mie stoviglie impeccabili IF CELLA 2",
+    "Si prende cura dei miei vestiti IF CELLA 1 / delle mie stoviglie IF CELLA 2",
+    "È in grado di prolungare il ciclo di vita della mia lavatrice IF CELLA 1 / lavastoviglie IF CELLA 2",
+    "Consente di lavare e fare la manutenzione dell’elettrodomestico in un unico ciclo di lavaggio."
+};
+
+if(cella == 1) {
+    q300_opts.set(7, "Rispetta e si prende cura della mia lavatrice ");
+    q300_opts.set(8, "Mi aiuta a tenere la lavatrice pulita ");
+    q300_opts.set(9, "Contribuisce a rendere il mio bucato impeccabile ");
+    q300_opts.set(10, "Si prende cura dei miei vestiti ");
+    q300_opts.set(11, "È in grado di prolungare il ciclo di vita della mia lavatrice ");
+}
+
+if(cella == 2) {
+    q300_opts.set(7, "Rispetta e si prende cura della mia lavastoviglie ");
+    q300_opts.set(8, "Mi aiuta a tenere la lavastoviglie pulita ");
+    q300_opts.set(9, "Contribuisce a rendere le mie stoviglie impeccabili ");
+    q300_opts.set(10, "Si prende cura delle mie stoviglie ");
+    q300_opts.set(11, "È in grado di prolungare il ciclo di vita della mia lavastoviglie ");
+}
+
+qst.setProperty("rows", q300_opts);
+vector q300_cols = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q300_cols);
+qst.setProperty("extras","{header_repeat:5}");
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+// Q310: CONCEPT
+qst = new question("concept", 310);
+qst.setProperty("text", "<p>Ora Le mostreremo nuovamente la descrizione.</p> <p>La prego di leggerla nuovamente con attenzione.</p> Per rispondere alle seguenti domande può cliccare direttamente sulle parole ed immagini che desidera evidenziare con il mouse. Vedrà evidenziate le parole cliccate. Se cambia idea e vuole modificare la Sua risposta può ri-cliccare nuovamente su di esse.");
+qst.setProperty("code", "q310");
+send qst; 
+
+
+if(cella==1)
+{
+    send qc1;
+
+    qc1b.setProperty("controller", 9001);
+    qc1b.setProperty("reverse_control", true);
+    send qc1b;
+
+    send qc1c;
+    send qc1d;
+
+}
+
+if(cella==2)
+{
+    send qc2;
+
+    qc2b.setProperty("controller", 9002);
+    qc2b.setProperty("reverse_control", true);
+    send qc2b;
+
+    send qc2c;
+    send qc2d;
+
+}
+
+// Fase 1: Creazione dei vettori con la lista di prezzi
+vector decrescente = new vector { "€25,00", "€24,50", "€24,00", "€23,50", "€23,00", "€22,50", "€22,00", "€21,50", "€21,00", "€20,50", "€20,00", "€19,50", "€19,00", "€18,50", "€18,00", "€17,50", "€17,00", "€16,50", "€16,00", "€15,50", "€15,00" };
+vector crescente = new vector { "€15,00", "€15,50", "€16,00", "€16,50", "€17,00", "€17,50", "€18,00", "€18,50", "€19,00", "€19,50", "€20,00", "€20,50", "€21,00", "€21,50", "€22,00", "€22,50", "€23,00", "€23,50", "€24,00", "€24,50", "€25,00" };
+
+// Fase 2: Prima domanda con condizione per nascondere gli item
+qst = new question("choice", 360);
+qst.setProperty("text", "Considerando una confezione da 24 pods, a quale prezzo, fra quelli elencati qui sotto, ritiene che questo prodotto abbia un buon rapporto qualità-prezzo e sia da ritenersi <b>CONVENIENTE</b>?");
+qst.setProperty("code", "P1");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", decrescente);
+send qst;
+
+int s1 = system.getProperty("ans360");
+for (int k=0, 20)
+{
+    n=20-s1;
+    if (k<n)
+    {
+        opt="nascondi#sh"+k;
+        crescente.set(k,opt);
+    }
+}
+
+// Fase 3: Seconda domanda con condizione
+qst = new question("choice", 370);
+qst.setProperty("text", "A quale prezzo comincerebbe a ritenere questo prodotto <b>COSTOSO</b>?");
+qst.setProperty("code", "P2");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", crescente);
+send qst;
+
+for (int k=0, 20)
+{
+    if (k<s1)
+    {
+        opt="nascondi#sh"+k;
+        decrescente.set(k,opt);
+    }
+}
+
+// Fase 4: Terza domanda con condizione
+qst = new question("choice", 380);
+qst.setProperty("text", "A quale prezzo comincerebbe a ritenere questo prodotto <b>TROPPO CONVENIENTE</b>, al punto di dubitare della sua qualità? ");
+qst.setProperty("code", "P3");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", decrescente);
+send qst;
+
+int s2 = system.getProperty("ans380");
+
+for (int k=0, 20)
+{
+    if (k<s2)
+    {
+        opt="nascondi#sh"+k;
+        crescente.set(k,opt);
+    }
+}
+
+// Fase 5: Ultima domanda
+qst = new question("choice", 390);
+qst.setProperty("text", "A quale prezzo pensa che questo prodotto sia <b>TROPPO COSTOSO</b> per acquistarlo?");
+qst.setProperty("code", "P4");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", crescente);
+send qst;
+
+vector decrescente2 = new vector { "€25,00", "€24,50", "€24,00", "€23,50", "€23,00", "€22,50", "€22,00", "€21,50", "€21,00", "€20,50", "€20,00", "€19,50", "€19,00", "€18,50", "€18,00", "€17,50", "€17,00", "€16,50", "€16,00", "€15,50", "€15,00" };
+vector crescente2 = new vector { "€15,00", "€15,50", "€16,00", "€16,50", "€17,00", "€17,50", "€18,00", "€18,50", "€19,00", "€19,50", "€20,00", "€20,50", "€21,00", "€21,50", "€22,00", "€22,50", "€23,00", "€23,50", "€24,00", "€24,50", "€25,00" };
+
+ansId=system.getProperty("ans360");
+label=decrescente2.get(ansId);
+
+
+// Q400: CHOICE
+qst = new question("choice", 400);
+qst.setProperty("text", "Con quale probabilità acquisterebbe questo prodotto al prezzo di "+label+"?");
+qst.setProperty("code", "P5");
+qst.setProperty("show_rand", false);
+vector q400_opts = new vector {
+"Sicuramente lo comprerei",
+"Probabilmente lo comprerei",
+"Non so se lo comprerei",
+"Probabilmente non lo comprerei",
+"Sicuramente non lo comprerei"
+};
+qst.setProperty("options", q400_opts);
+send qst; 
+
+ansId=system.getProperty("ans370");
+label=crescente.get(ansId);
+
+// Q410: CHOICE
+qst = new question("choice", 410);
+qst.setProperty("text", "Con quale probabilità acquisterebbe questo prodotto al prezzo di "+label+"?");
+qst.setProperty("code", "P6");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", q400_opts);
+send qst; 
+
+// Q420: CHOICE
+qst = new question("choice", 420);
+qst.setProperty("text", "<p>Ora Le chiederemo alcuni dati personali prima di concludere l'intervista.</p></br> Qual è il suo ultimo titolo di studio conseguito :");
+qst.setProperty("code", "qA");
+qst.setProperty("show_rand", false);
+vector q420_opts = new vector {
+"Master post-laurea/ Laurea magistrale/ Laurea triennale",
+"Licenza Media Superiore",
+"Licenza Media inferiore",
+"Scuola primaria",
+"Nessun titolo di studio"
+};
+qst.setProperty("options", q420_opts);
+send qst; 
+
+// Q430: CHOICE
+qst = new question("choice", 430);
+qst.setProperty("text", "Indichi, per favore, la Sua professione attuale:");
+qst.setProperty("code", "qB");
+qst.setProperty("show_rand", false);
+vector q430_opts = new vector {
+"Imprenditore/manager/dipendente pubblico/libero professionista/medico",
+"Impiegato/insegnante/quadro/paramedico",
+"Lavoratore/assistente alle vendite",
+"Artigiano/rivenditore/commerciante/rappresentante",
+"Casalinga",
+"Studente",
+"Pensionato",
+"Disoccupato/in cerca di lavoro",
+"Altro (specificare) #so#sf"
+};
+qst.setProperty("options", q430_opts);
+send qst; 
+
+// Q440: CHOICE
+qst = new question("choice", 440);
+qst.setProperty("text", "Qual è il Suo attuale stato di famiglia?");
+qst.setProperty("code", "qC");
+qst.setProperty("show_rand", false);
+vector q440_opts = new vector {
+"Vivo a casa con i miei genitori",
+"Sono single e vivo da solo",
+"In una relazione/sposato senza figli",
+"In una relazione/sposato con figli"
+};
+qst.setProperty("options", q440_opts);
+send qst;
+
+}

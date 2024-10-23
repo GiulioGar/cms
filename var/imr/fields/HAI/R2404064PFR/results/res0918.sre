@@ -1,0 +1,38 @@
+2.0;HAI;R2404064PFR;918;IDEXCIKFLGWIARHUD936;22/10/2024 11:25:27 CEST;22/10/2024 11:38:44 CEST;797;3;440;device=mobile;lang=fr;sysIID=918;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIKFLGWIARHUD936
+choice;10;2;1
+open;18;32
+choice;20;6;1
+choice;30;22;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10011100;0
+choice;166;2;0
+choice;200;5;00111;4
+choice;202;5;00001;4
+choice;204;5;00100;2
+concept;210
+choice;220;5;1
+open;230;Le fait que ce soit detartrant et nettoie la machine en meme temps que le linge
+open;240;Pas d aspects que je n apprecie pas 
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;1
+scale;300;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+concept;310
+choice;360;21;20
+choice;370;21;2
+choice;380;21;20
+choice;390;21;20
+choice;400;5;0
+choice;410;5;4
+choice;420;5;0
+choice;430;9;4
+choice;440;4;3
+concept_eval;9001;0
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;0
+concept_eval;9031;0

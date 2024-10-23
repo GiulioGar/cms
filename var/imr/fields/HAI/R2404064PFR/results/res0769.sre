@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;769;IDEXCIQLGWOTVJHKK782;22/10/2024 09:57:30 CEST;22/10/2024 10:10:30 CEST;780;3;440;device=desktop;lang=fr;sysIID=769;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIQLGWOTVJHKK782
+choice;10;2;0
+open;18;39
+choice;20;6;2
+choice;30;22;10
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;0
+choice;166;2;1
+choice;200;5;11110;3
+choice;202;5;10000;0
+choice;204;5;11110;3
+concept;210
+choice;220;5;1
+open;230;qu'il entretienne la propreté de la machine
+open;240;rien ne me vient en desapreciation. 
+choice;250;5;1
+choice;260;5;1
+choice;270;5;1
+choice;280;5;1
+scale;300;13;5;0;2;1;1;0;0;0;0;0;0;0;1;0
+concept;310
+choice;360;21;20
+choice;370;21;4
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;2
+choice;420;5;1
+choice;430;9;1
+choice;440;4;1
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;35;16;17;18;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;7;15;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;978;7J58L6LZJJ;20/10/2024 09:15:35 CEST;20/10/2024 09:15:54 CEST;19;4;70;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=7J58L6LZJJ;device=desktop;lang=it;sysIID=978
+choice;10;2;0
+open;18;23
+choice;20;6;1
+choice;30;20;11
+choice;35;4;0
+choice;50;7;6
+choice;70;3;2

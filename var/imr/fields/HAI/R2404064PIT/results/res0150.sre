@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;150;5QLFQUPM1V;17/10/2024 12:45:18 CEST;17/10/2024 13:08:14 CEST;1376;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=5QLFQUPM1V;device=mobile;lang=it;sysIID=150;cella=2
+choice;10;2;0
+open;18;58
+choice;20;6;4
+choice;30;20;4
+choice;35;4;1
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;5
+choice;166;2;1
+choice;200;5;10010;3
+choice;202;5;00010;3
+choice;204;5;10010;3
+concept;210
+choice;220;5;0
+open;230;Che in una capsula è presente tutto ciò che serve per la pulizia delle stoviglie e per una corretta manutenzione dell'elettrodomestico 
+open;240;Non trovo aspetti che mi piacciono di meno, ma trovo che si poteva illustrare meglio, con immagini, la composizione dei vari "ingredienti" della capsula 
+choice;250;5;0
+choice;260;5;1
+choice;270;5;0
+choice;280;5;1
+scale;300;13;5;0;0;0;0;0;0;1;0;0;0;0;0;0
+concept;310
+choice;360;21;14
+choice;370;21;11
+choice;380;21;20
+choice;390;21;20
+choice;400;5;2
+choice;410;5;2
+choice;420;5;1
+choice;430;9;4
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;0
+concept_eval;9032;0

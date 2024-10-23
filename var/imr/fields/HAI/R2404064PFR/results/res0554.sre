@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;554;IDEXCIGGDHYFCIZBP563;21/10/2024 20:37:17 CEST;21/10/2024 20:39:16 CEST;119;4;85;device=desktop;lang=fr;sysIID=554;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIGGDHYFCIZBP563
+choice;10;2;0
+open;18;59
+choice;20;6;4
+choice;30;22;6
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10011110;0;comp6:gaziniére , congélateur
+choice;166;2;0

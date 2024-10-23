@@ -1,0 +1,21 @@
+2.0;HAI;R2404064PFR;1244;IDEXCINYEOEAUVMQT1273;22/10/2024 11:45:36 CEST;22/10/2024 11:51:29 CEST;353;5;260;device=mobile;lang=fr;sysIID=1244;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCINYEOEAUVMQT1273
+choice;10;2;1
+open;18;50
+choice;20;6;3
+choice;30;22;18
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;1
+choice;85;3;1
+choice;90;8;11111100;1
+choice;166;2;0
+choice;200;5;11111;1
+choice;202;5;00100;2
+choice;204;5;11111;0
+concept;210
+choice;220;5;1
+open;230;Qu'il lave ' protège mon linge et ma machine en même temps 
+open;240;Rien pour le moment 
+choice;250;5;1
+app;1999;indOrder|string|1,2

@@ -1,0 +1,10 @@
+2.0;HAI;R2404064PIT;483;RZ4519DUIG;18/10/2024 13:52:30 CEST;18/10/2024 13:52:50 CEST;20;4;60;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=RZ4519DUIG;device=mobile;lang=it;sysIID=483
+choice;10;2;1
+open;18;28
+choice;20;6;1
+choice;30;20;6
+choice;35;4;2
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;90;8;01010000;1

@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PIT;548;4ebaf8c294;18/10/2024 14:19:29 CEST;18/10/2024 14:26:29 CEST;420;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=4ebaf8c294;device=mobile;lang=it;sysIID=548;cella=1
+choice;10;2;0
+open;18;46
+choice;20;6;3
+choice;30;20;11
+choice;35;4;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;1
+choice;85;3;1
+choice;90;8;10010100;3
+choice;166;2;0
+choice;200;5;11110;1
+choice;202;5;10000;0
+choice;204;5;11110;0
+concept;210
+choice;220;5;0
+open;230;Il fatto che sia un prodotto unico con più funzioni e poi è sostenibile ed ecologico
+open;240;Non c'è nulla che non mi piaccia 
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;300;13;5;0;1;1;1;1;0;1;0;1;1;0;0;1
+concept;310
+choice;360;21;17
+choice;370;21;9
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;2
+choice;420;5;0
+choice;430;9;1
+choice;440;4;0
+concept_eval;9001;36;7;17;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

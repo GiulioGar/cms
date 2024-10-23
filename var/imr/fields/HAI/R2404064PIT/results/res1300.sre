@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;1300;DH25QP52OA;21/10/2024 21:15:28 CEST;21/10/2024 21:18:19 CEST;171;4;80;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=DH25QP52OA;device=desktop;lang=it;sysIID=1300;cella=2
+choice;10;2;0
+open;18;37
+choice;20;6;2
+choice;30;20;12
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;2
+choice;90;8;10111100;4
+choice;166;2;1
+app;1999;indOrder|string|2,1

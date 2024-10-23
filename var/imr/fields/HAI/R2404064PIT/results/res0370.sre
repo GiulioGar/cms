@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PIT;370;IC468C5ZVS;17/10/2024 19:29:20 CEST;17/10/2024 19:30:57 CEST;97;4;80;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=IC468C5ZVS;device=mobile;lang=it;sysIID=370;cella=1
+choice;10;2;0
+open;18;55
+choice;20;6;4
+choice;30;20;4
+choice;35;4;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;2
+choice;90;8;10010000;0
+choice;166;2;0

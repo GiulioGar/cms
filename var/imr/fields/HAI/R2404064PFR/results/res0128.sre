@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;128;IDEXCIGBSTREKDZTG136;18/10/2024 16:04:30 CEST;18/10/2024 16:05:52 CEST;82;4;85;device=mobile;lang=fr;sysIID=128;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIGBSTREKDZTG136
+choice;10;2;1
+open;18;47
+choice;20;6;3
+choice;30;22;12
+choice;50;7;5
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10000000;0
+choice;166;2;0

@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;61;IDEXCIJFBKDLTUDFM68;18/10/2024 16:02:11 CEST;18/10/2024 16:08:57 CEST;406;3;440;device=desktop;lang=fr;sysIID=61;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIJFBKDLTUDFM68
+choice;10;2;1
+open;18;50
+choice;20;6;3
+choice;30;22;19
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;4
+choice;166;2;0
+choice;200;5;11111;0
+choice;202;5;10000;0
+choice;204;5;10010;0
+concept;210
+choice;220;5;0
+open;230;J'apprécie le fait d'avoir un pod qui lave mon linge et prend soin de ma machine à laver en même temps 
+open;240;Tout a l'air bien 
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;300;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+concept;310
+choice;360;21;11
+choice;370;21;20
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;2
+choice;420;5;0
+choice;430;9;2
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;0;1;10;7;8;9;18;19;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;8;9;18;19;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;18;19;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

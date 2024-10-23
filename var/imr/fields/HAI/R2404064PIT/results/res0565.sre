@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;565;P4OSA8O41P;18/10/2024 14:29:53 CEST;18/10/2024 14:34:46 CEST;293;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=P4OSA8O41P;device=mobile;lang=it;sysIID=565;cella=2
+choice;10;2;0
+open;18;51
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;0
+choice;166;2;1
+choice;200;5;11110;3
+choice;202;5;10000;0
+choice;204;5;11110;3
+concept;210
+choice;220;5;0
+open;230;La durata di pulitura e il mix di più azioni
+open;240;Tutto mi piace
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;300;13;5;0;0;0;0;0;0;0;0;0;1;0;0;0
+concept;310
+choice;360;21;2
+choice;370;21;20
+choice;380;21;5
+choice;390;21;20
+choice;400;5;1
+choice;410;5;2
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;35;1;18;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;18;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

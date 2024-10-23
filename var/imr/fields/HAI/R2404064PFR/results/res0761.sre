@@ -1,0 +1,9 @@
+2.0;HAI;R2404064PFR;761;IDEXCINCRPDFFOUTK771;22/10/2024 09:57:25 CEST;<unknown>;0;0;20;version=v01;sysSID=R2404064PFR;sysPRJ=HAI;sysUID=IDEXCINCRPDFFOUTK771;device=mobile;pan=1;sysIID=761;lang=fr
+choice;10;2;1
+open;18;53
+choice;20;6;3
+choice;30;22;17
+choice;50;7;6
+choice;60;6;3
+choice;70;3;1
+choice;90;8;11111100;0

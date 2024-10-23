@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;74;CDU1V6CE7N;17/10/2024 12:29:30 CEST;17/10/2024 12:36:33 CEST;423;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=CDU1V6CE7N;device=desktop;lang=it;sysIID=74;cella=1
+choice;10;2;0
+open;18;54
+choice;20;6;3
+choice;30;20;4
+choice;35;4;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;3
+choice;166;2;0
+choice;200;5;11010;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;0
+open;230;DESCRIZIONE PRODOTTO E DURATA ALLUNGATA PER LA LAVATRICE
+open;240;NON INDICATO IL COSTO
+choice;250;5;1
+choice;260;5;1
+choice;270;5;0
+choice;280;5;0
+scale;300;13;5;1;0;1;1;0;1;0;1;1;0;1;1;1
+concept;310
+choice;360;21;20
+choice;370;21;18
+choice;380;21;20
+choice;390;21;20
+choice;400;5;0
+choice;410;5;3
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;9;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;3;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;0;27;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;0

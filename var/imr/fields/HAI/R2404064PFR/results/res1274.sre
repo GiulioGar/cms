@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;1274;IDEXCIDVHAUBQAKVG1302;22/10/2024 12:43:10 CEST;22/10/2024 12:47:59 CEST;289;3;440;device=mobile;lang=fr;sysIID=1274;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIDVHAUBQAKVG1302
+choice;10;2;1
+open;18;34
+choice;20;6;1
+choice;30;22;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11110100;5
+choice;166;2;1
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;1
+open;230;La quantité de chaque paquet et qu’on nous affirme une protection de notre vaisselle 
+open;240;Tout le plait
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;300;13;5;1;0;1;1;1;0;1;0;0;0;0;0;1
+concept;310
+choice;360;21;20
+choice;370;21;0
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;2
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;31;6;8;7;26;27;28;23;21;25;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;6;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;126;72HQG84R2A;17/10/2024 12:21:44 CEST;17/10/2024 12:22:33 CEST;49;4;70;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=72HQG84R2A;device=desktop;lang=it;sysIID=126
+choice;10;2;0
+open;18;50
+choice;20;6;3
+choice;30;20;8
+choice;35;4;0
+choice;50;7;6
+choice;70;3;2

@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;543;WHUQGQPMWH;18/10/2024 14:16:29 CEST;18/10/2024 14:23:05 CEST;396;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=WHUQGQPMWH;device=desktop;lang=it;sysIID=543;cella=1
+choice;10;2;1
+open;18;32
+choice;20;6;1
+choice;30;20;4
+choice;35;4;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;5
+choice;166;2;0
+choice;200;5;11110;1
+choice;202;5;01000;1
+choice;204;5;11000;1
+concept;210
+choice;220;5;1
+open;230;che in una sola capsula ci sono i dossaggi giusti per un lavaggio senza aggiungere nient'altro
+open;240;24 capsule mi sembrano poche
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;300;13;5;0;0;0;0;0;0;0;0;1;0;0;1;0
+concept;310
+choice;360;21;18
+choice;370;21;19
+choice;380;21;20
+choice;390;21;20
+choice;400;5;0
+choice;410;5;0
+choice;420;5;0
+choice;430;9;1
+choice;440;4;0
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;5;9;17;29;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;9;13;14;15;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;16;20;19;29;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

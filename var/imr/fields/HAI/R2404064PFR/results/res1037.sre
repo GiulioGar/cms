@@ -1,0 +1,30 @@
+2.0;HAI;R2404064PFR;1037;IDEXCITKURWKLBPUO1059;22/10/2024 11:39:54 CEST;22/10/2024 11:51:35 CEST;701;5;360;device=mobile;lang=fr;sysIID=1037;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCITKURWKLBPUO1059
+choice;10;2;0
+open;18;53
+choice;20;6;3
+choice;30;22;0
+choice;50;7;6
+choice;60;6;3
+choice;70;3;1
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;2
+choice;166;2;0
+choice;200;5;11100;2
+choice;202;5;00100;2
+choice;204;5;01000;1
+concept;210
+choice;220;5;0
+open;230;Le fait de participer au prolongement du cycle de vie de ma machine à laver en plus d’être un adoucissant 
+open;240;Je ne vois pas grand-chose cela m’a l’air d’être très efficace pour une dosette
+choice;250;5;0
+choice;260;5;1
+choice;270;5;1
+choice;280;5;0
+scale;300;13;5;0;1;0;0;1;0;1;0;0;0;0;0;1
+concept;310
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;8;11;16;14;15;24;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;24;19;18;16;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;20;11;24;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

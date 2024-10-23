@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;1414;1ZQXYSAZIR;22/10/2024 21:18:58 CEST;22/10/2024 21:21:12 CEST;134;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=1ZQXYSAZIR;device=mobile;lang=it;sysIID=1414;cella=1
+choice;10;2;1
+open;18;45
+choice;20;6;3
+choice;30;20;7
+choice;35;4;0
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10011010;4;comp6:Televisore aspirapolvere condizionatore stufetta da bagno
+choice;166;2;0

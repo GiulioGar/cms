@@ -1,0 +1,9 @@
+2.0;HAI;R2404064PFR;1148;IDEXCIPTNYDPFCJSS1176;22/10/2024 11:42:53 CEST;22/10/2024 11:43:45 CEST;52;4;60;version=v01;sysSID=R2404064PFR;sysPRJ=HAI;sysUID=IDEXCIPTNYDPFCJSS1176;device=mobile;pan=1;sysIID=1148;lang=fr
+choice;10;2;1
+open;18;44
+choice;20;6;2
+choice;30;22;1
+choice;50;7;6
+choice;60;6;4
+choice;70;3;1
+choice;90;8;00000010;6;comp6:Air fryer

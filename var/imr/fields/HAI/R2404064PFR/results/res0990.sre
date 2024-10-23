@@ -1,0 +1,29 @@
+2.0;HAI;R2404064PFR;990;IDEXCIVHNGMEDUZRX1017;22/10/2024 11:39:14 CEST;22/10/2024 11:52:12 CEST;778;5;9031;device=desktop;lang=en;sysIID=990;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIVHNGMEDUZRX1017
+choice;10;2;0
+open;18;53
+choice;20;6;3
+choice;30;22;0
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;2
+choice;166;2;0
+choice;200;5;11110;2
+choice;202;5;10000;0
+choice;204;5;11110;1
+concept;210
+choice;220;5;0
+open;230;L'aspect que j'apprécie le plus, est que je n'ai plus besoin d'acheter et utiliser plusieurs produits différents pour ma machine à laver. Je n'ai jamais compris pourquoi les produits de lessive ne pouvaient pas contenir les caractéristiques des adoucissants en même temps, et pourquoi les produits pour lessive ne nettoient pas le lave-linge aussi. Maintenant, c'est fait, l'innovation tant attendu est enfin mise sur le marché grâce à Care+Protect.
+open;240;Il n'y a rien que je n'apprécie pas, ce produit est génial !
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;280;5;0
+scale;300;13;5;0;0;0;0;0;0;0;0;0;0;0;0;0
+concept;310
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;7;9;10;11;13;14;15;16;17;29;22;23;24;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;10;11;18;19;20;24;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

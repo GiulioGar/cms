@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;429;IDEXCISRTFLBPKOTX438;21/10/2024 14:48:48 CEST;21/10/2024 14:53:25 CEST;277;3;440;device=mobile;lang=fr;sysIID=429;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCISRTFLBPKOTX438
+choice;10;2;1
+open;18;40
+choice;20;6;2
+choice;30;22;8
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;0
+choice;166;2;0
+choice;200;5;11111;2
+choice;202;5;00001;4
+choice;204;5;11111;3
+concept;210
+choice;220;5;2
+open;230;Tout en un. Gain de temps!
+open;240;J'ai peur que l'odeur ne me convienne pas
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;280;5;2
+scale;300;13;5;0;0;3;1;3;0;0;1;1;4;3;0;0
+concept;310
+choice;360;21;17
+choice;370;21;6
+choice;380;21;20
+choice;390;21;20
+choice;400;5;3
+choice;410;5;3
+choice;420;5;0
+choice;430;9;0
+choice;440;4;3
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

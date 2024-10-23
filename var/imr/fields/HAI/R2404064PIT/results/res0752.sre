@@ -1,0 +1,14 @@
+2.0;HAI;R2404064PIT;752;RARDV56YW8;18/10/2024 18:39:10 CEST;18/10/2024 18:40:03 CEST;53;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=RARDV56YW8;device=mobile;lang=it;sysIID=752;cella=1
+choice;10;2;1
+open;18;44
+choice;20;6;2
+choice;30;20;15
+choice;35;4;2
+choice;50;7;6
+choice;60;6;3
+choice;70;3;1
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11111000;0
+choice;166;2;0
+app;1999;indOrder|string|1,2

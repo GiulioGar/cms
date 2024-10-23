@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;212;5447c4cbb7;17/10/2024 13:46:40 CEST;17/10/2024 13:47:44 CEST;64;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=5447c4cbb7;device=mobile;lang=it;sysIID=212;cella=1
+choice;10;2;1
+open;18;48
+choice;20;6;3
+choice;30;20;6
+choice;35;4;2
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010010;3;comp6:Macchina del caffè 
+choice;166;2;0

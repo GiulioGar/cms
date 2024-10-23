@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PFR;931;IDEXCIAMRCDSXNEPV950;22/10/2024 11:38:29 CEST;22/10/2024 11:43:30 CEST;301;4;85;device=mobile;lang=fr;sysIID=931;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIAMRCDSXNEPV950
+choice;10;2;1
+open;18;40
+choice;20;6;2
+choice;30;22;15
+choice;50;7;6
+choice;60;6;1
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10111110;4;comp6:Tablette
+choice;166;2;0
+app;1999;indOrder|string|1,2

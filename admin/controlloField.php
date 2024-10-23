@@ -1,12 +1,8 @@
 <?php
-require_once('../Connections/admin.php'); 
-require_once('inc_auth.php'); 
-
-
 
 require_once('inc_taghead.php');
 ?>
-  <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+<link href="assets/css/simple-sidebar.css" rel="stylesheet">
 
 <?php
 require_once('inc_tagbody.php'); 

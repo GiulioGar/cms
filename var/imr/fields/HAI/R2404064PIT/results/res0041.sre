@@ -1,0 +1,40 @@
+2.0;HAI;R2404064PIT;41;NUN0BQ84PS;17/10/2024 11:19:28 CEST;17/10/2024 11:30:04 CEST;636;3;440;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=NUN0BQ84PS;device=mobile;lang=en;sysIID=41;cella=2
+choice;10;2;1
+open;18;47
+choice;20;6;3
+choice;30;20;12
+choice;35;4;3
+choice;50;7;6
+choice;60;6;4
+choice;70;3;1
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10111100;0
+choice;166;2;1
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;2
+open;230;Il trattamento decalcificante insieme alle solite cose che hanno altri pod. La manutenzione della lavastoviglie è importante 
+open;240;Costerà un sacco!!
+choice;250;5;1
+choice;260;5;2
+choice;270;5;1
+choice;280;5;2
+scale;300;13;5;2;2;1;0;1;0;2;1;1;2;0;1;0
+concept;310
+choice;360;21;20
+choice;370;21;1
+choice;380;21;20
+choice;390;21;20
+choice;400;5;3
+choice;410;5;2
+choice;420;5;0
+choice;430;9;3
+choice;440;4;0
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;35;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;7;8;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;7;8;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

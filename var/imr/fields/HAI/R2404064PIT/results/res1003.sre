@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;1003;86JE40Z2V1;20/10/2024 18:12:04 CEST;20/10/2024 18:13:31 CEST;87;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=86JE40Z2V1;device=desktop;lang=it;sysIID=1003;cella=1
+choice;10;2;1
+open;18;59
+choice;20;6;4
+choice;30;20;13
+choice;35;4;3
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010100;0
+choice;166;2;0

@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;123;IDEXCIFERVNBCGMWA132;18/10/2024 16:04:20 CEST;18/10/2024 16:08:52 CEST;272;3;440;device=desktop;lang=fr;sysIID=123;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCIFERVNBCGMWA132
+choice;10;2;0
+open;18;39
+choice;20;6;2
+choice;30;22;1
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;0
+choice;166;2;0
+choice;200;5;11111;2
+choice;202;5;00001;4
+choice;204;5;00011;4
+concept;210
+choice;220;5;2
+open;230;plusieurs actions utiles dans une dose
+open;240;peu esthétique, je ne connais pas la marque, rien de bien révolutionnaire 
+choice;250;5;0
+choice;260;5;2
+choice;270;5;3
+choice;280;5;3
+scale;300;13;5;0;1;1;2;1;1;2;2;1;1;1;2;1
+concept;310
+choice;360;21;2
+choice;370;21;20
+choice;380;21;10
+choice;390;21;20
+choice;400;5;3
+choice;410;5;4
+choice;420;5;0
+choice;430;9;0
+choice;440;4;1
+app;1999;indOrder|string|1,2
+concept_eval;9001;36;14;13;16;9;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;36;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;36;16;13;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;36;1;2;4;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,13 @@
+2.0;HAI;R2404064PIT;30;8F7O17YCFN;17/10/2024 11:14:12 CEST;17/10/2024 11:15:50 CEST;98;4;85;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=8F7O17YCFN;device=mobile;lang=it;sysIID=30;cella=1
+choice;10;2;1
+open;18;50
+choice;20;6;3
+choice;30;20;19
+choice;35;4;1
+choice;50;7;6
+choice;60;6;3
+choice;70;3;1
+choice;80;3;0
+choice;85;3;0
+choice;90;8;11010110;6;comp6:Friggitrice ad aria
+choice;166;2;0

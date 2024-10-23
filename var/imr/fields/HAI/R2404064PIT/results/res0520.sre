@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;520;MAOIIRN8XB;18/10/2024 14:04:14 CEST;18/10/2024 14:06:04 CEST;110;4;70;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=MAOIIRN8XB;device=desktop;lang=it;sysIID=520
+choice;10;2;1
+open;18;38
+choice;20;6;2
+choice;30;20;19
+choice;35;4;1
+choice;50;7;6
+choice;70;3;2

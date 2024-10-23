@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;44;IDEXCIHAOJMYPHTRQ49;18/10/2024 16:01:52 CEST;18/10/2024 16:06:25 CEST;273;3;440;device=mobile;lang=fr;sysIID=44;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIHAOJMYPHTRQ49
+choice;10;2;0
+open;18;58
+choice;20;6;4
+choice;30;22;0
+choice;50;7;6
+choice;60;6;4
+choice;70;3;0
+choice;80;3;1
+choice;85;3;1
+choice;90;8;10111000;3
+choice;166;2;1
+choice;200;5;10010;3
+choice;202;5;00010;3
+choice;204;5;00010;3
+concept;210
+choice;220;5;1
+open;230;Multifonction et multiaction. Révolutionne l'entretien d'un lave-vaisselle 
+open;240;Méfiance du marketing 
+choice;250;5;1
+choice;260;5;1
+choice;270;5;0
+choice;280;5;1
+scale;300;13;5;0;1;1;0;0;0;1;0;1;0;0;0;0
+concept;310
+choice;360;21;14
+choice;370;21;16
+choice;380;21;16
+choice;390;21;18
+choice;400;5;0
+choice;410;5;1
+choice;420;5;0
+choice;430;9;0
+choice;440;4;3
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;0
+concept_eval;9022;0
+concept_eval;9032;0

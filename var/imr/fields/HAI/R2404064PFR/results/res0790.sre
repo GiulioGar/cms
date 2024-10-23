@@ -1,0 +1,26 @@
+2.0;HAI;R2404064PFR;790;IDEXCITKFEQHPSNSX803;22/10/2024 09:57:53 CEST;22/10/2024 10:11:24 CEST;811;7;9011;device=desktop;lang=en;sysIID=790;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCITKFEQHPSNSX803
+choice;10;2;1
+open;18;31
+choice;20;6;1
+choice;30;22;0
+choice;50;7;6
+choice;60;6;3
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;10011100;0
+choice;166;2;0
+choice;200;5;00011;3
+choice;202;5;00010;3
+choice;204;5;00011;4
+concept;210
+choice;220;5;1
+open;230;Multi action qui combine different formule
+open;240;aucun 
+choice;250;5;2
+choice;260;5;1
+choice;270;5;3
+choice;280;5;1
+scale;300;13;5;1;2;1;1;2;1;2;1;1;1;1;1;1
+concept;310
+concept_eval;9001;0

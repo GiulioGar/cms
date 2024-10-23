@@ -1,0 +1,12 @@
+2.0;HAI;R2404064PFR;591;IDEXCISLWYANIVODF600;21/10/2024 21:59:28 CEST;21/10/2024 22:00:31 CEST;63;4;85;device=mobile;lang=fr;sysIID=591;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCISLWYANIVODF600
+choice;10;2;1
+open;18;58
+choice;20;6;4
+choice;30;22;9
+choice;50;7;6
+choice;60;6;3
+choice;70;3;0
+choice;80;3;0
+choice;85;3;0
+choice;90;8;10010110;0;comp6:Gazinière 
+choice;166;2;0

@@ -1,0 +1,8 @@
+2.0;HAI;R2404064PIT;361;8FMFADSPUG;17/10/2024 18:50:35 CEST;17/10/2024 18:51:07 CEST;32;4;70;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=8FMFADSPUG;device=mobile;lang=it;sysIID=361
+choice;10;2;0
+open;18;21
+choice;20;6;1
+choice;30;20;19
+choice;35;4;1
+choice;50;7;2
+choice;70;3;2

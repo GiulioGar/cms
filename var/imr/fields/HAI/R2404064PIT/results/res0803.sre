@@ -1,0 +1,10 @@
+2.0;HAI;R2404064PIT;803;VYBZ629CDO;18/10/2024 21:02:39 CEST;18/10/2024 21:02:57 CEST;18;4;60;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=VYBZ629CDO;device=mobile;lang=it;sysIID=803
+choice;10;2;1
+open;18;25
+choice;20;6;1
+choice;30;20;14
+choice;35;4;3
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;90;8;01001100;4

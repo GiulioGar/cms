@@ -1,0 +1,6 @@
+2.0;HAI;R2404064PIT;1006;EL28MCLBHD;20/10/2024 19:28:05 CEST;<unknown>;0;0;35;version=v01;sysSID=R2404064PIT;sysPRJ=HAI;sysUID=EL28MCLBHD;device=desktop;lang=en;sysIID=1006
+choice;10;2;1
+open;18;44
+choice;20;6;2
+choice;30;20;12
+choice;35;4;3

@@ -1,157 +1,105 @@
-
-<?php require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
-
-$titolo = 'Desktop Gestionale';
-$sitowebdiriferimento = 'www.millebytes.com';
-$areapagina = "home";
-$coldx = "no";
-
-
-
-$today = date("Y-m-d H:i:s", mktime(date("H") - 6, date("i"), date("s"), date("m"), date("d"), date("Y")));
-$mesi1 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 1, date("d"), date("Y")));
-$mesi2 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 2, date("d"), date("Y")));
-$mesi4 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 4, date("d"), date("Y")));
-$mesi6 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m") - 6, date("d"), date("Y")));
-$mesi12 = date("Y-m-d H:i:s", mktime(date("H") - 6, 0, 0, date("m"), date("d"), date("Y") - 1));
-
-
-mysqli_select_db($admin,$database_admin);
-$query_ricerche = "SELECT * FROM t_panel_control order by stato,giorni_rimanenti ASC,id DESC";
-$tot_ricerche = mysqli_query($admin,$query_ricerche);
-
-//TOT
-mysqli_select_db($admin,$database_admin);
-$query_user = "SELECT COUNT(*) as total FROM t_user_info where active='1'";
-$tot_user = mysqli_query($admin,$query_user);
-$tot_use = mysqli_fetch_assoc($tot_user);
-
-/*
-$sur_date=substr($today,0,10);
-$end_date=substr($tot_ricerche['end_field'],0,10);
-if($end_date <> "") {$daysField=delta_tempo($row['sur_date'], $row['end_field'], "g"); }
-else { $daysField="n.d.";}
-*/
-
+<?php 
 
 require_once('inc_taghead.php');
+// Funzione per ottenere il conteggio degli utenti attivi
+function getUsersCount($admin) {
+  $query_user = "SELECT COUNT(*) as total FROM t_user_info WHERE active='1'";
+  $result = mysqli_query($admin, $query_user);
+
+  if (!$result) {
+      die('Errore nella query: ' . mysqli_error($admin));
+  }
+
+  return mysqli_fetch_assoc($result);
+}
+
+$today = new DateTime('-6 hours');
+$mesi1 = new DateTime('-1 month -6 hours');
+$mesi2 = new DateTime('-2 months -6 hours');
+$mesi4 = new DateTime('-4 months -6 hours');
+$mesi6 = new DateTime('-6 months -6 hours');
+$mesi12 = new DateTime('-1 year -6 hours');
+
+mysqli_select_db($admin, $database_admin);
+$query_ricerche = "SELECT * FROM t_panel_control ORDER BY stato, giorni_rimanenti ASC, id DESC";
+$tot_ricerche = mysqli_query($admin, $query_ricerche);
+
+$tot_use = getUsersCount($admin);
+
 
 require_once('inc_tagbody.php'); 
 
-
-// Carica incidenza
-@$ir = $_REQUEST['ir']; 
-if (empty($ir)) { $ir=100;}
-//Carica età calculator
-@$ag1 = $_REQUEST['ag1']; 
-if (empty($ag1)) { $ag1=18;}
-@$ag2 = $_REQUEST['ag2']; 
-if (empty($ag2)) { $ag2=65;}
+$ir = isset($_REQUEST['ir']) ? intval($_REQUEST['ir']) : 100;
+$ag1 = isset($_REQUEST['ag1']) ? intval($_REQUEST['ag1']) : 18;
+$ag2 = isset($_REQUEST['ag2']) ? intval($_REQUEST['ag2']) : 65;
 ?>
 
 <script>
-        $(document).ready(function() 
-		{
-		$("#nav").hide();
-		$(".closeMenu").hide();
-		$( ".startMenu" ).click(function() {
-			$( "#nav" ).slideDown( "slow", function() {
-			// Animation complete.
-				});
-				$(".startMenu").hide();
-				$(".closeMenu").show();
-			});
-			
-		$( ".closeMenu" ).click(function() {
-			$( "#nav" ).slideUp( "slow", function() {
-			// Animation complete.
-				});
-				$(".startMenu").show();
-				$(".closeMenu").hide();
-			});	
+    $(document).ready(function() {
+        $("#nav").hide();
+        $(".closeMenu").hide();
+
+        $(".startMenu, .closeMenu").click(function() {
+            $("#nav").slideToggle("slow");
+            $(".startMenu, .closeMenu").toggle();
         });
-		
-		
-		</script>
+    });
+</script>
 
+<div class="content-wrapper">
+    <div class="container">
 
-  <div class="content-wrapper">
-       <div class="container">
- 
-		
- <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="card card-default">
-   <div class="">
-   <h5 class="card-header">
-   <span style="float:left;"><i class="fas fa-satellite-dish"></i> Progetti in corso</span>
-   <a href='pannello.php'><button style="float:right;" type="button" class="btn btn-primary btn-sm">MOSTRA TUTTI</button></a>
-   
-   <span style="clear: both;">&nbsp;</span>
-    </h5>
-   </div>
-   <div class="card-body text-center recent-users-sec">
-   <?php include 'fieldControl.php'; ?>
-   </div>
-   
-   </div>
-  </div>
- 
- </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <h5 class="card-header">
+                        <span><i class="fas fa-satellite-dish"></i> Progetti in corso</span>
+                        <a href='pannello.php'>
+                            <button type="button" class="btn btn-primary btn-sm float-right">MOSTRA TUTTI</button>
+                        </a>
+                    </h5>
+                    <div class="card-body text-center recent-users-sec">
+                        <?php include 'fieldControl.php'; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
- <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="card  mb-3">
-   <h5 class="card-header">
-   <i class="fas fa-server"></i>
-   Dati Panel 
-    </h5>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <h5 class="card-header">
+                        <i class="fas fa-server"></i> Dati Panel
+                    </h5>
+                    <div class="card-body text-center recent-users-sec">
+                        <button type="button" class="btn btn-success" style="background-color:#88d899; margin:5px;">
+                            <i class="fas fa-address-card"></i>
+                            <b>ISCRITTI:</b>
+                            <span class="badge badge-light"><b><?php echo $tot_use['total']; ?></b></span>
+                        </button>
+                        <?php include 'PanelDat.php'; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    
-  <button type="button" style="background-color:#88d899; margin:5px;" class="btn btn-success">
-      <i class="fas fa-address-card"></i>
-    <b>ISCRITTI:</b> <span class="badge badge-light"><b><?php echo $tot_use['total']; ?></b></span>
-    
-  </button>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <h5 class="card-header">
+                        <i class="fas fa-poll"></i> Dati Ricerche
+                    </h5>
+                    <div class="card-body text-center recent-users-sec">
+                        <?php include 'surDat.php'; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-
-   <div class="card-body text-center recent-users-sec">
-  
-  <?php include 'PanelDat.php'; ?> 
-   </div>
-   
-   </div>
-  </div>
- 
- </div>
-
-
- <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-   <div class="card  mb-3">
-   <h5 class="card-header">
-   <i class="fas fa-poll"></i>
-   Dati Ricerche
-    </h5>
-    
-
-   <div class="card-body text-center recent-users-sec">
-  <?php include 'surDat.php'; ?> 
-   </div>
-   
-   </div>
-  </div>
- 
- </div>
-
+    </div>
 </div>
-</div>
-
 
 <div class="sp">&nbsp;</div>
 <div class="sp">&nbsp;</div>
-<?php 
 
-require_once('inc_footer.php');
+<?php require_once('inc_footer.php'); ?>

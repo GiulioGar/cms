@@ -1,0 +1,39 @@
+2.0;HAI;R2404064PFR;742;IDEXCIIDKJPLFRTTY755;22/10/2024 09:57:05 CEST;22/10/2024 10:09:03 CEST;718;3;440;device=desktop;lang=fr;sysIID=742;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=2;pan=1;sysUID=IDEXCIIDKJPLFRTTY755
+choice;10;2;1
+open;18;56
+choice;20;6;4
+choice;30;22;8
+choice;50;7;6
+choice;60;6;5
+choice;70;3;0
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;0
+choice;166;2;1
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;1
+open;230;le fait que soit un tout en un me convient très bien
+open;240;disponible en 24 capsules, sera surement insuffisant
+choice;250;5;1
+choice;260;5;1
+choice;270;5;2
+choice;280;5;2
+scale;300;13;5;0;0;0;2;1;0;0;0;0;0;0;0;0
+concept;310
+choice;360;21;18
+choice;370;21;6
+choice;380;21;20
+choice;390;21;20
+choice;400;5;1
+choice;410;5;1
+choice;420;5;2
+choice;430;9;8;comp8:artiste
+choice;440;4;1
+app;1999;indOrder|string|2,1
+concept_eval;9002;0
+concept_eval;9012;35;5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9022;35;16;17;18;19;26;27;28;29;30;11;12;13;14;15;6;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9032;35;6;26;27;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,9 @@
+2.0;HAI;R2404064PFR;1158;IDEXCIGEIVAQKPGCB1189;22/10/2024 11:43:02 CEST;22/10/2024 11:43:53 CEST;51;4;60;version=v01;sysSID=R2404064PFR;sysPRJ=HAI;sysUID=IDEXCIGEIVAQKPGCB1189;device=mobile;pan=1;sysIID=1158;lang=fr
+choice;10;2;1
+open;18;29
+choice;20;6;1
+choice;30;22;16
+choice;50;7;6
+choice;60;6;3
+choice;70;3;1
+choice;90;8;00000010;6;comp6:Plaque de cuisson électrique 
