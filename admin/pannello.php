@@ -1,535 +1,458 @@
 <?php 
-	if (!isset($_SESSION)) {
-		session_start();
-	}
-	require_once('../Connections/admin.php'); 
-	  require_once('inc_auth.php'); 
-	  mysqli_select_db($admin,$database_admin);	
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
-//     error_reporting(E_ALL);
-// ini_set('display_errors', TRUE);
-// ini_set('display_startup_errors', TRUE);
+    require_once('inc_taghead.php'); 
+    mysqli_select_db($admin,$database_admin);	
 
-$titolo = 'Desktop Gestionale';
-$sitowebdiriferimento = 'www.millebytes.com';
-$areapagina = "home";
-$coldx = "no";	
-@$id_sur = $_REQUEST['id_sur'];
-@$closearch = $_REQUEST['closearch'];
-@$openSearch = $_REQUEST['openSearch'];
-@$modSearch = $_REQUEST['modSearch'];
-$sid=$_REQUEST['sid'];
-$prj=$_REQUEST['prj'];
-$panel=$_REQUEST['panel'];
-$loi=$_REQUEST['loi'];
-$argomento=$_REQUEST['argomento'];
-$points=$_REQUEST['point'];
-$sex_target=$_REQUEST['sex_target'];
-$age1_target=$_REQUEST['age1_target'];
-$age2_target=$_REQUEST['age2_target'];
-$descrizione=$_REQUEST['descrizione'];
-$end_date=$_REQUEST['end_date'];
-$labprj=$_REQUEST['labprj'];
-$goal=$_REQUEST['goal'];
-$paese=$_REQUEST['paese'];
-$cliente=$_REQUEST['cliente'];
-$tipologia=$_REQUEST['tipologia'];
-$costoSur=$_REQUEST['costoSur'];
+    // Recupero delle variabili tramite $_GET
+    $id_sur = $_GET['id_sur'] ?? null;
+    $closearch = $_GET['closearch'] ?? null;
+    $openSearch = $_GET['openSearch'] ?? null;
+    $modSearch = $_GET['modSearch'] ?? null;
+    $sid = $_GET['sid'] ?? null;
+    $prj = $_GET['prj'] ?? null;
+    $panel = $_GET['panel'] ?? null;
+    $loi = $_GET['loi'] ?? null;
+    $argomento = $_GET['argomento'] ?? null;
+    $points = $_GET['point'] ?? null;
+    $sex_target = $_GET['sex_target'] ?? null;
+    $age1_target = $_GET['age1_target'] ?? null;
+    $age2_target = $_GET['age2_target'] ?? null;
+    $descrizione = $_GET['descrizione'] ?? null;
+    $end_date = $_GET['end_date'] ?? null;
+    $labprj = $_GET['labprj'] ?? null;
+    $goal = $_GET['goal'] ?? null;
+    $paese = $_GET['paese'] ?? null;
+    $cliente = $_GET['cliente'] ?? null;
+    $tipologia = $_GET['tipologia'] ?? null;
+    $costoSur = $_GET['costoSur'] ?? null;
 
-$cerca_progetto=$_REQUEST['prj'];
-if ($cerca_progetto==""){$cerca_progetto="%";}
+    $cerca_progetto = $_GET['prj'] ?? '%';
+    $cerca_panel = $_GET['Cpanel'] ?? '%';
+    $cerca_anno = ($_GET['Canno'] ?? '%') . '%';
 
+    $data = date("Y-m-d");
 
+    // Gestione dell'aggiunta di una nuova ricerca
+    if ($openSearch == "Aggiungi") {
+        $query_surv = "SELECT sur_id FROM t_panel_control";
+        $controlSur = mysqli_query($admin, $query_surv);
+        $duplicate = 0;
 
-echo $cerca_panel_originale;
-$cerca_panel=$_REQUEST['Cpanel'];
-if ($cerca_panel==""){$cerca_panel="%";}
+        while ($row = mysqli_fetch_assoc($controlSur)) {
+            if ($row['sur_id'] == $sid) {
+                $duplicate++;
+            }
+        }
 
+        if ($duplicate > 0) {
+            echo "<div title='Attenzione!' class='dialog-message'>Attenzione, questa ricerca è già stata inserita!</div>";
+        } else {
+            // Inserimento sicuro dei dati
+            $query_user = $admin->prepare(
+                "INSERT INTO t_panel_control 
+                (sur_id, prj, end_field, stato, sex_target, age1_target, age2_target, end_field, description, goal, panel, paese, cliente, tipologia, bytes) 
+                VALUES (?, ?, ?, '0', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            );
+            $query_user->bind_param(
+                "ssssssssssssss", $sid, $prj, $data, $sex_target, $age1_target, $age2_target, $end_date, 
+                $descrizione, $goal, $panel, $paese, $cliente, $tipologia, $points
+            );
+            $query_user->execute();
 
-$cerca_anno_originale=$_REQUEST['Canno'];
-$cerca_anno=$_REQUEST['Canno'];
-if ($cerca_anno==""){$cerca_anno="%";}
-					else
-					{$cerca_anno=$cerca_anno."%";}
-					
+            if ($panel == 1) {
+                $query_loi = "INSERT INTO t_surveys_env (prj_name, sid, name, value, store) 
+                VALUES ('$prj', '$sid', 'length_of_interview', '$loi', '0')";
+                mysqli_query($admin, $query_loi);
 
+                $query_argomento = "INSERT INTO t_surveys_env (prj_name, sid, name, value, store) 
+                VALUES ('$prj', '$sid', 'survey_object', '$argomento', '0')";
+                mysqli_query($admin, $query_argomento);
 
+                $query_punti = "INSERT INTO t_surveys_env (prj_name, sid, name, value, store) 
+                VALUES ('$prj', '$sid', 'prize_complete', '$points', '0')";
+                mysqli_query($admin, $query_punti);
+            }
+        }
+    }
 
-$data=date("Y-m-d");
+    // Gestione della modifica di una ricerca esistente
+    if ($modSearch == "Modifica") {
+        $query_user = "UPDATE t_panel_control 
+            SET panel='$panel', age1_target='$age1_target', age2_target='$age2_target', prj='$labprj', end_field='$end_date',
+            description='$descrizione', goal='$goal', sex_target='$sex_target', paese='$paese'
+            WHERE sur_id='$id_sur'";
+        mysqli_query($admin, $query_user);
+    }
 
-if($openSearch=="Aggiungi")
-{
-  
-$query_surv = "SELECT sur_id  FROM t_panel_control";
-$controlSur = mysqli_query($admin,$query_surv);
+    // Gestione apertura/chiusura delle ricerche
+    if ($closearch == "CLOSE" || $closearch == "OPEN") {
+        $statoSur = ($closearch == "CLOSE") ? 0 : 1;
+        $query_aggiorna = "UPDATE t_panel_control SET stato=$statoSur, costo=$costoSur WHERE id='$id_sur'";
+        mysqli_query($admin, $query_aggiorna);
+    }
 
-$duplicate=0;
-while ($row = mysqli_fetch_assoc($controlSur))
-{
-	$verId=$row['sur_id'];
-	if ($verId==$sid) { $duplicate=$duplicate+1;}
-}
-if($duplicate>0) { ?> 
+    // Aggiornamento dei giorni rimanenti
+    $query_ricerche = "SELECT * FROM t_panel_control ORDER BY stato ASC, giorni_rimanenti ASC, id DESC";
+    $tot_ricerche = mysqli_query($admin, $query_ricerche);
 
-<div title="Attenzione!" class="dialog-message">Attenzione questa ricerca &egrave; gi&agrave; stata inserita!</div>
-
- <?php  }
-
-	else{
-	  
-	$query_user = "INSERT INTO t_panel_control (sur_id,prj,sur_date,stato,sex_target,age1_target,age2_target,end_field,description,goal,panel,paese,cliente,tipologia,bytes) 
-	VALUES ('".$sid."','".$prj."','".$data."','0','".$sex_target."','".$age1_target."','".$age2_target."','".$end_date."','".$descrizione."','".$goal."','".$panel."','".$paese."','".$cliente."','".$tipologia."',".$points.")";
-	mysqli_query($admin,$query_user);
-
- 
-
-  if ($panel==1)
-  {
-
-  $query_loi = "INSERT INTO t_surveys_env (prj_name,sid,name,value,store) 
-	VALUES ('".$prj."','".$sid."','length_of_interview','".$loi."','0')";
-	mysqli_query($admin,$query_loi);
-
-  $query_argomento = "INSERT INTO t_surveys_env (prj_name,sid,name,value,store) 
-	VALUES ('".$prj."','".$sid."','survey_object','".$argomento."','0')";
-	mysqli_query($admin,$query_argomento);
-
-  $query_punti = "INSERT INTO t_surveys_env (prj_name,sid,name,value,store) 
-	VALUES ('".$prj."','".$sid."','prize_complete','".$points."','0')";
-	mysqli_query($admin,$query_punti);
-  }
-
-
-	}
-}
-
-
-if($modSearch=="Modifica")
-{
-	  
-	$query_user = "UPDATE t_panel_control set panel='".$panel."',age1_target='".$age1_target."',age2_target='".$age2_target."',prj='".$labprj."',
-	end_field='".$end_date."',description='".$descrizione."',goal='".$goal."',sex_target='".$sex_target."',paese='".$paese."' where sur_id='".$id_sur."'";
-  mysqli_query($admin,$query_user);
-  
-
-}
- 
-
-
-if($closearch=="CLOSE" || $closearch=="OPEN")
-{
-if ($closearch=="CLOSE") { $statoSur=0; }
-else {$statoSur=1;}
-
-$query_aggiorna = "UPDATE t_panel_control SET stato=$statoSur,costo=$costoSur WHERE id='$id_sur'";
-$up_ricercha = mysqli_query($admin,$query_aggiorna);
-
-
-}
-
-
-
-$query_ricerche = "SELECT * FROM t_panel_control order by stato,id DESC";
-$query_ricerche_aggiornate = "SELECT * FROM t_panel_control  order by stato,giorni_rimanenti ASC,id DESC";
-$tot_ricerche = mysqli_query($admin,$query_ricerche);
-
-require_once('inc_taghead.php');
-require_once('inc_tagbody.php'); 
-
+    require_once('inc_taghead.php');
+    require_once('inc_tagbody.php');
 ?>
 
 
+<style>
+    /* Riduzione delle dimensioni del testo per la tabella */
+    #table_sur {
+        font-size: 0.75rem;  /* Imposta una dimensione del testo più piccola */
+    }
 
-<script type='text/javascript'>
-/*
-  $(document).ready(function() 
-  {
-	var larTab=$('#tabField').width();
-	
-	$('.veditutto,.hidetutto').css('width',larTab);
-	
-	var nRow=$(".rowSur").length;
-	$("#tabField").after("<div class='hidetutto'>NASCONDI</div>");
-	$('.hidetutto').hide();
-	
-	for ( var i = 20; i < nRow; i++ ) { 
-	$(".rowSur:nth-of-type("+i+")").hide();}
-	$("#tabField").after("<div class='veditutto'>MOSTRA TUTTO</div>");
-	
-	$('.veditutto').click( function() 
-		{ 
-		for ( var i = 20; i < nRow; i++ ) { 
-		$(".rowSur:nth-of-type("+i+")").slideDown("slow");}
-		$('.veditutto').hide();
-		$('.hidetutto').show();
-		});
-		
-	$('.hidetutto').click( function() 
-		{ 
-		for ( var i = 20; i < nRow; i++ ) { $(".rowSur:nth-of-type("+i+")").slideUp("slow");}
-		$('.veditutto').show();
-		$('.hidetutto').hide();
-	});
-	
-	
-  });   
-  */
-</script>
+    thead { font-size: 0.77rem; }
+
+    /* Rimpicciolisce il testo nelle celle della tabella */
+    #table_sur td {
+text-align: center;
+    }
+
+
+
+
+    .sorting_disabled:nth-child(2) { min-width: 30%; }
+
+    .sorting_disabled { text-align: center; }
+
+    /* Personalizza lo sfondo e il testo del tooltip */
+    .tooltip-inner {
+        background-color: #333;         /* Sfondo scuro */
+        color: #fff;                    /* Testo bianco */
+        font-size: 14px;                /* Dimensione del testo */
+        max-width: 250px;               /* Larghezza massima del tooltip */
+        padding: 10px 15px;             /* Maggiore padding per leggibilità */
+        border-radius: 8px;             /* Bordi arrotondati */
+        text-align: center;             /* Testo centrato */
+    }
+
+    /* Personalizza la freccia del tooltip */
+    .bs-tooltip-top .arrow::before, 
+    .bs-tooltip-bottom .arrow::before, 
+    .bs-tooltip-left .arrow::before, 
+    .bs-tooltip-right .arrow::before {
+        border-color: #333 !important;  /* Colore della freccia */
+    }
+
+    /* Aggiunge ombreggiatura per un effetto elevato */
+    .tooltip.bs-tooltip-top .arrow::before,
+    .tooltip.bs-tooltip-bottom .arrow::before,
+    .tooltip.bs-tooltip-left .arrow::before,
+    .tooltip.bs-tooltip-right .arrow::before {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Animazione del tooltip */
+    .tooltip.show {
+        opacity: 0.95;                  /* Leggera trasparenza */
+        transition: opacity 0.3s ease-in-out;
+    }
+
+</style>
+
 
 <div class="content-wrapper">
-     <div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-6">
+            </div>
+            <div class="col col-xs-6 text-right">
+                <?php require_once('modulo_aggiungi_ricerca.php'); ?>
+            </div>
+        </div>
 
-	 <div class="row">
-	 <div class="col col-xs-6">
-	</div>
-	<div class="col col-xs-6 text-right">
-	<?php require_once('modulo_aggiungi_ricerca.php'); ?>
-	</div>
-	</div>
-	
-<div class="row">
-  <div class="col-md-12 col-md-offset-1">
-   <div class="card card-default">
-   
-   <div class="card-body">
-    <div class="table-responsive">
-		
-	<div class="alert alert-secondary mess" role="alert"> Caricamento in corso... </div>
-
-<table id='table_sur' style='display:none; font-size:11px; text-align:center' class='table table-striped table-hover dt-responsive display dataTable no-footer'>
-<thead>
-<tr>
-<td style='font-weight:bold'>Ricerca</td>
-<td style='font-weight:bold'>Descrizione</td>
-<td style='font-weight:bold'>Panel</td>
-<td style='font-weight:bold'>Complete</td>
-<td style='font-weight:bold'>% Panel</td>
-<td style='font-weight:bold'>% Ricerca</td>
-<td style='font-weight:bold'>Start</td>
-<td style='font-weight:bold'>Giorni</td>
-<td style='font-weight:bold'>Costo Panel</td>
-<td style='font-weight:bold'>Bytes</td>
-<td style='font-weight:bold'>Stato</td>
-<td style='font-weight:bold'>&nbsp;</td>
-</tr>
-</thead>
-<tbody>
-
-
-<?php
-
-//AGGIORNO INFO GIORNI RIMANENTI IN DB
-
-
-while ($row = mysqli_fetch_assoc($tot_ricerche))
-{
-$today=substr($data,0,10);
-$sur_date=substr($row['sur_date'],0,10);
-$end_date=substr($row['end_field'],0,10);
-if($end_date <> "") {$daysField=delta_tempo($today, $row['end_field'], "g"); }
-else { $daysField="n.d.";}
-if ($daysField<0) {$daysField=0;}
-$sid=$row['sur_id'];
-$query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
-$aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
-//s$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
-}
-
-
-//STAMPO LE RICERCHE DOPO AGGIORNAMENTO DEI GIORNI RIMANENTI
-$tot_ricerche = mysqli_query($admin,$query_ricerche_aggiornate);
-
-
-while ($row = mysqli_fetch_assoc($tot_ricerche))
-{
-if ($row['stato']==0){$stato="Aperto"; $colRow="#BCF7BB"; $colSat="#007F21";}
-if ($row['stato']==1){$stato="Chiuso"; $colRow="#FFF"; $colSat="#FF0400";}
-if ($row['panel']==1){$panel="Millebytes";}
-if ($row['panel']==0){$panel="Esterno";}
-if ($row['panel']==2){$panel="Target";}
-if ($row['sex_target']==1){$sex="M";}
-if ($row['sex_target']==2){$sex="F";}
-if ($row['sex_target']==3){$sex="M-F";}
-$today=substr($data,0,10);
-$sur_date=substr($row['sur_date'],0,10);
-$end_date=substr($row['end_field'],0,10);
-if($end_date <> "") {$daysField=delta_tempo($today, $row['end_field'], "g"); $dayClass="inField";}
-else { $daysField=-1;}
-if ($daysField<=0) {$daysField=0;}
-if ($daysField==0 && $end_date< $today ) {$daysField=delta_tempo($row['sur_date'] ,$row['end_field'], "g");  $dayClass="cloField";}
-if ($daysField==0 && $end_date==$today ) {$dayClass="last";}
-$obj=$row['complete']-$row['goal'];
-$sid=$row['sur_id'];
-//Definisco stile obiettivo//
-if ($obj<0) {$stObj='red';}
-else {$stObj='#02680F';}
-?>
-
-<tr class="rowSur<?php echo $row['id'] ?>" style="background:<?php echo $colRow; ?>">
-
-<?php
-
-echo "<td><a href='controlloField.php?prj=".$row['prj']."&sid=".$row['sur_id']."'>".$row['sur_id']."</a><br></td>";
-echo "<td>".$row['description']."</td>";
-echo "<td>".$panel."</td>";
-echo "<td>".$row['complete']."</td>";
-echo "<td>".$row['red_panel']."%</td>";
-echo "<td>".$row['red_surv']."%</td>";
-echo "<td>".$sur_date."</td>";
-if ($daysField==0 && $end_date==$today ){echo "<td><span class='".$dayClass."'>Ultimo<span></td>";}else{echo "<td><span class='".$dayClass."'>".$daysField."<span></td>";}
-
-$costo=$row['costo'];
-if ($costo==""){$costo=0;}
-echo "<td>€".$costo."</td>";
-echo "<td>".$row['bytes']." bytes</td>";
-?>
-
-
-<td>
-<form id="<?php echo $row['id'] ?>" class="myform" name="modulo2" >
-<input type="hidden" id="id_sur<?php echo $row['id'] ?>" name="id_sur" value="<?php echo $row['id'] ?>">
-<input type="hidden" id="costo<?php echo $row['id'] ?>" name="costo" value="<?php echo $row['bytes'] ?>">
-<input type="hidden" id="compl<?php echo $row['id'] ?>" name="compl" value="<?php echo $row['complete_int'] ?>">
-<input id="stato<?php echo $row['id'] ?>" data-item-id="<?php echo $row['id'] ?>"  type="checkbox" checked data-toggle="toggle" data-on="On" data-off="Off" data-size="xs" data-onstyle="success" data-offstyle="danger">
-</form>
-</td>
-
-<script type="text/javascript">
-
-<?php if ($row['stato']==0) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('on')	<?php } ?>
-<?php if ($row['stato']==1) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('off')	<?php } ?>
-
-</script>
-
-
-
-
-<td>
-	<div class="apriMod" id="<?php echo $sid; ?>" data-toggle="modal" data-target="#modalMod<?php echo $sid?>" data-whatever="@mdo"><i class='fas fa-pen'></i></div>
-</td>
-
-</tr>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-1">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id='table_sur' class='display'>
+                                <thead>
+                                    <tr>
+                                        <th>Ricerca</th>
+                                        <th>Descrizione</th>
+                                        <th>Panel</th>
+                                        <th>Complete</th>
+                                        <th><i class="fa-solid fa-percent"></i></th>
+                                        <th><i class="fa-solid fa-percent"></i></th>
+                                        <th><i class="fa-solid fa-flag-checkered"></i></th>
+                                        <th><i class="fa-regular fa-calendar-days"></i></th>
+                                        <th><i class="fa-solid fa-money-bill-wave"></i></th>
+                                        <th><i class="fa-solid fa-award"></i></th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 
 $query_aggiorna_statistiche = "UPDATE t_panel_control set giorni_rimanenti='".$daysField."' where sur_id='".$sid."'";
 $aggiorna_statistiche = mysqli_query($admin,$query_aggiorna_statistiche);
-//$aggiorna_statistiche_t = mysqli_fetch_assoc($aggiorna_statistiche);
  ?>
 
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Modifica Dati Ricerca</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <!-- Campo nascosto per ID ricerca -->
+                    <input type="hidden" id="edit_id" name="sur_id">
 
-<div class="modal fade" id="modalMod<?php echo $sid?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Modifica dati ricerca: <?php echo $sid;?></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<form  action="pannello.php" method="get">
-<input name="id_sur" type="hidden" value="<?php echo $row['sur_id'];?>">
+                    <!-- Descrizione -->
+                    <div class="form-group">
+                        <label for="edit_description">Descrizione</label>
+                        <input type="text" class="form-control" id="edit_description" name="description" required>
+                    </div>
 
-<div class="input-group">
-      <div class="input-group-prepend">
-    <span class="input-group-text" id="">Codice SID Progetto:</span>
-      </div>
-      <input required="" type="text" value="<?php echo $row['prj'];?>"  name="labprj"  class="form-control" id="sid" placeholder="">
-	  </div>
-	  
-	  <div class="input-group mb-3">
-      <div class="input-group-prepend">
-    <label class="input-group-text" for="panel">Panel:</label>
+                    <!-- Panel -->
+                    <div class="form-group">
+                        <label for="edit_panel">Panel</label>
+                        <select class="form-control" id="edit_panel" name="panel" required>
+                            <option value="1">Millebytes</option>
+                            <option value="0">Esterno</option>
+                            <option value="2">Target</option>
+                        </select>
+                    </div>
+
+                    <!-- Genere (Sex Target) -->
+                    <div class="form-group">
+                        <label for="edit_sex_target">Genere</label>
+                        <select class="form-control" id="edit_sex_target" name="sex_target" required>
+                            <option value="1">Uomo</option>
+                            <option value="2">Donna</option>
+                            <option value="3">Uomo/Donna</option>
+                        </select>
+                    </div>
+
+                    <!-- Età Minima e Massima -->
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="edit_age1_target">Età Minima</label>
+                            <input type="number" class="form-control" id="edit_age1_target" name="age1_target" required>
+                        </div>
+                        <div class="form-group col">
+                            <label for="edit_age2_target">Età Massima</label>
+                            <input type="number" class="form-control" id="edit_age2_target" name="age2_target" required>
+                        </div>
+                    </div>
+
+                    <!-- Interviste (Goal) -->
+                    <div class="form-group">
+                        <label for="edit_goal">Interviste</label>
+                        <input type="number" class="form-control" id="edit_goal" name="goal" required>
+                    </div>
+
+                    <!-- Data di Chiusura (End Date) -->
+                    <div class="form-group">
+                        <label for="edit_end_date">Chiusura Field</label>
+                        <input type="date" class="form-control" id="edit_end_date" name="end_date" required>
+                    </div>
+
+                    <!-- Stato della Ricerca -->
+                    <div class="form-group">
+                        <label for="edit_status">Stato</label>
+                        <select class="form-control" id="edit_status" name="stato" required>
+                            <option value="0">Aperto</option>
+                            <option value="1">Chiuso</option>
+                        </select>
+                    </div>
+
+                    <!-- Bottone per Salva Modifiche -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                        <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-      <select  name="panel" required="" class="custom-select" id="panel">
-	  <option selected="selected" value="<?php echo $row['panel'];?>"> <?php echo $panel;?> </option>
-      <option value="1">Millebytes</option>
-      <option value="0">Esterno</option>
-      <option value="2">Target</option>
-      </select>
-	  </div>
-	  
-	  <div class="input-group mb-3">
-      <div class="input-group-prepend">
-    <label class="input-group-text" for="panel">Genere:</label>
-    </div>
-      <select required="" name="sex_target" required="" class="custom-select" id="sex_target">
-	  <option value="<?php echo $row['sex_target'];?>" selected="selected"> <?php echo $sex; ?>
-      <option value="1">Uomo</option>
-      <option value="2">Donna</option>
-      <option value="3">Uomo/Donna</option>
-      </select>
-	  </div>
-	  
-	<div class="form-row input-group">
-  	<div class="input-group-prepend">
-      <span class="input-group-text" id="">Età:</span>
-      </div>
-    <div class="col">
-    <input name="age1_target" value="<?php echo $row['age1_target'];?>" type="number" class="form-control">
-    </div>
-    <div class="col">
-    <input name="age2_target" type="number" value="<?php echo $row['age2_target'];?>" class="form-control">
-    </div>
-  </div>
-
-  <div class="input-group">
-  <div class="input-group-prepend">
-      <span class="input-group-text" id="">Interviste:</span>
-      </div>
-      <input required="" type="number" value="<?php echo $row['goal'];?>" class="form-control" id="goal" placeholder="0" name="goal">
-   </div>
-
-   <div class="input-group date">
-   <div class="input-group-prepend">
-      <span class="input-group-text" id="">Chiusura Field:</span>
-      </div>
-    <input type="date" value="<?php echo $end_date; ?>"  id="date" class="form-control" name="end_date" >
-</div>
-
-<div class="input-group">
-<div class="input-group-prepend">
-      <span class="input-group-text" id="">Descrizione:</span>
-      </div>
-      <input required="" type="text" value="<?php echo $row['description'];?>" class="form-control" id="descrizione"  name="descrizione">
-      </div>
-
-
-</div>
-<div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		<button type="submit" value="Modifica"  name="modSearch" class="btn btn-primary">Modifica</button>
-</form>
-      </div>
-</form>
-</div>
-</div>	
-</div>	
-
-<?php
-
-}
-
-?>
-</tbody>
-</table>
-
-
-
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-</div>
 </div>
 
 
 
 
+<?php require_once('inc_footer.php'); ?>
 
-
-
-<div class="sp">&nbsp;</div>
-<div class="sp">&nbsp;</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.11.5/sorting/datetime-moment.js"></script>
 
 <script>
-$("#datepicker").datepicker({ 
-  dateFormat: "yy-mm-dd",
-  altFormat: "yy-mm-dd"
-});
-</script>
-
-
-<script type="text/javascript">
-
-<?php if ($row['stato']==0) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('on')	<?php } ?>
-<?php if ($row['stato']==1) { ?>	$('#stato<?php echo $row['id'] ?>').bootstrapToggle('off')	<?php } ?>
-
-
-
-  //al click sul bottone del form
-  $(".myform").click(function(){
-	
-	let idVal=$(this).attr("id");
-
-	let togStatus=document.getElementById('stato'+idVal).checked;
-
-	
-    //associo variabili
-    let id_sur = $("#id_sur"+idVal).val();
-    let selezionato="";
-    let coSur=$("#costo"+idVal).val();
-    let compSur=$("#compl"+idVal).val();
-    coSur=coSur/1000;
-    coSur=compSur*coSur;
-
-
-	console.log("costo "+coSur);
-
-	if(togStatus==false) { selezionato="CLOSE";}
-	else  { selezionato="OPEN";} 
-
-
-  //chiamata ajax
-    $.ajax({
-
-     //imposto il tipo di invio dati (GET O POST)
-      type: "GET",
-
-      //Dove devo inviare i dati recuperati dal form?
-      url: "pannello.php",
-
-      //Quali dati devo inviare?
-      data: "id_sur=" + id_sur + "&closearch=" + selezionato + "&costoSur=" + coSur,
-      dataType: "html",
-	  success: function() 
-	  					{ 
-							location.reload(); 
-						}
-
-    });
-  });
-
-</script>
-
-
-<?php
-
-require_once('inc_footer.php'); 
-
-?>
-
-<script>
-$(document).ready( function () {
-  $('#table_sur').show();
-  $('.mess').fadeOut();
+$(document).ready(function() {
+  $.fn.dataTable.moment('YYYY-MM-DD'); 
+  console.log("Plugin datetime-moment caricato correttamente");
   
-    $('#table_sur').DataTable( {
-      "bProcessing":true,
-        "order": [[ 10, "asc" ]],
+    $('#table_sur').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": "func_pannello.php",  // Assicurati che il percorso sia corretto
+        "autoWidth": false,  // Forza il ridimensionamento automatico delle colonne
+        "ordering": false,  // Disabilita l'ordinamento per tutte le colonne
+        "columns": [
+            { 
+            "data": "sur_id",
+            "render": function(data, type, row) {
+                // Crea il link usando sur_id e prj
+                return `<a href="controlloField.php?prj=${row.prj}&sid=${data}" target="_blank">${data}</a>`;
+            }
+        },
+            { 
+            "data": "description",
+            "render": function(data, type, row) {
+                const truncatedText = data.length > 30 ? data.substr(0, 30) + '...' : data;
+                return `<span data-toggle="tooltip" title="${data}">${truncatedText}</span>`;
+            }
+        },
+        { 
+            "data": "panel",
+            "render": function(data, type, row) {
+                // Usa icone per i valori Interno ed Esterno
+                if (data == "Interno") {
+                    return '<i style="color:#9DCE6B" class="fas fa-home" title="Interno"></i>';
+                } else if (data == "Esterno") {
+                    return '<i style="color:red" class="fa-solid fa-person-walking-arrow-right"></i>';
+                }
+                return data;  // Per altri valori
+            }
+        },           // Panel
+            { "data": "complete" },        // Complete
+            { "data": "red_panel" },       // % Panel
+            { "data": "red_surv" },        // % Ricerca
+            { 
+                "data": "end_field",
+                "render": function(data) {
+                    return moment(data).format('YYYY-MM-DD');  // Forza il formato data per coerenza
+                }
+            },
+            { "data": "giorni_rimanenti" },// Giorni rimanenti
+            { "data": "costo" },           // Costo Panel
+            { "data": "bytes" },           // Bytes
+            { "data": "stato",
+              "render": function(data, type, row) {
+                // Usa icone per i valori Interno ed Esterno
+                if (data == "Aperto") {
+                    return '<i style="color:#9DCE6B" class="fa-solid fa-lock-open" title="Interno"></i>';
+                } else if (data == "Chiuso") {
+                    return '<i style="color:red" class="fa-solid fa-lock"></i>';
+                }
+                return data;  // Per altri valori
+            }
+             },    
+                    
+             { 
+                "data": null,
+                "render": function(data, type, row) {
+                    return `<i class="fas fa-edit edit-button" data-id="${row.sur_id}" data-toggle="modal" data-target="#editModal" 
+                                style="cursor: pointer; color: #007bff; font-size: 1.2em;" title="Modifica">
+                            </i>`;
+                },
+
+                "orderable": false
+            }
+
+
+        ],
+        "columnDefs": [
+
+    ],
+        "order": [[10, "asc"], [6, "desc"]],  
         "pagingType": "full_numbers",
-        "scrollY": false,
-        "scrollX": false,
-		"language": {
-      					"emptyTable": "Non sono presenti dati",
-						  "search":"Cerca:",
-						  "lengthMenu":     "Mostra _MENU_ ricerche"
-   					 },
-        "lengthMenu": [[10, 30, 100, -1], [10, 30, 100, "All"]],
+        "scrollY": true,  // Rimuove lo scorrimento verticale
+        "scrollX": false,  // Rimuove lo scorrimento orizzontale
+        "language": {
+            "emptyTable": "Non sono presenti dati",
+            "search": "Cerca:",
+            "lengthMenu": "Mostra _MENU_ ricerche"
+        },
+        "lengthMenu": [[10, 60, 100, -1], [10, 30, 100, "All"]],
         "pageLength": 30,
-        'columnDefs': [ {
+"initComplete": function(settings, json) {
+            console.log("Dati ricevuti:", json);
+            $('[data-toggle="tooltip"]').tooltip();  // Inizializza i tooltip al completamento iniziale
+        },
+        "drawCallback": function() {
+            // Reinizializza i tooltip ogni volta che la tabella viene ridisegnata
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+    });
 
-                        'targets': [1,2,11], /* column index */
 
-                        'orderable': false, /* true or false */
+      // Popola il modale con i dati attuali al click del pulsante "Modifica"
+    $(document).on('click', '.edit-button', function() {
+        const sur_id = $(this).data('id');  // ID della ricerca
 
-                        }]
-    } );
-} );
+        $.ajax({
+            url: 'func_pannello.php',
+            type: 'POST',
+            data: { sur_id: sur_id, action: 'fetch' },
+            success: function(response) {
+                const data = JSON.parse(response);
+
+                // Popola i campi del modale con i dati ricevuti
+                $('#edit_id').val(data.sur_id);
+                $('#edit_description').val(data.description);
+                $('#edit_panel').val(data.panel);
+                $('#edit_sex_target').val(data.sex_target);
+                $('#edit_age1_target').val(data.age1_target);
+                $('#edit_age2_target').val(data.age2_target);
+                $('#edit_goal').val(data.goal);
+                $('#edit_end_date').val(data.end_date);
+                $('#edit_status').val(data.stato === 'Aperto' ? '0' : '1');
+            },
+            error: function(xhr, status, error) {
+                console.error("Errore durante il recupero dei dati:", error);
+            }
+        });
+    });
+
+    // Gestisce il salvataggio con AJAX
+    $('#editForm').submit(function(event) {
+        event.preventDefault();
+        const formData = $(this).serialize();
+
+        console.log(formData); // Log dei dati serializzati per debug
+
+        $.ajax({
+            url: 'func_pannello.php',
+            type: 'POST',
+            data: formData + '&action=update',
+            success: function(response) {
+                $('#editModal').modal('hide');
+                $('#table_sur').DataTable().ajax.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error("Errore durante l'aggiornamento:", error);
+            }
+        });
+    });
+    
+});
+
+
+
+
+
 </script>

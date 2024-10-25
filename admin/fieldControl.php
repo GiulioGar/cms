@@ -44,7 +44,14 @@ while ($row = mysqli_fetch_assoc($tot_attive)) {
     $newDate = date("d-m-Y", strtotime($row['end_field']));
 
     $obiet = round($row['goal']);
-    $progress = min(100, round(($row['complete'] / $obiet) * 100));
+
+    // Controllo per evitare la divisione per zero
+    if ($obiet > 0) {
+        $progress = min(100, round(($row['complete'] / $obiet) * 100));
+    } else {
+        $progress = 0;  // Imposta il progresso a 0 se goal è 0
+    }
+    
 
     // Definiamo un colore dinamico per la barra di progresso
     $progressColor = $progress < 50 ? 'bg-danger' : ($progress < 80 ? 'bg-warning' : 'bg-success');

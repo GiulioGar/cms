@@ -47,8 +47,6 @@ header("Cache-Control: no-cache, must-revalidate");
 		
   <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONT AWESOME STYLE  -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
     <link href="assets/css/style.css" rel="stylesheet" />
   <!-- DATA TABLES  -->
@@ -60,7 +58,7 @@ header("Cache-Control: no-cache, must-revalidate");
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />		
 
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"> -->
     
   
         <!-- FONT AWESOME STYLE  -->
@@ -78,6 +76,9 @@ header("Cache-Control: no-cache, must-revalidate");
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <script type="text/javascript">
 
 function confermaCancella() {
@@ -148,23 +149,7 @@ $coldx = "no";
 	
 ?>	
 
-
-<!--[if lte IE 6.0]>
-<style type="text/css">
-#container {width: 1072px;}
-#bigbox_right{margin-right: 5px;}
-#bigbox_left{margin-left: 5px;}
-#bigbox{background-color: #ffffff;}
-#bigbox_top_left{background-image: none;}
-#bigbox_down_left{background-image: none;}
-#bigbox_top_right{background-image: none;}
-#bigbox_down_right{background-image: none;}
-#main{ margin-right:5px;} 
-
-</style>
-
-<![endif]-->	
-
 </head>
+
 <?php
 require_once('inc_auth.php'); 

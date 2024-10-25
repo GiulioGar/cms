@@ -347,11 +347,20 @@ error_reporting(E_ERROR);
  
  			<?php if ($panel_in==1 || $panel_in==2)
 			{
-						$daFare=$lu['goal']-$conta_complete;	
-					if($tot_use_abilitati_totali['total']>0)	{ $totalRed=$conta_complete/$tot_use_abilitati_totali['total']*100;}
-						$totalRed=number_format($totalRed, 2);
-						$inviaUtenti=$daFare*$tot_use_abilitati_totali['total']/$conta_complete;
-						$inviaUtenti=number_format($inviaUtenti, 0);
+				$daFare = $lu['goal'] - $conta_complete;
+
+				$totalRed = 0; // Impostiamo un valore predefinito per evitare l'errore in caso di divisione per zero
+				$inviaUtenti = 0; // Lo stesso per inviaUtenti
+				
+				if ($tot_use_abilitati_totali['total'] > 0) {
+					$totalRed = ($conta_complete / $tot_use_abilitati_totali['total']) * 100;
+					$totalRed = number_format($totalRed, 2);
+				}
+				
+				if ($conta_complete > 0) {
+					$inviaUtenti = $daFare * $tot_use_abilitati_totali['total'] / $conta_complete;
+					$inviaUtenti = number_format($inviaUtenti, 0);
+				}
 						?>
 						
 						

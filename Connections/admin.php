@@ -22,9 +22,9 @@ if ($admin->connect_error) {
 }
 
 # Funzione per selezionare il database (può essere chiamata nei file successivi)
-function selectDatabase($conn, $dbName) {
-    if (!mysqli_select_db($conn, $dbName)) {
-        die("Database selection failed: " . mysqli_error($conn));
+function selectDatabase($admin, $dbName) {
+    if (!mysqli_select_db($admin, $dbName)) {
+        die("Database selection failed: " . mysqli_error($admin));
     }
 }
 ?>

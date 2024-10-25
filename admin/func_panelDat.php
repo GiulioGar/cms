@@ -211,5 +211,126 @@ $t55_use = $age_groups['55-64'];
 $t65_use = $age_groups['65+'];
 
 
+// Inizializzazione delle variabili per le aree geografiche
+$tNo = 0;
+$tNe = 0;
+$tCe = 0;
+$tSu = 0;
+
+// Query ottimizzata per contare gli utenti per area geografica
+$query_areas = "
+SELECT area, COUNT(*) AS total
+FROM t_user_info
+WHERE active = 1
+GROUP BY area";
+
+// Esegui la query per recuperare i dati delle aree geografiche
+$area_result = mysqli_query($admin, $query_areas);
+
+// Popola i dati delle aree geografiche con i risultati della query
+while ($row = mysqli_fetch_assoc($area_result)) {
+    switch ($row['area']) {
+        case 1: $tNo = $row['total']; break;  // Nord Ovest
+        case 2: $tNe = $row['total']; break;  // Nord Est
+        case 3: $tCe = $row['total']; break;  // Centro
+        case 4: $tSu = $row['total']; break;  // Sud e Isole
+    }
+}
+
+// Totali
+$query_tot_sur = "
+SELECT 
+  COUNT(sur_id) as tot,
+  SUM(CASE WHEN complete_int > 0 THEN 1 ELSE 0 END) as contaInt,
+  SUM(CASE WHEN complete_ext > 0 THEN 1 ELSE 0 END) as contaExt,
+  SUM(CASE WHEN panel = 2 THEN 1 ELSE 0 END) as contaTar
+FROM t_panel_control
+WHERE sur_date LIKE '$actualYear%'";
+
+$totSur = mysqli_fetch_assoc(mysqli_query($admin, $query_tot_sur));
+
+// Per l'anno precedente
+$pastYear1 = $actualYear - 1;
+$query_tot_sur16 = "
+SELECT 
+  COUNT(sur_id) as tot,
+  SUM(CASE WHEN complete_int > 0 THEN 1 ELSE 0 END) as contaInt16,
+  SUM(CASE WHEN complete_ext > 0 THEN 1 ELSE 0 END) as contaExt16,
+  SUM(CASE WHEN panel = 2 THEN 1 ELSE 0 END) as contaTar16
+FROM t_panel_control
+WHERE sur_date LIKE '$pastYear1%'";
+
+$totSur16 = mysqli_fetch_assoc(mysqli_query($admin, $query_tot_sur16));
+
+// Variabili per il calcolo dell'anno corrente e passato
+$actualYear = date("Y");
+$pastYear1 = $actualYear - 1;
+$pastYear2 = $actualYear - 2;
+
+// Query per l'anno corrente
+$query_countries_2018 = "
+SELECT 
+  paese, 
+  SUM(complete_ext) AS complete_ext
+FROM t_panel_control
+WHERE sur_date LIKE '$actualYear%'
+AND complete_ext > 0
+AND panel IN (0, 1)
+GROUP BY paese";
+
+$result_2018 = mysqli_query($admin, $query_countries_2018);
+
+// Inizializza variabili per i dati dell'anno corrente
+$italia_c2018 = $uk_c2018 = $germania_c2018 = $francia_c2018 = $spagna_c2018 = $altro_c2018 = ['complete_ext' => 0];
+
+// Popola i dati per l'anno corrente
+while ($row = mysqli_fetch_assoc($result_2018)) {
+    switch ($row['paese']) {
+        case 'Italia': $italia_c2018['complete_ext'] = $row['complete_ext']; break;
+        case 'Uk': $uk_c2018['complete_ext'] = $row['complete_ext']; break;
+        case 'Germania': $germania_c2018['complete_ext'] = $row['complete_ext']; break;
+        case 'Francia': $francia_c2018['complete_ext'] = $row['complete_ext']; break;
+        case 'Spagna': $spagna_c2018['complete_ext'] = $row['complete_ext']; break;
+        default: $altro_c2018['complete_ext'] += $row['complete_ext']; // Somma per il resto del mondo
+    }
+}
+
+// Query per l'anno precedente
+$query_countries_2016 = "
+SELECT 
+  paese, 
+  SUM(complete_ext) AS complete_ext
+FROM t_panel_control
+WHERE sur_date LIKE '$pastYear1%'
+AND complete_ext > 0
+AND panel IN (0, 1)
+GROUP BY paese";
+
+$result_2016 = mysqli_query($admin, $query_countries_2016);
+
+// Inizializza variabili per i dati dell'anno precedente
+$italia_c2016 = $uk_c2016 = $germania_c2016 = $francia_c2016 = $spagna_c2016 = $altro_c2016 = ['complete_ext' => 0];
+
+// Popola i dati per l'anno precedente
+while ($row = mysqli_fetch_assoc($result_2016)) {
+    switch ($row['paese']) {
+        case 'Italia': $italia_c2016['complete_ext'] = $row['complete_ext']; break;
+        case 'Uk': $uk_c2016['complete_ext'] = $row['complete_ext']; break;
+        case 'Germania': $germania_c2016['complete_ext'] = $row['complete_ext']; break;
+        case 'Francia': $francia_c2016['complete_ext'] = $row['complete_ext']; break;
+        case 'Spagna': $spagna_c2016['complete_ext'] = $row['complete_ext']; break;
+        default: $altro_c2016['complete_ext'] += $row['complete_ext']; // Somma per il resto del mondo
+    }
+}
+
+
+$query_clienti = "SELECT 
+cliente, SUM(if(sur_date like '%$actualYear%', 1, 0)) AS conta2020,SUM(if(sur_date like '%$pastYear1%', 1, 0)) AS conta2019 ,SUM(if(sur_date like '%$pastYear2%', 1, 0)) AS conta2018
+FROM t_panel_control
+WHERE cliente<>''
+GROUP BY cliente
+ORDER BY cliente ASC";
+$lista_clienti = mysqli_query($admin,$query_clienti);
+$numClient = $lista_clienti->num_rows;
 
 ?>

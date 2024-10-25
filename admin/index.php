@@ -1,22 +1,19 @@
 <title>Log In</title>
 <?php
 
-error_reporting(0);
+
+
+error_reporting(E_ERROR);
 
 require_once('../Connections/admin.php'); 
 
-?>
-
-
-<?php
-
-
-
-// *** Validate request to login to this site.
 if (!isset($_SESSION)) {
   session_start();
 }
 
+
+
+// *** Validate request to login to this site
 $loginFormAction = $_SERVER['PHP_SELF'];
 if (isset($_GET['accesscheck'])) {
   $_SESSION['PrevUrl'] = $_GET['accesscheck'];
@@ -129,8 +126,6 @@ require_once('inc_tagbody.php');
 <?php 
 
 require_once('inc_footer.php'); 
-
-
 
 ?>
 

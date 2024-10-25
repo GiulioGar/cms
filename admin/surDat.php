@@ -1,5 +1,4 @@
 <?php
-
 require_once('func_panelDat.php');
 ?>
 
@@ -86,81 +85,76 @@ require_once('func_panelDat.php');
 
 <script>
 
-// Chart per le ricerche online
+// Chart Ricerche
 new Chart(document.getElementById("barSur"), {
     type: 'bar',
     data: {
-        labels: ["<?php echo $actualYear; ?>", "<?php echo $pastYear1; ?>"],  // Anni da visualizzare sulla X
-        datasets: [
-            {
-                label: "Totali",
-                backgroundColor: ["#ffd789", "#ffd789"],
-                data: [
-                    <?php echo $totSur['tot']; ?>, 
-                    <?php echo $totSur16['tot']; ?>
-                ]  // Totali per gli anni
-            },
-            {
-                label: "Interne",
-                backgroundColor: ["#ceefbd", "#ceefbd"],
-                data: [
-                    <?php echo $contaInt; ?>, 
-                    <?php echo $contaInt16; ?>
-                ]  // Ricerche interne per gli anni
-            },
-            {
-                label: "Esterne",
-                backgroundColor: ["#7fbee2", "#7fbee2"],
-                data: [
-                    <?php echo $contaExt; ?>, 
-                    <?php echo $contaExt16; ?>
-                ]  // Ricerche esterne per gli anni
-            },
-            {
-                label: "Da Lista",
-                backgroundColor: ["#BF8BD6", "#BF8BD6"],
-                data: [
-                    <?php echo $contaTar; ?>, 
-                    <?php echo $contaTar16; ?>
-                ]  // Ricerche da lista per gli anni
-            }
-        ]
+      labels: ["<?php echo $actualYear; ?>", "<?php echo $pastYear1; ?>"],
+      datasets: [
+        {
+          label: "Totali",
+          backgroundColor: ["#ffd789", "#ffd789"],
+          data: [<?php echo $totSur['tot']; ?>, <?php echo $totSur16['tot']; ?>]
+        },
+        {
+          label: "Interne",
+          backgroundColor: ["#ceefbd", "#ceefbd"],
+          data: [<?php echo $totSur['contaInt']; ?>, <?php echo $totSur16['contaInt16']; ?>]
+        },
+        {
+          label: "Esterne",
+          backgroundColor: ["#7fbee2", "#7fbee2"],
+          data: [<?php echo $totSur['contaExt']; ?>, <?php echo $totSur16['contaExt16']; ?>]
+        },
+        {
+          label: "Da Lista",
+          backgroundColor: ["#BF8BD6", "#BF8BD6"],
+          data: [<?php echo $totSur['contaTar']; ?>, <?php echo $totSur16['contaTar16']; ?>]
+        }
+      ]
     },
     options: {
-        legend: { display: true },  // Mostra la legenda
-        title: {
-            display: true,
-            text: 'Ricerche online'  // Titolo della chart
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true  // Inizia l'asse Y da zero
-                }
-            }]
-        }
+      legend: { display: true },
+      title: {
+        display: true,
+        text: 'Ricerche online'
+      }
     }
 });
 
 
 
-//chart ricerche per paese
+
+// Chart Ricerche per Paese
 new Chart(document.getElementById("barPaesi"), {
     type: 'horizontalBar',
     data: {
       labels: ["Italia", "UK", "Germania", "Francia", "Spagna", "Resto del mondo"],
       datasets: [
         {
-          label:  ["<?php echo $actualYear; ?>"],
+          label: "<?php echo $actualYear; ?>",
           backgroundColor: ["#ceefbd","#ceefbd","#ceefbd","#ceefbd","#ceefbd","#ceefbd"],
-          data: [<?php echo $italia_c2018['complete_ext']; ?>,<?php echo $uk_c2018['complete_ext']; ?>,<?php echo $germania_c2018['complete_ext']; ?>,<?php echo $francia_c2018['complete_ext']; ?>,<?php echo $spagna_c2018['complete_ext']; ?>,<?php echo $altro_c2018['complete_ext']; ?>]
+          data: [
+            <?php echo $italia_c2018['complete_ext']; ?>,
+            <?php echo $uk_c2018['complete_ext']; ?>,
+            <?php echo $germania_c2018['complete_ext']; ?>,
+            <?php echo $francia_c2018['complete_ext']; ?>,
+            <?php echo $spagna_c2018['complete_ext']; ?>,
+            <?php echo $altro_c2018['complete_ext']; ?>
+          ]
         },
         {
-          label:  ["<?php echo $pastYear1; ?>"],
+          label: "<?php echo $pastYear1; ?>",
           backgroundColor: ["#ffd789","#ffd789","#ffd789","#ffd789","#ffd789","#ffd789"],
-          data: [<?php echo $italia_c2016['complete_ext']; ?>,<?php echo $uk_c2016['complete_ext']; ?>,<?php echo $germania_c2016['complete_ext']; ?>,<?php echo $francia_c2016['complete_ext']; ?>,<?php echo $spagna_c2016['complete_ext']; ?>,<?php echo $altro_c2016['complete_ext']; ?>]
-        },
-
+          data: [
+            <?php echo $italia_c2016['complete_ext']; ?>,
+            <?php echo $uk_c2016['complete_ext']; ?>,
+            <?php echo $germania_c2016['complete_ext']; ?>,
+            <?php echo $francia_c2016['complete_ext']; ?>,
+            <?php echo $spagna_c2016['complete_ext']; ?>,
+            <?php echo $altro_c2016['complete_ext']; ?>
+          ]
+        }
       ]
     },
     options: {
