@@ -56,108 +56,94 @@ else { $cpiStima="N.D"; }
 
 <div class="container" id="page-content-wrapper">
 
-<nav class="navbar navlateral navbar-expand-lg">
-        <button class="btn btn-secondary" id="menu-toggle"><i class="fas fa-list-ul"></i></button>
+<div class="row mt-4">
+  <!-- Navbar allineata a sinistra -->
+  <div class="col d-flex align-items-center">
+    <nav class="navbar navlateral navbar-expand-lg">
+      <button class="btn btn-secondary" id="menu-toggle"><i class="fas fa-list-ul"></i></button>
+      <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-</nav>
+  <!-- Menu selezione allineato a destra -->
+  <div class="col-auto">
+    <div class="menu-selection d-flex justify-content-end">
+      <button type="button" class="menu-btn active">
+        <i class="fas fa-bullseye"></i> Target/Domande
+      </button>
+      <button type="button" class="menu-btn">
+        <i class="fas fa-check-circle"></i> Qualità
+      </button>
+      <button type="button" class="menu-btn">
+        <i class="fas fa-cog"></i> Impostazioni
+      </button>
+    </div>
+  </div>
+</div>
+
 
 <div class="row">
 
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card  shadow h-100 py-2 rounded-top">                        
-<div class="card body">
-<div class="row no-gutters align-items-center " style="min-height: 100px;">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-success text-uppercase mb-1">Ricerca</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo $sid; ?> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo $lu['description']; ?> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #94d872; opacity: 0.5;">
-		  <i class="fas fa-poll-h"></i>
-		  </span>
+  <!-- Card Ricerca -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="custom-card card h-100">
+      <div class="custom-card-body">
+        <h5 class="custom-card-title text-success">Ricerca</h5>
+        <p class="custom-card-text"><?php echo $sid; ?></p>
+        <p class="custom-card-text"><?php echo $lu['description']; ?></p>
+        <div class="custom-card-icon text-success">
+          <i class="fas fa-poll-h"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          </div>
-        </div>        
+  <!-- Card Target -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="custom-card card h-100">
+      <div class="custom-card-body">
+        <h5 class="custom-card-title text-primary">Target</h5>
+        <p class="custom-card-text"><strong>Interviste:</strong> <?php echo $lu['goal']; ?></p>
+        <p class="custom-card-text"><strong>Sesso:</strong> <?php echo $sex; ?></p>
+        <p class="custom-card-text"><strong>Età:</strong> <?php echo $lu['age1_target']."-".$lu['age2_target']." anni"; ?></p>
+        <div class="custom-card-icon text-primary">
+          <i class="fas fa-bullseye"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</div>
-</div>
-</div>
+  <!-- Card Timing e Costi -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="custom-card card h-100">
+      <div class="custom-card-body">
+        <h5 class="custom-card-title text-warning">Timing e Costi</h5>
+        <p class="custom-card-text"><strong>Inizio Field:</strong> <?php echo $newDateStart; ?></p>
+        <p class="custom-card-text"><strong>Fine Field:</strong> <?php echo $newDate; ?></p>
+        <p class="custom-card-text text-navy"><strong>CPI stimato:</strong> <?php echo $cpiStima; ?>€</p>
+        <div class="custom-card-icon text-warning">
+          <i class="fas fa-business-time"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card shadow h-100 py-2 rounded-top">                        
-<div class="card body">
-<div class="row no-gutters align-items-center" style="min-height: 100px;">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-primary text-uppercase mb-1">Target</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Interviste: </b><?php echo $lu['goal']; ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Sesso: </b><?php echo $sex; ?> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Età: </b><?php echo $lu['age1_target']."-".$lu['age2_target']." anni" ?> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #007BFF; opacity: 0.5;">
-		  <i class="fas fa-bullseye"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card shadow h-100 py-2 rounded-top">                        
-<div class="card body">
-<div class="row no-gutters align-items-center" style="min-height: 100px;">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-warning  text-uppercase mb-1">Timing e Costi</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Inizio Field:</b> <?php echo $newDateStart;  ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Fine Field:</b> <?php echo $newDate;  ?> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><span style="color:navy"><b>CPI stimato:</b> <?php echo $cpiStima;  ?>€</i></span> </div>
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #F7BB07; opacity: 0.5;">
-		  <i class="fas fa-business-time"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-<div class="col-xl-3 col-md-6 mb-4">
-<div style="padding:5px;" class="card shadow h-100 py-2 rounded-top" style="min-height: 100px;">                        
-<div class="card body">
-<div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="h5 text-xs font-weight-bold text-danger text-uppercase mb-1">Info</div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Stato Field:</b> <?php echo $stato; ?></div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Loi:</b> <span style="color:red"><?php echo substr($loi,0,4); ?> minuti</span> </div>
-            <div class="h6 mb-0 font-weight-bold text-gray-800"><b>Panel:</b> <span style="color:#007BFF; font-size:12px;"><?php echo $usePanel; ?></span> </div>
-           
-          </div>
-          <div class="col-auto">
-		  <span style="font-size: 28px; color: #D53343; opacity: 0.5;">
-		  <i class="fas fa-info-circle"></i>
-		  </span>
-
-          </div>
-        </div>        
-
-</div>
-</div>
-</div>
-
-
-
+  <!-- Card Info -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="custom-card card h-100">
+      <div class="custom-card-body">
+        <h5 class="custom-card-title text-danger">Info</h5>
+        <p class="custom-card-text"><strong>Stato Field:</strong> <?php echo $stato; ?></p>
+        <p class="custom-card-text"><strong>Loi:</strong> <span class="text-danger"><?php echo substr($loi,0,4); ?> minuti</span></p>
+        <p class="custom-card-text"><strong>Panel:</strong> <span class="text-primary small"><?php echo $usePanel; ?></span></p>
+        <div class="custom-card-icon text-danger">
+          <i class="fas fa-info-circle"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 

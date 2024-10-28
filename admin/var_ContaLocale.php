@@ -1,0 +1,117 @@
+<?php
+$conta_bloccate=0;
+$conta_incomplete=0;
+$conta_complete=0;
+$conta_filtrati=0;
+$conta_quotafull=0;
+$conta_bloccate_Cint=0;
+$conta_incomplete_Cint=0;
+$conta_complete_Cint=0;
+$conta_filtrati_Cint=0;
+$conta_quotafull_Cint=0;
+$conta_bloccate_panel=0;
+$conta_incomplete_panel=0;
+$conta_complete_panel=0;
+$conta_filtrati_panel=0;
+$conta_quotafull_panel=0;
+$contaSospeso=0;
+$contaSospeso2=0;
+$contaSospeso3=0;
+$contaFiltri=0;
+$contaFiltri2=0;
+$contaFiltri3=0;
+$contaCompl=0;
+$conta_filtrati_T=0;
+
+$conta_complete_0=0;
+$conta_complete_1=0;
+$conta_complete_2=0;
+$conta_complete_3=0;
+$conta_complete_4=0;
+$conta_complete_5=0;
+$conta_complete_6=0;
+$conta_complete_7=0;
+$conta_complete_8=0;
+$conta_complete_9=0;
+
+$conta_filtrati_0=0;
+$conta_filtrati_1=0;
+$conta_filtrati_2=0;
+$conta_filtrati_3=0;
+$conta_filtrati_4=0;
+$conta_filtrati_5=0;
+$conta_filtrati_6=0;
+$conta_filtrati_7=0;
+$conta_filtrati_8=0;
+$conta_filtrati_9=0;
+
+$conta_quotafull_0=0;
+$conta_quotafull_1=0;
+$conta_quotafull_2=0;
+$conta_quotafull_3=0;
+$conta_quotafull_4=0;
+$conta_quotafull_5=0;
+$conta_quotafull_6=0;
+$conta_quotafull_7=0;
+$conta_quotafull_8=0;
+$conta_quotafull_9=0;
+
+$conta_block_0=0;
+$conta_block_1=0;
+$conta_block_2=0;
+$conta_block_3=0;
+$conta_block_4=0;
+$conta_block_5=0;
+$conta_block_6=0;
+$conta_block_7=0;
+$conta_block_8=0;
+$conta_block_9=0;
+
+$conta0=0;
+$conta1=0;
+$conta2=0;
+$conta3=0;
+$conta4=0;
+$conta5=0;
+$conta6=0;
+$conta7=0;
+$conta8=0;
+$conta9=0;
+$conta10=0;
+$conta11=0;
+$conta12=0;
+$conta13=0;
+$conta14=0;
+$conta15=0;
+$conta16=0;
+$conta17=0;
+$conta18=0;
+$conta19=0;
+$conta20=0;
+$conta21=0;
+$conta22=0;
+$conta23=0;
+$conta24=0;
+$conta25=0;
+$conta26=0;
+$conta27=0;
+$conta28=0;
+$conta29=0;
+$conta30=0;
+$conta31=0;
+$conta32=0;
+$conta33=0;
+$conta34=0;
+$varapp;
+
+//lista panel //
+
+$useMillebytes=false;  //0
+$useCint=false;        //1
+$useDynata=false;      //2
+$useBilendi=false;     //3
+$useNorstat=false;     //4
+$useToluna=false;      //5
+$useNetquest=false;    //6
+$useCati=false;    //7
+$useAltroPanel=false;    //789

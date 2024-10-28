@@ -5,7 +5,7 @@
 
 error_reporting(E_ERROR);
 
-require_once('../Connections/admin.php'); 
+require_once('inc_taghead.php');
 
 if (!isset($_SESSION)) {
   session_start();
@@ -65,7 +65,7 @@ $sub=htmlspecialchars($sub);
 
 
 
-require_once('inc_taghead.php');
+
 
 require_once('inc_tagbody.php'); 
 

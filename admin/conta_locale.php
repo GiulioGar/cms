@@ -349,18 +349,21 @@ error_reporting(E_ERROR);
 			{
 				$daFare = $lu['goal'] - $conta_complete;
 
-				$totalRed = 0; // Impostiamo un valore predefinito per evitare l'errore in caso di divisione per zero
-				$inviaUtenti = 0; // Lo stesso per inviaUtenti
-				
 				if ($tot_use_abilitati_totali['total'] > 0) {
 					$totalRed = ($conta_complete / $tot_use_abilitati_totali['total']) * 100;
-					$totalRed = number_format($totalRed, 2);
+				} else {
+					$totalRed = 0; // Imposta un valore di default se il totale è zero
 				}
+				$totalRed = number_format($totalRed, 2);
 				
+				// Controllo per evitare divisione per zero
 				if ($conta_complete > 0) {
-					$inviaUtenti = $daFare * $tot_use_abilitati_totali['total'] / $conta_complete;
-					$inviaUtenti = number_format($inviaUtenti, 0);
+					$inviaUtenti = ($daFare * $tot_use_abilitati_totali['total']) / $conta_complete;
+				} else {
+					$inviaUtenti = 0; // Imposta un valore di default se $conta_complete è zero
 				}
+				$inviaUtenti = number_format($inviaUtenti, 0);
+				
 						?>
 						
 						
@@ -1220,7 +1223,12 @@ foreach ($panels as $value)
 	
 	$contaImm2=0;
 			
-	arsort(${'sosP'.$value});
+	if (isset(${'sosP' . $value}) && is_array(${'sosP' . $value})) {
+		arsort(${'sosP' . $value});
+	} else {
+		${'sosP' . $value} = []; // Inizializza come array vuoto se non esiste
+	}
+
 		foreach (${'sosP'.$value} as $chiave => $valore) 
 					{
 					$contaImm2++;

@@ -82,11 +82,6 @@ $tot_ricerche = mysqli_query($admin,$query_ricerche);
 		}
 		$medRed2=$totRed2/$cloSur2['tot'];
 		
-
-	
-
-
-
 //lettura argomento da assegnare
 $query_cerca_argo = "SELECT * FROM millebytesdb.t_surveys_env where sid='$sid' and prj_name='$prj' and name='survey_object'";
 $cerca_argo = mysqli_query($admin,$query_cerca_argo);
@@ -187,20 +182,19 @@ $panel_in=$lu['panel'];
 
 
 ///MODIFICA PRIMA DI PUBBLICARE */
-if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
-    // Ambiente locale (XAMPP)
-    $linkDir = "../var";   // XAMPP 
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    $linkDir = "../var";  // Percorso per XAMPP
 } else {
-    // Server online
-    $linkDir = "/var";     // SERVER ONLINE
+    $linkDir = "/var";     // Percorso per server online
 }
+
 
 //echo "Stato".$stato_ricerca;
 
 if ($stato_ricerca != 1)
 {
 
-	//ELIMINO RECORD
+//ELIMINO RECORD
 $query_pulisci_respint_copy="DELETE FROM t_abilitatipanel WHERE (sid='$sid')";
 //echo $query_pulisci_respint_copy;
 $query_pulisci_respint_copy_sample = mysqli_query($admin,$query_pulisci_respint_copy) ;
@@ -243,6 +237,9 @@ $riga_sample=$righe_sample[$j];
 //divido il testo in array stabilendo come separatore il punto e virgola
 $id_sample = explode(";", $riga_sample);
 //echo $id_sample[0]."<br>";
+
+
+
 
 
 $query_aggiorna_statistiche_sample = "UPDATE t_abilitatipanel set data_abilitazione='".$data_creazione_file."' where (sid='".$sid."' and uid='".$id_sample[0]."' and ((data_abilitazione is NULL) or (data_abilitazione ='')))";
@@ -316,17 +313,6 @@ if (!empty($data_odierna) && !empty($data)) {
     $confrontodata = strtotime($data_odierna) - strtotime($data);
     $ore_differenza = ($confrontodata / 60) / 60;
 } 
-//echo "<br>Differenza:".(($confrontodata/60)/60)." ore";
-
-//recupero tutti i file sre dalla cartella e li conto
-
-//ATTENZIONE RIPRISTINARE IL PERCORSO DOPO PUBBLICAZIONE
-
-$fl = glob($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
-
-$contatti=count($fl);
-
-
 
 
 //CALCOLO QUERY IN BASE AI TARGET
@@ -376,148 +362,26 @@ $tot_user_disponibili = mysqli_query($admin,$query_user_disponibili) ;
 $tot_use_disponibili = mysqli_fetch_assoc($tot_user_disponibili);
 }
 
-$conta_bloccate=0;
-$conta_incomplete=0;
-$conta_complete=0;
-$conta_filtrati=0;
-$conta_quotafull=0;
-$conta_bloccate_Cint=0;
-$conta_incomplete_Cint=0;
-$conta_complete_Cint=0;
-$conta_filtrati_Cint=0;
-$conta_quotafull_Cint=0;
-$conta_bloccate_panel=0;
-$conta_incomplete_panel=0;
-$conta_complete_panel=0;
-$conta_filtrati_panel=0;
-$conta_quotafull_panel=0;
-$contaSospeso=0;
-$contaSospeso2=0;
-$contaSospeso3=0;
-$contaFiltri=0;
-$contaFiltri2=0;
-$contaFiltri3=0;
-$contaCompl=0;
-$conta_filtrati_T=0;
+require_once('var_ContaLocale.php');
 
-$conta_complete_0=0;
-$conta_complete_1=0;
-$conta_complete_2=0;
-$conta_complete_3=0;
-$conta_complete_4=0;
-$conta_complete_5=0;
-$conta_complete_6=0;
-$conta_complete_7=0;
-$conta_complete_8=0;
-$conta_complete_9=0;
-
-$conta_filtrati_0=0;
-$conta_filtrati_1=0;
-$conta_filtrati_2=0;
-$conta_filtrati_3=0;
-$conta_filtrati_4=0;
-$conta_filtrati_5=0;
-$conta_filtrati_6=0;
-$conta_filtrati_7=0;
-$conta_filtrati_8=0;
-$conta_filtrati_9=0;
-
-$conta_quotafull_0=0;
-$conta_quotafull_1=0;
-$conta_quotafull_2=0;
-$conta_quotafull_3=0;
-$conta_quotafull_4=0;
-$conta_quotafull_5=0;
-$conta_quotafull_6=0;
-$conta_quotafull_7=0;
-$conta_quotafull_8=0;
-$conta_quotafull_9=0;
-
-$conta_block_0=0;
-$conta_block_1=0;
-$conta_block_2=0;
-$conta_block_3=0;
-$conta_block_4=0;
-$conta_block_5=0;
-$conta_block_6=0;
-$conta_block_7=0;
-$conta_block_8=0;
-$conta_block_9=0;
-
-$conta0=0;
-$conta1=0;
-$conta2=0;
-$conta3=0;
-$conta4=0;
-$conta5=0;
-$conta6=0;
-$conta7=0;
-$conta8=0;
-$conta9=0;
-$conta10=0;
-$conta11=0;
-$conta12=0;
-$conta13=0;
-$conta14=0;
-$conta15=0;
-$conta16=0;
-$conta17=0;
-$conta18=0;
-$conta19=0;
-$conta20=0;
-$conta21=0;
-$conta22=0;
-$conta23=0;
-$conta24=0;
-$conta25=0;
-$conta26=0;
-$conta27=0;
-$conta28=0;
-$conta29=0;
-$conta30=0;
-$conta31=0;
-$conta32=0;
-$conta33=0;
-$conta34=0;
-$varapp;
-
-//lista panel //
-
-$useMillebytes=false;  //0
-$useCint=false;        //1
-$useDynata=false;      //2
-$useBilendi=false;     //3
-$useNorstat=false;     //4
-$useToluna=false;      //5
-$useNetquest=false;    //6
-$useCati=false;    //7
-$useAltroPanel=false;    //789
-
-
-
+$fl = glob($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
+$contatti=count($fl);
 
 for ($i = 0; $i < $contatti; $i++) 
 { 
 
-//trasformo la i nel formato 0001
-//$nfile = sprintf('%04d', $i);
 
-//apro il file e leggo la prima riga 
-//$riga = file("ftp://primis:Imr_PrimiFields13@46.37.21.33".$contents[$i]);
-//echo $fl[$i];
 $riga = file($fl[$i]);
 $prima_riga=$riga[0]; 
 $ultima_calc=sizeof($riga) - 1 ; 
 $ultima_riga=$riga[$ultima_calc]; 
 $varPanel=99;
 $opt="";
-//echo $contents[$i]."<br>";
 
 
 //divido il testo in array stabilendo come separatore il punto e virgola
 $elementi = explode(";", $prima_riga);
 $elementi_ultima = explode(";",$ultima_riga);
-
 
 foreach ($elementi as &$value) 
 {
@@ -535,39 +399,24 @@ foreach ($elementi as &$value)
 }
 
 //controllo status ricerca
-
 $versionSre=$elementi[0];
 if ($versionSre==="2.0") { $statSur=$elementi[8];}
 else  { $statSur=$elementi[6];}
 
 $uidSurv="";
 
-
 if ($versionSre=="2.0") { $leggi_id=$elementi[4];}
 else  { $leggi_id=$elementi[3];}					
 			
-
 $leggi_id_parziale=substr($leggi_id,0,4);
-
 if($leggi_id_parziale !="IDEX" && $varPanel==99)  {$varPanel=0; $useMillebytes=true;}
 
-
-
-//echo "<div>".$i."-".$varPanel."-".$leggi_id_parziale."</div>";
-
-
-
-//echo "<div>".$i."-".$statSur."</div>";
-
 //CALCOLO TOTALE//
-
 if ($statSur==0){ $conta_incomplete++; }
 if ($statSur==3){ $conta_complete++; }
 if ($statSur==4){ $conta_filtrati++; }
 if ($statSur==5){ $conta_quotafull++; }
 if ($statSur==7){ $conta_bloccate++; }
-
-
 
 //CALCOLO LOI
 if ($statSur==3)
@@ -628,73 +477,18 @@ if ($statSur==4)
 	
 //TRACCIA FILTRATI per PANEL
 
-	if($varPanel==0)
-	{
-		if ($filtriP0[$lastQf]=='') {$filtriP0[$lastQf]=1;}
-		else {$filtriP0[$lastQf]=$filtriP0[$lastQf]+1;}
-		$contaFiltri0++;
-	}
+	// TRACCIA FILTRATI per PANEL
+$filtriVar = 'filtriP' . $varPanel;
+$contaFiltriVar = 'contaFiltri' . $varPanel;
 
-	if($varPanel==1)
-	{
-		if ($filtriP1[$lastQf]=='') {$filtriP1[$lastQf]=1;}
-		else {$filtriP1[$lastQf]=$filtriP1[$lastQf]+1;}
-		$contaFiltri1++;
-	}
+if (${$filtriVar}[$lastQf] == '') {
+    ${$filtriVar}[$lastQf] = 1;
+} else {
+    ${$filtriVar}[$lastQf]++;
+}
 
-	if($varPanel==2)
-	{
-		if ($filtriP2[$lastQf]=='') {$filtriP2[$lastQf]=1;}
-		else {$filtriP2[$lastQf]=$filtriP2[$lastQf]+1;}
-		$contaFiltri2++;
-	}
+${$contaFiltriVar}++;
 
-	if($varPanel==3)
-	{
-		if ($filtriP3[$lastQf]=='') {$filtriP3[$lastQf]=1;}
-		else {$filtriP3[$lastQf]=$filtriP3[$lastQf]+1;}
-		$contaFiltri3++;
-	}
-
-	if($varPanel==4)
-	{
-		if ($filtriP4[$lastQf]=='') {$filtriP4[$lastQf]=1;}
-		else {$filtriP4[$lastQf]=$filtriP4[$lastQf]+1;}
-		$contaFiltri4++;
-	}
-
-	if($varPanel==5)
-	{
-		if ($filtriP5[$lastQf]=='') {$filtriP5[$lastQf]=1;}
-		else {$filtriP5[$lastQf]=$filtriP5[$lastQf]+1;}
-		$contaFiltri5++;
-	}
-
-	if($varPanel==6)
-	{
-		if ($filtriP6[$lastQf]=='') {$filtriP6[$lastQf]=1;}
-		else {$filtriP6[$lastQf]=$filtriP6[$lastQf]+1;}
-		$contaFiltri6++;
-	}
-
-	if($varPanel==7)
-	{
-		if ($filtriP7[$lastQf]=='') {$filtriP7[$lastQf]=1;}
-		else {$filtriP7[$lastQf]=$filtriP7[$lastQf]+1;}
-		$contaFiltri7++;
-	}
-	if($varPanel==8)
-	{
-		if ($filtriP8[$lastQf]=='') {$filtriP8[$lastQf]=1;}
-		else {$filtriP8[$lastQf]=$filtriP8[$lastQf]+1;}
-		$contaFiltri8++;
-	}	
-	if($varPanel==9)
-	{
-		if ($filtriP9[$lastQf]=='') {$filtriP9[$lastQf]=1;}
-		else {$filtriP9[$lastQf]=$filtriP9[$lastQf]+1;}
-		$contaFiltri9++;
-	}
 }
 
 
@@ -708,82 +502,21 @@ if ($statSur==0)
 	if ($sospese[$lastQ]=='') {$sospese[$lastQ]=1;}
 	else{$sospese[$lastQ]=$sospese[$lastQ]+1;}
 
-//TRACCIA sospese per PANEL
+// TRACCIA SOSPESI per PANEL
+$sosVar = 'sosP' . $varPanel;
+$contaSosVar = 'contaSos' . $varPanel;
 
-if($varPanel==0)
-{
-	if ($sosP0[$lastQf]=='') {$sosP0[$lastQf]=1;}
-	else {$sosP0[$lastQf]=$sosP0[$lastQf]+1;}
-	$contaSos0++;
-}
-
-if($varPanel==1)
-{
-	if ($sosP1[$lastQf]=='') {$sosP1[$lastQf]=1;}
-	else {$sosP1[$lastQf]=$sosP1[$lastQf]+1;}
-	$contaSos1++;
+if (${$sosVar}[$lastQf] == '') {
+    ${$sosVar}[$lastQf] = 1;
+} else {
+    ${$sosVar}[$lastQf]++;
 }
 
-if($varPanel==2)
-{
-	if ($sosP2[$lastQf]=='') {$sosP2[$lastQf]=1;}
-	else {$sosP2[$lastQf]=$sosP2[$lastQf]+1;}
-	$contaSos2++;
-}
+${$contaSosVar}++;
 
-if($varPanel==3)
-{
-	if ($sosP3[$lastQf]=='') {$sosP3[$lastQf]=1;}
-	else {$sosP3[$lastQf]=$sosP3[$lastQf]+1;}
-	$contaSos3++;
-}
-
-if($varPanel==4)
-{
-	if ($sosP4[$lastQf]=='') {$sosP4[$lastQf]=1;}
-	else {$sosP4[$lastQf]=$sosP4[$lastQf]+1;}
-	$contaSos4++;
-}
-
-if($varPanel==5)
-{
-	if ($sosP5[$lastQf]=='') {$sosP5[$lastQf]=1;}
-	else {$sosP5[$lastQf]=$sosP5[$lastQf]+1;}
-	$contaSos5++;
-}
-
-if($varPanel==6)
-{
-	if ($sosP6[$lastQf]=='') {$sosP6[$lastQf]=1;}
-	else {$sosP6[$lastQf]=$sosP6[$lastQf]+1;}
-	$contaSos6++;
-}
-
-if($varPanel==7)
-{
-	if ($sosP7[$lastQf]=='') {$sosP7[$lastQf]=1;}
-	else {$sosP7[$lastQf]=$sosP7[$lastQf]+1;}
-	$contaSos7++;
-}
-if($varPanel==8)
-{
-	if ($sosP8[$lastQf]=='') {$sosP8[$lastQf]=1;}
-	else {$sosP8[$lastQf]=$sosP8[$lastQf]+1;}
-	$contaSos8++;
-}	
-if($varPanel==9)
-{
-	if ($sosP9[$lastQf]=='') {$sosP9[$lastQf]=1;}
-	else {$sosP9[$lastQf]=$sosP9[$lastQf]+1;}
-	$contaSos9++;
-}
 	
 }
 	
-
-//recupero file sdl
-
-
 /*RIPRISTINA PER PRODUZIONE*/
 
 $sdl = file_get_contents($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
@@ -805,9 +538,6 @@ if ($i==0) {
 				$giorno_controllato=substr($elementi[4],0,10);
 				$conta_giorno=substr($elementi[4],0,10);
 			}
-
-
-			
 
 			$conta_giorno=str_replace('/', '-', $conta_giorno);
 			//$diario[$conta_giorno]=substr($elementi[4],3,2);
@@ -848,75 +578,16 @@ if ($i==0) {
 
 
 //CONTA STATISTICHE PER TUTTI I PANEL ESTERNI
-
-
 	if ($statSur==0)
 	{
-		if($varPanel==0)
-		{
-			$conta_incomplete_0++;
-			$diario_incomplete_0[$conta_giorno]++;
-		}
+		// TRACCIA INCOMPLETI per PANEL
+$contaIncompleteVar = 'conta_incomplete_' . $varPanel;
+$diarioIncompleteVar = 'diario_incomplete_' . $varPanel;
 
-		if($varPanel==1)
-		{
-			$conta_incomplete_1++;
-			$conta_incomplete_T++;
-			$diario_incomplete_1[$conta_giorno]++;
-		}
+${$contaIncompleteVar}++;
+$conta_incomplete_T++;
+${$diarioIncompleteVar}[$conta_giorno]++;
 
-		if($varPanel==2)
-		{
-			$conta_incomplete_2++;
-			$conta_incomplete_T++;
-			$diario_incomplete_2[$conta_giorno]++;
-		}
-
-		if($varPanel==3)
-		{
-			$conta_incomplete_3++;
-			$conta_incomplete_T++;
-			$diario_incomplete_3[$conta_giorno]++;
-		}	
-		if($varPanel==4)
-		{
-			$conta_incomplete_4++;
-			$conta_incomplete_T++;
-			$diario_incomplete_4[$conta_giorno]++;
-		}
-		if($varPanel==5)
-		{
-			$conta_incomplete_5++;
-			$conta_incomplete_T++;
-			$diario_incomplete_5[$conta_giorno]++;
-		}	
-		if($varPanel==6)
-		{
-			$conta_incomplete_6++;
-			$conta_incomplete_T++;
-			$diario_incomplete_6[$conta_giorno]++;
-		}	
-		
-		if($varPanel==7)
-		{
-			$conta_incomplete_7++;
-			$conta_incomplete_T++;
-			$diario_incomplete_7[$conta_giorno]++;
-		}	
-
-		if($varPanel==8)
-		{
-			$conta_incomplete_8++;
-			$conta_incomplete_T++;
-			$diario_incomplete_8[$conta_giorno]++;
-		}	
-
-		if($varPanel==9)
-		{
-			$conta_incomplete_9++;
-			$conta_incomplete_T++;
-			$diario_incomplete_9[$conta_giorno]++;
-		}	
 	}
 
 
@@ -926,143 +597,30 @@ if ($i==0) {
 
 		$diario_complete[$conta_giorno]++;
 
-		if($varPanel==0)
-		{
-			$conta_complete_0++;
-			$diario_complete_0[$conta_giorno]++;
-		}
+		// TRACCIA COMPLETI per PANEL
+		$contaCompleteVar = 'conta_complete_' . $varPanel;
+		$diarioCompleteVar = 'diario_complete_' . $varPanel;
 
-		if($varPanel==1)
-		{
-			$conta_complete_1++;
-			$conta_complete_T++;
-			$diario_complete_1[$conta_giorno]++;
-		}
+		${$contaCompleteVar}++;
+		$conta_complete_T++;
+		${$diarioCompleteVar}[$conta_giorno]++;
 
-		if($varPanel==2)
-		{
-			$conta_complete_2++;
-			$conta_complete_T++;
-			$diario_complete_2[$conta_giorno]++;
-		}
-
-		if($varPanel==3)
-		{
-			$conta_complete_3++;
-			$conta_complete_T++;
-			$diario_complete_3[$conta_giorno]++;
-		}	
-		if($varPanel==4)
-		{
-			$conta_complete_4++;
-			$conta_complete_T++;
-			$diario_complete_4[$conta_giorno]++;
-		}
-		if($varPanel==5)
-		{
-			$conta_complete_5++;
-			$conta_complete_T++;
-			$diario_complete_5[$conta_giorno]++;
-		}	
-		if($varPanel==6)
-		{
-			$conta_complete_6++;
-			$conta_complete_T++;
-			$diario_complete_6[$conta_giorno]++;
-		}	
-		
-		if($varPanel==7)
-		{
-			$conta_complete_7++;
-			$conta_complete_T++;
-			$diario_complete_7[$conta_giorno]++;
-		}	
-
-		if($varPanel==8)
-		{
-			$conta_complete_8++;
-			$conta_complete_T++;
-			$diario_complete_8[$conta_giorno]++;
-		}	
-
-		if($varPanel==9)
-		{
-			$conta_complete_9++;
-			$conta_complete_T++;
-			$diario_complete_9[$conta_giorno]++;
-		}	
 	}
 
 	if ($statSur==4)
 	{
 
 		$diario_filtrat[$conta_giorno]++;
+		// TRACCIA FILTRATI per PANEL
+		$contaFiltratiVar = 'conta_filtrati_' . $varPanel;
+		$diarioFiltratiVar = 'diario_filtrati_' . $varPanel;
 
-		if($varPanel==0)
-		{
-			$conta_filtrati_0++;
-			$diario_filtrati_0[$conta_giorno]++;
-		}
+		${$contaFiltratiVar}++;
+		$conta_filtrati_T++;
+		${$diarioFiltratiVar}[$conta_giorno]++;
 
-		if($varPanel==1)
-		{
-			$conta_filtrati_1++;
-			$conta_filtrati_T++;
-			$diario_filtrati_1[$conta_giorno]++;
-		}
 
-		if($varPanel==2)
-		{
-			$conta_filtrati_2++;
-			$conta_filtrati_T++;
-			$diario_filtrati_2[$conta_giorno]++;
-		}
-
-		if($varPanel==3)
-		{
-			$conta_filtrati_3++;
-			$conta_filtrati_T++;
-			$diario_filtrati_3[$conta_giorno]++;
-		}	
-		if($varPanel==4)
-		{
-			$conta_filtrati_4++;
-			$conta_filtrati_T++;
-			$diario_filtrati_4[$conta_giorno]++;
-		}
-		if($varPanel==5)
-		{
-			$conta_filtrati_5++;
-			$conta_filtrati_T++;
-			$diario_filtrati_5[$conta_giorno]++;
-		}	
-		if($varPanel==6)
-		{
-			$conta_filtrati_6++;
-			$conta_filtrati_T++;
-			$diario_filtrati_6[$conta_giorno]++;
-		}	
 		
-		if($varPanel==7)
-		{
-			$conta_filtrati_7++;
-			$conta_filtrati_T++;
-			$diario_filtrati_7[$conta_giorno]++;
-		}	
-
-		if($varPanel==8)
-		{
-			$conta_filtrati_8++;
-			$conta_filtrati_T++;
-			$diario_filtrati_8[$conta_giorno]++;
-		}	
-
-		if($varPanel==9)
-		{
-			$conta_filtrati_9++;
-			$conta_filtrati_T++;
-			$diario_filtrati_9[$conta_giorno]++;
-		}	
 	}
 
 	if ($statSur==5)
@@ -1070,179 +628,45 @@ if ($i==0) {
 
 		$diario_quotafull[$conta_giorno]++;
 
-		if($varPanel==0)
-		{
-			$conta_quotafull_0++;
-			$diario_quotafull_0[$conta_giorno]++;
-		}
+	    // TRACCIA SOSPESI per PANEL// TRACCIA QUOTAFULL per PANEL
+$contaQuotaFullVar = 'conta_quotafull_' . $varPanel;
+$diarioQuotaFullVar = 'diario_quotafull_' . $varPanel;
 
-		if($varPanel==1)
-		{
-			$conta_quotafull_1++;
-			$conta_quotafull_T++;
-			$diario_quotafull_1[$conta_giorno]++;
-		}
+${$contaQuotaFullVar}++;
+$conta_quotafull_T++;
+${$diarioQuotaFullVar}[$conta_giorno]++;
 
-		if($varPanel==2)
-		{
-			$conta_quotafull_2++;
-			$conta_quotafull_T++;
-			$diario_quotafull_2[$conta_giorno]++;
-		}
-
-		if($varPanel==3)
-		{
-			$conta_quotafull_3++;
-			$conta_quotafull_T++;
-			$diario_quotafull_3[$conta_giorno]++;
-		}	
-		if($varPanel==4)
-		{
-			$conta_quotafull_4++;
-			$conta_quotafull_T++;
-			$diario_quotafull_4[$conta_giorno]++;
-		}
-		if($varPanel==5)
-		{
-			$conta_quotafull_5++;
-			$conta_quotafull_T++;
-			$diario_quotafull_5[$conta_giorno]++;
-		}	
-		if($varPanel==6)
-		{
-			$conta_quotafull_6++;
-			$conta_quotafull_T++;
-			$diario_quotafull_6[$conta_giorno]++;
-		}	
-		
-		if($varPanel==7)
-		{
-			$conta_quotafull_7++;
-			$conta_quotafull_T++;
-			$diario_quotafull_7[$conta_giorno]++;
-		}	
-
-		if($varPanel==8)
-		{
-			$conta_quotafull_8++;
-			$conta_quotafull_T++;
-			$diario_quotafull_8[$conta_giorno]++;
-		}	
-
-		if($varPanel==9)
-		{
-			$conta_quotafull_9++;
-			$conta_quotafull_T++;
-			$diario_quotafull_9[$conta_giorno]++;
-		}	
 	}
 
 	if ($statSur==7)
 	{
 
 		$diario_block[$conta_giorno]++;
-		
-		if($varPanel==0)
-		{
-			$conta_block_0++;
-			$diario_block_0[$conta_giorno]++;
-		}
+		// TRACCIA BLOCCATI per PANEL
+		$contaBlockVar = 'conta_block_' . $varPanel;
+		$diarioBlockVar = 'diario_block_' . $varPanel;
 
-		if($varPanel==1)
-		{
-			$conta_block_1++;
-			$conta_block_T++;
-			$diario_block_1[$conta_giorno]++;
-		}
-
-		if($varPanel==2)
-		{
-			$conta_block_2++;
-			$conta_block_T++;
-			$diario_block_2[$conta_giorno]++;
-		}
-
-		if($varPanel==3)
-		{
-			$conta_block_3++;
-			$conta_block_T++;
-			$diario_block_3[$conta_giorno]++;
-		}	
-		if($varPanel==4)
-		{
-			$conta_block_4++;
-			$conta_block_T++;
-			$diario_block_4[$conta_giorno]++;
-		}
-		if($varPanel==5)
-		{
-			$conta_block_5++;
-			$conta_block_T++;
-			$diario_block_5[$conta_giorno]++;
-		}	
-		if($varPanel==6)
-		{
-			$conta_block_6++;
-			$conta_block_T++;
-			$diario_block_6[$conta_giorno]++;
-		}	
-		
-		if($varPanel==7)
-		{
-			$conta_block_7++;
-			$conta_block_T++;
-			$diario_block_7[$conta_giorno]++;
-		}	
-
-		if($varPanel==8)
-		{
-			$conta_block_8++;
-			$conta_block_T++;
-			$diario_block_8[$conta_giorno]++;
-		}	
-
-		if($varPanel==9)
-		{
-			$conta_block_9++;
-			$conta_block_T++;
-			$diario_block_9[$conta_giorno]++;
-		}	
+		${$contaBlockVar}++;
+		$conta_block_T++;
+		${$diarioBlockVar}[$conta_giorno]++;
 	}
 
 
 
 
 //CONTA STATISTICHE PANEL
-if (($statSur==0)&&($varPanel==0)){
-													$conta_incomplete_panel=$conta_incomplete_panel+1;
-													$diario_incomplete_panel[$conta_giorno]=$diario_incomplete_panel[$conta_giorno]+1;
-													}
-if (($statSur==3)&&($varPanel==0)){
-													$conta_complete_panel=$conta_complete_panel+1;
-													$diario_complete_panel[$conta_giorno]=$diario_complete_panel[$conta_giorno]+1;
-													}
-if (($statSur==4)&&($varPanel==0)){
-													$conta_filtrati_panel=$conta_filtrati_panel+1;
-													$diario_filtrati_panel[$conta_giorno]=$diario_filtrati_panel[$conta_giorno]+1;
-													}
-if (($statSur==5)&&($varPanel==0)){
-													$conta_quotafull_panel=$conta_quotafull_panel+1;
-													$diario_quotafull_panel[$conta_giorno]=$diario_quotafull_panel[$conta_giorno]+1;
-													}
-
-
-													if (($statSur==7)&&($varPanel==0))    {
-														$conta_bloccate_panel=$conta_bloccate_panel+1;
-			
-														}
+if (($statSur==0)&&($varPanel==0)){ $conta_incomplete_panel=$conta_incomplete_panel+1; $diario_incomplete_panel[$conta_giorno]=$diario_incomplete_panel[$conta_giorno]+1; }
+if (($statSur==3)&&($varPanel==0)){ $conta_complete_panel=$conta_complete_panel+1; $diario_complete_panel[$conta_giorno]=$diario_complete_panel[$conta_giorno]+1; }
+if (($statSur==4)&&($varPanel==0)){ $conta_filtrati_panel=$conta_filtrati_panel+1; $diario_filtrati_panel[$conta_giorno]=$diario_filtrati_panel[$conta_giorno]+1; }
+if (($statSur==5)&&($varPanel==0)){ $conta_quotafull_panel=$conta_quotafull_panel+1; $diario_quotafull_panel[$conta_giorno]=$diario_quotafull_panel[$conta_giorno]+1; }
+if (($statSur==7)&&($varPanel==0))    { $conta_bloccate_panel=$conta_bloccate_panel+1; }
 
 if ($varPanel>0)
-	{
-		$panel_esterno=$panel_esterno+1;
+{
+	$panel_esterno=$panel_esterno+1;
 
 		switch ($varPanel) 
 		{
-		
 			case 1: $panel_esterno1++; break;
 			case 2: $panel_esterno2++; break;
 			case 3: $panel_esterno3++; break;
@@ -1366,14 +790,27 @@ foreach ($panels as $value)
 }
 
 
+//ABILITATI PANEL INTERNO
+$query_user_abilitati = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid NOT LIKE 'IDEX%'))";
+$tot_user_abilitati = mysqli_query($admin,$query_user_abilitati) ;
+$tot_use_abilitati = mysqli_fetch_assoc($tot_user_abilitati);
 
-$contatti_disponibili=$tot_use_disponibili['total'];
+//ABILITATI PANEL CINT
+$query_user_abilitati_Cint = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid LIKE 'IDEX%'))";
+$tot_user_abilitati_Cint = mysqli_query($admin,$query_user_abilitati_Cint) ;
+$tot_use_abilitati_Cint = mysqli_fetch_assoc($tot_user_abilitati_Cint);
 
-$media_redemption_panel=($medRed+$medRed2)/2;
-$media_redemption_panel=number_format($media_redemption_panel, 2);
+//ABILITATI TOTALE
+$query_user_abilitati_totali = "SELECT count(*) as total FROM t_respint where (sid='".$sid."')";
+$tot_user_abilitati_totali = mysqli_query($admin,$query_user_abilitati_totali) ;
+$tot_use_abilitati_totali = mysqli_fetch_assoc($tot_user_abilitati_totali);
 
+$contatti_disponibili = $tot_use_disponibili['total'];
 
-//Calcolo redemption field totale
+$media_redemption_panel = ($medRed + $medRed2) / 2;
+$media_redemption_panel = number_format($media_redemption_panel, 2);
+
+// Calcolo redemption field totale
 // Verifica che il denominatore non sia zero
 if (($conta_complete + $conta_filtrati) != 0) {
     $redemption_field = ($conta_complete / ($conta_complete + $conta_filtrati)) * 100;
@@ -1381,39 +818,35 @@ if (($conta_complete + $conta_filtrati) != 0) {
     // Gestione del caso di divisione per zero
     $redemption_field = 0; // O qualsiasi altro valore di default appropriato
 }
-$redemption_field=number_format($redemption_field, 2);
+$redemption_field = number_format($redemption_field, 2);
 ?>
 
-
 <?php
-//Calcolo redemption field Esterni
-
+// Calcolo redemption field Esterni
 if (($conta_complete_T + $conta_filtrati_T) != 0) {
     $redemption_field_Ext = ($conta_complete_T / ($conta_complete_T + $conta_filtrati_T)) * 100;
 } else {
     // Gestione del caso di divisione per zero
     $redemption_field_Ext = 0; // O qualsiasi altro valore di default appropriato
 }
-$redemption_field_Ext=number_format($redemption_field_Ext, 2);
+$redemption_field_Ext = number_format($redemption_field_Ext, 2);
 
-foreach ($panels as $value) 
-{
-	
-// Verifica che il denominatore non sia zero
-$complete_var = 'conta_complete_' . $value;
-$filtrati_var = 'conta_filtrati_' . $value;
-$redemption_var = 'redemption_field_Ext' . $value;
+foreach ($panels as $value) {
+    // Verifica che il denominatore non sia zero
+    $complete_var = 'conta_complete_' . $value;
+    $filtrati_var = 'conta_filtrati_' . $value;
+    $redemption_var = 'redemption_field_Ext' . $value;
 
-if ((${$complete_var} + ${$filtrati_var}) != 0) {
-    ${$redemption_var} = (${$complete_var} / (${$complete_var} + ${$filtrati_var})) * 100;
-} else {
-    // Gestione del caso di divisione per zero
-    ${$redemption_var} = 0; // O qualsiasi altro valore di default appropriato
-}
-${'redemption_field_Ext'.$value}=number_format(${'redemption_field_Ext'.$value}, 2);
+    if ((${$complete_var} + ${$filtrati_var}) != 0) {
+        ${$redemption_var} = (${$complete_var} / (${$complete_var} + ${$filtrati_var})) * 100;
+    } else {
+        // Gestione del caso di divisione per zero
+        ${$redemption_var} = 0; // O qualsiasi altro valore di default appropriato
+    }
+    ${'redemption_field_Ext' . $value} = number_format(${'redemption_field_Ext' . $value}, 2);
 }
 
-//Calcolo redemption field panel
+// Calcolo redemption field panel
 // Verifica che il denominatore non sia zero
 if (($conta_complete_panel + $conta_filtrati_panel) != 0) {
     $redemption_field_panel = ($conta_complete_panel / ($conta_complete_panel + $conta_filtrati_panel)) * 100;
@@ -1421,49 +854,16 @@ if (($conta_complete_panel + $conta_filtrati_panel) != 0) {
     // Gestione del caso di divisione per zero
     $redemption_field_panel = 0; // O qualsiasi altro valore di default appropriato
 }
-$redemption_field_panel=number_format($redemption_field_panel, 2);
-
-
-//ABILITATI PANEL INTERNO
-
-$query_user_abilitati = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid NOT LIKE 'IDEX%'))";
-$tot_user_abilitati = mysqli_query($admin,$query_user_abilitati) ;
-$tot_use_abilitati = mysqli_fetch_assoc($tot_user_abilitati);
-
-
-//ABILITATI PANEL CINT
-
-$query_user_abilitati_Cint = "SELECT count(*) as total FROM t_respint where ((sid='".$sid."') AND (uid LIKE 'IDEX%'))";
-$tot_user_abilitati_Cint = mysqli_query($admin,$query_user_abilitati_Cint) ;
-$tot_use_abilitati_Cint = mysqli_fetch_assoc($tot_user_abilitati_Cint);
-
-
-//ABILITATI TOTALE
-
-$query_user_abilitati_totali = "SELECT count(*) as total FROM t_respint where (sid='".$sid."')";
-$tot_user_abilitati_totali = mysqli_query($admin,$query_user_abilitati_totali) ;
-$tot_use_abilitati_totali = mysqli_fetch_assoc($tot_user_abilitati_totali);
+$redemption_field_panel = number_format($redemption_field_panel, 2);
 
 
 
 
-
-
-
-
-//REDEMPTION PANEL
-// echo "<p>Abilitati".$lu['abilitati']."</p>";
-// echo "<p>oRE".$ore_differenza."</p>";
 if ($lu['abilitati'] != 0)
 {
 
 if (($ore_differenza>=3)&&($ore_differenza<12)&&($aggiornamento==true))
 {
-// echo "<p>Contatti Panel".$contatti_panel."</p>";
-// echo "<p>Abilitati".$lu['abilitati']."</p>";
-// echo "<p>tot abilitati".$tot_use_abilitati['total']."</p>";
-
-
 $redemption_panel=($contatti_panel/($lu['abilitati']+((($tot_use_abilitati['total']-$lu['abilitati'])*10)/100)))*100;
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$salva_abilitati;
@@ -1496,6 +896,8 @@ $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$salva_abilitati;
 }
 }
+
+
 else
 {
 // Verifica che il denominatore non sia zero
@@ -1508,104 +910,16 @@ if ($tot_use_abilitati['total'] != 0) {
 $redemption_panel=number_format($redemption_panel,2);
 $totale_user_abilitati=$tot_use_abilitati['total'];
 }
+
+
 //Calcolo previsione
 $previsione=($contatti_disponibili/100)*$media_redemption_panel;
 $previsione=($previsione/100)*$redemption_field;
 $previsione=round($previsione);
 ?>
-<script type="text/javascript">
-<!--
-function CompilaQuery()
-{
-var data = new Date();
-var anno_corrente = data.getFullYear();
-
-var eta;
-var op;
-if (document.getElementById('campo').value != 'birth_date')
-{document.getElementById('query').value+=document.getElementById('logica').value+' '+document.getElementById('campo').value+document.getElementById('operatore').value+document.getElementById('valore').value+' ';}
-else
-{
-if (document.getElementById('operatore').value=='>'){op='<';}
-if (document.getElementById('operatore').value=='<'){op='>';}
-if (document.getElementById('operatore').value=='>='){op='<=';}
-if (document.getElementById('operatore').value=='<='){op='>=';}
-if (document.getElementById('operatore').value=='='){op='=';}
-eta=anno_corrente-document.getElementById('valore').value;
-document.getElementById('query').value+=document.getElementById('logica').value+' '+document.getElementById('campo').value+op+eta+' ';
-}
-}
-
-var regiondb = new Object()
-regiondb["gender"] = [{value:"1", text:"Maschio"},
-                      {value:"2", text:"Femmina"},
-                     ];
-					  
-					  
-regiondb["birth_date"] = [ {value:"1", text:"1"}, {value:"2", text:"2"}, {value:"3", text:"3"}, {value:"4", text:"4"}, {value:"5", text:"5"}, {value:"6", text:"6"}, {value:"7", text:"7"}, {value:"8", text:"8"}, {value:"9", text:"9"}, {value:"10", text:"10"}, {value:"11", text:"11"}, {value:"12", text:"12"}, {value:"13", text:"13"}, {value:"14", text:"14"}, {value:"15", text:"15"}, {value:"16", text:"16"}, {value:"17", text:"17"}, {value:"18", text:"18"}, {value:"19", text:"19"}, {value:"20", text:"20"}, {value:"21", text:"21"}, {value:"22", text:"22"}, {value:"23", text:"23"}, {value:"24", text:"24"}, {value:"25", text:"25"}, {value:"26", text:"26"}, {value:"27", text:"27"}, {value:"28", text:"28"}, {value:"29", text:"29"}, {value:"30", text:"30"}, {value:"31", text:"31"}, {value:"32", text:"32"}, {value:"33", text:"33"}, {value:"34", text:"34"}, {value:"35", text:"35"}, {value:"36", text:"36"}, {value:"37", text:"37"}, {value:"38", text:"38"}, {value:"39", text:"39"}, {value:"40", text:"40"}, {value:"41", text:"41"}, {value:"42", text:"42"}, {value:"43", text:"43"}, {value:"44", text:"44"}, {value:"45", text:"45"}, {value:"46", text:"46"}, {value:"47", text:"47"}, {value:"48", text:"48"}, {value:"49", text:"49"}, {value:"50", text:"50"}, {value:"51", text:"51"}, {value:"52", text:"52"}, {value:"53", text:"53"}, {value:"54", text:"54"}, {value:"55", text:"55"}, {value:"56", text:"56"}, {value:"57", text:"57"}, {value:"58", text:"58"}, {value:"59", text:"59"}, {value:"60", text:"60"}, {value:"61", text:"61"}, {value:"62", text:"62"}, {value:"63", text:"63"}, {value:"64", text:"64"}, {value:"65", text:"65"}, {value:"66", text:"66"}, {value:"67", text:"67"}, {value:"68", text:"68"}, {value:"69", text:"69"}, {value:"70", text:"70"}, {value:"71", text:"71"}, {value:"72", text:"72"}, {value:"73", text:"73"}, {value:"74", text:"74"}, {value:"75", text:"75"}, {value:"76", text:"76"}, {value:"77", text:"77"}, {value:"78", text:"78"}, {value:"79", text:"79"}, {value:"80", text:"80"}, {value:"81", text:"81"}, {value:"82", text:"82"}, {value:"83", text:"83"}, {value:"84", text:"84"}, {value:"85", text:"85"}, {value:"86", text:"86"}, {value:"87", text:"87"}, {value:"88", text:"88"}, {value:"89", text:"89"}, {value:"90", text:"90"}, {value:"91", text:"91"}, {value:"92", text:"92"}, {value:"93", text:"93"}, {value:"94", text:"94"}, {value:"95", text:"95"}, {value:"96", text:"96"}, {value:"97", text:"97"}, {value:"98", text:"98"}, {value:"99", text:"99"} 					];
-					
-					
 
 
 
-function setCities(chooser) {
-    var newElem;
-    var where = (navigator.appName == "Microsoft Internet Explorer") ? -1 : null;
-    var cityChooser = chooser.form.elements["argomento"];
-    while (cityChooser.options.length) {
-        cityChooser.remove(0);
-    }
-    var choice = chooser.options[chooser.selectedIndex].value;
-    var db = regiondb[choice];
-    newElem = document.createElement("option");
-    newElem.text = "Seleziona un argomento:";
-    newElem.value = "";
-    cityChooser.add(newElem, where);
-    if (choice != "") {
-        for (var i = 0; i < db.length; i++) {
-            newElem = document.createElement("option");
-            newElem.text = db[i].text;
-            newElem.value = db[i].value;
-            cityChooser.add(newElem, where);
-        }
-    }
-}
-
-
-
-
-</script>
-
-
-<script type='text/javascript'>
-/*
-$(document).ready(function() {
-	var alta=0;
-	var altRes=$('div.statRic').height();
-	var altTrac=$('div.traccia').height();
-	alta=altRes+altTrac;
-	$(".containTab").css("min-height",alta);
-	$(".survey").css("min-height",alta);
-});
-*/
-</script>
-
-
-<script type='text/javascript'>
-//Altezza menu a sinistra
-        $(document).ready(function() {
-		var altezza=0;
-        var altezzaDes=$('.contieniDestra').height();
-        var altezzaSta=$('.inRic').height();
-		altezza=altezzaSta+170;
-		$('.statusRic').css('height',altezza);
-		$('.menuSinistra').css('height',altezzaDes+170);
-		$('#footer').hide();
-	
-		
-		
-        });
-</script>
 
 <?php
 $newDate = date("d-M", strtotime($lu['end_field']));
@@ -1632,36 +946,32 @@ if ($panel_in==1 || $panel_in==2) { $contaPan++;}
 $contaIns=0;
 
 
-
-
 //////////  progresso field//////////////
 $obiet=round($lu['goal']); 
 $daFare=$lu['goal']-$conta_complete;
 
 //totale
-$progressTot=$conta_complete/$obiet*100;
+$progressTot = ($obiet != 0) ? ($conta_complete / $obiet * 100) : 0;
 
 if ($progressTot>=100) {$progressTot=100;}
 
 $progressTot=round($progressTot, 1);
 
 //millebytes
-$progress=$conta_complete_panel/$obiet*100;
+$progress = ($obiet != 0) ? ($conta_complete_panel / $obiet * 100) : 0;
 
 if ($progress>=100) {$progress=100;}
 
 $progress=round($progress, 1);
 
 //esterne
-$progressExt=$conta_complete_T/$obiet*100;
+$progressExt = ($obiet != 0) ? ($conta_complete_T / $obiet * 100) : 0;
 
 if ($progressExt>=100) {$progressExt=100;}
 
 $progressExt=round($progressExt, 1);
 
 ////////// allert stima  //////////////
-
-
 if ($previsione >= $daFare) {$alsuccess=1; }
 else {$alsuccess=0;}
 
@@ -1669,6 +979,7 @@ else {$alsuccess=0;}
 $loiultima=substr($loi,0,4);
 if ($loiultima==""){$loiultima=0;}
 
+//echo "ciaooo".$loiultima;
 $query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_T."',durata='".$loiultima."' where sur_id='".$sid."'";
 $aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
 
@@ -1678,13 +989,7 @@ else  { $redemption_panel=0; }
 
 
 
-?>
-
-
-<?php
-
 //funzioni
-
 function giornoSettimana($mese, $giorno,$anno) {
 	$jd=gregoriantojd($mese,$giorno,$anno);
 
@@ -1731,6 +1036,79 @@ function giornoSettimana($mese, $giorno,$anno) {
 	if ($redx>=3 && $redx<=4) {$colonna2=8;}
 	if ($redx<3) {$colonna2=9;} 
 	$matrice2=($riga2*10) +$colonna2;
-
-
 ?>
+
+
+
+
+<script type="text/javascript">
+function CompilaQuery()
+{
+var data = new Date();
+var anno_corrente = data.getFullYear();
+
+var eta;
+var op;
+if (document.getElementById('campo').value != 'birth_date')
+{document.getElementById('query').value+=document.getElementById('logica').value+' '+document.getElementById('campo').value+document.getElementById('operatore').value+document.getElementById('valore').value+' ';}
+else
+{
+if (document.getElementById('operatore').value=='>'){op='<';}
+if (document.getElementById('operatore').value=='<'){op='>';}
+if (document.getElementById('operatore').value=='>='){op='<=';}
+if (document.getElementById('operatore').value=='<='){op='>=';}
+if (document.getElementById('operatore').value=='='){op='=';}
+eta=anno_corrente-document.getElementById('valore').value;
+document.getElementById('query').value+=document.getElementById('logica').value+' '+document.getElementById('campo').value+op+eta+' ';
+}
+}
+
+var regiondb = new Object()
+regiondb["gender"] = [{value:"1", text:"Maschio"},
+                      {value:"2", text:"Femmina"},
+                     ];
+					  
+					  
+regiondb["birth_date"] = [ {value:"1", text:"1"}, {value:"2", text:"2"}, {value:"3", text:"3"}, {value:"4", text:"4"}, {value:"5", text:"5"}, {value:"6", text:"6"}, {value:"7", text:"7"}, {value:"8", text:"8"}, {value:"9", text:"9"}, {value:"10", text:"10"}, {value:"11", text:"11"}, {value:"12", text:"12"}, {value:"13", text:"13"}, {value:"14", text:"14"}, {value:"15", text:"15"}, {value:"16", text:"16"}, {value:"17", text:"17"}, {value:"18", text:"18"}, {value:"19", text:"19"}, {value:"20", text:"20"}, {value:"21", text:"21"}, {value:"22", text:"22"}, {value:"23", text:"23"}, {value:"24", text:"24"}, {value:"25", text:"25"}, {value:"26", text:"26"}, {value:"27", text:"27"}, {value:"28", text:"28"}, {value:"29", text:"29"}, {value:"30", text:"30"}, {value:"31", text:"31"}, {value:"32", text:"32"}, {value:"33", text:"33"}, {value:"34", text:"34"}, {value:"35", text:"35"}, {value:"36", text:"36"}, {value:"37", text:"37"}, {value:"38", text:"38"}, {value:"39", text:"39"}, {value:"40", text:"40"}, {value:"41", text:"41"}, {value:"42", text:"42"}, {value:"43", text:"43"}, {value:"44", text:"44"}, {value:"45", text:"45"}, {value:"46", text:"46"}, {value:"47", text:"47"}, {value:"48", text:"48"}, {value:"49", text:"49"}, {value:"50", text:"50"}, {value:"51", text:"51"}, {value:"52", text:"52"}, {value:"53", text:"53"}, {value:"54", text:"54"}, {value:"55", text:"55"}, {value:"56", text:"56"}, {value:"57", text:"57"}, {value:"58", text:"58"}, {value:"59", text:"59"}, {value:"60", text:"60"}, {value:"61", text:"61"}, {value:"62", text:"62"}, {value:"63", text:"63"}, {value:"64", text:"64"}, {value:"65", text:"65"}, {value:"66", text:"66"}, {value:"67", text:"67"}, {value:"68", text:"68"}, {value:"69", text:"69"}, {value:"70", text:"70"}, {value:"71", text:"71"}, {value:"72", text:"72"}, {value:"73", text:"73"}, {value:"74", text:"74"}, {value:"75", text:"75"}, {value:"76", text:"76"}, {value:"77", text:"77"}, {value:"78", text:"78"}, {value:"79", text:"79"}, {value:"80", text:"80"}, {value:"81", text:"81"}, {value:"82", text:"82"}, {value:"83", text:"83"}, {value:"84", text:"84"}, {value:"85", text:"85"}, {value:"86", text:"86"}, {value:"87", text:"87"}, {value:"88", text:"88"}, {value:"89", text:"89"}, {value:"90", text:"90"}, {value:"91", text:"91"}, {value:"92", text:"92"}, {value:"93", text:"93"}, {value:"94", text:"94"}, {value:"95", text:"95"}, {value:"96", text:"96"}, {value:"97", text:"97"}, {value:"98", text:"98"}, {value:"99", text:"99"} 					];
+					
+					
+
+function setCities(chooser) {
+    var newElem;
+    var where = (navigator.appName == "Microsoft Internet Explorer") ? -1 : null;
+    var cityChooser = chooser.form.elements["argomento"];
+    while (cityChooser.options.length) {
+        cityChooser.remove(0);
+    }
+    var choice = chooser.options[chooser.selectedIndex].value;
+    var db = regiondb[choice];
+    newElem = document.createElement("option");
+    newElem.text = "Seleziona un argomento:";
+    newElem.value = "";
+    cityChooser.add(newElem, where);
+    if (choice != "") {
+        for (var i = 0; i < db.length; i++) {
+            newElem = document.createElement("option");
+            newElem.text = db[i].text;
+            newElem.value = db[i].value;
+            cityChooser.add(newElem, where);
+        }
+    }
+}
+
+</script>
+
+
+<script type='text/javascript'>
+//Altezza menu a sinistra
+        $(document).ready(function() {
+		var altezza=0;
+        var altezzaDes=$('.contieniDestra').height();
+        var altezzaSta=$('.inRic').height();
+		altezza=altezzaSta+170;
+		$('.statusRic').css('height',altezza);
+		$('.menuSinistra').css('height',altezzaDes+170);
+		$('#footer').hide();
+
+        });
+</script>

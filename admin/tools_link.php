@@ -60,14 +60,6 @@ $aggCont=0;
 $fl = glob('/var/imr/fields/'.$prj.'/'.$sid.'/results/*.sre');
 $contatti=count($fl);
 
-//connetti ftp
-// $ftp_server="46.37.21.33";
-// $ftp_user_name="primis";
-// $ftp_user_pass="Imr_PrimiFields13";
-// // set up basic connection
-// $conn_id = ftp_connect($ftp_server);
-// // login with username and password
-// $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
 
 	if ($nome<>"")
 	{
