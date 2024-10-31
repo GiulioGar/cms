@@ -180,7 +180,6 @@ $target_age_1=$lu['age1_target'];
 $target_age_2=$lu['age2_target'];
 $panel_in=$lu['panel'];
 
-
 ///MODIFICA PRIMA DI PUBBLICARE */
 if ($_SERVER['HTTP_HOST'] === 'localhost') {
     $linkDir = "../var";  // Percorso per XAMPP
@@ -517,7 +516,6 @@ ${$contaSosVar}++;
 	
 }
 	
-/*RIPRISTINA PER PRODUZIONE*/
 
 $sdl = file_get_contents($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');
 $sdlb = file($linkDir.'/imr/fields/'.$prj.'/'.$sid.'/'.$sid.'.sdl');	
@@ -680,7 +678,7 @@ if ($varPanel>0)
 
 		//CONTA STATISTICHE PANEL ESTERNO
 		if (($statSur==0)&&($varPanel!=0)){ $diario_incomplete_ssi[$conta_giorno]++; }
-		if (($statSur==3)&&($varPanel!=0)){ $diario_complete_ssi[$conta_giorno]++; }
+		if (($statSur==3)&&($varPanel!=0)){ $conta_complete_esterne=$conta_complete_esterne+1; $diario_complete_ssi[$conta_giorno]++; }
 		if (($statSur==4)&&($varPanel!=0)){ $diario_filtrati_ssi[$conta_giorno]++;}
 		if (($statSur==5)&&($varPanel!=0)){$diario_quotafull_ssi[$chiave]++;}
 	}
@@ -980,7 +978,7 @@ $loiultima=substr($loi,0,4);
 if ($loiultima==""){$loiultima=0;}
 
 //echo "ciaooo".$loiultima;
-$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_T."',durata='".$loiultima."' where sur_id='".$sid."'";
+$query_compInt = "UPDATE t_panel_control set complete_int='".$conta_complete_panel."',complete_ext='".$conta_complete_esterne."',durata='".$loiultima."' where sur_id='".$sid."'";
 $aggiorna_compInt = mysqli_query($admin,$query_compInt) ;
 
 

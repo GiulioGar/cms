@@ -1,10 +1,5 @@
 <?php
-	if (!isset($_SESSION)) {
-		session_start();
-	}
 
-	
-	
 
 $query_cerca1 = "SELECT COUNT('user_id') as tot1 FROM t_user_history where event_type='withdraw' and pagato=0";
 $cerca1 = mysqli_query($admin,$query_cerca1);
@@ -24,11 +19,6 @@ $crm_cerca1 = mysqli_fetch_assoc($cerca1);
     <span class="navbar-toggler-icon"></span>
   </button>
 
-<?php
-
-if ($_SESSION['MM_Username']!=""){
-
-?>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -115,8 +105,7 @@ if ($_SESSION['MM_Username']!=""){
 					$cer=$crm_cerca1['tot1']-$crm_cerca['tot'];
 					$sum=$total_crm+$sosp_crm+$cer;
 
-					if ( $sum > 0 && $_SESSION['MM_Username']=="g_garofalo") 
-					{
+	
 ?>
 
 
@@ -129,16 +118,14 @@ if ($_SESSION['MM_Username']!=""){
 
 					<?php } 
 
-					} 
+					
 
 					else {
-            if ($_SESSION['MM_Username']=="g_garofalo") 
-            {
+   
             ?><div><span class="badge badge-pill badge-light">Light</span> Nessuna nuova richiesta da leggere </span></div>
             
-            <?php }} ?>
+            <?php } ?>
           </div>
           
-        <?php } ?>
   </div>
 </nav>

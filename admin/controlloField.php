@@ -76,7 +76,7 @@ else { $cpiStima="N.D"; }
       <button type="button" class="menu-btn">
         <i class="fas fa-check-circle"></i> Qualità
       </button>
-      <button type="button" class="menu-btn">
+      <button onclick="window.open('settingField.php?prj=<?php echo $prj; ?>&sid=<?php echo $sid; ?>');" type="button" class="menu-btn">
         <i class="fas fa-cog"></i> Impostazioni
       </button>
     </div>

@@ -4,14 +4,6 @@
 
 
 <?php
-
-
-// Disabilita la visualizzazione degli errori non fatali
-ini_set('display_errors', 0);
-
-// Abilita la visualizzazione degli errori durante l'avvio (utile per il debug)
-ini_set('display_startup_errors', 1);
-
 // Imposta il livello di error_reporting per visualizzare solo errori fatali
 error_reporting(E_ERROR);
 
