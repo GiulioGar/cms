@@ -433,7 +433,7 @@ canvas{
     /* Effetto hover per i pulsanti di comando */
     .sc_list-group-item-action:hover {
       background-color: #f8f9fa;
-      color: #007bff;
+      color: #9DCE6B;
       cursor: pointer;
       
   }
@@ -448,7 +448,7 @@ canvas{
   }
 
   .sc_bg-primary {
-      background-color: #007bff !important;
+      background-color: #9DCE6B !important;
   }
 
   .sc_bg-secondary {
@@ -478,3 +478,104 @@ canvas{
 #page-content-wrapper {
   flex: 1; /* Espande il contenuto per riempire lo spazio disponibile */
 }
+
+
+/*    SEZIONE  DOMANDE E TARGET  */
+
+/* Sezione Domande e Risposte */
+.custom-qa-section {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f7f7fb;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.custom-qa-questions,
+.custom-qa-answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Imposta altezza per l'allineamento */
+.custom-qa-questions,
+.custom-qa-answers {
+  flex: 1;
+  height: 100%;
+}
+
+.custom-qa-questions {
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f5 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.question-header {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.question-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  background-color: #fff;
+  border-radius: 8px;
+  transition: transform 0.3s, background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.question-item:hover,
+.question-item.active {
+  background-color: #9DCE6B;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.question-icon {
+  margin-right: 10px;
+  color: #9DCE6B;
+}
+
+.question-item.active .question-icon {
+  color: #fff;
+}
+
+/* Stile delle risposte */
+.custom-qa-answers {
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.answer-content {
+  color: #444;
+  font-family: 'Roboto', sans-serif;
+}
+
+.answer-content h5 {
+  font-weight: 700;
+  color: #9DCE6B;
+}
+
+.answer-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+}
+

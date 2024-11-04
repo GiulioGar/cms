@@ -180,9 +180,10 @@ include_once 'func_settingField.php';
                     <button id="riabilita-bloccate" class="list-group-item sc_list-group-item-action">
                         Riabilita Bloccate
                     </button>
-                    <button id="riabilita-sospese" class="list-group-item sc_list-group-item-action">
-                        Chiudi field
-                    </button>
+                    <button id="cambiastatus" class="list-group-item sc_list-group-item-action">
+    Apri/Chiudi field
+</button>
+
                 </div>
             </div>
         </div>
@@ -196,7 +197,7 @@ include_once 'func_settingField.php';
                 <div id="result-area" class="card-body">
 
     <!-- Progress Bar e Messaggi di stato -->
-    <div id="progress-container" style="width: 100%; background-color: #ddd;">
+    <div id="progress-container" style="width: 100%; background-color: #ddd; display:none">
         <div id="progress-bar" style="width: 0%; height: 20px; background-color: #4caf50;"></div>
     </div>
     <p id="status-message"></p>
@@ -230,6 +231,7 @@ include_once 'func_settingField.php';
         console.log("Bottone cliccato");
         console.log("SID:", sid);
         console.log("PRJ:", prj);
+        $("#progress-container").show();
 
         $.ajax({
             url: 'func_settingField.php', // percorso al file delle funzioni
@@ -263,6 +265,31 @@ include_once 'func_settingField.php';
             }
         });
     });
+
+
+    $('#cambiastatus').on('click', function() {
+        $.ajax({
+            url: 'func_settingField.php',
+            type: 'POST',
+            data: { action: 'toggleFieldStatus', sid: "<?php echo $sid; ?>" },
+            success: function(response) {
+                try {
+                    const data = JSON.parse(response);
+                    if (data.newStatus !== undefined) {
+                        const newStateText = (data.newStatus === 0) ? "Aperta" : "Chiusa";
+                        $('#status-message').text("Stato della ricerca: " + newStateText);
+                        alert("Lo stato della ricerca è ora: " + newStateText);
+                    }
+                } catch (error) {
+                    console.error("Errore nel parsing della risposta JSON:", error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Errore AJAX:", status, error);
+            }
+        });
+    });
+
 </script>
 
 

@@ -277,12 +277,16 @@ else
 	if ($stato_ricerca != 1)
 	{
 
-	$aggiorna_abilitati=$tot_use_abilitati['total'];
-	$data=date("Y-m-d H:i:s");
-	
-	$query_aggiorna_abilitati_aggiornati = "UPDATE t_panel_control set abilitati_aggiornati='".$aggiorna_abilitati."' where sur_id='".$sid."'";
-	$aggiorna_abilitati_query = mysqli_query($admin,$query_aggiorna_abilitati_aggiornati) ;
-	$aggiorna_abilitati_query_esegui = mysqli_fetch_assoc($aggiorna_abilitati_query);
+		$aggiorna_abilitati = $tot_use_abilitati['total'];
+		$data = date("Y-m-d H:i:s");
+		
+		$query_aggiorna_abilitati_aggiornati = "UPDATE t_panel_control SET abilitati_aggiornati='$aggiorna_abilitati' WHERE sur_id='$sid'";
+		$aggiorna_abilitati_query = mysqli_query($admin, $query_aggiorna_abilitati_aggiornati);
+		
+		if (!$aggiorna_abilitati_query) {
+			die("Errore nell'aggiornamento: " . mysqli_error($admin));
+		}
+		
 	}
 }
 //echo "<br>Numero abilitati modificato";

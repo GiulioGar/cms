@@ -70,7 +70,7 @@ else { $cpiStima="N.D"; }
   <!-- Menu selezione allineato a destra -->
   <div class="col-auto">
     <div class="menu-selection d-flex justify-content-end">
-      <button type="button" class="menu-btn active">
+      <button onclick="window.open('target_field.php?prj=<?php echo $prj; ?>&sid=<?php echo $sid; ?>');" type="button" class="menu-btn active">
         <i class="fas fa-bullseye"></i> Target/Domande
       </button>
       <button type="button" class="menu-btn">

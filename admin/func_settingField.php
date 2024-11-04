@@ -80,6 +80,42 @@ function riabilitaBloccate($sid, $prj, $admin) {
 
 
 
+function toggleFieldStatus($sid, $admin) {
+    // Recupera lo stato corrente della ricerca
+    $query = "SELECT stato FROM t_panel_control WHERE sur_id = ?";
+    $stmt = $admin->prepare($query);
+    $stmt->bind_param("s", $sid);
+    $stmt->execute();
+    $stmt->bind_result($stato);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Determina il nuovo stato
+    $newStatus = ($stato == 0) ? 1 : 0;
+
+    // Aggiorna il campo 'stato' nel database
+    $updateQuery = "UPDATE t_panel_control SET stato = ? WHERE sur_id = ?";
+    $updateStmt = $admin->prepare($updateQuery);
+    $updateStmt->bind_param("is", $newStatus, $sid);
+    $updateStmt->execute();
+    $updateStmt->close();
+
+    // Restituisce il nuovo stato per l'aggiornamento lato client
+    return json_encode(["newStatus" => $newStatus]);
+}
+
+// Gestione della richiesta POST per questa funzione
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'toggleFieldStatus') {
+    if (!isset($_POST['sid'])) {
+        echo json_encode(["error" => "Parametri mancanti"]);
+        exit;
+    }
+
+    $sid = $_POST['sid'];
+    echo toggleFieldStatus($sid, $admin);
+}
+
+
 
 
 
