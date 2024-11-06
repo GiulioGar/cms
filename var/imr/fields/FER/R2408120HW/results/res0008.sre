@@ -1,0 +1,12 @@
+2.0;FER;R2408120HW;8;MXS4LT473P;04/11/2024 10:45:10 CET;04/11/2024 10:45:44 CET;34;4;40;sysSID=R2408120HW;sysPRJ=FER;sysUID=MXS4LT473P;pok=no;mok=no;lang=it;sysIID=8
+choice;4;2;0
+choice;5;6;3
+choice;10;20;19
+choice;20;2;1
+open;30;58
+choice;31;6;4
+choice;40;3;2
+choice;121;4;1
+choice;310;2;0
+choice;320;6;0
+scale;330;5;8;7;-1;-1;-1;-1

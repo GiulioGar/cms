@@ -1,0 +1,115 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=7cb888e8-eddd-442f-8065-0229d9fca0c9"
+                },
+				{
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=2ef5f66d-2549-1437-d343-fbd337dd2dab"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "https://s.cint.com/Survey/Finished?ProjectToken=2ef5f66d-2549-1437-d343-fbd337dd2dab"
+                }	
+			
+						
+			 ]
+    }
+          
+},
+"quota": {
+        "total_interviews": 350,
+
+        "targets": [
+            {
+                "name": "SessoU",
+                "description": "Maschio",
+                "question_id": 10,
+                "option_id": ["0"],
+                "value": 140
+            },
+            {
+                "name": "SessoD",
+                "description": "Femmina",
+                "question_id": 10,
+                "option_id": ["1"],
+                "value": 210
+            },
+            {
+                "name": "Segmento Experts",
+                "description": "SEG_1. Sophisticated Experts",
+                "question_id": 195,
+                "option_id": ["0"],
+                "value": 120
+            },
+            {
+                "name": "Segmento - Urban Techie",
+                "description": "SEG_2. Urban Techie",
+                "question_id": 195,
+                "option_id": ["1"],
+                "value": 120
+            },
+            {
+                "name": "Segmento - Traditional Way",
+                "description": "SEG_3. Traditional Way",
+                "question_id": 195,
+                "option_id": ["2"],
+                "value": 120
+            },
+            {
+                "name": "Segmento - Home Savvy",
+                "description": "SEG_4. Home Savvy",
+                "question_id": 195,
+                "option_id": ["3"],
+                "value": 120
+            },
+            {
+                "name": "Segmento - Unengaged Discoverers",
+                "description": "SEG_5. Unengaged Discoverers",
+                "question_id": 195,
+                "option_id": ["4"],
+                "value": 120
+            },
+            {
+                "name": "Segmento - Pragmatic with Style",
+                "description": "SEG_6. Pragmatic with Style",
+                "question_id": 195,
+                "option_id": ["5"],
+                "value": 120
+            }
+        ]
+    }
+    
+
+}

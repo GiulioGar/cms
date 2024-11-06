@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;186;ZRLXE68KDR;04/11/2024 18:38:06 CET;04/11/2024 18:44:20 CET;374;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=ZRLXE68KDR;device=desktop;lang=it;sysIID=186
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10110;0
+choice;95;5;0
+scale;110;6;5;4;3;4;3;2;4
+scale;120;3;5;0;1;4
+scale;130;2;5;4;3
+scale;140;2;5;4;3
+scale;150;3;5;1;0;4
+scale;160;3;5;4;1;2
+scale;170;2;5;4;3
+scale;180;2;5;4;3
+scale;190;2;5;2;1
+choice;195;6;0
+choice;200;11;01000000010;1
+choice;205;11;1
+choice;209;11;00000001000;7
+choice;210;6;1
+choice;215;7;1
+choice;220;5;0
+open;230;La forma e il formato
+open;240;il colore
+choice;250;5;0
+choice;260;5;0
+choice;270;5;1
+choice;275;5;0
+choice;280;5;0
+scale;300;14;5;0;0;0;1;1;1;1;0;0;0;1;1;0;0
+concept;303
+choice;360;21;10
+choice;370;21;18
+choice;380;21;19
+choice;390;21;19
+concept;399
+choice;400;5;0
+choice;420;5;0
+choice;430;9;1
+choice;440;4;0
+choice;442;4;0100;1
+choice;444;6;101100;0
+app;1999;flag|string|0;seg|string|1. Sophisticated Experts;target|string|1
+concept_eval;9001;30;9;18;20;22;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;13;1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;8;9;22;29;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;8;14;22;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

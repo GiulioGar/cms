@@ -1,0 +1,9 @@
+2.0;HAI;R2501006IT;209;2WVOWNIAI1;04/11/2024 19:54:05 CET;04/11/2024 19:54:29 CET;24;4;70;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=2WVOWNIAI1;device=mobile;lang=it;sysIID=209
+choice;10;2;1
+open;18;50
+choice;20;6;3
+choice;30;20;3
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00010;3
+choice;70;3;2

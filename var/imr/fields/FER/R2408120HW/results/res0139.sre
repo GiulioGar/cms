@@ -1,0 +1,20 @@
+2.0;FER;R2408120HW;139;40HISU9CU1;04/11/2024 14:33:30 CET;<unknown>;0;0;31;sysSID=R2408120HW;sysPRJ=FER;sysUID=40HISU9CU1;pok=no;mok=no;lang=it;sysIID=139
+choice;4;2;0
+choice;5;6;3
+choice;10;20;11
+choice;20;2;1
+open;30;47
+choice;31;6;3
+choice;40;3;1
+choice;41;13;1001010100100;3
+scale;42;4;5;1;1;0;0
+choice;43;4;0
+open;70;Teschi
+choice;80;11;11000000000;0;comp0:Biscotti con faccine strai;comp1:Torte decorare a tema
+open;90;Non ricordo
+choice;100;11;10000000000;0;comp0:Fantasni
+scale;110;19;3;1;1;0;1;1;1;2;2;1;2;1;0;1;1;2;2;1;0;-1
+choice;121;4;0
+choice;310;2;0
+choice;320;6;0
+scale;330;5;8;4;-1;-1;-1;-1

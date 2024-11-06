@@ -1,0 +1,9 @@
+2.0;HAI;R2501006IT;157;8SX5MN17DN;04/11/2024 17:06:42 CET;04/11/2024 17:08:37 CET;115;4;70;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=8SX5MN17DN;device=mobile;lang=it;sysIID=157
+choice;10;2;1
+open;18;21
+choice;20;6;1
+choice;30;20;17
+choice;35;4;2
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;2

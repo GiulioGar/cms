@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;299;CR547BTIMX;05/11/2024 10:54:18 CET;05/11/2024 10:57:55 CET;217;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=CR547BTIMX;device=desktop;lang=it;sysIID=299
+choice;10;2;1
+open;18;37
+choice;20;6;2
+choice;30;20;8
+choice;35;4;0
+choice;51;7;0000001;6
+choice;61;5;00100;2
+choice;70;3;0
+choice;90;5;10100;0
+choice;95;5;0
+scale;110;6;5;3;2;3;1;1;2
+scale;120;3;5;0;0;2
+scale;130;2;5;3;3
+scale;140;2;5;4;3
+scale;150;3;5;0;0;2
+scale;160;3;5;3;0;3
+scale;170;2;5;3;3
+scale;180;2;5;3;3
+scale;190;2;5;3;3
+choice;195;6;0
+choice;200;11;00100000000;2
+choice;205;11;2
+choice;209;11;00000000001;10
+choice;210;6;1
+choice;215;7;3
+choice;220;5;1
+open;230;che si regola da sola sul pavimento da pulire e la durata della batteria
+open;240;bisogna vedere il costo
+choice;250;5;1
+choice;260;5;1
+choice;270;5;2
+choice;275;5;1
+choice;280;5;2
+scale;300;14;5;1;0;1;1;1;1;0;1;1;0;1;0;1;1
+concept;303
+choice;360;21;10
+choice;370;21;14
+choice;380;21;20
+choice;390;21;20
+concept;399
+choice;400;5;1
+choice;420;5;1
+choice;430;9;1
+choice;440;4;3
+choice;442;4;0100;1
+choice;444;6;001000;2
+app;1999;flag|string|0;seg|string|1. Sophisticated Experts;target|string|1
+concept_eval;9001;30;24;14;15;10;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;24;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;10;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

@@ -1,0 +1,26 @@
+2.0;HAI;R2501006IT;227;0LVWWXGL01;04/11/2024 21:51:12 CET;<unknown>;0;0;1999;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=0LVWWXGL01;device=mobile;lang=it;sysIID=227
+choice;10;2;1
+open;18;37
+choice;20;6;2
+choice;30;20;1
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;10000;0
+choice;70;3;0
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;0;3;4;4;4;3
+scale;120;3;5;0;3;4
+scale;130;2;5;0;3
+scale;140;2;5;0;3
+scale;150;3;5;0;3;4
+scale;160;3;5;0;3;4
+scale;170;2;5;0;3
+scale;180;2;5;0;3
+scale;190;2;5;0;3
+choice;200;11;00010000000;3
+choice;205;11;3
+choice;209;11;00100000000;2
+choice;210;6;0
+choice;215;7;2
+app;1999

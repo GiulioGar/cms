@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;208;3G4XBALE9N;04/11/2024 19:51:22 CET;04/11/2024 20:03:10 CET;708;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=3G4XBALE9N;device=mobile;lang=it;sysIID=208
+choice;10;2;1
+open;18;43
+choice;20;6;2
+choice;30;20;3
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;10100;2
+choice;70;3;0
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;3;3;3;0;0;3
+scale;120;3;5;0;0;3
+scale;130;2;5;3;3
+scale;140;2;5;0;3
+scale;150;3;5;3;3;3
+scale;160;3;5;3;3;3
+scale;170;2;5;3;3
+scale;180;2;5;3;0
+scale;190;2;5;0;3
+choice;195;6;1
+choice;200;11;00001000000;4
+choice;205;11;4
+choice;209;11;10000000000;0
+choice;210;6;3
+choice;215;7;0
+choice;220;5;1
+open;230;La capacità di aspirare vari tipi di sporco
+open;240;Non c'è niente che mi piace meno
+choice;250;5;1
+choice;260;5;1
+choice;270;5;3
+choice;275;5;1
+choice;280;5;1
+scale;300;14;5;0;1;1;1;0;0;0;1;0;1;1;0;1;1
+concept;303
+choice;360;21;18
+choice;370;21;5
+choice;380;21;20
+choice;390;21;6
+concept;399
+choice;400;5;2
+choice;420;5;2
+choice;430;9;4
+choice;440;4;2
+choice;442;4;0100;1
+choice;444;6;100000;0
+app;1999;flag|string|0;seg|string|2. Urban Techie;target|string|2
+concept_eval;9001;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;20;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

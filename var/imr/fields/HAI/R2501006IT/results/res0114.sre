@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;114;HYRSWW72I1;04/11/2024 15:40:19 CET;04/11/2024 15:40:37 CET;18;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=HYRSWW72I1;device=desktop;lang=en;sysIID=114
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;20;16
+choice;35;4;1
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;00010;3

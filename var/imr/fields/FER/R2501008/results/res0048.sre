@@ -1,0 +1,16 @@
+2.0;FER;R2501008;48;GUEST;05/11/2024 11:13:50 CET;<unknown>;0;0;84;sysSID=R2501008;sysPRJ=FER;sysUID=GUEST;device=desktop;lang=it;sysIID=48
+concept;10
+choice;20;2;0
+classifier;21;18;0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17
+choice;30;2;0
+open;40;35
+choice;45;5;0
+choice;52;7;3
+choice;70;2;0
+choice;80;6;010000;1
+choice;82;5;0
+choice;84;3;101;0
+choice;90;2;0
+choice;95;5;1
+choice;100;8;10010000;0
+choice;110;6;0

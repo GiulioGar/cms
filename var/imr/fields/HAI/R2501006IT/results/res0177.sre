@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;177;4ea1345ea8;04/11/2024 18:01:20 CET;04/11/2024 18:02:36 CET;76;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=4ea1345ea8;device=desktop;lang=it;sysIID=177
+choice;10;2;0
+open;18;47
+choice;20;6;3
+choice;30;20;4
+choice;35;4;1
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;01010;1

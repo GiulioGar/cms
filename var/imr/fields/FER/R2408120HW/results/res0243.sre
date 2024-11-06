@@ -1,0 +1,20 @@
+2.0;FER;R2408120HW;243;B9ALEULP68;04/11/2024 17:08:08 CET;<unknown>;0;0;31;sysSID=R2408120HW;sysPRJ=FER;sysUID=B9ALEULP68;pok=no;mok=no;lang=it;sysIID=243
+choice;4;2;0
+choice;5;6;3
+choice;10;20;12
+choice;20;2;0
+open;30;30
+choice;31;6;1
+choice;40;3;0
+choice;41;13;0000000010000;8
+scale;42;4;5;3;1;1;0
+choice;43;4;1
+open;70;Zucca
+choice;80;11;10000000000;0;comp0:Caramelle 
+open;90;Haribo
+choice;100;11;10000000000;0;comp0:Hagibo
+scale;110;19;3;1;0;1;1;1;0;1;0;0;0;1;0;0;1;0;1;0;1;-1
+choice;120;19;1010000000000000000;2
+choice;121;4;3
+scale;130;22;4;2;0;0;0;1;0;1;1;0;2;0;0;0;0;1;0;0;1;1;0;1;-1
+choice;310;2;1

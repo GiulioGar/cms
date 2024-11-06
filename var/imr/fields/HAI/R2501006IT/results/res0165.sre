@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;165;I4QMMZIMRL;04/11/2024 17:29:07 CET;04/11/2024 17:29:43 CET;36;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=I4QMMZIMRL;device=mobile;lang=it;sysIID=165
+choice;10;2;0
+open;18;31
+choice;20;6;1
+choice;30;20;11
+choice;35;4;0
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;00110;3

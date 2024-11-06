@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;37;IACA67E3MM;04/11/2024 14:04:20 CET;04/11/2024 14:25:15 CET;1255;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=IACA67E3MM;device=desktop;lang=it;sysIID=37
+choice;10;2;1
+open;18;34
+choice;20;6;1
+choice;30;20;6
+choice;35;4;2
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;00100;2

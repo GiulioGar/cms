@@ -1,0 +1,15 @@
+2.0;FER;R2408120HW;390;0UI6J3066O;05/11/2024 09:30:24 CET;05/11/2024 09:32:31 CET;127;7;90;sysSID=R2408120HW;sysPRJ=FER;sysUID=0UI6J3066O;pok=no;mok=no;lang=it;sysIID=390
+choice;4;2;0
+choice;5;6;3
+choice;10;20;3
+choice;20;2;1
+open;30;34
+choice;31;6;1
+choice;40;3;0
+choice;41;13;0011100000000;2
+scale;42;4;5;3;2;2;2
+choice;43;4;1
+open;70;Caramelle
+choice;80;11;00000000001;10
+choice;121;4;3
+choice;310;2;1

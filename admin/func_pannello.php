@@ -40,15 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $end_date = $_POST['end_date'];
     $stato = $_POST['stato'];  // 0 per Aperto, 1 per Chiuso
 
+
     // Debug: visualizza i dati ricevuti per l'aggiornamento
     var_dump($_POST); // Controlla i dati ricevuti
     echo "<br>";
 
-    // Debug: verifica se i parametri sono settati correttamente
-    if (empty($sur_id) || empty($description) || empty($panel) || empty($end_date)) {
-        echo json_encode(["status" => "error", "message" => "Alcuni parametri sono mancanti o non validi"]);
-        exit;
-    }
+    // // Debug: verifica se i parametri sono settati correttamente
+    // if (empty($sur_id)) {
+    //     echo json_encode(["status" => "error", "message" => "Alcuni parametri sono mancanti o non validi"]);
+    //     exit;
+    // }
 
     $query = "UPDATE t_panel_control 
               SET description = ?, panel = ?, sex_target = ?, age1_target = ?, age2_target = ?, goal = ?, end_field = ?, stato = ? 

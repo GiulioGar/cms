@@ -1,0 +1,29 @@
+2.0;FER;R2408120HW;16;E1GVX341TP;04/11/2024 10:50:08 CET;04/11/2024 10:57:15 CET;427;3;210;sysSID=R2408120HW;sysPRJ=FER;sysUID=E1GVX341TP;pok=no;mok=no;lang=it;sysIID=16
+choice;4;2;0
+choice;5;6;3
+choice;10;20;7
+choice;20;2;1
+open;30;60
+choice;31;6;4
+choice;40;3;0
+choice;41;13;1001100010000;4
+scale;42;4;5;3;2;3;2
+choice;43;4;2
+open;70;Biscotti a forma di pipistrelli, zucche, fantasmi, cioccolati di forme che ricordano la festa. 
+choice;80;11;11100000000;0;comp0:Biscotti;comp2:Torte;comp1:Cioccolati
+open;90;Kinder
+choice;100;11;00000000001;10
+scale;110;19;3;1;0;1;0;0;1;1;2;2;2;2;0;2;2;2;2;1;0;-1
+choice;120;19;0101100000010000000;1
+choice;121;4;0
+scale;130;22;4;0;0;0;0;1;0;0;0;0;3;0;0;0;0;0;0;3;1;0;0;3;-1
+choice;140;22;0000000100000110000000;7
+scale;150;22;10;2;3;3;2;8;3;3;0;1;-1;2;2;3;0;0;3;-1;3;3;2;-1;-1
+scale;151;22;10;2;3;3;0;9;4;7;0;0;-1;0;2;3;0;5;0;-1;6;5;2;-1;-1
+ordering;152;22;13;14;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;170;7;0
+choice;180;7;3
+choice;190;3;2
+choice;200;9;1
+choice;210;10;7
+choice;310;2;1

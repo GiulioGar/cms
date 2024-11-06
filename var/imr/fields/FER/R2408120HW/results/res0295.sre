@@ -1,0 +1,10 @@
+2.0;FER;R2408120HW;295;Q4ZZ8F1FQ5;04/11/2024 20:04:26 CET;04/11/2024 20:04:42 CET;16;4;40;sysSID=R2408120HW;sysPRJ=FER;sysUID=Q4ZZ8F1FQ5;pok=no;mok=no;lang=it;sysIID=295
+choice;4;2;0
+choice;5;6;3
+choice;10;20;2
+choice;20;2;0
+open;30;30
+choice;31;6;1
+choice;40;3;2
+choice;121;4;3
+choice;310;2;1

@@ -1,0 +1,11 @@
+2.0;FER;R2408120HW;478;9ESBZP1U2H;05/11/2024 11:20:03 CET;<unknown>;0;0;31;sysSID=R2408120HW;sysPRJ=FER;sysUID=9ESBZP1U2H;lang=it;sysIID=478
+choice;4;2;0
+choice;5;6;3
+choice;10;20;19
+choice;20;2;0
+open;30;56
+choice;31;6;4
+choice;121;4;1
+choice;310;2;0
+choice;320;6;0
+scale;330;5;8;4;-1;-1;-1;-1

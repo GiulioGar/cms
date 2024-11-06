@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;242;3Z0EAD1JXR;05/11/2024 00:39:10 CET;05/11/2024 00:45:11 CET;361;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=3Z0EAD1JXR;device=mobile;lang=it;sysIID=242
+choice;10;2;0
+open;18;40
+choice;20;6;2
+choice;30;20;2
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;4;4;4;4;4;0
+scale;120;3;5;0;0;0
+scale;130;2;5;0;2
+scale;140;2;5;3;4
+scale;150;3;5;3;3;2
+scale;160;3;5;4;4;4
+scale;170;2;5;4;4
+scale;180;2;5;0;4
+scale;190;2;5;3;2
+choice;195;6;1
+choice;200;11;00001000000;4
+choice;205;11;4
+choice;209;11;00000000001;10
+choice;210;6;2
+choice;215;7;0
+choice;220;5;1
+open;230;Le caratteristiche in generale 
+open;240;Non saprei 
+choice;250;5;0
+choice;260;5;0
+choice;270;5;0
+choice;275;5;1
+choice;280;5;2
+scale;300;14;5;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+concept;303
+choice;360;21;20
+choice;370;21;1
+choice;380;21;20
+choice;390;21;2
+concept;399
+choice;400;5;2
+choice;420;5;1
+choice;430;9;8;comp8:Operaio 
+choice;440;4;3
+choice;442;4;0100;1
+choice;444;6;001000;2
+app;1999;flag|string|0;seg|string|2. Urban Techie;target|string|2
+concept_eval;9001;30;9;12;10;11;13;14;15;16;17;19;20;21;18;22;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;10;9;13;12;14;17;20;19;11;18;16;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;21;20;15;10;14;9;11;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

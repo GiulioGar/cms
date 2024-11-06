@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;51;5M6320R4SO;04/11/2024 14:20:36 CET;04/11/2024 14:21:09 CET;33;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=5M6320R4SO;device=mobile;lang=it;sysIID=51
+choice;10;2;1
+open;18;30
+choice;20;6;1
+choice;30;20;6
+choice;35;4;2
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;00100;2

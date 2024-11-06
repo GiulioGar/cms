@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;13;45LU79RHN0;04/11/2024 13:53:19 CET;04/11/2024 13:57:25 CET;246;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=45LU79RHN0;device=desktop;lang=it;sysIID=13
+choice;10;2;0
+open;18;42
+choice;20;6;2
+choice;30;20;9
+choice;35;4;2
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10100;2
+choice;95;5;0
+scale;110;6;5;4;3;3;4;3;4
+scale;120;3;5;4;3;4
+scale;130;2;5;4;3
+scale;140;2;5;3;3
+scale;150;3;5;3;4;3
+scale;160;3;5;3;3;4
+scale;170;2;5;3;4
+scale;180;2;5;4;3
+scale;190;2;5;4;3
+choice;195;6;1
+choice;200;11;01010000000;1
+choice;205;11;3
+choice;209;11;00000100000;5
+choice;210;6;2
+choice;215;7;3
+choice;220;5;0
+open;230;sensori avanzati che riconoscono diversi tipi di superfici
+open;240;non trovo nulla di non piacevole
+choice;250;5;0
+choice;260;5;1
+choice;270;5;0
+choice;275;5;0
+choice;280;5;0
+scale;300;14;5;0;0;0;0;2;1;1;1;0;1;1;0;1;2
+concept;303
+choice;360;21;13
+choice;370;21;19
+choice;380;21;20
+choice;390;21;20
+concept;399
+choice;400;5;1
+choice;420;5;1
+choice;430;9;1
+choice;440;4;3
+choice;442;4;1000;0
+choice;444;6;111000;0
+app;1999;flag|string|0;seg|string|2. Urban Techie;target|string|2
+concept_eval;9001;30;9;10;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;2;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

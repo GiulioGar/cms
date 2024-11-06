@@ -1,0 +1,24 @@
+2.0;FER;R2408120HW;477;HOH993ALWX;05/11/2024 11:16:33 CET;<unknown>;0;0;31;sysSID=R2408120HW;sysPRJ=FER;sysUID=HOH993ALWX;pok=si;mok=no;lang=it;sysIID=477
+choice;4;2;0
+choice;5;6;3
+choice;10;20;12
+choice;20;2;0
+open;30;42
+choice;31;6;2
+choice;40;3;0
+choice;41;13;1100110111100;5
+scale;42;4;5;1;0;1;0
+choice;43;4;0
+open;70;cioccolato
+choice;80;11;10000000000;0;comp0:caramelle
+open;90;perugina
+choice;100;11;00000000001;10
+scale;110;19;3;0;0;0;0;0;1;1;1;0;0;1;0;0;1;0;0;1;1;-1
+choice;120;19;1011111011011110000;3
+choice;121;4;3
+scale;130;22;4;1;0;1;0;1;0;0;0;0;1;0;0;0;1;0;0;1;1;1;1;3;-1
+choice;140;22;1001100111011000011100;0
+scale;150;22;10;1;1;2;2;1;1;1;1;2;2;1;2;2;2;2;0;2;1;2;2;-1;-1
+choice;310;2;0
+choice;320;6;0
+scale;330;5;8;2;-1;-1;-1;-1

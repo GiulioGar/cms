@@ -1,0 +1,39 @@
+2.0;HAI;R2501006IT;173;AN502PTAXY;04/11/2024 17:44:16 CET;<unknown>;0;0;9001;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=AN502PTAXY;device=desktop;lang=it;sysIID=173
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;20;8
+choice;35;4;0
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;2;3;3;3;4;3
+scale;120;3;5;2;2;3
+scale;130;2;5;3;3
+scale;140;2;5;2;3
+scale;150;3;5;3;3;3
+scale;160;3;5;3;3;2
+scale;170;2;5;3;2
+scale;180;2;5;3;3
+scale;190;2;5;3;4
+choice;195;6;4
+choice;200;11;00100000000;2
+choice;205;11;2
+choice;209;11;00000000010;9
+choice;210;6;3
+choice;215;7;5
+choice;220;5;1
+open;230;uali aspetti Le piacciono di più? Per favore ci dica tutto quello che Le viene in mente.
+open;240;uali aspetti Le piacciono di più? Per favore ci dica tutto quello che Le viene in mente.
+choice;250;5;1
+choice;260;5;1
+choice;270;5;2
+choice;275;5;1
+choice;280;5;1
+scale;300;14;5;2;3;2;2;2;3;3;2;3;2;1;3;2;2
+concept;303
+concept;399
+app;1999;flag|string|0;seg|string|5. Unengaged discoverers;target|string|5
+concept_eval;9001;0

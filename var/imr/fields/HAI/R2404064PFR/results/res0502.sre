@@ -1,0 +1,29 @@
+2.0;HAI;R2404064PFR;502;IDEXCITBZKGWVCXPD511;21/10/2024 18:02:51 CEST;21/10/2024 18:11:18 CEST;507;7;9031;device=mobile;lang=fr;sysIID=502;sysPRJ=HAI;sysSID=R2404064PFR;version=v01;cella=1;pan=1;sysUID=IDEXCITBZKGWVCXPD511
+choice;10;2;1
+open;18;43
+choice;20;6;2
+choice;30;22;4
+choice;50;7;6
+choice;60;6;5
+choice;70;3;1
+choice;80;3;0
+choice;85;3;1
+choice;90;8;11111100;4
+choice;166;2;0
+choice;200;5;00001;4
+choice;202;5;00001;4
+choice;204;5;00001;4
+concept;210
+choice;220;5;1
+open;230;Tout en un. C'est nikel 
+open;240;Rien 
+choice;250;5;2
+choice;260;5;1
+choice;270;5;3
+choice;280;5;1
+scale;300;13;5;0;1;1;0;0;1;0;0;1;0;1;1;1
+concept;310
+app;1999;indOrder|string|1,2
+concept_eval;9001;0
+concept_eval;9011;0
+concept_eval;9021;0

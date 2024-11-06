@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;18;HGP075XOHB;04/11/2024 13:54:30 CET;04/11/2024 14:00:35 CET;365;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=HGP075XOHB;device=desktop;lang=it;sysIID=18
+choice;10;2;0
+open;18;44
+choice;20;6;2
+choice;30;20;4
+choice;35;4;1
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;1
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;4;3;3;3;4;1
+scale;120;3;5;0;0;4
+scale;130;2;5;0;0
+scale;140;2;5;4;2
+scale;150;3;5;0;0;4
+scale;160;3;5;3;0;3
+scale;170;2;5;1;1
+scale;180;2;5;4;4
+scale;190;2;5;0;0
+choice;195;6;0
+choice;200;11;00001000000;4
+choice;205;11;4
+choice;209;11;00000000001;10
+choice;210;6;2
+choice;215;7;4
+choice;220;5;1
+open;230;La possibilità di usarlo su diversi pavimenti 
+open;240;Nessuno in particolare 
+choice;250;5;1
+choice;260;5;1
+choice;270;5;0
+choice;275;5;1
+choice;280;5;2
+scale;300;14;5;1;0;1;0;1;1;1;0;1;1;0;1;0;0
+concept;303
+choice;360;21;9
+choice;370;21;20
+choice;380;21;9
+choice;390;21;20
+concept;399
+choice;400;5;1
+choice;420;5;1
+choice;430;9;8;comp8:Operaio 
+choice;440;4;2
+choice;442;4;0001;3
+choice;444;6;001000;2
+app;1999;flag|string|1;seg|string|1. Sophisticated Experts;target|string|1
+concept_eval;9001;30;4;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;4;5;6;10;9;14;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;15;14;10;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

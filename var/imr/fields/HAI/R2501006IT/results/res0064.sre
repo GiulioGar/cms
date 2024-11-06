@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;64;30247HAR64;04/11/2024 14:48:52 CET;04/11/2024 14:49:59 CET;67;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=30247HAR64;device=mobile;lang=it;sysIID=64
+choice;10;2;0
+open;18;25
+choice;20;6;1
+choice;30;20;11
+choice;35;4;0
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;00100;2

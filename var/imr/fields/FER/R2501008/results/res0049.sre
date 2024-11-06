@@ -1,0 +1,15 @@
+2.0;FER;R2501008;49;GUEST;05/11/2024 11:16:26 CET;<unknown>;0;0;84;debug=true;browser=full;device=desktop;lang=it;sysIID=49;sysRST=1
+concept;10
+choice;20;2;0
+choice;30;2;0
+open;40;33
+choice;45;5;0
+choice;52;7;2
+choice;70;2;0
+choice;80;6;101100;3
+choice;82;5;0
+choice;84;3;101;0
+choice;90;2;0
+choice;95;5;0
+choice;100;8;10000000;0
+choice;110;6;0

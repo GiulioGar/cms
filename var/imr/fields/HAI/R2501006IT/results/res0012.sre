@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;12;NOUAM5L9D7;04/11/2024 13:53:08 CET;04/11/2024 13:54:34 CET;86;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=NOUAM5L9D7;device=mobile;lang=it;sysIID=12
+choice;10;2;1
+open;18;51
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;1
+choice;90;5;00001;4

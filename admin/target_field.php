@@ -5,7 +5,9 @@ ini_set('display_errors', 1);
 
 require_once('inc_taghead.php');
 require_once('inc_tagbody.php');
-include 'func_target-field.php';
+
+// Include `func_target-field.php` e ottiene `$questions`
+$questions = include 'func_target-field.php';
 
 $sid=$_REQUEST['sid'];
 $prj=$_REQUEST['prj'];
@@ -66,20 +68,27 @@ $arrStime = array(1.35, 1.55, 2.05, 2.80, 3.75, 5.25, 8.00, 11.70, 14.65, 19.85,
 if($conta_complete>9) { $cpiStima=$arrStime[$matrice2]; }
 else { $cpiStima="N.D"; }
 
-
-$linkDir = ($_SERVER['HTTP_HOST'] === 'localhost') ? "../var" : "/var";
-
-$questions = getQuestions($prj, $sid);
-error_log("Totale domande caricate in target_field.php: " . count($questions));
-
 ?>
+
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
+
 <div class="sc_wrapper"> <!-- Inizio del wrapper -->
 
 <div class="container" id="page-content-wrapper">
 
+
 <div class="row mt-4">
   <!-- Navbar allineata a sinistra -->
   <div class="col d-flex align-items-center">
+    <nav class="navbar navlateral navbar-expand-lg">
+      <button class="btn btn-secondary" id="menu-toggle"><i class="fas fa-list-ul"></i></button>
+      <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
   </div>
 
   <!-- Menu selezione allineato a destra -->
@@ -91,7 +100,7 @@ error_log("Totale domande caricate in target_field.php: " . count($questions));
       <button type="button" class="menu-btn">
         <i class="fas fa-check-circle"></i> Qualità
       </button>
-      <button type="button" class="menu-btn">
+      <button onclick="window.open('settingField.php?prj=<?php echo $prj; ?>&sid=<?php echo $sid; ?>');" type="button" class="menu-btn">
         <i class="fas fa-cog"></i> Impostazioni
       </button>
     </div>
@@ -164,43 +173,75 @@ error_log("Totale domande caricate in target_field.php: " . count($questions));
 
 </div>
 
+    <div class="row">
 
-<!-- Sezione Domande e Risposte -->
-<div class="row mt-4 custom-qa-section">
-        <!-- Colonna Domande -->
-        <div class="col-md-4 custom-qa-questions">
-            <h4 class="question-header">Domande</h4>
-            <ul class="question-list">
-                <?php foreach ($questions as $index => $question): ?>
-                    <li class="question-item" data-question-id="<?php echo $index; ?>">
-                        <i class="fas fa-question-circle question-icon"></i>
-                        <span><?php echo htmlspecialchars($question['text']); ?></span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+        <!-- Sezione Domande e Risposte -->
+        <div class="row mt-4 custom-qa-section">
 
-        <!-- Colonna Risposte -->
-        <div class="col-md-8 custom-qa-answers">
-            <div class="answer-content">
-                <?php foreach ($questions as $index => $question): ?>
-                    <div class="answer-block" data-answer-id="<?php echo $index; ?>" style="display: none;">
-                        <ul>
-                            <?php foreach ($question['options'] as $option): ?>
-                                <li><?php echo htmlspecialchars($option); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endforeach; ?>
+            <!-- Colonna Domande -->
+<div class="col-md-4 custom-qa-questions">
+    <h4 class="question-header">Domande</h4>
+    <ul class="question-list scrollable-question-list">
+        <?php foreach ($questions as $index => $question): ?>
+            <li class="question-item" data-question-id="<?php echo $index; ?>">
+                <span class="question-badge"><?php echo htmlspecialchars($question['code']); ?></span>
+                <span class="question-text" data-tippy-content="<?php echo htmlspecialchars_decode($question['text']); ?>">
+                    <?php 
+                        $short_text = htmlspecialchars_decode($question['text']);
+                        echo strlen($short_text) > 150 ? substr($short_text, 0, 150) . '...' : $short_text; 
+                    ?>
+                </span>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+
+     <!-- Colonna Risposte -->
+     <div class="col-md-8 custom-qa-answers">
+    <div id="default-message">
+        <p>Selezionare le domande per visualizzare i risultati</p>
+    </div>
+    <div class="answer-content">
+        <?php foreach ($questions as $index => $question): ?>
+            <div class="answer-block" data-answer-id="<?php echo $index; ?>" style="display: none;">
+                <?php 
+                $totalCounts = array_sum($question['counts']);
+                if ($totalCounts == 0): ?>
+                    <p class="no-data-message">Non ci sono dati disponibili per questa domanda</p>
+                <?php else: ?>
+                    <ul>
+                        <?php foreach ($question['options'] as $optIndex => $option): ?>
+                            <?php 
+                            $count = $question['counts'][$optIndex];
+                            $percentage = ($totalCounts > 0) ? ($count / $totalCounts) * 100 : 0;
+                            ?>
+                            <li>
+                                <div class="option-container">
+                                    <span><?php echo htmlspecialchars_decode($option); ?></span>
+                                    <span class="answer-count"><?php echo $count; ?></span>
+                                </div>
+                                <div class="custom-progress-bar">
+                                    <div class="custom-progress-fill" style="width: <?php echo round($percentage); ?>%;"></div>
+                                </div>
+                            </li>
+
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+
+
         </div>
     </div>
 
 
+</div>
 
-
-
-</div></div>
 
 <?php 
 
@@ -216,8 +257,22 @@ document.querySelectorAll('.question-item').forEach(item => {
         this.classList.add('active');
         const questionId = this.getAttribute('data-question-id');
         
+        // Nascondi il messaggio di default
+        document.getElementById('default-message').style.display = 'none';
+
+        // Nascondi tutte le risposte e mostra solo quella selezionata
         document.querySelectorAll('.answer-block').forEach(answer => answer.style.display = 'none');
         document.querySelector(`.answer-block[data-answer-id="${questionId}"]`).style.display = 'block';
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    tippy('.question-text', {
+        placement: 'top',
+        animation: 'scale',
+        theme: 'light',
+        maxWidth: 400,
+        allowHTML: true,
     });
 });
 </script>

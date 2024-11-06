@@ -1,0 +1,10 @@
+2.0;HAI;R2501006IT;36;VTXO8UOP2I;04/11/2024 14:03:25 CET;04/11/2024 14:05:27 CET;122;4;90;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=VTXO8UOP2I;device=mobile;lang=it;sysIID=36
+choice;10;2;0
+open;18;52
+choice;20;6;3
+choice;30;20;14
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;00010;3

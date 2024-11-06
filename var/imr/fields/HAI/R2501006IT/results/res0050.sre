@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;50;BBG43LNI0V;04/11/2024 14:16:54 CET;04/11/2024 14:41:16 CET;1462;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=BBG43LNI0V;device=mobile;lang=it;sysIID=50
+choice;10;2;1
+open;18;37
+choice;20;6;2
+choice;30;20;12
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;3;3;0;2;1;3
+scale;120;3;5;0;0;4
+scale;130;2;5;4;2
+scale;140;2;5;3;3
+scale;150;3;5;1;1;4
+scale;160;3;5;2;1;1
+scale;170;2;5;2;2
+scale;180;2;5;3;2
+scale;190;2;5;2;1
+choice;195;6;0
+choice;200;11;01000000000;1
+choice;205;11;1
+choice;209;11;00000000001;10
+choice;210;6;3
+choice;215;7;1
+choice;220;5;0
+open;230;Autonomia batteria e riconoscimento dei vari pavimenti
+open;240;Nulla in particolare
+choice;250;5;1
+choice;260;5;0
+choice;270;5;1
+choice;275;5;0
+choice;280;5;1
+scale;300;14;5;0;0;0;0;0;1;0;1;0;0;1;0;0;0
+concept;303
+choice;360;21;14
+choice;370;21;13
+choice;380;21;20
+choice;390;21;17
+concept;399
+choice;400;5;1
+choice;420;5;1
+choice;430;9;1
+choice;440;4;0
+choice;442;4;0001;3
+choice;444;6;101000;0
+app;1999;flag|string|1;seg|string|1. Sophisticated Experts;target|string|1
+concept_eval;9001;30;4;6;5;10;15;14;23;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;10;11;15;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;15;22;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

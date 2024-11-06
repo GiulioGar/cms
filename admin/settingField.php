@@ -81,18 +81,24 @@ include_once 'func_settingField.php';
 <div class="row mt-4">
   <!-- Navbar allineata a sinistra -->
   <div class="col d-flex align-items-center">
+    <nav class="navbar navlateral navbar-expand-lg">
+      <button class="btn btn-secondary" id="menu-toggle"><i class="fas fa-list-ul"></i></button>
+      <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
   </div>
 
   <!-- Menu selezione allineato a destra -->
   <div class="col-auto">
     <div class="menu-selection d-flex justify-content-end">
-      <button type="button" class="menu-btn active">
+      <button onclick="window.open('target_field.php?prj=<?php echo $prj; ?>&sid=<?php echo $sid; ?>');" type="button" class="menu-btn active">
         <i class="fas fa-bullseye"></i> Target/Domande
       </button>
       <button type="button" class="menu-btn">
         <i class="fas fa-check-circle"></i> Qualità
       </button>
-      <button type="button" class="menu-btn">
+      <button onclick="window.open('settingField.php?prj=<?php echo $prj; ?>&sid=<?php echo $sid; ?>');" type="button" class="menu-btn">
         <i class="fas fa-cog"></i> Impostazioni
       </button>
     </div>

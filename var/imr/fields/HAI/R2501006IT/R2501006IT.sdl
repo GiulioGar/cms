@@ -1,0 +1,1083 @@
+void main() {
+
+// variabili comuni
+string cod;
+int ansId;
+question qst;
+string cmd;
+string qtext;
+string opt;
+string label;
+string labelCheck;
+int r1;
+int qid;
+int baseQid;
+string img;
+string nam;
+int count;
+string comp;
+string link;
+boolean sel;
+boolean selCheck;
+string cpt;
+int preQid;
+int n;
+int nArr;
+int reCod;
+int selintCheck;
+system.setProperty("env", "stylesheet:mod.css");
+system.setProperty("env", "scripts:mod.js");
+string autotest=system.getProperty("test");
+string uid = system.getProperty("sysUID");
+if (autotest=="1" || uid=="GUEST" || uid=="null") {
+system.setProperty("env", "debug:true");  system.setProperty("env", "browser:variables");}
+string err;
+int cella;
+int leg;
+
+int qpers;
+int cPer;
+
+boolean selDryS8;
+boolean selDryS8b;
+string cpt1;
+string cpt2;
+string cpt3;
+string cpt4;
+string qIndici="";
+
+if (autotest=="1") {system.setProperty("env", "scripts:modtest.js");}
+
+string scriptzoom="<script type='text/javascript' src='https://www.primisoft.com/fields/script/jquery.fancybox.js?v=2.1.5'></script><script type='text/javascript''> $(document).ready(function() { $('.fancybox').fancybox();});</script>";
+
+//variabile mobile
+string deviceType = system.getProperty("user_agent:deviceType");
+string ss1 = deviceType.trim();
+system.setProperty("device",ss1);
+boolean live=true;
+string version="v01";
+if (autotest=="1") {version="auotest";}
+system.setProperty("version",version);
+
+///CONCEPT EVALUETOR QUESTIONS//
+labelCheck="<script type='text/javascript' src='https://www.primisoft.com/fields/script/dinNone3.js'></script>";
+
+cpt1=labelCheck+"<table id='Tabella_01' width='1280' height='720' border='0' cellpadding='0' cellspacing='0'> <tr> <td style='width: 946px; height: 720px; vertical-align: top;'> <div style='font-family: \"Calibri\", sans-serif; font-size: 23px; margin-top: 8%;'> <p> #asTi presentiamo l'aspirapolvere senza fili#ae #asHoover HF6 SmartAdapt#ae, #asil prodotto innovativo#ae #asche regola automaticamente le sue prestazioni#ae #asper adattarsi ai vari tipi di pavimenti della tua casa#ae, #asrisparmiando tempo#ae  #ase fatica durante la pulizia#ae. </p> <br/> <p> #asLe caratteristiche principali di#ae #asHoover HF6 SmartAdapt includono#ae:<br/> <ol> <li>#asSensori avanzati#ae #asche riconoscono diversi tipi di superfici#ae, #aspavimenti duri o tappeti#ae, #ase regolano automaticamente la potenza mentre ci si sposta da una stanza all'altra#ae, #asprolungando l'autonomia e prevenendo lo spreco di energia#ae. </li> <li>#asTecnologia Dual Way#ae #asper pulire in entrambe le direzioni#ae #asgarantendo prestazioni di pulizia ottimali#ae #assenza sforzi#ae, #asgrazie alla nuova aletta dinamica che si apre#ae #asper consentire un'efficiente aspirazione all'indietro#ae </li> <li>#asLa capacità di aspirare vari tipi di sporco#ae, #asdalla polvere più fine ai detriti più grandi#ae. </li> </ol> </p> <br/><br/> <p> #asCon una potenza di aspirazione fino a 250 AW#ae #ase una batteria avanzata#ae #asche fornisce fino a 90 minuti di autonomia#ae, #asHoover HF6 SmartAdapt#ae #asoffre una pulizia ad alte prestazioni#ae #ase senza interruzioni su tutti i tipi di pavimento#ae, #asin entrambe le direzioni#ae, #asadattandosi senza sforzo all'ambiente unico della tua casa#ae. </p> </div> </td> <td> <img src='https://www.primisoft.com/fields/HAI/R2501006IT/resources/Diapositiva1_02.jpg' class='img-responsive' alt=''></td> </tr> </table>";
+
+question qc1 = new question("concept_eval", 9001);
+qc1.setProperty("text", "Potrebbe selezionare le parole/parti di questa descrizione che maggiormente le <b>piacciono</b>? Può indicare 'Nessuno di questi' se non ci sono parole che le <b>piacciono</b>.");
+qc1.setProperty("code", "C1.a1");
+qc1.setProperty("concept", cpt1);
+qc1.setProperty("allow_nosel", true);
+qc1.setProperty("view", "seltext");
+
+
+question qc1b = new question("concept_eval", 9011);
+qc1b.setProperty("text", "E quali parole/parti, invece, non le <b>piacciono</b>? Può indicare 'Nessuno di questi' se non ci sono parole che <b>non le piacciono.</b>");
+qc1b.setProperty("code", "C2.a1");
+qc1b.setProperty("concept", cpt1);
+qc1b.setProperty("allow_nosel", true);
+qc1b.setProperty("view", "seltext");
+
+
+question qc1c = new question("concept_eval", 9021);
+qc1c.setProperty("text", "Potrebbe selezionare le parole/parti di questa descrizione che trova <b>più interessanti</b>? Se non trova nessuna parte particolarmente interessante può indicare 'Nessuno di questi'");
+qc1c.setProperty("code", "C3.a1");
+qc1c.setProperty("concept", cpt1);
+qc1c.setProperty("allow_nosel", true);
+qc1c.setProperty("view", "seltext");
+
+question qc1d = new question("concept_eval", 9031);
+qc1d.setProperty("text", "E quali parole/parti di questa descrizione, secondo lei, sono particolarmente <b>nuove e diverse</b>? Se non trova nessuna parte particolarmente nuova e diversa può indicare 'Nessuno di questi'");
+qc1d.setProperty("code", "C4.a1");
+qc1d.setProperty("concept", cpt1);
+qc1d.setProperty("allow_nosel", true);
+qc1d.setProperty("view", "seltext");
+
+// Q10: CHOICE
+qst = new question("choice", 10);
+qst.setProperty("text", "Lei è..?");
+qst.setProperty("code", "S1.1");
+qst.setProperty("show_rand", false);
+vector q10_opts = new vector {
+"Uomo",
+"Donna"
+};
+qst.setProperty("options", q10_opts);
+send qst; 
+
+qst = new question("open", 18);
+qst.setProperty("text", "Quanti anni ha? <p>Indicare l’età precisa in anni compiuti </p>");
+qst.setProperty("code", "S1.2");
+qst.setProperty("view", "numeric");
+qst.setProperty("validation_rule", "^[1-9]|[1-9][0-9]$");
+qst.setProperty("validation_error", "Indicare un numero compreso tra 1 e 99");
+send qst;
+
+int eta=(int)system.getProperty("ans18");
+
+if(eta<20) { reCod=0; return 4;}
+if(eta>=20 && eta<=34) { reCod=1;}
+if(eta>=35 && eta<=44) { reCod=2;}
+if(eta>=45 && eta<=54) { reCod=3;}
+if(eta>=55 && eta<=60) { reCod=4;}
+if(eta>60) { reCod=5; return 4;}
+
+// Q20: CHOICE
+qst = new question("choice", 20);
+qst.setProperty("text", "Quanti anni ha? Registrare età precisa in numero di anni");
+qst.setProperty("code", "S1.2X");
+qst.setProperty("show_rand", false);
+vector q20_opts = new vector {
+"<20 Chiudere ",
+"20-34	1",
+"35-44	2",
+"45-54	3",
+"55-60	4",
+">60 Chiudere"
+};
+qst.setProperty("options", q20_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst; 
+
+qst = new question("choice", 30);
+qst.setProperty("text", "In quale regione vive?");
+qst.setProperty("code", "s1.3");
+vector q30_opts = new vector {
+"ABRUZZO",
+"BASILICATA",
+"CALABRIA",
+"CAMPANIA",
+"EMILIA-ROMAGNA",
+"FRIULI-VENEZIA GIULIA",
+"LAZIO",
+"LIGURIA",
+"LOMBARDIA",
+"MARCHE",
+"MOLISE",
+"PIEMONTE",
+"PUGLIA",
+"SARDEGNA",
+"SICILIA",
+"TOSCANA",
+"TRENTINO-ALTO ADIGE",
+"UMBRIA",
+"VALLE D'AOSTA",
+"VENETO"
+};
+    qst.setProperty("options", q30_opts);
+    send qst;
+
+int regione=system.getProperty("ans30");
+////// RICODIFICA REGIONE IN AREA ///////
+
+reCod=3;
+switch(regione)
+        {
+        case 7,8,11,18:{reCod=0;}
+        case 4,5,16,19:{reCod=1;}
+        case 6,9,15,17:{reCod=2;}
+        }	
+
+
+    qst = new question("choice", 35);
+    qst.setProperty("text", "In quale regione vive?");
+    qst.setProperty("code", "q40rec");
+    vector q35_opts = new vector {
+        "Nord-Ovest (Piemonte, Val d&#39;Aosta, Liguria, Lombardia;)",
+        "Nord-est (Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna)",
+        "Centro (Toscana, Umbria, Marche, Lazio, Sardegna)",
+        "Sud + Isole (Abruzzo, Molise, Puglia, Campania, Basilicata, Calabria, Sicilia)"
+    };
+    qst.setProperty("options", q35_opts);
+    qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+    qst.setProperty("hidden", true);
+    send qst;	
+
+// Q50: CHOICE
+qst = new question("choice", 51);
+qst.setProperty("text", "Lei o qualcuno dei suoi familiari lavora in uno dei seguenti settori?");
+qst.setProperty("code", "S1.4");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+vector q50_opts = new vector {
+"Marketing",
+"Ricerca di mercato",
+"Pubbliche relazioni",
+"Pubblicità",
+"Giornalismo",
+"Prodotti elettronici per la pulizia della casa",
+"Nessuno dei precedenti#se#sf"
+};
+qst.setProperty("options", q50_opts);
+send qst; 
+
+sel=system.getProperty("ans51_6");
+//if (sel==false && autotest !="1") { return 4;}
+
+// Q60: CHOICE
+qst = new question("choice", 61);
+qst.setProperty("text", "Ha preso parte a ricerche di mercato <b>negli ultimi 3</b> mesi su questi argomenti…? ");
+qst.setProperty("code", "S1.5");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+vector q60_opts = new vector {
+"Prodotti elettronici per la pulizia della casa",
+"Prodotti tecnologici",
+"Prodotti alimentari",
+"Automobili",
+"Nessuno dei precedenti#se#sf"
+};
+qst.setProperty("options", q60_opts);
+send qst; 
+
+sel=system.getProperty("ans61_0");
+//if (sel==true && autotest !="1") { return 4;}
+
+// Q70: CHOICE
+qst = new question("choice", 70);
+qst.setProperty("text", "<b>Pensando agli ultimi due anni</b>, può dirmi chi si è occupato principalmente degli acquisti di prodotti elettronici per la pulizia della casa nella sua famiglia? ");
+qst.setProperty("code", "S1.6");
+qst.setProperty("show_rand", false);
+vector q70_opts = new vector {
+"Io personalmente",
+"Io con mio marito/moglie/partner/ altri",
+"Altre persone"
+};
+qst.setProperty("options", q70_opts);
+send qst; 
+
+ansId=system.getProperty("ans70");
+if (ansId==2 && autotest !="1") { return 4;}
+
+// Q90: CHOICE
+qst = new question("choice", 90);
+qst.setProperty("text", "Quale dei seguenti prodotti/strumenti/dispositivi utilizza per spazzare il pavimento?");
+qst.setProperty("code", "S1.8");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+vector q90_opts = new vector {
+"Scopa elettrica senza filo#sf",
+"Scopa elettrica con filo ",
+"Robot aspirapolvere	",
+"Aspirapolvere a traino",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q90_opts);
+if(autotest =="1")
+{
+    qst.setProperty("default_answer","{ 'selection': [0]}");
+    qst.setProperty("hidden", true);
+}
+send qst; 
+
+sel=system.getProperty("ans90_0");
+if (sel==false) { return 4;}
+
+count=0;
+for(int i=0,3)
+{
+sel=system.getProperty("ans90_"+i);
+if (sel==true) { count=count+1;  reCod=i;}
+}
+
+qst = new question("choice", 95);
+qst.setProperty("text", "Quale dei seguenti prodotti/strumenti/dispositivi utilizza più spesso?");
+qst.setProperty("code", "s1.8b");
+if(count==1)
+{
+    qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+    qst.setProperty("hidden", true);
+}
+if(autotest =="1")
+{
+    qst.setProperty("default_answer","{ 'selection': [0]}");
+    qst.setProperty("hidden", true);
+}
+qst.setProperty("controller", 90);
+send qst;
+
+ansId=system.getProperty("ans95");
+//if(ansId!=0) { return 4;}
+
+// Q200: CHOICE
+qst = new question("choice", 200);
+qst.setProperty("text", "Quali delle seguenti marche di elettrodomestici <b>possiede</b>? ");
+qst.setProperty("code", "S1.9a");
+qst.setProperty("show_rand", true);
+qst.setProperty("selection", "multiple");
+vector q200_opts = new vector {
+"Haier",
+"Hoover",
+"Dyson",
+"Samsung",
+"Rowenta",
+"LG",
+"Miele",
+"Dreame",
+"Bosch",
+"Altra marca#sf",
+"#shNessuno di questi#se#sf"
+};
+qst.setProperty("options", q200_opts);
+send qst; 
+
+count=0;
+for(int i=0,9)
+{
+sel=system.getProperty("ans200_"+i);
+if (sel==true) { count=count+1;  reCod=i;}
+}
+
+qst = new question("choice", 205);
+qst.setProperty("text", "E quale di queste utilizza più spesso?");
+qst.setProperty("code", "S1.9b");
+qst.setProperty("show_rand", true);
+qst.setProperty("controller", 200);
+if(count==1) {
+    qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+    qst.setProperty("hidden", true);
+}
+send qst;
+
+ansId=system.getProperty("ans205");
+
+cmd="#shopt"+ansId;
+q200_opts.set(ansId,cmd);
+
+q200_opts.set(10,"Nessuno di questi#se#sf");
+
+qst = new question("choice", 209);
+qst.setProperty("text", "E quali di queste marche non utilizzerebbe mai ?");
+qst.setProperty("selection", "multiple");
+qst.setProperty("show_rand", true);
+qst.setProperty("code", "S1.9C");
+qst.setProperty("options", q200_opts);
+send qst;
+
+sel=system.getProperty("ans209_1");
+if (sel==true) { return 4;}
+
+qst = new question("choice", 210);
+qst.setProperty("text", "Pensando all’aspirapolvere che <b>utilizza più spesso</b>, ricorda quando ha effettuato l’acquisto? ");
+qst.setProperty("code", "s1.10");
+vector q210_opts = new vector {
+"Quest’anno (2024)",
+"Nel 2023",
+"Nel 2022",
+"Nel 2021",
+"Prima del 2020",
+"Non ricordo	"
+};
+qst.setProperty("options", q210_opts);
+send qst;
+
+ansId=system.getProperty("ans210");
+if (ansId>3) { return 4;}
+
+qst = new question("choice", 215);
+qst.setProperty("text", "Pensando all’aspirapolvere che utilizza più spesso, ricorda quanto ha speso per l’acquisto?");
+qst.setProperty("code", "s1.10b");
+vector q215_opts = new vector {
+"Meno di € 199",
+"€ 199-249",
+"€ 250-299",
+"€ 300-349	",
+"€ 350 -399",
+"€ 400 ed oltre",
+"Non so/non ricordo"
+};
+qst.setProperty("options", q215_opts);
+send qst;
+
+ansId=system.getProperty("ans215");
+if (ansId ==6) { return 4;}
+
+
+//allocation segments//
+qIndici="";
+
+
+// Q110: SCALE
+qst = new question("scale", 110);
+qst.setProperty("text", "Pensi ora agli elettrodomestici. Quanto è personalmente d'accordo con le seguenti affermazioni?");
+qst.setProperty("code", "g1");
+//qst.setProperty("show_rand", true);
+vector q110_rows = new vector {
+"La cosa più importante in un elettrodomestico è la semplicità e facilità d'utilizzo",
+"Lo stile e il design degli elettrodomestici sono molto importanti per me",
+"Gli elettrodomestici da incasso/integrati sono più moderni di quelli a libera installazione",
+"Nei miei elettrodomestici voglio il minimo delle funzioni",
+"Per controllare gli elettrodomestici, preferisco le manopole",
+"Sono attratto dagli elettrodomestici che possono essere controllati da remoto tramite app"
+};
+qst.setProperty("rows", q110_rows);
+vector q110_cols = new vector {
+"Completamente in disaccordo",
+"Abbastanza in disaccordo",
+"Né d'accordo né in disaccordo",
+"Abbastanza d'accordo",
+"Completamente d'accordo"
+};
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,5)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans110_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+
+// Q120: SCALE
+qst = new question("scale", 120);
+qst.setProperty("text", "Quanto è d'accordo con le seguenti affermazioni sulle sue abitudini di acquisto?");
+qst.setProperty("code", "g2");
+//qst.setProperty("show_rand", true);
+vector q120_rows = new vector {
+"Tendo a spendere denaro senza pensarci",
+"Spesso compro, d'impulso, prodotti a cui non avevo pensato",
+"Vale la pena pagare di più per prodotti di qualità"
+};
+qst.setProperty("rows", q120_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,2)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans120_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+// Q130: CHOICE
+qst = new question("scale", 130);
+qst.setProperty("text", "Quanto è d'accordo con le seguenti affermazioni sul suo stile di vita?");
+qst.setProperty("code", "g3");
+//qst.setProperty("show_rand", true);
+vector q130_opts = new vector {
+"Cerco di stare al passo con la tecnologia",
+"Le persone mi chiedono consigli su quali elettrodomestici acquistare"
+};
+qst.setProperty("rows", q130_opts);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,1)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans130_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+
+// Q140: SCALE
+qst = new question("scale", 140);
+qst.setProperty("text", "<p>Pensi ora all'esperienza che ha con gli elettrodomestici in generale.</p></br>Quanto è d'accordo con le seguenti affermazioni relative al risparmio (di tempo e di prezzo)?");
+qst.setProperty("code", "g4");
+//qst.setProperty("show_rand", true);
+vector q140_rows = new vector {
+"Non riesco a immaginare di svolgere le faccende domestiche a mano, senza l'aiuto di elettrodomestici",
+"Il prezzo per me è un fattore chiave nel determinare l'acquisto di un elettrodomestico, cerco sempre e ovunque promozioni/offerte prima di acquistarlo"
+};
+qst.setProperty("rows", q140_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,1)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans140_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+// Q150: SCALE
+qst = new question("scale", 150);
+qst.setProperty("text", "Quanto è personalmente d'accordo con le seguenti affermazioni relative alle prestazioni/facilità di utilizzo degli elettrodomestici?");
+qst.setProperty("code", "g5");
+//qst.setProperty("show_rand", true);
+vector q150_rows = new vector {
+"Spesso ottengo risultati deludenti dai miei elettrodomestici",
+"Spesso ho difficoltà a scegliere il programma giusto per i miei elettrodomestici",
+"Al giorno d’oggi usare gli elettrodomestici è più facile che in passato, sono più comodi / intuitivi"
+};
+qst.setProperty("rows", q150_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,2)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans150_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+// Q160: SCALE
+qst = new question("scale", 160);
+qst.setProperty("text", "Quanto è personalmente d'accordo con le seguenti affermazioni sulla manutenzione/cura degli apparecchi?");
+qst.setProperty("code", "g6");
+//qst.setProperty("show_rand", true);
+vector q160_rows = new vector {
+"Per quanto riguarda gli elettrodomestici, finché quelli che ho funzionano, non li sostituirei mai",
+"Spesso ho difficoltà a decidere la quantità di detersivo da usare nei miei elettrodomestici",
+"Prima di acquistare, verifico sempre la possibilità di estendere il più a lungo possibile la garanzia dell'elettrodomestico"
+};
+qst.setProperty("rows", q160_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,2)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans160_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+// Q170: SCALE
+qst = new question("scale", 170);
+qst.setProperty("text", "Quanto è personalmente d'accordo con le seguenti affermazioni?");
+qst.setProperty("code", "g7");
+//qst.setProperty("show_rand", true);
+vector q170_rows = new vector {
+"Prima di acquistare, verifico sempre il luogo in cui l’elettrodomestico viene prodotto",
+"Prima di acquistare, verifico sempre l'origine/la marca dei componenti"
+};
+qst.setProperty("rows", q170_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,1)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans170_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+// Q180: SCALE
+qst = new question("scale", 180);
+qst.setProperty("text", "Quanto è d'accordo con le seguenti affermazioni sul modo in cui conserva gli alimenti in frigorifero?");
+qst.setProperty("code", "g8");
+//qst.setProperty("show_rand", true);
+vector q180_rows = new vector {
+"Sono disposto a spendere di più per un frigorifero se questo aiuta a proteggere meglio me/la mia famiglia dai rischi per la salute (ad esempio, intossicazioni alimentari, infezioni)",
+"Non tengo mai i prodotti nel congelatore più a lungo di quanto consigliato"
+};
+qst.setProperty("rows", q180_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,1)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans180_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+system.out("<div>---------------</div>"); 
+
+
+// Q190: SCALE
+qst = new question("scale", 190);
+qst.setProperty("text", "Quanto è d'accordo con le seguenti affermazioni sulle sue abitudini in cucina?");
+qst.setProperty("code", "g9");
+//qst.setProperty("show_rand", true);
+vector q190_rows = new vector {
+"Mi capita di seguire corsi di cucina",
+"Condivido spesso foto/recensioni di cibi e bevande sui social"
+};
+qst.setProperty("rows", q190_rows);
+qst.setProperty("cols", q110_cols);
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+for(int i=0,1)
+{
+nArr=nArr+1;
+
+ansId=system.getProperty("ans190_"+i);
+n=ansId+1;
+qIndici=qIndici+n+",";
+
+system.out("<div>Answer:"+nArr+": "+n+"</div>"); 
+}
+
+
+
+ qst = new question("app",1999);
+            qst.setProperty("text", "test");
+            qst.setProperty("path", "segmentationTool");
+            qst.setProperty("input", "ix:"+qIndici);
+            qst.setProperty("input", "country:IT");
+            qst.setProperty("output", "seg:string");
+            qst.setProperty("output", "flag:string");
+            qst.setProperty("output", "target:string");
+            send qst;
+
+            cmd=system.getProperty("ans1999_seg");
+            opt=system.getProperty("ans1999_flag");
+            n=(int)system.getProperty("ans1999_target");
+            label=cmd.trim();
+            nam=opt.trim();
+            system.out("<div>Etichetta: "+label+"</div>"); 
+            system.out("<div>Flag: "+nam+"</div>"); 
+            system.out("<div>Target: "+n+"</div>"); 
+
+
+reCod=n-1;
+
+qst = new question("choice", 195);
+qst.setProperty("text", "Segmento:");
+qst.setProperty("code", "segment");
+vector q195_opts = new vector {
+"1. Sophisticated Experts",
+"2. Urban Techie",
+"3. Traditional Way",
+"4. Home Savvy",
+"5. Unengaged discoverers",
+"6. Pragmatic with style"
+};
+qst.setProperty("options", q195_opts);
+qst.setProperty("default_answer","{ 'selection': ["+reCod+"]}");
+qst.setProperty("hidden", true);
+send qst;
+
+cmd=q195_opts.get(reCod);
+system.out("<div>Target Codificato: "+cmd+"</div>"); 
+
+
+ansId=system.getProperty("ans195");
+if (ansId==2 || ansId==3) { return 4;}
+
+cod="<script type='text/javascript'> $(document).ready(function() { $('th:first-child').html( $('.introd') ); });</script>";
+
+
+
+	string delay="<script src='https://www.primisoft.com/fields/script/jquery.countdown.min.js'></script>"+
+	"<script>$(window).load(function() {contorovescia(10000);});</script>";
+
+link="https://www.primisoft.com/fields/HAI/R2501006IT/resources/conc.PNG";
+img=scriptzoom+"<p><a class='fancybox' rel='group' href='"+link+"'><img src='"+link+"' width='450px'  alt='' /></a><div class='info'>Clicchi per visualizzare i dettagli</div></p>";
+
+// Q210: CONCEPT
+qst = new question("concept", 303);
+qst.setProperty("text","<p>Ora Le mostreremo la descrizione di un'aspirapolvere. La prego di leggerla attentamente e di rispondere alle seguenti domande.</p><img src='"+link+"' alt='' class='img-responsive'/>"+delay);
+send qst; 
+
+// Q220: CHOICE
+qst = new question("choice", 220);
+qst.setProperty("text", img+"Nel complesso, quanto Le piace questo prodotto?");
+qst.setProperty("code", "Q1");
+qst.setProperty("show_rand", false);
+vector q220_opts = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("options", q220_opts);
+send qst; 
+
+// Q230: CONCEPT
+qst = new question("open", 230);
+qst.setProperty("text", img+"Quali aspetti <b>Le piacciono di più</b>? <p>Per favore ci dica tutto quello che Le viene in mente.</p>");
+qst.setProperty("code", "Q2");
+send qst; 
+
+// Q240: CONCEPT
+qst = new question("open", 240);
+qst.setProperty("text", img+"Quali aspetti <b>Le piacciono di meno</b>?<p> Per favore ci dica tutto quello che Le viene in mente.</p>");
+qst.setProperty("code", "Q3");
+send qst; 
+
+// Q250: CHOICE
+qst = new question("choice", 250);
+qst.setProperty("text", img+"Quanto <b>è rilevante</b> per Lei ciò che viene detto in questa descrizione?");
+qst.setProperty("code", "Q4");
+qst.setProperty("show_rand", false);
+vector q250_opts = new vector {
+"Molto rilevante",
+"Abbastanza rilevante",
+"Rilevante così così",
+"Poco rilevante",
+"Per niente rilevante"
+};
+qst.setProperty("options", q250_opts);
+send qst; 
+
+// Q260: CHOICE
+qst = new question("choice", 260);
+qst.setProperty("text", img+"Quanto <b>è credibile</b> la descrizione di questo prodotto?");
+qst.setProperty("code", "Q5");
+qst.setProperty("show_rand", false);
+vector q260_opts = new vector {
+"Molto credibile",
+"Abbastanza credibile",
+"Credibile così così",
+"Poco credibile",
+"Per niente credibile"
+};
+qst.setProperty("options", q260_opts);
+send qst; 
+
+// Q270: CHOICE
+qst = new question("choice", 270);
+qst.setProperty("text", img+"Secondo Lei, <b>questo prodotto è nuovo e diverso rispetto agli altri che può trovare sul mercato</b>?");
+qst.setProperty("code", "Q6");
+qst.setProperty("show_rand", false);
+vector q270_opts = new vector {
+"Completamente nuovo e diverso",
+"Abbastanza nuovo e diverso",
+"Nuovo e diverso così così",
+"Poco nuovo e diverso",
+"Per niente nuovo e diverso"
+};
+qst.setProperty("options", q270_opts);
+send qst; 
+
+qst = new question("choice", 275);
+qst.setProperty("text", img+"In che misura pensa che questa aspirapolvere sia in linea con la sua idea del marchio HOOVER? ");
+qst.setProperty("code", "q7");
+vector q275_opts = new vector {
+"Molto in linea",
+"Abbastanza in linea",
+"Un po' in linea",
+"Poco in linea",
+"Per niente in linea"
+};
+qst.setProperty("options", q275_opts);
+send qst;
+
+// Q280: CHOICE
+qst = new question("choice", 280);
+qst.setProperty("text", img+"Quanto sarebbe interessato ad acquistare questo prodotto indipendentemente dal prezzo che potrebbe avere?");
+qst.setProperty("code", "Q8");
+qst.setProperty("show_rand", false);
+vector q280_opts = new vector {
+"Sicuramente la comprerei",
+"Probabilmente la comprerei",
+"Non so se la comprerei",
+"Probabilmente non la comprerei",
+"Sicuramente non la comprerei"
+};
+qst.setProperty("options", q280_opts);
+send qst; 
+
+// Q300: SCALE
+qst = new question("scale", 300);
+qst.setProperty("text", "<p>Ora leggerà alcune affermazioni che possono essere attribuite ad una aspirapolvere.</p> <p>Per favore può dirmi quanto ogni affermazione è adatta a descrivere questo prodotto : molto, abbastanza, così così, poco, per niente  ?</p><div class='introd'>questa aspirapolvere...</div>"+cod);
+qst.setProperty("code", "q9");
+qst.setProperty("show_rand", true);
+vector q300_rows = new vector {
+"È innovativa e moderna",
+"Si adatta alle mie abitudini di pulizia",
+"Ha una tecnologia all'avanguardia",
+"È facile da usare",
+"Fa risparmiare tempo e fatica durante la pulizia",
+"È importante che un’aspirapolvere sia in grado di pulire in due direzioni",
+"È importante per me che l’aspirapolvere possa raccogliere diversi tipi di sporco, dalla polvere a detriti più grandi",
+"La presenza di tecnologia avanzata e intelligente mi influenza nella scelta di un’aspirapolvere.",
+"È importante che un’aspirapolvere riconosca automaticamente i diversi tipi di pavimento e regoli la potenza di conseguenza.",
+"L'autonomia della batteria è un aspetto molto importante per me",
+"Le prestazioni elevate influenzano la mia scelta di un’aspirapolvere.",
+"Per me è importante avere un’aspirapolvere che mi faccia risparmiare tempo nelle pulizie",
+"Avere un'aletta dinamica per l'aspirazione all’indietro mi consente di ottenere prestazioni ottimali senza sforzo",
+"Pulisce senza interruzioni tutti i tipi di pavimenti"
+};
+
+qst.setProperty("rows", q300_rows);
+vector q300_cols = new vector {
+"Molto",
+"Abbastanza",
+"Così così",
+"Poco",
+"Per niente"
+};
+qst.setProperty("cols", q300_cols);
+qst.setProperty("extras","{header_repeat:8}");
+if (ss1=="mobile")
+{
+qst.setProperty("view", "onebyone");
+}
+send qst; 
+
+
+qst = new question("concept", 399);
+qst.setProperty("text", "Ora le mostreremo nuovamente la descrizione. La prego di leggerla nuovamente con attenzione. <p>Per rispondere alle seguenti domande può cliccare direttamente sulle parole che desidera evidenziare con il mouse.</p> <p>Vedrà evidenziate le parole cliccate. Se cambia idea e vuole modificare la sua risposta, può ri-cliccare nuovamente su di esse.</p>");
+send qst;
+
+//CLICK EXCERCISE
+
+send qc1;
+
+    count=0;
+    for(int i=0,29)
+    {
+    ansId=system.getProperty("ans9001_"+i);
+    if (ansId>=0) { count=count+1; }
+    }
+    
+    if(count<30)
+    {
+    qc1b.setProperty("controller", 9001);
+    qc1b.setProperty("reverse_control", true);
+    send qc1b;
+    }
+
+
+    send qc1c;
+    send qc1d;
+
+
+//price score
+
+// Fase 1: Creazione dei vettori con la lista di prezzi
+vector decrescente = new vector { "€369,00", "€359,00", "€349,00", "€339,00", "€329,00", "€319,00", "€309,00", "€299,00", "€289,00", "€279,00", "€269,00", "€259,00", "€249,00", "€239,00", "€229,00", "€219,00", "€209,00", "€199,00", "€189,00", "€179,00", "€169,00" };
+vector crescente = new vector { "€169,00", "€179,00", "€189,00", "€199,00", "€209,00", "€219,00", "€229,00", "€239,00", "€249,00", "€259,00", "€269,00", "€279,00", "€289,00", "€299,00", "€309,00", "€319,00", "€329,00", "€339,00", "€349,00", "€359,00", "€369,00" };
+
+// Fase 2: Prima domanda con condizione per nascondere gli item
+qst = new question("choice", 360);
+qst.setProperty("text", "A quale prezzo, fra quelli elencati qui sotto, questo prodotto presenta un buon rapporto qualità-prezzo ed è da ritenersi <b>CONVENIENTE</b>?");
+qst.setProperty("code", "P1");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", decrescente);
+send qst;
+
+int s1 = system.getProperty("ans360");
+for (int k=0, 20)
+{
+    n=20-s1;
+    if (k<n)
+    {
+        opt="nascondi#sh"+k;
+        crescente.set(k,opt);
+    }
+}
+
+// Fase 3: Seconda domanda con condizione
+qst = new question("choice", 370);
+qst.setProperty("text", "A quale prezzo comincerebbe a ritenere questo prodotto <b>COSTOSO</b>?");
+qst.setProperty("code", "P2");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", crescente);
+send qst;
+
+for (int k=0, 20)
+{
+    if (k<s1)
+    {
+        opt="nascondi#sh"+k;
+        decrescente.set(k,opt);
+    }
+}
+
+// Fase 4: Terza domanda con condizione
+qst = new question("choice", 380);
+qst.setProperty("text", "A quale prezzo comincerebbe a ritenere questo prodotto <b>TROPPO CONVENIENTE</b>, al punto di dubitare della sua qualità? ");
+qst.setProperty("code", "P3");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", decrescente);
+send qst;
+
+int s2 = system.getProperty("ans370");
+
+for (int k=0, 20)
+{
+    if (k<s2)
+    {
+        opt="nascondi#sh"+k;
+        crescente.set(k,opt);
+    }
+}
+
+// Fase 5: Ultima domanda
+qst = new question("choice", 390);
+qst.setProperty("text", "A quale prezzo pensa che questo prodotto sia <b>TROPPO COSTOSO</b> per acquistarlo?");
+qst.setProperty("code", "P4");
+qst.setProperty("show_rand", false);
+qst.setProperty("options", crescente);
+send qst;
+
+
+
+// Q400: CHOICE
+qst = new question("choice", 400);
+qst.setProperty("text", "Se questo prodotto fosse in vendita al prezzo di € 249 quanto sarebbe interessato ad acquistalo? ");
+qst.setProperty("code", "P5");
+qst.setProperty("show_rand", false);
+vector q400_opts = new vector {
+"Sicuramente lo comprerei",
+"Probabilmente lo comprerei",
+"Non so se lo comprerei",
+"Probabilmente non lo comprerei",
+"Sicuramente non lo comprerei"
+};
+qst.setProperty("options", q400_opts);
+send qst; 
+
+ansId=system.getProperty("ans370");
+label=crescente.get(ansId);
+
+
+
+// Q420: CHOICE
+qst = new question("choice", 420);
+qst.setProperty("text", "<p>Ora Le chiederemo alcuni dati personali prima di concludere l'intervista.</p></br> Qual è il suo ultimo titolo di studio conseguito ?");
+qst.setProperty("code", "qA");
+qst.setProperty("show_rand", false);
+vector q420_opts = new vector {
+"Master post-laurea/ Laurea magistrale/ Laurea triennale",
+"Licenza Media Superiore",
+"Licenza Media inferiore",
+"Scuola primaria",
+"Nessun titolo di studio"
+};
+qst.setProperty("options", q420_opts);
+send qst; 
+
+// Q430: CHOICE
+qst = new question("choice", 430);
+qst.setProperty("text", "Indichi, per favore, la Sua professione attuale:");
+qst.setProperty("code", "qB");
+qst.setProperty("show_rand", false);
+vector q430_opts = new vector {
+"Imprenditore/manager/dipendente pubblico/libero professionista/medico",
+"Impiegato/insegnante/quadro/paramedico",
+"Lavoratore/assistente alle vendite",
+"Artigiano/rivenditore/commerciante/rappresentante",
+"Casalinga",
+"Studente",
+"Pensionato",
+"Disoccupato/in cerca di lavoro",
+"Altro (specificare) #so#sf"
+};
+qst.setProperty("options", q430_opts);
+send qst; 
+
+// Q440: CHOICE
+qst = new question("choice", 440);
+qst.setProperty("text", "Qual è il Suo attuale stato di famiglia?");
+qst.setProperty("code", "qC");
+qst.setProperty("show_rand", false);
+vector q440_opts = new vector {
+"Vivo a casa con i miei genitori",
+"Sono single e vivo da solo",
+"In una relazione/sposato senza figli",
+"In una relazione/sposato con figli"
+};
+qst.setProperty("options", q440_opts);
+send qst;
+
+qst = new question("choice", 442);
+qst.setProperty("text", "Lei ha animali domestici in casa?");
+qst.setProperty("code", "qd");
+qst.setProperty("selection", "multiple");
+vector q442_opts = new vector {
+"Sì, un cane",
+"Sì, un gatto",
+"Sì, altri (criceti, conigli, uccelli, ecc.)",
+"No#se#sf	"
+};
+qst.setProperty("options", q442_opts);
+send qst;
+
+qst = new question("choice", 444);
+qst.setProperty("text", "In casa sua ci sono... ");
+qst.setProperty("selection", "multiple");
+qst.setProperty("code", "qe");
+vector q444_opts = new vector {
+"Tappeti",
+"Pavimenti laminati",
+"Pavimenti in piastrelle",
+"Pavimenti in legno",
+"Moquette",
+"Nessuno di questi#se#sf"
+};
+qst.setProperty("options", q444_opts);
+send qst;
+
+
+}

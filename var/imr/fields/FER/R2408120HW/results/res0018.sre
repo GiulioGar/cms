@@ -1,0 +1,32 @@
+2.0;FER;R2408120HW;18;TV8VZYF5LS;04/11/2024 10:50:31 CET;04/11/2024 10:57:20 CET;409;3;210;sysSID=R2408120HW;sysPRJ=FER;sysUID=TV8VZYF5LS;pok=si;mok=si;lang=it;sysIID=18
+choice;4;2;0
+choice;5;6;3
+choice;10;20;4
+choice;20;2;1
+open;30;48
+choice;31;6;3
+choice;40;3;1
+choice;41;13;1001010011010;3
+scale;42;4;5;0;0;0;0
+choice;43;4;0
+open;70;Caramelle
+choice;80;11;11000000000;0;comp0:Cioccolato;comp1:Biscotti
+open;90;HARIBO
+choice;100;11;11000000000;0;comp0:Ferrero;comp1:Kinder
+scale;110;19;3;0;0;0;0;0;2;0;2;2;0;2;0;0;0;2;2;2;2;-1
+choice;120;19;1011100000010000000;3
+choice;121;4;1
+scale;130;22;4;0;0;2;0;0;1;2;0;1;2;0;0;1;0;0;0;0;2;0;0;1;-1
+open;131;Non conosco
+choice;140;22;1001110100110110001100;0
+scale;150;22;10;0;2;-1;0;0;2;-1;0;2;-1;0;0;3;0;0;1;0;-1;2;0;4;-1
+scale;151;22;10;0;2;-1;0;0;0;-1;1;0;-1;0;0;0;1;1;1;0;-1;2;0;2;-1
+ordering;152;22;4;7;19;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;170;7;2
+choice;180;7;2
+choice;190;3;0
+choice;200;9;1
+choice;210;10;7
+choice;310;2;0
+choice;320;6;0
+scale;330;5;8;1;-1;-1;-1;-1

@@ -1,0 +1,14 @@
+2.0;HAI;R2501006IT;4;LXKR36I2LO;04/11/2024 13:51:50 CET;04/11/2024 13:52:13 CET;23;4;209;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=LXKR36I2LO;device=mobile;lang=it;sysIID=4
+choice;10;2;1
+open;18;42
+choice;20;6;2
+choice;30;20;8
+choice;35;4;0
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;11110;0
+choice;95;5;3
+choice;200;11;00111001100;7
+choice;205;11;4
+choice;209;11;11000010000;0

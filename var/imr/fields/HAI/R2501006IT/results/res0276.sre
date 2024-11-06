@@ -1,0 +1,27 @@
+2.0;HAI;R2501006IT;276;LG7LBAXD1I;05/11/2024 10:01:50 CET;05/11/2024 10:03:53 CET;123;4;1999;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=LG7LBAXD1I;device=mobile;lang=it;sysIID=276
+choice;10;2;0
+open;18;54
+choice;20;6;3
+choice;30;20;3
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10100;2
+choice;95;5;2
+scale;110;6;5;2;1;1;1;2;1
+scale;120;3;5;2;1;2
+scale;130;2;5;1;2
+scale;140;2;5;2;4
+scale;150;3;5;2;2;2
+scale;160;3;5;2;2;2
+scale;170;2;5;2;1
+scale;180;2;5;0;4
+scale;190;2;5;0;0
+choice;195;6;2
+choice;200;11;00000000010;9
+choice;205;11;9
+choice;209;11;00000000001;10
+choice;210;6;0
+choice;215;7;4
+app;1999;flag|string|0;seg|string|3. Traditional Way;target|string|3

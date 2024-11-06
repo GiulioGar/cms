@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;73;995I5O3MZ0;04/11/2024 14:56:47 CET;04/11/2024 15:03:29 CET;402;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=995I5O3MZ0;device=desktop;lang=it;sysIID=73
+choice;10;2;0
+open;18;46
+choice;20;6;3
+choice;30;20;4
+choice;35;4;1
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;10000;0
+choice;95;5;0
+scale;110;6;5;3;3;4;2;1;3
+scale;120;3;5;1;1;3
+scale;130;2;5;4;3
+scale;140;2;5;3;3
+scale;150;3;5;1;1;3
+scale;160;3;5;3;1;2
+scale;170;2;5;0;0
+scale;180;2;5;2;1
+scale;190;2;5;0;0
+choice;195;6;5
+choice;200;11;00101010100;6
+choice;205;11;6
+choice;209;11;00000000001;10
+choice;210;6;1
+choice;215;7;2
+choice;220;5;1
+open;230;un po' tutto, dal design, alle sue funzionalità, ai tempi della batteria e della ricarcia
+open;240;nulla in particolare
+choice;250;5;1
+choice;260;5;1
+choice;270;5;2
+choice;275;5;1
+choice;280;5;1
+scale;300;14;5;1;1;1;1;0;2;1;1;1;1;0;2;2;1
+concept;303
+choice;360;21;5
+choice;370;21;17
+choice;380;21;12
+choice;390;21;18
+concept;399
+choice;400;5;1
+choice;420;5;1
+choice;430;9;1
+choice;440;4;3
+choice;442;4;1000;0
+choice;444;6;001000;2
+app;1999;flag|string|0;seg|string|6. Pragmatic with style;target|string|6
+concept_eval;9001;30;20;22;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;9;24;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;14;21;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

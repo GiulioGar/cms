@@ -1,0 +1,29 @@
+2.0;FER;R2408120HW;379;7P06XTXNEE;05/11/2024 09:26:27 CET;05/11/2024 09:34:04 CET;457;3;210;sysSID=R2408120HW;sysPRJ=FER;sysUID=7P06XTXNEE;pok=no;mok=no;lang=it;sysIID=379
+choice;4;2;0
+choice;5;6;3
+choice;10;20;8
+choice;20;2;0
+open;30;30
+choice;31;6;1
+choice;40;3;0
+choice;41;13;0000100000000;4
+scale;42;4;5;1;1;2;2
+choice;43;4;2
+open;70;Caramelle
+choice;80;11;11110000000;0;comp0:Biscotti;comp3:Liquirizia;comp2:Caramelle gommose;comp1:Barrette di cioccolato
+open;90;Sperlari
+choice;100;11;11000000000;0;comp0:Kinder;comp1:Ferrero
+scale;110;19;3;0;1;1;0;0;2;1;2;0;1;2;0;0;1;2;2;1;0;-1
+choice;120;19;1001101010011000000;0
+choice;121;4;0
+scale;130;22;4;2;0;1;0;2;2;0;0;1;2;2;1;1;0;1;1;3;3;2;1;3;-1
+choice;140;22;0001001100000100000000;6
+scale;150;22;10;-1;5;9;3;-1;-1;0;0;2;-1;-1;3;9;1;2;6;-1;-1;-1;2;-1;-1
+scale;151;22;10;-1;5;7;0;-1;-1;0;3;6;-1;-1;2;4;0;3;6;-1;-1;-1;4;-1;-1
+ordering;152;22;6;13;7;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+choice;170;7;0
+choice;180;7;0
+choice;190;3;1
+choice;200;9;0
+choice;210;10;3
+choice;310;2;1

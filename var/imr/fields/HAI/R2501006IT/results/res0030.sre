@@ -1,0 +1,27 @@
+2.0;HAI;R2501006IT;30;QLYEEOD2CA;04/11/2024 13:58:48 CET;04/11/2024 14:39:41 CET;2453;4;1999;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=QLYEEOD2CA;device=desktop;lang=it;sysIID=30
+choice;10;2;0
+open;18;45
+choice;20;6;3
+choice;30;20;3
+choice;35;4;3
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;1
+choice;90;5;11110;3
+choice;95;5;0
+scale;110;6;5;4;3;2;3;3;4
+scale;120;3;5;1;2;2
+scale;130;2;5;3;1
+scale;140;2;5;3;4
+scale;150;3;5;1;3;3
+scale;160;3;5;3;3;3
+scale;170;2;5;3;3
+scale;180;2;5;3;3
+scale;190;2;5;1;3
+choice;195;6;3
+choice;200;11;01111010000;1
+choice;205;11;2
+choice;209;11;00001000000;4
+choice;210;6;3
+choice;215;7;5
+app;1999;flag|string|0;seg|string|4. Home Savvy;target|string|4

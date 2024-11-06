@@ -1,0 +1,52 @@
+2.0;HAI;R2501006IT;169;1Z2F2E2LV4;04/11/2024 17:35:17 CET;04/11/2024 17:54:33 CET;1156;3;444;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=1Z2F2E2LV4;device=desktop;lang=it;sysIID=169
+choice;10;2;1
+open;18;45
+choice;20;6;3
+choice;30;20;6
+choice;35;4;2
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;1
+choice;90;5;10100;2
+choice;95;5;2
+scale;110;6;5;3;2;1;1;2;2
+scale;120;3;5;0;0;2
+scale;130;2;5;1;0
+scale;140;2;5;3;3
+scale;150;3;5;1;1;2
+scale;160;3;5;3;2;1
+scale;170;2;5;2;2
+scale;180;2;5;3;2
+scale;190;2;5;1;1
+choice;195;6;5
+choice;200;11;00100000100;2
+choice;205;11;2
+choice;209;11;00000001000;7
+choice;210;6;2
+choice;215;7;3
+choice;220;5;2
+open;230;la capacità di modificare l'aspirazione a seconda della tipologia di polvere
+open;240;l'estetica non mi piace! è molto anonima
+choice;250;5;1
+choice;260;5;1
+choice;270;5;3
+choice;275;5;2
+choice;280;5;2
+scale;300;14;5;2;1;1;1;1;1;1;3;1;1;2;1;1;2
+concept;303
+choice;360;21;14
+choice;370;21;18
+choice;380;21;20
+choice;390;21;18
+concept;399
+choice;400;5;2
+choice;420;5;0
+choice;430;9;1
+choice;440;4;3
+choice;442;4;0001;3
+choice;444;6;010000;1
+app;1999;flag|string|0;seg|string|6. Pragmatic with style;target|string|6
+concept_eval;9001;30;9;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9011;30;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9021;30;14;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1
+concept_eval;9031;30;9;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1

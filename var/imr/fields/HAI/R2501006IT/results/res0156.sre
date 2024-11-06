@@ -1,0 +1,28 @@
+2.0;HAI;R2501006IT;156;5FAG28UGR1;04/11/2024 17:06:26 CET;04/11/2024 17:07:50 CET;84;7;220;version=v01;sysSID=R2501006IT;sysPRJ=HAI;sysUID=5FAG28UGR1;device=desktop;lang=it;sysIID=156
+choice;10;2;0
+open;18;30
+choice;20;6;1
+choice;30;20;6
+choice;35;4;2
+choice;51;7;0000001;6
+choice;61;5;00001;4
+choice;70;3;0
+choice;90;5;11100;1
+choice;95;5;1
+scale;110;6;5;3;2;4;3;3;2
+scale;120;3;5;4;4;3
+scale;130;2;5;3;2
+scale;140;2;5;3;4
+scale;150;3;5;3;2;4
+scale;160;3;5;3;2;2
+scale;170;2;5;3;4
+scale;180;2;5;3;2
+scale;190;2;5;3;4
+choice;195;6;1
+choice;200;11;00011000000;3
+choice;205;11;4
+choice;209;11;00000000001;10
+choice;210;6;2
+choice;215;7;2
+concept;303
+app;1999;flag|string|0;seg|string|2. Urban Techie;target|string|2

@@ -1,0 +1,83 @@
+{
+ "interview": {
+        "development": {},
+        "production" : {
+            "allow_go_back": false,
+            "redirections": [{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+				{
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                   "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+                
+                {
+                    "parameter_name": "test",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                     "redirect_to": "http://www.primisoft.com/primis/run.do?sid=$(miosid)&prj=$(mioprj)&uid=GUEST&rst=1&test=1&miosid=$(miosid)&mioprj=$(mioprj)"
+                },
+
+
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 3,
+                    "redirect_to": "https://s.cint.com/Survey/Complete?ProjectToken=6fe3f9f5-28c1-481d-989b-81f43d608a50"
+                }, {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 4,
+                    "redirect_to": "https://s.cint.com/Survey/EarlyScreenOut?ProjectToken=4f3db7e0-8468-960e-be4e-2227ee76a2fa"
+                },
+                
+                {
+                    "parameter_name": "pan",
+                    "parameter_value": "1",
+                    "exit_code": 5,
+                    "redirect_to": "https://s.cint.com/Survey/QuotaFull?ProjectToken=4f3db7e0-8468-960e-be4e-2227ee76a2fa"
+                }
+					
+			
+						
+			 ],
+             "ssi": {
+                "secure_key_1": 62279,
+                "secure_key_2": 56430
+            }
+    }
+          
+},
+
+"quota": {
+    "total_interviews": 2500,    
+        "targets": [
+
+            {
+                "name": "source_panel",
+                "description": "Cint",
+                "parameter_name": "pan",
+                "parameter_value": "1",
+                "value":2500
+            },
+
+
+        {
+            "name": "pers",
+            "description": "pers",
+            "question_id": 135,
+            "option_id": [0,1,2,3,4,5,6,7,8,9,10],
+            "value": 150
+        }
+               
+        
+                    
+         ]
+}
+
+}
